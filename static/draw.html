@@ -1,0 +1,288 @@
+<!-- 生成树 zjfree 2019-08-08 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>canvas draw</title>
+<style>
+/* css style */
+html,body{
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+#canvasMain{
+    position: absolute;
+    background: #000;
+}
+
+#divBtn{
+    position: absolute;
+    top:10px;
+    right:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/stats.js/16/Stats.min.js"></script>
+</head>
+<body>
+    <canvas id="canvasMain">canvas 不支持</canvas>
+
+    <div id="divBtn">
+        <button onclick="drawTree();">生成树</button>
+    </div>
+<script>
+var R = {
+    getColorRgb:function(min, max){
+        min = min||0;
+        max = max||255;
+        let s = 'rgb(';
+        s += this.getInt(min, max) + ',';
+        s += this.getInt(min, max) + ',';
+        s += this.getInt(min, max) + ')';
+
+        return s;
+    },
+
+    getInt:function(min, max, dec){
+        min = min||0;
+        max = max||100;
+        dec = dec||0;
+        let val = min + Math.random() * (max - min);
+
+        return this.round(val, dec);
+    },
+
+    round:function(val, des){
+        des = des||0;
+        if (des <= 0)
+        {
+            return Math.round(val);
+        }
+
+        let r = Math.pow(10, des);
+        return Math.round(val * r) / r;
+    },
+
+    limit:function(val, min, max){
+        if (val < min) return min;
+        if (val > max) return max;
+        return val;
+    },
+};
+
+var ctx = null;
+const ZOOM = 2;
+var curMouse = null;
+var curCircleList = [];
+var isMouseDown = false;
+var stats = new Stats();
+document.body.appendChild( stats.dom );
+var xPanel = stats.addPanel( new Stats.Panel( 'x', '#ff8', '#221' ) );
+
+function init()
+{
+    let w = $(document).width();
+    let h = $(document).height();
+    $('#canvasMain').css({
+        width:w+'px',
+        height:h+'px',
+    });
+    $('#canvasMain').attr({
+        width:w * ZOOM,
+        height:h * ZOOM,
+    });
+    ctx = $('#canvasMain')[0].getContext("2d");
+    ctx.w = w * ZOOM;
+    ctx.h = h * ZOOM;
+}
+
+function bindEvent()
+{
+    // 鼠标移动
+    $(document).mousemove(function(event){
+        let e = event.originalEvent;
+        let x = e.pageX * ZOOM;
+        let y = e.pageY * ZOOM;
+        curMouse = {x:x, y:y};
+    });
+
+    // 鼠标离开
+    $(document).mouseout(function(event){
+        curMouse = null;
+        isMouseDown = false;
+    });
+
+    // 鼠标按下
+    $(document).mousedown(function(event){
+        let e = event.originalEvent;
+        let x = e.pageX * ZOOM;
+        let y = e.pageY * ZOOM;
+        curMouse = {x:x, y:y};
+
+        isMouseDown = true;
+        drawTree();
+    });
+
+    // 鼠标弹起
+    $(document).mouseup(function(event){
+        isMouseDown = false;
+    });
+    
+    document.οncοntextmenu=function(){return false;}; 
+    document.onselectstart=function(){return false;};
+
+    // 键盘按下
+    $(document).bind('keydown', function(e){
+        e=e||event;
+        let curKey = e.keyCode||e.which||e.charCode;
+        // console.log(curKey);
+        switch (curKey)
+        {
+            case 32: // 空格
+                break;
+            case 37: // 左
+                break;
+            case 38: // 上
+                break;
+            case 39: // 右
+                break;
+            case 40: // 下
+                break;
+        }
+    });
+}
+
+function drawTree()
+{
+    if (curMouse == null)
+    {
+        return;
+    }
+
+    let item = {
+        begin:curMouse,
+        end:{
+            x:curMouse.x,
+            y:curMouse.y - 300,
+        },
+        length:300,
+        deg:270,
+        width:50,
+        list:[],
+    };
+
+    ctx.strokeStyle = "#999900";
+    ctx.lineCap = "round";
+    item = tree(item, 0);
+
+    console.log(item);
+}
+
+function tree(item, deep)
+{
+    ctx.beginPath();
+    ctx.moveTo(item.begin.x, item.begin.y);
+    ctx.lineTo(item.end.x, item.end.y);
+    ctx.lineWidth = item.width;
+    ctx.stroke();
+
+    if (deep > 5) return null;
+    for (let i=0; i<2; i++)
+    {
+        let deg = item.deg + (i == 0 ? 1 : -1) * R.getInt(10, 45);
+        deg = deg % 360;
+        let length = item.length / 1.5 + R.getInt(10, 30);
+
+        let item1 = {
+            begin:item.end,
+            end:{
+                x: Math.round(item.end.x + Math.cos(deg * Math.PI / 180) * length),
+                y: Math.round(item.end.y + Math.sin(deg * Math.PI / 180) * length),
+            },
+            length:length,
+            deg:deg,
+            width:item.width / 1.2,
+            list:[],
+        };
+        item.list.push(tree(item1, deep+1));
+    }
+    
+    return item;
+}
+
+// 渲染
+function render() 
+{
+    return;
+    stats.begin();
+    stats.update();
+    // monitored code goes here
+
+    if (curMouse != null && isMouseDown)
+    {
+        // for (let i=0; i<100; i++)
+        // {
+        //     let c = {
+        //         point:Object.assign({}, curMouse),
+        //         color:R.getColorRgb(),
+        //         direction:R.getInt(0, 360),
+        //         speed:1,
+        //     };
+        //     curCircleList.push(c);
+        // }
+    }
+
+    let circleList = [];
+    for (let k in curCircleList)
+    {
+        let r = curCircleList[k];
+        if (r.point.y < 0 || r.point.y > ctx.h || r.point.x < 0 || r.point.x > ctx.w)
+        {
+            continue;
+        }
+
+        circleList.push(r);
+    }
+
+    curCircleList = circleList;
+    
+    ctx.clearRect(0,0, ctx.w, ctx.h);
+    if (curCircleList.length > 0)
+    {
+        for (let r of curCircleList)
+        {
+            ctx.fillStyle = r.color;
+            ctx.beginPath();
+            ctx.arc(r.point.x, r.point.y, 10, 0, 360 * Math.PI / 180);
+            ctx.fill();
+            
+            r.direction++;
+            r.speed += 0.1;
+            r.point.y += Math.sin(r.direction * Math.PI / 180) * r.speed;
+            r.point.x += Math.cos(r.direction * Math.PI / 180) * r.speed;
+        }
+    }
+
+    xPanel.update( curCircleList.length, 1000 );
+
+    stats.end();
+    requestAnimationFrame( render );
+}
+
+$(function(){
+    window.onresize = init;
+    init();
+
+    // 绑定事件
+    bindEvent();
+
+    // 启动渲染
+    requestAnimationFrame( render );
+});
+</script>
+</body>
