@@ -1,0 +1,99 @@
+<!-- 表格编辑 zjfree 2019-08-09 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表格编辑</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+body{
+	padding:0 10px;
+}
+
+/* 简易表格 */
+table.tb {
+    font-family: Consolas,verdana,arial,sans-serif;
+    font-size:14px;
+    color:#333333;
+    border-collapse: collapse;
+    border: solid 2px #666666;
+}
+table.tb th {
+    border: solid 1px #666666;
+    padding: 5px;
+    background-color: #dedede;
+    text-align: center;
+}
+table.tb td {
+    border: solid 1px #666666;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    text-align:center;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>表格编辑</h1>
+
+<div style="margin:10px 0;">
+	<button onclick="addTr();">添加</button>
+</div>
+
+<table id="tbList" class="tb">
+	<thead>
+		<tr>
+			<th>名称</th>
+			<th>性别</th>
+			<th>备注</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr style="display: none;">
+			<td><input name="name[]" value="" style="width:100px;" /></td>
+			<td>
+				<select name="sex[]">
+					<option>未知</option>
+					<option>男</option>
+					<option>女</option>
+				</select>
+			</td>
+			<td><input name="memo[]" value="" /></td>
+			<td>
+				<a href="javascript:;" onclick="delTr(this);">删除</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script>
+
+function addTr()
+{
+	let tr = $('#tbList tbody tr').eq(0).clone();
+	tr.show();
+	$('#tbList tbody').append(tr);
+}
+
+function delTr(o)
+{
+	$(o).parent().parent().remove();
+}
+
+$(function(){
+	// JS
+	addTr();
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+</body>
