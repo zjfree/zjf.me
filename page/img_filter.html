@@ -14,6 +14,10 @@
 body{
 	padding:10px;
 }
+
+#tbFilter td{
+	padding-right:20px;
+}
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -21,10 +25,102 @@ body{
 <body>
 <!-- 内容 -->
 <h1>图片滤镜</h1>
-<input type="file" id="file" ><br><br>
-<img id="img1" src="../static/img/pink_design_05.png" />
+<input type="file" id="file" >
+<form style="margin:10px 0;">
+	<table id="tbFilter">
+		<tr>
+			<td>blur</td>
+			<td>高斯模糊</td>
+			<td><input type="number" value="0" /> <i>px</i></td>
+		</tr>
+		<tr>
+			<td>brightness</td>
+			<td>亮度</td>
+			<td><input type="range" value="100" min="0" max="200" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>contrast</td>
+			<td>对比度</td>
+			<td><input type="range" value="100" min="0" max="200" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>drop-shadow</td>
+			<td>阴影</td>
+			<td>
+				<input type="text" value="5px 5px 10px black" />
+				<input type="checkbox" />
+				<i></i>
+			</td>
+		</tr>
+		<tr>
+			<td>grayscale</td>
+			<td>灰度</td>
+			<td><input type="range" value="0" min="0" max="100" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>hue-rotate</td>
+			<td>色相旋转</td>
+			<td><input type="range" value="0" min="0" max="360" /> <span></span> <i>deg</i></td>
+		</tr>
+		<tr>
+			<td>invert</td>
+			<td>反转</td>
+			<td><input type="range" value="0" min="0" max="100" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>opacity</td>
+			<td>透明度</td>
+			<td><input type="range" value="100" min="0" max="100" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>saturate</td>
+			<td>饱和度</td>
+			<td><input type="range" value="100" min="0" max="200" /> <span></span> <i>%</i></td>
+		</tr>
+		<tr>
+			<td>sepia</td>
+			<td>深褐色</td>
+			<td><input type="range" value="0" min="0" max="100" /> <span></span> <i>%</i></td>
+		</tr>
+	</table>
+</form>
+<div>
+	样式：<span id="spanFilter"></span>
+</div>
+<img id="imgFilter" src="../static/img/pink_design_05.png" />
 
 <script>
+
+function filterChange()
+{
+	$('input[type=range]').each(function(){
+		$(this).parent().find('span').html($(this).val());
+	});
+
+	let filter = '';
+	$('#tbFilter tr').each(function(){
+		let k = $(this).find('td').eq(0).html();
+		let v = $(this).find('input').val();
+		if (k == 'drop-shadow')
+		{
+			if (!$(this).find('input').eq(1)[0].checked)
+			{
+				return;
+			}
+			v = $(this).find('input').eq(0).val();
+		}
+		else
+		{
+			if (v == '' || v == $(this).find('input')[0].defaultValue) return;
+		}
+
+		filter += k + '(' + v + $(this).find('i').html() + ') ';
+	});
+
+	$('#spanFilter').html('filter:' + filter);
+	$('#imgFilter').css('filter', filter);
+}
+
 $(function(){
 	// JS
 	$('#file').change(function(){ 
@@ -36,13 +132,18 @@ $(function(){
 		//用于图片显示不需要传入后台，reader.result的结果是base64编码数据，直接放入img的src中即可 
 		reader.readAsDataURL(file); 
 		reader.onload = function(){ 
-			$('#img1').attr('src', reader.result); 
+			$('img').attr('src', reader.result); 
 		} 
 	});
+
+	$('input[type=range], input[type=text], input[type=number]').bind('input', filterChange);
+	$('input[type=checkbox]').change(filterChange);
+	filterChange();
+
 });
 </script>
 
-<!-- 51啦访问统计 
+<!-- 51啦访问统计 -->
 <script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
--->
+
 </body>
