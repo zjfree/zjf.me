@@ -1,4 +1,4 @@
-<!-- 字符工具 MD5 GUID zjfree 2019-08-09 -->
+<!-- 字符工具 MD5 GUID BASE64 zjfree 2019-08-09 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -18,7 +18,8 @@
 		}
 
 		#divGuid,
-		#divMd5 {
+		#divMd5,
+		#divBase64 {
 			font-family: Consolas;
 			font-size: 16px;
 			margin: 10px 0;
@@ -27,10 +28,15 @@
 		#divMd5 {
 			font-size: 36px;
 		}
+
+		textarea{
+			display:block; margin:10px 0; width:100%; height:200px;
+		}
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
 	<script src="../js/md5.min.js"></script>
+	<script src="../js/base64.min.js"></script>
 </head>
 
 <body>
@@ -44,11 +50,17 @@
 	<div id="divGuid"></div>
 
 	<h3>MD5</h3>
-	<textarea id="txtMd5" style="display:block; margin:10px 0; width:100%; height:200px;"
+	<textarea id="txtMd5"
 		placeholder="请输入需要MD5的字符串"></textarea>
 	<button onclick="createMd5();">生成MD5</button>
 	<button onclick="createMd5Big();">生成MD5[大写]</button>
 	<div id="divMd5"></div>
+
+	<h3>BASE64</h3>
+	<textarea id="txtBase1">abc中文</textarea>
+	<button onclick="base64Encode();">编码</button>
+	<button onclick="base64Decode();">解码</button>
+	<textarea id="txtBase2"></textarea>
 
 	<script>
 
@@ -73,6 +85,20 @@
 			$('#divMd5').html(md5($('#txtMd5').val()).toUpperCase());
 		}
 
+		function base64Decode() {
+			let s = $('#txtBase2').val();
+			s = Base64.decode(s);
+
+			$('#txtBase1').val(s);
+		}
+
+		function base64Encode() {
+			let s = $('#txtBase1').val();
+			s = Base64.encode(s);
+
+			$('#txtBase2').val(s);
+		}
+
 		/**
 		 *获取GUID
 		 */
@@ -87,6 +113,7 @@
 			// JS
 			createGuid();
 			createMd5();
+			base64Encode();
 		});
 	</script>
 
