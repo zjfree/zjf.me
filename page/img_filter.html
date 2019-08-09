@@ -1,0 +1,48 @@
+<!-- 图片滤镜 zjfree 2019-08-09 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图片滤镜</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>图片滤镜</h1>
+<input type="file" id="file" ><br><br>
+<img id="img1" src="../static/img/pink_design_05.png" />
+
+<script>
+$(function(){
+	// JS
+	$('#file').change(function(){ 
+		//获取文件对象 
+		var file = this.files[0]; 
+		//使用fileReader对文件对象进行操作 
+		var reader = new FileReader(); 
+		
+		//用于图片显示不需要传入后台，reader.result的结果是base64编码数据，直接放入img的src中即可 
+		reader.readAsDataURL(file); 
+		reader.onload = function(){ 
+			$('#img1').attr('src', reader.result); 
+		} 
+	});
+});
+</script>
+
+<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+</body>
