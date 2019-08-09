@@ -67,15 +67,15 @@
 	<script>
 
 		function createBarcode() {
-			JsBarcode("#svgBarcode", $('#txtBarcode').val());
+			JsBarcode("#svgBarcode", $('#txtBarcode').val(), {height:50});
 		}
 
 		function createQRcode() {
 			$('#divQRcode').html('');
 			let qrcode = new QRCode(document.getElementById("divQRcode"), {
 				text: $('#txtQRcode').val(),
-				width: 128,
-				height: 128,
+				width: 256,
+				height: 256,
 				colorDark: "#000000",
 				colorLight: "#ffffff",
 				correctLevel: QRCode.CorrectLevel.H
