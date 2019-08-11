@@ -1,0 +1,155 @@
+<!-- CSS3D生成器 zjfree 2019-08-11 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS3D生成器</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		.panel {
+			background: red;
+			transform: rotateY(45deg);
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: 250px;
+			font-size: 50px;
+			color: #fff;
+			font-weight: bold;
+			position: relative;
+			transform-style: preserve-3d;
+			transition: transform 1s;
+			/*
+    backface-visibility: hidden;
+    */
+		}
+
+		#divControl label {
+			width: 200px;
+			text-align: right;
+			display: inline-block;
+		}
+
+		#divControl span {
+			width: 50px;
+			text-align: left;
+			display: inline-block;
+		}
+
+		#divControl small {
+			width: 50px;
+			text-align: left;
+			display: inline-block;
+		}
+
+		#divInfo {
+			text-align: center;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1 style="text-align: center;">CSS3D</h1>
+
+	<div style="width:250px; height:250px; margin:20px auto; border:solid 1px gray; transform: perspective(500px)">
+		<div id="divPanel" class="panel">CSS3D</div>
+	</div>
+
+	<div id="divInfo"></div>
+
+	<div id="divControl" style="text-align:center;">
+		<div>
+			<label>perspective</label>
+			<input type="range" max="2000" min="0" value="500" />
+			<span>500</span><small>px</small>
+		</div>
+		<div>
+			<label>rotateX</label>
+			<input type="range" max="360" min="0" value="0" />
+			<span>0</span><small>deg</small>
+		</div>
+		<div>
+			<label>rotateY</label>
+			<input type="range" max="360" min="0" value="0" />
+			<span>0</span><small>deg</small>
+		</div>
+		<div>
+			<label>rotateZ</label>
+			<input type="range" max="360" min="0" value="0" />
+			<span>0</span><small>deg</small>
+		</div>
+		<div>
+			<label>translateX</label>
+			<input type="range" max="100" min="0" value="0" />
+			<span>0</span><small>px</small>
+		</div>
+		<div>
+			<label>translateY</label>
+			<input type="range" max="100" min="0" value="0" />
+			<span>0</span><small>px</small>
+		</div>
+		<div>
+			<label>translateZ</label>
+			<input type="range" max="100" min="0" value="0" />
+			<span>0</span><small>px</small>
+		</div>
+		<div>
+			<label>scaleX</label>
+			<input type="range" max="5" min="0" value="1" step="0.01" />
+			<span>1</span><small></small>
+		</div>
+		<div>
+			<label>scaleY</label>
+			<input type="range" max="5" min="0" value="1" step="0.01" />
+			<span>1</span><small></small>
+		</div>
+		<div>
+			<label>scaleZ</label>
+			<input type="range" max="5" min="0" value="1" step="0.01" />
+			<span>1</span><small></small>
+		</div>
+	</div>
+
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+
+		function updateCss() {
+			var str = '';
+			$('#divControl div').each(function () {
+				var lbl = $(this).find('label').html();
+				if (lbl == 'perspective') {
+					$('#divPanel').parent().css('perspective', $(this).find('input').val() + 'px');
+				}
+				else {
+					str += lbl + '(' + $(this).find('input').val() + $(this).find('small').html() + ') ';
+				}
+			});
+
+			$('#divInfo').html(str);
+			$('#divPanel').css('transform', str);
+		}
+
+		// js script
+		$(function () {
+			$('#divControl input[type=range]').on('input', function () {
+				$(this).parent().find('span').html($(this).val());
+				updateCss();
+			});
+
+			updateCss();
+		});
+	</script>
+
+	<!-- 51啦访问统计 -->
+	<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
