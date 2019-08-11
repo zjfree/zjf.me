@@ -1,0 +1,213 @@
+<!-- 画板 zjfree 2019-08-11 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>画板</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html,body{
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+#canvasMain{
+    position: absolute;
+    background: #fff;
+}
+
+#divBtn{
+    position: absolute;
+    top:10px;
+    left:10px;
+}
+
+#divPen{
+    position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="canvasMain">canvas 不支持</canvas>
+
+<div id="divBtn">
+	<button onclick="setColor('black');" style="background: #000;">&emsp;</button>
+	<button onclick="setColor('red');" style="background: red;">&emsp;</button>
+	<button onclick="setColor('blue');" style="background: blue;">&emsp;</button>
+	<button onclick="setColor('green');" style="background: green;">&emsp;</button>
+	<button onclick="setColor('#fff');">橡皮</button>
+	<button onclick="setSize(2);">细</button>
+	<button onclick="setSize(4);">中</button>
+	<button onclick="setSize(8);">粗</button>
+	<button onclick="ctx.clearRect(0,0, ctx.w, ctx.h);">清空</button>
+</div>
+
+<div id="divPen">
+</div>
+
+<script>
+// 线段平滑 https://qtdebug.com/fe-smooth-curve/
+
+var ctx = null;
+const ZOOM = 2;
+var curMouse = null;
+var isMouseDown = false;
+var drawColor = 'black';
+var drawSize = oldDrawSize = 4;
+var opList = [];
+var curPath = null;
+
+function init()
+{
+    let w = $(document).width();
+    let h = $(document).height();
+    $('#canvasMain').css({
+        width:w+'px',
+        height:h+'px',
+    });
+    $('#canvasMain').attr({
+        width:w * ZOOM,
+        height:h * ZOOM,
+    });
+    ctx = $('#canvasMain')[0].getContext("2d");
+    ctx.w = w * ZOOM;
+	ctx.h = h * ZOOM;
+	
+	setColor(drawColor);
+	setSize(drawSize);
+}
+
+function setColor(color)
+{
+	$('#divPen').css('background', color);
+	$('#divPen').css('border', '');
+	if (color == '#fff' && drawColor != color)
+	{
+		oldDrawSize = drawSize;
+		setSize(20);
+		$('#divPen').css('border', 'solid 1px gray');
+		drawColor = color;
+	}
+	else
+	{
+		drawColor = color;
+		setSize(oldDrawSize);
+	}
+}
+function setSize(size)
+{
+	if (drawColor == '#fff')
+	{
+		oldDrawSize = size;
+		return;
+	}
+
+	drawSize = size;
+	$('#divPen').css({
+		width:size + 'px',
+		height:size + 'px',
+		'margin-top': size / -2 + 'px',
+		'margin-left': size / -2 + 'px',
+	});
+}
+
+function bindEvent()
+{
+    // 鼠标移动
+    $(document).mousemove(function(event){
+		let e = event.originalEvent;
+		$('#divPen').css({
+			left:e.pageX + 'px',
+			top:e.pageY + 'px',
+		});
+			
+		if (!isMouseDown) return;
+
+        let x = e.pageX * ZOOM;
+		let y = e.pageY * ZOOM;
+		drawLine(curMouse, {x:x, y:y});
+		curMouse = {x:x, y:y};
+		curPath.point_list.push(x, y);
+    });
+
+    // 鼠标按下
+    $('#canvasMain').mousedown(function(event){
+        let e = event.originalEvent;
+        let x = e.pageX * ZOOM;
+        let y = e.pageY * ZOOM;
+        curMouse = {x:x, y:y};
+
+		isMouseDown = true;
+		drawCirle(curMouse);
+		curPath = {
+			type:'line',
+			point_list:[x, y],
+			color:drawColor,
+			size:drawSize,
+		};
+		opList.push({
+			type:'mousedown',
+			point:curMouse,
+			color:drawColor,
+			size:drawSize,
+		});
+    });
+
+    // 鼠标离开
+    $(document).mouseout(drawEnd);
+
+    // 鼠标弹起
+    $(document).mouseup(drawEnd);
+    
+    document.οncοntextmenu=function(){return false;}; 
+    document.onselectstart=function(){return false;};
+}
+
+function drawEnd()
+{
+	if (!isMouseDown) return;
+	opList.push(curPath);
+	isMouseDown = false;
+	curPath = null;
+}
+
+function drawCirle(p)
+{
+	ctx.fillStyle = drawColor;
+	ctx.beginPath();
+	ctx.arc(p.x, p.y, drawSize * ZOOM / 2, 0, 360 * Math.PI / 180);
+	ctx.fill();
+}
+
+function drawLine(p1, p2)
+{
+    ctx.strokeStyle = drawColor;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(p1.x, p1.y);
+    ctx.lineTo(p2.x, p2.y);
+    ctx.lineWidth = drawSize * ZOOM;
+    ctx.stroke();
+}
+
+$(function(){
+	// JS
+	init();
+	bindEvent();
+});
+</script>
+
+<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+</body>
