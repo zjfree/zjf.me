@@ -99,16 +99,20 @@ function init()
 	for (let k in opList)
 	{
 		let r = opList[k];
+		setColor(r.color);
+		setSize(r.size);
+		if (r.color != '#fff')
+		{
+			console.log(r.size);
+			oldDrawSize = r.size;
+		}
+
 		switch (r.type)
 		{
 			case 'mousedown':
-				setColor(r.color);
-				setSize(r.size);
 				drawCirle(r.point);
 				break;
 			case 'line':
-				setColor(r.color);
-				setSize(r.size);
 				if (r.point_list.length > 2)
 				{
 					let p = {x:r.point_list[0], y:r.point_list[1]};
@@ -148,7 +152,10 @@ function setSize(size)
 {
 	if (drawColor == '#fff')
 	{
-		oldDrawSize = size;
+		if (size != 20)
+		{
+			oldDrawSize = size;
+		}
 		return;
 	}
 
