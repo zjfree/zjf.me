@@ -35,6 +35,7 @@ html,body{
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 <body>
 <!-- 内容 -->
@@ -57,7 +58,7 @@ html,body{
 
 <script>
 // 线段平滑 https://qtdebug.com/fe-smooth-curve/
-
+// 触摸事件 https://github.com/hammerjs/hammer.js/
 var ctx = null;
 const ZOOM = 2;
 var curMouse = null;
@@ -121,60 +122,74 @@ function setSize(size)
 	});
 }
 
+function onPanStart(event)
+{
+	console.log('onPanStart', event);
+	let e = event.originalEvent;
+	let x = e.pageX * ZOOM;
+	let y = e.pageY * ZOOM;
+	curMouse = {x:x, y:y};
+
+	isMouseDown = true;
+	drawCirle(curMouse);
+	curPath = {
+		type:'line',
+		point_list:[x, y],
+		color:drawColor,
+		size:drawSize,
+	};
+	opList.push({
+		type:'mousedown',
+		point:curMouse,
+		color:drawColor,
+		size:drawSize,
+	});
+}
+
+function onPanMove(event)
+{
+	console.log('onPanMove', event);
+	let e = event.originalEvent;
+	$('#divPen').css({
+		left:e.pageX + 'px',
+		top:e.pageY + 'px',
+	});
+		
+	if (!isMouseDown) return;
+
+	let x = e.pageX * ZOOM;
+	let y = e.pageY * ZOOM;
+	drawLine(curMouse, {x:x, y:y});
+	curMouse = {x:x, y:y};
+	curPath.point_list.push(x, y);
+}
+
 function bindEvent()
 {
-    // 鼠标移动
-    $(document).mousemove(function(event){
-		let e = event.originalEvent;
-		$('#divPen').css({
-			left:e.pageX + 'px',
-			top:e.pageY + 'px',
-		});
-			
-		if (!isMouseDown) return;
+	var mc = new Hammer.Manager(document);
+	mc.on("panstart", onPanStart);
+	mc.on("panmove", onPanMove);
+	mc.on("panend", onPanEnd);
 
-        let x = e.pageX * ZOOM;
-		let y = e.pageY * ZOOM;
-		drawLine(curMouse, {x:x, y:y});
-		curMouse = {x:x, y:y};
-		curPath.point_list.push(x, y);
-    });
+    // 鼠标移动
+    $(document).mousemove(onPanMove);
 
     // 鼠标按下
-    $('#canvasMain').mousedown(function(event){
-        let e = event.originalEvent;
-        let x = e.pageX * ZOOM;
-        let y = e.pageY * ZOOM;
-        curMouse = {x:x, y:y};
-
-		isMouseDown = true;
-		drawCirle(curMouse);
-		curPath = {
-			type:'line',
-			point_list:[x, y],
-			color:drawColor,
-			size:drawSize,
-		};
-		opList.push({
-			type:'mousedown',
-			point:curMouse,
-			color:drawColor,
-			size:drawSize,
-		});
-    });
+    $('#canvasMain').mousedown(onPanStart);
 
     // 鼠标离开
-    $(document).mouseout(drawEnd);
+    $(document).mouseout(onPanEnd);
 
     // 鼠标弹起
-    $(document).mouseup(drawEnd);
+    $(document).mouseup(onPanEnd);
     
     document.οncοntextmenu=function(){return false;}; 
     document.onselectstart=function(){return false;};
 }
 
-function drawEnd()
+function onPanEnd(event)
 {
+	console.log('onPanEnd', event);
 	if (!isMouseDown) return;
 	opList.push(curPath);
 	isMouseDown = false;
