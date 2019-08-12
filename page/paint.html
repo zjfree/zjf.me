@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 <title>画板</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@ html,body{
 	<button onclick="setSize(2);">细</button>
 	<button onclick="setSize(4);">中</button>
 	<button onclick="setSize(8);">粗</button>
-	<button onclick="ctx.clearRect(0,0, ctx.w, ctx.h);">清空</button>
+	<button onclick="clearPaint();">清空</button>
 </div>
 
 <div id="divPen">
@@ -70,6 +70,12 @@ var curPath = null;
 
 function init()
 {
+	// 触摸屏隐藏当前指针
+	if ("ontouchend" in document)
+	{
+		$('#divPen').hide();
+	}
+
     let w = $(document).width();
     let h = $(document).height();
     $('#canvasMain').css({
@@ -86,8 +92,39 @@ function init()
 	
 	setColor(drawColor);
 	setSize(drawSize);
+
+	// 绘制历史
+	opList = localStorage.getItem('opList');
+	opList = opList ? JSON.parse(opList) : [];
+	for (let k in opList)
+	{
+		let r = opList[k];
+		switch (r.type)
+		{
+			case 'mousedown':
+				setColor(r.color);
+				setSize(r.size);
+				drawCirle(r.point);
+				break;
+			case 'line':
+				setColor(r.color);
+				setSize(r.size);
+				if (r.point_list.length > 2)
+				{
+					let p = {x:r.point_list[0], y:r.point_list[1]};
+					for (let i=2; i<r.point_list.length; i += 2)
+					{
+						let p1 = {x:r.point_list[i], y:r.point_list[i+1]};
+						drawLine(p, p1);
+						p = p1;
+					}
+				}
+				break;
+		}
+	}
 }
 
+// 设置画笔颜色
 function setColor(color)
 {
 	$('#divPen').css('background', color);
@@ -105,6 +142,8 @@ function setColor(color)
 		setSize(oldDrawSize);
 	}
 }
+
+// 设置画笔大小
 function setSize(size)
 {
 	if (drawColor == '#fff')
@@ -122,10 +161,23 @@ function setSize(size)
 	});
 }
 
+// 清空画板
+function clearPaint()
+{
+	ctx.clearRect(0,0, ctx.w, ctx.h);
+	opList = [];
+	localStorage.setItem('opList', JSON.stringify(opList));
+}
+
+// 按下
 function onPanStart(event)
 {
-	console.log('onPanStart', event);
+	//console.log('onPanStart', event);
 	let e = event.originalEvent;
+	if (e.touches)
+	{
+		e = e.touches[0];
+	}
 	let x = e.pageX * ZOOM;
 	let y = e.pageY * ZOOM;
 	curMouse = {x:x, y:y};
@@ -144,12 +196,20 @@ function onPanStart(event)
 		color:drawColor,
 		size:drawSize,
 	});
+
+	localStorage.setItem('opList', JSON.stringify(opList));
 }
 
+// 移动
 function onPanMove(event)
 {
-	console.log('onPanMove', event);
+	//console.log('onPanMove', event);
 	let e = event.originalEvent;
+	if (e.touches)
+	{
+		e = e.touches[0];
+	}
+
 	$('#divPen').css({
 		left:e.pageX + 'px',
 		top:e.pageY + 'px',
@@ -164,38 +224,37 @@ function onPanMove(event)
 	curPath.point_list.push(x, y);
 }
 
-function bindEvent()
-{
-	var mc = new Hammer.Manager(document);
-	mc.on("panstart", onPanStart);
-	mc.on("panmove", onPanMove);
-	mc.on("panend", onPanEnd);
-
-    // 鼠标移动
-    $(document).mousemove(onPanMove);
-
-    // 鼠标按下
-    $('#canvasMain').mousedown(onPanStart);
-
-    // 鼠标离开
-    $(document).mouseout(onPanEnd);
-
-    // 鼠标弹起
-    $(document).mouseup(onPanEnd);
-    
-    document.οncοntextmenu=function(){return false;}; 
-    document.onselectstart=function(){return false;};
-}
-
+// 弹起
 function onPanEnd(event)
 {
-	console.log('onPanEnd', event);
+	//console.log('onPanEnd', event);
 	if (!isMouseDown) return;
 	opList.push(curPath);
+	localStorage.setItem('opList', JSON.stringify(opList));
 	isMouseDown = false;
 	curPath = null;
 }
 
+// 绑定事件
+function bindEvent()
+{
+    // 移动
+    $(document).on('mousemove touchmove', onPanMove);
+
+    // 按下
+    $('#canvasMain').on('mousedown touchstart', onPanStart);
+
+    // 弹起
+    $(document).on('mouseup touchend', onPanEnd);
+    
+    // 离开
+    $(document).mouseout(onPanEnd);
+
+    document.οncοntextmenu=function(){return false;}; 
+    document.onselectstart=function(){return false;};
+}
+
+// 画点
 function drawCirle(p)
 {
 	ctx.fillStyle = drawColor;
@@ -204,6 +263,7 @@ function drawCirle(p)
 	ctx.fill();
 }
 
+// 画线
 function drawLine(p1, p2)
 {
     ctx.strokeStyle = drawColor;
