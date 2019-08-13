@@ -271,7 +271,7 @@ $(function(){
 	let charList = '0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 中文测试 ~！@#￥%……&*（）——+｛｝|【】-=·'
 	for (let r of fontList)
 	{
-		html += '<tr><td>' + r + '</td><td style="font-family:' + r + ';">' + charList + '</td></tr>';
+		html += '<tr><td>' + r + '</td><td style="font-size:20px; font-family:' + r + ';">' + charList + '</td></tr>';
 	}
 	$('#tbList tbody').append(html);
 });
