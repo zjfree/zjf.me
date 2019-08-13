@@ -276,12 +276,12 @@ $(function(){
 	let html = '';
 	let charList = '0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 中文测试 ~！@#￥%……&*（）——+｛｝|【】-=·'
 
-	ctx.font = "30px inherit";
+	ctx.font = "20px inherit";
 	let w1 = ctx.measureText(charList).width.toFixed(0);
 
 	for (let r of fontList)
 	{
-		ctx.font = "30px " + r;
+		ctx.font = "20px " + r;
 		let w = ctx.measureText(charList).width.toFixed(0);
 		if (w != w1)
 		{
