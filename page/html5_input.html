@@ -1,0 +1,194 @@
+<!-- HTML5控件 zjfree 2019-08-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML5控件</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>HTML5控件</h1>
+<h3>FORM</h3>
+<ul>
+	<li>禁止自动完成 autocomplete="off"</li>
+	<li>禁止有效验证 novalidate="novalidate"</li>
+	<li>文件上传 enctype="multipart/form-data"</li>
+</ul>
+<form id="frmItem" name="frm1" method="POST" action="../static/ajax.json" autocomplete="off" enctype="multipart/form-data">
+<h3>无类型input</h3>
+<input name="type_null" />
+
+<h3>input required 必填</h3>
+<input type="text" name="text1" required value="11" />
+
+<h3>input placeholder 占位字符</h3>
+<input type="text" name="text2" placeholder="hello" />
+
+<h3>input readonly 只读</h3>
+<input type="text" name="text3" readonly />
+
+<h3>input required 默认焦点</h3>
+<input type="text" name="text4" autofocus />
+
+<h3>input pattern 正则验证</h3>
+<input type="text" name="text6" pattern="[A-z]{3}" />
+
+<h3>input disabled 禁用</h3>
+<input type="text" name="text7" disabled />
+
+<h3>input button</h3>
+<input type="button" name="input_button" value="button" />
+
+<h3>input checkbox</h3>
+<label><input type="checkbox" name="input_checkbox[]" value="1" checked /> 选项1</label>
+<label><input type="checkbox" name="input_checkbox[]" value="2" /> 选项2</label>
+<label><input type="checkbox" name="input_checkbox[]" value="3" /> 选项3</label>
+
+<h3>input color</h3>
+<input type="color" name="input_color" value="#ff0000" />
+<h3>input date</h3>
+<input type="date" name="input_date" value="2019-01-01" />
+<h3>input datetime</h3>
+<input type="datetime" name="input_datetime" value="2019-01-01 11:22:33" />
+<h3>input datetime-local</h3>
+<input type="datetime-local" name="input_datetime_local" value="2019-01-01T11:22" />
+<h3>input email</h3>
+<input type="email" name="input_email" value="email@163.com" />
+<h3>input file</h3>
+<input type="file" name="input_file" value="file" multiple />
+<h3>input hidden</h3>
+<input type="hidden" name="input_hidden" value="hidden" />
+<h3>input image</h3>
+<input type="image" name="input_image" src="../static/img/pink_design_03.png" />
+<h3>input month</h3>
+<input type="month" name="input_month" value="2019-05" />
+<h3>input number</h3>
+<input type="number" name="input_number" value="100" />
+<h3>input password</h3>
+<input type="password" name="input_password" value="password" />
+<h3>input radio</h3>
+<label><input type="radio" name="input_radio" value="1" checked /> 选项1</label>
+<label><input type="radio" name="input_radio" value="2" /> 选项2</label>
+<label><input type="radio" name="input_radio" value="3" /> 选项3</label>
+
+<h3>input range</h3>
+<input type="range" name="input_range" value="30" />
+<h3>input search</h3>
+<input type="search" name="input_search" value="search" />
+<h3>input tel</h3>
+<input type="tel" name="input_tel" value="tel" />
+<h3>input text</h3>
+<input type="text" name="input_text" value="text" />
+<h3>input time</h3>
+<input type="time" name="input_time" value="11:22" />
+<h3>input url</h3>
+<input type="url" name="input_url" value="http://163.com" />
+<h3>input week</h3>
+<input type="week" name="input_week" value="2019-W11" />
+
+<h3>input list</h3>
+<input type="url" list="url_list" name="input_list" />
+<datalist id="url_list">
+<option label="W3Schools" value="http://www.w3schools.com" />
+<option label="Google" value="http://www.google.com" />
+<option label="Microsoft" value="http://www.microsoft.com" />
+</datalist>
+
+<h3>select</h3>
+<select name="select">
+	<option value="1">Volvo</option>
+	<option value="2">Saab</option>
+	<option value="3">Opel</option>
+	<option value="4">Audi</option>
+	<optgroup label="扩展选项">
+		<option value="11">B1</option>
+		<option value="12">B2</option>
+		<option value="13">B3</option>
+		<option value="14">B4</option>
+		<option value="15">B5</option>
+	</optgroup>
+</select>
+
+<h3>select size</h3>
+<select name="select_size" size="3">
+	<option value="1">Volvo</option>
+	<option value="2">Saab</option>
+	<option value="3">Opel</option>
+	<option value="4" selected>Audi</option>
+	<option value="5">a1</option>
+	<option value="6">a2</option>
+	<option value="7">a3</option>
+	<option value="8">a4</option>
+</select>
+
+<h3>select multiple</h3>
+<select name="select_multiple[]" multiple  size="10">
+	<option value="1">Volvo</option>
+	<option value="2">Saab</option>
+	<option value="3">Opel</option>
+	<option value="4">Audi</option>
+	<option value="5">a1</option>
+	<option value="6">a2</option>
+	<option value="7">a3</option>
+	<option value="8">a4</option>
+	<optgroup label="扩展选项">
+		<option value="11">B1</option>
+		<option value="12">B2</option>
+		<option value="13">B3</option>
+		<option value="14">B4</option>
+		<option value="15">B5</option>
+	</optgroup>
+</select>
+
+<h3>textarea</h3>
+<textarea name="textarea" rows="10" cols="30">
+The cat was playing in the garden.
+</textarea>
+
+<hr>
+<button type="submit">提交</button>
+<button type="reset">重置</button>
+<button>button</button>
+</form>
+
+<script>
+$(function(){
+	// JS
+	$('#frmItem').submit(function(){
+		// 转化为AJAX提交
+		let data = $(this).serializeArray();
+		console.log(data);
+		$.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+			success: function(res){
+				console.log(res);
+			},
+		});
+
+		alert('form_submit');
+
+		return false;
+	});
+});
+</script>
+
+<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+</body>
