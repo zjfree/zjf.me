@@ -1,0 +1,283 @@
+<!-- 网页字体 zjfree 2019-08-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网页字体</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+body{
+	padding:10px;
+}
+
+/* 简易表格 */
+table.tb {
+    font-family: Consolas,verdana,arial,sans-serif;
+    font-size:14px;
+    color:#333333;
+    border-collapse: collapse;
+    border: solid 2px #666666;
+}
+table.tb th {
+    border: solid 1px #666666;
+    padding: 5px;
+    background-color: #dedede;
+    text-align: left;
+}
+table.tb td {
+    border: solid 1px #666666;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    text-align:left;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>网页字体</h1>
+<table id="tbList" class="tb">
+	<thead>
+		<tr>
+			<th>字体</th>
+			<th>字符示例</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+
+<script>
+var fontList = [
+	'',
+	'AcadEref',
+	'AIGDT',
+	'AmdtSymbols',
+	'AMGDT',
+	'Arial',
+	'Arial Black',
+	'Bahnschrift',
+	'Bahnschrift Condensed',
+	'Bahnschrift Light',
+	'Bahnschrift Light Condensed',
+	'Bahnschrift Light SemiCondensed',
+	'Bahnschrift SemiBold',
+	'Bahnschrift SemiBold Condensed',
+	'Bahnschrift SemiCondensed',
+	'Bahnschrift SemiLight',
+	'Bahnschrift SemiLight Condensed',
+	'BankGothic Lt BT',
+	'BankGothic Md BT',
+	'Calibri',
+	'Calibri Light',
+	'Cambria',
+	'Cambria Math',
+	'Candara',
+	'CityBlueprint',
+	'Comic Sans MS',
+	'CommercialPi BT',
+	'CommercialScript BT',
+	'Complex',
+	'Consolas',
+	'Constantia',
+	'Corbel',
+	'CountryBlueprint',
+	'Courier New',
+	'Dutch801 Rm BT',
+	'Dutch801 XBd BT',
+	'Ebrima',
+	'EuroRoman',
+	'Fira Code',
+	'Fira Code Light',
+	'Fira Code Medium',
+	'Fira Code Retina',
+	'FontAwesome',
+	'Franklin Gothic Medium',
+	'Gabriola',
+	'Gadugi',
+	'GDT',
+	'GENISO',
+	'Georgia',
+	'GLYPHICONS Halflings',
+	'GothicE',
+	'GothicG',
+	'GothicI',
+	'GreekC',
+	'GreekS',
+	'HoloLens MDL2 Assets',
+	'icon-brand',
+	'icon-large',
+	'icon-small',
+	'icon-ui',
+	'Impact',
+	'Ink Free',
+	'ISOCP',
+	'ISOCP2',
+	'ISOCP3',
+	'ISOCPEUR',
+	'ISOCT',
+	'ISOCT2',
+	'ISOCT3',
+	'ISOCTEUR',
+	'Italic',
+	'ItalicC',
+	'ItalicT',
+	'Javanese Text',
+	'Leelawadee UI',
+	'Leelawadee UI Semilight',
+	'Lucida Console',
+	'Lucida Sans Unicode',
+	'Malgun Gothic',
+	'Malgun Gothic Semilight',
+	'Marlett',
+	'Microsoft Himalaya',
+	'Microsoft JhengHei UI',
+	'Microsoft JhengHei UI Light',
+	'Microsoft New Tai Lue',
+	'Microsoft PhagsPa',
+	'Microsoft Sans Serif',
+	'Microsoft Tai Le',
+	'Microsoft YaHei UI',
+	'Microsoft YaHei UI Light',
+	'Microsoft Yi Baiti',
+	'Mongolian Baiti',
+	'Monospac821 BT',
+	'Monotxt',
+	'MS Gothic',
+	'MS PGothic',
+	'MS UI Gothic',
+	'MT Extra',
+	'Museo Sans For Dell',
+	'MV Boli',
+	'Myanmar Text',
+	'Nirmala UI',
+	'Nirmala UI Semilight',
+	'Palatino Linotype',
+	'PanRoman',
+	'Proxy 1',
+	'Proxy 2',
+	'Proxy 3',
+	'Proxy 4',
+	'Proxy 5',
+	'Proxy 6',
+	'Proxy 7',
+	'Proxy 8',
+	'Proxy 9',
+	'Roboto',
+	'RomanC',
+	'RomanD',
+	'RomanS',
+	'RomanT',
+	'Romantic',
+	'SansSerif',
+	'ScriptC',
+	'ScriptS',
+	'Segoe MDL2 Assets',
+	'Segoe Print',
+	'Segoe Script',
+	'Segoe UI',
+	'Segoe UI Black',
+	'Segoe UI Emoji',
+	'Segoe UI Historic',
+	'Segoe UI Light',
+	'Segoe UI Semibold',
+	'Segoe UI Semilight',
+	'Segoe UI Symbol',
+	'Simplex',
+	'SimSun-ExtB',
+	'Sitka Banner',
+	'Sitka Display',
+	'Sitka Heading',
+	'Sitka Small',
+	'Sitka Subheading',
+	'Sitka Text',
+	'Stylus BT',
+	'SuperFrench',
+	'Swis721 BdCnOul BT',
+	'Swis721 BdOul BT',
+	'Swis721 Blk BT',
+	'Swis721 BlkCn BT',
+	'Swis721 BlkEx BT',
+	'Swis721 BlkOul BT',
+	'Swis721 BT',
+	'Swis721 Cn BT',
+	'Swis721 Ex BT',
+	'Swis721 Lt BT',
+	'Swis721 LtCn BT',
+	'Swis721 LtEx BT',
+	'Syastro',
+	'Sylfaen',
+	'Symap',
+	'Symath',
+	'Symbol',
+	'Symeteo',
+	'Symusic',
+	'Tahoma',
+	'TeamViewer14',
+	'Technic',
+	'TechnicBold',
+	'TechnicLite',
+	'Times New Roman',
+	'Trebuchet MS',
+	'Txt',
+	'UniversalMath1 BT',
+	'Verdana',
+	'Vineta BT',
+	'Webdings',
+	'Wingdings',
+	'Yu Gothic',
+	'Yu Gothic Light',
+	'Yu Gothic Medium',
+	'Yu Gothic UI',
+	'Yu Gothic UI Light',
+	'Yu Gothic UI Semibold',
+	'Yu Gothic UI Semilight',
+	'仿宋',
+	'宋体',
+	'微軟正黑體',
+	'微軟正黑體 Light',
+	'微软雅黑',
+	'微软雅黑 Light',
+	'思源宋体 CN',
+	'思源宋体 CN ExtraLight',
+	'思源宋体 CN Heavy',
+	'思源宋体 CN Light',
+	'思源宋体 CN Medium',
+	'思源宋体 CN SemiBold',
+	'思源黑体 CN',
+	'思源黑体 CN ExtraLight',
+	'思源黑体 CN Heavy',
+	'思源黑体 CN Light',
+	'思源黑体 CN Medium',
+	'思源黑体 CN Normal',
+	'新宋体',
+	'新細明體-ExtB',
+	'楷体',
+	'等线',
+	'等线 Light',
+	'細明體-ExtB',
+	'細明體_HKSCS-ExtB',
+	'黑体',
+];
+
+$(function(){
+	let html = '';
+	let charList = '0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 中文测试 ~！@#￥%……&*（）——+｛｝|【】-=·'
+	for (let r of fontList)
+	{
+		html += '<tr><td>' + r + '</td><td style="font-family:' + r + ';">' + charList + '</td></tr>';
+	}
+	$('#tbList tbody').append(html);
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
