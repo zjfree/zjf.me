@@ -1,0 +1,122 @@
+<!-- 3D地球 zjfree 2019-08-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3D地球</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		#earth_div {
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: #000;
+			position: absolute !important;
+		}
+
+		#divBtn{
+			position: absolute; top:10px; left: 10px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="http://www.webglearth.com/v2/api.js"></script>
+</head>
+
+<body>
+	<div id="earth_div"></div>
+	<div id="divBtn">
+		<button
+			onclick="isRun = false; $('#btnRun').html('继续'); earth.panTo([39.9045593246,116.3915555051]);">去天安门</button>
+		<button onclick="isRun = false; $('#btnRun').html('继续'); flyToXian();">去西安</button>
+		<button id="btnRun" onclick="isRun = !isRun; this.innerHTML=isRun?'暂停':'继续';">暂停</button>
+		<span id="spanGps" style="color:#fff;"></span>
+	</div>
+
+	<script>
+		// http://www.webglearth.org
+		// https://cesiumjs.org
+		var earth = null;
+		var isRun = true;
+		function initialize() {
+			var options = {
+				atmosphere: true, center: [34, 109], zoom: 4,
+				sky: true,
+			};
+			earth = new WE.map('earth_div', options);
+			WE.tileLayer('http://mt1.google.cn/maps/vt?lyrs=s,h@189&gl=cn&x={x}&y={y}&z={z}', {
+				minZoom: 0,
+				maxZoom: 13,
+				attribution: 'NASA'
+			}).addTo(earth);
+
+			var marker = WE.marker([34, 109]).addTo(earth);
+			marker.bindPopup("<b>Hello world!</b><br>I am a popup.<br /><span style='font-size:10px;color:#999'>Tip: Another popup is hidden in Cairo..</span>", { maxWidth: 150, closeButton: true }).openPopup();
+
+			var polygonA = WE.polygon([[49.5608, 5.811], [49.986, 5.723],
+			[50.190, 6.086], [49.781, 6.536], [49.468, 6.372], [49.560, 5.811]]
+			);
+			polygonA.addTo(earth);
+
+			var polygonB = WE.polygon([[46.15700, 5.9765625], [47.010, 6.525],
+			[47.480, 6.965], [47.805, 8.613], [47.442, 9.645], [47.085, 9.459],
+			[46.957, 10.447], [46.225, 10.140], [46.422, 9.272], [45.844, 9.030],
+			[46.445, 8.360], [45.935, 7.811], [45.851, 7.141], [46.430, 6.734],
+			[46.157, 5.976]], {
+					color: '#ff0',
+					opacity: 1,
+					fillColor: '#f00',
+					fillOpacity: 0.1,
+					editable: true,
+					weight: 2
+				}).addTo(earth);
+
+			//Print coordinates of the mouse
+			earth.on('mousemove', function (e) {
+				if (e.latlng) {
+					$('#spanGps').html(e.latlng.lng + ',' + e.latlng.lat);
+				}
+			});
+
+			// Start a simple rotation animation
+			var before = null;
+			requestAnimationFrame(function animate(now) {
+				if (!isRun) {
+					requestAnimationFrame(animate);
+					return;
+				}
+				var c = earth.getPosition();
+				var elapsed = before ? now - before : 0;
+				before = now;
+				earth.setCenter([c[0], c[1] + 0.1 * (elapsed / 60)]);
+				requestAnimationFrame(animate);
+			});
+		}
+
+		function flyToXian() {
+			//earth.fitBounds([[34,108], [35,109]]);
+			earth.panInsideBounds([[34, 108], [35, 109]],
+				{ heading: 0, tilt: 45, duration: 1 });
+		}
+
+		$(function () {
+			initialize();
+		});
+	</script>
+
+	<!-- 51啦访问统计 -->
+	<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+</body>
