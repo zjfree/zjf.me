@@ -16,7 +16,6 @@ body{
 
 /* 简易表格 */
 table.tb {
-    font-family: Consolas,verdana,arial,sans-serif;
     font-size:14px;
     color:#333333;
     border-collapse: collapse;
@@ -46,16 +45,20 @@ table.tb td {
 	<thead>
 		<tr>
 			<th>字体</th>
+			<th>宽度</th>
 			<th>字符示例</th>
 		</tr>
 	</thead>
 	<tbody>
 	</tbody>
 </table>
+<canvas id="myCanvas" width="300" height="150" style="display: none;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
 
 <script>
 var fontList = [
-	'',
+	'inherit',
 	'AcadEref',
 	'AIGDT',
 	'AmdtSymbols',
@@ -267,11 +270,28 @@ var fontList = [
 ];
 
 $(function(){
+	let c = document.getElementById("myCanvas");
+	let ctx = c.getContext("2d");
+	
 	let html = '';
 	let charList = '0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 中文测试 ~！@#￥%……&*（）——+｛｝|【】-=·'
+
+	ctx.font = "30px inherit";
+	let w1 = ctx.measureText(charList).width.toFixed(0);
+
 	for (let r of fontList)
 	{
-		html += '<tr><td>' + r + '</td><td style="font-size:20px; font-family:' + r + ';">' + charList + '</td></tr>';
+		ctx.font = "30px " + r;
+		let w = ctx.measureText(charList).width.toFixed(0);
+		if (w != w1)
+		{
+			html += '<tr style="color:green;">';
+		}
+		else
+		{
+			html += '<tr style="color:red;">';
+		}
+		html += '<td>' + r + '</td><td>' + w + '</td><td style="font-size:20px; font-family:' + r + ';">' + charList + '</td></tr>';
 	}
 	$('#tbList tbody').append(html);
 });
