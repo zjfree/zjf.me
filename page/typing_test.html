@@ -1,0 +1,285 @@
+<!-- 打字练习 zjfree 2019-08-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>打字练习</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			background: #000;
+			color: #fff;
+			overflow: hidden;
+			font-family: Consolas, 'Courier New', Courier, monospace, 微软雅黑;
+			background: linear-gradient(to bottom, #666 0%, #000 100%);
+			height: 100%;
+		}
+
+		.char {
+			position: absolute;
+			font-size: 30px;
+			top: -30px;
+			left: -30px;
+			margin: 0px;
+			padding: 0px;
+			font-weight: bold;
+		}
+
+		.ice {
+			border-bottom: solid 2px #13F113;
+		}
+
+		.ice-char {
+			border-bottom: solid 2px #13F113;
+		}
+
+		.char.del {
+			color: red;
+			text-shadow: 0 0 10px #fff;
+			background-image: none;
+			-webkit-background-clip: inherit;
+			-webkit-text-fill-color: inherit;
+		}
+
+		.c1,
+		.c2,
+		.c3,
+		.c4,
+		.c5,
+		.c6 {
+			color: #fff;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#ccc));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.c1 {
+			color: #15FF14;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#15FF14), to(#0FB90F));
+		}
+
+		.c2 {
+			color: #FFFF14;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFFF14), to(#E3E312));
+		}
+
+		.c3 {
+			color: #FFD014;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFD014), to(#E3B912));
+		}
+
+		.c4 {
+			color: #FF7214;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#FF7214), to(#E36512));
+		}
+
+		.c5 {
+			color: #EC1B95;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#EC1B95), to(#C31079));
+		}
+
+		.c6 {
+			color: #13B5EB;
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#13B5EB), to(#119FCF));
+		}
+
+		#divInfo {
+			padding: 10px;
+			background: rgba(0, 0, 0, 0.5);
+			font-family: 微软雅黑;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<div id="divInfo"></div>
+
+	<script>
+
+		// 移动速度 px/s  10秒落到底部
+		var speed = $(window).height() / 10;
+		var colorClassList = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+		var charList = [
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]\\\';,./',
+		];
+
+		var time = new Date().getTime();
+		var totalTime = 0;
+		var totalChar = 0;
+		var successChar = 0;
+		var errorChar = 0;
+		var clearCount = 0;
+		var lostCount = 0;
+		var runState = 'run';
+		var clearCountMax = 30;
+
+		function rand(min, max) {
+			return Math.round(min + Math.random() * (max - min));
+		}
+
+		function addChar() {
+			if (document.hidden) return;
+			if ($('.char.run').length > 30) return;
+			if (runState != 'run') return;
+
+			let k = Math.min(Math.floor(totalChar / 50), 2);
+			let c = charList[k][rand(0, charList[k].length - 1)];
+			let colorClass = colorClassList[rand(0, colorClassList.length - 1)];
+			let el = $('<span class="char run ' + colorClass + '">' + c + '</span>');
+
+			$('body').append(el);
+
+			let left = rand(30, $(window).width() - 30);
+			el.css('left', left + 'px');
+
+			// 随机出现冰冻字符
+			if (Math.random() < 0.1) {
+				el.addClass('ice-char');
+			}
+
+			totalChar++;
+
+			// 速度递增
+			if (totalChar % 20 == 0) {
+				speed = speed * 1.2;
+			}
+
+			showInfo();
+		}
+
+		function charRender() {
+			if (document.hidden) {
+				time = null;
+				return;
+			}
+
+			if (time == null) {
+				time = new Date().getTime();
+				return;
+			}
+			let t = new Date().getTime();
+			let diff = t - time;
+			totalTime += diff;
+			time = t;
+
+			// 冰冻
+			if (runState != 'run') {
+				return;
+			}
+
+			// 控制字符下落
+			let h = $(window).height();
+			$('.char.run').each(function () {
+				let top = $(this).offset().top + speed * diff / 1000;
+				$(this).css('top', top + 'px');
+				if (top > h) {
+					$(this).remove();
+					lostCount++;
+				}
+			});
+		}
+
+		function render() {
+			charRender();
+			showInfo();
+
+			window.requestAnimationFrame(render);
+		}
+
+		function showInfo() {
+			let html = '<b>★ 打字练习 ★</b> &emsp; ';
+			html += '速度：' + Math.round(speed) + 'px/s &nbsp; ';
+			html += '用时：' + Math.floor(totalTime / 1000) + 's &nbsp; ';
+			html += '总字数：' + totalChar + ' &nbsp; ';
+			html += '正确数：' + successChar + ' &nbsp; ';
+			html += '错误数：' + errorChar + ' &nbsp; ';
+			html += '丢失数：' + lostCount + ' &nbsp; ';
+
+			if (clearCount > clearCountMax) {
+				html += '<span style="color:red;">空格全消</span> &nbsp; ';
+			}
+
+			$('#divInfo').html(html);
+
+			if (lostCount >= 10 && runState == 'run') {
+				runState = 'finish';
+				alert('GAME OVER! \n得分：' + successChar);
+				window.location.reload();
+			}
+		}
+
+		$(function () {
+			// 键盘按下 48~90   0~Z
+			$(document).bind('keydown', function (e) {
+				e = e || event;
+				let curKey = e.keyCode || e.which || e.charCode;
+				let char = String.fromCharCode(curKey);
+				if (curKey == 32 && clearCount > clearCountMax) {
+					// 空格全消除
+					successChar += $('.char.run').length;
+					$('.char.run').removeClass('run').addClass('del').delay(500).fadeOut(200, function () {
+						$(this).remove();
+					});
+					clearCount = 0;
+					showInfo();
+
+					return;
+				}
+
+				// 判断按键
+				let hasChar = false;
+				$('.char.run').each(function () {
+					if ($(this).html() == char) {
+						if ($(this).hasClass('ice-char')) {
+							runState = 'ice';
+							$('.char.run').addClass('ice');
+							window.setTimeout(function () {
+								runState = 'run';
+								$('.char.run').removeClass('ice');
+							}, 1000);
+						}
+
+						$(this).removeClass('run').addClass('del').delay(500).fadeOut(200, function () {
+							$(this).remove();
+						});
+						hasChar = true;
+						return false;
+					}
+				});
+
+				if (hasChar) {
+					successChar++;
+					clearCount++;
+				}
+				else {
+					errorChar++;
+				}
+
+				showInfo();
+			});
+
+			render();
+
+			window.setInterval(addChar, 1000);
+		});
+
+	</script>
+
+	<!-- 51啦访问统计 -->
+	<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
