@@ -150,7 +150,7 @@
 			if ($('.char.run').length > 20) return;
 			if (runState != 'run') return;
 
-			let k = Math.min(Math.floor(totalChar / 50), 2);
+			let k = Math.min(Math.floor(totalChar / 100), 2);
 			let c = charList[k][rand(0, charList[k].length - 1)];
 			let colorClass = colorClassList[rand(0, colorClassList.length - 1)];
 			let el = $('<span class="char run ' + colorClass + '">' + c + '</span>');
