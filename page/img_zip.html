@@ -1,0 +1,54 @@
+<!-- 图片压缩 zjfree 2019-08-21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图片压缩</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+
+img{
+	max-width: 100%;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/img_zip.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>图片压缩</h1>
+<input type="file" id="file"  accept="image/*" >
+<hr>
+
+<script>
+$(function(){
+	// JS
+	
+    $('input:file').localResizeIMG({
+        width: 1000,
+        quality: 0.8,
+        //before: function (that, blob) {},
+        success: function (result) {
+            var img = new Image();
+            img.src = result.base64;
+
+            $('body').append(img);
+            console.log(result);
+        }
+    });
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
