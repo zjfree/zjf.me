@@ -1,0 +1,175 @@
+<!-- zdog 3D引擎 zjfree 2019-08-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zdog 3D引擎</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+#zdog_canvas{
+	border:solid 1px gray;
+	margin-top:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>zdog 3D引擎</h1>
+参考：<a target="_blank" href="https://zzz.dog/">zdog</a>
+<div>
+<canvas id="zdog_canvas" width="800" height="600"></canvas>	
+</div>
+<script>
+let isSpinning = true;
+
+let illo = new Zdog.Illustration({
+	element: '#zdog_canvas',
+	dragRotate: true,
+	// stop spinning when drag starts
+	onDragStart: function() {
+		isSpinning = false;
+	},
+	onDragEnd: function() {
+		isSpinning = true;
+	},
+	translate: { y: 100 },
+	rotate:{x: deg(-20)},
+});
+
+
+// square
+new Zdog.Rect({
+	addTo: illo,
+	width: 600,
+	height: 600,
+	stroke: 0,
+	translate: { y: 10 },
+	rotate: { x: deg(90) },
+	color: 'rgba(0,0,0,0.5)',
+	fill: true,
+});
+
+
+new Zdog.Ellipse({
+	addTo: illo,
+	diameter: 110,
+	translate: { y: -100, x:200 },
+	stroke: 10,
+	rotate: { x: deg(90) },
+	color: '#EA0',
+});
+
+// 3D shape
+new Zdog.Shape({
+  addTo: illo,
+  path: [
+    { x: 0, y: 0, z: 0 },
+    { x: 0, y: -140, z: 0 },
+    { x: -200, y: -140, z: 0 },
+	{ move: { x: 0, y: -100, z: 0 } },
+	{ x: 200, y: -100, z: 0 },
+  ],
+  closed: false,
+  stroke: 5,
+  color: '#636',
+});
+
+let dome = new Zdog.Hemisphere({
+  addTo: illo,
+  diameter: 50,
+  // fill enabled by default
+  // disable stroke for crisp edge
+  stroke: false,
+  color: '#C25',
+  backface: '#EA0',
+	translate: { y: -300 },
+});
+
+let can = new Zdog.Cylinder({
+  addTo: illo,
+  diameter: 80,
+  length: 120,
+  stroke: false,
+  color: '#C25',
+  backface: '#E42',
+	rotate: { x: deg(90) },
+	translate: { y: -61, x:-200 },
+});
+
+can = new Zdog.Cylinder({
+  addTo: illo,
+  diameter: 100,
+  length: 100,
+  stroke: false,
+  color: '#C35',
+  backface: '#E52',
+	rotate: { x: deg(90) },
+	translate: { y: -51, x:200 },
+});
+
+can = new Zdog.Cylinder({
+  addTo: illo,
+  diameter: 100,
+  length: 100,
+  stroke: false,
+  color: '#C3F',
+  backface: '#EF2',
+	rotate: { x: deg(90) },
+	translate: { y: -51, x:200, z:-120 },
+});
+
+can = new Zdog.Cylinder({
+  addTo: illo,
+  diameter: 100,
+  length: 100,
+	stroke: 20,
+  color: '#C45',
+  backface: '#E62',
+	translate: { y: -51, x:200, z:200 },
+});
+
+let partyHat = new Zdog.Cone({
+  addTo: illo,
+  diameter: 90,
+  length: 30,
+  stroke: false,
+  color: '#636',
+  backface: '#C25',
+	rotate: { x: deg(90) },
+	translate: { y: -100, x:200, z:-120 },
+});
+
+function animate() {
+	illo.rotate.y += isSpinning ? 0.01 : 0;
+	illo.updateRenderGraph();
+	requestAnimationFrame( animate );
+}
+
+animate();
+
+function deg(x)
+{
+	return x * Math.PI / 180;
+}
+
+$(function(){
+	// JS
+	
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
