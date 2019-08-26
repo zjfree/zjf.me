@@ -108,14 +108,28 @@
 
 	<script>
 
-		// 移动速度 px/s  10秒落到底部
-		var speed = $(window).height() / 10;
+		// 移动速度 px/s  20秒落到底部
+		var speed = $(window).height() / 20;
 		var colorClassList = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
 		var charList = [
 			'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 			'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-			'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]\\\';,./',
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=[]\\;\',./',
 		];
+
+		var charKey = {
+			c189:'-',
+			c187:'=',
+			c219:'[',
+			c221:']',
+			c220:'\\',
+			c186:';',
+			c222:'\'',
+			c188:',',
+			c190:'.',
+			c191:'/',
+		};
+
 
 		var time = new Date().getTime();
 		var totalTime = 0;
@@ -133,10 +147,10 @@
 
 		function addChar() {
 			if (document.hidden) return;
-			if ($('.char.run').length > 30) return;
+			if ($('.char.run').length > 20) return;
 			if (runState != 'run') return;
 
-			let k = Math.min(Math.floor(totalChar / 50), 2);
+			let k = Math.min(Math.floor(totalChar / 100), 2);
 			let c = charList[k][rand(0, charList[k].length - 1)];
 			let colorClass = colorClassList[rand(0, colorClassList.length - 1)];
 			let el = $('<span class="char run ' + colorClass + '">' + c + '</span>');
@@ -147,14 +161,14 @@
 			el.css('left', left + 'px');
 
 			// 随机出现冰冻字符
-			if (Math.random() < 0.1) {
+			if (Math.random() < 0.05) {
 				el.addClass('ice-char');
 			}
 
 			totalChar++;
 
 			// 速度递增
-			if (totalChar % 20 == 0) {
+			if (totalChar % 30 == 0) {
 				speed = speed * 1.2;
 			}
 
@@ -215,9 +229,9 @@
 
 			$('#divInfo').html(html);
 
-			if (lostCount >= 10 && runState == 'run') {
+			if (lostCount >= 20 && runState == 'run') {
 				runState = 'finish';
-				alert('GAME OVER! \n得分：' + successChar);
+				alert('GAME OVER! \n得分：' + (successChar - errorChar));
 				window.location.reload();
 			}
 		}
@@ -227,7 +241,8 @@
 			$(document).bind('keydown', function (e) {
 				e = e || event;
 				let curKey = e.keyCode || e.which || e.charCode;
-				let char = String.fromCharCode(curKey);
+				let char =  charKey['c' + curKey] || String.fromCharCode(curKey);
+				console.log(curKey, char);
 				if (curKey == 32 && clearCount > clearCountMax) {
 					// 空格全消除
 					successChar += $('.char.run').length;
@@ -274,7 +289,7 @@
 
 			render();
 
-			window.setInterval(addChar, 1000);
+			window.setInterval(addChar, 500);
 		});
 
 	</script>
