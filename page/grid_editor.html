@@ -1,0 +1,583 @@
+<!-- 栅格编辑器 zjfree 2019-08-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>栅格编辑器</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+
+html, body{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+#divMain{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+
+#divHeader{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:30px;
+    line-height: 30px;
+    background: #000;
+    color:#fff;
+    padding:0 10px;
+}
+
+#divMainTool{
+    position:absolute;
+    top:30px;
+    left:0;
+    bottom:0;
+    width:300px;
+    background: #eff;
+}
+
+#divMainAttr{
+    position:absolute;
+    top:30px;
+    right:0;
+    bottom:0;
+    width:300px;
+    background: #eff;
+}
+
+#divFooter{
+    position:absolute;
+    left:300px;
+    right:300px;
+    bottom:0;
+    height:30px;
+    line-height: 30px;
+    background: #000;
+    color:#fff;
+    padding:0 10px;
+}
+
+#divEditor{
+    position:absolute;
+    left:300px;
+    right:300px;
+    top:30px;
+    bottom:30px;
+    overflow: hidden;
+    cursor:crosshair;
+}
+
+#divEditor canvas{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	
+<div id="divMain">
+	<div id="divHeader">
+		<span>编辑器标题</span>
+	</div>
+	<div id="divMainTool">
+		工具栏
+	</div>
+	<div id="divMainAttr">
+		属性栏
+	</div>
+
+	<div id="divEditor">
+		<canvas id="canvasEditorBottom"></canvas>
+		<canvas id="canvasEditor"></canvas>
+		<canvas id="canvasEditorTop"></canvas>
+	</div>
+
+	<div id="divFooter">
+		<span id="divInfo">就绪</span>
+		<div id="divInfoAttr" style="float:right;">
+			<span id="attrXY">坐标：0,0</span> &nbsp;
+			<span id="attrZoom">比例：10px</span>
+		</div>
+	</div>
+</div>
+
+<script>
+
+var E = {
+	ctx:null,
+	ctxTop:null,
+	ctxBottom:null,
+	width:0,
+	height:0,
+	config:{
+		gridSize:10,
+		zoom:2,
+		startGrid:{x:0, y:0},
+	},
+	gridData:{},
+	isInit:false,
+	curGrid:null,
+	curMousePoint:null,
+	moveLast:null,
+	isMouseDown:false,
+	isCanDrag:false,
+	dragBegin:null,
+	objData:{},
+	curUser:{
+		grid:{x:0, y:0},
+		direction:0,
+	},
+	circleList:[],
+	
+	getGridXY:function(x,y){
+		let z = E.config.gridSize;
+		x = E.config.startGrid.x + Math.floor(x / z);
+		y = E.config.startGrid.y + Math.floor(y / z);
+		return {x:x, y:y};
+	},
+	setGrid:function(grid, data){
+		let k = 'G_' + grid.x + '_' + grid.y;
+		E.gridData[k] = {
+			grid:grid,
+			data:data,
+		};
+
+		return E.gridData[k];
+	},
+	getGrid:function(grid){
+		let k = 'G_' + grid.x + '_' + grid.y;
+		return E.gridData[k];
+	},
+	delGrid:function(grid){
+		let k = 'G_' + grid.x + '_' + grid.y;
+		delete E.gridData[k];
+	},
+	drawGrid:function(item){
+		let z = E.config.gridSize;
+		let x = (item.grid.x - E.config.startGrid.x) * z;
+		let y = (item.grid.y - E.config.startGrid.y) * z;
+
+		E.ctxBottom.fillStyle = 'rgba(0,0,255,1)';
+		if (x >= 0 && x <= E.width && y >= 0 && y <= E.height)
+		{
+			E.ctxBottom.fillRect(x, y, z, z);
+		}
+	},
+	getMousePoint:function(event){
+		let e = event.originalEvent;
+		let x = e.pageX - $('#divEditor').offset().left;
+		let y = e.pageY - $('#divEditor').offset().top;
+
+		x = x * E.config.zoom;
+		y = y * E.config.zoom;
+
+		return {x:x, y:y};
+	},
+	getMouseXY:function(event){
+		let point = E.getMousePoint(event);
+		let grid = E.getGridXY(point.x, point.y);
+
+		return grid;
+	},
+	drag:function(point){
+		if (!E.dragBegin) return;
+		let z = E.config.gridSize;
+		
+		E.config.startGrid = {
+			x:E.dragBegin.startGrid.x + Math.floor((E.dragBegin.mousePoint.x - point.x)  / z),
+			y:E.dragBegin.startGrid.y + Math.floor((E.dragBegin.mousePoint.y - point.y) / z),
+		},
+
+		E.redraw();
+	},
+
+	getRandInt:function(min, max, dec){
+		min = min||0;
+		max = max||100;
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+
+		return this.round(val, dec);
+	},
+	getRandColorRgb:function(min, max){
+		min = min||0;
+		max = max||255;
+		let s = 'rgb(';
+		s += this.getRandInt(min, max) + ',';
+		s += this.getRandInt(min, max) + ',';
+		s += this.getRandInt(min, max) + ')';
+
+		return s;
+	},
+	round:function(val, des){
+		des = des||0;
+		if (des <= 0)
+		{
+			return Math.round(val);
+		}
+
+		let r = Math.pow(10, des);
+		return Math.round(val * r) / r;
+	},
+
+	limit:function(val, min, max){
+		if (val < min) return min;
+		if (val > max) return max;
+		return val;
+	},
+
+	init:function(){
+
+		/*
+		for (let x=0; x<1000; x++)
+		{
+			for (let y=0; y<1000; y++)
+			{
+				//if (Math.random() > 0.3)
+				{
+					E.setGrid({x:x, y:y}, 1);
+				}
+			}
+		}
+		*/
+
+		document.οncοntextmenu=function(){return false;}; 
+		document.onselectstart=function(){return false;};
+
+		$(document).bind('keydown', function(e){
+			e=e||event;
+			let curKey = e.keyCode||e.which||e.charCode;
+			// console.log(curKey);
+			switch (curKey)
+			{
+				case 32:
+					E.isCanDrag = true;
+					$('#divEditor').css('cursor', 'move');
+					break;
+				case 37: // 左
+					E.userMove(E.curUser.grid.x-1, E.curUser.grid.y, 180);
+					break;
+				case 38: // 上
+					E.userMove(E.curUser.grid.x, E.curUser.grid.y-1, 270);
+					break;
+				case 39: // 右
+					E.userMove(E.curUser.grid.x+1, E.curUser.grid.y, 0);
+					break;
+				case 40: // 下
+					E.userMove(E.curUser.grid.x, E.curUser.grid.y+1, 90);
+					break;
+			}
+		});
+		$(document).bind('keyup', function(e){
+			e=e||event;
+			let curKey = e.keyCode||e.which||e.charCode;
+			switch (curKey)
+			{
+				case 32:
+					E.isCanDrag = false;
+					$('#divEditor').css('cursor', 'crosshair');
+					break;
+			}
+		});
+		$('#divEditor').bind('click', function(event){
+		}),
+		$('#divEditor').bind('mousemove click', function(event){
+			let curorPoint = E.curMousePoint = E.getMousePoint(event);
+			E.curGrid = E.getGridXY(curorPoint.x, curorPoint.y);
+
+			$('#attrXY').html('坐标：' + E.curGrid.x + ',' + E.curGrid.y);
+
+			E.ctxTop.fillStyle = 'rgba(255,0,0,0.2)';
+			E.ctxTop.beginPath();
+			E.ctxTop.arc(curorPoint.x, curorPoint.y, 5, 0, 360 * Math.PI / 180);
+			E.ctxTop.fill();
+
+			if (E.isCanDrag)
+			{
+				if (E.isMouseDown)
+				{
+					E.drag(E.getMousePoint(event));
+				}
+				return;
+			}
+
+			if (!E.isMouseDown && event.type != 'click')
+			{
+				return;
+			}
+
+			// 绘制网格
+			E.drawGrid(E.setGrid(E.curGrid, 1));
+			if (event.type == 'click')
+			{
+				return;
+			}
+
+			if (!E.moveLast)
+			{
+				E.moveLast = curorPoint;
+				return;
+			}
+
+			let x1 = curorPoint.x - E.moveLast.x;
+			let y1 = curorPoint.y - E.moveLast.y;
+			if (Math.abs(x1) > E.config.gridSize || Math.abs(y1) > E.config.gridSize)
+			{
+				let step = E.config.gridSize / 2;
+				let c = Math.abs(x1) > Math.abs(y1) ? Math.round(x1 / step) : Math.round(y1 / step);
+				c = Math.abs(c);
+
+				let step_x = x1 / c;
+				let step_y = y1 / c;
+				let x2 = E.moveLast.x;
+				let y2 = E.moveLast.y;
+				for (let i=0; i<c; i++)
+				{
+					x2 += step_x;
+					y2 += step_y;
+
+					let grid = E.getGridXY(x2, y2);
+					E.drawGrid(E.setGrid(grid, 1));
+				}
+			}
+
+			E.moveLast = curorPoint;
+		}),
+		$('#divEditor').bind('mousedown', function(event){
+			if (E.isCanDrag)
+			{
+				E.dragBegin = {
+					mousePoint: E.getMousePoint(event),
+					startGrid: E.config.startGrid,
+				}
+			}
+			E.isMouseDown = true;
+		});
+		$('#divEditor').bind('mouseup', function(event){
+			E.isMouseDown = false;
+			E.moveLast = null;
+			E.dragBegin = null;
+		});
+		$('#divEditor').bind('mouseleave', function(event){
+			let e = event.originalEvent;
+			let x = e.pageX - $(this).offset().left;
+			let y = e.pageY - $(this).offset().top;
+			let w = $(this).width();
+			let h = $(this).height();
+			if (x<0 || x>w || y<0 || y>h)
+			{
+				console.log('mouseleave');
+				E.curGrid = null;
+				E.isMouseDown = false;
+				E.moveLast = null;
+				E.dragBegin = null;
+				E.curMousePoint = null;
+				
+				// E.ctxTop.clearRect(0,0,E.width,E.height);
+				// E.ctxBottom.clearRect(0,0,E.width,E.height);
+			}
+		}),
+		$('#divEditor').bind('mousewheel wheel', function (event) {
+			if (!E.isInit)  return;
+			let e = event.originalEvent;
+			e.stopPropagation();
+			e.preventDefault();
+			let dy = (e.wheelDeltaY || -e.deltaY) / 1000;
+			E.zoom(dy > 0, E.getMouseXY(event));
+		});
+
+		$(window).resize(this.resizeChange);
+		this.resizeChange();
+
+		E.drawUser();
+		
+		window.requestAnimationFrame(E.render);
+
+		this.isInit = true;
+	},
+	render:function(){
+		
+		window.requestAnimationFrame(E.render);
+	},
+	showInfo:function(str){
+		$('#divInfo').html(str);
+	},
+	zoom:function(bo, gridXY){
+		let size = E.config.gridSize * (bo ? 1.2 : 0.9);
+		size = Math.floor(size);
+		if (size == E.config.gridSize)
+		{
+			size += bo ? 1 : -1;
+		}
+		size = Math.max(2, size);
+		size = Math.min(500, size);
+
+		let x1 = (gridXY.x - E.config.startGrid.x) * E.config.gridSize;
+		let x2 = (gridXY.x - E.config.startGrid.x) * size;
+		let x3 = Math.round((x2 - x1) / size);
+
+		let y1 = (gridXY.y - E.config.startGrid.y) * E.config.gridSize;
+		let y2 = (gridXY.y - E.config.startGrid.y) * size;
+		let y3 = Math.round((y2 - y1) / size);
+
+		E.config.startGrid.x += x3;
+		E.config.startGrid.y += y3;
+
+		$('#attrZoom').html('比例：' + size + 'px');
+
+		E.config.gridSize = size;
+		E.redraw();
+	},
+	resizeChange:function()
+	{
+		let w = $('#divEditor').width();
+		let h = $('#divEditor').height();
+		E.width = w * E.config.zoom;
+		E.height = h * E.config.zoom;
+		
+		$('#canvasEditor').attr('width', E.width).attr('height', E.height);
+		$('#canvasEditorTop').attr('width', E.width).attr('height', E.height);
+		$('#canvasEditorBottom').attr('width', E.width).attr('height', E.height);
+		$('#canvasEditor').css({'width':w+'px', 'height':h+'px'});
+		$('#canvasEditorTop').css({'width':w+'px', 'height':h+'px'});
+		$('#canvasEditorBottom').css({'width':w+'px', 'height':h+'px'});
+		
+		E.showInfo(E.width + ',' + E.height);
+		
+		E.ctx = $('#canvasEditor')[0].getContext("2d");
+		E.ctxTop = $('#canvasEditorTop')[0].getContext("2d");
+		E.ctxBottom = $('#canvasEditorBottom')[0].getContext("2d");
+		
+		E.redraw();
+	},
+	redraw:function(){
+		console.group('draw');
+		console.count('draw_index');
+		console.time('draw');
+
+		// 清空画板
+		E.ctx.clearRect(0,0,E.width,E.height);
+		E.ctxTop.clearRect(0,0,E.width,E.height);
+		E.ctxBottom.clearRect(0,0,E.width,E.height);
+
+		// 绘制网格
+		E.ctx.strokeStyle = 'gray';
+		E.ctx.lineWidth = 1;
+		E.ctx.beginPath();
+		for (let i=0; i<E.width; i+=E.config.gridSize)
+		{
+			E.ctx.moveTo(i, 0);
+			E.ctx.lineTo(i, E.height);
+		}
+		for (let i=0; i<E.height; i+=E.config.gridSize)
+		{
+			E.ctx.moveTo(0, i);
+			E.ctx.lineTo(E.width, i);
+		}
+		E.ctx.stroke();
+		
+		// 绘制数据
+		let z = E.config.gridSize;
+		let xMin = E.config.startGrid.x;
+		let yMin = E.config.startGrid.y;
+		let xMax = xMin + Math.floor(E.width / z) + 1;
+		let yMax = yMin + Math.floor(E.height / z) + 1;
+
+		let c = 0;
+		E.ctxBottom.fillStyle = 'rgb(0,0,255)';
+		for (let k in E.gridData)
+		{
+			let r = E.gridData[k];
+
+			if (r.grid.x < xMin || r.grid.x > xMax || r.grid.y < yMin || r.grid.y > yMax)
+			{
+				continue;
+			}
+
+			let x = (r.grid.x - xMin) * z;
+			let y = (r.grid.y - yMin) * z;
+			
+			E.ctxBottom.fillRect(x, y, z, z);
+			c++;
+		}
+
+		E.drawUser();
+
+		console.log('draw:' + c);
+		console.timeEnd('draw');
+		console.groupEnd();
+	},
+
+	drawUser:function(){
+		let z = E.config.gridSize;
+		let xMin = E.config.startGrid.x;
+		let yMin = E.config.startGrid.y;
+
+		let x = (E.curUser.grid.x - xMin) * z + z / 2;
+		let y = (E.curUser.grid.y - yMin) * z + z / 2;
+		
+		E.ctxTop.fillStyle = 'red';
+		E.ctxTop.beginPath();
+		E.ctxTop.arc(x, y, z/2, 0, 360 * Math.PI / 180);
+		E.ctxTop.fill();
+
+		let y1 = y + Math.sin(E.curUser.direction * Math.PI / 180) * z / 2;
+		let x1 = x + Math.cos(E.curUser.direction * Math.PI / 180) * z / 2;
+
+		E.ctxTop.strokeStyle = 'gray';
+		E.ctxTop.beginPath();
+		E.ctxTop.moveTo(x, y);
+		E.ctxTop.lineTo(x1, y1);
+		E.ctxTop.stroke();
+	},
+
+	userMove:function(x, y, direction){
+		let key = 'G_' + x + '_' + y;
+		let item = E.gridData[key];
+		if (item)
+		{
+			E.curUser.direction = direction;
+			E.drawUser();
+			return;
+		}
+
+		let z = E.config.gridSize;
+		let xMin = E.config.startGrid.x;
+		let yMin = E.config.startGrid.y;
+
+		let x1 = (E.curUser.grid.x - xMin) * z;
+		let y1 = (E.curUser.grid.y - yMin) * z;
+
+		E.ctxTop.clearRect(x1, y1, z, z);
+
+		E.curUser.grid.x = x;
+		E.curUser.grid.y = y;
+		E.curUser.direction = direction;
+		E.drawUser();
+	},
+};
+
+$(function(){
+	E.init();
+});
+</script>
+
+	
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>

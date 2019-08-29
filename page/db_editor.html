@@ -1,0 +1,418 @@
+<!-- 数据库设计工具 zjfree 2019-08-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据库设计工具</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<link href="https://lib.baomitu.com/font-awesome/5.10.2/advanced-options/use-with-node-js/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="https://lib.baomitu.com/jquery-contextmenu/3.0.0-beta.2/jquery.contextMenu.min.css" rel="stylesheet">
+<style>
+/* css style */
+#divMenu{
+    position: absolute;
+    top:0;
+    left:0;
+    height:30px;
+    font-size: 12px;
+}
+#divMain{
+    position: absolute;
+    top:30px;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow: auto;
+    font-size: 14px;
+    font-family:consolas,"Courier New",微软雅黑;
+    background:repeating-linear-gradient(45deg, #fff 0,#fff 5px,#f6f6f6 5px,#f6f6f6 10px);
+}
+#divMainObj{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 2;
+}
+#divMain .divObj{
+    position: absolute;
+    border: double 3px #999;
+    box-shadow: 1px 1px 5px #999;
+    background: #fff;
+    z-index:1;
+}
+#divMain .divObj:hover{
+    box-shadow: 1px 1px 10px #333;
+}
+#divMain .divObj.active{
+    position: absolute;
+    border: solid 3px #3366CC;
+    box-shadow: none;
+}
+#divMain .divObj:hover{
+    box-shadow: 1px 1px 10px #333;
+}
+#divMain .divObj .title{
+    padding:5px;
+    line-height: 1.3;
+    text-align: center;
+    border-bottom:solid 1px #999;
+    font-weight: bold;
+    cursor: move;
+    background: #ddd;
+}
+#divMain .db-text{
+    line-height: 1.3;
+    resize: both;
+    overflow: auto;
+    width:200px;
+    height:100px;
+}
+#divMain .db-text .title{
+    text-align: left;
+}
+#divMain .db-text .content{
+    padding:5px;
+    /*
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-user-modify: read-write;
+    */
+}
+#divMain .db-table{
+    min-width: 200px;
+    min-height:100px;
+}
+#divMain .db-table .field_list{
+    padding:5px;
+    line-height: 1.1;
+}
+#divMain .db-table .field_list .field{
+    padding-right:10px;
+}
+#divMain .db-table .field_list .type{
+    font-size:12px;
+    color:#666;
+}
+#divTemplate{
+    display: none;
+}
+.svgObj .svg-line{
+    fill: transparent;
+    stroke-width: 2px;
+    stroke: #999;
+}
+.svgObj .svg-line:hover{
+    stroke: #333;
+}
+#svgArrow{
+    position: absolute;
+    left:0;
+    right:0;
+    z-index: 1;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/draggabilly/2.2.0/draggabilly.pkgd.min.js"></script>
+<script src="https://lib.baomitu.com/jquery-contextmenu/3.0.0-beta.2/jquery.contextMenu.min.js"></script>
+</head>
+<body>
+
+<div id="divInfo"></div>
+<div id="divMenu">
+	<button id="btnAddTable"><i class="fa fa-table"></i> 添加表</button>
+	<button id="btnAddText">添加文本</button>
+	<button id="btnAddLine">连线</button>
+	<button id="btnDel">删除</button>
+	<button id="btnSave">保存</button>
+</div>
+<div id="divTemplate">
+	<div id="divTemplate_table" class="db-table divObj">
+		<div class="title">表名</div>
+		<div class="field_list">
+			<table>
+				<tr>
+					<td class="field">ID</td>
+					<td class="type">int</td>
+				</tr>
+				<tr>
+					<td class="field">名称</td>
+					<td class="type">varchar(255)</td>
+				</tr>
+				<tr>
+					<td class="field">备注</td>
+					<td class="type">varchar(2048)</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="divTemplate_text" class="db-text divObj">
+		<div class="title">标题</div>
+		<div class="content">文本内容<br>hello world</div>
+	</div>
+	<textarea id="svgTemplate_line">
+		<svg id="svgArrow" class="svgObj" width="__width__" height="__height__" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+			<marker id="markerArrow" markerWidth="8" markerHeight="8" refx="2" refy="5" orient="auto">  
+				<path d="M2,2 L2,8 L8,5 L2,2" style="fill: #999;" />  
+			</marker>
+			</defs>
+			__path_list__
+		</svg>
+	</textarea>
+</div>
+<div id="divMain">
+	<div id="divMainObj"></div>
+</div>
+<script>
+
+var db = {
+	divObjMaxId:0,
+	divObjZIndex:1,
+	curId:'',
+	init: function(){
+		$('#btnAddTable').click(function(){
+			var divObj = $('#divTemplate_table').clone();
+			divObj.data('type', 'table');
+			db.addObj(divObj);
+		});
+		
+		$('#btnAddText').click(function(){
+			var divObj = $('#divTemplate_text').clone();
+			divObj.data('type', 'text');
+			db.addObj(divObj);
+		});
+
+		$('#btnDel').click(function(){
+			if (!db.curId)
+			{
+				return;
+			}
+			var divObj = $('#' + db.curId);
+			divObj.remove();
+			db.curId = '';
+		});
+
+		var timerLine = null;
+		$('#btnAddLine').click(function(){
+			if (timerLine) return;
+			timerLine = window.setTimeout(function(){
+				var svgHtml = $('#svgTemplate_line').val();
+				svgHtml = svgHtml.replace(/__width__/g, '' + Math.max($('#divMain').width(), $('#divMainObj').width()));
+				svgHtml = svgHtml.replace(/__height__/g, '' + Math.max($('#divMain').height(), $('#divMainObj').height()));
+				svgHtml = svgHtml.replace(/__path_list__/g, db.getLinePath());
+				$('#svgArrow').remove();
+				//console.debug(svgHtml);
+				$('#divMain').append(svgHtml);
+				timerLine = null;
+			},20);
+		});
+
+		$('#divMain').click(function(e){
+			var id = $(e.target).attr('id');
+			if (id != 'divMain' && id != 'divMainObj' && id != 'svgArrow')
+			{
+				return;
+			}
+			this.curId = '';
+			$('#divMain .divObj').removeClass('active');
+		});
+
+		$('#btnSave').click(db.save);
+
+		this.load();
+	},
+	addObj: function(obj){
+		this.divObjMaxId++;
+		var id = 'dbObj_' + this.divObjMaxId;
+		obj.attr('id', id);
+		var obj = $('#divMainObj').append(obj);
+		var drag = $('#'+id).draggabilly({
+			//containment:'#divMain',
+			handle: '.title',
+		});
+		
+		$('#'+id).mousedown(function(){
+			db.select($(this).attr('id'));
+		});
+		drag.on('dragMove', function(event, pointer, moveVector) {
+			var id = event.currentTarget.id;
+			$('#' + id).data('xf', moveVector.x);
+			$('#' + id).data('yf', moveVector.y);
+			$('#btnAddLine').click();
+		});
+		drag.on('dragEnd', function(event, pointer) {
+			$('#' + id).data('xf', 0);
+			$('#' + id).data('yf', 0);
+			$('#btnAddLine').click();
+		});
+	},
+	select: function(id){
+		if (id == this.curId)
+		{
+			return;
+		}
+		db.divObjZIndex++;
+		var obj = $('#' + id);
+		$(obj).css('z-index', db.divObjZIndex);
+		$('#divMain .divObj').removeClass('active');
+		$(obj).addClass('active');
+		this.curId = id;
+	},
+	save: function(){
+		var dbObj = {
+			divObjMaxId:db.divObjMaxId,
+			divObjZIndex:db.divObjZIndex,
+			divObjList:[],
+		};
+		$('#divMain .divObj').each(function(){
+			dbObj.divObjList.push({
+				id:$(this).attr('id'),
+				zindex:$(this).css('z-index'),
+				top:$(this).css('top'),
+				left:$(this).css('left'),
+				width:$(this).css('width'),
+				height:$(this).css('height'),
+				title:$(this).find('.title').html(),
+				type:$(this).data('type'),
+			});
+		});
+		window.localStorage.setItem('dbObj', JSON.stringify(dbObj));
+	},
+	load: function(){
+		var dbStr = window.localStorage.getItem('dbObj');
+		if (!dbStr)
+		{
+			return;
+		}
+
+		var dbObj = JSON.parse(dbStr);
+		this.divObjMaxId = dbObj.divObjMaxId;
+		this.divObjZIndex = dbObj.divObjZIndex;
+
+		for (var divObj of dbObj.divObjList)
+		{
+			var obj = $('#divTemplate_' + divObj.type).clone();
+			obj.attr('id', divObj.id),
+			obj.css({
+				'z-index': divObj.zindex,
+				'top':divObj.top,
+				'left':divObj.left,
+				'width':divObj.width,
+				'height':divObj.height,
+			});
+
+			obj.find('.title').html(divObj.title);
+			obj.data('type', divObj.type);
+			db.addObj(obj);
+		}
+	},
+
+	// 判断两条线段是否相交
+	segmentsIntr: function(a, b, c, d){
+		/** 1 解线性方程组, 求线段交点. **/
+		// 如果分母为0 则平行或共线, 不相交
+		var denominator = (b.y - a.y) * (d.x - c.x) - (a.x - b.x) * (c.y - d.y);
+		if (denominator == 0)
+		{
+			return false;
+		}
+
+		// 线段所在直线的交点坐标 (x , y)
+		var x = ( (b.x - a.x) * (d.x - c.x) * (c.y - a.y)
+				+ (b.y - a.y) * (d.x - c.x) * a.x
+				- (d.y - c.y) * (b.x - a.x) * c.x ) / denominator ;
+		var y = -( (b.y - a.y) * (d.y - c.y) * (c.x - a.x)
+				+ (b.x - a.x) * (d.y - c.y) * a.y
+				- (d.x - c.x) * (b.y - a.y) * c.y ) / denominator;
+
+		/** 2 判断交点是否在两条线段上 **/    
+		if ((x - a.x) * (x - b.x) <= 0 
+			&& (y - a.y) * (y - b.y) <= 0
+			&& (x - c.x) * (x - d.x) <= 0 
+			&& (y - c.y) * (y - d.y) <= 0
+		)
+		{
+			// 返回交点p    
+			return {x:x, y:y};
+		}
+
+		// 否则不相交
+		return false;
+	},
+		
+	getLinePath:function ()
+	{
+		// <path class="svg-line" d="M15,85 l120,140" marker-end="url(#markerArrow)"/>
+		var html = '';
+		var x=null, y=null;
+		$('#divMain .db-table').each(function(){
+			var xf = $(this).data('xf');
+			var yf = $(this).data('yf');
+			xf = xf || 0;
+			yf = yf || 0;
+			var left = parseInt($(this).css('left')) + xf;
+			var top = parseInt($(this).css('top')) + yf;
+			var width = $(this).outerWidth(true);
+			var height = $(this).outerHeight(true);
+			x1 = left + width / 2;
+			y1 = top + height / 2;
+			if (x !== null)
+			{
+				// 判断边缘
+				var a = {x:x,y:y}, b = {x:x1, y:y1};
+				var lines = [];
+				lines.push([{x:left, y:top}, {x:left+width, y:top}]);
+				lines.push([{x:left+width, y:top}, {x:left+width, y:top+height}]);
+				lines.push([{x:left+width, y:top+height}, {x:left, y:top+height}]);
+				lines.push([{x:left, y:top+height}, {x:left, y:top}]);
+				var point = null;
+				for (var line of lines)
+				{
+					var bo = db.segmentsIntr(a, b, line[0], line[1]);
+					if (bo !== false)
+					{
+						point = bo;
+						break;
+					}
+				}
+				
+				if (point)
+				{
+					// 获取两点间角度
+					var diff_x = point.x - x;
+					var diff_y = point.y - y;
+					var d = Math.atan(diff_y/diff_x);
+					var deg = 180/Math.PI * d;
+
+					var x2 = point.x + Math.cos(d) * 15 * (x < x1 ? -1 : 1);
+					var y2 = point.y + Math.sin(d) * 15 * (x < x1 ? -1 : 1);
+					html += '<path class="svg-line" d="';
+					html += 'M' + x + ',' + y + ' L' + x2 + ',' + y2;
+					html += '" marker-end="url(#markerArrow)"/>';
+				}
+			}
+			x = x1;
+			y = y1;
+			
+			//console.debug(x,y);
+		});
+		
+		return html;
+	}
+
+};
+
+$(function(){
+	db.init();
+});
+
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
