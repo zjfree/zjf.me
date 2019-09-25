@@ -1,0 +1,140 @@
+<!-- 摄像头录像 zjfree 2019-09-25 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>摄像头录像</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        video {
+            border: solid 1px gray;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h3>摄像头录像上传</h3>
+    <div>在手机的chrome浏览器测试通过</div>
+    <video id="video1" playsinline muted></video>
+    <div style="margin:10px 0;">
+        <a download="media" id="btnDown">下载</a>
+        <button id="btnRun">停止</button>
+        <button id="btnUpload">上传</button>
+    </div>
+    <video id="video2" controls="controls"></video>
+
+    <script>
+        var promise = navigator.mediaDevices.getUserMedia({ audio: true, video: { width: { exact: 640 }, height: { exact: 360 }, facingMode: 'environment' } });
+        promise.then(function (stream) {
+            var video = $('#video1')[0];
+            //  赋值 video 并开始播放
+            video.srcObject = stream;
+            var recorder = new MediaRecorder(stream);
+            video.onloadedmetadata = function (e) {
+                video.play();
+                recorder.start();
+            };
+
+            var buffers = null;
+            recorder.ondataavailable = function (event) {
+                buffers = event.data;
+            }
+
+            recorder.onstop = function () {
+                var url = URL.createObjectURL(buffers);
+                $('#video2').attr('src', url);
+                $('#btnDown').attr('href', url);
+                $('#btnDown').click();
+            };
+
+            $('#btnRun').click(function () {
+                this.textContent == "录制" ? video.play() : video.pause();
+                this.textContent == "录制" ? recorder.start() : recorder.stop();
+                this.textContent = this.textContent == "录制" ? "停止" : "录制";
+            });
+
+            $('#btnUpload').click(function () {
+                if (!buffers) return;
+                let file = new File([buffers], 'upload.webm', {
+                    type: 'video/webm'
+                });
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('文件大于10M');
+                    return;
+                }
+                let fd = new FormData();
+                fd.append("name", "upload.webm");
+                fd.append("file", file);
+                $.ajax({
+                    url: './upload.php',
+                    type: 'post',
+                    processData: false,
+                    contentType: false,
+                    data: fd,
+                    success: function (res) {
+                        alert("ok:" + res);
+                    }
+                });
+            });
+        }).catch(function (error) {
+            alert(error);
+        });
+    </script>
+    
+	<!-- 51啦访问统计 -->
+	<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
+
+</html>
+
+<!--
+服务器端PHP保存代码
+
+<?php
+
+date_default_timezone_set("PRC");
+error_reporting(E_ALL & ~E_NOTICE);
+set_time_limit(30);
+
+if (empty($_FILES['file']))
+{
+	echo 'ERROR: file is null';
+	exit;
+}
+
+$file = $_FILES['file'];
+
+if ($file['type'] != "video/webm")
+{
+	echo 'ERROR: 文件类型错误';
+    exit;
+}
+
+if ($file['size'] > 10 * 1024 * 1024)
+{
+	echo 'ERROR: 文件大于10M';
+    exit;
+}
+
+if ($file['error'] > 0)
+{
+	echo 'ERROR: ' + $file['error'];
+    exit;
+}
+
+$guid = strtoupper(md5(uniqid(mt_rand(), true)));
+$file_path = 'video_' . $guid . '.mp4';
+
+move_uploaded_file($file['tmp_name'], $file_path);
+
+echo $file_path;
+
+-->
