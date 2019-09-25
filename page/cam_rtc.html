@@ -29,6 +29,7 @@
     </div>
 
     <script>
+        // chrome://webrtc-internals
         // https://github.com/webrtc/samples/tree/gh-pages/src/content/peerconnection/pc1
 
         const startButton = document.getElementById('startButton');
@@ -79,6 +80,7 @@
             return (pc === pc1) ? pc2 : pc1;
         }
 
+        // 获取摄像头画面
         async function start() {
             console.log('Requesting local stream');
             startButton.disabled = true;
@@ -93,12 +95,7 @@
             }
         }
 
-        function getSelectedSdpSemantics() {
-            const sdpSemanticsSelect = document.querySelector('#sdpSemantics');
-            const option = sdpSemanticsSelect.options[sdpSemanticsSelect.selectedIndex];
-            return option.value === '' ? {} : { sdpSemantics: option.value };
-        }
-
+        // 连接
         async function call() {
             callButton.disabled = true;
             hangupButton.disabled = false;
@@ -112,19 +109,22 @@
             if (audioTracks.length > 0) {
                 console.log(`Using audio device: ${audioTracks[0].label}`);
             }
-            // const configuration = getSelectedSdpSemantics();
+            
             const configuration = {
                 iceServers: [{
                     urls: 'stun:stun.xten.com'
                 }]
             };
             console.log('RTCPeerConnection configuration:', configuration);
+
             pc1 = new RTCPeerConnection(configuration);
             console.log('Created local peer connection object pc1');
             pc1.addEventListener('icecandidate', e => onIceCandidate(pc1, e));
+
             pc2 = new RTCPeerConnection(configuration);
             console.log('Created remote peer connection object pc2');
             pc2.addEventListener('icecandidate', e => onIceCandidate(pc2, e));
+
             pc1.addEventListener('iceconnectionstatechange', e => onIceStateChange(pc1, e));
             pc2.addEventListener('iceconnectionstatechange', e => onIceStateChange(pc2, e));
             pc2.addEventListener('track', gotRemoteStream);
