@@ -10,7 +10,7 @@
     <style>
     video{
         width:100%;
-        height:300px;
+        height:200px;
         border:solid 1px gray;
         background:#000;
     }
@@ -23,9 +23,9 @@
     <video id="remoteVideo" playsinline autoplay></video>
 
     <div class="box">
-        <button id="startButton">Start</button>
-        <button id="callButton">Call</button>
-        <button id="hangupButton">Hang Up</button>
+        <button id="startButton">开始</button>
+        <button id="callButton">连接</button>
+        <button id="hangupButton">断开</button>
     </div>
 
     <script>
@@ -83,7 +83,7 @@
             console.log('Requesting local stream');
             startButton.disabled = true;
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: { width: { exact: 1080 }, height: { exact: 720 }, facingMode: 'environment'} });
                 console.log('Received local stream');
                 localVideo.srcObject = stream;
                 localStream = stream;
