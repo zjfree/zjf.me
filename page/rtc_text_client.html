@@ -1,0 +1,173 @@
+<!-- rtc 文本客户端 zjfree 2019-09-26 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <title>rtc 文本客户端</title>
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <style>
+        textarea {
+            width: 500px;
+            height: 100px;
+        }
+        #divInfo{
+            font-size:12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>rtc 文本</h3>
+
+    <div class="box">
+        <button id="btnStart">开始</button>
+        <button id="btnSend" disabled>发送</button>
+        <button id="btnClose" disabled>断开</button>
+        <button onclick="setDesc();">setDesc</button>
+        <button onclick="setCandidate();">setCandidate</button>
+    </div>
+
+    <div class="box">
+        <div>发送内容：</div>
+        <textarea id="txtSend" disabled></textarea>
+    </div>
+
+    <div class="box">
+        <div>接收内容：</div>
+        <textarea id="txtReceive" disabled></textarea>
+    </div>
+
+    <div class="box">
+        <div>JSON内容：</div>
+        <textarea id="txtJson"></textarea>
+    </div>
+    
+    <pre id="divInfo"></pre>
+    
+    <script>
+        // chrome://webrtc-internals
+        // https://webrtc.github.io/samples/src/content/datachannel/basic/
+        
+        function showInfo(str) {
+            $('#divInfo').prepend(str + '<br>');
+        }
+
+        function setDesc() {
+            let val = JSON.parse($('#txtJson').val());
+            remoteConnection.setRemoteDescription(val);
+            remoteConnection.createAnswer().then(
+                gotDescription2,
+                (err) => {showInfo('ERROR: createAnswer fail:' + err);},
+            );
+        }
+
+        function setCandidate() {
+            let val = JSON.parse($('#txtJson').val());
+            remoteConnection.addIceCandidate(val)
+                .then(
+                    () => {showInfo('本地 AddIceCandidate 成功');},
+                    err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
+                );
+        }
+    </script>
+
+    <script>
+        let remoteConnection;
+        let receiveChannel;
+
+        $('#btnStart').click(createConnection);
+        $('#btnSend').click(sendData);
+        $('#btnClose').click(closeDataChannels);
+
+        function createConnection() {
+            const servers = {
+                iceServers: [{
+                    urls: 'stun:stun.xten.com'
+                }]
+            };
+
+            window.remoteConnection = remoteConnection = new RTCPeerConnection(servers);
+            showInfo('创建 远程RTCPeerConnection');
+
+            remoteConnection.onicecandidate = onIceCandidate2;
+            remoteConnection.ondatachannel = receiveChannelCallback;
+
+            $('txtStart').attr('disabled', true);
+            $('txtClose').attr('disabled', false);
+        }
+
+        function sendData() {
+            const data = $('#txtSend').val();
+            receiveChannel.send(data);
+            showInfo('[S]: ' + data);
+        }
+
+        function closeDataChannels() {
+            showInfo('关闭数据通道');
+            receiveChannel.close();
+            showInfo('通道标签: ' + receiveChannel.label);
+
+            remoteConnection.close();
+            remoteConnection = null;
+            showInfo('关闭连接');
+
+            $('#btnStart').attr('disabled', false);
+            $('#btnSend').attr('disabled', true);
+            $('#btnClose').attr('disabled', true);
+
+            $('#txtReceive').val('');
+            $('#txtSend').val('');
+            $('#txtSend').attr('disabled', true);
+        }
+
+        function gotDescription2(desc) {
+            remoteConnection.setLocalDescription(desc);
+            showInfo(`远程Answer\n${desc.sdp}`);
+
+            console.log('desc');
+            console.log(JSON.stringify(desc));
+        }
+
+        function onIceCandidate2(event) {
+            console.log('Candidate');
+            console.log(JSON.stringify(event.candidate));
+            showInfo(`远程 ICE ${event.candidate ? event.candidate.candidate : '(null)'}`);
+        }
+
+        function receiveChannelCallback(event) {
+            showInfo('接收通道建立');
+            receiveChannel = event.channel;
+            receiveChannel.onmessage = onReceiveMessageCallback;
+            receiveChannel.onopen = onReceiveChannelStateChange;
+            receiveChannel.onclose = onReceiveChannelStateChange;
+        }
+
+        function onReceiveMessageCallback(event) {
+            showInfo('[R]: ' + event.data);
+            $('#txtReceive').val(event.data);
+        }
+
+        function onReceiveChannelStateChange() {
+            const readyState = receiveChannel.readyState;
+            showInfo(`接收通道状态: ${readyState}`);
+            
+            if (readyState === 'open') {
+                $('#txtSend').attr('disabled', false);
+                $('#txtSend').focus();
+                $('#btnSend').attr('disabled', false);
+                $('#btnClose').attr('disabled', false);
+            } else {
+                $('#txtSend').attr('disabled', true);
+                $('#btnSend').attr('disabled', true);
+                $('#btnClose').attr('disabled', true);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
