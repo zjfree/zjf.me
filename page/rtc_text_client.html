@@ -8,6 +8,7 @@
     <title>rtc 文本客户端</title>
     <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="../static/js/ws_client.js"></script>
     <style>
         textarea {
             width: 500px;
@@ -21,14 +22,14 @@
 
 <body>
 
-    <h3>rtc 文本</h3>
+    <h3>rtc 文本客户端</h3>
 
-    <div class="box">
+    <div>依赖：<a target="_blank" href="https://github.com/zjfree/CenterWebSocket">https://github.com/zjfree/CenterWebSocket</a></div>
+
+    <div class="box" style="margin:5px 0;">
         <button id="btnStart">开始</button>
         <button id="btnSend" disabled>发送</button>
         <button id="btnClose" disabled>断开</button>
-        <button onclick="setDesc();">setDesc</button>
-        <button onclick="setCandidate();">setCandidate</button>
     </div>
 
     <div class="box">
@@ -41,11 +42,6 @@
         <textarea id="txtReceive" disabled></textarea>
     </div>
 
-    <div class="box">
-        <div>JSON内容：</div>
-        <textarea id="txtJson"></textarea>
-    </div>
-    
     <pre id="divInfo"></pre>
     
     <script>
@@ -56,23 +52,6 @@
             $('#divInfo').prepend(str + '<br>');
         }
 
-        function setDesc() {
-            let val = JSON.parse($('#txtJson').val());
-            remoteConnection.setRemoteDescription(val);
-            remoteConnection.createAnswer().then(
-                gotDescription2,
-                (err) => {showInfo('ERROR: createAnswer fail:' + err);},
-            );
-        }
-
-        function setCandidate() {
-            let val = JSON.parse($('#txtJson').val());
-            remoteConnection.addIceCandidate(val)
-                .then(
-                    () => {showInfo('本地 AddIceCandidate 成功');},
-                    err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
-                );
-        }
     </script>
 
     <script>
@@ -98,6 +77,24 @@
 
             $('txtStart').attr('disabled', true);
             $('txtClose').attr('disabled', false);
+            
+            // 获取服务器desc
+            wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'desc'}, function(res){
+                remoteConnection.setRemoteDescription(res.data);
+                remoteConnection.createAnswer().then(
+                    gotDescription2,
+                    (err) => {showInfo('ERROR: createAnswer fail:' + err);},
+                );
+            });
+            
+            // 获取服务器desc
+            wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'candidate'}, function(res){
+                remoteConnection.addIceCandidate(res.data)
+                    .then(
+                        () => {showInfo('本地 AddIceCandidate 成功');},
+                        err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
+                    );
+            });
         }
 
         function sendData() {
@@ -129,12 +126,18 @@
             showInfo(`远程Answer\n${desc.sdp}`);
 
             console.log('desc');
-            console.log(JSON.stringify(desc));
+            //console.log(JSON.stringify(desc));
+            
+            wsClient.send('rtc_txt_server', 'desc', desc);
         }
 
         function onIceCandidate2(event) {
+            if (!event.candidate) return;
             console.log('Candidate');
-            console.log(JSON.stringify(event.candidate));
+            //console.log(JSON.stringify(event.candidate));
+            
+            wsClient.send('rtc_txt_server', 'candidate', event.candidate);
+
             showInfo(`远程 ICE ${event.candidate ? event.candidate.candidate : '(null)'}`);
         }
 
@@ -166,6 +169,18 @@
                 $('#btnClose').attr('disabled', true);
             }
         }
+        
+        // 连接webSocket
+        var wsClient = new WSClient({
+            uid: 'rtc_txt_client',
+            name:'RTC_文本客户端',
+            type:'rtc',
+            server: 'ws://127.0.0.1:9900',
+            receive:function(data){
+                console.log(data);
+            },
+        });
+
     </script>
 
 </body>

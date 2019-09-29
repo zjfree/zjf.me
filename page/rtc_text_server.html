@@ -8,6 +8,7 @@
     <title>rtc 文本服务器</title>
     <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="../static/js/ws_client.js"></script>
     <style>
         textarea {
             width: 500px;
@@ -21,14 +22,14 @@
 
 <body>
 
-    <h3>rtc 文本</h3>
+    <h3>rtc 文本服务器</h3>
 
-    <div class="box">
+    <div>依赖：<a target="_blank" href="https://github.com/zjfree/CenterWebSocket">https://github.com/zjfree/CenterWebSocket</a></div>
+
+    <div class="box" style="margin:5px 0;">
         <button id="btnStart">开始</button>
         <button id="btnSend" disabled>发送</button>
         <button id="btnClose" disabled>断开</button>
-        <button onclick="setDesc();">setDesc</button>
-        <button onclick="setCandidate();">setCandidate</button>
     </div>
 
     <div class="box">
@@ -41,11 +42,6 @@
         <textarea id="txtReceive" disabled></textarea>
     </div>
 
-    <div class="box">
-        <div>JSON内容：</div>
-        <textarea id="txtJson"></textarea>
-    </div>
-    
     <pre id="divInfo"></pre>
     
     <script>
@@ -56,19 +52,6 @@
             $('#divInfo').prepend(str + '<br>');
         }
 
-        function setDesc() {
-            let val = JSON.parse($('#txtJson').val());
-            localConnection.setRemoteDescription(val);
-        }
-
-        function setCandidate() {
-            let val = JSON.parse($('#txtJson').val());
-            localConnection.addIceCandidate(val)
-                .then(
-                    () => {showInfo('本地 AddIceCandidate 成功');},
-                    err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
-                );
-        }
     </script>
 
     <script>
@@ -135,13 +118,22 @@
             showInfo(`本地Offer\n${desc.sdp}`);
             
             console.log('desc');
-            console.log(JSON.stringify(desc));
+            //console.log(JSON.stringify(desc));
+
+            wsClient.send('_server', 'set_config', {
+                desc:desc,
+            });
         }
 
         function onIceCandidate1(event) {
+            if (!event.candidate) return;
             console.log('Candidate');
-            console.log(JSON.stringify(event.candidate));
+            //console.log(JSON.stringify(event.candidate));
             showInfo(`本地 ICE ${event.candidate ? event.candidate.candidate : '(null)'}`);
+
+            wsClient.send('_server', 'set_config', {
+                candidate:event.candidate,
+            });
         }
         
         function onReceiveMessageCallback(event) {
@@ -164,6 +156,29 @@
                 $('#btnClose').attr('disabled', true);
             }
         }
+
+        // 连接webSocket
+        var wsClient = new WSClient({
+            uid: 'rtc_txt_server',
+            name:'RTC_文本服务器',
+            type:'rtc',
+            server: 'ws://127.0.0.1:9900',
+            receive:function(res){
+                if (res.uid == 'rtc_txt_client' && res.cmd == 'desc')
+                {
+                    localConnection.setRemoteDescription(res.data);
+                }
+                else if (res.uid == 'rtc_txt_client' && res.cmd == 'candidate')
+                {
+                    localConnection.addIceCandidate(res.data)
+                        .then(
+                            () => {showInfo('本地 AddIceCandidate 成功');},
+                            err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
+                        );
+                }
+            },
+        });
+
     </script>
 
 </body>
