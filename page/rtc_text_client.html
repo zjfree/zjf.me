@@ -87,7 +87,7 @@
                 );
             });
             
-            // 获取服务器desc
+            // 获取服务器candidate
             wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'candidate'}, function(res){
                 remoteConnection.addIceCandidate(res.data)
                     .then(
@@ -175,7 +175,7 @@
             uid: 'rtc_txt_client',
             name:'RTC_文本客户端',
             type:'rtc',
-            server: 'ws://127.0.0.1:9900',
+            server: 'ws://47.111.179.233:9900',
             receive:function(data){
                 console.log(data);
             },

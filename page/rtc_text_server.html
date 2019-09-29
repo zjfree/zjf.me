@@ -57,6 +57,7 @@
     <script>
         let localConnection;
         let sendChannel;
+        let candidateIndex = 1;
 
         $('#btnStart').click(createConnection);
         $('#btnSend').click(sendData);
@@ -120,6 +121,7 @@
             console.log('desc');
             //console.log(JSON.stringify(desc));
 
+            candidateIndex = 1;
             wsClient.send('_server', 'set_config', {
                 desc:desc,
             });
@@ -131,9 +133,10 @@
             //console.log(JSON.stringify(event.candidate));
             showInfo(`本地 ICE ${event.candidate ? event.candidate.candidate : '(null)'}`);
 
-            wsClient.send('_server', 'set_config', {
-                candidate:event.candidate,
-            });
+            let data = {};
+            data['candidate'] = event.candidate;
+            wsClient.send('_server', 'set_config', data);
+            candidateIndex++;
         }
         
         function onReceiveMessageCallback(event) {
@@ -162,7 +165,7 @@
             uid: 'rtc_txt_server',
             name:'RTC_文本服务器',
             type:'rtc',
-            server: 'ws://127.0.0.1:9900',
+            server: 'ws://47.111.179.233:9900',
             receive:function(res){
                 if (res.uid == 'rtc_txt_client' && res.cmd == 'desc')
                 {
