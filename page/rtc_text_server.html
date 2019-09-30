@@ -134,7 +134,7 @@
             showInfo(`本地 ICE ${event.candidate ? event.candidate.candidate : '(null)'}`);
 
             let data = {};
-            data['candidate'] = event.candidate;
+            data['candidate_' + candidateIndex] = event.candidate;
             wsClient.send('_server', 'set_config', data);
             candidateIndex++;
         }
@@ -170,6 +170,7 @@
                 if (res.uid == 'rtc_txt_client' && res.cmd == 'desc')
                 {
                     localConnection.setRemoteDescription(res.data);
+                    showInfo('setRemoteDescription');
                 }
                 else if (res.uid == 'rtc_txt_client' && res.cmd == 'candidate')
                 {
@@ -178,6 +179,7 @@
                             () => {showInfo('本地 AddIceCandidate 成功');},
                             err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
                         );
+                    showInfo('addIceCandidate');
                 }
             },
         });

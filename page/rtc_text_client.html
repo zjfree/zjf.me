@@ -85,15 +85,25 @@
                     gotDescription2,
                     (err) => {showInfo('ERROR: createAnswer fail:' + err);},
                 );
+                showInfo('setRemoteDescription');
             });
             
             // 获取服务器candidate
-            wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'candidate'}, function(res){
+            wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'candidate_1'}, function(res){
                 remoteConnection.addIceCandidate(res.data)
                     .then(
                         () => {showInfo('本地 AddIceCandidate 成功');},
                         err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
                     );
+                showInfo('addIceCandidate1');
+            });
+            wsClient.send('_server', 'get_config', {uid:'rtc_txt_server', key:'candidate_2'}, function(res){
+                remoteConnection.addIceCandidate(res.data)
+                    .then(
+                        () => {showInfo('本地 AddIceCandidate 成功');},
+                        err => {showInfo('ERROR: AddIceCandidate 失败 ' + err);},
+                    );
+                showInfo('addIceCandidate2');
             });
         }
 
