@@ -75,11 +75,11 @@ $(function(){
 
     map.on('locationfound', function(e) {
 		var radius = e.accuracy / 2;
-		L.marker(e.latlng).addTo(map);
-		L.circle(e.latlng, radius).addTo(map);
+		L.circleMarker(e.latlng, {radius:5, fillColor:'green'}).addTo(map);
+		L.circle(e.latlng, {radius:radius, weight:1}).addTo(map);
 		map.flyTo(e.latlng);
 
-		$('#divInfo').css('color', '#fff').html(e.latlng);
+		$('#divInfo').css('color', '#fff').html(e.latlng.toString());
     });
 
     map.on('locationerror', function(e) {
