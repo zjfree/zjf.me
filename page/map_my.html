@@ -74,12 +74,13 @@ $(function(){
     });
 
     map.on('locationfound', function(e) {
-		var radius = e.accuracy / 2;
-		L.circleMarker(e.latlng, {radius:5, fillColor:'green'}).addTo(map);
-		L.circle(e.latlng, {radius:radius, weight:1}).addTo(map);
-		map.flyTo(e.latlng);
+		let radius = e.accuracy / 2;
+		let gps = GpsConvert.wgs84_gcj([e.latlng.lng, e.latlng.lat]);
+		L.circleMarker(gps, {radius:5, weight:0, color:'green', fillOpacity:1}).addTo(map);
+		L.circle(gps, {radius:radius, weight:1}).addTo(map);
+		map.flyTo(gps);
 
-		$('#divInfo').css('color', '#fff').html(e.latlng.toString());
+		$('#divInfo').css('color', '#fff').html(gps.join(','));
     });
 
     map.on('locationerror', function(e) {
