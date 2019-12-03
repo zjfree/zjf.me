@@ -93,7 +93,7 @@ $(function(){
 	let centerGps = [34, 109];
     map = L.map("divMap", {
         center: centerGps,
-        zoom: 16,
+        zoom: 17,
         layers: mapLayerList['google_Hybrid'],
         zoomControl: true,
         detectRetina: true,
@@ -105,7 +105,7 @@ $(function(){
     // Geolocation
     map.locate({
 		setView: false,
-		maxZoom: 16,
+		maxZoom: 18,
 		watch: true,
 		enableHighAccuracy: true,
     });
