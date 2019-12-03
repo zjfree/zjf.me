@@ -58,7 +58,7 @@ body, html{
 <div id="divMap"></div>
 <div id="divInfo"></div>
 <div id="divBtn">
-<button onclick="clearPath();">清空</button><br><br>
+<button onclick="clearPath();">清空</button> &nbsp;
 <button onclick="upload();">上传</button>
 </div>
 
@@ -70,6 +70,7 @@ var index = 0;
 var myMarker = null;
 var polyline = null;
 var gpsList = [];
+var lastGps = null;
 
 function clearPath()
 {
@@ -129,8 +130,11 @@ $(function(){
 		
 		map.flyTo(gps);
 		gpsList.push(gps);
-
-		let str = '(' + index + ') ' + gps.join(',') + '<br>';
+		
+		let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
+		lastGps = gps;
+		
+		let str = '(' + index + ') ' + gps.join(',') + ' ' + dist.toFixed(2) + 'm<br>';
 		str += 'R:' + (e.accuracy||'?') + 'm, H:' + (e.altitude||'?') + 'm, ' + e.heading.toFixed(0) + '°, ' + e.speed.toFixed(3) + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
 		$('#divInfo').css('color', '#000').html(str);
