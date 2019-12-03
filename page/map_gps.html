@@ -107,7 +107,7 @@ $(function(){
 		let str = '(' + index + ') ' + gps.join(',') + '<br>';
 		str += 'R:' + e.accuracy + 'm, H:' + e.altitudeAccuracy + 'm, ' + e.heading + '°, ' + e.speed + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
-		$('#divInfo').css('color', '#000').html();
+		$('#divInfo').css('color', '#000').html(str);
     });
 
     map.on('locationerror', function(e) {
