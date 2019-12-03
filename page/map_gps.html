@@ -24,16 +24,18 @@ body, html{
 	top:0;
 	left:0;
 	right:0;
-	bottom:0;
+	bottom:20px;
 	background: #eff;
 }
 
 #divInfo{
 	position: absolute;
 	right:10px;
-	bottom:10px;
+	bottom:0px;
 	z-index: 1000;
-	text-shadow: 1px 1px 5px #000;
+	height:20px;
+	font-size:12px;
+	color:#000;
 }
 </style>
 
@@ -53,6 +55,8 @@ body, html{
 var mapLayerList = SuperMap.getLayerList();
 var map;
 var index = 0;
+
+var myMarker = null;
 
 $(function(){
 	// JS
@@ -80,11 +84,19 @@ $(function(){
 		index++;
 		let radius = e.accuracy / 2;
 		let gps = GpsConvert.wgs84_gcj([e.latlng.lat, e.latlng.lng]);
-		L.circleMarker(gps, {radius:5, weight:0, color:'green', fillOpacity:1}).addTo(map);
-		L.circle(gps, {radius:radius, weight:1}).addTo(map);
-		map.flyTo(gps);
+		
+		if (myMarker == null)
+		{
+			myMarker = L.circleMarker(gps, {radius:5, weight:1, color:'#fff', fillColor:'#4AFF59' fillOpacity:0.9}).addTo(map);	
+		}
+		else
+		{
+			myMarker.setLatLng(gps);
+		}
+		
+		//map.flyTo(gps);
 
-		$('#divInfo').css('color', index % 2 == 1 ? 'green' : 'blue').html(gps.join(','));
+		$('#divInfo').css('color', '#000').html('(' + index + ') ' + gps.join(','));
     });
 
     map.on('locationerror', function(e) {
