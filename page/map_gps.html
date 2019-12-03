@@ -71,7 +71,9 @@ $(function(){
     // Geolocation
     map.locate({
 		setView: true,
-		maxZoom: 16
+		maxZoom: 16,
+		watch: true,
+		enableHighAccuracy: true,
     });
 
     map.on('locationfound', function(e) {
@@ -82,7 +84,7 @@ $(function(){
 		L.circle(gps, {radius:radius, weight:1}).addTo(map);
 		map.flyTo(gps);
 
-		$('#divInfo').css('color', '#fff').html('[' + index + '] ' + gps.join(','));
+		$('#divInfo').css('color', index % 2 == 1 ? 'green' : 'blue').html(gps.join(','));
     });
 
     map.on('locationerror', function(e) {
