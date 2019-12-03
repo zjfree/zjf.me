@@ -24,7 +24,7 @@ body, html{
 	top:0;
 	left:0;
 	right:0;
-	bottom:20px;
+	bottom:30px;
 	background: #eff;
 }
 
@@ -33,10 +33,10 @@ body, html{
 	bottom:0px;
 	z-index: 1000;
 	width:100%;
-	height:20px;
+	height:30px;
 	font-size:12px;
 	color:#000;
-	line-height:20px;
+	line-height:12px;
 }
 </style>
 
@@ -58,6 +58,7 @@ var map;
 var index = 0;
 
 var myMarker = null;
+var polyline = null;
 
 $(function(){
 	// JS
@@ -83,7 +84,6 @@ $(function(){
 
     map.on('locationfound', function(e) {
 		index++;
-		let radius = e.accuracy / 2;
 		let gps = GpsConvert.wgs84_gcj([e.latlng.lat, e.latlng.lng]);
 		
 		if (myMarker == null)
@@ -95,9 +95,19 @@ $(function(){
 			myMarker.setLatLng(gps);
 		}
 		
+		if (polyline == null)
+		{
+			polyline = L.polyline([], {color: 'blue', weight:1}).addTo(map);
+		}
+		
+		polyline.addLatLng(gps);
+		
 		map.flyTo(gps);
 
-		$('#divInfo').css('color', '#000').html('(' + index + ') ' + gps.join(','));
+		let str = '(' + index + ') ' + gps.join(',') + '<br>';
+		str += 'R:' + e.accuracy + 'm, H:' + e.altitudeAccuracy + 'm, ' + e.heading + '°, ' + e.speed + 'm/s ';
+		str += new Date(e.timestamp).toLocaleString();
+		$('#divInfo').css('color', '#000').html();
     });
 
     map.on('locationerror', function(e) {
