@@ -38,6 +38,12 @@ body, html{
 	color:#000;
 	line-height:12px;
 }
+#divBtn{
+	position: absolute;
+	bottom:40px;
+	right:10px;
+	z-index: 1000;
+}
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -51,6 +57,10 @@ body, html{
 <!-- 内容 -->
 <div id="divMap"></div>
 <div id="divInfo"></div>
+<div id="divBtn">
+<button onclick="clearPath();">清空</button><br>
+<button onclick="upload();">上传</button>
+</div>
 
 <script>
 var mapLayerList = SuperMap.getLayerList();
@@ -59,6 +69,21 @@ var index = 0;
 
 var myMarker = null;
 var polyline = null;
+var gpsList = [];
+
+function clearPath()
+{
+	gpsList = [];
+	if (polyline != null)
+	{
+		polyline.setLatLngs([]);
+	}
+}
+
+function upload()
+{
+	alert(gpsList.length);
+}
 
 $(function(){
 	// JS
@@ -103,9 +128,10 @@ $(function(){
 		polyline.addLatLng(gps);
 		
 		map.flyTo(gps);
+		gpsList.push(gps);
 
 		let str = '(' + index + ') ' + gps.join(',') + '<br>';
-		str += 'R:' + e.accuracy + 'm, H:' + e.altitudeAccuracy + 'm, ' + e.heading + '°, ' + e.speed + 'm/s ';
+		str += 'R:' + (e.accuracy||'?') + 'm, H:' + (e.altitudeAccuracy||'?') + 'm, ' + e.heading.toFixed(0) + '°, ' + e.speed.toFixed(3) + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
 		$('#divInfo').css('color', '#000').html(str);
     });
