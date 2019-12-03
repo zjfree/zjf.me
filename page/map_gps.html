@@ -1,4 +1,4 @@
-<!-- JS地图 zjfree 2019-08-08 -->
+<!-- 地图当前GPS路径 zjfree 2019-12-03 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>地图</title>
+<title>地图当前GPS路径</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
 <link href="../static/map/css/leaflet.css" id="theme" rel="stylesheet">
@@ -71,10 +71,12 @@ var myMarker = null;
 var polyline = null;
 var gpsList = [];
 var lastGps = null;
+var distTotal = 0;
 
 function clearPath()
 {
 	gpsList = [];
+	distTotal = 0;
 	if (polyline != null)
 	{
 		polyline.setLatLngs([]);
@@ -133,8 +135,9 @@ $(function(){
 		
 		let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
 		lastGps = gps;
+		distTotal += dist;
 		
-		let str = '(' + index + ') ' + gps.join(',') + ' ' + dist.toFixed(2) + 'm<br>';
+		let str = '(' + index + ') ' + gps.join(',') + ' ' + dist.toFixed(2) + 'm ' + distTotal.toFixed(0) + 'm<br>';
 		str += 'R:' + (e.accuracy||'?') + 'm, H:' + (e.altitude||'?') + 'm, ' + e.heading.toFixed(0) + '°, ' + e.speed.toFixed(3) + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
 		$('#divInfo').css('color', '#000').html(str);
@@ -148,8 +151,7 @@ $(function(){
 });
 </script>
 
-<!-- 51啦访问统计 
+<!-- 51啦访问统计 -->
 <script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
--->
 
 </body>
