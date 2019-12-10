@@ -73,6 +73,10 @@ var gpsList = [];
 var lastGps = null;
 var distTotal = 0;
 
+window.onerror = function(message, source, lineno, colno, error) {
+	$('#divInfo').css('color', 'red').html('error:[' + lineno + '] ' + message);
+}
+
 function clearPath()
 {
 	gpsList = [];
@@ -86,6 +90,16 @@ function clearPath()
 function upload()
 {
 	alert(gpsList.length);
+}
+
+function fnum(num, dec)
+{
+	if (typeof num == 'undefined')
+	{
+		return '?';
+	}
+	
+	return floatParse(num).toFixed(dec);
 }
 
 $(function(){
@@ -137,9 +151,10 @@ $(function(){
 		lastGps = gps;
 		distTotal += dist;
 		
-		let str = '(' + index + ') ' + gps[0].toFixed(8) + ',' + gps[1].toFixed(8) + ' ' + dist.toFixed(2) + 'm ' + distTotal.toFixed(0) + 'm<br>';
-		str += 'R:' + (e.accuracy||'?') + 'm, H:' + (e.altitude||'?') + 'm, ' + e.heading.toFixed(0) + '°, ' + e.speed.toFixed(3) + 'm/s ';
+		let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' ' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
+		str += 'R:' + fnum(e.accuracy, 2) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
+		
 		$('#divInfo').css('color', '#000').html(str);
     });
 
