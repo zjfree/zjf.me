@@ -144,7 +144,7 @@ $(function(){
 		
 		polyline.addLatLng(gps);
 		
-		map.flyTo(gps);
+		map.stop().flyTo(gps);
 		gpsList.push(gps);
 		
 		let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
@@ -152,7 +152,7 @@ $(function(){
 		distTotal += dist;
 		
 		let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' ' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
-		str += 'R:' + fnum(e.accuracy, 2) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
+		str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
 		str += new Date(e.timestamp).toLocaleString();
 		
 		$('#divInfo').css('color', '#000').html(str);
