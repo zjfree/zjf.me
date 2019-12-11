@@ -95,8 +95,7 @@ function upload()
 
 function fnum(num, dec)
 {
-return num;
-	if (isNaN(num))
+	if (num == null || typeof num == 'undefined')
 	{
 		return '?';
 	}
