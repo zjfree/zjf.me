@@ -95,7 +95,7 @@ function upload()
 
 function fnum(num, dec)
 {
-	if (typeof num == 'undefined')
+	if (typeof num == 'undefined' || isNaN(num))
 	{
 		return '?';
 	}
@@ -113,6 +113,7 @@ function watchGps()
 	
 	// latitude longitude 
 	watchId = navigator.geolocation.watchPosition(function(e){
+		e.coords.timestamp = e.timestamp;
 		watchGpsSuccess(e.coords);
 	}, function(e) {
 		$('#divInfo').css('color', 'red').html('error:' + e.message);
