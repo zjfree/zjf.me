@@ -51,6 +51,7 @@ body, html{
 <script src="../static/map/js/leaflet.ChineseTmsProviders.js"></script>
 <script src="../static/map/js/leaflet_map.js"></script>
 <script src="../static/map/js/GpsConvert.js"></script>
+<script src="https://lib.baomitu.com/nosleep/0.6.0/NoSleep.min.js"></script>
 
 </head>
 <body>
@@ -159,8 +160,15 @@ function watchGpsSuccess(e)
 	$('#divInfo').css('color', '#000').html(str);
 }
 
+var noSleep = new NoSleep();
 $(function(){
-	// JS
+
+	// Enable wake lock.
+	document.addEventListener('click', function enableNoSleep() {
+		document.removeEventListener('click', enableNoSleep, false);
+		noSleep.enable();
+	}, false);
+
 	let centerGps = [34, 109];
     map = L.map("divMap", {
         center: centerGps,
