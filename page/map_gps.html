@@ -112,7 +112,9 @@ function watchGps()
 	}
 	
 	// latitude longitude 
-	watchId = navigator.geolocation.watchPosition(watchGpsSuccess, function(e) {
+	watchId = navigator.geolocation.watchPosition(function(e){
+		watchGpsSuccess(e.coords);
+	}, function(e) {
 		$('#divInfo').css('color', 'red').html('error:' + e.message);
     }, {
 		enableHighAccuracy: true,
