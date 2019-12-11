@@ -58,6 +58,7 @@ body, html{
 <div id="divMap"></div>
 <div id="divInfo"></div>
 <div id="divBtn">
+<button onclick="watchGps();">重启GPS</button> &nbsp;
 <button onclick="clearPath();">清空</button> &nbsp;
 <button onclick="upload();">上传</button>
 </div>
@@ -102,6 +103,59 @@ function fnum(num, dec)
 	return parseFloat(num).toFixed(dec);
 }
 
+var watchId = null;
+function watchGps()
+{
+	if (watchId != null)
+	{
+		navigator.geolocation.clearWatch(watchId);
+	}
+	
+	// latitude longitude 
+	watchId = navigator.geolocation.watchPosition(watchGpsSuccess, function(e) {
+		$('#divInfo').css('color', 'red').html('error:' + e.message);
+    }, {
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0
+	});
+}
+
+function watchGpsSuccess(e)
+{
+	index++;
+	let gps = GpsConvert.wgs84_gcj([e.latitude, e.longitude]);
+	
+	if (myMarker == null)
+	{
+		myMarker = L.circleMarker(gps, {radius:5, weight:1, color:'#fff', fillColor:'#4AFF59', fillOpacity:0.9}).addTo(map);	
+	}
+	else
+	{
+		myMarker.setLatLng(gps);
+	}
+	
+	if (polyline == null)
+	{
+		polyline = L.polyline([], {color: '#FF504B', weight:1}).addTo(map);
+	}
+	
+	polyline.addLatLng(gps);
+	
+	map.stop().panTo(gps);
+	gpsList.push(gps);
+	
+	let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
+	lastGps = gps;
+	distTotal += dist;
+	
+	let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' L:' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
+	str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
+	str += new Date(e.timestamp).toLocaleString();
+	
+	$('#divInfo').css('color', '#000').html(str);
+}
+
 $(function(){
 	// JS
 	let centerGps = [34, 109];
@@ -117,6 +171,7 @@ $(function(){
 	L.control.layers(mapLayerList, null).addTo(map);
 	
     // Geolocation
+	/*
     map.locate({
 		setView: false,
 		maxZoom: 18,
@@ -125,42 +180,17 @@ $(function(){
     });
 
     map.on('locationfound', function(e) {
-		index++;
-		let gps = GpsConvert.wgs84_gcj([e.latlng.lat, e.latlng.lng]);
-		
-		if (myMarker == null)
-		{
-			myMarker = L.circleMarker(gps, {radius:5, weight:1, color:'#fff', fillColor:'#4AFF59', fillOpacity:0.9}).addTo(map);	
-		}
-		else
-		{
-			myMarker.setLatLng(gps);
-		}
-		
-		if (polyline == null)
-		{
-			polyline = L.polyline([], {color: '#FF504B', weight:1}).addTo(map);
-		}
-		
-		polyline.addLatLng(gps);
-		
-		map.stop().flyTo(gps);
-		gpsList.push(gps);
-		
-		let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
-		lastGps = gps;
-		distTotal += dist;
-		
-		let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' L:' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
-		str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
-		str += new Date(e.timestamp).toLocaleString();
-		
-		$('#divInfo').css('color', '#000').html(str);
+		e.latitude = e.latlng.lat;
+		e.longitude = e.latlng.lng;
+		watchGpsSuccess(e);
     });
 
     map.on('locationerror', function(e) {
 		$('#divInfo').css('color', 'red').html('error:' + e.message);
     });
+	*/
+	
+	watchGps();
 
     SuperMap.hideCompany();
 });
