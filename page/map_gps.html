@@ -148,8 +148,7 @@ function watchGpsSuccess(e)
 	
 	// 判断是否移动
 	let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
-	lastGps = gps;
-	if (dist > 0)
+	if (dist > 0 || lastGps == null)
 	{
 		index++;
 		polyline.addLatLng(gps);
@@ -159,7 +158,8 @@ function watchGpsSuccess(e)
 		
 		distTotal += dist;
 	}
-	
+	lastGps = gps;
+
 	let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' L:' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
 	str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
 	str += new Date(e.timestamp).toLocaleString();
