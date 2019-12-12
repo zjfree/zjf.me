@@ -129,6 +129,10 @@ function watchGps()
 function watchGpsSuccess(e)
 {
 	lastTime = (new Date()).getTime();
+	if (wakeLock != null)
+	{
+
+	}
 	
 	let gps = GpsConvert.wgs84_gcj([e.latitude, e.longitude]);
 	
@@ -207,7 +211,11 @@ $(function(){
 		$('#divInfo').css('color', 'red').html('error:' + e.message);
     });
 	*/
-	
+
+	if (window.navigator.requestWakeLock)
+	{
+		window.navigator.requestWakeLock('gps');
+	}
 	watchGps();
 
 	// 断线重连
