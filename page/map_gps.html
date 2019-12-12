@@ -130,7 +130,6 @@ function watchGpsSuccess(e)
 {
 	lastTime = (new Date()).getTime();
 	
-	index++;
 	let gps = GpsConvert.wgs84_gcj([e.latitude, e.longitude]);
 	
 	if (myMarker == null)
@@ -147,14 +146,19 @@ function watchGpsSuccess(e)
 		polyline = L.polyline([], {color: '#FF504B', weight:2}).addTo(map);
 	}
 	
-	polyline.addLatLng(gps);
-	
-	map.stop().panTo(gps);
-	gpsList.push(gps);
-	
+	// 判断是否移动
 	let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
 	lastGps = gps;
-	distTotal += dist;
+	if (dist > 0)
+	{
+		index++;
+		polyline.addLatLng(gps);
+		
+		map.stop().panTo(gps);
+		gpsList.push(gps);
+		
+		distTotal += dist;
+	}
 	
 	let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' L:' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
 	str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
