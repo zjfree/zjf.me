@@ -74,6 +74,8 @@ var polyline = null;
 var gpsList = [];
 var lastGps = null;
 var distTotal = 0;
+var watchId = null;
+var lastTime = (new Date()).getTime();
 
 window.onerror = function(message, source, lineno, colno, error) {
 	$('#divInfo').css('color', 'red').html('error:[' + lineno + '] ' + message);
@@ -104,7 +106,6 @@ function fnum(num, dec)
 	return parseFloat(num).toFixed(dec);
 }
 
-var watchId = null;
 function watchGps()
 {
 	if (watchId != null)
@@ -120,13 +121,15 @@ function watchGps()
 		$('#divInfo').css('color', 'red').html('error:' + e.message);
     }, {
 		enableHighAccuracy: true,
-		timeout: 5000,
+		timeout: 3000,
 		maximumAge: 0
 	});
 }
 
 function watchGpsSuccess(e)
 {
+	lastTime = (new Date()).getTime();
+	
 	index++;
 	let gps = GpsConvert.wgs84_gcj([e.latitude, e.longitude]);
 	
@@ -202,6 +205,17 @@ $(function(){
 	*/
 	
 	watchGps();
+
+	// 断线重连
+	window.setInterval(function(){
+		let now = new Date().getTime();
+		if (now - lastTime > 3000)
+		{
+			$('#divInfo').css('color', 'blue').html('GPS重新连接');
+			lastTime = now;
+			watchGps();
+		}
+	}, 1000);
 
     SuperMap.hideCompany();
 });
