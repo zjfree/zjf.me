@@ -1,0 +1,43 @@
+<!-- 浏览器指纹 zjfree 2019-12-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>浏览器指纹</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>浏览器指纹</h1>
+<h3 id="divFinger"></h3>
+<h1>userAgent</h1>
+<h3 id="divUserAgent"></h3>
+<script>
+$(function(){
+	// JS
+    Fingerprint2.get(function (vals) {
+        let key = Fingerprint2.x64hash128(JSON.stringify(vals));
+		$('#divFinger').html(key);
+    });
+	
+	$('#divUserAgent').html(window.navigator.userAgent);
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
