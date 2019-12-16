@@ -1,0 +1,128 @@
+<!-- 浏览器升级提示 zjfree 2019-12-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>浏览器升级提示</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+/* 表格样式 */
+.tbList{
+    border-spacing: 0;
+    border-collapse: collapse;
+    border:solid 2px #ddd;
+    background:#fff;
+    color:#333;
+	font-size:18px;
+	margin-top:10px;
+}
+.tbList th{
+    background: #f0f0f0;
+}
+.tbList td, .tbList th{
+    border:solid 1px #ddd;
+    padding:5px 10px;
+    text-align: center;
+    vertical-align: text-top;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>浏览器升级提示</h1>
+<div>推荐使用如下现代浏览器：</div>
+<table class="tbList">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>浏览器品牌</th>
+			<th>下载地址</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><i class="fa fa-chrome"></i></td>
+			<td>360 急速浏览器</td>
+			<td>
+				<a target="_blank" href="https://browser.360.cn/ee/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-firefox"></i></td>
+			<td>火狐 FireFox</td>
+			<td>
+				<a target="_blank" href="http://www.firefox.com.cn/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-chrome"></i></td>
+			<td>Google Chrome</td>
+			<td>
+				<a target="_blank" href="https://www.google.cn/chrome/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-qq"></i></td>
+			<td>QQ 浏览器</td>
+			<td>
+				<a target="_blank" href="https://browser.qq.com/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>搜狗浏览器</td>
+			<td>
+				<a target="_blank" href="https://ie.sogou.com/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>傲游浏览器</td>
+			<td>
+				<a target="_blank" href="https://www.maxthon.cn/">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-opera"></i></td>
+			<td>欧朋Opera</td>
+			<td>
+				<a target="_blank" href="https://www.opera.com/zh-cn">访问</a>
+			</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-edge"></i></td>
+			<td>微软Edge</td>
+			<td>
+				<a target="_blank" href="https://www.microsoft.com/zh-cn/windows/microsoft-edge">访问</a>
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<h1>userAgent</h1>
+<div id="divUserAgent"></div>
+<script>
+$(function(){
+	// JS
+	$('#divUserAgent').html(window.navigator.userAgent);
+});
+</script>
+
+<!-- 51啦访问统计 -->
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+
+</body>
