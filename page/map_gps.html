@@ -76,6 +76,7 @@ var lastGps = null;
 var distTotal = 0;
 var watchId = null;
 var lastTime = (new Date()).getTime();
+var wakeup = '';
 
 window.onerror = function(message, source, lineno, colno, error) {
 	$('#divInfo').css('color', 'red').html('error:[' + lineno + '] ' + message);
@@ -164,7 +165,7 @@ function watchGpsSuccess(e)
 	str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
 	str += new Date(e.timestamp).toLocaleString();
 	
-	$('#divInfo').css('color', '#000').html(str);
+	$('#divInfo').css('color', '#000').html(str + ' ' + wakeup);
 }
 
 var noSleep = new NoSleep();
@@ -174,6 +175,7 @@ $(function(){
 	document.addEventListener('click', function enableNoSleep() {
 		document.removeEventListener('click', enableNoSleep, false);
 		noSleep.enable();
+		wakeup = 'W';
 	}, false);
 
 	let centerGps = [34, 109];
