@@ -1,0 +1,56 @@
+<!-- 视频播放器 zjfree 2019-12-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>视频播放器</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<link href="https://lib.baomitu.com/video.js/7.6.6/video-js.min.css" rel="stylesheet">
+<style>
+/* css style */
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/video.js/7.6.6/video.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>视频播放器</h1>
+
+
+<video
+id="my-video"
+class="video-js"
+controls
+preload="auto"
+width="640"
+height="264"
+data-setup="{}"
+language="zh-CN"
+>
+<!-- poster="MY_VIDEO_POSTER.jpg" -->
+<!--
+<source src="MY_VIDEO.mp4" type="video/mp4" />
+<source src="MY_VIDEO.webm" type="video/webm" />
+-->
+<source src="rtmp://58.200.131.2:1935/livetv/hunantv" type="rtmp/flv" />
+<p class="vjs-no-js">
+	视频插件加载失败！
+</p>
+</video>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+</body>
