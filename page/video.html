@@ -9,48 +9,76 @@
 <title>视频播放器</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
-<link href="https://lib.baomitu.com/video.js/7.6.6/video-js.min.css" rel="stylesheet">
+<link href="https://lib.baomitu.com/chimee-player/1.4.8/chimee-player.browser.css" rel="stylesheet">
 <style>
 /* css style */
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://lib.baomitu.com/video.js/7.6.6/video.min.js"></script>
+<script src="https://lib.baomitu.com/chimee-player/1.4.8/chimee-player.browser.js"></script>
 </head>
 <body>
-<!-- 内容 -->
+
+<div style="margin:0 10px;">
 <h1>视频播放器</h1>
 
+播放地址：
+<input id="txtVideo" type="text" value="http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8" style="display:block; width:100%; margin:5px 0;" />
+<button onclick="playVideo();">播放</button>
+<br>
+http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8<br>
+https://chimee.org/vod/1.mp4<br>
+http://yunxianchang.live.ujne7.com/vod-system-bj/TLaf2cc9d469939803949187b46da16c45.flv<br>
+http://yunxianchang.live.ujne7.com/vod-system-bj/114_40402c0cbbe-5eba-42dc-8442-e6e09aa4152e.flv
 
-<video
-id="my-video"
-class="video-js"
-controls
-preload="auto"
-width="640"
-height="264"
-data-setup="{}"
-language="zh-CN"
->
-<!-- poster="MY_VIDEO_POSTER.jpg" -->
 <!--
-<source src="MY_VIDEO.mp4" type="video/mp4" />
-<source src="MY_VIDEO.webm" type="video/webm" />
+<source src="rtmp://58.200.131.2:1935/livetv/hunantv" type="video/rtmp" />
+<source src="http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8" />
 -->
-<source src="rtmp://58.200.131.2:1935/livetv/hunantv" type="rtmp/flv" />
-<p class="vjs-no-js">
-	视频插件加载失败！
-</p>
-</video>
+
+<div id="myVideo" style="width:500px; height:300px;">
+</div>
+</div>
 
 <script>
+var player = null;
+
+function playVideo()
+{
+	let src = $('#txtVideo').val();
+	let arr = src.split('.');
+	let ext = arr[arr.length-1];
+	
+	let type = {
+		'mp4':'native',
+		'm3u8':'hls',
+		'flv':'flv',
+	}
+	
+	player && player.destroy();
+	player = new ChimeePlayer({
+	  wrapper: '#myVideo',  // video dom容器
+	  src: src,
+	  controls: true,
+	  autoplay: true,
+	  box:type[ext] || 'native',
+	  muted: true,
+	  loop:true,
+	});
+
+	player.on('play', function(){
+		console.log('play');
+	});
+}
+
 $(function(){
 	// JS
-	
+	playVideo();
 });
+
 </script>
 
-<!-- 51啦访问统计 
+<!-- 51啦访问统计 -->
 <script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
--->
+
 </body>
