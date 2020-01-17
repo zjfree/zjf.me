@@ -1,0 +1,647 @@
+<!-- ThreeJS 基础-02 zjfree 2019-01-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ThreeJS 基础-02</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%
+		}
+
+		.title {
+			position: absolute;
+			top: 10px;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+		}
+
+		.tool {
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+		}
+
+		#divMain {
+			position: fixed;
+			top: 0;
+			left: 200px;
+			right: 200px;
+			bottom: 0;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<!--
+<script src="https://lib.baomitu.com/three.js/107/three.min.js"></script>
+-->
+	<script src="../static/threejs/js/three.js"></script>
+
+	<script src="../static/threejs/js/controls/OrbitControls.js"></script>
+	<script src="../static/threejs/js/controls/TransformControls.js"></script>
+	<script src="../static/threejs/js/controls/DragControls.js"></script>
+
+	<script src="https://lib.baomitu.com/stats.js/16/Stats.min.js"></script>
+	<script src="https://lib.baomitu.com/dat-gui/0.7.6/dat.gui.min.js"></script>
+	<script src="../static/threejs/js/loaders/GLTFLoader.js"></script>
+	<script src="../static/threejs/js/loaders/DRACOLoader.js"></script>
+
+
+</head>
+
+<body onload="draw();">
+	<!-- 内容 -->
+	<h1 class="title">ThreeJS 基础-02</h1>
+
+	<div class="tool">
+		<button onclick="saveScene();">保存</button>
+		<button onclick="loadScene();">加载</button>
+		<button onclick="loadModel();">加载模型</button>
+	</div>
+
+	<div id="divMain">
+	</div>
+
+	<script>
+		var renderer, camera, scene, light, stats, orbit, transformControl, gui, raycaster, INTERSECTED, isMove;
+		var curObjLine = null;
+
+		// 初始化渲染器
+		function initRender() {
+			renderer = new THREE.WebGLRenderer({ antialias: false });
+			renderer.shadowMap.enabled = true;
+			renderer.shadowMap.type = THREE.VSMShadowMap;
+			renderer.outputEncoding = THREE.sRGBEncoding;
+
+			/*
+			BasicShadowMap 能够给出没有经过过滤的阴影映射 —— 速度最快，但质量最差。
+			PCFShadowMap 为默认值，使用Percentage-Closer Filtering (PCF)算法来过滤阴影映射。
+			PCFSoftShadowMap 使用Percentage-Closer Soft Shadows (PCSS)算法来过滤阴影映射。
+			VSMShadowMap 使用Variance Shadow Map (VSM)算法来过滤阴影映射。当使用VSMShadowMap时，所有阴影接收者也将会投射阴影。
+			*/
+
+
+			//renderer.physicallyCorrectLights = true;
+			//renderer.outputEncoding = THREE.sRGBEncoding;
+			//renderer.shadowMap.enabled = true;
+			//renderer.toneMapping = THREE.ReinhardToneMapping;
+			//renderer.setPixelRatio( window.devicePixelRatio );
+
+			renderer.setClearColor('#333'); //设置背景颜色
+			renderer.setSize($('#divMain').width(), $('#divMain').height());
+			$('#divMain')[0].appendChild(renderer.domElement);
+		}
+
+		// 初始化相机
+		function initCamera() {
+			camera = new THREE.PerspectiveCamera(50, $('#divMain').width() / $('#divMain').height(), 0.1, 1000);
+			camera.position.set(0, 20, 20);
+		}
+
+		// 初始化场景
+		function initScene() {
+			scene = new THREE.Scene();
+			scene.fog = new THREE.FogExp2('#ccc', 0.01);
+			//scene.fog = new THREE.Fog('#ccc', 20, 100);
+
+			/*
+			// SKYBOX/FOG
+			var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+			var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
+			var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+			scene.add(skyBox);
+			*/
+		}
+
+		// 初始化灯光
+		function initLight() {
+			scene.add(new THREE.AmbientLight(0x404040));
+
+			light = new THREE.DirectionalLight(0xffffff);
+			light.position.set(0, 50, 50);
+			light.castShadow = true;
+			//light.shadowCameraVisible = true;
+			scene.add(light);
+			var helper = new THREE.DirectionalLightHelper(light, 5);
+			scene.add(helper);
+
+			light.shadow.camera.near = 0.5;    // default
+			light.shadow.camera.far = 500;     // default
+			light.shadow.camera.top = 100;     // default
+			light.shadow.camera.right = 100;     // default
+			light.shadow.camera.bottom = -100;     // default
+			light.shadow.camera.left = -100;     // default
+			console.log(light.shadow.camera);
+
+			//addObj(new THREE.DodecahedronGeometry(1, 2), {x:0,y:50,z:50}, 'red');
+
+			// LIGHT
+			var light = new THREE.PointLight(0xffffff);
+			light.position.set(0, 50, -50);
+			//light.castShadow = true;
+			//light.shadowCameraVisible = true;
+			scene.add(light);
+			var pointLightHelper = new THREE.PointLightHelper(light, 1);
+			scene.add(pointLightHelper);
+
+		}
+
+		var objList = [];
+		function addObj(geometry, position, color) {
+			color = color || Math.random() * 0XFFFFFF;
+
+			// 纹理
+			var texture = new THREE.TextureLoader().load("../static/threejs/texture/14660381353675.jpg");
+			texture.wrapS = THREE.RepeatWrapping;
+			texture.wrapT = THREE.RepeatWrapping;
+			texture.repeat.set(2, 2);
+
+			//let material = new THREE.MeshPhysicalMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
+			//let material = new THREE.MeshBasicMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
+			//let material = new THREE.MeshLambertMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
+			let material = new THREE.MeshPhongMaterial({ color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
+			//let material = new THREE.MeshStandardMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
+			material.map = texture;
+			material.bumpMap = texture;
+			material.bumpScale = 0.2;
+
+			let obj = new THREE.Mesh(geometry, material);
+			obj.castShadow = true;
+			obj.receiveShadow = true;
+
+			scene.add(obj);
+			obj.position.set(position.x, position.y, position.z);
+			objList.push(obj);
+
+			/*
+			// 添加外框
+			var outlineMaterial1 = new THREE.MeshBasicMaterial( { color: 0x0000ff, side: THREE.BackSide } );
+			var outlineMesh1 = new THREE.Mesh( geometry, outlineMaterial1 );
+			// outlineMesh1.position = position;
+			outlineMesh1.scale.multiplyScalar(1.03);
+			scene.add( outlineMesh1 );
+			objList.push(outlineMesh1);
+			outlineMesh1.position.set(position.x,position.y,position.z);
+			*/
+		}
+
+		// 初始化模型
+		function initModel() {
+
+			// 坐标轴辅助
+			var axes = new THREE.AxesHelper(50);
+			scene.add(axes);
+
+			// 网格
+			var gridHelper = new THREE.GridHelper(100, 100);
+			scene.add(gridHelper);
+
+			// 一个立方体
+			addObj(new THREE.BoxBufferGeometry(50, 0.4, 50), { x: 0, y: 0.2, z: 0 }, '#363');
+
+			let i = 0;
+			for (let x = -20; x <= 20; x += 5) {
+				for (let y = -20; y <= 20; y += 5) {
+					let h = 3 + Math.random() * 10;
+					addObj(new THREE.BoxBufferGeometry(4, h, 4), { x: x, y: h / 2, z: y });
+
+					i++;
+					let spritey = makeTextSprite(" #" + i + "号 ",
+						{ borderColor: { r: 255, g: 0, b: 0, a: 1.0 }, backgroundColor: { r: 255, g: 100, b: 100, a: 0.8 } });
+					spritey.position.set(x, h, y);
+					scene.add(spritey);
+				}
+			}
+		}
+
+		// 初始化FPS
+		function initStats() {
+			stats = new Stats();
+			stats.dom.style.position = 'absolute';
+			stats.dom.style.left = '0px';
+			stats.dom.style.top = '0px';
+			$('#divMain')[0].appendChild(stats.dom);
+		}
+
+		// 初始化控制
+		function initControls() {
+
+			orbit = new THREE.OrbitControls(camera, renderer.domElement);
+
+			// 如果使用animate方法时，将此函数删除
+			//orbit.addEventListener( 'change', render );
+			// 使动画循环使用时阻尼或自转 意思是否有惯性
+			orbit.enableDamping = true;
+			//动态阻尼系数 就是鼠标拖拽旋转灵敏度
+			//orbit.dampingFactor = 0.25;
+			//是否可以缩放
+			orbit.enableZoom = true;
+			//是否自动旋转
+			orbit.autoRotate = false;
+			//设置相机距离原点的最远距离
+			orbit.minDistance = 1;
+			//设置相机距离原点的最远距离
+			orbit.maxDistance = 100;
+			//是否开启右键拖拽
+			orbit.enablePan = false;
+
+			orbit.minPolarAngle = 45 * Math.PI / 180;
+			orbit.maxPolarAngle = 80 * Math.PI / 180;
+
+			// 变换控制
+			transformControl = new THREE.TransformControls(camera, renderer.domElement);
+			transformControl.size = 1;
+			transformControl.addEventListener('change', render);
+			transformControl.addEventListener('dragging-changed', function (event) {
+				orbit.enabled = !event.value;
+			});
+			scene.add(transformControl);
+
+			// Hiding transform situation is a little in a mess :()
+			transformControl.addEventListener('change', function () {
+			});
+
+			transformControl.addEventListener('mouseDown', function () {
+				isMove = true;
+			});
+
+			transformControl.addEventListener('mouseUp', function () {
+				isMove = false;
+			});
+
+			transformControl.addEventListener('objectChange', function () {
+
+			});
+
+			// 快捷键
+			window.addEventListener('keydown', function (event) {
+
+				switch (event.keyCode) {
+
+					case 81: // Q
+						transformControl.setSpace(transformControl.space === "local" ? "world" : "local");
+						break;
+
+					case 16: // Shift
+						transformControl.setTranslationSnap(100);
+						transformControl.setRotationSnap(THREE.Math.degToRad(15));
+						transformControl.setScaleSnap(0.25);
+						break;
+
+					case 87: // W
+						transformControl.setMode("translate");
+						break;
+
+					case 69: // E
+						transformControl.setMode("rotate");
+						break;
+
+					case 82: // R
+						transformControl.setMode("scale");
+						break;
+					case 88: // X
+						transformControl.showX = !transformControl.showX;
+						break;
+
+					case 89: // Y
+						transformControl.showY = !transformControl.showY;
+						break;
+
+					case 90: // Z
+						transformControl.showZ = !transformControl.showZ;
+						break;
+
+					case 32: // Spacebar
+						transformControl.enabled = !transformControl.enabled;
+						break;
+
+				}
+
+			});
+
+			window.addEventListener('keyup', function (event) {
+
+				switch (event.keyCode) {
+
+					case 17: // Ctrl
+						transformControl.setTranslationSnap(null);
+						transformControl.setRotationSnap(null);
+						transformControl.setScaleSnap(null);
+						break;
+
+				}
+
+			});
+
+		}
+
+		// 初始化自定义参数
+		function initGui() {
+			//声明一个保存需求修改的相关数据的对象
+			gui = {};
+			var datGui = new dat.GUI();
+			//将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
+		}
+
+		// 初始化鼠标点击
+		var isMouseDown = false;
+		var mouseMoveIndex = 0;
+		var targetPosition = null;
+		function initRaycaster() {
+			raycaster = new THREE.Raycaster();
+			$('#divMain').on("mousedown", function (event) {
+				if (isMove) return;
+				isMouseDown = true;
+				mouseMoveIndex = 0;
+			});
+			$(document).on("mousemove", function (event) {
+				isMouseDown = mouseMoveIndex++ == 0;
+			});
+			$('#divMain').on("mouseup", function (event) {
+				if (!isMouseDown) return;
+				isMouseDown = false;
+				event.preventDefault();
+				let mouse = new THREE.Vector2();
+				let objects = [];
+				mouse.x = ((event.clientX - 200) / $('#divMain').width()) * 2 - 1;
+				mouse.y = - (event.clientY / $('#divMain').height()) * 2 + 1;
+
+				raycaster.setFromCamera(mouse, camera);
+				scene.children.forEach(child => {
+					if (child instanceof THREE.Mesh) {
+						objects.push(child)
+					};
+				});
+
+				//var intersects = raycaster.intersectObjects(objects, true);
+				var intersects = raycaster.intersectObjects(objects, true);
+				console.log(intersects);
+				if (intersects.length > 0) {
+					if (intersects[0].object == INTERSECTED) {
+						return;
+					}
+
+					if (INTERSECTED) {
+						INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+					}
+
+					// 高亮
+					INTERSECTED = intersects[0].object;
+					INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+					INTERSECTED.material.emissive.setHex(0x0000FF);
+					transformControl.attach(INTERSECTED);
+					targetPosition = INTERSECTED.position.clone();
+				}
+				else {
+					if (INTERSECTED) {
+						INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+					}
+
+					INTERSECTED = null;
+					transformControl.detach(transformControl.object);
+				}
+				//console.log(targetPosition);
+			});
+		}
+
+		// 渲染、动画
+		function render() {
+
+			/*
+			for (let r of objList)
+			{
+				r.rotation.x += 0.01;
+				r.rotation.y += 0.01;
+			}
+			*/
+
+			if (targetPosition) {
+				let x = valTo(orbit.target.x, targetPosition.x, 1);
+				let y = valTo(orbit.target.y, targetPosition.y, 1);
+				let z = valTo(orbit.target.z, targetPosition.z, 1);
+				orbit.target.set(x, y, z);
+				if (x == targetPosition.x && y == targetPosition.y && z == targetPosition.z) {
+					targetPosition = null;
+				}
+			}
+
+
+			renderer.render(scene, camera);
+		}
+
+		function valTo(x1, x2, step) {
+			let diff = x2 - x1;
+			if (diff == 0) {
+				return x2;
+			}
+
+			if (Math.abs(diff) < step) {
+				return x2;
+			}
+
+			return x1 + (diff > 0 ? 1 : -1) * step;
+		}
+
+		function onWindowResize() {
+			camera.aspect = $('#divMain').width() / $('#divMain').height();
+			camera.updateProjectionMatrix();
+			render();
+			renderer.setSize($('#divMain').width(), $('#divMain').height());
+		}
+
+		function animate() {
+			//更新控制器
+			orbit.update();
+			render();
+
+			//更新性能插件
+			stats.update();
+			requestAnimationFrame(animate);
+		}
+
+		function draw() {
+			initRender();
+			initScene();
+			initCamera();
+			initLight();
+			initModel();
+			initControls();
+			initStats();
+			//initGui();
+			initRaycaster();
+
+			animate();
+			window.onresize = onWindowResize;
+		}
+
+		function saveScene() {
+			let sceneJson = scene.toJSON();
+			localStorage.setItem('scene', JSON.stringify(sceneJson));
+
+			console.log(sceneJson);
+		}
+
+		function loadScene() {
+			let json = localStorage.getItem("scene");
+
+			if (json) {
+				let sceneJson = JSON.parse(json);
+				let loader = new THREE.ObjectLoader();
+
+				console.log(sceneJson);
+
+				let result = loader.parse(sceneJson);
+				console.log(result);
+
+				while (scene.children.length > 0) {
+
+					var child = scene.children.pop();
+					this.cmdArray.push(new AddObjectCommand(this.editor, child));
+
+				}
+			}
+		}
+
+
+		function loadModel() {
+			// 加载 glTF 格式的模型
+			let loader = new THREE.GLTFLoader();/*实例化加载器*/
+			loader.setPath('../static/threejs/models/');
+			/*
+			var dracoLoader = new THREE.DRACOLoader();
+			dracoLoader.setDecoderPath( '../static/threejs/js/libs/draco/' );
+			loader.setDRACOLoader( dracoLoader );
+			*/
+
+			loader.load('tree03.glb', function (obj) {
+				//console.log(obj);
+				obj.scene.position.y = 10;
+				scene.add(obj.scene);
+				obj.scene.scale.x = 50;
+				obj.scene.scale.y = 50;
+				obj.scene.scale.z = 50;
+				obj.scene.traverse(function (object) {
+					if (object.isMesh) {
+						object.castShadow = true;
+						object.receiveShadow = true;
+						//console.log(object);
+					}
+				});
+
+				transformControl.attach(obj.scene);
+
+			}, function (xhr) {
+				console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+			}, function (error) {
+				console.log('load error!' + error.getWebGLErrorMessage());
+			});
+
+		}
+
+		// 文字标签
+		function makeTextSprite(message, parameters) {
+			if (parameters === undefined) parameters = {};
+
+			var fontface = parameters.hasOwnProperty("fontface") ?
+				parameters["fontface"] : "Arial";
+
+			var fontsize = parameters.hasOwnProperty("fontsize") ?
+				parameters["fontsize"] : 36;
+
+			var borderThickness = parameters.hasOwnProperty("borderThickness") ?
+				parameters["borderThickness"] : 4;
+
+			var borderColor = parameters.hasOwnProperty("borderColor") ?
+				parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 };
+
+			var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
+				parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 };
+
+			//var spriteAlignment = THREE.SpriteAlignment.topLeft;
+			var spriteAlignment = null;
+
+			var canvas = document.createElement('canvas');
+			canvas.width = 100;
+			canvas.height = 50;
+			var context = canvas.getContext('2d');
+			context.font = "Bold " + fontsize + "px " + fontface;
+
+			// get size data (height depends only on font size)
+			var metrics = context.measureText(message);
+			var textWidth = metrics.width;
+
+			// 重新设置宽度
+			canvas = document.createElement('canvas');
+			canvas.width = textWidth + borderThickness + 6;
+			canvas.height = fontsize * 1.4 + borderThickness + 6;
+			var context = canvas.getContext('2d');
+			context.font = "Bold " + fontsize + "px " + fontface;
+
+			// background color
+			context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + ","
+				+ backgroundColor.b + "," + backgroundColor.a + ")";
+			// border color
+			context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + ","
+				+ borderColor.b + "," + borderColor.a + ")";
+
+			context.lineWidth = borderThickness;
+			roundRect(context, borderThickness / 2, borderThickness / 2, textWidth + borderThickness, fontsize * 1.4 + borderThickness, 6);
+			// 1.4 is extra height factor for text below baseline: g,j,p,q.
+
+			// text color
+			context.fillStyle = "rgba(0, 0, 0, 1.0)";
+
+			context.fillText(message, borderThickness, fontsize + borderThickness);
+			// $('body').append(canvas);
+
+			// canvas contents will be used for a texture
+			var texture = new THREE.CanvasTexture(canvas);
+
+			var spriteMaterial = new THREE.SpriteMaterial(
+				{ map: texture });
+			var sprite = new THREE.Sprite(spriteMaterial);
+			sprite.scale.set(1 * canvas.width / canvas.height, 1, 1);
+			sprite.center.set(0.5, 0);
+			return sprite;
+		}
+
+		// function for drawing rounded rectangles
+		function roundRect(ctx, x, y, w, h, r) {
+			ctx.beginPath();
+			ctx.moveTo(x + r, y);
+			ctx.lineTo(x + w - r, y);
+			ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+			ctx.lineTo(x + w, y + h - r);
+			ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+			ctx.lineTo(x + r, y + h);
+			ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+			ctx.lineTo(x, y + r);
+			ctx.quadraticCurveTo(x, y, x + r, y);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+		}
+
+	</script>
+
+	<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+
+</body>
