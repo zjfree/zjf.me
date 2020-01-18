@@ -25,24 +25,27 @@
 		}
 
 		.title {
-			position: absolute;
+			position: fixed;
 			top: 10px;
 			width: 100%;
 			color: #fff;
 			text-align: center;
+			z-index: 1;
+			text-shadow: 3px 3px 5px #000;
 		}
 
 		.tool {
 			position: fixed;
 			bottom: 10px;
 			left: 10px;
+			z-index: 1;
 		}
 
 		#divMain {
 			position: fixed;
 			top: 0;
-			left: 200px;
-			right: 200px;
+			left: 0;
+			right: 0;
 			bottom: 0;
 		}
 	</style>
@@ -61,6 +64,7 @@
 	<script src="https://lib.baomitu.com/dat-gui/0.7.6/dat.gui.min.js"></script>
 	<script src="../static/threejs/js/loaders/GLTFLoader.js"></script>
 	<script src="../static/threejs/js/loaders/DRACOLoader.js"></script>
+	<script src="../static/threejs/js/loaders/SVGLoader.js"></script>
 
 
 </head>
@@ -228,6 +232,115 @@
 					scene.add(spritey);
 				}
 			}
+
+			// 添加3D文字
+			var loader = new THREE.FontLoader();
+			loader.load( '../static/threejs/font/helvetiker_regular.typeface.json', function ( font ) {
+				var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+				var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+				var materialArray = [ materialFront, materialSide ];
+				var textGeom = new THREE.TextGeometry( "Hello World", 
+				{
+					size: 3, height: 1, curveSegments: 3,
+					font: font, weight: "bold", style: "normal",
+					bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: true,
+					material: 0, extrudeMaterial: 1
+				});
+				// font: helvetiker, gentilis, droid sans, droid serif, optimer
+				// weight: normal, bold
+				
+				var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+				var textMesh = new THREE.Mesh(textGeom, textMaterial );
+				textMesh.castShadow = true;
+				textMesh.receiveShadow = true;
+				
+				textGeom.computeBoundingBox();
+				var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+				
+				textMesh.position.set( -0.5 * textWidth, 20, 0 );
+				//textMesh.rotation.x = -Math.PI / 4;
+				scene.add(textMesh);
+			});
+
+			// 添加SVG
+			var loader = new THREE.SVGLoader();
+			loader.load( '../static/threejs/models/svg/threejs.svg', function ( data ) {
+
+				var paths = data.paths;
+
+				var group = new THREE.Group();
+				group.scale.multiplyScalar( 0.05 );
+				group.position.x = -14;
+				group.position.y = 14 + 40;
+				group.scale.y *= - 1;
+
+				for ( var i = 0; i < paths.length; i ++ ) {
+
+					var path = paths[ i ];
+
+					var fillColor = path.userData.style.fill;
+					if ( fillColor !== undefined && fillColor !== 'none' ) {
+
+						var material = new THREE.MeshBasicMaterial( {
+							color: new THREE.Color().setStyle( fillColor ),
+							opacity: path.userData.style.fillOpacity,
+							transparent: path.userData.style.fillOpacity < 1,
+							side: THREE.DoubleSide,
+							depthWrite: false,
+							wireframe: false,
+						} );
+
+						var shapes = path.toShapes( true );
+
+						for ( var j = 0; j < shapes.length; j ++ ) {
+
+							var shape = shapes[ j ];
+
+							var geometry = new THREE.ShapeBufferGeometry( shape );
+							var mesh = new THREE.Mesh( geometry, material );
+
+							group.add( mesh );
+
+						}
+
+					}
+
+					var strokeColor = path.userData.style.stroke;
+
+					if ( strokeColor !== undefined && strokeColor !== 'none' ) {
+
+						var material = new THREE.MeshBasicMaterial( {
+							color: new THREE.Color().setStyle( strokeColor ),
+							opacity: path.userData.style.strokeOpacity,
+							transparent: path.userData.style.strokeOpacity < 1,
+							side: THREE.DoubleSide,
+							depthWrite: false,
+							wireframe: false,
+						} );
+
+						for ( var j = 0, jl = path.subPaths.length; j < jl; j ++ ) {
+
+							var subPath = path.subPaths[ j ];
+
+							var geometry = THREE.SVGLoader.pointsToStroke( subPath.getPoints(), path.userData.style );
+
+							if ( geometry ) {
+
+								var mesh = new THREE.Mesh( geometry, material );
+
+								group.add( mesh );
+
+							}
+
+						}
+
+					}
+
+				}
+
+				scene.add( group );
+
+			} );
 		}
 
 		// 初始化FPS
@@ -398,19 +511,29 @@
 					}
 
 					if (INTERSECTED) {
-						INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+						if (!INTERSECTED.material instanceof Array)
+						{
+							INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+						}
 					}
 
 					// 高亮
 					INTERSECTED = intersects[0].object;
-					INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-					INTERSECTED.material.emissive.setHex(0x0000FF);
+					console.log(INTERSECTED);
+					if (!INTERSECTED.material instanceof Array)
+					{
+						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+						INTERSECTED.material.emissive.setHex(0x0000FF);
+					}
 					transformControl.attach(INTERSECTED);
 					targetPosition = INTERSECTED.position.clone();
 				}
 				else {
 					if (INTERSECTED) {
-						INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+						if (!INTERSECTED.material instanceof Array)
+						{
+							INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+						}
 					}
 
 					INTERSECTED = null;
