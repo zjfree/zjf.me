@@ -89,7 +89,7 @@
 
 		// 初始化渲染器
 		function initRender() {
-			renderer = new THREE.WebGLRenderer({ antialias: false });
+			renderer = new THREE.WebGLRenderer({ antialias: true });
 			renderer.shadowMap.enabled = true;
 			renderer.shadowMap.type = THREE.VSMShadowMap;
 			renderer.outputEncoding = THREE.sRGBEncoding;
