@@ -51,6 +51,7 @@
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://lib.baomitu.com/tween.js/2/Tween.min.js"></script>
 	<!--
 <script src="https://lib.baomitu.com/three.js/107/three.min.js"></script>
 -->
@@ -151,7 +152,7 @@
 			light.shadow.camera.right = 100;     // default
 			light.shadow.camera.bottom = -100;     // default
 			light.shadow.camera.left = -100;     // default
-			console.log(light.shadow.camera);
+			//console.log(light.shadow.camera);
 
 			//addObj(new THREE.DodecahedronGeometry(1, 2), {x:0,y:50,z:50}, 'red');
 
@@ -492,7 +493,7 @@
 				event.preventDefault();
 				let mouse = new THREE.Vector2();
 				let objects = [];
-				mouse.x = ((event.clientX - 200) / $('#divMain').width()) * 2 - 1;
+				mouse.x = ((event.clientX - 0) / $('#divMain').width()) * 2 - 1;
 				mouse.y = - (event.clientY / $('#divMain').height()) * 2 + 1;
 
 				raycaster.setFromCamera(mouse, camera);
@@ -511,7 +512,7 @@
 					}
 
 					if (INTERSECTED) {
-						if (!INTERSECTED.material instanceof Array)
+						if (!(INTERSECTED.material instanceof Array))
 						{
 							INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 						}
@@ -519,18 +520,19 @@
 
 					// 高亮
 					INTERSECTED = intersects[0].object;
-					console.log(INTERSECTED);
-					if (!INTERSECTED.material instanceof Array)
+					//console.log(INTERSECTED);
+					if (!(INTERSECTED.material instanceof Array))
 					{
 						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
 						INTERSECTED.material.emissive.setHex(0x0000FF);
 					}
 					transformControl.attach(INTERSECTED);
 					targetPosition = INTERSECTED.position.clone();
+					animateCamera(orbit.target, targetPosition)
 				}
 				else {
 					if (INTERSECTED) {
-						if (!INTERSECTED.material instanceof Array)
+						if (!(INTERSECTED.material instanceof Array))
 						{
 							INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
 						}
@@ -545,26 +547,6 @@
 
 		// 渲染、动画
 		function render() {
-
-			/*
-			for (let r of objList)
-			{
-				r.rotation.x += 0.01;
-				r.rotation.y += 0.01;
-			}
-			*/
-
-			if (targetPosition) {
-				let x = valTo(orbit.target.x, targetPosition.x, 1);
-				let y = valTo(orbit.target.y, targetPosition.y, 1);
-				let z = valTo(orbit.target.z, targetPosition.z, 1);
-				orbit.target.set(x, y, z);
-				if (x == targetPosition.x && y == targetPosition.y && z == targetPosition.z) {
-					targetPosition = null;
-				}
-			}
-
-
 			renderer.render(scene, camera);
 		}
 
@@ -588,9 +570,10 @@
 			renderer.setSize($('#divMain').width(), $('#divMain').height());
 		}
 
-		function animate() {
+		function animate(time) {
 			//更新控制器
 			orbit.update();
+			TWEEN.update(time);
 			render();
 
 			//更新性能插件
@@ -609,7 +592,7 @@
 			//initGui();
 			initRaycaster();
 
-			animate();
+			requestAnimationFrame(animate);
 			window.onresize = onWindowResize;
 		}
 
@@ -759,6 +742,46 @@
 			ctx.closePath();
 			ctx.fill();
 			ctx.stroke();
+		}
+
+		// current1 相机当前的位置
+		// target1 相机的controls的target
+		// current2 新相机的目标位置
+		// target2 新的controls的target
+		var tween;
+		
+		function animateCamera(current1, current2) {
+		
+			let positionVar = {
+				x1: current1.x,
+				y1: current1.y,
+				z1: current1.z
+			};
+			//关闭控制器
+			//orbit.enabled = false;
+			tween = new TWEEN.Tween(positionVar);
+			tween.to({
+				x1: current2.x,
+				y1: current2.y,
+				z1: current2.z
+			}, 500);
+				console.log("Tween", tween);
+		
+			tween.onUpdate(function() {
+				
+				orbit.target.set(positionVar.x1, positionVar.y1, positionVar.z1);
+				orbit.update();
+
+				console.log("Tween", positionVar);
+			})
+		
+			tween.onComplete(function() {
+				///开启控制器
+				//orbit.enabled = true;
+			})
+		
+			//tween.easing(TWEEN.Easing.Quadratic.Out);
+			tween.start();
 		}
 
 	</script>
