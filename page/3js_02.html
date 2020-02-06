@@ -17,6 +17,8 @@
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
+			min-width: 100%;
+			min-height: 100%
 		}
 
 		canvas {
@@ -24,7 +26,7 @@
 			height: 100%
 		}
 
-		.title {
+		.main-title {
 			position: fixed;
 			top: 10px;
 			width: 100%;
@@ -32,6 +34,9 @@
 			text-align: center;
 			z-index: 1;
 			text-shadow: 3px 3px 5px #000;
+			pointer-events: none;
+			margin:0;
+			font-size:24px;
 		}
 
 		.tool {
@@ -67,12 +72,11 @@
 	<script src="../static/threejs/js/loaders/DRACOLoader.js"></script>
 	<script src="../static/threejs/js/loaders/SVGLoader.js"></script>
 
-
 </head>
 
 <body onload="draw();">
 	<!-- 内容 -->
-	<h1 class="title">ThreeJS 基础-02</h1>
+	<h1 class="main-title">ThreeJS 基础-02</h1>
 
 	<div class="tool">
 		<button onclick="saveScene();">保存</button>
@@ -168,27 +172,36 @@
 		}
 
 		var objList = [];
-		function addObj(geometry, position, color) {
+		function addObj(geometry, position, color, textureUrl) {
 			color = color || Math.random() * 0XFFFFFF;
-
-			// 纹理
-			var texture = new THREE.TextureLoader().load("../static/threejs/texture/14660381353675.jpg");
-			texture.wrapS = THREE.RepeatWrapping;
-			texture.wrapT = THREE.RepeatWrapping;
-			texture.repeat.set(2, 2);
+			textureUrl = textureUrl || '';
 
 			//let material = new THREE.MeshPhysicalMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
 			//let material = new THREE.MeshBasicMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
 			//let material = new THREE.MeshLambertMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
 			let material = new THREE.MeshPhongMaterial({ color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
 			//let material = new THREE.MeshStandardMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
-			material.map = texture;
-			material.bumpMap = texture;
-			material.bumpScale = 0.2;
+			
+			// 纹理
+			if (textureUrl)
+			{
+				var texture = new THREE.TextureLoader().load(textureUrl);
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set(3, 3);
+
+				material.map = texture;
+				material.bumpMap = texture;
+				material.bumpScale = 0.2;
+			}
 
 			let obj = new THREE.Mesh(geometry, material);
 			obj.castShadow = true;
 			obj.receiveShadow = true;
+
+			obj.userData['textureUrl'] = textureUrl;
+			obj.userData['textureRepeatX'] = 3;
+			obj.userData['textureRepeatY'] = 3;
 
 			scene.add(obj);
 			obj.position.set(position.x, position.y, position.z);
@@ -218,13 +231,16 @@
 			scene.add(gridHelper);
 
 			// 一个立方体
-			addObj(new THREE.BoxBufferGeometry(50, 0.4, 50), { x: 0, y: 0.2, z: 0 }, '#363');
+			addObj(new THREE.BoxBufferGeometry(50, 0.4, 50), { x: 0, y: 0.2, z: 0 }, '#363', '../static/threejs/texture/texture02.jpg');
 
 			let i = 0;
 			for (let x = -20; x <= 20; x += 5) {
 				for (let y = -20; y <= 20; y += 5) {
 					let h = 3 + Math.random() * 10;
-					addObj(new THREE.BoxBufferGeometry(4, h, 4), { x: x, y: h / 2, z: y });
+					let geometry = new THREE.BoxBufferGeometry(4, h, 4);
+					geometry.translate(0, h / 2, 0);
+
+					addObj(geometry, { x: x, y: 0, z: y }, null, '../static/threejs/texture/texture01.jpg');
 
 					i++;
 					let spritey = makeTextSprite(" #" + i + "号 ",
@@ -240,7 +256,7 @@
 				var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
 				var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
 				var materialArray = [ materialFront, materialSide ];
-				var textGeom = new THREE.TextGeometry( "Hello World", 
+				var textGeom = new THREE.TextGeometry( "Hello World 123123123", 
 				{
 					size: 3, height: 1, curveSegments: 3,
 					font: font, weight: "bold", style: "normal",
@@ -400,7 +416,19 @@
 			});
 
 			transformControl.addEventListener('objectChange', function () {
-
+				if (INTERSECTED)
+				{
+					gui.positionX = INTERSECTED.position.x;
+					gui.positionY = INTERSECTED.position.y;
+					gui.positionZ = INTERSECTED.position.z;
+					gui.rotationX = INTERSECTED.rotation._x * 180 / Math.PI;
+					gui.rotationY = INTERSECTED.rotation._y * 180 / Math.PI;
+					gui.rotationZ = INTERSECTED.rotation._z * 180 / Math.PI;
+					gui.scaleX = INTERSECTED.scale.x;
+					gui.scaleY = INTERSECTED.scale.y;
+					gui.scaleZ = INTERSECTED.scale.z;
+					gui.scale = Math.min(INTERSECTED.scale.x, INTERSECTED.scale.y, INTERSECTED.scale.z);
+				}
 			});
 
 			// 快捷键
@@ -420,29 +448,32 @@
 
 					case 87: // W
 						transformControl.setMode("translate");
+						gui.opModel = 'translate';
 						break;
 
 					case 69: // E
 						transformControl.setMode("rotate");
+						gui.opModel = 'rotate';
 						break;
 
 					case 82: // R
 						transformControl.setMode("scale");
+						gui.opModel = 'scale';
 						break;
 					case 88: // X
-						transformControl.showX = !transformControl.showX;
+						gui.opX = transformControl.showX = !transformControl.showX;
 						break;
 
 					case 89: // Y
-						transformControl.showY = !transformControl.showY;
+						gui.opY = transformControl.showY = !transformControl.showY;
 						break;
 
 					case 90: // Z
-						transformControl.showZ = !transformControl.showZ;
+						gui.opZ = transformControl.showZ = !transformControl.showZ;
 						break;
 
 					case 32: // Spacebar
-						transformControl.enabled = !transformControl.enabled;
+						gui.opEnabled = transformControl.enabled = !transformControl.enabled;
 						break;
 
 				}
@@ -468,9 +499,253 @@
 		// 初始化自定义参数
 		function initGui() {
 			//声明一个保存需求修改的相关数据的对象
-			gui = {};
+			gui = {
+				isFog:true,
+				fogColor:'#ccc',
+				fogDensity:0.01,
+
+				curColor:'#fff',
+
+				opEnabled:true,
+				opModel:'translate',  // translate  rotate  scale
+				opX:true,
+				opY:true,
+				opZ:true,
+
+				positionX:1,
+				positionY:1,
+				positionZ:1,
+				
+				rotationX:0,
+				rotationY:0,
+				rotationZ:0,
+
+				scale:1,
+				scaleX:1,
+				scaleY:1,
+				scaleZ:1,
+
+				textureUrl:'',
+				textureRepeatX:3,
+				textureRepeatY:3,
+				
+				// 拷贝
+				copy:function(){
+					if (!INTERSECTED)
+					{
+						return;
+					}
+
+					let geometry = INTERSECTED.geometry.clone();
+					let material = null;
+					if (INTERSECTED.material instanceof Array)
+					{
+						material = [];
+						for (let k in INTERSECTED.material)
+						{
+							material.push(INTERSECTED.material[k].clone());
+						}
+					}
+					else
+					{
+						material = INTERSECTED.material.clone();
+					}
+					let obj = new THREE.Mesh(geometry, material);
+					obj.castShadow = true;
+					obj.receiveShadow = true;
+
+					scene.add(obj);
+					obj.position.set(INTERSECTED.position.x + 2, INTERSECTED.position.y, INTERSECTED.position.z);
+
+					if (!(INTERSECTED.material instanceof Array))
+					{
+						obj.material.emissive.setHex(INTERSECTED.currentHex);
+					}
+					selectObj(obj);
+				},
+
+				// 删除
+				del:function(){
+					if (!INTERSECTED)
+					{
+						return;
+					}
+
+					scene.remove(INTERSECTED);
+					INTERSECTED = null;
+					transformControl.detach(transformControl.object);
+				},
+			};
 			var datGui = new dat.GUI();
 			//将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
+			var f1 = datGui.addFolder('基础');
+			f1.add(gui, 'isFog').name('雾气').onChange(function(value) {
+				if (value)
+				{
+					scene.fog = new THREE.FogExp2(gui.fogColor, gui.fogDensity);
+				}
+				else
+				{
+					scene.fog = null;
+				}
+			});
+			f1.addColor(gui, 'fogColor').name('雾气颜色').onChange(function(value) {
+				if (gui.isFog)
+				{
+					scene.fog = new THREE.FogExp2(value, gui.fogDensity);
+				}
+			});
+			f1.add(gui, 'fogDensity', 0, 0.1).name('雾气强度').onChange(function(value) {
+				if (gui.isFog)
+				{
+					scene.fog = new THREE.FogExp2(value, gui.fogDensity);
+				}
+			});
+			
+			//f1.open();
+
+			var f2 = datGui.addFolder('选中项');
+			f2.add(gui, 'opEnabled').listen().name('操作启用').onChange(function(value) {
+				transformControl.enabled = value;
+			});
+			let modelType = {
+				移动:'translate',
+				旋转:'rotate',
+				缩放:'scale',
+			};
+			f2.add(gui, 'opModel', modelType).listen().name('操作模式').onChange(function(value) {
+				transformControl.setMode(value);
+			});
+			f2.add(gui, 'opX').listen().name('X轴启用').onChange(function(value) {
+				transformControl.showX = value;
+			});
+			f2.add(gui, 'opY').listen().name('Y轴启用').onChange(function(value) {
+				transformControl.showY = value;
+			});
+			f2.add(gui, 'opZ').listen().name('Z轴启用').onChange(function(value) {
+				transformControl.showY = value;
+			});
+
+			// 颜色
+			f2.addColor(gui, 'curColor').listen().name('颜色').onChange(function(value) {
+				if (INTERSECTED && !(INTERSECTED.material instanceof Array))
+				{
+					INTERSECTED.material.color.set(value);
+				}
+			});
+			
+			// 位置
+			f2.add(gui, 'positionX').listen().name('位置X').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.position.set(gui.positionX, gui.positionY, gui.positionZ);
+			});
+			f2.add(gui, 'positionY').listen().name('位置Y').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.position.set(gui.positionX, gui.positionY, gui.positionZ);
+			});
+			f2.add(gui, 'positionZ').listen().name('位置Z').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.position.set(gui.positionX, gui.positionY, gui.positionZ);
+			});
+			
+			// 角度
+			f2.add(gui, 'rotationX', 0, 360, 5).listen().name('旋转X').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.rotation.set(gui.rotationX * Math.PI / 180, gui.rotationY * Math.PI / 180, gui.rotationZ * Math.PI / 180, 'XYZ');
+			});
+			f2.add(gui, 'rotationY', 0, 360, 5).listen().name('旋转Y').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.rotation.set(gui.rotationX * Math.PI / 180, gui.rotationY * Math.PI / 180, gui.rotationZ * Math.PI / 180, 'XYZ');
+			});
+			f2.add(gui, 'rotationZ', 0, 360, 5).listen().name('旋转Z').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.rotation.set(gui.rotationX * Math.PI / 180, gui.rotationY * Math.PI / 180, gui.rotationZ * Math.PI / 180, 'XYZ');
+			});
+
+			// 缩放
+			f2.add(gui, 'scale').listen().name('缩放').onChange(function(value) {
+				if (!INTERSECTED) return;
+				gui.scaleX = gui.scaleY = gui.scaleZ = value;
+				INTERSECTED.scale.set(value, value, value);
+			});
+			f2.add(gui, 'scaleX').listen().name('缩放X').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.scale.set(gui.scaleX, gui.scaleY, gui.scaleZ);
+			});
+			f2.add(gui, 'scaleY').listen().name('缩放Y').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.scale.set(gui.scaleX, gui.scaleY, gui.scaleZ);
+			});
+			f2.add(gui, 'scaleZ').listen().name('缩放Z').onChange(function(value) {
+				if (!INTERSECTED) return;
+				INTERSECTED.scale.set(gui.scaleX, gui.scaleY, gui.scaleZ);
+			});
+
+			// 材质
+			let textureType = {
+				empty:'',
+				texture01:'../static/threejs/texture/texture01.jpg',
+				texture02:'../static/threejs/texture/texture02.jpg',
+				texture03:'../static/threejs/texture/texture03.jpg',
+			};
+			f2.add(gui, 'textureUrl', textureType).listen().name('材质图片').onChange(function(value) {
+				if (!INTERSECTED) return;
+				if (value == '')
+				{
+					if (INTERSECTED.material.map)
+					{
+						INTERSECTED.material.map.repeat.set(0,0);
+					}
+					INTERSECTED.userData['textureRepeatX'] = 0;
+					INTERSECTED.userData['textureRepeatY'] = 0;
+				}
+				else
+				{
+					var texture = new THREE.TextureLoader().load(value);
+					texture.wrapS = THREE.RepeatWrapping;
+					texture.wrapT = THREE.RepeatWrapping;
+					texture.repeat.set(gui.textureRepeatX, gui.textureRepeatY);
+
+					INTERSECTED.material.map = texture;
+					INTERSECTED.material.bumpMap = texture;
+					INTERSECTED.material.bumpScale = 0.2;
+				}
+				INTERSECTED.userData['textureUrl'] = value;
+			});
+			f2.add(gui, 'textureRepeatX').listen().name('材质缩放X').onChange(function(value) {
+				if (!INTERSECTED) return;
+				if (INTERSECTED.material.map)
+				{
+					if (gui.textureUrl == '')
+					{
+						INTERSECTED.material.map.repeat.set(0,0);
+					}
+					else
+					{
+						INTERSECTED.material.map.repeat.set(gui.textureRepeatX, gui.textureRepeatY);
+					}
+				}
+				INTERSECTED.userData['textureRepeatX'] = value;
+			});
+			f2.add(gui, 'textureRepeatY').listen().name('材质缩放Y').onChange(function(value) {
+				if (!INTERSECTED) return;
+				if (INTERSECTED.material.map)
+				{
+					if (gui.textureUrl == '')
+					{
+						INTERSECTED.material.map.repeat.set(0,0);
+					}
+					else
+					{
+						INTERSECTED.material.map.repeat.set(gui.textureRepeatX, gui.textureRepeatY);
+					}
+				}
+				INTERSECTED.userData['textureRepeatY'] = value;
+			});
+
+			// 3D对象操作
+			f2.add(gui, 'copy').name('复制3D对象');
+			f2.add(gui, 'del').name('删除3D对象');
 		}
 
 		// 初始化鼠标点击
@@ -507,28 +782,7 @@
 				var intersects = raycaster.intersectObjects(objects, true);
 				console.log(intersects);
 				if (intersects.length > 0) {
-					if (intersects[0].object == INTERSECTED) {
-						return;
-					}
-
-					if (INTERSECTED) {
-						if (!(INTERSECTED.material instanceof Array))
-						{
-							INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
-						}
-					}
-
-					// 高亮
-					INTERSECTED = intersects[0].object;
-					//console.log(INTERSECTED);
-					if (!(INTERSECTED.material instanceof Array))
-					{
-						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-						INTERSECTED.material.emissive.setHex(0x0000FF);
-					}
-					transformControl.attach(INTERSECTED);
-					targetPosition = INTERSECTED.position.clone();
-					animateCamera(orbit.target, targetPosition)
+					selectObj(intersects[0].object);
 				}
 				else {
 					if (INTERSECTED) {
@@ -545,22 +799,55 @@
 			});
 		}
 
+		// 选中3D对象
+		function selectObj(obj)
+		{
+			if (obj == INTERSECTED) {
+				return;
+			}
+
+			if (INTERSECTED) {
+				if (!(INTERSECTED.material instanceof Array))
+				{
+					INTERSECTED.material.emissive.setHex(INTERSECTED.currentHex);
+				}
+			}
+
+			// 高亮
+			INTERSECTED = obj;
+			if (!(INTERSECTED.material instanceof Array))
+			{
+				gui.curColor = '#' + INTERSECTED.material.color.getHexString();
+			}
+			gui.positionX = INTERSECTED.position.x;
+			gui.positionY = INTERSECTED.position.y;
+			gui.positionZ = INTERSECTED.position.z;
+			gui.rotationX = INTERSECTED.rotation._x * 180 / Math.PI;
+			gui.rotationY = INTERSECTED.rotation._y * 180 / Math.PI;
+			gui.rotationZ = INTERSECTED.rotation._z * 180 / Math.PI;
+			gui.scaleX = INTERSECTED.scale.x;
+			gui.scaleY = INTERSECTED.scale.y;
+			gui.scaleZ = INTERSECTED.scale.z;
+			gui.scale = Math.min(INTERSECTED.scale.x, INTERSECTED.scale.y, INTERSECTED.scale.z);
+			
+			gui.textureUrl = INTERSECTED.userData['textureUrl'];
+			gui.textureRepeatX = INTERSECTED.userData['textureRepeatX'];
+			gui.textureRepeatY = INTERSECTED.userData['textureRepeatY'];
+
+			//console.log(INTERSECTED);
+			if (!(INTERSECTED.material instanceof Array))
+			{
+				INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+				INTERSECTED.material.emissive.setHex(0x333333);
+			}
+			transformControl.attach(INTERSECTED);
+			targetPosition = INTERSECTED.position.clone();
+			animateCamera(orbit.target, targetPosition)
+		}
+
 		// 渲染、动画
 		function render() {
 			renderer.render(scene, camera);
-		}
-
-		function valTo(x1, x2, step) {
-			let diff = x2 - x1;
-			if (diff == 0) {
-				return x2;
-			}
-
-			if (Math.abs(diff) < step) {
-				return x2;
-			}
-
-			return x1 + (diff > 0 ? 1 : -1) * step;
 		}
 
 		function onWindowResize() {
@@ -589,7 +876,7 @@
 			initModel();
 			initControls();
 			initStats();
-			//initGui();
+			initGui();
 			initRaycaster();
 
 			requestAnimationFrame(animate);
@@ -765,14 +1052,14 @@
 				y1: current2.y,
 				z1: current2.z
 			}, 500);
-				console.log("Tween", tween);
+			//console.log("Tween", tween);
 		
 			tween.onUpdate(function() {
 				
 				orbit.target.set(positionVar.x1, positionVar.y1, positionVar.z1);
 				orbit.update();
 
-				console.log("Tween", positionVar);
+				//console.log("Tween", positionVar);
 			})
 		
 			tween.onComplete(function() {
