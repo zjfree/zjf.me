@@ -1,4 +1,4 @@
-<!-- ThreeJS 基础-02 zjfree 2019-01-15 -->
+<!-- ThreeJS 编辑器 zjfree 2020-02-11 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="renderer" content="webkit">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ThreeJS 基础-03</title>
+	<title>ThreeJS 编辑器</title>
 
 	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
 	<style>
@@ -72,17 +72,17 @@
 	<script src="../static/threejs/js/loaders/DRACOLoader.js"></script>
 	<script src="../static/threejs/js/loaders/SVGLoader.js"></script>
 
-	<script src="../static/threejs/js/three_editor.js"></script>
+	<script src="../static/threejs/js/three_editor.js?1"></script>
 </head>
 
 <body>
 	<!-- 内容 -->
-	<h1 class="main-title">ThreeJS 基础-03</h1>
+	<h1 class="main-title">ThreeJS 编辑器</h1>
 
 	<div class="tool">
 		<div>
 			<select id="selType" style="width:130px;">
-				<option value="BoxBufferGeometry">立方体 (X,Y,Z)</option>
+				<option value="BoxGeometry">立方体 (X,Y,Z)</option>
 				<option value="ConeGeometry">圆锥形 (半径，高度，分隔)</option>
 				<option value="CylinderGeometry">圆柱体 (顶半径，底半径，高度，分隔)</option>
 				<option value="DodecahedronGeometry">12面体 (半径，顶数)</option>
@@ -95,13 +95,15 @@
 				<option value="Text">文本 (大小，厚度，颜色|文本)</option>
 				<option value="Marker">标签 (大小，颜色|文本)</option>
 				<option value="Svg">SVG图片 (图片URL)</option>
+				<option value="Img">Img图片 (图片URL)</option>
+				<option value="Model">GLB模型 (GLB名称)</option>
 			</select>
 			<button onclick="TE.add($('#selType').val());">添加</button>
 		</div>
 		<div style="margin-top:5px;">
-			<button onclick="TE.saveScene();">保存</button>
-			<button onclick="TE.loadScene();">加载</button>
-			<button onclick="TE.loadModel();">加载模型</button>
+			<button onclick="TE.save();">保存</button>
+			<button onclick="TE.load();">加载</button>
+			<button onclick="TE.clear();">清空</button>
 		</div>
 	</div>
 

@@ -1,6 +1,9 @@
 // ThreeJS编辑器
 var ThreeEditor = TE = {
 
+    // 版本
+    version: '20200210',
+
     // 内部变量
     renderer: null,
     camera: null,
@@ -9,6 +12,9 @@ var ThreeEditor = TE = {
     orbit: null,
     transformControl: null,
     gui: null,
+    datGui: null,
+    guiController: null,
+    guiEnabled: true,
     raycaster: null,
     tween: null,
     INTERSECTED: null,
@@ -37,6 +43,19 @@ var ThreeEditor = TE = {
         window.onresize = TE.onWindowResize;
     },
 
+    //弧度角度换算
+    getRad: function (deg) {
+        return (Math.PI * deg) / 180;
+    },
+    getDeg: function (rad) {
+        let deg = (rad * 180) / Math.PI;
+        deg = deg % 360;
+        if (deg < 0) {
+            deg += 360;
+        }
+        return deg;
+    },
+
     initRender: function () {
         TE.renderer = new THREE.WebGLRenderer({ antialias: true });
         TE.renderer.shadowMap.enabled = true;
@@ -63,29 +82,27 @@ var ThreeEditor = TE = {
     },
 
     initCamera: function () {
-        TE.camera = new THREE.PerspectiveCamera(50, TE.divMain.width() / TE.divMain.height(), 0.1, 1000);
-        TE.camera.position.set(0, 20, 20);
+        TE.camera = new THREE.PerspectiveCamera(30, TE.divMain.width() / TE.divMain.height(), 0.1, 1000);
+        TE.camera.position.set(0, 20, 60);
     },
 
     initScene: function () {
         TE.scene = new THREE.Scene();
-        TE.scene.fog = new THREE.FogExp2('#ccc', 0.01);
+        TE.scene.fog = new THREE.FogExp2('#ccc', 0.008);
         //scene.fog = new THREE.Fog('#ccc', 20, 100);
 
-        /*
         // SKYBOX/FOG
-        var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-        var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
-        var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
-        scene.add(skyBox);
-        */
+        var skyBoxGeometry = new THREE.CubeGeometry(200, 200, 200);
+        var skyBoxMaterial = new THREE.MeshBasicMaterial({ color: '#367EE3', side: THREE.BackSide });
+        var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+        TE.scene.add(skyBox);
 
         // 坐标轴辅助
         let axes = new THREE.AxesHelper(50);
         TE.scene.add(axes);
 
         // 网格
-        let gridHelper = new THREE.GridHelper(100, 100);
+        let gridHelper = new THREE.GridHelper(100, 100, 0x0000ff, '#111');
         TE.scene.add(gridHelper);
     },
 
@@ -111,7 +128,7 @@ var ThreeEditor = TE = {
         //addObj(new THREE.DodecahedronGeometry(1, 2), {x:0,y:50,z:50}, 'red');
 
         // LIGHT
-        light = new THREE.PointLight(0xffffff);
+        light = new THREE.PointLight(0xffffff, 0.3);
         light.position.set(0, 50, -50);
         //light.castShadow = true;
         //light.shadowCameraVisible = true;
@@ -136,9 +153,8 @@ var ThreeEditor = TE = {
                 TE.addObj(geometry, { x: x, y: 0, z: y }, null, '../static/threejs/texture/texture01.jpg');
 
                 i++;
-                let spritey = TE.markerText(" #" + i + "号 ");
+                let spritey = TE.addMarker(" #" + i + "号 ");
                 spritey.position.set(x, h, y);
-                TE.scene.add(spritey);
             }
         }
 
@@ -170,7 +186,8 @@ var ThreeEditor = TE = {
         //是否可以缩放
         TE.orbit.enableZoom = true;
         //是否自动旋转
-        TE.orbit.autoRotate = false;
+        TE.orbit.autoRotate = true;
+        TE.orbit.autoRotateSpeed = 0.3;
         //设置相机距离原点的最远距离
         TE.orbit.minDistance = 1;
         //设置相机距离原点的最远距离
@@ -183,7 +200,7 @@ var ThreeEditor = TE = {
 
         // 变换控制
         TE.transformControl = new THREE.TransformControls(TE.camera, TE.renderer.domElement);
-        TE.transformControl.size = 1;
+        TE.transformControl.size = 0.5;
         TE.transformControl.addEventListener('change', TE.render);
         TE.transformControl.addEventListener('dragging-changed', function (event) {
             TE.orbit.enabled = !event.value;
@@ -205,18 +222,21 @@ var ThreeEditor = TE = {
         TE.transformControl.addEventListener('objectChange', function () {
             if (!TE.INTERSECTED) return;
 
-            TE.gui.positionX = TE.INTERSECTED.position.x;
-            TE.gui.positionY = TE.INTERSECTED.position.y;
-            TE.gui.positionZ = TE.INTERSECTED.position.z;
-            TE.gui.rotationX = TE.INTERSECTED.rotation._x * 180 / Math.PI;
-            TE.gui.rotationY = TE.INTERSECTED.rotation._y * 180 / Math.PI;
-            TE.gui.rotationZ = TE.INTERSECTED.rotation._z * 180 / Math.PI;
-            TE.gui.scaleX = TE.INTERSECTED.scale.x;
-            TE.gui.scaleY = TE.INTERSECTED.scale.y;
-            TE.gui.scaleZ = TE.INTERSECTED.scale.z;
-            TE.gui.scale = Math.min(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z);
+            TE.guiEnabled = false;
+            TE.guiController.positionX.setValue(TE.INTERSECTED.position.x);
+            TE.guiController.positionY.setValue(TE.INTERSECTED.position.y);
+            TE.guiController.positionZ.setValue(TE.INTERSECTED.position.z);
+            TE.guiController.rotationX.setValue(TE.getDeg(TE.INTERSECTED.rotation._x));
+            TE.guiController.rotationY.setValue(TE.getDeg(TE.INTERSECTED.rotation._y));
+            TE.guiController.rotationZ.setValue(TE.getDeg(TE.INTERSECTED.rotation._z));
+            TE.guiController.scaleX.setValue(TE.INTERSECTED.scale.x);
+            TE.guiController.scaleY.setValue(TE.INTERSECTED.scale.y);
+            TE.guiController.scaleZ.setValue(TE.INTERSECTED.scale.z);
+            TE.guiController.scale.setValue(Math.min(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z));
+            TE.guiEnabled = true;
         });
 
+        /*
         // 快捷键
         window.addEventListener('keydown', function (event) {
             switch (event.keyCode) {
@@ -273,17 +293,20 @@ var ThreeEditor = TE = {
                     break;
             }
         });
+        */
     },
 
     // 初始化自定义参数
     initGui: function () {
+        TE.guiController = {};
         //声明一个保存需求修改的相关数据的对象
         TE.gui = {
-            isFog: true,
             fogColor: '#ccc',
-            fogDensity: 0.01,
+            fogDensity: 0.008,
 
             curColor: '#fff',
+            castShadow: true,
+            receiveShadow: true,
 
             opEnabled: true,
             opModel: 'translate',  // translate  rotate  scale
@@ -310,7 +333,23 @@ var ThreeEditor = TE = {
 
             bumpScale: 0.2,
             shininess: 30,
-            opacity:1,
+            opacity: 1,
+
+            // 绑定信息
+            bind_visible: '',
+            bind_color: '',
+            bind_positionX: '',
+            bind_positionY: '',
+            bind_positionZ: '',
+            bind_rotationX: '',
+            bind_rotationY: '',
+            bind_rotationZ: '',
+            bind_scaleX: '',
+            bind_scaleY: '',
+            bind_scaleZ: '',
+            bind_opacity: '',
+            bind_value: '',
+            bind_can_select: '',
 
             // 拷贝
             copy: function () {
@@ -338,14 +377,18 @@ var ThreeEditor = TE = {
                     material = TE.INTERSECTED.material.clone();
                 }
                 obj = new THREE.Mesh(geometry, material);
-                obj.castShadow = true;
-                obj.receiveShadow = true;
+                obj.castShadow = TE.INTERSECTED.castShadow;
+                obj.receiveShadow = TE.INTERSECTED.receiveShadow;
 
                 obj.userData = TE.INTERSECTED.userData;
 
-                TE.scene.add(obj);
                 obj.position.set(TE.INTERSECTED.position.x + 2, TE.INTERSECTED.position.y, TE.INTERSECTED.position.z);
+                obj.rotation.set(TE.INTERSECTED.rotation.x, TE.INTERSECTED.rotation.y, TE.INTERSECTED.rotation.z);
+                obj.scale.set(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z);
 
+                TE.scene.add(obj);
+
+                // 选中
                 if (TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
                     obj.material.emissive.setHex(TE.INTERSECTED.currentHex);
                 }
@@ -363,31 +406,21 @@ var ThreeEditor = TE = {
                 TE.transformControl.detach(TE.transformControl.object);
             },
         };
-        var datGui = new dat.GUI();
+        TE.datGui = new dat.GUI();
         //将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
-        var f1 = datGui.addFolder('基础');
-        f1.add(TE.gui, 'isFog').name('雾气').onChange(function (value) {
-            if (value) {
-                TE.scene.fog = new THREE.FogExp2(TE.gui.fogColor, TE.gui.fogDensity);
-            }
-            else {
-                TE.scene.fog = null;
-            }
+        let f1 = TE.datGui.addFolder('基础');
+        TE.guiController.fogColor = f1.addColor(TE.gui, 'fogColor').name('雾气颜色').onChange(function (value) {
+            if (!TE.guiEnabled) return;
+            TE.scene.fog.color.set(value);
         });
-        f1.addColor(TE.gui, 'fogColor').name('雾气颜色').onChange(function (value) {
-            if (TE.gui.isFog) {
-                TE.scene.fog = new THREE.FogExp2(value, TE.gui.fogDensity);
-            }
-        });
-        f1.add(TE.gui, 'fogDensity', 0, 0.1).name('雾气强度').onChange(function (value) {
-            if (TE.gui.isFog) {
-                TE.scene.fog = new THREE.FogExp2(value, TE.gui.fogDensity);
-            }
+        TE.guiController.fogDensity = f1.add(TE.gui, 'fogDensity', 0, 0.04).name('雾气强度').onChange(function (value) {
+            if (!TE.guiEnabled) return;
+            TE.scene.fog.density = value;
         });
 
         //f1.open();
 
-        var f2 = datGui.addFolder('选中项');
+        let f2 = TE.datGui.addFolder('选中项');
         f2.add(TE.gui, 'opEnabled').listen().name('操作启用').onChange(function (value) {
             TE.transformControl.enabled = value;
         });
@@ -396,57 +429,75 @@ var ThreeEditor = TE = {
             旋转: 'rotate',
             缩放: 'scale',
         };
-        f2.add(TE.gui, 'opModel', modelType).listen().name('操作模式').onChange(function (value) {
+        f2.add(TE.gui, 'opModel', modelType).name('操作模式').onChange(function (value) {
             TE.transformControl.setMode(value);
         });
-        f2.add(TE.gui, 'opX').listen().name('X轴启用').onChange(function (value) {
+        f2.add(TE.gui, 'opX').name('X轴启用').onChange(function (value) {
             TE.transformControl.showX = value;
         });
-        f2.add(TE.gui, 'opY').listen().name('Y轴启用').onChange(function (value) {
+        f2.add(TE.gui, 'opY').name('Y轴启用').onChange(function (value) {
             TE.transformControl.showY = value;
         });
-        f2.add(TE.gui, 'opZ').listen().name('Z轴启用').onChange(function (value) {
+        f2.add(TE.gui, 'opZ').name('Z轴启用').onChange(function (value) {
             TE.transformControl.showY = value;
         });
 
+        // 阴影
+        TE.guiController.castShadow = f2.add(TE.gui, 'castShadow').name('产生阴影').onChange(function (value) {
+            if (TE.INTERSECTED && TE.guiEnabled) {
+                TE.INTERSECTED.castShadow = value;
+            }
+        });
+        TE.guiController.receiveShadow = f2.add(TE.gui, 'receiveShadow').name('接受阴影').onChange(function (value) {
+            if (TE.INTERSECTED && TE.guiEnabled) {
+                TE.INTERSECTED.receiveShadow = value;
+            }
+        });
+
         // 颜色
-        f2.addColor(TE.gui, 'curColor').listen().name('颜色').onChange(function (value) {
-            if (TE.INTERSECTED && TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
+        TE.guiController.curColor = f2.addColor(TE.gui, 'curColor').name('颜色').onChange(function (value) {
+            if (TE.INTERSECTED && TE.guiEnabled && TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
                 TE.INTERSECTED.material.color.set(value);
+                TE.INTERSECTED.userData['materialParams']['color'] = value;
             }
         });
 
         // 位置
         let positionFn = function (value) {
-            if (!TE.INTERSECTED) return;
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             TE.INTERSECTED.position.set(TE.gui.positionX, TE.gui.positionY, TE.gui.positionZ);
         };
-        f2.add(TE.gui, 'positionX').listen().name('位置X').onChange(positionFn);
-        f2.add(TE.gui, 'positionY').listen().name('位置Y').onChange(positionFn);
-        f2.add(TE.gui, 'positionZ').listen().name('位置Z').onChange(positionFn);
+        TE.guiController.positionX = f2.add(TE.gui, 'positionX').name('位置X').onChange(positionFn);
+        TE.guiController.positionY = f2.add(TE.gui, 'positionY').name('位置Y').onChange(positionFn);
+        TE.guiController.positionZ = f2.add(TE.gui, 'positionZ').name('位置Z').onChange(positionFn);
 
         // 角度
         let rotationFn = function (value) {
-            if (!TE.INTERSECTED) return;
-            TE.INTERSECTED.rotation.set(TE.gui.rotationX * Math.PI / 180, TE.gui.rotationY * Math.PI / 180, TE.gui.rotationZ * Math.PI / 180, 'XYZ');
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
+            TE.INTERSECTED.rotation.set(TE.getRad(TE.gui.rotationX), TE.getRad(TE.gui.rotationY), TE.getRad(TE.gui.rotationZ), 'XYZ');
         };
-        f2.add(TE.gui, 'rotationX', 0, 360, 5).listen().name('旋转X').onChange(rotationFn);
-        f2.add(TE.gui, 'rotationY', 0, 360, 5).listen().name('旋转Y').onChange(rotationFn);
-        f2.add(TE.gui, 'rotationZ', 0, 360, 5).listen().name('旋转Z').onChange(rotationFn);
+        TE.guiController.rotationX = f2.add(TE.gui, 'rotationX', 0, 360, 5).name('旋转X').onChange(rotationFn);
+        TE.guiController.rotationY = f2.add(TE.gui, 'rotationY', 0, 360, 5).name('旋转Y').onChange(rotationFn);
+        TE.guiController.rotationZ = f2.add(TE.gui, 'rotationZ', 0, 360, 5).name('旋转Z').onChange(rotationFn);
 
         // 缩放
-        f2.add(TE.gui, 'scale', 0).listen().name('缩放').onChange(function (value) {
-            if (!TE.INTERSECTED) return;
-            TE.gui.scaleX = TE.gui.scaleY = TE.gui.scaleZ = value;
+        TE.guiController.scale = f2.add(TE.gui, 'scale', 0).name('缩放').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             TE.INTERSECTED.scale.set(value, value, value);
+
+            TE.guiEnabled = false;
+            TE.guiController.scaleX.setValue(value);
+            TE.guiController.scaleY.setValue(value);
+            TE.guiController.scaleZ.setValue(value);
+            TE.guiEnabled = true;
         });
         let scaleFn = function (value) {
-            if (!TE.INTERSECTED) return;
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             TE.INTERSECTED.scale.set(TE.gui.scaleX, TE.gui.scaleY, TE.gui.scaleZ);
         };
-        f2.add(TE.gui, 'scaleX', 0).listen().name('缩放X').onChange(scaleFn);
-        f2.add(TE.gui, 'scaleY', 0).listen().name('缩放Y').onChange(scaleFn);
-        f2.add(TE.gui, 'scaleZ', 0).listen().name('缩放Z').onChange(scaleFn);
+        TE.guiController.scaleX = f2.add(TE.gui, 'scaleX').name('缩放X').onChange(scaleFn);
+        TE.guiController.scaleY = f2.add(TE.gui, 'scaleY').name('缩放Y').onChange(scaleFn);
+        TE.guiController.scaleZ = f2.add(TE.gui, 'scaleZ').name('缩放Z').onChange(scaleFn);
 
         // 材质
         let textureType = {
@@ -455,8 +506,8 @@ var ThreeEditor = TE = {
             texture02: '../static/threejs/texture/texture02.jpg',
             texture03: '../static/threejs/texture/texture03.jpg',
         };
-        f2.add(TE.gui, 'textureUrl', textureType).listen().name('材质图片').onChange(function (value) {
-            if (!TE.INTERSECTED) return;
+        TE.guiController.textureUrl = f2.add(TE.gui, 'textureUrl', textureType).name('材质图片').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             if (value == '') {
                 if (TE.INTERSECTED.material.map) {
                     TE.INTERSECTED.material.map.repeat.set(0, 0);
@@ -475,8 +526,8 @@ var ThreeEditor = TE = {
             }
             TE.INTERSECTED.userData['textureUrl'] = value;
         });
-        f2.add(TE.gui, 'textureRepeatX').listen().name('材质缩放X').onChange(function (value) {
-            if (!TE.INTERSECTED) return;
+        TE.guiController.textureRepeatX = f2.add(TE.gui, 'textureRepeatX').name('材质缩放X').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             if (TE.INTERSECTED.material.map) {
                 if (TE.gui.textureUrl == '') {
                     TE.INTERSECTED.material.map.repeat.set(0, 0);
@@ -487,8 +538,8 @@ var ThreeEditor = TE = {
             }
             TE.INTERSECTED.userData['textureRepeatX'] = value;
         });
-        f2.add(TE.gui, 'textureRepeatY').listen().name('材质缩放Y').onChange(function (value) {
-            if (!TE.INTERSECTED) return;
+        TE.guiController.textureRepeatY = f2.add(TE.gui, 'textureRepeatY').name('材质缩放Y').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
             if (TE.INTERSECTED.material.map) {
                 if (TE.gui.textureUrl == '') {
                     TE.INTERSECTED.material.map.repeat.set(0, 0);
@@ -501,27 +552,61 @@ var ThreeEditor = TE = {
         });
 
         // 材质凹凸
-        f2.add(TE.gui, 'bumpScale', 0, 1).listen().name('材质凹凸').onChange(function (value) {
-            if (!TE.INTERSECTED || !TE.INTERSECTED.material) return;
+        TE.guiController.bumpScale = f2.add(TE.gui, 'bumpScale', 0, 1).name('材质凹凸').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled || !TE.INTERSECTED.material) return;
             TE.INTERSECTED.material.bumpScale = value;
+            TE.INTERSECTED.userData['materialParams']['bumpScale'] = value;
         });
 
         // 高亮
-        f2.add(TE.gui, 'shininess', 0, 100).listen().name('高亮').onChange(function (value) {
-            if (!TE.INTERSECTED || !TE.INTERSECTED.material) return;
+        TE.guiController.shininess = f2.add(TE.gui, 'shininess', 0, 100).name('高亮').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled || !TE.INTERSECTED.material) return;
             TE.INTERSECTED.material.shininess = value;
+            TE.INTERSECTED.userData['materialParams']['shininess'] = value;
         });
 
         // 透明
-        f2.add(TE.gui, 'opacity', 0, 1).listen().name('透明度').onChange(function (value) {
-            if (!TE.INTERSECTED || !TE.INTERSECTED.material) return;
+        TE.guiController.opacity = f2.add(TE.gui, 'opacity', 0, 1).name('透明度').onChange(function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled || !TE.INTERSECTED.material) return;
             TE.INTERSECTED.material.opacity = value;
             TE.INTERSECTED.material.transparent = value != 1;
+            TE.INTERSECTED.userData['materialParams']['opacity'] = value;
         });
 
         // 3D对象操作
         f2.add(TE.gui, 'copy').name('复制3D对象');
         f2.add(TE.gui, 'del').name('删除3D对象');
+
+        // 绑定
+        let f3 = TE.datGui.addFolder('绑定');
+        let saveBind = function (value) {
+            if (!TE.INTERSECTED || !TE.guiEnabled) return;
+            if (!TE.INTERSECTED.userData['bind']) {
+                TE.INTERSECTED.userData['bind'] = {};
+            }
+            let k = this.property.replace('bind_', '');
+            if (value == '') {
+                delete (TE.INTERSECTED.userData['bind'][k]);
+            }
+            else {
+                TE.INTERSECTED.userData['bind'][k] = value;
+            }
+        };
+
+        TE.guiController.bind_visible = f3.add(TE.gui, 'bind_visible').name('是否可见').onFinishChange(saveBind);
+        TE.guiController.bind_color = f3.add(TE.gui, 'bind_color').name('颜色').onFinishChange(saveBind);
+        TE.guiController.bind_positionX = f3.add(TE.gui, 'bind_positionX').name('位置X').onFinishChange(saveBind);
+        TE.guiController.bind_positionY = f3.add(TE.gui, 'bind_positionY').name('位置Y').onFinishChange(saveBind);
+        TE.guiController.bind_positionZ = f3.add(TE.gui, 'bind_positionZ').name('位置Z').onFinishChange(saveBind);
+        TE.guiController.bind_rotationX = f3.add(TE.gui, 'bind_rotationX').name('旋转X').onFinishChange(saveBind);
+        TE.guiController.bind_rotationY = f3.add(TE.gui, 'bind_rotationY').name('旋转Y').onFinishChange(saveBind);
+        TE.guiController.bind_rotationZ = f3.add(TE.gui, 'bind_rotationZ').name('旋转Z').onFinishChange(saveBind);
+        TE.guiController.bind_scaleX = f3.add(TE.gui, 'bind_scaleX').name('缩放X').onFinishChange(saveBind);
+        TE.guiController.bind_scaleY = f3.add(TE.gui, 'bind_scaleY').name('缩放Y').onFinishChange(saveBind);
+        TE.guiController.bind_scaleZ = f3.add(TE.gui, 'bind_scaleZ').name('缩放Z').onFinishChange(saveBind);
+        TE.guiController.bind_opacity = f3.add(TE.gui, 'bind_opacity').name('透明度').onFinishChange(saveBind);
+        TE.guiController.bind_value = f3.add(TE.gui, 'bind_value').name('显示值').onFinishChange(saveBind);
+        TE.guiController.bind_can_select = f3.add(TE.gui, 'bind_can_select').name('允许选中').onFinishChange(saveBind);
     },
 
     // 初始化鼠标点击
@@ -551,7 +636,8 @@ var ThreeEditor = TE = {
             TE.raycaster.setFromCamera(mouse, TE.camera);
             TE.scene.children.forEach(child => {
                 if (!child.type) return;
-                
+                if (!child.userData.type) return;
+
                 if ($.inArray(child.type, ['Mesh', 'Scene', 'Sprite', 'Group']) != -1) {
                     objects.push(child)
                 };
@@ -573,6 +659,7 @@ var ThreeEditor = TE = {
                 }
 
                 TE.selectObj(curObj);
+                TE.orbit.autoRotate = false;
             }
             else {
                 if (TE.INTERSECTED) {
@@ -581,6 +668,7 @@ var ThreeEditor = TE = {
                     }
                 }
 
+                TE.orbit.autoRotate = true;
                 TE.INTERSECTED = null;
                 TE.transformControl.detach(TE.transformControl.object);
             }
@@ -593,7 +681,6 @@ var ThreeEditor = TE = {
         if (obj == TE.INTERSECTED) {
             return;
         }
-
         if (TE.INTERSECTED) {
             if (TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
                 TE.INTERSECTED.material.emissive.setHex(TE.INTERSECTED.currentHex);
@@ -602,35 +689,55 @@ var ThreeEditor = TE = {
 
         // 高亮
         TE.INTERSECTED = obj;
+
+        TE.guiEnabled = false;
         if (TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
             console.log(TE.INTERSECTED.material);
-            TE.gui.curColor = '#' + TE.INTERSECTED.material.color.getHexString();
+            TE.guiController.curColor.setValue('#' + TE.INTERSECTED.material.color.getHexString());
         }
-        TE.gui.positionX = TE.INTERSECTED.position.x;
-        TE.gui.positionY = TE.INTERSECTED.position.y;
-        TE.gui.positionZ = TE.INTERSECTED.position.z;
-        TE.gui.rotationX = TE.INTERSECTED.rotation._x * 180 / Math.PI;
-        TE.gui.rotationY = TE.INTERSECTED.rotation._y * 180 / Math.PI;
-        TE.gui.rotationZ = TE.INTERSECTED.rotation._z * 180 / Math.PI;
-        TE.gui.scaleX = TE.INTERSECTED.scale.x;
-        TE.gui.scaleY = TE.INTERSECTED.scale.y;
-        TE.gui.scaleZ = TE.INTERSECTED.scale.z;
-        TE.gui.scale = Math.min(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z);
+        TE.guiController.positionX.setValue(TE.INTERSECTED.position.x);
+        TE.guiController.positionY.setValue(TE.INTERSECTED.position.y);
+        TE.guiController.positionZ.setValue(TE.INTERSECTED.position.z);
+        TE.guiController.rotationX.setValue(TE.INTERSECTED.rotation._x * 180 / Math.PI);
+        TE.guiController.rotationY.setValue(TE.INTERSECTED.rotation._y * 180 / Math.PI);
+        TE.guiController.rotationZ.setValue(TE.INTERSECTED.rotation._z * 180 / Math.PI);
+        TE.guiController.scaleX.setValue(TE.INTERSECTED.scale.x);
+        TE.guiController.scaleY.setValue(TE.INTERSECTED.scale.y);
+        TE.guiController.scaleZ.setValue(TE.INTERSECTED.scale.z);
+        TE.guiController.scale.setValue(Math.min(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z));
 
-        TE.gui.textureUrl = TE.INTERSECTED.userData['textureUrl'];
-        TE.gui.textureRepeatX = TE.INTERSECTED.userData['textureRepeatX'];
-        TE.gui.textureRepeatY = TE.INTERSECTED.userData['textureRepeatY'];
+        TE.guiController.castShadow.setValue(TE.INTERSECTED.castShadow);
+        TE.guiController.receiveShadow.setValue(TE.INTERSECTED.receiveShadow);
+
+        TE.guiController.textureUrl.setValue(TE.INTERSECTED.userData['textureUrl']);
+        TE.guiController.textureRepeatX.setValue(TE.INTERSECTED.userData['textureRepeatX']);
+        TE.guiController.textureRepeatY.setValue(TE.INTERSECTED.userData['textureRepeatY']);
 
         //console.log(INTERSECTED);
         if (TE.INTERSECTED.material && (TE.INTERSECTED.material instanceof THREE.MeshPhongMaterial)) {
             TE.INTERSECTED.currentHex = TE.INTERSECTED.material.emissive.getHex();
             TE.INTERSECTED.material.emissive.setHex(0x333333);
-            TE.gui.bumpScale = TE.INTERSECTED.material.bumpScale;
-            TE.gui.shininess = TE.INTERSECTED.material.shininess;
+            TE.guiController.bumpScale.setValue(TE.INTERSECTED.material.bumpScale);
+            TE.guiController.shininess.setValue(TE.INTERSECTED.material.shininess);
         }
-        if (TE.INTERSECTED.material){
-            TE.gui.opacity = TE.INTERSECTED.material.opacity;
+        if (TE.INTERSECTED.material) {
+            TE.guiController.opacity.setValue(TE.INTERSECTED.material.opacity);
         }
+
+        // 绑定
+        let bindData = TE.INTERSECTED.userData['bind'] || {};
+        // console.log(bindData);
+        for (let k in TE.guiController) {
+            if (k.indexOf('bind_') !== 0) {
+                continue;
+            }
+
+            let kk = k.replace('bind_', '');
+            TE.guiController[k].setValue(bindData[kk] || '');
+        }
+
+        TE.guiEnabled = true;
+
         TE.transformControl.attach(TE.INTERSECTED);
         TE.targetPosition = TE.INTERSECTED.position.clone();
         TE.animateCamera(TE.orbit.target, TE.targetPosition);
@@ -661,7 +768,7 @@ var ThreeEditor = TE = {
 
     // 3D物体
     addObj: function (geometry, position, color, textureUrl) {
-        color = color || Math.random() * 0XFFFFFF;
+        color = color || '#' + Math.random().toString(16).substr(2, 6).toUpperCase();
         textureUrl = textureUrl || '';
 
         //let material = new THREE.MeshPhysicalMaterial( { color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide } );
@@ -692,9 +799,18 @@ var ThreeEditor = TE = {
         obj.castShadow = true;
         obj.receiveShadow = true;
 
+        obj.userData['type'] = geometry.type.replace('Buffer', '').replace('Geometry', '');
+        obj.userData['geometryParams'] = geometry.parameters;
+        obj.userData['materialParams'] = {
+            color: color,
+            bumpScale: 0.2,
+            shininess: 30,
+            opacity: 1,
+        };
         obj.userData['textureUrl'] = textureUrl;
         obj.userData['textureRepeatX'] = 3;
         obj.userData['textureRepeatY'] = 3;
+        obj.userData['bind'] = {};
 
         TE.scene.add(obj);
         obj.position.set(position.x, position.y, position.z);
@@ -717,16 +833,16 @@ var ThreeEditor = TE = {
     addText: function (txt, size, height, color, fnCallback) {
         size = size || 3;
         height = height || 1;
-        color = color || '#ff0000';
+        color = color || '#FF0000';
         let loader = new THREE.FontLoader();
         loader.load('../static/threejs/font/helvetiker_regular.typeface.json', function (font) {
-            let textGeom = new THREE.TextBufferGeometry(txt,
-                {
-                    size: size, height: height, curveSegments: 10,
-                    font: font, weight: "normal", style: "normal",
-                    bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: false,
-                    material: 0, extrudeMaterial: 1
-                });
+            let textOption = {
+                size: size, height: height, curveSegments: 10,
+                font: font, weight: "normal", style: "normal",
+                bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: false,
+                material: 0, extrudeMaterial: 1
+            };
+            let textGeom = new THREE.TextBufferGeometry(txt, textOption);
             // font: helvetiker, gentilis, droid sans, droid serif, optimer
             // weight: normal, bold
 
@@ -751,9 +867,20 @@ var ThreeEditor = TE = {
             textMesh.position.set(-0.5 * textWidth, 20, 0);
             //textMesh.rotation.x = -Math.PI / 4;
 
+            delete (textOption.font);
+            textMesh.userData['type'] = textGeom.type.replace('Buffer', '').replace('Geometry', '');
+            textMesh.userData['geometryParams'] = textOption;
+            textMesh.userData['materialParams'] = {
+                color: color,
+                bumpScale: 0.2,
+                shininess: 30,
+                opacity: 1,
+            };
+            textMesh.userData['text'] = txt;
             textMesh.userData['textureUrl'] = '';
             textMesh.userData['textureRepeatX'] = 3;
             textMesh.userData['textureRepeatY'] = 3;
+            textMesh.userData['bind'] = {};
 
             TE.scene.add(textMesh);
             if (fnCallback) {
@@ -770,9 +897,9 @@ var ThreeEditor = TE = {
             let paths = data.paths;
 
             let group = new THREE.Group();
-            group.scale.multiplyScalar(0.05);
-            group.position.x = -14;
-            group.position.y = 14 + 30;
+            //group.scale.multiplyScalar(0.05);
+            group.position.x = 0;
+            group.position.y = 30;
             group.scale.y *= - 1;
 
             for (let i = 0; i < paths.length; i++) {
@@ -801,9 +928,9 @@ var ThreeEditor = TE = {
                         mesh.castShadow = true;
                         //mesh.receiveShadow = true;
 
+                        mesh.scale.multiplyScalar(0.03);
                         group.add(mesh);
                     }
-
                 }
 
                 let strokeColor = path.userData.style.stroke;
@@ -824,49 +951,46 @@ var ThreeEditor = TE = {
                         if (geometry) {
                             let mesh = new THREE.Mesh(geometry, material);
                             mesh.castShadow = true;
+                            mesh.scale.multiplyScalar(0.03);
                             group.add(mesh);
                         }
                     }
                 }
             }
 
+            group.userData['type'] = 'Svg';
+            group.userData['svgUrl'] = svgUrl;
+            group.userData['bind'] = {};
+
             TE.scene.add(group);
-            if (fnCallback)
-            {
+            if (fnCallback) {
                 fnCallback(group);
             }
         });
     },
 
-    saveScene: function () {
-        let sceneJson = scene.toJSON();
-        localStorage.setItem('scene', JSON.stringify(sceneJson));
+    // 添加图片
+    addImg: function (imgUrl) {
+        let spriteMap = new THREE.TextureLoader().load(imgUrl);
 
-        console.log(sceneJson);
+        let spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap, color: 0xffffff });
+
+        let sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(1, 1, 1)
+
+        sprite.userData['type'] = 'Img';
+        sprite.userData['imgUrl'] = imgUrl;
+        sprite.userData['materialParams'] = {
+            opacity: 1,
+        };
+        sprite.userData['bind'] = {};
+
+        TE.scene.add(sprite);
+
+        return sprite;
     },
 
-    loadScene: function () {
-        let json = localStorage.getItem("scene");
-
-        if (json) {
-            let sceneJson = JSON.parse(json);
-            let loader = new THREE.ObjectLoader();
-
-            console.log(sceneJson);
-
-            let result = loader.parse(sceneJson);
-            console.log(result);
-
-            while (scene.children.length > 0) {
-
-                var child = TE.scene.children.pop();
-                TE.cmdArray.push(new AddObjectCommand(TE.editor, child));
-
-            }
-        }
-    },
-
-    loadModel: function () {
+    addModel: function (model_name, fnCallback) {
         // 加载 glTF 格式的模型
         let loader = new THREE.GLTFLoader();/*实例化加载器*/
         loader.setPath('../static/threejs/models/');
@@ -876,14 +1000,17 @@ var ThreeEditor = TE = {
         loader.setDRACOLoader( dracoLoader );
         */
 
-        loader.load('tree03.glb', function (obj) {
+        loader.load(model_name, function (obj) {
             //console.log(obj);
-            obj.scene.position.y = 10;
-            TE.scene.add(obj.scene);
-            obj.scene.scale.x = 50;
-            obj.scene.scale.y = 50;
-            obj.scene.scale.z = 50;
-            obj.scene.traverse(function (object) {
+            let modelObj = obj.scene;
+            modelObj.userData['type'] = 'Model';
+            modelObj.userData['modelName'] = model_name;
+            modelObj.userData['bind'] = {};
+            TE.scene.add(modelObj);
+            modelObj.scale.x = 50;
+            modelObj.scale.y = 50;
+            modelObj.scale.z = 50;
+            modelObj.traverse(function (object) {
                 if (object.isMesh) {
                     object.castShadow = true;
                     object.receiveShadow = true;
@@ -891,7 +1018,9 @@ var ThreeEditor = TE = {
                 }
             });
 
-            TE.selectObj(obj.scene);
+            if (fnCallback) {
+                fnCallback(modelObj);
+            }
 
         }, function (xhr) {
             console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -902,23 +1031,23 @@ var ThreeEditor = TE = {
     },
 
     // 文字标签
-    markerText: function (message, parameters) {
+    addMarker: function (txt, parameters) {
         if (parameters === undefined) parameters = {};
 
         let fontface = parameters.hasOwnProperty("fontface") ?
             parameters["fontface"] : "Arial";
 
         let fontsize = parameters.hasOwnProperty("fontsize") ?
-            parameters["fontsize"] : 36;
+            parameters["fontsize"] : 48;
 
         let borderThickness = parameters.hasOwnProperty("borderThickness") ?
             parameters["borderThickness"] : 4;
 
         let borderColor = parameters.hasOwnProperty("borderColor") ?
-            parameters["borderColor"] : 'rgba(0,0,0,0.5)';
+            parameters["borderColor"] : 'rgba(0,0,0,0.7)';
 
         let backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
-            parameters["backgroundColor"] : 'rgba(255,255,255,0.5)';
+            parameters["backgroundColor"] : 'rgba(255,255,255,0.7)';
 
         let color = parameters.hasOwnProperty("color") ?
             parameters["color"] : '#000';
@@ -933,7 +1062,7 @@ var ThreeEditor = TE = {
         context.font = "Bold " + fontsize + "px " + fontface;
 
         // get size data (height depends only on font size)
-        let metrics = context.measureText(message);
+        let metrics = context.measureText(txt);
         let textWidth = metrics.width;
 
         // 重新设置宽度
@@ -948,8 +1077,6 @@ var ThreeEditor = TE = {
         // border color
         context.strokeStyle = borderColor;
 
-        console.log(backgroundColor, borderColor);
-
         context.lineWidth = borderThickness;
         TE.roundRect(context, borderThickness / 2, borderThickness / 2, textWidth + borderThickness, fontsize * 1.4 + borderThickness, 6);
         // 1.4 is extra height factor for text below baseline: g,j,p,q.
@@ -957,17 +1084,28 @@ var ThreeEditor = TE = {
         // text color
         context.fillStyle = color;
 
-        context.fillText(message, borderThickness, fontsize + borderThickness);
+        context.fillText(txt, borderThickness, fontsize + borderThickness);
         // $('body').append(canvas);
 
         // canvas contents will be used for a texture
         let texture = new THREE.CanvasTexture(canvas);
 
         let spriteMaterial = new THREE.SpriteMaterial(
-            { map: texture });
+            { map: texture, transparent:true });
         let sprite = new THREE.Sprite(spriteMaterial);
         sprite.scale.set(1 * canvas.width / canvas.height, 1, 1);
         sprite.center.set(0.5, 0);
+
+        sprite.userData['type'] = 'Marker';
+        sprite.userData['markerParams'] = parameters;
+        sprite.userData['markerParams']['text'] = txt;
+        sprite.userData['materialParams'] = {
+            opacity: 1,
+        };
+        sprite.userData['bind'] = {};
+
+        TE.scene.add(sprite);
+
         return sprite;
     },
 
@@ -1027,7 +1165,7 @@ var ThreeEditor = TE = {
         let geometry = null;
         let arr = [];
         switch (type) {
-            case 'BoxBufferGeometry':
+            case 'BoxGeometry':
                 arr = TE.parseNum(window.prompt('立方体 (X,Y,Z)', '1,1,1'));
                 if (arr === null) return;
                 geometry = new THREE.BoxBufferGeometry(arr[0], arr[1], arr[2]);
@@ -1099,16 +1237,30 @@ var ThreeEditor = TE = {
                     fontsize: arr[0],
                     color: arr[1],
                 };
-                let spritey = TE.markerText(s2[1], markerOption);
+                let spritey = TE.addMarker(' ' + s2[1] + ' ', markerOption);
                 spritey.position.set(0, 15, 0);
-                TE.scene.add(spritey);
-                TE.selectObj(obj);
+                TE.selectObj(spritey);
                 return;
             case 'Svg':
-                let svgUrl = window.prompt('SVG图片 (图片URL)', '');
+                let svgUrl = window.prompt('SVG图片 (图片URL)', '../static/threejs/models/svg/threejs.svg');
                 if (!svgUrl) return;
                 TE.addSvg(svgUrl, function (svgObj) {
                     TE.selectObj(svgObj);
+                });
+                break;
+            case 'Img':
+                let imgUrl = window.prompt('IMG图片 (图片URL)', '../static/threejs/models/png/test.png');
+                if (!imgUrl) return;
+                let imgObj = TE.addImg(imgUrl);
+                imgObj.position.set(0, 15, 0);
+                TE.selectObj(imgObj);
+                break;
+            case 'Model':
+                let modelName = window.prompt('GLB模型 (GLB名称)', 'tree03.glb');
+                if (!modelName) return;
+                TE.addModel(modelName, function (modelObj) {
+                    TE.selectObj(modelObj);
+                    modelObj.position.set(0, 15, 0);
                 });
                 break;
         }
@@ -1135,5 +1287,189 @@ var ThreeEditor = TE = {
 
         return aa;
     },
+
+    save: function () {
+        let saveData = {};
+        saveData['time'] = (new Date()).toLocaleString();
+        saveData['version'] = TE.version;
+
+        saveData['base'] = {};
+
+        // 雾气
+        saveData['base']['fog'] = {
+            fogColor: TE.gui.fogColor,
+            fogDensity: TE.gui.fogDensity,
+        };
+
+        // 元素列表
+        let list = [];
+        for (let k in TE.scene.children) {
+            let obj = TE.scene.children[k];
+            if (obj.userData['type']) {
+                list.push({
+                    type: obj.userData.type,
+                    castShadow: obj.castShadow,
+                    receiveShadow: obj.receiveShadow,
+                    position: obj.position,
+                    rotation: obj.rotation.toVector3(),
+                    scale: obj.scale,
+                    userData: obj.userData,
+                });
+            }
+        }
+        saveData['list'] = list;
+
+        console.log(saveData);
+        localStorage.setItem('saveData', JSON.stringify(saveData));
+
+        window.alert('保存成功');
+    },
+
+    load: function () {
+        let json = localStorage.getItem("saveData");
+        if (!json) return;
+
+        let saveData = JSON.parse(json);
+        console.log(saveData);
+
+        TE.clear();
+
+        TE.guiEnabled = false;
+
+        // 雾气
+        let fog = saveData['base']['fog'];
+        TE.scene.fog.color.set(fog.fogColor);
+        TE.scene.fog.density = fog.fogDensity;
+        TE.guiController.fogColor.setValue(fog.fogColor);
+        TE.guiController.fogDensity.setValue(fog.fogDensity);
+
+        // 加载元素
+        for (let k in saveData['list']) {
+            let obj = saveData['list'][k];
+            let mesh = null;
+            let geometry = null;
+            let geoParam = obj.userData.geometryParams;
+            switch (obj.type) {
+                case 'Box':
+                    geometry = new THREE.BoxBufferGeometry(geoParam.width, geoParam.height, geoParam.depth);
+                    geometry.translate(0, geoParam.height / 2, 0);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Marker':
+                    mesh = TE.addMarker(obj.userData.markerParams.text, obj.userData.markerParams);
+                    break;
+                case 'Svg':
+                    TE.addSvg(obj.userData.svgUrl, function (svgObj) {
+                        TE.setMesh(svgObj, obj);
+                        console.log(k);
+                    });
+                    continue;
+                case 'Img':
+                    mesh = TE.addImg(obj.userData.imgUrl);
+                    break;
+                case 'Model':
+                    TE.addModel(obj.userData.modelName, function (modelObj) {
+                        TE.setMesh(modelObj, obj);
+                    });
+                    continue;
+                case 'Text':
+                    TE.addText(obj.userData.text||'', geoParam.size, geoParam.height, obj.userData.materialParams.color, function (txtObj) {
+                        TE.setMesh(txtObj, obj);
+                    });
+                    continue;
+                case 'Cone':
+                    geometry = new THREE.ConeBufferGeometry(geoParam.radius, geoParam.height, geoParam.radialSegments);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Cylinder':
+                    geometry = new THREE.CylinderBufferGeometry(geoParam.radiusTop, geoParam.radiusBottom, geoParam.height, geoParam.radialSegments);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Dodecahedron':
+                    geometry = new THREE.DodecahedronBufferGeometry(geoParam.radius, geoParam.detail);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Icosahedron':
+                    geometry = new THREE.IcosahedronBufferGeometry(geoParam.radius, geoParam.detail);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Octahedron':
+                    geometry = new THREE.OctahedronBufferGeometry(geoParam.radius, geoParam.detail);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Ring':
+                    geometry = new THREE.RingBufferGeometry(geoParam.innerRadius, geoParam.outerRadius, geoParam.thetaSegments);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Sphere':
+                    geometry = new THREE.SphereBufferGeometry(geoParam.radius, geoParam.widthSegments, geoParam.heightSegments);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Tetrahedron':
+                    geometry = new THREE.TetrahedronBufferGeometry(geoParam.radius, geoParam.detail);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+                case 'Torus':
+                    geometry = new THREE.TorusBufferGeometry(geoParam.radius, geoParam.tube, geoParam.radialSegments, geoParam.tubularSegments, geoParam.arc);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    break;
+            }
+
+            TE.setMesh(mesh, obj);
+        }
+
+        TE.guiEnabled = true;
+    },
+
+    setMesh: function (mesh, obj) {
+        if (!mesh) return;
+
+        mesh.position.set(obj.position.x, obj.position.y, obj.position.z);
+        mesh.rotation.set(obj.rotation.x, obj.rotation.y, obj.rotation.z);
+        mesh.scale.set(obj.scale.x, obj.scale.y, obj.scale.z);
+        mesh.userData = obj.userData;
+    
+        mesh.castShadow = obj.castShadow;
+        mesh.receiveShadow = obj.receiveShadow;
+
+        if (mesh.type != 'Group' && mesh.material && obj.userData.materialParams) {
+            mesh.material.color.set(obj.userData.materialParams.color);
+            mesh.material.bumpScale = obj.userData.materialParams.bumpScale;
+            mesh.material.shininess = obj.userData.materialParams.shininess;
+            mesh.material.opacity = obj.userData.materialParams.opacity;
+            if (obj.type != 'Marker')
+            {
+                mesh.material.transparent = mesh.material.opacity < 1;
+            }
+            else
+            {
+                mesh.material.transparent = true;
+            }
+
+            if ('textureUrl' in obj.userData) {
+                if (obj.userData.textureUrl == '') {
+                    mesh.material.map.repeat.set(0, 0);
+                }
+                else {
+                    mesh.material.map.repeat.set(obj.userData.textureRepeatX, obj.userData.textureRepeatY);
+                }
+            }
+        }
+    },
+
+    clear: function () {
+
+        for (let i = 0; i < TE.scene.children.length; i++) {
+            let obj = TE.scene.children[i];
+            if (obj.userData['type']) {
+                TE.scene.remove(obj);
+                i--;
+            }
+        }
+
+        TE.INTERSECTED = null;
+        TE.transformControl.detach(TE.transformControl.object);
+    },
+
 };
 
