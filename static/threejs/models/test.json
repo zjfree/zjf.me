@@ -1,0 +1,6339 @@
+{
+    "time": "2020/2/13 上午11:45:31",
+    "version": "20200210",
+    "base": {
+        "autoRotate": false,
+        "fog": {
+            "fogColor": "#ccc",
+            "fogDensity": 0.005
+        }
+    },
+    "list": [
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0.2,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.8000000000000007,
+                "y": 1,
+                "z": 1.7000000000000004
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 50,
+                    "height": 0.4,
+                    "depth": 50
+                },
+                "materialParams": {
+                    "color": "#363",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture02.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.584704473076886,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7C0FC6",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 8.584704473076886,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #1号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.268956718627201,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#0D0649",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 12.268956718627201,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #2号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 4.87956869581263,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#6CB853",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 4.87956869581263,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #3号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.722224443597874,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#C2A3E3",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 3.722224443597874,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #4号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.668842991296486,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#8DB8C7",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 6.668842991296486,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #5号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.856624660799536,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#B61301",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 12.856624660799536,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #6号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.937274219483989,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7E4ED1",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 11.937274219483989,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #7号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.8733714023308465,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#07BCAB",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 7.8733714023308465,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #8号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -20,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.401018449337766,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#B6342C",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -20,
+                "y": 12.401018449337766,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.7922077922077921,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #9号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.612877245454431,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#E8782A",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 12.612877245454431,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #10号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.147269118837647,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#E3784F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 10.147269118837647,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.103896103896104,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #11号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.70009340194623,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F8E5B0",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 7.70009340194623,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #12号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.808895790390352,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#8CF448",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 12.808895790390352,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #13号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.849320478452206,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#9B6AE0",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 7.849320478452206,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #14号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.966145546647542,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#61490D",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 9.966145546647542,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #15号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.765600005560497,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7DA909",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 11.765600005560497,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #16号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.62443016358094,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#821B03",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 10.62443016358094,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #17号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.467456457917261,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#B8FFA0",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -15,
+                "y": 5.467456457917261,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #18号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 4.305752857765407,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#C7CEE9",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 4.305752857765407,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #19号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.549222426112959,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#73AA73",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 5.549222426112959,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #20号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.5715596441296245,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#0F8B07",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 3.5715596441296245,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #21号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.879992029717327,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#BBE381",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 6.879992029717327,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #22号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.251399405395453,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#3FB68B",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 10.251399405395453,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #23号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.207829538170081,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#198AEF",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 6.207829538170081,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #24号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.2779353531581896,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#905215",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 3.2779353531581896,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #25号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.513742808575614,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F30825",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 12.513742808575614,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #26号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -10,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.348910764394404,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#9A2121",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -10,
+                "y": 9.348910764394404,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #27号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.751717004811108,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#0F5FE3",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 6.751717004811108,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #28号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.056596349713663,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#9EB43B",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 7.056596349713663,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #29号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.123209814503866,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#DE6923",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 6.123209814503866,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #30号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.397263664483795,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#4E80D1",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 10.397263664483795,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #31号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.045191988537353,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#B158F3",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 7.045191988537353,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #32号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.056999137911431,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#B095B8",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 3.056999137911431,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #33号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.07039936294127,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#DAC8EA",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 9.07039936294127,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #34号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.137004709949263,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#3D6459",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 6.137004709949263,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #35号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -5,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.5883986920424,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#74C3F6",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -5,
+                "y": 12.5883986920424,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #36号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.974415866757521,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7F0ADC",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 3.974415866757521,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #37号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.512090026154403,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#A831E4",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 7.512090026154403,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #38号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.660274969493703,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#48D181",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 5.660274969493703,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #39号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.126573138694107,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#4CB72F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 10.126573138694107,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #40号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.9862193217268125,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#EF5483",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 7.9862193217268125,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #41号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.29909355532492,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#A5C1CE",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 12.29909355532492,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #42号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.734797166334941,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#DFFECF",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 5.734797166334941,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #43号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.576509406601208,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#9D2A13",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 5.576509406601208,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #44号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.400715477183466,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#AA5495",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 0,
+                "y": 8.400715477183466,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #45号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.9612314686228696,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#EB7DB8",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 3.9612314686228696,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #46号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.25796471756625,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#029B2F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 8.25796471756625,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #47号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.7795113329523495,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#FC2B72",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 3.7795113329523495,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #48号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.140392655007698,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F035AC",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 9.140392655007698,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #49号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.433527915465739,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#C0E07D",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 10.433527915465739,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #50号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.51023805664384,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#66EA24",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 12.51023805664384,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #51号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.475224246033734,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7E2061",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 5.475224246033734,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #52号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.372055022685611,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#725990",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 11.372055022685611,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #53号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.447292262147958,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#1303E0",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 5,
+                "y": 5.447292262147958,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #54号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 5.859013810326969,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#700691",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 5.859013810326969,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #55号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.707473877818598,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#A69566",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 11.707473877818598,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #56号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.5314809009663115,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#52D618",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 7.5314809009663115,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #57号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.168992093067486,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#2D1DA5",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 3.168992093067486,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #58号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.640684956588915,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#692BF7",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 11.640684956588915,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #59号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.4778679097161,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#549F78",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 8.4778679097161,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #60号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.144093034910632,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#A8183A",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 10.144093034910632,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #61号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.810643752816034,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#5C01E8",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 10.810643752816034,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #62号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 10,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.99142745298759,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#ED730F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 10,
+                "y": 12.99142745298759,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #63号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.126473877349075,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#158AA9",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 7.126473877349075,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #64号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.757082875221416,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#993F7D",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 9.757082875221416,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #65号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.284156114255309,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F4AC9F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 9.284156114255309,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #66号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 4.847006459500435,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#BC02DF",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 4.847006459500435,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #67号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 12.101403607748056,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F1F30A",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 12.101403607748056,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #68号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.584600105576774,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F6E22C",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 11.584600105576774,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #69号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.558186799466178,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#2321F7",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 10.558186799466178,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #70号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 4.4779754233177105,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#D2078E",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 4.4779754233177105,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #71号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 15,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 3.2105173335341104,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#BF845F",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 15,
+                "y": 3.2105173335341104,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #72号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 7.7136808253507905,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#BC0827",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 7.7136808253507905,
+                "z": -20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #73号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 11.86903664482465,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#BA2507",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 11.86903664482465,
+                "z": -15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #74号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.167937236059366,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#C405D5",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 8.167937236059366,
+                "z": -10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #75号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 9.617512141688731,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#870FA5",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 9.617512141688731,
+                "z": -5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #76号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.516701010325793,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#EB22C6",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 8.516701010325793,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #77号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.460434561283366,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#7A1A27",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 6.460434561283366,
+                "z": 5
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #78号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 10.243950762403458,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#05ECD8",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 10.243950762403458,
+                "z": 10
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #79号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 8.884843635498566,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#F79ABE",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 8.884843635498566,
+                "z": 15
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #80号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Box",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 20,
+                "y": 0,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Box",
+                "geometryParams": {
+                    "width": 4,
+                    "height": 6.88937726056672,
+                    "depth": 4
+                },
+                "materialParams": {
+                    "color": "#C98651",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 20,
+                "y": 6.88937726056672,
+                "z": 20
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.1298701298701297,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "text": " #81号 "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Cone",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -29.44142011854216,
+                "y": 5.4778581079711675,
+                "z": 35.209917411520635
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Cone",
+                "geometryParams": {
+                    "radius": 3,
+                    "height": 3,
+                    "radialSegments": 32
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Cylinder",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -29.449532672718675,
+                "y": 0.44375553942647894,
+                "z": 35.2692473852234
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Cylinder",
+                "geometryParams": {
+                    "radiusTop": 3,
+                    "radiusBottom": 3,
+                    "height": 5,
+                    "radialSegments": 32
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Dodecahedron",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -21.232961926293576,
+                "y": 3.36730621861507,
+                "z": 36.74997737720145
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Dodecahedron",
+                "geometryParams": {
+                    "radius": 3,
+                    "detail": 2
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Icosahedron",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -13.79192183437,
+                "y": 2.8110801213600016,
+                "z": 36.665889942864005
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Icosahedron",
+                "geometryParams": {
+                    "radius": 3,
+                    "detail": 0
+                },
+                "materialParams": {
+                    "color": "#c0cd00",
+                    "bumpScale": 0.2,
+                    "shininess": 100,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture02.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Octahedron",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -6.583384371608007,
+                "y": 3.3510949024651318,
+                "z": 37.1528451420488
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Octahedron",
+                "geometryParams": {
+                    "radius": 3,
+                    "detail": 0
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Ring",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 3.9566003833503878,
+                "z": 38.05032822410508
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Ring",
+                "geometryParams": {
+                    "innerRadius": 1,
+                    "outerRadius": 3,
+                    "thetaSegments": 32
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Sphere",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 6.834876918379752,
+                "y": 3.695359826214087,
+                "z": 37.648533755355594
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Sphere",
+                "geometryParams": {
+                    "radius": 3,
+                    "widthSegments": 16,
+                    "heightSegments": 16
+                },
+                "materialParams": {
+                    "color": "#077a00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture03.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Tetrahedron",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 13.477503988649001,
+                "y": 3.1335578923984304,
+                "z": 37.21420590609349
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Tetrahedron",
+                "geometryParams": {
+                    "radius": 3,
+                    "detail": 0
+                },
+                "materialParams": {
+                    "color": "#F00",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Torus",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -21.90475058559465,
+                "y": 7.345002897950952,
+                "z": 30.693888322781845
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Torus",
+                "geometryParams": {
+                    "radius": 5,
+                    "tube": 1,
+                    "radialSegments": 32,
+                    "tubularSegments": 32,
+                    "arc": 6.283185307179586
+                },
+                "materialParams": {
+                    "color": "#8e0000",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "../static/threejs/texture/texture01.jpg",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Marker",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 6.7897979349805855,
+                "y": 6.866378238420891,
+                "z": 37.57652842584658
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1.9666666666666666,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Marker",
+                "markerParams": {
+                    "fontsize": 36,
+                    "color": "#ff0000",
+                    "text": " Hello "
+                },
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Img",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": -21.064960435309033,
+                "y": 8.064760051745127,
+                "z": 36.79848194681564
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 3.600000000000002,
+                "y": 3.600000000000002,
+                "z": 3.600000000000002
+            },
+            "userData": {
+                "type": "Img",
+                "imgUrl": "../static/threejs/models/png/test.png",
+                "materialParams": {
+                    "opacity": 1
+                },
+                "bind": {}
+            }
+        },
+        {
+            "type": "Tube",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": 0,
+                "y": 2.5197195003878328,
+                "z": 41.48041345420518
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Tube",
+                "geometryParams": {
+                    "path": [
+                        {
+                            "x": -30.879281247680108,
+                            "y": 3.9469553618134583,
+                            "z": -4.78488933798986
+                        },
+                        {
+                            "x": -32.07546017529466,
+                            "y": 3.934609429815971,
+                            "z": -4.782118183857101
+                        },
+                        {
+                            "x": -34.80865092987034,
+                            "y": 3.9222634978184834,
+                            "z": -4.779347029724341
+                        },
+                        {
+                            "x": -34.8211091555489,
+                            "y": -0.18228554928571994,
+                            "z": -4.773804721458822
+                        },
+                        {
+                            "x": -34.78166633870785,
+                            "y": -0.15604022729137346,
+                            "z": 0.01687764832057681
+                        },
+                        {
+                            "x": 30.815957996187503,
+                            "y": -0.3120804545827469,
+                            "z": 0.03375529664115362
+                        },
+                        {
+                            "x": 31.192491019386956,
+                            "y": -0.2545061357814752,
+                            "z": -0.40559457504376883
+                        },
+                        {
+                            "x": 31.04667879443495,
+                            "y": -0.3490384251513079,
+                            "z": -12.005009850948143
+                        },
+                        {
+                            "x": 30.917030939343576,
+                            "y": -3.0243668049258954,
+                            "z": -12.034060250188087
+                        }
+                    ],
+                    "radialSegments": 32,
+                    "radius": 0.25,
+                    "tubularSegments": 20
+                },
+                "materialParams": {
+                    "color": "#939393",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Text",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -23.846627705040635,
+                "y": 20,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Text",
+                "geometryParams": {
+                    "size": 3,
+                    "height": 1,
+                    "curveSegments": 10,
+                    "weight": "normal",
+                    "style": "normal",
+                    "bevelThickness": 0.1,
+                    "bevelSize": 0.1,
+                    "bevelEnabled": false,
+                    "material": 0,
+                    "extrudeMaterial": 1,
+                    "depth": 1
+                },
+                "materialParams": {
+                    "color": "#FF0000",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "text": "Hello World!",
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Text",
+            "castShadow": true,
+            "receiveShadow": true,
+            "position": {
+                "x": -15.193143051657781,
+                "y": 1.1856420038337108,
+                "z": 28.133647486404975
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 2.400000000000001,
+                "y": 2.400000000000001,
+                "z": 2.400000000000001
+            },
+            "userData": {
+                "type": "Text",
+                "geometryParams": {
+                    "size": 3,
+                    "height": 1,
+                    "curveSegments": 10,
+                    "weight": "normal",
+                    "style": "normal",
+                    "bevelThickness": 0.1,
+                    "bevelSize": 0.1,
+                    "bevelEnabled": false,
+                    "material": 0,
+                    "extrudeMaterial": 1,
+                    "depth": 1
+                },
+                "materialParams": {
+                    "color": "#3c00ff",
+                    "bumpScale": 0.2,
+                    "shininess": 30,
+                    "opacity": 1
+                },
+                "text": "Hello",
+                "textureUrl": "",
+                "textureRepeatX": 3,
+                "textureRepeatY": 3,
+                "bind": {}
+            }
+        },
+        {
+            "type": "Svg",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 4.946719234365602,
+                "y": 30,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": -1,
+                "z": 1
+            },
+            "userData": {
+                "type": "Svg",
+                "svgUrl": "../static/threejs/models/svg/threejs.svg",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 22.479166417808653,
+                "y": 0.25760570672324246,
+                "z": 30.65021938280639
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 50,
+                "y": 50,
+                "z": 50
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "tree03.glb",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 35.04008085762419,
+                "y": 0.555299083323602,
+                "z": 37.10495760031103
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 17.599999999999994,
+                "y": 17.599999999999994,
+                "z": 17.599999999999994
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "tree03.glb",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 39.665675221287536,
+                "y": 0.2590595881651465,
+                "z": 34.0967064919268
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 13.900000000000002,
+                "y": 13.900000000000002,
+                "z": 13.900000000000002
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "tree03.glb",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Svg",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 6.652689315479711,
+                "y": 9.089935306447778,
+                "z": 30.341848915186517
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 0.5,
+                "y": -0.5,
+                "z": 0.5
+            },
+            "userData": {
+                "type": "Svg",
+                "svgUrl": "../static/threejs/models/svg/tiger.svg",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 33.36556876264015,
+                "y": 2.3221215844788112,
+                "z": 20.28536595863544
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 98.5,
+                "y": 98.5,
+                "z": 98.5
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "test.glb",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 23.191795387607463,
+                "y": 1.9458269126624863,
+                "z": 41.51707191246039
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 50,
+                "y": 50,
+                "z": 50
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "fan01.glb",
+                "bind": {}
+            }
+        },
+        {
+            "type": "Model",
+            "castShadow": false,
+            "receiveShadow": false,
+            "position": {
+                "x": 34.474093161891055,
+                "y": 5.468942416696455,
+                "z": 14.243156631965675
+            },
+            "rotation": {
+                "x": 0,
+                "y": 1.5707963267948966,
+                "z": 0
+            },
+            "scale": {
+                "x": 21.59999999999998,
+                "y": 21.59999999999998,
+                "z": 21.59999999999998
+            },
+            "userData": {
+                "type": "Model",
+                "modelName": "推土机.glb",
+                "bind": {}
+            }
+        }
+    ]
+}

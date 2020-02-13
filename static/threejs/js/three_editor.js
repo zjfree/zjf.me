@@ -62,19 +62,13 @@ var ThreeEditor = TE = {
         TE.renderer.shadowMap.type = THREE.VSMShadowMap;
         TE.renderer.outputEncoding = THREE.sRGBEncoding;
 
+        TE.renderer.setPixelRatio( window.devicePixelRatio );
         /*
         BasicShadowMap 能够给出没有经过过滤的阴影映射 —— 速度最快，但质量最差。
         PCFShadowMap 为默认值，使用Percentage-Closer Filtering (PCF)算法来过滤阴影映射。
         PCFSoftShadowMap 使用Percentage-Closer Soft Shadows (PCSS)算法来过滤阴影映射。
         VSMShadowMap 使用Variance Shadow Map (VSM)算法来过滤阴影映射。当使用VSMShadowMap时，所有阴影接收者也将会投射阴影。
         */
-
-
-        //renderer.physicallyCorrectLights = true;
-        //renderer.outputEncoding = THREE.sRGBEncoding;
-        //renderer.shadowMap.enabled = true;
-        //renderer.toneMapping = THREE.ReinhardToneMapping;
-        //renderer.setPixelRatio( window.devicePixelRatio );
 
         TE.renderer.setClearColor('#333'); //设置背景颜色
         TE.renderer.setSize(TE.divMain.width(), TE.divMain.height());
@@ -88,7 +82,7 @@ var ThreeEditor = TE = {
 
     initScene: function () {
         TE.scene = new THREE.Scene();
-        TE.scene.fog = new THREE.FogExp2('#ccc', 0.008);
+        TE.scene.fog = new THREE.FogExp2('#ccc', 0.005);
         //scene.fog = new THREE.Fog('#ccc', 20, 100);
 
         // SKYBOX/FOG
@@ -114,6 +108,7 @@ var ThreeEditor = TE = {
         light.castShadow = true;
         //light.shadowCameraVisible = true;
         TE.scene.add(light);
+
         let helper = new THREE.DirectionalLightHelper(light, 5);
         TE.scene.add(helper);
 
@@ -130,7 +125,7 @@ var ThreeEditor = TE = {
         // LIGHT
         light = new THREE.PointLight(0xffffff, 0.3);
         light.position.set(0, 50, -50);
-        //light.castShadow = true;
+        light.castShadow = false;
         //light.shadowCameraVisible = true;
         TE.scene.add(light);
 
@@ -191,7 +186,7 @@ var ThreeEditor = TE = {
         //设置相机距离原点的最远距离
         TE.orbit.minDistance = 1;
         //设置相机距离原点的最远距离
-        TE.orbit.maxDistance = 100;
+        TE.orbit.maxDistance = 150;
         //是否开启右键拖拽
         TE.orbit.enablePan = false;
 
@@ -234,6 +229,11 @@ var ThreeEditor = TE = {
             TE.guiController.scaleZ.setValue(TE.INTERSECTED.scale.z);
             TE.guiController.scale.setValue(Math.min(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z));
             TE.guiEnabled = true;
+
+            if (TE.INTERSECTED.userData['type'] == 'TubeBox')
+            {
+                TE.updateTube();
+            }
         });
 
         /*
@@ -302,7 +302,9 @@ var ThreeEditor = TE = {
         //声明一个保存需求修改的相关数据的对象
         TE.gui = {
             fogColor: '#ccc',
-            fogDensity: 0.008,
+            fogDensity: 0.005,
+
+            autoRotate: true,
 
             curColor: '#fff',
             castShadow: true,
@@ -357,6 +359,10 @@ var ThreeEditor = TE = {
                     return;
                 }
 
+                if (TE.INTERSECTED.userData.type == 'TubeBox'){
+                    return;
+                }
+
                 let obj = null;
                 if (TE.INTERSECTED.type != 'Mesh') {
                     obj = TE.INTERSECTED.clone();
@@ -386,6 +392,10 @@ var ThreeEditor = TE = {
                 obj.rotation.set(TE.INTERSECTED.rotation.x, TE.INTERSECTED.rotation.y, TE.INTERSECTED.rotation.z);
                 obj.scale.set(TE.INTERSECTED.scale.x, TE.INTERSECTED.scale.y, TE.INTERSECTED.scale.z);
 
+                if (obj.userData.type == 'Tube'){
+                    TE.setTubeBox(obj);
+                }
+
                 TE.scene.add(obj);
 
                 // 选中
@@ -398,6 +408,10 @@ var ThreeEditor = TE = {
             // 删除
             del: function () {
                 if (!TE.INTERSECTED) {
+                    return;
+                }
+
+                if (!window.confirm('确认删除？')){
                     return;
                 }
 
@@ -416,6 +430,13 @@ var ThreeEditor = TE = {
         TE.guiController.fogDensity = f1.add(TE.gui, 'fogDensity', 0, 0.04).name('雾气强度').onChange(function (value) {
             if (!TE.guiEnabled) return;
             TE.scene.fog.density = value;
+        });
+
+        // 自动旋转
+        TE.guiController.autoRotate = f1.add(TE.gui, 'autoRotate').name('自动旋转').onChange(function (value) {
+            if (!TE.guiEnabled) return;
+            if (TE.INTERSECTED) return;
+            TE.orbit.autoRotate = value;
         });
 
         //f1.open();
@@ -623,6 +644,14 @@ var ThreeEditor = TE = {
         TE.divMain.on("mouseup", function (event) {
             if (TE.INTERSECTED) {
                 TE.targetPosition = TE.INTERSECTED.position.clone();
+                if (TE.INTERSECTED.userData['type'] == 'TubeBox')
+                {
+                    TE.targetPosition.set(
+                        TE.targetPosition.x + TE.INTERSECTED.parent.position.x,
+                        TE.targetPosition.y + TE.INTERSECTED.parent.position.y,
+                        TE.targetPosition.z + TE.INTERSECTED.parent.position.z
+                        );
+                }
                 TE.animateCamera(TE.orbit.target, TE.targetPosition);
             }
             if (!TE.isMouseDown) return;
@@ -649,6 +678,9 @@ var ThreeEditor = TE = {
             if (intersects.length > 0) {
                 let curObj = intersects[0].object;
                 while (true) {
+                    if (curObj.userData.type) {
+                        break;
+                    }
                     if (!curObj.parent) {
                         break;
                     }
@@ -668,7 +700,7 @@ var ThreeEditor = TE = {
                     }
                 }
 
-                TE.orbit.autoRotate = true;
+                TE.orbit.autoRotate = TE.gui.autoRotate;
                 TE.INTERSECTED = null;
                 TE.transformControl.detach(TE.transformControl.object);
             }
@@ -740,6 +772,14 @@ var ThreeEditor = TE = {
 
         TE.transformControl.attach(TE.INTERSECTED);
         TE.targetPosition = TE.INTERSECTED.position.clone();
+        if (TE.INTERSECTED.userData['type'] == 'TubeBox')
+        {
+            TE.targetPosition.set(
+                TE.targetPosition.x + TE.INTERSECTED.parent.position.x,
+                TE.targetPosition.y + TE.INTERSECTED.parent.position.y,
+                TE.targetPosition.z + TE.INTERSECTED.parent.position.z
+                );
+        }
         TE.animateCamera(TE.orbit.target, TE.targetPosition);
     },
 
@@ -1126,6 +1166,214 @@ var ThreeEditor = TE = {
         ctx.stroke();
     },
 
+    // 添加管道
+    addTube:function(radius, radialSegments, color){
+        let curve = new THREE.CatmullRomCurve3( [
+            new THREE.Vector3( -10, 0, 0 ),
+            new THREE.Vector3( 10, 0, 0 ),
+        ], false, 'catmullrom', 0.0001 );
+
+        // 可能的值为centripetal、chordal和catmullrom。
+        // 当.type为catmullrom时，定义catmullrom的张力。
+        curve.arcLengthDivisions = 1;
+
+        let geometry = new THREE.TubeBufferGeometry( curve, curve.points.length * 10, radius||0.5, radialSegments||32 );
+        let mesh = TE.addObj(geometry, {x:0,y:20,z:0}, color);
+        mesh.userData['geometryParams'] = {
+            closed: mesh.geometry.parameters.closed,
+            path: mesh.geometry.parameters.path.points,
+            radialSegments: mesh.geometry.parameters.radialSegments,
+            radius: mesh.geometry.parameters.radius,
+            tubularSegments: mesh.geometry.parameters.tubularSegments,
+        };
+
+        TE.setTubeBox(mesh);
+
+        return mesh;
+    },
+
+    // 添加管道控制点
+    setTubeBox:function(tube){
+        let radius = tube.userData.geometryParams.radius * 1.2;
+
+        tube.children = [];
+        let points = tube.userData.geometryParams.path;
+
+        for (let i=0; i<points.length; i++)
+        {
+            let material1 = new THREE.MeshBasicMaterial( { color: '#00FF00' } );
+            material1.transparent = true;
+            material1.opacity = 0.8;
+            let geometry = new THREE.DodecahedronBufferGeometry(radius, 2);
+            let obj = new THREE.Mesh(geometry, material1);
+            obj.userData['type'] = 'TubeBox';
+            obj.userData['index'] = i;
+            obj.userData['point_type'] = 'solid';
+
+            tube.add(obj);
+
+            obj.position.set(points[i].x, points[i].y, points[i].z);
+        }
+        
+        for (let i=1; i<points.length; i++)
+        {
+            let material2 = new THREE.MeshBasicMaterial( { color: '#0000FF' } );
+            material2.transparent = true;
+            material2.opacity = 0.5;
+    
+            let geometry = new THREE.DodecahedronBufferGeometry(radius, 2);
+            let obj = new THREE.Mesh(geometry, material2);
+            obj.userData['type'] = 'TubeBox';
+            obj.userData['index'] = i - 0.5;
+            obj.userData['point_type'] = 'dotted';
+
+            tube.add(obj);
+
+            let x = (points[i].x + points[i-1].x) / 2;
+            let y = (points[i].y + points[i-1].y) / 2;
+            let z = (points[i].z + points[i-1].z) / 2;
+
+            obj.position.set(x,y,z);
+        }
+    },
+
+    getTubeBox:function(tube, index){
+        let curBox = null;
+        
+        for (let k in tube.children)
+        {
+            let box = tube.children[k];
+            if (box.userData['index'] == index)
+            {
+                curBox = box;
+                break;
+            }
+        }
+
+        return curBox;
+    },
+
+    // 更新
+    updateTube:function(){
+        if (TE.INTERSECTED.userData['type'] != 'TubeBox') return;
+        
+        let x = 0;
+        let y = 0;
+        let z = 0;
+
+        let cur = TE.INTERSECTED;
+        let tube = cur.parent;
+        
+        let radius = tube.userData['geometryParams'].radius * 1.2;
+        let count = tube.userData['geometryParams']['path'].length;
+
+        if (cur.userData['point_type'] == 'dotted')
+        {
+            // 新加一个控制点
+            cur.userData['point_type'] = 'solid';
+            cur.material.opacity = 0.8;
+            cur.material.color.set('#00FF00');
+
+            // 大于的全加1
+            for (let k in tube.children)
+            {
+                let box = tube.children[k];
+                if (box.userData['index'] > cur.userData['index'])
+                {
+                    box.userData['index'] += 1;
+                }
+            }
+
+            cur.userData['index'] = Math.floor(cur.userData['index']) + 1;
+            count += 1;
+
+            // 添加两个虚的控制点
+            let box1 = TE.getTubeBox(tube, cur.userData['index'] - 1);
+            let box2 = TE.getTubeBox(tube, cur.userData['index'] + 1);
+
+            // 前面的控制点
+            let material1 = new THREE.MeshBasicMaterial( { color: '#0000FF' } );
+            material1.transparent = true;
+            material1.opacity = 0.5;
+
+            let geometry1 = new THREE.DodecahedronBufferGeometry(radius, 2);
+            let obj1 = new THREE.Mesh(geometry1, material1);
+            obj1.userData['type'] = 'TubeBox';
+            obj1.userData['index'] = cur.userData['index'] - 0.5;
+            obj1.userData['point_type'] = 'dotted';
+
+            tube.add(obj1);
+
+            x = (cur.position.x + box1.position.x) / 2;
+            y = (cur.position.y + box1.position.y) / 2;
+            z = (cur.position.z + box1.position.z) / 2;
+
+            obj1.position.set(x,y,z);
+            
+            // 后面的控制点
+            let material2 = new THREE.MeshBasicMaterial( { color: '#0000FF' } );
+            material2.transparent = true;
+            material2.opacity = 0.5;
+
+            let geometry2 = new THREE.DodecahedronBufferGeometry(radius, 2);
+            let obj2 = new THREE.Mesh(geometry2, material2);
+            obj2.userData['type'] = 'TubeBox';
+            obj2.userData['index'] = cur.userData['index'] + 0.5;
+            obj2.userData['point_type'] = 'dotted';
+
+            tube.add(obj2);
+
+            x = (cur.position.x + box2.position.x) / 2;
+            y = (cur.position.y + box2.position.y) / 2;
+            z = (cur.position.z + box2.position.z) / 2;
+
+            obj2.position.set(x,y,z);
+        }
+
+        let points = [];
+        for (let i=0; i<count; i++)
+        {
+            let box = TE.getTubeBox(tube, i);
+            if (box)
+            {
+                let p = box.position;
+                points.push(new THREE.Vector3( p.x, p.y, p.z ));
+            }
+        }
+
+        if (cur.userData['index'] > 0)
+        {
+            let box = TE.getTubeBox(tube, cur.userData['index'] - 0.5);
+            let box1 = TE.getTubeBox(tube, cur.userData['index'] - 1);
+
+            x = (cur.position.x + box1.position.x) / 2;
+            y = (cur.position.y + box1.position.y) / 2;
+            z = (cur.position.z + box1.position.z) / 2;
+
+            box.position.set(x,y,z);
+        }
+        if (cur.userData['index'] < count - 1)
+        {
+            let box = TE.getTubeBox(tube, cur.userData['index'] + 0.5);
+            let box1 = TE.getTubeBox(tube, cur.userData['index'] + 1);
+
+            x = (cur.position.x + box1.position.x) / 2;
+            y = (cur.position.y + box1.position.y) / 2;
+            z = (cur.position.z + box1.position.z) / 2;
+
+            box.position.set(x,y,z);
+        }
+
+        let curve = new THREE.CatmullRomCurve3( points, false, 'catmullrom', 0.0001 );
+        curve.arcLengthDivisions = 1;
+
+        let geoParam = tube.userData['geometryParams'];
+
+        tube.geometry = new THREE.TubeBufferGeometry( curve, curve.points.length * 10, geoParam['radius'], geoParam['radialSegments'] );
+        tube.userData['geometryParams']['path'] = points;
+    },
+
+    // 相机动画
     animateCamera: function (current1, current2) {
 
         let positionVar = {
@@ -1263,6 +1511,12 @@ var ThreeEditor = TE = {
                     modelObj.position.set(0, 15, 0);
                 });
                 break;
+            case 'Tube':
+                arr = TE.parseNum(window.prompt('管道 (半径,圆分段数,颜色)', '0.25,32,#FF0000'));
+                if (arr === null) return;
+                let tubeObj = TE.addTube(arr[0], arr[1], arr[2]);
+                TE.selectObj(tubeObj);
+                break;
         }
 
         if (geometry) {
@@ -1293,7 +1547,9 @@ var ThreeEditor = TE = {
         saveData['time'] = (new Date()).toLocaleString();
         saveData['version'] = TE.version;
 
-        saveData['base'] = {};
+        saveData['base'] = {
+            autoRotate:TE.gui.autoRotate,
+        };
 
         // 雾气
         saveData['base']['fog'] = {
@@ -1342,7 +1598,11 @@ var ThreeEditor = TE = {
         TE.scene.fog.density = fog.fogDensity;
         TE.guiController.fogColor.setValue(fog.fogColor);
         TE.guiController.fogDensity.setValue(fog.fogDensity);
-
+        
+        // 自动旋转
+        TE.guiController.autoRotate.setValue(saveData['base']['autoRotate']);
+        TE.orbit.autoRotate = saveData['base']['autoRotate'];
+        
         // 加载元素
         for (let k in saveData['list']) {
             let obj = saveData['list'][k];
@@ -1361,7 +1621,6 @@ var ThreeEditor = TE = {
                 case 'Svg':
                     TE.addSvg(obj.userData.svgUrl, function (svgObj) {
                         TE.setMesh(svgObj, obj);
-                        console.log(k);
                     });
                     continue;
                 case 'Img':
@@ -1379,10 +1638,12 @@ var ThreeEditor = TE = {
                     continue;
                 case 'Cone':
                     geometry = new THREE.ConeBufferGeometry(geoParam.radius, geoParam.height, geoParam.radialSegments);
+                    geometry.translate(0, geoParam.height / 2, 0);
                     mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
                     break;
                 case 'Cylinder':
                     geometry = new THREE.CylinderBufferGeometry(geoParam.radiusTop, geoParam.radiusBottom, geoParam.height, geoParam.radialSegments);
+                    geometry.translate(0, geoParam.height / 2, 0);
                     mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
                     break;
                 case 'Dodecahedron':
@@ -1413,6 +1674,20 @@ var ThreeEditor = TE = {
                     geometry = new THREE.TorusBufferGeometry(geoParam.radius, geoParam.tube, geoParam.radialSegments, geoParam.tubularSegments, geoParam.arc);
                     mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
                     break;
+                case 'Tube':
+                    let pointList = [];
+                    for (let k in geoParam.path)
+                    {
+                        let p = geoParam.path[k];
+                        pointList.push(new THREE.Vector3( p.x, p.y, p.z ))
+                    }
+                    let curve = new THREE.CatmullRomCurve3( pointList, false, 'catmullrom', 0.0001 );
+                    curve.arcLengthDivisions = 1;
+                    geometry = new THREE.TubeBufferGeometry(curve, curve.points.length * 10, geoParam.radius, geoParam.radialSegments, geoParam.closed);
+                    mesh = TE.addObj(geometry, obj.position, obj.userData.materialParams.color, obj.userData.textureUrl);
+                    TE.setMesh(mesh, obj);
+                    TE.setTubeBox(mesh);
+                    continue;
             }
 
             TE.setMesh(mesh, obj);
@@ -1437,7 +1712,7 @@ var ThreeEditor = TE = {
             mesh.material.bumpScale = obj.userData.materialParams.bumpScale;
             mesh.material.shininess = obj.userData.materialParams.shininess;
             mesh.material.opacity = obj.userData.materialParams.opacity;
-            if (obj.type != 'Marker')
+            if (obj.type != 'Marker' && obj.type != 'Img')
             {
                 mesh.material.transparent = mesh.material.opacity < 1;
             }

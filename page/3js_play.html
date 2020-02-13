@@ -1,0 +1,108 @@
+<!-- ThreeJS 查看工具 zjfree 2020-02-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ThreeJS 查看工具</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			min-width: 100%;
+			min-height: 100%
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%
+		}
+
+		.main-title {
+			position: fixed;
+			top: 10px;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			z-index: 1;
+			text-shadow: 3px 3px 5px #000;
+			pointer-events: none;
+			margin: 0;
+			font-size: 24px;
+		}
+
+		.tool {
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+			z-index: 1;
+		}
+
+		#divMain {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://lib.baomitu.com/tween.js/2/Tween.min.js"></script>
+	<!--
+<script src="https://lib.baomitu.com/three.js/107/three.min.js"></script>
+-->
+	<script src="../static/threejs/js/three.js"></script>
+
+	<script src="../static/threejs/js/controls/OrbitControls.js"></script>
+	<script src="../static/threejs/js/controls/TransformControls.js"></script>
+	<script src="../static/threejs/js/controls/DragControls.js"></script>
+
+	<script src="../static/threejs/js/loaders/GLTFLoader.js"></script>
+	<script src="../static/threejs/js/loaders/DRACOLoader.js"></script>
+	<script src="../static/threejs/js/loaders/SVGLoader.js"></script>
+
+	<script src="../static/threejs/js/three_play.js?1"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1 class="main-title">ThreeJS 查看工具</h1>
+
+	<div class="tool">
+		<div>
+			<button onclick="TP.load();">加载</button>
+			<button onclick="TP.moveTo({x:0, y:0, z:0});">中心点</button>
+		</div>
+	</div>
+
+	<div id="divMain">
+	</div>
+
+	<script>
+		$(function () {
+			TP.init('divMain');
+
+			let json = localStorage.getItem("saveData");
+			json = null;
+			if (json) {
+				TP.load(JSON.parse(json));
+			}
+			else {
+				$.getJSON('../static/threejs/models/test.json', function(data){
+					TP.load(data);
+				});
+			}
+
+		});
+	</script>
+
+</body>
