@@ -145,7 +145,9 @@ var ThreePlay = TP = {
     // 初始化鼠标点击
     initRaycaster: function () {
         TP.raycaster = new THREE.Raycaster();
-        TP.divMain.on("click", function (event) {
+        let mc = new Hammer(TP.divMain[0]);
+        mc.on("tap", function (event) {
+            console.log(event);
             if (TP.INTERSECTED) {
                 TP.targetPosition = TP.INTERSECTED.position.clone();
                 TP.animateCamera(TP.orbit.target, TP.targetPosition);
@@ -153,8 +155,8 @@ var ThreePlay = TP = {
             event.preventDefault();
             let mouse = new THREE.Vector2();
             let objects = [];
-            mouse.x = ((event.clientX - 0) / TP.divMain.width()) * 2 - 1;
-            mouse.y = - (event.clientY / TP.divMain.height()) * 2 + 1;
+            mouse.x = ((event.center.x - 0) / TP.divMain.width()) * 2 - 1;
+            mouse.y = - (event.center.y / TP.divMain.height()) * 2 + 1;
 
             TP.raycaster.setFromCamera(mouse, TP.camera);
             TP.scene.children.forEach(child => {
