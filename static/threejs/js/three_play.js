@@ -5,6 +5,9 @@ var ThreePlay = TP = {
     version: '20200210',
 
     saveData:null,
+    isReady:false,
+    loadIndex:0,
+    baseFont:null,
 
     // 内部变量
     renderer: null,
@@ -308,6 +311,8 @@ var ThreePlay = TP = {
                 bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: false,
                 material: 0, extrudeMaterial: 1
             };
+
+            TP.baseFont = font;
             let textGeom = new THREE.TextBufferGeometry(txt, textOption);
             // font: helvetiker, gentilis, droid sans, droid serif, optimer
             // weight: normal, bold
@@ -613,6 +618,8 @@ var ThreePlay = TP = {
 
     load: function (saveData) {
         
+        TP.isReady = false;
+        TP.loadIndex = 0;
         TP.saveData = saveData;
         console.log(TP.saveData);
 
@@ -750,6 +757,16 @@ var ThreePlay = TP = {
                 }
             }
         }
+
+        TP.parseKeyList(mesh);
+
+        TP.loadIndex++;
+        TP.showInfo('加载中... (' + TP.loadIndex + '/' + TP.saveData.list.length + ')');
+        if (TP.loadIndex == TP.saveData.list.length)
+        {
+            TP.isReady = true;
+            TP.showInfo('');
+        }
     },
 
     clear: function () {
@@ -770,6 +787,218 @@ var ThreePlay = TP = {
         TP.cancelSelect();
         TP.targetPosition = position;
         TP.animateCamera(TP.orbit.target, TP.targetPosition);
-    }
+    },
+
+    // 显示信息
+    showInfo:function(str, color){
+        color = color || '#000';
+        $('#divInfo').html(str).css('color', color);
+    },
+
+    // 解析KEY列表
+    parseKeyList:function(mesh)
+    {
+        mesh.userData['bind_key'] = {};
+        mesh.userData['bind_key_all'] = [];
+        for (let k in mesh.userData['bind'])
+        {
+            let v = mesh.userData['bind'][k];
+
+            let keyList = [];
+    
+            // 获取key列表
+            let start = -1;
+            for (let p=0; p<v.length; p++)
+            {
+                if (v.substr(p, 2) == '{$')
+                {
+                    start = p;
+                    continue;
+                }
+    
+                if (v.substr(p, 1) == '}')
+                {
+                    if (start != -1)
+                    {
+                        let key = v.substr(start+2, p - start - 2);
+                        keyList.push(key);
+                        mesh.userData['bind_key_all'].push(key);
+                    }
+                    start = -1;
+                }
+            }
+
+            mesh.userData['bind_key'][k] = {
+                keyList:keyList,
+                value:v,
+            };
+        }
+
+        if ('visible' in mesh.userData['bind']){
+            mesh.visible = false;
+        }
+    },
+
+    // 解析值
+    bindData:function(item)
+    {
+        if (!TP.isReady) return;
+
+        let delList = [];
+        let count = TP.scene.children.length;
+        for (let kk = 0; kk < count; kk++) {
+            let obj = TP.scene.children[kk];
+            if (!obj.userData['type'])  continue;
+
+            for (let k in obj.userData['bind_key'])
+            {
+                let value = TP.parseValue(obj.userData['bind_key'][k], item);
+                if (!value) continue;
+
+                switch (k)
+                {
+                    case 'visible':
+                        obj.visible = parseInt(value) == 1;
+                        break;
+                    case 'color':
+                        if (obj.material && (obj.material instanceof THREE.MeshPhongMaterial)) {
+                            obj.material.color.set(value);
+                        }
+                        break;
+                    case 'positionX':
+                        obj.position.x = parseFloat(value);
+                        break;
+                    case 'positionY':
+                        obj.position.y = parseFloat(value);
+                        break;
+                    case 'positionZ':
+                        obj.position.z = parseFloat(value);
+                        break;
+                    case 'rotationX':
+                        obj.rotation.x = TP.getRad(parseFloat(value));
+                        break;
+                    case 'rotationY':
+                        obj.rotation.y = TP.getRad(parseFloat(value));
+                        break;
+                    case 'rotationZ':
+                        obj.rotation.z = TP.getRad(parseFloat(value));
+                        break;
+                    case 'scaleX':
+                        obj.scale.x = parseFloat(value);
+                        break;
+                    case 'scaleY':
+                        obj.scale.y = parseFloat(value);
+                        break;
+                    case 'scaleZ':
+                        obj.scale.z = parseFloat(value);
+                        break;
+                    case 'opacity':
+                        if (obj.material) {
+                            obj.material.opacity = value;
+                            obj.material.transparent = value != 1;
+                        }
+                        break;
+                    case 'can_select':
+                        obj.userData['can_select'] = parseInt(value) == 1;
+                        break;
+                    case 'value':
+                        switch (obj.userData['type'])
+                        {
+                            case 'Marker':
+                                value = ' ' + $.trim(value) + ' ';
+                                if (obj.userData['markerParams']['text'] == value)
+                                {
+                                    break;
+                                }
+
+                                obj.userData['markerParams']['text'] = value;
+
+                                let objMarker = TP.addMarker(value, obj.userData.markerParams);
+                                                            
+                                objMarker.position.set(obj.position.x, obj.position.y, obj.position.z);
+                                objMarker.rotation.set(obj.rotation.x, obj.rotation.y, obj.rotation.z);
+                                objMarker.userData = obj.userData;
+                            
+                                objMarker.castShadow = obj.castShadow;
+                                objMarker.receiveShadow = obj.receiveShadow;
+
+                                delList.push(obj);
+                                break;
+                            case 'Text':
+                                if (obj.userData['text'] == value)
+                                {
+                                    break;
+                                }
+
+                                obj.userData['text'] = value;
+                                let geoParam = obj.userData.geometryParams;
+
+                                let textOption = {
+                                    size: geoParam.size, height: geoParam.height, curveSegments: 10,
+                                    font: TP.baseFont, weight: "normal", style: "normal",
+                                    bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: false,
+                                    material: 0, extrudeMaterial: 1
+                                };
+                    
+                                obj.geometry = new THREE.TextBufferGeometry(value, textOption);
+
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+
+        for (let k in delList)
+        {
+            TP.scene.remove(delList[k]);
+        }
+    },
+    
+
+    // 解析值
+    parseValue:function(bind, item)
+    {
+        let value = bind.value;
+        if (value.indexOf('{$') == -1)
+        {
+            return value;
+        }
+
+        for (let k of bind.keyList)
+        {
+            if (k in item)
+            {
+                value = value.replace(new RegExp('\\{\\$' + k + '\\}','g'), item[k]);
+            }
+        }
+        
+        if (value.indexOf('{$') != -1)
+        {
+            return null;
+        }
+        
+        try{
+            value = eval(value);
+        }catch(err){
+            console.error(err);
+        }
+
+        // console.log(value);
+
+        return value;
+    },
+    
+	formatDate:function(d){
+        d = d || new Date();
+
+        let f = (v) => ('0' + v).substr(-2);
+        return d.getFullYear() + '-'
+            + f(d.getMonth() + 1) + '-'
+            + f(d.getDate()) + ' '
+            + f(d.getHours()) + ':'
+            + f(d.getMinutes()) + ':'
+            + f(d.getSeconds());
+    },
 };
 

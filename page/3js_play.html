@@ -26,7 +26,7 @@
 			height: 100%
 		}
 
-		.main-title {
+		body>.main-title {
 			position: fixed;
 			top: 10px;
 			width: 100%;
@@ -39,14 +39,21 @@
 			font-size: 24px;
 		}
 
-		.tool {
+		body>.tool {
 			position: fixed;
 			bottom: 10px;
 			left: 10px;
 			z-index: 1;
 		}
 
-		#divMain {
+		body>#divInfo {
+			position: fixed;
+			top: 10px;
+			left: 10px;
+			z-index: 1;
+		}
+
+		body>#divMain {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -78,10 +85,14 @@
 	<!-- 内容 -->
 	<h1 class="main-title">ThreeJS 查看工具</h1>
 
+	<div id="divInfo">
+		加载中...
+	</div>
+
 	<div class="tool">
 		<div>
-			<button onclick="TP.load();">加载</button>
 			<button onclick="TP.moveTo({x:0, y:0, z:0});">中心点</button>
+			<button onclick="bindData();">绑定值</button>
 		</div>
 	</div>
 
@@ -89,11 +100,23 @@
 	</div>
 
 	<script>
+		function bindData(){
+			let now = new Date();
+			let data = {
+				now: TP.formatDate(now),
+				a1: now.getSeconds(),
+			};
+
+			TP.bindData(data);
+
+			window.setTimeout(bindData, 1000);
+		}
+
+
 		$(function () {
 			TP.init('divMain');
 
 			let json = localStorage.getItem("saveData");
-			json = null;
 			if (json) {
 				TP.load(JSON.parse(json));
 			}
@@ -104,6 +127,7 @@
 			}
 
 		});
+
 	</script>
 
 </body>
