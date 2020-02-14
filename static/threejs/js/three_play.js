@@ -19,9 +19,6 @@ var ThreePlay = TP = {
     divMain: null,
     meshLine: null,
 
-    isMove: null,
-    isMouseDown: false,
-    mouseMoveIndex: 0,
     targetPosition: null,
 
     init: function (el) {
@@ -148,21 +145,11 @@ var ThreePlay = TP = {
     // 初始化鼠标点击
     initRaycaster: function () {
         TP.raycaster = new THREE.Raycaster();
-        TP.divMain.on("mousedown", function (event) {
-            if (TP.isMove) return;
-            TP.isMouseDown = true;
-            TP.mouseMoveIndex = 0;
-        });
-        $(document).on("mousemove", function (event) {
-            TP.isMouseDown = TP.mouseMoveIndex++ == 0;
-        });
-        TP.divMain.on("mouseup", function (event) {
+        TP.divMain.on("click", function (event) {
             if (TP.INTERSECTED) {
                 TP.targetPosition = TP.INTERSECTED.position.clone();
                 TP.animateCamera(TP.orbit.target, TP.targetPosition);
             }
-            if (!TP.isMouseDown) return;
-            TP.isMouseDown = false;
             event.preventDefault();
             let mouse = new THREE.Vector2();
             let objects = [];
