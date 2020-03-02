@@ -1,0 +1,136 @@
+<!-- 标准HTML模板 zjfree 2019-08-08 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS扫雷</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+h1{
+	text-align: center;
+}
+#tbList{
+	display:block;
+	margin:20px auto;
+	border:solid 1px gray;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+#tbList td{
+	text-align: center;
+	vertical-align: middle;
+	height:20px;
+	width:20px;
+	border:solid 1px #ddd;
+	font-size:12px;
+	line-height: 1;
+	padding:0;
+}
+#tbList .null{
+	background:#ddd;
+}
+#tbList .empty{
+	background:#fff;
+}
+#tbList .mine{
+	background:#f00;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>JS扫雷</h1>
+<table id="tbList">
+</table>
+<script>
+
+var mine = {
+	size:20,
+	hi_count:10,
+	is_init:false,
+	create:function(w, h, count){
+		let html = '';
+		for (let x=0; x<w; x++)
+		{
+			html += '<tr>';
+			for (let y=0; y<h; y++)
+			{
+				html += '<td id="td_' + x + '_' + y + '" data-x="' + x + '" data-y="' + y + '" clsss="empty"></td>';
+			}
+			html += '</tr>';
+		}
+
+		$('#tbList').css('width', w * this.size + 'px');
+		$('#tbList').html(html);
+
+		$('#tbList td').click(this.click);
+
+		this.is_init = false;
+		this.hi_count = count;
+	},
+
+	firstClick:function(cur){
+		$('#tbList td').attr('class', 'null');
+		$('#tbList td').data('index', 0);
+		cur.attr('class', 'empty');
+		for (let i=0; i<this.hi_count; i++)
+		{
+			let index = Math.floor($('#tbList td.null').length * Math.random());
+			console.log($('#tbList td.null').length, index);
+			let curMine = $('#tbList td.null').eq(index);
+			curMine.attr('class', 'mine');
+			this.updateIndex(curMine);
+		}
+
+		$('#tbList td').each(function(){
+			$(this).html($(this).data('index'));
+		});
+
+		this.is_init = true;
+	},
+
+	updateIndex:function(curMine){
+		let x = curMine.data('x');
+		let y = curMine.data('y');
+
+		this.indexAdd(x-1, y-1);
+		this.indexAdd(x  , y-1);
+		this.indexAdd(x+1, y-1);
+		this.indexAdd(x-1, y);
+		this.indexAdd(x+1, y);
+		this.indexAdd(x-1, y+1);
+		this.indexAdd(x  , y+1);
+		this.indexAdd(x+1, y+1);
+	},
+
+	indexAdd:function(x, y){
+		let index = $('#td_' + x + '_' + y).data('index');
+		$('#td_' + x + '_' + y).data('index', index + 1);
+	},
+
+	click:function(){
+		let cur = $(this);
+		if (!mine.is_init)
+		{
+			mine.firstClick(cur);
+		}
+	},
+};
+
+$(function(){
+	// JS
+	mine.create(30, 30, 50);
+});
+</script>
+
+<!-- 51啦访问统计 
+<script type="text/javascript" src="//js.users.51.la/20254973.js"></script>
+-->
+</body>
