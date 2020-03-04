@@ -1,4 +1,4 @@
-<!-- 标准HTML模板 zjfree 2019-08-08 -->
+<!-- JS在线扫雷 zjfree 2020-03-04 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,18 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JS扫雷</title>
+<title>JS在线扫雷</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
 <style>
 /* css style */
 h1{
 	text-align: center;
+	font-size:24px;
+	margin:10px;
 }
 #tbList{
-	display:block;
-	margin:20px auto;
-	border:solid 1px gray;
+	margin:10px auto;
+	border:solid 2px gray;
 	border-collapse: collapse;
 	border-spacing: 0px;
 }
@@ -26,19 +27,48 @@ h1{
 	vertical-align: middle;
 	height:20px;
 	width:20px;
-	border:solid 1px #ddd;
+	border:solid 1px #aaa;
 	font-size:12px;
-	line-height: 1;
+	line-height: 12px;
 	padding:0;
+	background:#ddd;
+	overflow: hidden;
+	cursor:default;
+}
+#tbList td b{
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
 }
 #tbList .null{
 	background:#ddd;
+	box-shadow: inset 0px 0px 5px #aaa;
 }
 #tbList .empty{
 	background:#fff;
 }
 #tbList .mine{
-	background:#f00;
+	background:#f66;
+	box-shadow: inset 0px 0px 5px #f00;
+	color:#fff;
+}
+#tbList td.hide{
+	background:#ddd;
+	box-shadow: inset 0px 0px 5px #aaa;
+}
+#tbList td.hide:hover{
+	background:#ddf;
+}
+#tbList td.hide b{
+	display: none;
+}
+
+#tbList td.marker{
+	background:#66f;
+	box-shadow: inset 0px 0px 5px #00f;
+}
+#tbList td.marker b{
+	display: none;
 }
 </style>
 
@@ -46,16 +76,26 @@ h1{
 </head>
 <body>
 <!-- 内容 -->
-<h1>JS扫雷</h1>
-<table id="tbList">
-</table>
+<h1>JS在线扫雷</h1>
+<div style="text-align: center;">
+	<button onclick="mine.create(10, 10);">简单</button>
+	<button onclick="mine.create(15, 15);">中等</button>
+	<button onclick="mine.create(30, 30);">困难</button>
+</div>
+<div id="divInfo" style="text-align: center; margin-top:10px;">等待开始</div>
+<table id="tbList"></table>
 <script>
 
 var mine = {
-	size:20,
-	hi_count:10,
-	is_init:false,
-	create:function(w, h, count){
+	
+	hi_count:10,		// 地雷个数
+	begin_time:null,	// 开始时间
+	state:'',			// 当前操作状态
+	timer:null,			// 计时器
+	use_time:0,			// 累计用时
+
+	// 创建表格
+	create:function(w, h){
 		let html = '';
 		for (let x=0; x<w; x++)
 		{
@@ -67,67 +107,262 @@ var mine = {
 			html += '</tr>';
 		}
 
-		$('#tbList').css('width', w * this.size + 'px');
 		$('#tbList').html(html);
 
-		$('#tbList td').click(this.click);
+		$('#tbList td').mousedown(this.click);
+		$('#tbList td').on('dblclick', this.fastClick);
 
-		this.is_init = false;
-		this.hi_count = count;
+		this.state = 'null';
+		this.hi_count = Math.floor(w * h * 10 / 100);
 	},
 
-	firstClick:function(cur){
+	// 初始化生成地雷
+	createMine:function(cur){
 		$('#tbList td').attr('class', 'null');
 		$('#tbList td').data('index', 0);
-		cur.attr('class', 'empty');
+		
+		// 周围置空
+		let list = this.getNearList(cur);
+		for (let r of list)
+		{
+			$('#td_' + r.x + '_' + r.y).attr('class', 'empty');
+		}
+
+		// 生成地雷，并计算相邻雷数
 		for (let i=0; i<this.hi_count; i++)
 		{
 			let index = Math.floor($('#tbList td.null').length * Math.random());
-			console.log($('#tbList td.null').length, index);
 			let curMine = $('#tbList td.null').eq(index);
 			curMine.attr('class', 'mine');
 			this.updateIndex(curMine);
 		}
 
+		// 绘制网格
+		$('#tbList td.null').attr('class', 'empty');
 		$('#tbList td').each(function(){
-			$(this).html($(this).data('index'));
+			if ($(this).hasClass('mine'))
+			{
+				$(this).html('<b>✦</b>');
+			}
+			else
+			{
+				let index = $(this).data('index');
+				if (index == 0)
+				{
+					$(this).html('<b></b>');
+				}
+				else
+				{
+					$(this).html('<b>' + index + '</b>');
+				}
+			}
 		});
 
-		this.is_init = true;
+		// 隐藏所有
+		$('#tbList td').addClass('hide');
+
+		// 开始计时
+		this.begin_time = (new Date()).getTime();
+		this.use_time = 0;
+		clearInterval(this.timer);
+		this.timer = window.setInterval(function(){
+			if (mine.state != 'run') return;
+			mine.use_time++;
+			$('#divInfo').html('用时：' + mine.use_time + ' s');
+		}, 1000);
+
+		$('#divInfo').html('开始计时');
+
+		this.state = 'run';
 	},
 
-	updateIndex:function(curMine){
-		let x = curMine.data('x');
-		let y = curMine.data('y');
+	// 获取临近所有网格 3*3
+	getNearList:function(cur){
+		let x = cur.data('x');
+		let y = cur.data('y');
+		let list = [];
+		let w = $('#tbList tr').eq(0).find('td').length;
+		let h = $('#tbList tr').length;
+	
+		list.push({x:x-1, y:y-1});
+		list.push({x:x  , y:y-1});
+		list.push({x:x+1, y:y-1});
+		list.push({x:x-1, y:y  });
+		list.push({x:x  , y:y  });
+		list.push({x:x+1, y:y  });
+		list.push({x:x-1, y:y+1});
+		list.push({x:x  , y:y+1});
+		list.push({x:x+1, y:y+1});
 
-		this.indexAdd(x-1, y-1);
-		this.indexAdd(x  , y-1);
-		this.indexAdd(x+1, y-1);
-		this.indexAdd(x-1, y);
-		this.indexAdd(x+1, y);
-		this.indexAdd(x-1, y+1);
-		this.indexAdd(x  , y+1);
-		this.indexAdd(x+1, y+1);
-	},
-
-	indexAdd:function(x, y){
-		let index = $('#td_' + x + '_' + y).data('index');
-		$('#td_' + x + '_' + y).data('index', index + 1);
-	},
-
-	click:function(){
-		let cur = $(this);
-		if (!mine.is_init)
+		let curList = [];
+		for (let r of list)
 		{
-			mine.firstClick(cur);
+			if ($('#td_' + r.x + '_' + r.y).length > 0)
+			{
+				curList.push(r);
+			}
 		}
+
+		return curList;
+	},
+
+	// 更新地雷数量
+	updateIndex:function(curMine){
+		let list = this.getNearList(curMine);
+
+		for (let r of list)
+		{
+			let cur = $('#td_' + r.x + '_' + r.y);
+			cur.data('index', cur.data('index') + 1);
+		}
+	},
+
+	// 打开指定网格
+	hit:function(cur){
+		if (cur.hasClass('marker'))
+		{
+			// 跳过标记
+			return;
+		}
+		if (!cur.hasClass('hide'))
+		{
+			// 跳过已打开
+			return;
+		}
+		
+		cur.removeClass('hide');
+		if (cur.hasClass('mine'))
+		{
+			// 触雷
+			mine.state = 'fail';
+			$('#tbList td').removeClass('hide');
+			$('#tbList td').removeClass('marker');
+			$('#divInfo').html('game over!');
+			return;
+		}
+
+		let index = cur.data('index');
+		if (index == 0)
+		{
+			// 当空白区域，打开周边
+			let list = this.getNearList(cur);
+
+			for (let r of list)
+			{
+				let other = $('#td_' + r.x + '_' + r.y);
+				if (!other.hasClass('mine') && !other.hasClass('marker') && other.hasClass('hide'))
+				{
+					mine.hit(other);
+				}
+			}
+		}
+	},
+
+	// 单击事件
+	click:function(e){
+		let cur = $(this);
+		if (mine.state == 'null')
+		{
+			// 第一次点击，初始化
+			mine.createMine(cur);
+		}
+		
+		if (mine.state != 'run')
+		{
+			return;
+		}
+		
+		if (e.button == 0)
+		{
+			// 左键点击
+			mine.hit(cur);
+
+			// 判断是否完成
+			mine.checkSuccess();
+		}
+		else
+		{
+			// 右键标记
+			if (cur.hasClass('hide'))
+			{
+				cur.removeClass('hide');
+				cur.addClass('marker');
+				return;
+			}
+
+			// 取消标记
+			if (cur.hasClass('marker'))
+			{
+				cur.removeClass('marker');
+				cur.addClass('hide');
+			}
+		}
+	},
+
+	// 检测是否完成
+	checkSuccess:function(){
+		if ($('#tbList .hide').length + $('#tbList .marker').length == mine.hi_count)
+		{
+			mine.state = 'success';
+			$('#tbList td').removeClass('hide');
+			$('#tbList td').removeClass('marker');
+			let s = (new Date()).getTime() - mine.begin_time;
+			$('#divInfo').html('game success! time:' + s / 1000 + 's');
+		}
+	},
+
+	// 双击智能打开周边
+	fastClick:function(e){
+		let cur = $(this);
+		let index = cur.data('index');
+		if (index == 0)
+		{
+			return;
+		}
+
+		// 标记雷数需要指示雷数相同
+		let marker_count = 0;
+		let list = mine.getNearList(cur);
+		for (let r of list)
+		{
+			let other = $('#td_' + r.x + '_' + r.y);
+			if (other.hasClass('marker'))
+			{
+				marker_count++;
+			}
+		}
+
+		if (marker_count != index)
+		{
+			return;
+		}
+
+		// 点击周边所有
+		for (let r of list)
+		{
+			let other = $('#td_' + r.x + '_' + r.y);
+			if (!other.hasClass('marker') && other.hasClass('hide'))
+			{
+				mine.hit(other);
+			}
+		}
+
+		// 判断是否完成
+		mine.checkSuccess();
 	},
 };
 
 $(function(){
-	// JS
-	mine.create(30, 30, 50);
+	// 禁止选中和右键菜单
+	document.onselectstart= function(){return false;};
+	document.oncontextmenu = function(e){
+		e.preventDefault();
+	};
+
+	// 初始化
+	mine.create(10, 10);
 });
+
 </script>
 
 <!-- 51啦访问统计 
