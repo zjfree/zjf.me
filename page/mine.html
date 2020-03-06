@@ -80,7 +80,7 @@ h1{
 <div style="text-align: center;">
 	<button onclick="mine.create(10, 10);">简单</button>
 	<button onclick="mine.create(15, 15);">中等</button>
-	<button onclick="mine.create(30, 30);">困难</button>
+	<button onclick="mine.create(30, 20);">困难</button>
 </div>
 <div id="divInfo" style="text-align: center; margin-top:10px;">等待开始</div>
 <table id="tbList"></table>
@@ -113,7 +113,7 @@ var mine = {
 		$('#tbList td').on('dblclick', this.fastClick);
 
 		this.state = 'null';
-		this.hi_count = Math.floor(w * h * 10 / 100);
+		this.hi_count = Math.floor(w * h * 15 / 100);
 	},
 
 	// 初始化生成地雷
@@ -168,10 +168,10 @@ var mine = {
 		this.timer = window.setInterval(function(){
 			if (mine.state != 'run') return;
 			mine.use_time++;
-			$('#divInfo').html('用时：' + mine.use_time + ' s');
+			$('#divInfo').html('用时：' + mine.use_time + ' s').css('color', '#0C48AD');
 		}, 1000);
 
-		$('#divInfo').html('开始计时');
+		$('#divInfo').html('开始计时').css('color', '#000');
 
 		this.state = 'run';
 	},
@@ -237,7 +237,7 @@ var mine = {
 			mine.state = 'fail';
 			$('#tbList td').removeClass('hide');
 			$('#tbList td').removeClass('marker');
-			$('#divInfo').html('game over!');
+			$('#divInfo').html('Game over!').css('color', '#D5150F');
 			return;
 		}
 
@@ -307,7 +307,7 @@ var mine = {
 			$('#tbList td').removeClass('hide');
 			$('#tbList td').removeClass('marker');
 			let s = (new Date()).getTime() - mine.begin_time;
-			$('#divInfo').html('game success! time:' + s / 1000 + 's');
+			$('#divInfo').html('Game success! time:' + s / 1000 + 's').css('color', '#0CAD1C');
 		}
 	},
 
