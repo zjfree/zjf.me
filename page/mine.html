@@ -230,6 +230,7 @@ var mine = {
 		let mineList = $('#tbList td.mine.hide');
 		if (mineList.length == 0)
 		{
+			$('#tbList td').removeClass('hide');
 			return;
 		}
 
@@ -255,7 +256,6 @@ var mine = {
 		{
 			// 触雷
 			mine.state = 'fail';
-			$('#tbList td.empty').removeClass('hide');
 			$('#tbList td').removeClass('marker');
 			$('#divInfo').html('Game over!').css('color', '#D5150F');
 			this.failOpen();
