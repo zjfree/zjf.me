@@ -52,6 +52,11 @@ h1{
 	box-shadow: inset 0px 0px 5px #f00;
 	color:#fff;
 }
+#tbList.success .mine{
+	background:#00C200;
+	box-shadow: inset 0px 0px 5px #009C00;
+	color:#fff;
+}
 #tbList td.hide{
 	background:#ddd;
 	box-shadow: inset 0px 0px 5px #aaa;
@@ -108,12 +113,15 @@ var mine = {
 		}
 
 		$('#tbList').html(html);
+		$('#tbList').removeClass('success');
 
 		$('#tbList td').mousedown(this.click);
 		$('#tbList td').on('dblclick', this.fastClick);
 
 		this.state = 'null';
 		this.hi_count = Math.floor(w * h * 15 / 100);
+		
+		$('#divInfo').html('准备就绪').css('color', '#000');
 	},
 
 	// 初始化生成地雷
@@ -217,6 +225,18 @@ var mine = {
 		}
 	},
 
+	// 失败延迟打开雷
+	failOpen:function(){
+		let mineList = $('#tbList td.mine.hide');
+		if (mineList.length == 0)
+		{
+			return;
+		}
+
+		mineList.eq(0).removeClass('hide');
+		window.setTimeout(mine.failOpen, 4000 / $('#tbList td').length);
+	},
+
 	// 打开指定网格
 	hit:function(cur){
 		if (cur.hasClass('marker'))
@@ -235,9 +255,10 @@ var mine = {
 		{
 			// 触雷
 			mine.state = 'fail';
-			$('#tbList td').removeClass('hide');
+			$('#tbList td.empty').removeClass('hide');
 			$('#tbList td').removeClass('marker');
 			$('#divInfo').html('Game over!').css('color', '#D5150F');
+			this.failOpen();
 			return;
 		}
 
@@ -306,6 +327,7 @@ var mine = {
 			mine.state = 'success';
 			$('#tbList td').removeClass('hide');
 			$('#tbList td').removeClass('marker');
+			$('#tbList').addClass('success');
 			let s = (new Date()).getTime() - mine.begin_time;
 			$('#divInfo').html('Game success! time:' + s / 1000 + 's').css('color', '#0CAD1C');
 		}
