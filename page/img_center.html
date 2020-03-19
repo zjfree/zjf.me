@@ -1,0 +1,52 @@
+<!-- 图片居中 zjfree 2020-03-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>图片居中</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 10px;
+		}
+
+		.box {
+			display: block;
+			width: 500px;
+			height: 500px;
+			border: 1px solid blue;
+			resize: both;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.box img {
+			max-width: 100%;
+			max-height: 100%;
+			box-sizing: border-box;
+			box-shadow: 0 0 1px #333;
+			margin: auto;
+			position: absolute;
+			top: -999999px;
+			left: -999999px;
+			right: -999999px;
+			bottom: -999999px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>图片居中</h1>
+	<div class="box">
+	<img id="img1" src="https://www.baidu.com/img/bd_logo1.png" />
+	</div>
+</body>
