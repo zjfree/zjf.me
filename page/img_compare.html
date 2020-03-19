@@ -1,0 +1,109 @@
+<!-- 图片对比 zjfree 2020-03-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图片对比</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:10px;
+}
+
+.divImg{
+	position: relative;
+	margin-top:10px;
+}
+.divImg img{
+	position:absolute;
+	top:0;
+	left:0;
+	max-width: 100%;
+	border:solid 1px blue;
+	/*
+	mix-blend-mode:difference;
+	*/
+}
+#img2{
+	opacity: 0.5;
+}
+#range1{
+	position: relative;
+	top:5px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>图片对比</h1>
+<input type="file" id="file1" accept="image/*" >
+<br>
+<input type="file" id="file2" accept="image/*" >
+<div style="margin-top:10px;">
+	透明度：<input id="range1" type="range" min="0" max="100" value="50" style="width:300px;" />
+	&nbsp;
+	叠加模式: 
+	<select id="selMode">
+		<option value="normal" selected>normal</option>
+		<option value="multiply">multiply</option>
+		<option value="screen">screen</option>
+		<option value="overlay">overlay</option>
+		<option value="darken">darken</option>
+		<option value="lighten">lighten</option>
+		<option value="color-dodge">color-dodg</option>
+		<option value="color-burn">color-burn</option>
+		<option value="hard-light">hard-light</option>
+		<option value="soft-light">soft-light</option>
+		<option value="difference">difference</option>
+		<option value="exclusion">exclusion</option>
+		<option value="hue">hue</option>
+		<option value="saturation">saturation</option>
+		<option value="color">color</option>
+		<option value="luminosity">luminosity</option>
+	</select>
+</div>
+<div class="divImg">
+	<img id="img1" />
+	<img id="img2" />
+</div>
+
+<script>
+
+$(function(){
+	// JS
+	$('#file1').change(function(){ 
+		var file = this.files[0]; 
+		var reader = new FileReader(); 
+		reader.readAsDataURL(file); 
+		reader.onload = function(){ 
+			$('#img1').attr('src', reader.result); 
+		} 
+	});
+	$('#file2').change(function(){ 
+		var file = this.files[0]; 
+		var reader = new FileReader(); 
+		reader.readAsDataURL(file); 
+		reader.onload = function(){ 
+			$('#img2').attr('src', reader.result); 
+		} 
+	});
+	$('#range1').on('input', function(){
+		$('#img2').css('opacity', parseInt(this.value) / 100); 
+	});
+	$('#selMode').change(function(){
+		$('.divImg img').css('mix-blend-mode', this.value);
+	});
+});
+</script>
+
+
+
+
+</body>
