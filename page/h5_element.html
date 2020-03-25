@@ -1,0 +1,183 @@
+<!-- HTML5 自定义组件 zjfree 2020-03-25 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML5 自定义组件</title>
+
+  <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+  <style>
+    /* css style */
+    body {
+      padding: 0 10px;
+    }
+  </style>
+
+  <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- 内容 -->
+  <h1>HTML5 自定义组件</h1>
+
+  <user-card id="user1" image="../static/img/pink_design_05.png" name="User Name"
+    email="zjfree@163.com">abcInnerContent</user-card>
+  <user-card id="user2" image="../static/img/pink_design_03.png" name="User Name"
+    email="abc@163.com"></user-card>
+
+  <hr>
+  使用SVG编辑器 Affinity Designer<br>
+  <img src="../static/img/animation.svg" style="width: 500px;" />
+
+  <script>
+    const template = document.createElement('template');
+    template.innerHTML = `
+<style>
+   :host {
+     display: flex;
+     align-items: center;
+     width: 450px;
+     height: 180px;
+     background-color: #eee;
+     border: 1px solid #aaa;
+     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+     border-radius: 3px;
+     overflow: hidden;
+     padding: 10px;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+     margin-bottom:10px;
+   }
+   .image {
+     flex: 0 0 auto;
+     width: 160px;
+     height: 160px;
+     vertical-align: middle;
+     border-radius: 5px;
+     border:solid 3px blue;
+     animation:myfirst 2s infinite;
+   }
+    @keyframes myfirst
+    {
+      0% {border:solid 3px blue;}
+      50% {border:solid 3px red;}
+      100% {border:solid 3px blue;}
+    }
+   .container {
+     box-sizing: border-box;
+     padding: 20px;
+     height: 160px;
+   }
+   .container > .name {
+     font-size: 20px;
+     font-weight: 600;
+     line-height: 1;
+     margin: 0;
+     margin-bottom: 5px;
+   }
+   .container > .email {
+     font-size: 12px;
+     opacity: 0.75;
+     line-height: 1;
+     margin: 0;
+     margin-bottom: 15px;
+   }
+   .container > .button {
+     padding: 10px 25px;
+     font-size: 12px;
+     border-radius: 5px;
+     text-transform: uppercase;
+   }
+  </style>
+  
+  <img class="image">
+  <div class="container">
+    <p class="name"></p>
+    <p class="email"></p>
+    <button class="button">click ME</button>
+  </div>
+`;
+    class UserCard extends HTMLElement {
+      constructor() {
+        super();
+        console.log(this.innerHTML);
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
+        this._shadowRoot.appendChild(template.content.cloneNode(true));
+
+        this.$img = this._shadowRoot.querySelector('img');
+        this.$name = this._shadowRoot.querySelector('.container>.name');
+        this.$email = this._shadowRoot.querySelector('.container>.email');
+        this.$button = this._shadowRoot.querySelector('.container>.button');
+
+        this.count = 0;
+
+        this.$button.addEventListener('click', () => {
+          this.count++;
+          this.$name.innerHTML = this.name + this.count;
+          if (this.onClick) {
+            this.onClick('Hello from within the Custom Element');
+          }
+        });
+
+        this.$button.addEventListener('mouseover', () => {
+          this.$email.style['font-weight'] = 'bold';
+          this.dispatchEvent(
+            new CustomEvent('hover', {
+              detail: 'hover me',
+            })
+          );
+        });
+        this.$button.addEventListener('mouseout', () => {
+          this.$email.style['font-weight'] = 'normal';
+        });
+      }
+
+      get name() {
+        return this.getAttribute('name');
+      }
+      set name(value) {
+        this.setAttribute('name', value);
+      }
+
+      static get observedAttributes() {
+        return ['image', 'name', 'email'];
+      }
+
+      attributeChangedCallback(name, oldVal, newVal) {
+        //console.log(name, newVal);
+        if (name != 'name') {
+          this[name] = newVal;
+        }
+        this.render();
+      }
+
+      render() {
+        this.$img.setAttribute('src', this.image);
+        this.$name.innerHTML = this.name;
+        this.$email.innerHTML = this.email;
+      }
+
+      // 外部函数
+      fn_test(str) {
+        alert(str);
+      }
+    }
+
+    window.customElements.define('user-card', UserCard);
+
+  </script>
+
+  <script>
+    const el = document.querySelector('#user1');
+    el.name = 'zjfree';
+    el.onClick = val => console.log(val);
+    el.addEventListener('hover', value => console.log(value));
+
+    document.querySelector('#user2').name = 'user_name';
+  </script>
+
+</body>
