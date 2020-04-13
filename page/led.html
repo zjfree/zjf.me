@@ -61,6 +61,8 @@
 	<br>
 	滚动速度：<input id="rangeGun" type="range" min="0.5" max="10" value="3" step="0.1" />
 	<br>
+	文字大小：<input id="rangeSize" type="range" min="0.1" max="1" value="1" step="0.1" />
+	<br>
 	文字颜色：
 	<span class="fcolor active" data-color="#000" style="background: #000;"></span>
 	<span class="fcolor" data-color="red" style="background: red;"></span>
@@ -86,7 +88,7 @@ $(function(){
 	$('#txtContent').on('input', function(){setText()});
 	setText();
 
-	$('#rangeShan').on('input', function(){setText()});
+	$('#rangeShan, #rangeSize').on('input', function(){setText()});
 
 	$('.fcolor').click(function(){
 		$('.fcolor').removeClass('active');
@@ -143,10 +145,10 @@ function setText(bo)
 	bo = bo || false;
 	let str = $('#txtContent').val();
 	$('#divLed div').html($('#radioShan')[0].checked ? str : str + str + str);
-	let h = (bo ? $(window).height() : $('#divLed').height()) + 'px';
-	$('#divLed div').css('font-size', h);
-	$('#divLed div').css('height', h);
-	$('#divLed div').css('line-height', h);
+	let h = bo ? $(window).height() : $('#divLed').height();
+	$('#divLed div').css('font-size', (h * $('#rangeSize').val()) + 'px');
+	$('#divLed div').css('height', h + 'px');
+	$('#divLed div').css('line-height', h + 'px');
 }
 
 function fullscreen()
