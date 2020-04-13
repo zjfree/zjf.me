@@ -1,0 +1,166 @@
+<!-- LED滚动 zjfree 2020-04-10 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LED滚动</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+#divLed{
+	overflow: hidden;
+	width:100%;
+	border: solid 1px gray;
+	position: relative;
+	background: #fff;
+	height: 150px;
+	box-sizing: border-box;
+}
+#divLed.gun div{
+	white-space:nowrap;
+	position:absolute;
+	left:0;
+}
+#divLed.shan div{
+	white-space:nowrap;
+	text-align: center;
+}
+
+.fcolor, .bcolor{
+	display: inline-block;
+	width: 30px;
+	height:10px;
+	border:double 3px gray;
+	cursor: pointer;
+}
+.fcolor.active, .bcolor.active{
+	border:solid 3px #FF9900;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/nosleep/0.6.0/NoSleep.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1 style="margin:0 10px;">LED滚动</h1>
+<div style="margin:10px; line-height: 1.5;">
+	<button onclick="fullscreen();">播放</button><br>
+	
+	<input id="txtContent" style="display: block; margin:10px 0; width:100%;" type="text" value="Hello abc" />
+
+	<label><input id="radioShan" type="radio" name="led_type" value="1" checked /> 闪烁</label>
+	<label><input id="radioGun" type="radio" name="led_type" value="2" /> 滚动</label>
+	<br>
+	闪烁速度：<input id="rangeShan" type="range" min="200" max="3000" value="1000" step="100" />
+	<br>
+	滚动速度：<input id="rangeGun" type="range" min="0.5" max="10" value="3" step="0.1" />
+	<br>
+	文字颜色：
+	<span class="fcolor active" data-color="#000" style="background: #000;"></span>
+	<span class="fcolor" data-color="red" style="background: red;"></span>
+	<span class="fcolor" data-color="blue" style="background: blue;"></span>
+	<span class="fcolor" data-color="green" style="background: green;"></span>
+	<span class="fcolor" data-color="#fff" style="background: #fff;"></span>
+	<br>
+	背景颜色：
+	<span class="bcolor active" data-color="#fff" style="background: #fff;"></span>
+	<span class="bcolor" data-color="red" style="background: red;"></span>
+	<span class="bcolor" data-color="blue" style="background: blue;"></span>
+	<span class="bcolor" data-color="green" style="background: green;"></span>
+	<span class="bcolor" data-color="#000" style="background: #000;"></span>
+	<div id="divLed" class="shan"><div>Hello abc</div></div>
+</div>
+
+<script>
+var shanIndex = 0;
+var gunIndex = 0;
+var noSleep = new NoSleep();
+
+$(function(){
+	$('#txtContent').on('input', function(){setText()});
+	setText();
+
+	$('#rangeShan').on('input', function(){setText()});
+
+	$('.fcolor').click(function(){
+		$('.fcolor').removeClass('active');
+		$(this).addClass('active');
+		$('#divLed').css('color', $(this).data('color'));
+	});
+	$('.bcolor').click(function(){
+		$('.bcolor').removeClass('active');
+		$(this).addClass('active');
+		$('#divLed').css('background-color', $(this).data('color'));
+	});
+	$('#radioShan, #radioGun').change(function(){
+		$('#divLed').attr('class', '');
+		$('#divLed').addClass($('#radioShan')[0].checked ? 'shan' : 'gun');
+		setText();
+	});
+
+	// 闪烁
+	window.setInterval(function(){
+		if (!$('#radioShan')[0].checked) return;
+		shanIndex += 100;
+		if (shanIndex % $('#rangeShan').val() == 0)
+		{
+			$('#divLed div').hide();
+		}
+		else
+		{
+			$('#divLed div').show();
+		}
+	}, 100);
+	
+	// 滚动
+	window.setInterval(function(){
+		if (!$('#radioGun')[0].checked) return;
+		gunIndex -= $('#rangeGun').val();
+		if (Math.abs(gunIndex) > $('#divLed div').width() / 3)
+		{
+			gunIndex = 0;
+		}
+		$('#divLed div').css('left', gunIndex + 'px');
+	}, 20);
+	
+    window.onresize = function() {
+		setText(document.fullscreen);
+    }
+
+	$('#divLed').dblclick(function(){
+		document.exitFullscreen()
+	});
+});
+
+function setText(bo)
+{
+	bo = bo || false;
+	let str = $('#txtContent').val();
+	$('#divLed div').html($('#radioShan')[0].checked ? str : str + str + str);
+	let h = (bo ? $(window).height() : $('#divLed').height()) + 'px';
+	$('#divLed div').css('font-size', h);
+	$('#divLed div').css('height', h);
+	$('#divLed div').css('line-height', h);
+}
+
+function fullscreen()
+{
+	if (document.fullscreen)
+	{
+		document.exitFullscreen()
+	}
+	else
+	{
+		noSleep.enable();
+		$('#divLed')[0].requestFullscreen();
+	}
+}
+</script>
+
+</body>
