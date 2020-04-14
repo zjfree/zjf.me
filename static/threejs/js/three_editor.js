@@ -1054,6 +1054,7 @@ var ThreeEditor = TE = {
                 if (object.isMesh) {
                     object.castShadow = true;
                     object.receiveShadow = true;
+					object.material.metalness = 0.5;
                     //console.log(object);
                 }
             });
