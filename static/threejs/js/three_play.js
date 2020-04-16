@@ -531,7 +531,8 @@ var ThreePlay = TP = {
         let spriteMaterial = new THREE.SpriteMaterial(
             { map: texture, transparent:true });
         let sprite = new THREE.Sprite(spriteMaterial);
-        sprite.scale.set(1 * canvas.width / canvas.height, 1, 1);
+        let zoom = fontsize / 48;
+        sprite.scale.set(zoom * canvas.width / canvas.height, zoom, zoom);
         sprite.center.set(0.5, 0);
 
         TP.scene.add(sprite);
