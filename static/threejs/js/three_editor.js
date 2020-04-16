@@ -1414,6 +1414,7 @@ var ThreeEditor = TE = {
     add: function (type) {
         let geometry = null;
         let arr = [];
+        let tt = TE.orbit.target;
         switch (type) {
             case 'BoxGeometry':
                 arr = TE.parseNum(window.prompt('立方体 (X,Y,Z)', '1,1,1'));
@@ -1488,7 +1489,7 @@ var ThreeEditor = TE = {
                     color: arr[1],
                 };
                 let spritey = TE.addMarker(' ' + s2[1] + ' ', markerOption);
-                spritey.position.set(0, 15, 0);
+                spritey.position.set(tt.x, tt.y, tt.z);
                 TE.selectObj(spritey);
                 return;
             case 'Svg':
@@ -1502,7 +1503,7 @@ var ThreeEditor = TE = {
                 let imgUrl = window.prompt('IMG图片 (图片URL)', '../static/threejs/models/png/test.png');
                 if (!imgUrl) return;
                 let imgObj = TE.addImg(imgUrl);
-                imgObj.position.set(0, 15, 0);
+                imgObj.position.set(tt.x, tt.y, tt.z);
                 TE.selectObj(imgObj);
                 break;
             case 'Model':
@@ -1510,7 +1511,7 @@ var ThreeEditor = TE = {
                 if (!modelName) return;
                 TE.addModel(modelName, function (modelObj) {
                     TE.selectObj(modelObj);
-                    modelObj.position.set(0, 15, 0);
+                    modelObj.position.set(tt.x, tt.y, tt.z);
                 });
                 break;
             case 'Tube':
@@ -1522,7 +1523,7 @@ var ThreeEditor = TE = {
         }
 
         if (geometry) {
-            let obj = TE.addObj(geometry, { x: 0, y: 10, z: 0 }, '#F00');
+            let obj = TE.addObj(geometry, TE.orbit.target, '#F00');
             TE.selectObj(obj);
         }
     },
