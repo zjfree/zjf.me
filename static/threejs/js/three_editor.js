@@ -1476,6 +1476,7 @@ var ThreeEditor = TE = {
                 s1 = s1.split('|');
                 arr = TE.parseNum(s1[0]);
                 TE.addText(s1[1], arr[0], arr[1], arr[2], function (txtObj) {
+                    txtObj.position.set(tt.x, tt.y, tt.z);
                     TE.selectObj(txtObj);
                 });
                 return;
