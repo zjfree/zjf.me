@@ -211,6 +211,11 @@ var ThreePlay = TP = {
         if (obj == TP.INTERSECTED) {
             return;
         }
+
+        if (obj.userData['can_select'] === false)
+        {
+            return;
+        }
         
         TP.cancelSelect();
 
