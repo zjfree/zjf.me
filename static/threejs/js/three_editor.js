@@ -338,6 +338,7 @@ var ThreeEditor = TE = {
             opacity: 1,
 
             // 绑定信息
+            bind_name: '',
             bind_visible: '',
             bind_color: '',
             bind_positionX: '',
@@ -614,6 +615,7 @@ var ThreeEditor = TE = {
             }
         };
 
+        TE.guiController.bind_name = f3.add(TE.gui, 'bind_name').name('名称').onFinishChange(saveBind);
         TE.guiController.bind_visible = f3.add(TE.gui, 'bind_visible').name('是否可见').onFinishChange(saveBind);
         TE.guiController.bind_color = f3.add(TE.gui, 'bind_color').name('颜色').onFinishChange(saveBind);
         TE.guiController.bind_positionX = f3.add(TE.gui, 'bind_positionX').name('位置X').onFinishChange(saveBind);

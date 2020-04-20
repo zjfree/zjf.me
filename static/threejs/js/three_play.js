@@ -859,6 +859,9 @@ var ThreePlay = TP = {
 
                 switch (k)
                 {
+                    case 'name':
+                        obj.name = value;
+                        break;
                     case 'visible':
                         obj.visible = parseInt(value) == 1;
                         break;
