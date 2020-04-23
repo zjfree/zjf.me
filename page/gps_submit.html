@@ -128,23 +128,33 @@ function watchGps()
 	});
 }
 
+var lastLat = 0;
 function watchGpsSuccess(e)
 {
-	if (sn != '')
+	if (sn != '' && lastLat != e.latitude)
 	{
+		let v = {
+			lat: e.latitude,
+			lon: e.longitude,
+			accuracy:e.accuracy,
+			height:e.altitude,
+			deg:e.heading,
+			speed:e.speed,
+			time:e.timestamp,
+		};
+		lastLat = e.latitude;
+
 		$.ajax({
 				url:'http://tool.lishengnet.com/index.php?_=gps_public::submit',
 				type:'POST',
 				dataType:'json',
-				data:{sn:sn, data_json:JSON.stringify(e) + e.latitude},
+				data:{sn:sn, data_json:JSON.stringify(v)},
 				success:function(res){},
 			});
 	}
 
 	lastTime = (new Date()).getTime();
 	
-	alert(e.latitude);
-	alert(JSON.stringify(e));
 	let gps = [e.latitude, e.longitude];
 	
 	if (myMarker == null)
