@@ -144,6 +144,7 @@ function watchGpsSuccess(e)
 	lastTime = (new Date()).getTime();
 	
 	alert(e.latitude);
+	alert(JSON.stringify(e));
 	let gps = [e.latitude, e.longitude];
 	
 	if (myMarker == null)
