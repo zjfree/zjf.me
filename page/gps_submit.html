@@ -136,7 +136,7 @@ function watchGpsSuccess(e)
 				url:'http://tool.lishengnet.com/index.php?_=gps_public::submit',
 				type:'POST',
 				dataType:'json',
-				data:{sn:sn, data_json:JSON.stringify(e)},
+				data:{sn:sn, data_json:JSON.stringify(e) + e.latitude},
 				success:function(res){},
 			});
 	}
