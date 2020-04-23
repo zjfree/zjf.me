@@ -141,28 +141,38 @@ function watchGps()
 }
 
 var lastLat = 0;
+var sleepIndex = 0;
 function watchGpsSuccess(e)
 {
-	if (sn != '' && lastLat != e.latitude)
+	if (sn != '')
 	{
-		let v = {
-			lat: e.latitude,
-			lon: e.longitude,
-			accuracy:e.accuracy,
-			height:e.altitude,
-			deg:e.heading,
-			speed:e.speed,
-			time:e.timestamp,
-		};
-		lastLat = e.latitude;
+		if (lastLat != e.latitude || sleepIndex > 10)
+		{
+			let v = {
+				lat: e.latitude,
+				lon: e.longitude,
+				accuracy:e.accuracy,
+				height:e.altitude,
+				deg:e.heading,
+				speed:e.speed,
+				time:e.timestamp,
+			};
 
-		$.ajax({
-				url:'http://tool.lishengnet.com/index.php?_=gps_public::submit',
-				type:'POST',
-				dataType:'json',
-				data:{sn:sn, data_json:JSON.stringify(v)},
-				success:function(res){},
-			});
+			lastLat = e.latitude;
+			sleepIndex = 0;
+
+			$.ajax({
+					url:'http://tool.lishengnet.com/index.php?_=gps_public::submit',
+					type:'POST',
+					dataType:'json',
+					data:{sn:sn, data_json:JSON.stringify(v)},
+					success:function(res){},
+				});
+		}
+		else
+		{
+			sleepIndex++;
+		}
 	}
 
 	lastTime = (new Date()).getTime();
