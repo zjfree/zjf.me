@@ -1,0 +1,234 @@
+<!-- 手机GPS提交 zjfree 2020-04-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机GPS提交</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<link href="../static/map/css/leaflet.css" id="theme" rel="stylesheet">
+
+<style>
+/* css style */
+body, html{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+
+#divMap{
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:30px;
+	background: #eff;
+}
+
+#divInfo{
+	position: absolute;
+	bottom:0px;
+	z-index: 1000;
+	width:100%;
+	height:30px;
+	font-size:12px;
+	color:#000;
+	line-height:15px;
+}
+#divBtn{
+	position: absolute;
+	bottom:40px;
+	right:10px;
+	z-index: 1000;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/map/js/leaflet.js"></script>
+<script src="../static/map/js/leaflet.ChineseTmsProviders.js"></script>
+<script src="../static/map/js/leaflet_map.js"></script>
+<script src="../static/map/js/GpsConvert.js"></script>
+<script src="https://lib.baomitu.com/nosleep/0.6.0/NoSleep.min.js"></script>
+<script src="https://lib.baomitu.com/fingerprintjs2/2.1.0/fingerprint2.min.js"></script>
+
+</head>
+<body>
+<!-- 内容 -->
+<div id="divMap"></div>
+<div id="divInfo"></div>
+<div id="divBtn">
+<button onclick="watchGps();">重启GPS</button> &nbsp;
+<button onclick="clearPath();">清空</button> &nbsp;
+</div>
+
+<script>
+var mapLayerList = SuperMap.getLayerList();
+var map;
+var index = 0;
+
+var myMarker = null;
+var polyline = null;
+var gpsList = [];
+var lastGps = null;
+var distTotal = 0;
+var watchId = null;
+var lastTime = (new Date()).getTime();
+var wakeup = '';
+var sn = '';
+
+window.onerror = function(message, source, lineno, colno, error) {
+	$('#divInfo').css('color', 'red').html('error:[' + lineno + '] ' + message);
+}
+
+function clearPath()
+{
+	gpsList = [];
+	distTotal = 0;
+	if (polyline != null)
+	{
+		polyline.setLatLngs([]);
+	}
+}
+
+function upload()
+{
+	alert(gpsList.length);
+}
+
+function fnum(num, dec)
+{
+	if (num == null || typeof num == 'undefined')
+	{
+		return '?';
+	}
+	
+	return parseFloat(num).toFixed(dec);
+}
+
+function watchGps()
+{
+	if (watchId != null)
+	{
+		navigator.geolocation.clearWatch(watchId);
+	}
+	
+	// latitude longitude 
+	watchId = navigator.geolocation.watchPosition(function(e){
+		e.coords.timestamp = e.timestamp;
+		watchGpsSuccess(e.coords);
+	}, function(e) {
+		$('#divInfo').css('color', 'red').html('error:' + e.message);
+    }, {
+		enableHighAccuracy: true,
+		timeout: 3000,
+		maximumAge: 0
+	});
+}
+
+function watchGpsSuccess(e)
+{
+	if (sn != '')
+	{
+		$.ajax({
+				url:'http://tool.lishengnet.com/index.php?_=gps_public::submit',
+				type:'POST',
+				dataType:'json',
+				data:{sn:sn, data_json:JSON.stringify(e)},
+				success:function(res){},
+			});
+	}
+
+	lastTime = (new Date()).getTime();
+	
+	let gps = [e.latitude, e.longitude];
+	
+	if (myMarker == null)
+	{
+		myMarker = L.circleMarker(gps, {radius:5, weight:1, color:'#fff', fillColor:'#4AFF59', fillOpacity:0.9}).addTo(map);	
+	}
+	else
+	{
+		myMarker.setLatLng(gps);
+	}
+	
+	if (polyline == null)
+	{
+		polyline = L.polyline([], {color: '#FF504B', weight:2}).addTo(map);
+	}
+	
+	// 判断是否移动
+	let dist = lastGps == null ? 0 : map.distance(gps, lastGps);
+	if (dist > 0 || lastGps == null)
+	{
+		index++;
+		polyline.addLatLng(gps);
+		
+		map.stop().panTo(gps);
+		gpsList.push(gps);
+		
+		distTotal += dist;
+	}
+	lastGps = gps;
+
+	let str = '(' + index + ') ' + fnum(gps[0], 8) + ',' + fnum(gps[1], 8) + ' L:' + fnum(dist, 2) + 'm ' + fnum(distTotal, 0) + 'm<br>';
+	str += 'R:' + fnum(e.accuracy, 0) + 'm, H:' + fnum(e.altitude, 2) + 'm, ' + fnum(e.heading, 0) + '°, ' + fnum(e.speed, 3) + 'm/s ';
+	str += new Date(e.timestamp).toLocaleString();
+	
+	$('#divInfo').css('color', '#000').html(str + ' ' + wakeup);
+}
+
+var noSleep = new NoSleep();
+$(function(){
+
+    Fingerprint2.get(function (vals) {
+        sn = Fingerprint2.x64hash128(JSON.stringify(vals));
+		$('#divFinger').html(sn);
+    });
+
+	// Enable wake lock.
+	document.addEventListener('click', function enableNoSleep() {
+		document.removeEventListener('click', enableNoSleep, false);
+		noSleep.enable();
+		wakeup = 'W';
+	}, false);
+
+	let centerGps = [34, 109];
+    map = L.map("divMap", {
+        center: centerGps,
+        zoom: 17,
+        layers: mapLayerList['影像地图'],
+        zoomControl: true,
+        detectRetina: true,
+    });
+
+    L.control.scale({imperial:false}).addTo(map);
+	L.control.layers(mapLayerList, null).addTo(map);
+	
+	if (window.navigator.requestWakeLock)
+	{
+		window.navigator.requestWakeLock('gps');
+	}
+	watchGps();
+
+	// 断线重连
+	window.setInterval(function(){
+		let now = new Date().getTime();
+		if (now - lastTime > 3000)
+		{
+			$('#divInfo').css('color', 'blue').html('GPS重新连接');
+			lastTime = now;
+			watchGps();
+		}
+	}, 1000);
+
+    SuperMap.hideCompany();
+});
+</script>
+
+
+
+
+</body>
