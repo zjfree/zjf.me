@@ -1,0 +1,81 @@
+<!-- 计数器 zjfree 2020-05-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>计数器</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#tb{
+	width:100%;
+}
+#tb td{
+	font-size:80px;
+	text-align: center;
+	line-height: 2.5;
+	width:50%;
+	cursor: pointer;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>计数器</h1>
+
+<div style="margin-bottom:10px;">
+	<button onclick="resetNum();">重置</button>
+</div>
+<table id="tb">
+	<tr>
+		<td style="background-color: #C2FFC5;">0</td>
+		<td style="background-color: #C2DAFF;">0</td>
+	</tr>
+	<tr>
+		<td style="background-color: #FFC2E4;">0</td>
+		<td style="background-color: #FFFFC2;">0</td>
+	</tr>
+</table>
+
+<script>
+$(function(){
+	// JS
+	$('#tb td').eq(0).html(window.localStorage.getItem('a1') || 0);
+	$('#tb td').eq(1).html(window.localStorage.getItem('a2') || 0);
+	$('#tb td').eq(2).html(window.localStorage.getItem('a3') || 0);
+	$('#tb td').eq(3).html(window.localStorage.getItem('a4') || 0);
+	$('#tb td').click(function(el){
+		if (navigator.vibrate) {
+			navigator.vibrate(20);
+		} else if (navigator.webkitVibrate) {
+			navigator.webkitVibrate(20);
+		}
+		let val = parseInt($(this).html());
+		val++;
+		let index = $('#tb td').index(this) + 1;
+		window.localStorage.setItem('a' + index, val);
+		$(this).html(val);
+	});
+});
+
+function resetNum()
+{
+	window.localStorage.setItem('a1', 0);
+	window.localStorage.setItem('a2', 0);
+	window.localStorage.setItem('a3', 0);
+	window.localStorage.setItem('a4', 0);
+	$('#tb td').html('0');
+}
+
+</script>
+
+</body>
