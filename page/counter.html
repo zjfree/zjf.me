@@ -61,9 +61,9 @@ $(function(){
 	$('#tb td').click(function(el){
 		isRun = true;
 		if (navigator.vibrate) {
-			navigator.vibrate(20);
+			navigator.vibrate(50);
 		} else if (navigator.webkitVibrate) {
-			navigator.webkitVibrate(20);
+			navigator.webkitVibrate(50);
 		}
 		let val = parseInt($(this).html());
 		val++;
