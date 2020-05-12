@@ -23,6 +23,7 @@ body{
 	line-height: 2.5;
 	width:50%;
 	cursor: pointer;
+	user-select:none;
 }
 </style>
 
@@ -30,7 +31,7 @@ body{
 </head>
 <body>
 <!-- 内容 -->
-<h1>计数器</h1>
+<h1 id="divTitle">计数器</h1>
 
 <div style="margin-bottom:10px;">
 	<button onclick="resetNum();">重置</button>
@@ -47,13 +48,18 @@ body{
 </table>
 
 <script>
+var tt = 0;
+var isRun = true;
 $(function(){
 	// JS
 	$('#tb td').eq(0).html(window.localStorage.getItem('a1') || 0);
 	$('#tb td').eq(1).html(window.localStorage.getItem('a2') || 0);
 	$('#tb td').eq(2).html(window.localStorage.getItem('a3') || 0);
 	$('#tb td').eq(3).html(window.localStorage.getItem('a4') || 0);
+	tt = window.localStorage.getItem('tt') || 0;
+
 	$('#tb td').click(function(el){
+		isRun = true;
 		if (navigator.vibrate) {
 			navigator.vibrate(20);
 		} else if (navigator.webkitVibrate) {
@@ -65,10 +71,20 @@ $(function(){
 		window.localStorage.setItem('a' + index, val);
 		$(this).html(val);
 	});
+
+	window.setInterval(function(){
+		if (!isRun) return;
+		tt++;
+		window.localStorage.setItem('tt', tt);
+		$('#divTitle').html('计数器 ' + Math.floor(tt / 60) + ':' + ('0'+(tt % 60)).substr(-2, 2));
+	}, 1000);
 });
 
 function resetNum()
 {
+	$('#divTitle').html('计数器');
+	tt = 0;
+	isRun = false;
 	window.localStorage.setItem('a1', 0);
 	window.localStorage.setItem('a2', 0);
 	window.localStorage.setItem('a3', 0);
