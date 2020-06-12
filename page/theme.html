@@ -1,0 +1,65 @@
+<!-- 主题切换 zjfree 2020-06-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主题切换</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+.theme01 {
+	--accent-color: #fff;
+	--font-color: #000;
+}
+
+.theme02 {
+	--accent-color: #72f1b8;
+	--font-color: #34294f;
+}
+
+.theme03 {
+	--accent-color: #FFBF00;
+	--font-color: #59316B;
+}
+
+.theme04 {
+	--accent-color: #d9455f;
+	--font-color: #303960;
+}
+
+body {
+	background-color: var(--accent-color);
+	color: var(--font-color);
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>主题切换</h1>
+<hr>
+<div>
+	<button onclick="setTheme('theme01');">主题1</button>
+	<button onclick="setTheme('theme02');">主题2</button>
+	<button onclick="setTheme('theme03');">主题3</button>
+	<button onclick="setTheme('theme04');">主题4</button>
+</div>
+<div>
+	<br>
+	hello 123 中文测试
+</div>
+<script>
+	function setTheme(s)
+	{
+		document.documentElement.className = s;
+		localStorage.setItem('theme', s);
+	}
+	setTheme(localStorage.getItem('theme') || 'theme01');
+</script>
+</body>
+</html>
