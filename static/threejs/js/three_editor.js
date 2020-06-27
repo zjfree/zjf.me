@@ -1587,11 +1587,15 @@ var ThreeEditor = TE = {
         window.alert('保存成功');
     },
 
-    load: function () {
-        let json = localStorage.getItem("saveData");
-        if (!json) return;
-
-        let saveData = JSON.parse(json);
+    load: function (saveData) {
+        if (!saveData)
+        {
+            let json = localStorage.getItem("saveData");
+            if (!json) return;
+    
+            saveData = JSON.parse(json);
+        }
+        
         console.log(saveData);
 
         TE.clear();
