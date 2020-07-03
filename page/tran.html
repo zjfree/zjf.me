@@ -1,0 +1,82 @@
+<!-- Google翻译 zjfree 2020-07-03 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google翻译</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+body{
+	padding:10px;
+}
+/*解决问题3*/
+body {
+	top: 0px !important;
+	min-height: 0px !important;
+}
+
+/*解决问题2
+.goog-text-highlight {
+	background-color: transparent !important;
+	-webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
+	-moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
+}
+*/
+
+/*解决问题1*/
+.goog-te-banner-frame {
+	display: none
+}
+
+#goog-gt-tt{
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>网页翻译演示</h1>
+
+	<p>
+		目前谷歌翻译小工具对中文网页(以及其他语言网页)提供了对其他二十三种语言的翻译:
+		中文(繁体),英文,阿拉伯文，保加利亚文，波兰语，朝鲜语，丹麦语，德语，俄语，法语，芬兰语，荷兰语，捷克语，克罗地亚文，罗马尼亚语，挪威语，葡萄牙语，日语，瑞典语，西班牙语，希腊语，意大利语和印度文。也就是说当你的网站使用了谷歌翻译小工具后，你的网站马上可以以另外二十三种语言显示，这对所有期望与国际接轨，让全球网民了解中国博大精深的网页资讯的有志站主来说都是一大福音。当然，机器自动翻译的翻译质量还远远落后于专业但昻贵的翻译公司人工翻译的质量，翻译出的文字一定不及人工翻译来得“信达雅”。但是想想你的网页需要翻译公司翻成二十三种语言需要花多少时间及经费，谷歌翻译小工具在时间及经费有限的情况下提供“有比没有好”的外语资讯。
+	</p>
+
+
+	<!--把button放在右下角，这个是可以随意修改的，你可以改成一个链接一个图片之类的-->
+	<p id="google_translate_element" style="position:fixed;bottom:10px;right:10px;z-index:2000;opacity:0.7"></p>
+	<script>
+		function googleTranslateElementInit() {
+
+			new google.translate.TranslateElement(
+				{
+					//这个是当前页面的原语言，便于插件精确翻译
+					pageLanguage: 'zh-CN',
+					//这个是你需要翻译的语言，比如你只需要翻译成越南和英语，这里就只写en,vi
+					includedLanguages: 'en,zh-CN,hr,cs,da,nl,fr,de,el,iw,hu,ga,it,ja,ko,pt,ro,ru,sr,es,th,vi',
+					//选择语言的样式，这个是面板，还有下拉框的样式，具体的记不到了，找不到api~~
+					//layout: google.translate.TranslateElement.inlineLayout.SIMPLE,
+					//自动显示翻译横幅，就是翻译后顶部出现的那个，有点丑，这个属性没有用的话，请看文章底部的其他方法
+					autodisplay: false,
+					//还有些其他参数，由于原插件不再维护，找不到详细api了，将就了，实在不行直接上dom操作
+
+					autoDisplay: false,
+					multilanguagePage: false,
+					layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+				},
+				'google_translate_element'//触发按钮的id
+			);
+
+		}
+	</script>
+
+	<script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
