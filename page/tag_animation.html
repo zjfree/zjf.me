@@ -1,0 +1,155 @@
+<!-- zjfree 2020-07-06 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS3标签动画效果</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+
+	<style>
+		.ant_circle {
+			position: absolute;
+			width: 75px;
+			height: 75px;
+		}
+
+		.ant_circle .flasher {
+			border-radius: 40px;
+			position: absolute;
+			background: #57a9d4;
+			width: 75px;
+			height: 75px;
+			animation: warn 2.1s ease-out;
+			animation-iteration-count: infinite;
+		}
+
+		.ant_circle .core {
+			width: 15px;
+			height: 15px;
+			background: #008cd6;
+			border-radius: 10px;
+			position: absolute;
+			top: 30px;
+			left: 30px;
+			z-index: 9;
+		}
+
+		
+		.ant_rect {
+			position: absolute;
+			width: 75px;
+			height: 75px;
+		}
+
+		.ant_rect .flasher {
+			background: #57a9d4;
+			position: absolute;
+			width: 75px;
+			height: 75px;
+			animation: warn 2.1s ease-out;
+			animation-iteration-count: infinite;
+		}
+
+		.ant_rect .core {
+			width: 15px;
+			height: 15px;
+			background: #008cd6;
+			position: absolute;
+			top: 30px;
+			left: 30px;
+			z-index: 9;
+		}
+
+		.ant_rect.border .flasher, .ant_circle.border .flasher{
+			box-sizing: border-box;
+			border:solid 2px #57a9d4;
+			background:transparent;
+		}
+
+		@keyframes warn {
+			from {
+				transform: scale(0) rotate(0deg);
+			}
+
+			to {
+				transform: scale(1) rotate(180deg);
+				opacity: 0;
+			}
+		}
+
+		.fz1 {
+			top: 100px;
+			left: 200px;
+		}
+
+		.fz2 {
+			top: 300px;
+			left: 500px;
+		}
+		
+		.fz3 {
+			top: 500px;
+			left: 300px;
+		}
+		
+		.fz4 {
+			top: 600px;
+			left: 100px;
+		}
+	</style>
+
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>CSS3标签动画效果</h1>
+
+    <div class="ant_circle fz1">
+        <div class="core"></div>
+        <div class="fla1"></div>
+        <div class="fla2"></div>
+        <div class="fla3"></div>
+    </div>
+    <div class="ant_circle border fz2">
+        <div class="core"></div>
+        <div class="fla1"></div>
+        <div class="fla2"></div>
+        <div class="fla3"></div>
+	</div>
+	
+    <div class="ant_rect fz3">
+        <div class="core"></div>
+        <div class="fla1"></div>
+        <div class="fla2"></div>
+        <div class="fla3"></div>
+    </div>
+    <div class="ant_rect border fz4">
+        <div class="core"></div>
+        <div class="fla1"></div>
+        <div class="fla2"></div>
+        <div class="fla3"></div>
+	</div>
+	
+	<script>
+		$(function () {
+			// JS
+			$('.fla1').addClass('flasher');
+			setTimeout(function(){
+				$('.fla2').addClass('flasher')	
+			}, 700);
+			setTimeout(function(){
+				$('.fla3').addClass('flasher')	
+			}, 1400);
+		});
+	</script>
+
+
+
+</body>
