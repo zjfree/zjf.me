@@ -935,6 +935,7 @@ var ThreePlay = TP = {
                                 delList.push(obj);
                                 break;
                             case 'Text':
+								value = '' + value;
                                 if (obj.userData['text'] == value)
                                 {
                                     break;
