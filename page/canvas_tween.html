@@ -1,0 +1,490 @@
+<!-- Canvas渐变消失 zjfree 2020-09-05 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canvas渐变消失</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divTool">
+	<label><input type="radio" name="rr" checked value="1" /> p1</label>
+	<label><input type="radio" name="rr" value="2" /> p2</label>
+	<label><input type="radio" name="rr" value="3" /> p3</label>
+	<label><input type="radio" name="rr" value="4" /> p4</label>
+	<label><input type="radio" name="rr" value="5" /> p5</label>
+	<label><input type="radio" name="rr" value="6" /> p6</label>
+</div>
+
+<script>
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	init:function(el)
+	{
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.ctx.fillStyle = '#000';
+		this.ctx.fillRect(0,0,this.width,this.height);
+
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	render:function()
+	{
+		this.index++;
+		
+		if (this.index % 1 != 0)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+			
+			return;
+		}
+
+		//this.ctx.clearRect(0,0,this.width,this.height); 
+				
+		let grd = this.ctx.createLinearGradient(0,0,0,this.height);
+		let v = Math.abs(Math.sin(Math.PI*this.index/180.0) * 255);
+		
+		// grd.addColorStop(0, 'rgba('+v+','+(v-255)+','+(255-v)+',0.1)');
+		// grd.addColorStop(0.5, 'rgba('+(255-v)+','+v+','+(v-255)+',0.1)');
+		// grd.addColorStop(1, 'rgba('+(v-255)+','+(255-v)+','+v+',0.1)');
+
+		this.ctx.fillStyle = 'rgba(0,0,0,0.05)';
+		// this.ctx.fillStyle = grd;
+		this.ctx.fillRect(0,0,this.width,this.height);
+		
+		let fn = this['p'+$("input[name=rr]:checked").val()];
+		fn.call(this);
+		// this.p1();
+		// this.p2();
+		// this.p3();
+		// this.p4();
+		// this.p5();
+		// this.p6();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		this.ctx.fillStyle = '#000';
+		this.ctx.fillRect(0,0,this.width,this.height);
+	},
+	rand:function(min, max)
+	{
+		let val = min + Math.random() * (max - min);
+		return Math.round(val);
+	},
+	drawRect:function(x,y,w,h, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.rect(x,y,w,h);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawLine:function(x1,y1,x2,y2,strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+
+	drawCurve:function(p1, p2, p3, strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(p1.x, p1.y);
+		this.ctx.quadraticCurveTo(p2.x, p2.y, p3.x, p3.y);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+
+	p1:function(){
+		let i = this.index;
+		for (let j=-100; j<this.width / 5; j++)
+		{
+			let v1 = Math.sin(Math.PI*i/180.0) * 255;
+			let v2 = Math.cos(Math.PI*j/180.0) * 255;
+			v2 = Math.abs(v2);
+			for (let k=0; k<10; k++)
+			{
+				if (v1 < 0)
+				{
+					this.drawCirle((j + k*3) * 10, v1 / 255 * (this.height / 2 - 20) + this.height / 2, this.size, 'rgba(' + v2 + ',255,' + (255+v1) + ')');
+				}
+				else
+				{
+					this.drawCirle((j + k*3) * 10, v1 / 255 * (this.height / 2 - 20) + this.height / 2, this.size, 'rgba(' + v2 + ',' + (255-v1) + ',255)');
+				}
+			}
+			i += 5;
+		}
+	},
+	
+	p2:function(){
+		let i = this.index;
+		let x = this.index % this.width;
+		for (let k=0; k<10; k++)
+		{
+			let v = i+k*20;
+			let y = Math.sin(Math.PI*v/180.0) * this.height / 2 + this.height / 2;
+			let v2 = Math.cos(Math.PI*v/180.0) * 255;
+			v2 = Math.abs(v2);
+
+			this.drawCirle(x + 10 * k, y, this.size, 'rgba(255,255,' + v2 + ')');
+		}
+	},
+	
+	p3:function(){
+		let i = this.index;
+		for ($k=0; $k<100; $k++)
+		{
+			let r = i / 3 % Math.min(this.width, this.height);
+			let y = Math.cos(Math.PI*i/180.0) * r + this.height / 2;
+			let x = Math.sin(Math.PI*i/180.0) * r + this.width / 2;
+			let v2 = Math.cos(Math.PI*i/10/180.0) * 180 + 180;
+
+			this.drawCirle(x, y, this.size, 'hsl(' + v2 + ',50%, 50%)');
+			i += 50;
+		}
+	},
+
+	p4_list:[],
+	p4:function(){
+		if (this.p4_list.length < 300 && this.index % 5 == 0)
+		{
+			let deg = this.rand(0, 360);
+			let item = {
+				x:this.width / 2,
+				y:this.height / 2,
+				deg:deg,
+				radius:this.rand(5, 10),
+				x1:Math.cos(Math.PI*deg/180.0) * 3,
+				y1:Math.sin(Math.PI*deg/180.0) * 3,
+				color:'hsl(' + this.rand(0,365) + ',70%,50%)',
+			};
+			this.p4_list.push(item);
+		}
+
+		for (let r of this.p4_list)
+		{
+			let x = r.x + r.x1;
+			let y = r.y + r.y1;
+			
+			let deg = r.deg;
+			if (x < r.radius)
+			{
+				// deg = (this.rand(1,2) == 1 ? this.rand(0,90) : this.rand(270,360));
+				deg = 180 - deg;
+			}
+			if (x + r.radius > this.width)
+			{
+				// deg = this.rand(90,270);
+				deg = 180 - deg;
+			}
+			if (y < r.radius)
+			{
+				// deg = this.rand(0,180);
+				deg = deg - 180;
+				deg = 90 - deg + 90;
+			}
+			if (y + r.radius > this.height)
+			{
+				// deg = this.rand(180,360);
+				deg = deg - 180;
+				deg = 270 - deg + 270;
+			}
+
+			if (deg != r.deg)
+			{
+				r.deg = deg;
+				r.x1 = Math.cos(Math.PI*deg/180.0) * 3;
+				r.y1 = Math.sin(Math.PI*deg/180.0) * 3;
+				continue;
+			}
+
+			r.x = x;
+			r.y = y;
+
+			this.drawCirle(x, y, r.radius, r.color);
+		}
+	},
+	
+	p5_list:[],
+	p5:function(){
+		let lineStep = 5;
+		if (this.p5_list.length < 5 && this.index % 5 == 0)
+		{
+			let deg1 = this.rand(0, 360);
+			let deg2 = this.rand(0, 360);
+			let item = {
+				index: this.p5_list.length,
+				x1:this.rand(0, this.width),
+				y1:this.rand(0, this.height),
+				deg1:deg1,
+				x11:Math.cos(Math.PI*deg1/180.0) * lineStep,
+				y11:Math.sin(Math.PI*deg1/180.0) * lineStep,
+
+				x2:this.rand(0, this.width),
+				y2:this.rand(0, this.height),
+				deg2:deg2,
+				x22:Math.cos(Math.PI*deg2/180.0) * lineStep,
+				y22:Math.sin(Math.PI*deg2/180.0) * lineStep,
+
+				color:'hsl(' + this.rand(0,365) + ',70%,50%)',
+			};
+
+			this.p5_list.push(item);
+		}
+
+		for (let r of this.p5_list)
+		{
+			let x1 = r.x1 + r.x11;
+			let y1 = r.y1 + r.y11;
+			
+			let deg1 = this.getDeg(x1, y1, r.deg1);
+			if (deg1 != r.deg1)
+			{
+				r.deg1 = deg1;
+				r.x11 = Math.cos(Math.PI*deg1/180.0) * lineStep;
+				r.y11 = Math.sin(Math.PI*deg1/180.0) * lineStep;
+				continue;
+			}
+
+			r.x1 = x1;
+			r.y1 = y1;
+
+			let x2 = r.x2 + r.x22;
+			let y2 = r.y2 + r.y22;
+
+			let deg2 = this.getDeg(x2, y2, r.deg2);
+			if (deg2 != r.deg2)
+			{
+				r.deg2 = deg2;
+				r.x22 = Math.cos(Math.PI*deg2/180.0) * lineStep;
+				r.y22 = Math.sin(Math.PI*deg2/180.0) * lineStep;
+				continue;
+			}
+
+			r.x2 = x2;
+			r.y2 = y2;
+			r.color = 'hsl(' + ((this.index + r.index * 50) % 360) + ',70%,50%)';
+
+			this.drawLine(r.x1, r.y1, r.x2, r.y2, r.color, 2);
+		}
+	},
+
+	getDeg:function(x, y, deg)
+	{
+		if (x < 0)
+		{
+			deg = 180 - deg;
+		}
+		else if (x > this.width)
+		{
+			deg = 180 - deg;
+		}
+		else if (y < 0)
+		{
+			deg = deg - 180;
+			deg = 90 - deg + 90;
+		}
+		else if (y > this.height)
+		{
+			deg = deg - 180;
+			deg = 270 - deg + 270;
+		}
+
+		return deg;
+	},
+	
+	p6_list:[],
+	p6:function(){
+		let lineStep = 5;
+		if (this.p6_list.length < 5 && this.index % 5 == 0)
+		{
+			let deg1 = this.rand(0, 360);
+			let deg2 = this.rand(0, 360);
+			let deg3 = this.rand(0, 360);
+			let item = {
+				index: this.p6_list.length,
+
+				x1:this.rand(0, this.width),
+				y1:this.rand(0, this.height),
+				deg1:deg1,
+				x11:Math.cos(Math.PI*deg1/180.0) * lineStep,
+				y11:Math.sin(Math.PI*deg1/180.0) * lineStep,
+
+				x2:this.rand(0, this.width),
+				y2:this.rand(0, this.height),
+				deg2:deg2,
+				x22:Math.cos(Math.PI*deg2/180.0) * lineStep,
+				y22:Math.sin(Math.PI*deg2/180.0) * lineStep,
+
+				x3:this.rand(0, this.width),
+				y3:this.rand(0, this.height),
+				deg3:deg3,
+				x33:Math.cos(Math.PI*deg3/180.0) * lineStep,
+				y33:Math.sin(Math.PI*deg3/180.0) * lineStep,
+
+				color:'hsl(' + this.rand(0,365) + ',70%,50%)',
+			};
+
+			this.p6_list.push(item);
+		}
+
+		for (let r of this.p6_list)
+		{
+			let x1 = r.x1 + r.x11;
+			let y1 = r.y1 + r.y11;
+			
+			let deg1 = this.getDeg(x1, y1, r.deg1);
+			if (deg1 != r.deg1)
+			{
+				r.deg1 = deg1;
+				r.x11 = Math.cos(Math.PI*deg1/180.0) * lineStep;
+				r.y11 = Math.sin(Math.PI*deg1/180.0) * lineStep;
+				continue;
+			}
+
+			r.x1 = x1;
+			r.y1 = y1;
+
+			let x2 = r.x2 + r.x22;
+			let y2 = r.y2 + r.y22;
+
+			let deg2 = this.getDeg(x2, y2, r.deg2);
+			if (deg2 != r.deg2)
+			{
+				r.deg2 = deg2;
+				r.x22 = Math.cos(Math.PI*deg2/180.0) * lineStep;
+				r.y22 = Math.sin(Math.PI*deg2/180.0) * lineStep;
+				continue;
+			}
+
+			r.x2 = x2;
+			r.y2 = y2;
+			
+			let x3 = r.x3 + r.x33;
+			let y3 = r.y3 + r.y33;
+
+			let deg3 = this.getDeg(x3, y3, r.deg3);
+			if (deg3 != r.deg3)
+			{
+				r.deg3 = deg3;
+				r.x33 = Math.cos(Math.PI*deg3/180.0) * lineStep;
+				r.y33 = Math.sin(Math.PI*deg3/180.0) * lineStep;
+				continue;
+			}
+
+			r.x3 = x3;
+			r.y3 = y3;
+			
+			r.color = 'hsl(' + ((this.index + r.index * 50) % 360) + ',70%,50%)';
+
+			this.drawCurve({x:r.x1, y:r.y1}, {x:r.x2, y:r.y2}, {x:r.x3, y:r.y3}, r.color, 2);
+		}
+	},
+
+};
+
+
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+	$('input[name=rr]').change(function(){
+		CC.clear();
+	});
+
+	CC.init($('#myCanvas'));
+});
+</script>
+
+
+
+</body>
