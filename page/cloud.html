@@ -1,0 +1,113 @@
+<!-- CSS3 云朵 zjfree 2020-10-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS3 云朵</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	height: 100%;
+}
+body
+{
+    background: linear-gradient(#3B8CDD, #C6E9FC);
+    color: #fff;
+	padding:0 10px;
+}
+.cloud {
+    width: 800px; height: 250px;
+    margin: 3rem auto;
+    position: relative;
+}
+.cloud:empty {
+    filter: url(#cloudRandom);
+    background: radial-gradient(closest-side, #fff var(--start-stop, 20%), #fffa var(--mid-stop, 60%), #fff0 80%);
+    border-radius: 50%;
+}
+/* 带阴影的云朵 */
+.cloud > i {
+    position: absolute;
+    width: inherit; height: inherit;
+    border-radius: 50%;
+}
+.cloud-basic {
+    filter: url(#cloudBasic);
+    background: radial-gradient(closest-side, #fff 60%, transparent 80%)
+}
+.cloud-mid {
+    filter: url(#cloudShadow);
+    background: radial-gradient(closest-side at 50% 60%, rgba(100, 90, 80, 0.2), transparent 60%);
+}
+.cloud-shadow {
+    background: radial-gradient(closest-side at 50% 70%, rgba(0, 0, 0, 0.05), transparent 40%);
+    filter: url(#cloudShadow);
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>CSS3 云朵</h1>
+<div>参考：<a target="_blank" href="https://www.zhangxinxu.com/wordpress/2020/10/svg-feturbulence/">https://www.zhangxinxu.com/wordpress/2020/10/svg-feturbulence/</a></div>
+
+<svg width="0" height="0" style="position:absolute;">
+    <filter id="cloudRandom">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" 
+seed="0" />     
+      <feDisplacementMap in="SourceGraphic" scale="170" />
+    </filter>
+</svg>
+<h4>纯白云层 &nbsp; <button id="buttonRandom">随机云朵</button></h4>
+<div class="cloud"></div>
+
+<svg width="0" height="0" style="position:absolute;">
+    <filter id="cloudBasic">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" />     
+      <feDisplacementMap in="SourceGraphic" scale="170" />
+    </filter>
+    <filter id="cloudShadow">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" />     
+      <feDisplacementMap in="SourceGraphic" scale="140" />
+    </filter>
+</svg>
+<h4>带阴影云层 &nbsp; <button id="buttonRandom2">随机变化</button></h4>
+<div class="cloud">
+    <i class="cloud-basic"></i>
+    <i class="cloud-mid"></i>
+    <i class="cloud-shadow"></i>
+</div>
+
+<script>
+	var eleButton = document.getElementById('buttonRandom');
+	var eleTurbulence = document.querySelector('#cloudRandom feTurbulence');
+	eleButton.addEventListener('click', function () {
+		var eleCloud = document.querySelector('.cloud:empty');
+		eleCloud.style.setProperty('--start-stop', (10 + 20 * Math.random()) + '%');
+		eleCloud.style.setProperty('--mid-stop', (50 + 20 * Math.random()) + '%');
+		
+		eleTurbulence.setAttributeNS(null, 'seed', Math.round(100 * Math.random()));
+	});
+
+	var eleButton2 = document.getElementById('buttonRandom2');
+	var eleTurbulenceA = document.querySelector('#cloudBasic feTurbulence');
+	var eleTurbulenceB = document.querySelector('#cloudShadow feTurbulence');
+
+	// 带阴影云朵的随机变化
+	eleButton2.addEventListener('click', function () {
+		var seed = Math.round(100 * Math.random());
+		eleTurbulenceA.setAttributeNS(null, 'seed', seed);
+		eleTurbulenceB.setAttributeNS(null, 'seed', seed);
+	});
+</script>
+
+
+
+</body>
+</html>
