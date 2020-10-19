@@ -1,0 +1,127 @@
+<!-- CSS随机背景 zjfree 2020-10-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS随机背景</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	height: 100%;
+}
+
+body{
+	padding:10px;
+	background: linear-gradient(335deg, rgba(163, 163, 163, 0.09) 0%, rgba(163, 163, 163, 0.09) 33.3%, rgba(100, 100, 100, 0.09) 33.3%, rgba(100, 100, 100, 0.09) 66.6%, rgba(162, 162, 162, 0.09) 66.6%, rgba(162, 162, 162, 0.09) 99%);
+	background-color: hsl(40, 50%, 50%);
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>CSS随机背景</h1>
+
+<button onclick="createBackground();">随机</button>
+&nbsp;
+<label><input type="radio" name="r1" value="1" checked /> 模糊</label>
+<label><input type="radio" name="r1" value="2" /> 渐变</label>
+<label><input type="radio" name="r1" value="3" /> 清晰</label>
+&nbsp;
+<label><input id="chkColor" type="checkbox" checked /> 随机颜色</label>
+<input id="color1" type="range" min="0" max="360" value="50" style="display: none; position: relative; top:5px;" />
+
+<script>
+
+$(function(){
+	// JS
+	$('input[type=radio]').change(function(){
+		createBackground();
+	});
+
+	$('#chkColor').change(function(){
+		if (this.checked)
+		{
+			$('#color1').hide();
+		}
+		else
+		{
+			$('#color1').show();
+		}
+	});
+	
+	$('#color1').on('input', function(){
+		document.body.style.backgroundColor = 'hsl(' + $(this).val() + ',100%,50%)';
+	});
+});
+
+function randInt(min, max)
+{
+	let val = min + (max - min) * Math.random();
+	val = Math.round(val);
+
+	return val;
+}
+
+function createBackground()
+{
+	let type = $('input[name="r1"]:checked').val();
+	let str = '';
+	for (let i=0; i<15; i++)
+	{
+		str += 'linear-gradient(' + randInt(0, 360) + 'deg';
+		let lastColor = '';
+		let lastPer = 0;
+		for (let j=0; j<=100; j+=25)
+		{
+			let v = randInt(0, 255);
+			let color = ',rgba(' + v + ',' + v + ',' + v + ',0.09) ';
+			let per = j;
+
+			if (j != 0 && j != 100)
+			{
+				per = randInt(20, 80);
+			}
+
+			if (type == 1)
+			{
+				str += color + j + '%';
+			}
+			else if (type == 2)
+			{
+				str += color + per + '%';
+			}
+			else if (lastColor != '')
+			{
+				str += lastColor + lastPer + '%';
+				str += lastColor + per + '%';
+			}
+			
+			lastColor = color;
+			lastPer = per;
+		}
+		str += '),'
+	}
+	
+	str = str.substr(0, str.length - 1);
+	// console.log(str);
+	document.body.style.background = str;
+
+	if ($('#chkColor')[0].checked)
+	{
+		$('#color1').val(randInt(0, 360));
+	}
+	document.body.style.backgroundColor = 'hsl(' + $('#color1').val() + ',100%,50%)';
+}
+</script>
+
+
+
+</body>
