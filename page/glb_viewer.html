@@ -1,0 +1,53 @@
+<!-- GLB 3D模型查看 zjfree 2020-11-06 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLB 3D模型查看</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>GLB 3D模型查看</h1>
+
+<div style="margin: 10px 0;">
+	参考：
+	<a target="_blank" href="https://modelviewer.dev/">3D模型查看 model-viewer</a>
+	<a target="_blank" href="https://modelviewer.dev/editor/">GLB模型编辑器</a>
+</div>
+
+<!-- Use it like any other HTML element -->
+<model-viewer id="v1" src="../static/threejs/models/推土机.glb" style="width:500px; height:300px;" auto-rotate camera-controls></model-viewer>
+
+<div style="margin: 10px 0;">
+	<button onclick="$('#v1').prop('src', '../static/threejs/models/推土机.glb');">推土机</button>
+	<button onclick="$('#v1').prop('src', '../static/threejs/models/油罐车.glb');">油罐车</button>
+</div>
+
+<a href="http://dji-official-fe.djicdn.com/assets/uploads/p/f2a89648-ce9d-4318-9454-8a1a79cf6db7/WM161_zhankai_1k.glb">大疆MINI2模型1</a>
+<a href="http://dji-official-fe.djicdn.com/assets/uploads/p/f2a89648-ce9d-4318-9454-8a1a79cf6db7/wm161_v11_zhedie_1k.glb">大疆MINI2模型2</a>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+
+
+</body>
