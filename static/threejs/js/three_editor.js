@@ -86,10 +86,21 @@ var ThreeEditor = TE = {
         //scene.fog = new THREE.Fog('#ccc', 20, 100);
 
         // SKYBOX/FOG
-        var skyBoxGeometry = new THREE.CubeGeometry(200, 200, 200);
-        var skyBoxMaterial = new THREE.MeshBasicMaterial({ color: '#367EE3', side: THREE.BackSide });
-        var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
-        TE.scene.add(skyBox);
+        // var skyBoxGeometry = new THREE.CubeGeometry(200, 200, 200);
+        // var skyBoxMaterial = new THREE.MeshBasicMaterial({ color: '#367EE3', side: THREE.BackSide });
+        // var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+        // TP.scene.add(skyBox);
+    
+        let urls = [
+            '/static/threejs/img/skybox_RT_s.jpg', // right
+            '/static/threejs/img/skybox_LF_s.jpg', // left
+            '/static/threejs/img/skybox_UP_s.jpg', // top
+            '/static/threejs/img/skybox_DN_s.jpg', // bottom
+            '/static/threejs/img/skybox_BK_s.jpg', // back
+            '/static/threejs/img/skybox_FR_s.jpg'  // front
+        ];
+        let skyboxCubemap = new THREE.CubeTextureLoader().load(urls);
+        TP.scene.background = skyboxCubemap;
 
         // 坐标轴辅助
         let axes = new THREE.AxesHelper(50);
