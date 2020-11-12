@@ -1,0 +1,105 @@
+<!-- CSS长度 zjfree 2020-11-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS长度</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+.ruler{
+	height:3em;
+	border:solid 1px gray;
+	background-color: #900;
+	box-sizing:border-box;
+	margin:10px 0;
+	resize:horizontal;
+	overflow:hidden;
+	color:#fff;
+	line-height: 3em;
+	text-indent: 1em;
+	box-shadow: inset 0 0 20px #000;
+}
+
+#divInfo{
+	margin:10px 0;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>CSS长度</h1>
+
+<div>
+	参考：
+	<a target="_blank" href="https://www.cnblogs.com/jesse131/p/9079219.html">CSS中各种长度单位总结</a>
+	<a target="_blank" href="https://www.w3.org/TR/css3-values/#relative-lengths">W3C规范</a>
+</div>
+
+<div id="divInfo"></div>
+
+<h2>绝对长度单位 px cm mm Q in pc pt</h2>
+
+100px 像素
+<div class="ruler" style="width:100px;">100px</div>
+10cm 厘米
+<div class="ruler" style="width:10cm;">10cm</div>
+200mm 毫米
+<div class="ruler" style="width:200mm;">200mm</div>
+200Q 1/4毫米
+<div class="ruler" style="width:200Q;">200Q</div>
+10in 英寸
+<div class="ruler" style="width:10in;">10in</div>
+20pc 1/6英寸
+<div class="ruler" style="width:20pc;">20pc</div>
+200pt 1/72英寸
+<div class="ruler" style="width:200pt;">200pt</div>
+
+<h2>相对长度单位 em ex ch rem % vw vh vmin vmax</h2>
+
+20em 1个字大小
+<div class="ruler" style="width:20em;">20em</div>
+20ex 相对于字符“x”的高度。通常为字体高度的一半。
+<div class="ruler" style="width:20ex;">20ex</div>
+20ch 数字“0”的宽度
+<div class="ruler" style="width:20ch;">20ch</div>
+20rem 1个基础字大小
+<div class="ruler" style="width:20rem;">20rem</div>
+20% 百分比
+<div class="ruler" style="width:20%;">20%</div>
+20vw : 1vw 等于视口宽度的1%
+<div class="ruler" style="width:20vw;">20vw</div>
+20vh : 1vh 等于视口高度的1%
+<div class="ruler" style="width:20vh;">20vh</div>
+20vmin : 选取 vw 和 vh 中最小的那个
+<div class="ruler" style="width:20vmin;">20vmin</div>
+20vmax : 选取 vw 和 vh 中最大的那个
+<div class="ruler" style="width:20vmax;">20vmax</div>
+
+<script>
+$(function(){
+	// JS
+	let info = 'window.devicePixelRatio = ' + window.devicePixelRatio + '&emsp; ';
+	info += 'screen = ' + window.screen.width + ',' + window.screen.height;
+	$('#divInfo').html(info);
+	window.setInterval(function(){
+		$('.ruler').each(function(){
+			$(this).html($(this).outerWidth());
+		});
+	}, 100);
+});
+</script>
+
+
+
+</body>
