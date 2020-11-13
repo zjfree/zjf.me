@@ -3,8 +3,7 @@ const options = {
 		fastMode: true,
 		maxDetectedFaces: 1
 	},
-	barcode: {},
-	text: {
+	barcode: {
 	formats: [
     'aztec',
     'code_128',
@@ -19,8 +18,8 @@ const options = {
     'qr_code',
     'upc_a',
     'upc_e'
-  ]
-	}
+  ]},
+	text: {}
 }
 async function detectShape( image, type ) {
 	const bitmap = await createImageBitmap( image );
