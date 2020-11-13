@@ -13,6 +13,7 @@
 /* css style */
 body{
 	padding:0 10px;
+	line-height: 1.5;
 }
 </style>
 
@@ -29,10 +30,13 @@ body{
 
 <div>
 	<label><input type="radio" name="detection-type" value="face" checked="checked"> 人脸检测 </label>
+	<br>
 	<label><input type="radio" name="detection-type" value="barcode"> 二维码识别 <span
 			class="label-description">暂时无法使用</span></label>
+	<br>
 	<label><input type="radio" name="detection-type" value="text"> 文字识别 <span
 			class="label-description">高对比度效果最好...</span></label>
+	<br>
 	<div class="upload-label">选择检测图片:
 		<label class="upload-button"><input name="detection-file" type="file" accept="image/*">选择图片</label>
 	</div>
@@ -41,7 +45,7 @@ body{
 <div id="imageDisplay">
 	<div class="info-text">
 		<p>
-			请记住，此机制仅在Chrome（Mac、Windows）中有效，它需要以下标志：
+			请记住，需要https，此机制仅在Chrome（Mac、Windows）中有效，它需要以下标志：
 			<code>chrome://flags#enable-experimental-web-platform-features</code>
 			被打开。
 		</p>
