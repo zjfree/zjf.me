@@ -1,0 +1,256 @@
+<!-- 毛笔画刷 zjfree 2020-11-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+	<title>毛笔画刷</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		#canvasMain {
+			position: absolute;
+			background: #fff;
+		}
+
+		#divBtn {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+
+		#divBtn button {
+			cursor: pointer;
+		}
+
+		#divPen {
+			position: absolute;
+			border-radius: 50%;
+			pointer-events: none;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="canvasMain">canvas 不支持</canvas>
+
+	<div id="divBtn">
+		<button onclick="clearPaper();">清空</button>
+		<button onclick="saveImg();">保存</button>
+		<button onclick="selectPen(0);" class="active">画刷1</button>
+		<button onclick="selectPen(1);">画刷2</button>
+		<button onclick="selectPen(2);">画刷3</button>
+		<button onclick="selectPen(3);">画刷4</button>
+		&emsp;
+		<span>
+			参考：
+			<a target="_blank" href="https://www.sucainiu.com/8860.html">毛笔画刷</a>
+		</span>
+	</div>
+
+	<div class="brush" style="display: none;">
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUExNzUwNEMyN0Q5MTFFQkFDODk4MzYxMkRGQ0VGOEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUExNzUwNEQyN0Q5MTFFQkFDODk4MzYxMkRGQ0VGOEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQTE3NTA0QTI3RDkxMUVCQUM4OTgzNjEyREZDRUY4QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQTE3NTA0QjI3RDkxMUVCQUM4OTgzNjEyREZDRUY4QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PugKs70AAAAGUExURQAAAP///6XZn90AAAACdFJOU/8A5bcwSgAAAFRJREFUeNrU00EOABAQQ9H2/peWWSAY34KNrsgTyUTJGD1jrafrXj2xHlhZGmuXYGEO/Gt4LN+wkY1s82sRG7m3hdTZbFM797pWMStyvePxJyoCDABNpgFIHWbsDwAAAABJRU5ErkJggg==" />
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0ZFNDQ2OEMyN0Q5MTFFQjkwRTlEQUQ0MTk2RENDMzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0ZFNDQ2OEQyN0Q5MTFFQjkwRTlEQUQ0MTk2RENDMzYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozRkU0NDY4QTI3RDkxMUVCOTBFOURBRDQxOTZEQ0MzNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRkU0NDY4QjI3RDkxMUVCOTBFOURBRDQxOTZEQ0MzNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PucFmrkAAAAGUExURQAAAP///6XZn90AAAACdFJOU/8A5bcwSgAAAF1JREFUeNqs0zEOwCAMQ1H7/pemUoUoIXYQNAvD+xMQ0A6IdwrOk4nXZOE5SPgbpDwCwT14DueaUTC22Pk9G/+Becc8YnZmwdR3vsNU7y2cgZlsRPz24SfDr2ATYABjQAFTSX/+yQAAAABJRU5ErkJggg==" />
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDE0NzBCN0UyN0UwMTFFQkE5NDlGMzIxRjdBNDMzMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDE0NzBCN0YyN0UwMTFFQkE5NDlGMzIxRjdBNDMzMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MTQ3MEI3QzI3RTAxMUVCQTk0OUYzMjFGN0E0MzMyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MTQ3MEI3RDI3RTAxMUVCQTk0OUYzMjFGN0E0MzMyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrY31TwAAAAGUExURf8AAP///0EdNBEAAAACdFJOU/8A5bcwSgAAAB5JREFUeNpiYMQLGAa9NAMGGJUelcYlPQTTOUCAAQAaHgJBKFzy7gAAAABJRU5ErkJggg==" />
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUUxOTE0NjEyN0UwMTFFQkI4MDg5MEVFRDI4NjlEMzUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUUxOTE0NjIyN0UwMTFFQkI4MDg5MEVFRDI4NjlEMzUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1RTE5MTQ1RjI3RTAxMUVCQjgwODkwRUVEMjg2OUQzNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1RTE5MTQ2MDI3RTAxMUVCQjgwODkwRUVEMjg2OUQzNSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgUgRcMAAAAGUExURQC1Cf///wD2VzMAAAACdFJOU/8A5bcwSgAAADtJREFUeNpiYMQLGIaGNAMMYJNmQAYY0gwM2OQZsMvC5ImTZmDALj/CpSkLVEIxRii+CaWWQZfOAQIMAEGpAkyq7ZgGAAAAAElFTkSuQmCC" />
+	</div>
+
+	<script>
+
+		const Brush = function (options) {
+			this.canvas = document.getElementById(options.el);
+			this.ctx = this.canvas.getContext("2d");
+			this.canvas.width = options.width;
+			this.canvas.height = options.height;
+			this.ctx.fillStyle = "rgba(0,0,0,0.8)";
+			const _this = this;
+			this.p = 0;
+			this.l = 20;
+			this.arr = [];
+			//鼠标场景--电脑端.
+			this.canvas.onmousedown = this.downEvent.bind(this);
+			this.canvas.onmousemove = this.moveEvent.bind(this);
+			this.canvas.onmouseup = this.upEvent.bind(this);
+			//触摸场景--手机端/触摸屏机
+			this.canvas.addEventListener("touchstart", this.downEvent.bind(this), false);
+			this.canvas.addEventListener("touchmove", this.moveEvent.bind(this), false);
+			this.canvas.addEventListener("touchend", this.upEvent.bind(this), false);
+			this.moveFlag = false;
+			this.upof = {};
+			this.radius = 0;
+			this.has = [];
+			this.lineMax = 20;
+			this.lineMin = 10;
+			this.linePressure = 1;
+			this.smoothness = 80;
+			this.img = options.img;
+			//this.img1 = document.getElementById('pen2');
+		}
+		Brush.prototype.clear = function () {
+			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		}
+		Brush.prototype.clickEvent = function (e) {
+			this.cli = this.getXY(e);
+		}
+		Brush.prototype.downEvent = function (e) {
+			window.console.log('点击');
+			this.moveFlag = true;
+			this.has = [];
+			this.upof = this.getXY(e);
+			let x1 = this.upof.x;
+			let y1 = this.upof.y;
+			this.arr.unshift({ x1, y1 });
+		};
+		Brush.prototype.moveEvent = function (e) {
+			if (!this.moveFlag)
+				return;
+			e.preventDefault();
+			let of = this.getXY(e); //move
+			let up = this.upof;  //down
+			let ur = this.radius;  //banjing
+			let b = 0;
+			this.has.unshift({ time: new Date().getTime(), dis: this.distance(up, of) });
+			let dis = 0;
+			let time = 0;
+			for (let n = 0; n < this.has.length - 1; n++) {
+				dis += this.has[n].dis;
+				time += this.has[n].time - this.has[n + 1].time;
+				if (dis > this.smoothness)
+					break;
+			}
+			let or = Math.min(time / dis * this.linePressure + this.lineMin, this.lineMax) / 2;
+			this.radius = or;
+			this.upof = of;
+			let len = Math.round(this.has[0].dis / 2) + 1;
+			for (let i = 0; i < len; i++) {
+				let x = up.x + (of.x - up.x) / len * i;
+				let y = up.y + (of.y - up.y) / len * i;
+				let r = ur + (or - ur) / len * i;
+				// this.ctx.beginPath();
+				// this.ctx.arc(x, y, r, 0.2 * Math.PI, 1.5 * Math.PI, true);
+				// this.ctx.fill();
+				let r_r = r * 2;
+
+				x = x - this.l / 2;
+				y = y - this.l / 2;
+				this.arr.unshift({ x, y });
+				this.ctx.drawImage(this.img, x, y, this.l, this.l);
+				this.l = this.l - 0.2;
+				if (this.l < 10) this.l = 10;
+				this.p++;
+			}
+		}
+		Brush.prototype.upEvent = function (e) {
+			this.moveFlag = false;
+			this.l = 20;
+			if (this.arr.length > 100) {
+				for (let j = 0; j < 60; j++) {
+					// arr[j].x = arr[j].x - 2;
+					// arr[j].y = arr[j].y - 1;
+					this.arr[j].x = this.arr[j].x - this.l / 4;
+					this.arr[j].y = this.arr[j].y - this.l / 10;
+					this.ctx.drawImage(this.img, this.arr[j].x, this.arr[j].y, this.l, this.l);
+
+					this.l = this.l - 0.3;
+					if (this.l < 5) this.l = 5;
+				}
+
+				this.l = 20;
+				this.arr = [];
+			}
+
+			if (this.arr.length == 1) {
+				this.ctx.drawImage(this.img, this.arr[0].x1 - this.l / 2, this.arr[0].y1 - this.l / 2, this.l, this.l);
+				this.arr = [];
+			}
+		}
+		Brush.prototype.getXY = function (e) {
+			let x = e.clientX || e.touches[0].clientX;
+			let y = e.clientY || e.touches[0].clientY;
+			
+			return {
+				x: x - this.canvas.offsetLeft + (document.body.scrollLeft || document.documentElement.scrollLeft),
+				y: y - this.canvas.offsetTop + (document.body.scrollTop || document.documentElement.scrollTop)
+			}
+		}
+		Brush.prototype.distance = function (a, b) {
+			let x = b.x - a.x;
+			let y = b.y - a.y;
+			return Math.sqrt(x * x + y * y);
+		}
+
+		$(function () {
+			let w = $(document).width();
+			let h = $(document).height();
+			$('#canvasMain').css({
+				width: w + 'px',
+				height: h + 'px',
+			});
+			$('#canvasMain').attr({
+				width: w,
+				height: h,
+			});
+			const config = {
+				el: 'canvasMain', //canvasID选择器
+				width: w, //canvas宽
+				height: h, //canvas高
+				brushId: 0, //选择笔刷
+				img: $('.brush>img')[0],
+			};
+
+			const brush = new Brush(config);
+			window.clearPaper = function () {
+				window.console.log('清空');
+				brush.clear();
+			}
+
+			// 选择笔刷
+			window.selectPen = function (index) {
+				$('#divBtn>button').removeClass('active');
+				$('#divBtn>button').eq(index + 1).addClass('active');
+				brush.img = $('.brush>img')[index];
+			}
+
+			// 保存
+			window.saveImg = function(){
+				let d = new Date();
+				let f = (v) => ('0' + v).substr(-2);
+				let file = 'down_' + d.getFullYear()
+					+ f(d.getMonth() + 1)
+					+ f(d.getDate())
+					+ f(d.getHours())
+					+ f(d.getMinutes())
+					+ f(d.getSeconds()) + '.png';
+
+				let url = brush.canvas.toDataURL("image/png");
+				var oA = document.createElement("a");
+				oA.download = file;
+				oA.href = url;
+				document.body.appendChild(oA);
+				oA.click();
+				oA.remove();
+			}
+		});
+	</script>
+
+
+
+</body>
