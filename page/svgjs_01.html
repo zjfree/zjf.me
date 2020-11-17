@@ -1,0 +1,158 @@
+<!-- SVGJS 钟表 zjfree 2020-11-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVGJS 钟表</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#divSvg svg{
+	max-width: 100%;
+	border: solid 1px gray;
+	margin-top: 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/svg.js/3.0.12/svg.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>SVGJS 钟表</h1>
+<div>
+	参考：
+	<a target="_blank" href="https://codepen.io/fuzzyma/pen/LMxERd">https://codepen.io/fuzzyma/pen/LMxERd</a>
+</div>
+
+<div id="divSvg">
+</div>
+
+<script>
+$(function(){
+	// JS
+	const width = 500
+	const height = 300
+
+	// Create SVG and set viewbox
+	// so that we zoom into the center
+	const canvas = SVG()
+	.addTo('#divSvg')
+	.size(width, height)
+	.viewbox(-50, -50, 100, 100)
+
+	// Big circle
+	let gradient = canvas.gradient('linear', function(add) {
+		add.stop(0, '#bbb')
+		add.stop(1, '#fff')
+	})
+	canvas.circle(80)
+	.center(0,0)
+		.fill(gradient)
+		.stroke({
+			width: 2,
+			color: '#000'
+		})
+	
+	// 当前时间
+	const txtDay = canvas.text('2020-01-01').font({size:6, family: 'Impact',}).center(0, -10).fill('#009933')
+	const txtWeek = canvas.text('星期六').font({size:5}).center(0, -17).fill('#009933')
+	const txtTime = canvas.text('00:00').font({size:10, family: 'Impact',}).center(0, 15).fill('#009933')
+	
+	let hh = 0;
+	for (let i=0; i<360; i+=6)
+	{
+		canvas.line(0, -37, 0, -38)
+			.stroke({
+				width: 0.5,
+				color: '#000'
+			})
+			.transform({rotate: i, origin: [0, 0]})
+		
+		if (i%30==0)
+		{
+			let deg = (180-i) * Math.PI / 180;
+			canvas.text(hh==0?'12':(''+hh)).font({size:8}).center(Math.sin(deg) * 30, Math.cos(deg) * 30).fill('#333')
+			hh++;
+
+			canvas.line(0, -36, 0, -38)
+				.stroke({
+					width: 1,
+					color: '#000'
+				})
+				.transform({rotate: i, origin: [0, 0]})
+		}
+	}
+
+	// Hours line
+	// SVG.Color.random()
+	const sp = new SVG.Spring(400, 20);
+	const hour = canvas.line(0, 3, 0, -20)
+	.stroke({
+		width: 4,
+		color: '#000',
+		linecap:'round',
+	})
+	.opacity(0.7)
+	.animate(sp)
+
+	// Minutes line
+	const min = canvas.line(0, 3, 0, -30)
+	.stroke({
+		width: 2,
+		color: '#000',
+		linecap:'round',
+	})
+	.opacity(0.7)
+	.animate(sp)
+
+	// Seconds line
+	const sec = canvas.line(0, 5, 0, -36)
+	.stroke('#f00')
+	.animate(sp)
+
+	canvas.circle(3)
+		.center(0,0)
+		.fill('#fff')
+
+	const update = () => {
+		// Get time
+		const d = new Date()
+		let h = d.getHours() - 6
+		let m = d.getMinutes()
+		let s = d.getSeconds()
+		
+		// Make sure we see partial hours
+		h += m/60
+		
+		// Calculate angle
+		const hAngle = h/24 * 360
+		const mAngle = m/60 * 360
+		const sAngle = s/60 * 360
+		
+		// Rotate
+		hour.transform({rotate: hAngle, origin: [0, 0]})
+		min.transform({rotate: mAngle, origin: [0, 0]})
+		sec.transform({rotate: sAngle, origin: [0, 0]})
+
+		let f = (v) => ('0' + v).substr(-2);
+		txtDay.text(d.getFullYear() + '-' + f(d.getMonth() + 1) + '-' + f(d.getDate())).center(0, -10);
+		txtTime.text(f(d.getHours())+':'+f(d.getMinutes())).center(0, 15);
+		txtWeek.text('星期' + ['日','一','二','三','四','五','六'][d.getDay()]).center(0, -17);
+	}
+
+	setInterval(update, 1000)
+	update()
+});
+</script>
+
+
+
+</body>
