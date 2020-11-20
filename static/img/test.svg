@@ -1,0 +1,33 @@
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<style>
+			#g1 rect:hover{
+				fill:greenyellow;
+			}
+		</style>
+		<defs>
+			<linearGradient id="lg01" x1="0" x2="0" y1="1" y2="0">
+				<stop offset="10%" stop-color="#f00"></stop>
+				<stop offset="90%" stop-color="#faa"></stop>
+			</linearGradient>
+			<linearGradient id="lg02" x1="0" x2="0" y1="1" y2="0">
+				<stop offset="10%" stop-color="#000"></stop>
+				<stop offset="90%" stop-color="#999"></stop>
+			</linearGradient>
+				
+		</defs>
+
+		<rect width="100%" height="100%" fill="url(#lg02)" />
+		
+		<g id="g1" transform="scale(1, -1) translate(0, -200)"  fill="url(#lg01)">
+			<rect x="01%" width="8%" height="10%" />
+			<rect x="11%" width="8%" height="50%" />
+			<rect x="21%" width="8%" height="30%" />
+			<rect x="31%" width="8%" height="59%" />
+			<rect x="41%" width="8%" height="95%" />
+			<rect x="51%" width="8%" height="85%" />
+			<rect x="61%" width="8%" height="66%" />
+			<rect x="71%" width="8%" height="32%" />
+			<rect x="81%" width="8%" height="22%" />
+			<rect x="91%" width="8%" height="28%" />
+		</g>
+	</svg>

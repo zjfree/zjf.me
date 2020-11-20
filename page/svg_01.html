@@ -1,0 +1,199 @@
+<!-- SVG学习-01 zjfree 2020-11-18 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SVG学习-01</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		svg,
+		img {
+			margin: 10px 0;
+			max-width: 100%;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>SVG学习-01</h1>
+
+	<div>
+		参考：
+		<a target="_blank"
+			href="https://developer.mozilla.org/zh-CN/docs/Web/SVG">https://developer.mozilla.org/zh-CN/docs/Web/SVG</a>
+	</div>
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<style>
+			#txt1:hover {
+				fill: greenyellow;
+			}
+		</style>
+		<rect width="100%" height="100%" fill="#B50000" />
+		<circle cx="150" cy="100" r="80" fill="green" />
+		<text id="txt1" x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+	</svg>
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<rect width="100%" height="100%" rx="10" ry="10" fill="#B50000" />
+		<circle cx="150" cy="100" r="80" fill="green" />
+		<text id="txt2" x="150" y="125" font-size="60" text-anchor="middle" fill="white" stroke="#f00" stroke-width="1"
+			stroke-dasharray="5,5">SVG</text>
+	</svg>
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<style>
+			#g1 rect:hover {
+				fill: greenyellow;
+			}
+		</style>
+		<defs>
+			<linearGradient id="lg01" x1="0" x2="0" y1="1" y2="0">
+				<stop offset="10%" stop-color="#f00"></stop>
+				<stop offset="90%" stop-color="#faa"></stop>
+			</linearGradient>
+			<linearGradient id="lg02" x1="0" x2="0" y1="1" y2="0">
+				<stop offset="10%" stop-color="#000"></stop>
+				<stop offset="90%" stop-color="#999"></stop>
+			</linearGradient>
+
+		</defs>
+
+		<rect width="100%" height="100%" fill="url(#lg02)" />
+
+		<g id="g1" transform="scale(1, -1) translate(0, -200)" fill="url(#lg01)">
+			<rect x="01%" width="8%" height="10%" />
+			<rect x="11%" width="8%" height="50%" />
+			<rect x="21%" width="8%" height="30%" />
+			<rect x="31%" width="8%" height="59%" />
+			<rect x="41%" width="8%" height="95%" />
+			<rect x="51%" width="8%" height="85%" />
+			<rect x="61%" width="8%" height="66%" />
+			<rect x="71%" width="8%" height="32%" />
+			<rect x="81%" width="8%" height="22%" />
+			<rect x="91%" width="8%" height="28%" />
+		</g>
+	</svg>
+
+	<img src="../static/img/test.svg" />
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<rect width="100%" height="100%" rx="10" ry="10" fill="#B50000">
+			<animate attributeName="rx" values="10;50;10" dur="1s" repeatCount="indefinite" />
+			<animate attributeName="ry" values="10;50;10" dur="1s" repeatCount="indefinite" />
+		</rect>
+		<circle id="c1" cx="150" cy="100" r="80" fill="green" stroke="yellow" stroke-width="2">
+			<animate id="an1" attributeName="r" begin="c1.click" to="60" dur="2s" fill="freeze" restart="never" />
+			<animate attributeName="fill" begin="an1.end+2s" values="green;blue;green" dur="3s"
+				repeatCount="indefinite" />
+		</circle>
+
+		<path id="path1" d="M100,250 C 100,50 400,50 400,250" fill="none" stroke="blue" stroke-width="5" />
+		<path d="M-25,-12.5 L25,-12.5 L 0,-87.5 z" fill="yellow" stroke="blue" stroke-width="5">
+			<!-- Define the motion path animation -->
+			<animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+				<mpath xlink:href="#path1" />
+			</animateMotion>
+		</path>
+
+		<polygon points="60,30 90,90 30,90">
+			<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 60 70" to="360 60 70"
+				dur="10s" repeatCount="indefinite" />
+		</polygon>
+	</svg>
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+		<defs>
+			<filter id="dropShadow">
+				<feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+				<feOffset dx="5" dy="5" />
+				<feMerge>
+					<feMergeNode />
+					<feMergeNode in="SourceGraphic" />
+				</feMerge>
+			</filter>
+
+			<linearGradient id="lg03" x1="0" x2="0" y1="1" y2="0">
+				<stop offset="10%" stop-color="#2680D4"></stop>
+				<stop offset="90%" stop-color="#54ACFF"></stop>
+			</linearGradient>
+			<radialGradient id="rg01" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+				<stop offset="0%" style="stop-color:red;stop-opacity:1" />
+				<stop offset="100%" style="stop-color:yellow;stop-opacity:1" />
+			</radialGradient>
+		</defs>
+		<rect width="100%" height="100%" rx="10" ry="10" fill="url(#lg03)" />
+
+		<circle cx="150" cy="100" r="80" fill="url(#rg01)" filter="url(#dropShadow)" />
+	</svg>
+
+	<style type="text/css">
+		@keyframes leaflet-ant-path-animation {
+			from {
+				stroke-dashoffset: 100%;
+			}
+
+			to {
+				stroke-dashoffset: 0%;
+			}
+		}
+
+		path.leaflet-ant-path {
+			fill: none;
+			animation: linear infinite leaflet-ant-path-animation;
+		}
+
+		path.leaflet-ant-path__hardware-acceleration {
+			transform: translateZ(0);
+		}
+
+		path.leaflet-ant-path__reverse {
+			animation-direction: reverse;
+		}
+	</style>
+
+	<svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+		<rect width="100%" height="100%" rx="10" ry="10" fill="#000" />
+		<g>
+			<path stroke="#FF0000" stroke-opacity="0.5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+				fill="none" d="M10 50L100 60L200 50L290 60">
+			</path>
+			<path class="leaflet-ant-path" stroke="yellow" stroke-opacity="0.5" stroke-width="10"
+				stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10,20" fill="none"
+				d="M10 50L100 60L200 50L290 60" style="animation-duration: 5s;"></path>
+		</g>
+		
+		<g>
+			<path stroke="#00F" stroke-opacity="0.5" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"
+				fill="none" d="M10 150L100 160L200 150L290 160">
+			</path>
+			<path class="leaflet-ant-path leaflet-ant-path__reverse" stroke="#F00" stroke-opacity="0.7" stroke-width="10"
+				stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30,30" fill="none"
+				d="M10 150L100 160L200 150L290 160" style="animation-duration: 5s;"></path>
+		</g>
+	</svg>
+
+	<script>
+		$(function () {
+			// JS
+
+		});
+	</script>
+
+
+
+</body>
