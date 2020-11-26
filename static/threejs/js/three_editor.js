@@ -100,7 +100,7 @@ var ThreeEditor = TE = {
             '/static/threejs/img/skybox_FR_s.jpg'  // front
         ];
         let skyboxCubemap = new THREE.CubeTextureLoader().load(urls);
-        TP.scene.background = skyboxCubemap;
+        TE.scene.background = skyboxCubemap;
 
         // 坐标轴辅助
         let axes = new THREE.AxesHelper(50);
