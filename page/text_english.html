@@ -10,7 +10,7 @@
 	<title>文字通用备忘</title>
 
 	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
-    <link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<style>
 		/* css style */
 		body {
@@ -18,64 +18,104 @@
 			padding-bottom: 20px;
 		}
 
-		table {
+		.tbList {
 			border-collapse: collapse;
 			border: #ccc 3px solid;
 			font-family: Consolas, verdana, arial, sans-serif, 'Courier New', Courier, monospace, '微软雅黑';
 		}
 
-		table th,
-		table td {
+		.tbList th,
+		.tbList td {
 			font-size: 14px;
 			text-align: left;
 			border: 1px solid #ccc;
 			padding: 8px 15px;
-			white-space:nowrap;
+			white-space: nowrap;
 		}
 
-		table th:not(:first-of-type) {
+		.tbList th:not(:first-of-type) {
 			border-left: 0;
 		}
 
-		table td {
+		.tbList td {
 			border-top: 0;
 		}
 
-		table td:not(:first-of-type) {
+		.tbList td:not(:first-of-type) {
 			border-left: 0;
 		}
 
-		table th {
+		.tbList th {
 			background: #1568c6;
 			color: white;
 			box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 		}
 
-		table tr:nth-of-type(even) td {
+		.tbList tr:nth-of-type(even) td {
 			background: whitesmoke;
 		}
 
-		table tr:hover td {
+		.tbList tr:hover td {
 			background: #eff;
 		}
 
-		table a {
+		.tbList a {
 			text-decoration: none;
 		}
-		table .name i {
+
+		.tbList .name i {
 			cursor: pointer;
-			color:gray;
+			color: gray;
 		}
-		table .name i:hover {
+
+		.tbList .name i:hover {
 			color: black;
 		}
-		table .name i.playing {
+
+		.tbList .name i.playing {
 			color: #FF6600;
 		}
 
-		textarea {
+		textarea, h3 {
 			display: none;
 		}
+
+		#navMain{
+			margin-bottom: 10px;
+			float: left;
+			width: 120px;
+			margin-right:10px;
+		}
+
+		#navMain span{
+			display: block;
+			padding:5px 10px;
+			border:solid 1px gray;
+			background: #eee;
+			cursor: pointer;
+			text-align: center;
+		}
+		#navMain span:hover{
+			background: #aff;
+		}
+		#navMain span.active{
+			background: #066;
+			color:#fff;
+		}
+
+		@media screen and (max-width: 750px){
+				
+			#navMain{
+				float: none;
+				margin-right:0;
+				width: auto;
+			}
+
+			#navMain span{
+				display: inline-block;
+			}
+		}
+
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -84,8 +124,30 @@
 <body>
 	<!-- 内容 -->
 	<h1>编程常用英文</h1>
+	<nav id="navMain">
+		<span data-en="enKey">语言关键字</span>
+		<span data-en="en01">基础使用</span>
+		<span data-en="en02">数据库</span>
+		<span data-en="en03">基础业务</span>
+	</nav>
+	
+	<h3>语言关键字</h3>
+	<table class="tbList" id="enKey">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>英文</th>
+				<th>简写</th>
+				<th>中文</th>
+				<th>备注</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
 	<h3>基础使用</h3>
-	<table>
+	<table class="tbList" id="en01">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -100,111 +162,202 @@
 	</table>
 
 	<textarea>
-		class		类	类名
-		object(obj)	对象	
-		application(APP)	应用程序	
-		server		服务器	
-		copy		拷贝	
-		paste		粘贴	
-		cut			剪贴	
-		list		列表	
-		item		项	列表中的一个元素
-		add			添加	
-		remove		删除	
-		disabled	禁用	
-		enabled		可用	是否可用
-		is			是不是
-		can			能不能
-		success		成功	执行成功，完成
-		error		错误
-		info		信息
-		fail		失败	执行失败
-		do			操作
-		for			循环	语法for
-		if			条件判断	语法if
-		while		循环
-		of			属于
-		in			在
-		return(ret)		返回
-		result(res)		结果
-		function	功能	函数
-		initialize(init)	初始化
-		top			顶部
-		bottom		底部
-		left		左
-		right		右	对，正确
-		to			到
-		go			去
-		get			拿
-		set			设置
-		about		关于
-		parameter(param)	参数
-		attribute(attr)		属性
-		key			键值
-		dict		字典
-		switch		转换	开关，分支选择
-		continue	继续
-		break		中断
-		run			执行
-		call		调用
-		command(cmd)	命令
-		console		控制台
-		line		线条
-		draw		画
-		down		下
-		up			上
-		download	下载
-		upload		上传
-		import		导入
-		export		导出	出口
-		exit		出口
-		quit		退出
-		cancel		取消
-		yes			是
-		no			不
-		ok			确定
-		screen		屏幕
-		print		打印
-		viewer		预览	观众
-		view		视图
-		lock		锁定
-		unlock		解锁
-		number(num)	数字
-		number(NO)	编号
-		integer(int)	整数
-		float		浮点数 浮动
-		span		文本
-		div			块
-		footer		底部
-		header		顶部
-		code		代码
-		system(sys)	系统
-		log			日志
-		config		配置
-		setting		设置
-		status		状态
-		json		json
-		type		类型
-		long		长
-		short		短
-		tool		工具
-		data		数据
-		event		事件
-		process		处理
-		storage(store)		存储
-		text(txt)	文本
-		string(str)	字符串
-		image(img)	图片
-		picture(pic)	图片
-		point		点
-		task		任务
-		value(val)	值
-		lan			局域网
-		local		本地
+		break,,中断,
+		call,,调用,
+		class,,类,类名
+		continue,,继续,
+		do,,操作,
+		float,,浮点数 浮动,
+		for,,循环,语法for
+		function,,功能,函数
+		event,,事件,
+		go,,去,
+		get,,拿,
+		in,,在,
+		if,,条件判断,语法if
+		integer,int,整数,
+		is,,是不是,
+		object,obj,对象,
+		of,,属于,
+		set,,设置,
+		result,res,结果,
+		return,ret,返回,
+		to,,到,
+		while,,循环,
+		switch,,转换,开关，分支选择
+		abstract,,抽象,
+		and,,逻辑与,
+		array,,数组,
+		as,,作为,
+		callable,,回调,
+		case,,具体情况,
+		catch,,抓住,
+		clone,,克隆,
+		const,,常量,
+		declare,,声明,声明定义
+		default,,默认,默认值
+		die,,死亡,终止执行
+		echo,,回应,显示输出
+		else,,其他的,
+		empty,,空,
+		eval,,解析执行,动态执行代码
+		exit,,退出,
+		extends,,继承,
+		final,,最终的,无法被集成或修改
+		finally,,最后,try中一定被执行
+		foreach,,循环数组对象
+		global,,全局,
+		goto,,转到,
+		implements,,工具,
+		include,,包含,
+		instanceof,,实例化,
+		insteadof,,替代,
+		interface,,接口,
+		isset,,是否定义,
+		list,,列表,
+		namespace,,命名空间,
+		new,,新的,实体化类
+		or,,或者,
+		private,,私有的,
+		protected,,受保护的,
+		public,,公开,
+		require,,要求,
+		static,,静态,
+		switch,,切换,
+		throw,,抛出,
+		trait,,特性,
+		try,,尝试,错误捕捉
+		unset,,释放,
+		use,,使用,引用命名空间
+		var,,变量,
+		while,,在…期间,
+		xor,,异或,
+		yield,,出产,
+		int,,整数,
+		float,,浮点数,
+		bool,bo,布尔,
+		string,str,字符串,
+		true,,真,
+		false,,假,
+		null,,空值,
+		resource,,资源,
+		object,obj,对象,
+		mixed,,混合的,
+		numeric,,数字,
+	</textarea>
+	<textarea>
+		about,,关于,
+		add,,添加,
+		application,APP,应用程序,
+		attribute,attr,属性,
+		bottom,,底部,
+		can,,能不能,
+		cancel,,取消,
+		code,,代码,
+		command,cmd,命令,
+		config,,配置,
+		console,,控制台,
+		copy,,拷贝,
+		cut,,剪贴,
+		data,,数据,
+		dict,,字典,
+		disabled,,禁用,
+		div,,块,
+		down,,下,
+		download,,下载,
+		draw,,画,
+		date,dt,日期,
+		datetime,,时间,
+		enabled,,可用,是否可用
+		error,,错误,
+		exit,,出口,
+		exception,,异常,
+		export,,导出,出口
+		extend,ext,扩展,
+		fail,,失败,执行失败
+		footer,,底部,
+		first,,第一个,
+		header,,顶部,
+		image,img,图片,
+		import,,导入,
+		info,,信息,
+		initialize,init,初始化,
+		item,,项,列表中的一个元素
+		json,,json,
+		key,,键值,
+		last,,最后,
+		lan,,局域网,
+		left,,左,
+		line,,线条,
+		list,,列表,
+		local,,本地,
+		lock,,锁定,
+		log,,日志,
+		long,,长,
+		login,,登录,
+		logout,,退出,注销
+		no,,不,
+		number,num,数字,
+		number,NO,编号,
+		next,,下一个,
+		now,,当前时间,
+		ok,,确定,
+		parameter,param,参数,
+		paste,,粘贴,
+		picture,pic,图片,
+		point,,点,
+		print,,打印,
+		process,,处理,
+		quit,,退出,
+		remove,,删除,
+		right,,右,对，正确
+		run,,执行,
+		screen,,屏幕,
+		server,,服务器,
+		setting,,设置,
+		short,,短,
+		span,,文本,
+		status,,状态,
+		storage,store,存储,
+		string,str,字符串,
+		success,,成功,执行成功，完成
+		system,sys,系统,
+		task,,任务,
+		text,txt,文本,
+		test,,测试,
+		tool,,工具,
+		top,,顶部,
+		time,,时间,
+		type,,类型,
+		unlock,,解锁,
+		up,,上,
+		upload,,上传,
+		value,val,值,
+		view,,视图,
+		viewer,,预览,观众
+		yes,,是,
+		project,,项目,
+		core,,核心,内核
+		memory,mem,内存,
+		AI,,人工智能,
+		example,,例子,
+		demo,,演示,
+		show,,显示,
+		hide,,隐藏,
+		this,,自己,
+		construct,,构造函数,
+		destruct,,析构函数,
+		autoload,,自动加载,
+		encode,,编码,
+		decode,,解码,
+		context,,上下文,
+		script,,脚本,
+		bug,,臭虫,程序故障
+		
 	</textarea>
 
 	<h3>数据库</h3>
-	<table>
+	<table class="tbList" id="en02">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -219,23 +372,39 @@
 	</table>
 
 	<textarea>
-		database	DB	数据库	
-		table		表格	
-		insert		插入	
-		update		更新	
-		delete		删除	
-		select		查询
-		id			唯一编号
-		desc		倒序
-		order		排序
-		by			关于
-		group		分组
-		where		条件筛选
-		trigger		触发器
+		database,	DB,	数据库	
+		table,,		表格	
+		insert,,		插入	
+		update,,		更新	
+		delete,,		删除	
+		select,,		查询
+		id,,			唯一编号
+		desc,,		倒序
+		order,,		排序
+		by,,			关于
+		group,,		分组
+		where,,		条件筛选
+		trigger,,		触发器
+		create,,创建
+		and,,与
+		or,,或
+		not,,非
+		like,,像
+		having,,有,聚合筛选
+		from,,来自,
+		now,,当前时间
+		as,,叫做
+		count,,计数,
+		sum,,合计,
+		avg,,平均,
+		min,,最小,
+		max,,最大,
+		join,,连接,
+		inner,,内连,
 	</textarea>
 
-	<h3>业务</h3>
-	<table>
+	<h3>基础业务</h3>
+	<table class="tbList" id="en03">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -250,85 +419,129 @@
 	</table>
 
 	<textarea>
-		client		客户	
-		user		用户	
-		administrator	admin	管理员	
-		manager		经理	其他：leader boss
-		begin		开始	
-		end			结尾	
-		start		启动	
-		finish		完成
-		statistics(stat)	统计	stats
-		analysis	分析
-		weight		重量
-		length(len)	长度
-		total		总
-		price		单价
-		unit		单位
-		camera(cam)	摄像头
-		phone		手机
-		email		邮箱
-		mail		邮件
-		message(msg)	消息
-		title		标题
-		content		内容
-		work		工作
-		worker		工人
-		device		设备
-		time		时间
-		name		名称
-		memo		备注
-		description(desc)		描述
-		account		账号
-		password(pwd)	密码
-		input		输入
-		output		输出
-		card		卡	卡片
-		position	位置
-		id-card		身份证
+		client,,		客户	
+		user,,		用户	
+		administrator,	admin,	管理员	
+		manager,,		经理,	其他：leader boss
+		begin,,		开始	
+		end,,			结尾	
+		start,,		启动	
+		finish,,		完成
+		statistics,stat,	统计,	stats
+		analysis,,	分析
+		weight,,		重量
+		length,len,	长度
+		total,,		总
+		price,,		单价
+		unit,,		单位
+		camera,cam,	摄像头
+		phone,,		手机
+		email,,		邮箱
+		mail,,		邮件
+		message,msg,	消息
+		title,,		标题
+		content,,		内容
+		work,,		工作
+		worker,,		工人
+		device,,		设备
+		time,,		时间
+		name,,		名称
+		memo,,		备注
+		description,desc,		描述
+		account,,		账号
+		password,pwd,	密码
+		input,,		输入
+		output,,		输出
+		card,,		卡,	卡片
+		position,,	位置
+		percent,per,百分比,
+		progress,,进度,
+		id-card,,		身份证
+		bill,,单子,
+		speed,,速度,
+		length,,长度,
+		weight,,重量,
+		shell,,壳,
+		part,,部分,
+		batch,,批,
+		same,,一样,
+		send,,发送,
+		receive,,接收,
+		reject,,拒收,
+		back,,返回,
+		question,,问题,
+		answer,,回答,
+		request,,请求,
+		response,,回复,
+		multiple,mul,多个,
+		one,,一个,
+		small,,小,
+		big,,大,
+		middle,,中间,
+		sell,,卖,
+		buy,,买,
+		submit,,提交,
+		publish,,发布,
+		release,,正式版,
+		debug,,调试,
+		plan,,计划,
+		solution,,解决方案,
+		step,,分步,
+		load,,加载,
+		loading,,加载中,
+		money,,钱,
+		cash,,现金,
+		member,,会员,
+		normal,,普通,
+		lift,,举起,
+		team,,团队,
+		parent,,父,
+		child,,孩子,
+		node,,结点,
+		search,,搜索,
+		leave,,离开,
+		level,,登记,
+		random,rand,随机,
+		detail,,详情,
+		report,,报告,
+		media,,媒体,
+		video,,视频,
+		audio,,声音,
+
 	</textarea>
 
-	<audio id="voice-file" preload="none"><source id="audioSource" src=""></audio>
+	<audio id="voice-file" preload="none">
+		<source id="audioSource" src=""></audio>
 
 	<script>
 		$(function () {
 			// JS
-			$('#voice-file').on('ended error', ()=>{
+			$('#voice-file').on('ended error', () => {
 				$('.name i').removeClass('playing');
 			});
 			$('textarea').each(function (index) {
 				let html = '';
 				let lists = $(this).val();
-				lists = lists.replace(/\t\t/ig, "\t");
-				lists = lists.replace(/\t\t/ig, "\t");
+				lists = $.trim(lists);
 				lists = lists.split("\n");
 				for (let k in lists) {
 					let r = $.trim(lists[k]);
-					let list = r.split("\t");
-					if (list.length < 2) {
+					let list = r.split(",");
+					if (list.length < 3) {
 						continue;
 					}
-					if (list.length < 3) {
+					if (list.length == 3) {
 						list.push('');
 					}
-					let names = list[0].split("(");
-					if (names.length == 2) {
-						names[1] = names[1].replace(")", "");
-					}
-					else {
-						names.push('');
-					}
-					console.log(names);
+					list = $.map(list, (a) => { return $.trim(a); });
 
-					html += '<tr><td></td><td class="name">' + names[0] + '</td><td>' + names[1] + '</td><td>' + list[1] + '</td><td>' + list[2] + '</td></tr>'
+					html += '<tr><td></td><td class="name">' + list[0] + '</td><td>' + list[1] + '</td><td>' + list[2] + '</td><td>' + list[3] + '</td></tr>'
 				}
 
-				console.log(html);
-
-				$('table').eq(index).find('tbody').append(html);
+				$('.tbList').eq(index).find('tbody').append(html);
 			});
 
-			$('table').each(function () {
+			$('.tbList').each(function () {
 				$(this).find('tbody tr').each(function (index) {
 					$(this).find('td').eq(0).html(index + 1);
 					let c = $(this).find('td').eq(1).html();
@@ -336,7 +549,21 @@
 					$(this).find('td').eq(1).html(s);
 				});
 			});
+
+			$('#navMain span').click(function(){
+				goEn($(this).data('en'));
+			});
+			goEn('en01');
 		});
+
+		function goEn(id)
+		{
+			$('#navMain span').removeClass('active');
+			$('#navMain span[data-en=' + id + ']').addClass('active');
+
+			$('.tbList').hide();
+			$('#' + id).show();
+		}
 
 		function playWordAudio(o) {
 			const w = $(o).parent().find('a').html();
@@ -346,7 +573,7 @@
 			document.getElementById('audioSource').src = voiceFileUrl;
 			audio.load();
 			audio.play();
-			
+
 			$(o).addClass('playing');
 		}
 	</script>
