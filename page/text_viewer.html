@@ -1,0 +1,150 @@
+<!-- 文字通用备忘 zjfree 2020-11-27 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文字通用备忘</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding: 0 10px;
+}
+.char{
+	font-size:36px;
+	color:blue;
+	font-family: 微软雅黑;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>文字通用备忘</h1>
+<div>
+	日常使用的字符备忘 / 快速选择
+</div>
+
+<h3>大写字母</h3>
+<div class="char">
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+</div>
+
+<h3>小写字母</h3>
+<div class="char">
+	abcdefghijklmnopqrstuvwxyz
+</div>
+
+<h3>数字</h3>
+<div class="char">
+	0123456789.+-
+</div>
+
+<h3>中文数字</h3>
+<div class="char">
+	零一二三四五六七八九十
+</div>
+
+<h3>大写金额</h3>
+<div class="char">
+	壹贰叁肆伍陆柒捌玖拾佰仟万亿元角分零整(正)
+</div>
+
+<h3>常用符合</h3>
+<div class="char">
+	~!@#$%^&*()_+=-[]{}|\/?&gt;&lt;,.`
+</div>
+
+<h3>中文特殊字符</h3>
+<div class="char">
+	【】《》『』﹩●◆■▲▼★☆←→↑↓✖♠♥♦♣☼✈▣☺☻✉☏☎✆☂✿♻❤☢⚠☠♪♫♬®©™
+</div>
+
+<h3>数学符合</h3>
+<div class="char">
+	π Ω ∑ ∞ ∫ ≠ ≤ ≥ ≈ ± △ ≡ ×
+</div>
+
+<h3>常用单位</h3>
+<div class="char">
+	℃ ㎡ m³ ° ㎞ ㎝ ㎜ ㎏ ㏒ € ￥ ℉
+</div>
+
+<h3>月份</h3>
+<div class="char">
+	㋀ ㋁ ㋂ ㋃ ㋄ ㋅ ㋆ ㋇ ㋈ ㋉  ㋋ 
+</div>
+
+<h3>日期</h3>
+<div class="char">
+	㏠ ㏡ ㏢ ㏣ ㏤ ㏥ ㏦ ㏧ ㏨ ㏩ ㏪ ㏫ ㏬ ㏭ ㏮ ㏯ ㏰  ㏲ ㏳ ㏴ ㏵ ㏶ ㏷ ㏸ ㏹ ㏺ ㏻ ㏼ ㏽ ㏾ 
+</div>
+
+<h3>小时</h3>
+<div class="char">
+	㍘ ㍙ ㍚ ㍛ ㍜ ㍝ ㍞ ㍟ ㍠ ㍡ ㍢ ㍣ ㍤ ㍥ ㍦ ㍧ ㍨ ㍩ ㍪ ㍫ ㍬ ㍭ ㍮ ㍯ ㍰ 
+</div>
+
+<h3>罗马数字</h3>
+<div class="char">
+	Ⅰ-1、Ⅱ-2、Ⅲ-3、Ⅳ-4、Ⅴ-5、Ⅵ-6、Ⅶ-7、Ⅷ-8、Ⅸ-9、Ⅹ-10、Ⅺ-11、Ⅻ-12
+</div>
+
+<h3>HTML特殊字符</h3>
+<div class="char">
+	&amp;lt-&lt;;
+	&amp;gt-&gt;;
+	&amp;amp-&amp;;
+	&amp;ensp-英文空格;
+	&amp;emsp-汉字空格;
+	&amp;nbsp-半个汉字空格;
+</div>
+
+<h3>十二属相</h3>
+<div class="char">
+	鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪
+</div>
+
+<h3>廿四节气</h3>
+<div class="char">
+	立春、雨水、惊蛰、春分、清明、谷雨、立夏、小满、芒种、夏至、小暑、大暑、立秋、处暑、白露、秋分、寒露、霜降、立冬、小雪、大雪、冬至、小寒、大寒
+</div>
+
+<h3>天干</h3>
+<div class="char">
+	甲、乙、丙、丁、戊、己、庚、辛、壬、癸
+</div>
+
+<h3>地支</h3>
+<div class="char">
+	子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥
+</div>
+
+<h3>常数</h3>
+<div class="char">
+	π = <span id="spanPi"></span> &emsp; 
+	e = <span id="spanE"></span> &emsp; 
+	2开方 = <span id="spanK2"></span> &emsp; 
+	3开方 = <span id="spanK3"></span> &emsp; 
+	5开方 = <span id="spanK5"></span> &emsp; 
+</div>
+
+<script>
+$(function(){
+	// JS
+	$('#spanPi').html(Math.PI);
+	$('#spanE').html(Math.E);
+	$('#spanK2').html(Math.sqrt(2));
+	$('#spanK3').html(Math.sqrt(3));
+	$('#spanK5').html(Math.sqrt(5));
+});
+</script>
+
+
+
+</body>
