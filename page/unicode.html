@@ -1,0 +1,327 @@
+<!-- unicode编码 zjfree 2020-11-30 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>unicode编码</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		#tbList {
+			border-collapse: collapse;
+			border: #ccc 3px solid;
+			font-family: Consolas, verdana, arial, sans-serif, 'Courier New', Courier, monospace, '微软雅黑';
+		}
+
+		#tbList th,
+		#tbList td {
+			font-size: 20px;
+			text-align: center;
+			border: 1px solid #ccc;
+			padding: 5px 10px;
+			white-space: nowrap;
+		}
+
+		#tbList th:not(:first-of-type) {
+			border-left: 0;
+		}
+
+		#tbList td {
+			border-top: 0;
+		}
+
+		#tbList td:not(:first-of-type) {
+			border-left: 0;
+		}
+
+		#tbList th {
+			background: #1568c6;
+			color: white;
+			box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		#tbList tr:nth-of-type(even) td {
+			background: whitesmoke;
+		}
+
+		#tbList tr:hover td {
+			background: #eff;
+		}
+
+		#tbList .begin {
+			color: brown;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>unicode编码 &amp;#22221; = &#22221;</h1>
+
+	<div style="margin-bottom: 10px;">
+		参考：<a href="https://baike.baidu.com/item/Unicode" target="_blank">https://baike.baidu.com/item/Unicode</a>
+	</div>
+
+	<div style="margin-bottom: 10px;">
+		<select id="selList">
+			<option value="0000-007F">0000-007F：C0控制符及基本拉丁文 (C0 Control and Basic Latin)</option>
+			<option value="0080-00FF">0080-00FF：C1控制符及拉丁文补充-1 (C1 Control and Latin 1 Supplement)</option>
+			<option value="0100-017F">0100-017F：拉丁文扩展-A (Latin Extended-A)</option>
+			<option value="0180-024F">0180-024F：拉丁文扩展-B (Latin Extended-B)</option>
+			<option value="0250-02AF">0250-02AF：国际音标扩展 (IPA Extensions)</option>
+			<option value="02B0-02FF">02B0-02FF：空白修饰字母 (Spacing Modifiers)</option>
+			<option value="0300-036F">0300-036F：结合用读音符号 (Combining Diacritics Marks)</option>
+			<option value="0370-03FF">0370-03FF：希腊文及科普特文 (Greek and Coptic)</option>
+			<option value="0400-04FF">0400-04FF：西里尔字母(Cyrillic)</option>
+			<option value="0500-052F">0500-052F：西里尔字母补充 (Cyrillic Supplement)</option>
+			<option value="0530-058F">0530-058F：亚美尼亚语 (Armenian)</option>
+			<option value="0590-05FF">0590-05FF：希伯来文 (Hebrew)</option>
+			<option value="0600-06FF">0600-06FF：阿拉伯文 (Arabic)</option>
+			<option value="0700-074F">0700-074F：叙利亚文 (Syriac)</option>
+			<option value="0750-077F">0750-077F：阿拉伯文补充 (Arabic Supplement)</option>
+			<option value="0780-07BF">0780-07BF：它拿字母 (Thaana)</option>
+			<option value="07C0-07FF">07C0-07FF：西非书面语言 (N'Ko)</option>
+			<option value="0800-085F">0800-085F：阿维斯塔语及巴列维语(Avestan and Pahlavi)</option>
+			<option value="0860-087F">0860-087F：曼达文字 (Mandaic)</option>
+			<option value="0880-08AF">0880-08AF：撒马利亚语 (Samaritan)</option>
+			<option value="0900-097F">0900-097F：天城文 (Devanagari)</option>
+			<option value="0980-09FF">0980-09FF：孟加拉语 (Bengali)</option>
+			<option value="0A00-0A7F">0A00-0A7F：锡克教文 (Gurmukhi)</option>
+			<option value="0A80-0AFF">0A80-0AFF：古吉拉特文 (Gujarati)</option>
+			<option value="0B00-0B7F">0B00-0B7F：奥里亚文 (Oriya)</option>
+			<option value="0B80-0BFF">0B80-0BFF：泰米尔文 (Tamil)</option>
+			<option value="0C00-0C7F">0C00-0C7F：泰卢固文 (Telugu)</option>
+			<option value="0C80-0CFF">0C80-0CFF：卡纳达文 (Kannada)</option>
+			<option value="0D00-0D7F">0D00-0D7F：德拉维族语 (Malayalam)</option>
+			<option value="0D80-0DFF">0D80-0DFF：僧伽罗语 (Sinhala)</option>
+			<option value="0E00-0E7F">0E00-0E7F：泰文 (Thai)</option>
+			<option value="0E80-0EFF">0E80-0EFF：老挝文 (Lao)</option>
+			<option value="0F00-0FFF">0F00-0FFF：藏文 (Tibetan)</option>
+			<option value="1000-109F">1000-109F：缅甸语 (Myanmar)</option>
+			<option value="10A0-10FF">10A0-10FF：格鲁吉亚语(Georgian)</option>
+			<option value="1100-11FF">1100-11FF：朝鲜文 (Hangul Jamo)</option>
+			<option value="1200-137F">1200-137F：埃塞俄比亚语 (Ethiopic)</option>
+			<option value="1380-139F">1380-139F：埃塞俄比亚语补充 (Ethiopic Supplement)</option>
+			<option value="13A0-13FF">13A0-13FF：切罗基语 (Cherokee)</option>
+			<option value="1400-167F">1400-167F：统一加拿大土著语音节 (Unified Canadian Aboriginal Syllabics)</option>
+			<option value="1680-169F">1680-169F：欧甘字母 (Ogham)</option>
+			<option value="16A0-16FF">16A0-16FF：如尼文 (Runic)</option>
+			<option value="1700-171F">1700-171F：塔加拉语 (Tagalog)</option>
+			<option value="1720-173F">1720-173F：哈努诺文 (Hanunóo)</option>
+			<option value="1740-175F">1740-175F：布希德文 (Buhid)</option>
+			<option value="1760-177F">1760-177F：塔格班瓦文 (Tagbanwa)</option>
+			<option value="1780-17FF">1780-17FF：高棉语 (Khmer)</option>
+			<option value="1800-18AF">1800-18AF：蒙古文 (Mongolian)</option>
+			<option value="18B0-18FF">18B0-18FF：加拿大原住民音节文字扩展 (Unified Canadian Aboriginal Syllabics Extended)</option>
+			<option value="1900-194F">1900-194F：林布文 (Limbu)</option>
+			<option value="1950-197F">1950-197F：德宏泰语 (Tai Le)</option>
+			<option value="1980-19DF">1980-19DF：新傣仂语 (New Tai Lue)</option>
+			<option value="19E0-19FF">19E0-19FF：高棉语记号 (Kmer Symbols)</option>
+			<option value="1A00-1A1F">1A00-1A1F：布吉文 (Buginese)</option>
+			<option value="1A20-1AAF">1A20-1AAF：老傣文 (Tai Tham)</option>
+			<option value="1AB0-1AFF">1AB0-1AFF：组合变音标记扩展 (Combining Diacritical Marks Extended)</option>
+			<option value="1B00-1B7F">1B00-1B7F：巴厘语 (Balinese)</option>
+			<option value="1B80-1BB0">1B80-1BB0：巽他语 (Sundanese)</option>
+			<option value="1BC0-1BFF">1BC0-1BFF：巴塔克文 (Batak)</option>
+			<option value="1C00-1C4F">1C00-1C4F：雷布查语(Lepcha)</option>
+			<option value="1C50-1C7F">1C50-1C7F：桑塔利文(Ol Chiki)</option>
+			<option value="1C80-1CDF">1C80-1CDF：曼尼普尔语(Meithei/Manipuri)</option>
+			<option value="1D00-1D7F">1D00-1D7F：音标扩展 (Phonetic Extensions)</option>
+			<option value="1D80-1DBF">1D80-1DBF：音标扩展补充 (Phonetic Extensions Supplement)</option>
+			<option value="1DC0-1DFF">1DC0-1DFF：结合附加符号补充 (Combining Diacritics Marks Supplement)</option>
+			<option value="1E00-1EFF">1E00-1EFF：拉丁文扩充附加 (Latin Extended Additional)</option>
+			<option value="1F00-1FFF">1F00-1FFF：希腊语扩充 (Greek Extended)</option>
+			<option value="2000-206F">2000-206F：常用标点(General Punctuation)</option>
+			<option value="2070-209F">2070-209F：上标及下标 (Superscripts and Subscripts)</option>
+			<option value="20A0-20CF">20A0-20CF：货币符号 (Currency Symbols)</option>
+			<option value="20D0-20FF">20D0-20FF：组合用记号 (Combining Diacritics Marks for Symbols)</option>
+			<option value="2100-214F">2100-214F：字母式符号 (Letterlike Symbols)</option>
+			<option value="2150-218F">2150-218F：数字形式 (Number Form)</option>
+			<option value="2190-21FF">2190-21FF：箭头 (Arrows)</option>
+			<option value="2200-22FF">2200-22FF：数学运算符 (Mathematical Operator)</option>
+			<option value="2300-23FF">2300-23FF：杂项工业符号 (Miscellaneous Technical)</option>
+			<option value="2400-243F">2400-243F：控制图片 (Control Pictures)</option>
+			<option value="2440-245F">2440-245F：光学识别符 (Optical Character Recognition)</option>
+			<option value="2460-24FF">2460-24FF：封闭式字母数字 (Enclosed Alphanumerics)</option>
+			<option value="2500-257F">2500-257F：制表符 (Box Drawing)</option>
+			<option value="2580-259F">2580-259F：方块元素 (Block Element)</option>
+			<option value="25A0-25FF">25A0-25FF：几何图形 (Geometric Shapes)</option>
+			<option value="2600-26FF">2600-26FF：杂项符号 (Miscellaneous Symbols)</option>
+			<option value="2700-27BF">2700-27BF：印刷符号 (Dingbats)</option>
+			<option value="27C0-27EF">27C0-27EF：杂项数学符号-A (Miscellaneous Mathematical Symbols-A)</option>
+			<option value="27F0-27FF">27F0-27FF：追加箭头-A (Supplemental Arrows-A)</option>
+			<option value="2800-28FF">2800-28FF：盲文点字模型 (Braille Patterns)</option>
+			<option value="2900-297F">2900-297F：追加箭头-B (Supplemental Arrows-B)</option>
+			<option value="2980-29FF">2980-29FF：杂项数学符号-B (Miscellaneous Mathematical Symbols-B)</option>
+			<option value="2A00-2AFF">2A00-2AFF：追加数学运算符 (Supplemental Mathematical Operator)</option>
+			<option value="2B00-2BFF">2B00-2BFF：杂项符号和箭头 (Miscellaneous Symbols and Arrows)</option>
+			<option value="2C00-2C5F">2C00-2C5F：格拉哥里字母(Glagolitic)</option>
+			<option value="2C60-2C7F">2C60-2C7F：拉丁文扩展-C (Latin Extended-C)</option>
+			<option value="2C80-2CFF">2C80-2CFF：科普特语 (Coptic)</option>
+			<option value="2D00-2D2F">2D00-2D2F：格鲁吉亚语补充 (Georgian Supplement)</option>
+			<option value="2D30-2D7F">2D30-2D7F：提非纳文 (Tifinagh)</option>
+			<option value="2D80-2DDF">2D80-2DDF：埃塞俄比亚语扩展 (Ethiopic Extended)</option>
+			<option value="2E00-2E7F">2E00-2E7F：追加标点 (Supplemental Punctuation)</option>
+			<option value="2E80-2EFF">2E80-2EFF：CJK 部首补充 (CJK Radicals Supplement)</option>
+			<option value="2F00-2FDF">2F00-2FDF：康熙字典部首 (Kangxi Radicals)</option>
+			<option value="2FF0-2FFF">2FF0-2FFF：表意文字描述符 (Ideographic Description Characters)</option>
+			<option value="3000-303F">3000-303F：CJK 符号和标点 (CJK Symbols and Punctuation)</option>
+			<option value="3040-309F">3040-309F：日文平假名 (Hiragana)</option>
+			<option value="30A0-30FF">30A0-30FF：日文片假名 (Katakana)</option>
+			<option value="3100-312F">3100-312F：注音字母 (Bopomofo)</option>
+			<option value="3130-318F">3130-318F：朝鲜文兼容字母 (Hangul Compatibility Jamo)</option>
+			<option value="3190-319F">3190-319F：象形字注释标志 (Kanbun)</option>
+			<option value="31A0-31BF">31A0-31BF：注音字母扩展 (Bopomofo Extended)</option>
+			<option value="31C0-31EF">31C0-31EF：CJK 笔画 (CJK Strokes)</option>
+			<option value="31F0-31FF">31F0-31FF：日文片假名语音扩展 (Katakana Phonetic Extensions)</option>
+			<option value="3200-32FF">3200-32FF：封闭式 CJK 文字和月份 (Enclosed CJK Letters and Months)</option>
+			<option value="3300-33FF">3300-33FF：CJK 兼容 (CJK Compatibility)</option>
+			<option value="3400-4DBF">3400-4DBF：CJK 统一表意符号扩展 A (CJK Unified Ideographs Extension A)</option>
+			<option value="4DC0-4DFF">4DC0-4DFF：易经六十四卦符号 (Yijing Hexagrams Symbols)</option>
+			<option value="4E00-9FBF">4E00-9FBF：CJK 统一表意符号 (CJK Unified Ideographs)</option>
+			<option value="A000-A48F">A000-A48F：彝文音节 (Yi Syllables)</option>
+			<option value="A490-A4CF">A490-A4CF：彝文字根 (Yi Radicals)</option>
+			<option value="A4D0-A4FF">A4D0-A4FF：老傈僳文 (Lisu)</option>
+			<option value="A500-A63F">A500-A63F：瓦伊语 (Vai)</option>
+			<option value="A660-A6FF">A660-A6FF：统一加拿大土著语音节补充 (Unified Canadian Aboriginal Syllabics Supplement)</option>
+			<option value="A700-A71F">A700-A71F：声调修饰字母 (Modifier Tone Letters)</option>
+			<option value="A720-A7FF">A720-A7FF：拉丁文扩展-D (Latin Extended-D)</option>
+			<option value="A800-A82F">A800-A82F：锡尔赫特文 (Syloti Nagri)</option>
+			<option value="A840-A87F">A840-A87F：八思巴字 (Phags-pa)</option>
+			<option value="A880-A8DF">A880-A8DF：索拉什特拉文 (Saurashtra)</option>
+			<option value="A8E0-A8FF">A8E0-A8FF：天城文扩展 (Devanagari Extended)</option>
+			<option value="A900-A92F">A900-A92F：克耶里字母 (Kayah Li)</option>
+			<option value="A930-A95F">A930-A95F：勒姜字母 (Rejang)</option>
+			<option value="A960-A97F">A960-A97F：谚文扩展-A (Hangul Jamo Extended-A)</option>
+			<option value="A980-A9DF">A980-A9DF：爪哇语 (Javanese)</option>
+			<option value="A9E0-A9FF">A9E0-A9FF：缅甸文扩展-B (Myanmar Extended-B)</option>
+			<option value="AA00-AA5F">AA00-AA5F：占语字母 (Cham)</option>
+			<option value="AA60-AA7F">AA60-AA7F：缅甸文扩展-A (Myanmar Extended-A)</option>
+			<option value="AA80-AADF">AA80-AADF：越南傣文 (Tai Viet)</option>
+			<option value="AAE0-AAFF">AAE0-AAFF：曼尼普尔文扩展 (Meetei Mayek Extensions)</option>
+			<option value="AB00-AB2F">AB00-AB2F：埃塞俄比亚语字母扩展-A (Ethiopic Extended-A)</option>
+			<option value="AB30-AB6F">AB30-AB6F：拉丁文扩展-E (Latin Extended-E)</option>
+			<option value="AB70-ABBF">AB70-ABBF：切罗基语补充 (Cherokee Supplement)</option>
+			<option value="ABC0-ABFF">ABC0-ABFF：曼尼普尔文 (Meetei Mayek)</option>
+			<option value="AC00-D7AF">AC00-D7AF：朝鲜文音节 (Hangul Syllables)</option>
+			<option value="D800-DB7F">D800-DB7F：高位替代字符 (High Surrogates)</option>
+			<option value="DB80-DBFF">DB80-DBFF：高位专用替代字符 (High Private Use Surrogates)</option>
+			<option value="DC00-DFFF">DC00-DFFF：低位替代字符 (Low Surrogates)</option>
+			<option value="E000-F8FF">E000-F8FF：私用区 (Private Use Zone)</option>
+			<option value="F900-FAFF">F900-FAFF：CJK 兼容象形文字 (CJK Compatibility Ideographs)</option>
+			<option value="FB00-FB4F">FB00-FB4F：字母表达形式 (Alphabetic Presentation Form)</option>
+			<option value="FB50-FDFF">FB50-FDFF：阿拉伯表达形式A (Arabic Presentation Form-A)</option>
+			<option value="FE00-FE0F">FE00-FE0F：变量选择符 (Variation Selector)</option>
+			<option value="FE10-FE1F">FE10-FE1F：竖排形式 (Vertical Forms)</option>
+			<option value="FE20-FE2F">FE20-FE2F：组合用半符号 (Combining Half Marks)</option>
+			<option value="FE30-FE4F">FE30-FE4F：CJK 兼容形式 (CJK Compatibility Forms)</option>
+			<option value="FE50-FE6F">FE50-FE6F：小型变体形式 (Small Form Variants)</option>
+			<option value="FE70-FEFF">FE70-FEFF：阿拉伯表达形式B (Arabic Presentation Form-B)</option>
+			<option value="FF00-FFEF">FF00-FFEF：半型及全型形式 (Halfwidth and Fullwidth Form)</option>
+			<option value="FFF0-FFFF">FFF0-FFFF：特殊 (Specials)</option>
+		</select>
+	</div>
+
+	<div style="margin-bottom: 10px;">
+		字符查询：
+		<input type="text" style="width:70px;" id="txt1" value="4E00" placeholder="开始字符" />
+		<input type="text" style="width:70px;" id="txt2" value="9FA5" placeholder="结束字符" />
+		<button onclick="searchChar();">查询</button>
+	</div>
+
+	<table id="tbList">
+		<thead>
+			<tr>
+				<th>0X</th>
+				<th>0</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+				<th>7</th>
+				<th>8</th>
+				<th>9</th>
+				<th>A</th>
+				<th>B</th>
+				<th>C</th>
+				<th>D</th>
+				<th>E</th>
+				<th>F</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+	<script>
+		$(function () {
+			// JS
+			$('#selList').change(function () {
+				let val = $(this).val();
+				val = val.split("-");
+
+				let min = parseInt('0x' + val[0]);
+				let max = parseInt('0x' + val[1]);
+
+				showChar(min, max);
+			});
+			$('#selList')[0].selectIndex = 0;
+			showChar(0x0000, 0x007F);
+
+			$(document).click(function (e) {
+				let el = $(e.target).parent().find('.begin');
+				if (el.length != 1)
+				{
+					return;
+				}
+
+				let val = parseInt('0x'+el.html());
+			 	val += $(e.target).parent().find('td').index(e.target) - 1;
+
+				alert($(e.target).html() + '=&#' + val + "; \\u" + ('0000' + val.toString(16)).substr(-4).toUpperCase());
+			})
+
+		});
+
+		function searchChar() {
+			let min = $('#txt1').val();
+			let max = $('#txt2').val();
+			min = parseInt('0x' + min);
+			max = parseInt('0x' + max);
+
+			showChar(min, max);
+		}
+
+		function showChar(min, max) {
+			$('#tbList tbody').html('');
+
+			let s = '<tr>';
+			for (let i = min; i <= max; i++) {
+				if (i != min && i % 16 == 0) {
+					s += '</tr><tr>'
+				}
+
+				if (i % 16 == 0) {
+					s += '<td class="begin">' + ('0000' + i.toString(16)).substr(-4).toUpperCase() + '</td>';
+				}
+				s += '<td>&#' + i + ';</td>';
+			}
+
+			s += '</tr>';
+
+			$('#tbList tbody').html(s);
+		}
+	</script>
+</body>
