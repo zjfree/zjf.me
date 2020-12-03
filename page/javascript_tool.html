@@ -1,0 +1,73 @@
+<!-- 一句话JS工具 zjfree 2020-12-01 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一句话JS工具</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+	padding-bottom: 20px;
+}
+.code{
+	color:blue;
+	font-family: Consolas, verdana,arial,sans-serif,'Courier New', Courier, monospace, '微软雅黑';
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>一句话JS工具</h1>
+<div>
+	注意：因为浏览器地址栏不允许粘贴 javascript: 开头的字，记得将 j 后的空格去掉。
+</div>
+
+<h3>HTML编辑器</h3>
+<div class="code">data:text/html,&lt;html contenteditable&gt;</div>
+<h3>设置当前网页允许编辑</h3>
+<div class="code">j avascript:document.body.contentEditable=true;</div>
+<h3>网页变黑白</h3>
+<div class="code">j avascript:document.body.style.filter='grayscale(1)';0;</div>
+<h3>网页变反色</h3>
+<div class="code">j avascript:document.body.style.filter='invert(1)';0;</div>
+<h3>网页改变色相</h3>
+<div class="code">j avascript:document.body.style.filter='hue-rotate(180deg)';0;</div>
+<h3>网页降低亮度</h3>
+<div class="code">j avascript:document.body.style.filter='brightness(0.8)';0;</div>
+<h3>网页降低对比度</h3>
+<div class="code">j avascript:document.body.style.filter='contrast(0.8)';0;</div>
+<h3>网页模糊</h3>
+<div class="code">j avascript:document.body.style.filter='blur(3px)';0;</div>
+<h3>网页降低饱和度</h3>
+<div class="code">j avascript:document.body.style.filter='saturate(0.5)';0;</div>
+<h3>仅查看网页文字</h3>
+<div class="code">j avascript:document.body.innerHTML = document.body.innerText.replace(/\n/ig, "&lt;br&gt;");</div>
+<h3>查看所有图片</h3>
+<div class="code">j avascript:h='';for(r of document.querySelectorAll('img')){h+=r.outerHTML+'&lt;br&gt;'};document.body.innerHTML=h;</div>
+<h3>查看所有链接</h3>
+<div class="code">j avascript:h='';for(r of document.querySelectorAll('a')){h+=r.outerHTML+'&lt;br&gt;'};document.body.innerHTML=h;</div>
+<h3>屏蔽所有图片</h3>
+<div class="code">j avascript:for(r of document.querySelectorAll('img')){r.outerHTML=''}</div>
+<h3>屏蔽点击</h3>
+<div class="code">j avascript:for(r of document.querySelectorAll('*')){r.onclick=()=>{return false}}</div>
+<h3>百度文库提取复制</h3>
+<div class="code">j avascript:document.body.innerHTML=document.querySelectorAll('#reader-container')[0].outerHTML;</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+
+
+</body>
