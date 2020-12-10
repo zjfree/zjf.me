@@ -1,0 +1,280 @@
+<!-- 文字统计 zjfree 2020-12-10 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>文字统计</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+		body {
+			padding: 0 10px;
+			padding-bottom: 20px;
+		}
+
+		#txt {
+			display: block;
+			width: 100%;
+			resize: vertical;
+			height: 300px;
+			padding: 10px;
+			line-height: 1.5;
+			border: solid 3px gray;
+			font-family: Consolas, verdana, arial, sans-serif, 'Courier New', Courier, monospace, '微软雅黑';
+			box-sizing: border-box;
+		}
+
+		.tool {
+			margin: 10px 0;
+			font-size: 16px;
+		}
+
+		.tool button {
+			padding: 5px 10px;
+		}
+
+		#divResult {
+			display: none;
+		}
+
+		/* 简易表格 */
+		#tbStat {
+			font-family: Consolas, verdana, arial, sans-serif;
+			color: #333333;
+			border-collapse: collapse;
+			border: solid 2px #666666;
+			width: 100%;
+			max-width: 800px;
+			margin-top:10px;
+		}
+
+		#tbStat th {
+			border: solid 1px #666666;
+			padding: 5px;
+			background-color: #dedede;
+			text-align: center;
+		}
+
+		#tbStat td {
+			border: solid 1px #666666;
+			padding: 5px 10px;
+			background-color: #ffffff;
+			text-align: center;
+		}
+
+		.per{
+			max-width:500px;
+			min-width:300px;
+			height:10px;
+			background: #eee;
+		}
+		.per div{
+			height:10px;
+			background: #00f;
+		}
+
+		.td-count{
+			color:blue;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>文字统计</h1>
+
+	<textarea id="txt">荷塘月色朱自清
+
+这几天心里颇不宁静。今晚在院子里坐着乘凉，忽然想起日日走过的荷塘，在这满月的光里，总该另有一番样子吧。月亮渐渐地升高了，墙外马路上孩子们的欢笑，已经听不见了；妻在屋里拍着闰儿，迷迷糊糊地哼着眠歌。我悄悄地披了大衫，带上门出去。
+沿着荷塘，是一条曲折的小煤屑路。这是一条幽僻的路；白天也少人走，夜晚更加寂寞。荷塘四面，长着许多树，蓊蓊郁郁的。路的一旁，是些杨柳，和一些不知道名字的树。没有月光的晚上，这路上阴森森的，有些怕人。今晚却很好，虽然月光也还是淡淡的。
+路上只我一个人，背着手踱着。这一片天地好像是我的；我也像超出了平常的自己，到了另一世界里。我爱热闹，也爱冷静；爱群居，也爱独处。像今晚上，一个人在这苍茫的月下，什么都可以想，什么都可以不想，便觉是个自由的人。白天里一定要做的事，一定要说的话，现在都可不理。这是独处的妙处，我且受用这无边的荷香月色好了。
+曲曲折折的荷塘上面，弥望的是田田的叶子。叶子出水很高，像亭亭的舞女的裙。层层的叶子中间，零星地点缀着些白花，有袅娜地开着的，有羞涩地打着朵儿的；正如一粒粒的明珠，又如碧天里的星星，又如刚出浴的美人。微风过处，送来缕缕清香，仿佛远处高楼上渺茫的歌声似的。这时候叶子与花也有一丝的颤动，像闪电般，霎时传过荷塘的那边去了。叶子本是肩并肩密密地挨着，这便宛然有了一道凝碧的波痕。叶子底下是脉脉的流水，遮住了，不能见一些颜色；而叶子却更见风致了。
+月光如流水一般，静静地泻在这一片叶子和花上。薄薄的青雾浮起在荷塘里。叶子和花仿佛在牛乳中洗过一样；又像笼着轻纱的梦。虽然是满月，天上却有一层淡淡的云，所以不能朗照；但我以为这恰是到了好处--酣眠固不可少，小睡也别有风味的。月光是隔了树照过来的，高处丛生的灌木，落下参差的斑驳的黑影，峭楞楞如鬼一般；弯弯的杨柳的稀疏的倩影，却又像是画在荷叶上。塘中的月色并不均匀；但光与影有着和谐的旋律，如梵婀玲上奏着的名曲。
+荷塘的四面，远远近近，高高低低都是树，而杨柳最多。这些树将一片荷塘重重围住；只在小路一旁，漏着几段空隙，像是特为月光留下的。树色一例是阴阴的，乍看像一团烟雾；但杨柳的丰姿，便在烟雾里也辨得出。树梢上隐隐约约的是一带远山，只有些大意罢了。树缝里也漏着一两点路灯光，没精打采的，是渴睡人的眼。这时候最热闹的，要数树上的蝉声与水里的蛙声；但热闹是它们的，我什么也没有。
+忽然想起采莲的事情来了。采莲是江南的旧俗，似乎很早就有，而六朝时为盛；从诗歌里可以约略知道。采莲的是少年的女子，她们是荡着小船，唱着艳歌去的。采莲人不用说很多，还有看采莲的人。那是一个热闹的季节，也是一个风流的季节。梁元帝《采莲赋》里说得好：
+于是妖童媛女，荡舟心许；?首徐回，兼传羽杯；?将移而藻挂，船欲动而萍开。尔其纤腰束素，迁延顾步；夏始春余，叶嫩花初，恐沾裳而浅笑，畏倾船而敛裾。
+可见当时嬉游的光景了。这真是有趣的事，可惜我们现在早已无福消受了。
+于是又记起《西洲曲》里的句子：
+采莲南塘秋，莲花过人头；低头弄莲子，莲子清如水。今晚若有采莲人，这儿的莲花也算得过人头了；只不见一些流水的影子，是不行的。这令我到底惦着江南了。--这样想着，猛一抬头，不觉已是自己的门前；轻轻地推门进去，什么声息也没有，妻已睡熟好久了。
+1927年7月，北京清华园。</textarea>
+
+	<div class="tool">
+		<button onclick="txtStat();"><i class="fa fa-area-chart"></i> 统计</button>
+		&nbsp;
+		<button onclick="$('#txt').val('').focus();" style="color:brown;"><i class="fa fa-trash"></i> 清空</button>
+		&nbsp;
+		<button onclick="clearNull();"><i class="fa fa-shield"></i> 去除空字符</button>
+		&nbsp;
+		<button onclick="$('#txt').val(ToFull($('#txt').val()));"><i class="fa fa-circle"></i> 转为全角</button>
+		&nbsp;
+		<button onclick="$('#txt').val(ToHalf($('#txt').val()));"><i class="fa fa-circle-o"></i> 转为半角</button>
+		&emsp;
+		<label>
+			<input id="chkHide" type="checkbox" checked />
+			仅显示前100个
+		</label>
+	</div>
+
+	<div id="divResult">
+		<hr>
+		<div id="divStat"></div>
+		<table id="tbStat">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>文字</th>
+					<th>编码</th>
+					<th>数量</th>
+					<th>占比</th>
+					<th>图示</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+
+	<script>
+		$(function () {
+			// JS
+			$('#chkHide').change(txtStat);
+		});
+
+		function txtStat() {
+			let val = $('#txt').val();
+			if (val.length == 0)
+			{
+				return;
+			}
+
+			// 统计
+			let valStat = ToHalf(val);
+			// 4E00-9FA5
+			let zhCount = 0;
+			let numCount = 0;
+			let muCount = 0;
+			let nullCount = 0;
+			let otherCount = 0;
+			for (i = 0; i < valStat.length; i++) {
+				let c = val.charCodeAt(i);
+				if (c >= 0x4E00 && c <= 0x9FA5) {
+					zhCount++;
+				}
+				else if (c >= 48 && c <= 57) {
+					numCount++;
+				}
+				else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
+					muCount++;
+				}
+				else if (c == 32 || (c >= 9 && c <= 13) || c == 0) {
+					nullCount++;
+				}
+				else {
+					otherCount++;
+				}
+			}
+			let str = `共 <b>${valStat.length}</b> 个字，汉字 <b>${zhCount}</b> 个，数字 <b>${numCount}</b> 个，字母 <b>${muCount}</b> 个，空字符 <b>${nullCount}</b> 个，其他字符 <b>${otherCount}</b> 个`;
+
+			$('#divStat').html(str);
+			$('#divResult').show();
+
+			// 字符数量排序
+			let chList = {};
+			for (i = 0; i < val.length; i++) {
+				let c = val[i];
+				if (!chList[c])
+				{
+					chList[c] = 1;
+				}
+				else
+				{
+					chList[c]++;
+				}
+			}
+			let keysSorted = Object.keys(chList).sort(function(a,b){return chList[b]-chList[a]});
+			let newList = [];
+			let maxCount = 0;
+			for(let i=0;i<keysSorted.length;i++){
+				let count = chList[keysSorted[i]];
+				newList[i] = {
+					ch:keysSorted[i], 
+					count:count,
+					per: Math.round(count / val.length * 10000) / 100,
+				};
+				maxCount = Math.max(maxCount, count);
+			}
+			
+			let html = '';
+			let chk = $('#chkHide')[0].checked;
+			let nullChar = {
+				c9:'\\t', 
+				c10:'\\n', 
+				c11:'\\v', 
+				c12:'\\f', 
+				c13:'\\r', 
+			};
+			for (i = 0; i < newList.length; i++) {
+				let c = newList[i];
+				if (chk && i >= 100)
+				{
+					break;
+				}
+				let per = c.count / maxCount * 100;
+				let ch = c.ch;
+				let char = c.ch.charCodeAt(0);
+				if (char == 32)
+				{
+					ch = '[空格]';
+				}
+				else if (char >= 9 && char <= 13)
+				{
+					ch = '[' + nullChar['c' + char] + ']';
+				}
+
+				html += `<tr><td>${i + 1}</td><td>${ch}</td><td>${char}</td><td class="td-count">${c.count}</td><td>${c.per} %</td><td><div class="per"><div style="width:${per}%"></div></div></td></tr>`;
+			}
+			$('#tbStat tbody').html(html);
+		}
+
+		function clearNull() {
+			let val = $('#txt').val();
+			val = val.replace(/\s*/g, "");
+			$('#txt').val(val);
+		}
+
+		function ToFull(str) {
+			let e = str, t = "", n = e.length;
+			for (i = 0; n > i; i++) {
+				let o = e.charCodeAt(i);
+				o = o >= 33 && 126 >= o ? o + 65248 : o,
+					o = 32 == o ? 12288 : o,
+					t += String.fromCharCode(o)
+			}
+			t = t.replace(/\．/g, "。");
+
+			return t;
+		}
+
+		function ToHalf(str) {
+			let e = str, t = "", n = e.length;
+			for (i = 0; n > i; i++) {
+				let o = e.charCodeAt(i);
+				o = o >= 65281 && 65374 >= o ? o - 65248 : o,
+					o = 12288 == o ? 32 : o,
+					t += String.fromCharCode(o)
+			}
+			t = t.replace(/\。/g, ".");
+
+			return t;
+		}
+	</script>
+
+</body>
+
+</html>
