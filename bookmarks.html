@@ -475,6 +475,7 @@
     a {
         text-decoration: none;
         line-height: 1.8;
+        font-size:16px;
     }
 
     a i{
@@ -484,8 +485,8 @@
     }
 
     a img {
-        width: 1em;
-        height: 1em;
+        width: 16px;
+        height: 16px;
     }
 
     dl {
@@ -564,10 +565,10 @@
             dt = formatDate(dt).substr(2, 14);
         }
         if (r.attributes['ICON']) {
-            r.innerHTML = '<img src="' + (r.attributes['ICON'].value || '') + '" /> ' + r.innerHTML + '<i>' + dt + '</i>';
+            r.innerHTML = '<img src="' + (r.attributes['ICON'].value || '') + '" /> ' + r.innerText.substr(0, 180) + '<i>' + dt + '</i>';
         }
         else {
-            r.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /> ' + r.innerHTML + '<i>' + dt + '</i>';
+            r.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /> ' + r.innerText.substr(0, 180) + '<i>' + dt + '</i>';
         }
     }
 
