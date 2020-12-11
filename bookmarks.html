@@ -472,6 +472,9 @@
 <!-- 360浏览器书签显示优化 -->
 <div id="divNav"></div>
 <style>
+    html {
+        -webkit-text-size-adjust: 100%
+    }
     a {
         text-decoration: none;
         line-height: 1.8;
@@ -565,10 +568,10 @@
             dt = formatDate(dt).substr(2, 14);
         }
         if (r.attributes['ICON']) {
-            r.innerHTML = '<img src="' + (r.attributes['ICON'].value || '') + '" /> ' + r.innerText.substr(0, 180) + '<i>' + dt + '</i>';
+            r.innerHTML = '<img src="' + (r.attributes['ICON'].value || '') + '" /> ' + r.innerText + '<i>' + dt + '</i>';
         }
         else {
-            r.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /> ' + r.innerText.substr(0, 180) + '<i>' + dt + '</i>';
+            r.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" /> ' + r.innerText + '<i>' + dt + '</i>';
         }
     }
 
