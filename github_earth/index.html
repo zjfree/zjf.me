@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>GitHub-地球展示</title>
+
+  <style>
+    .js-globe-popup {
+      border: solid 1px #fff;
+      z-index: 3;
+      font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
+      left: 0 !important;
+      top: 0 !important;
+      position: absolute !important;
+      color: #fff !important;
+      border-radius: 6px !important;
+      box-sizing: border-box;
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+
+    .js-globe-popup a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .d-none {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    参考：<a href="https://github.com/" target="_blank">https://github.com/</a>
+  </div>
+  <div class="js-webgl-globe-data">
+    <div class="js-webgl-globe" style="height: 600px; width:800px;">
+    </div>
+  </div>
+  <script crossorigin="anonymous" defer="defer" src="w.js"></script>
+</body>
+
+</html>
