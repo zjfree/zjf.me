@@ -14,6 +14,7 @@
 body{
 	padding:0 10px;
 	padding-bottom: 20px;
+	box-shadow: inset 0 0 10px red;
 }
 .code{
 	color:blue;
@@ -60,7 +61,12 @@ body{
 <div class="code">j avascript:for(r of document.querySelectorAll('*')){r.onclick=()=>{return false}}</div>
 <h3>百度文库提取复制</h3>
 <div class="code">j avascript:document.body.innerHTML=document.querySelectorAll('#reader-container')[0].outerHTML;</div>
-
+<h3>双击隐藏</h3>
+<div class="code">j avascript:document.body.innerHTML+='&lt;style&gt;div:hover{box-shadow:inset 0 0 10px red;}&lt;style&gt;';for(r of document.querySelectorAll('div')){r.ondblclick=(evt)=>{evt.cancelBubble=true; evt.target.style.visibility='hidden'}}</div>
+<h3>双击全屏</h3>
+<div class="code">j avascript:document.body.innerHTML+='&lt;style&gt;div:hover{box-shadow:inset 0 0 10px red;}div:fullscreen,div:-webkit-full-screen{background-color:#fff;}&lt;style&gt;';for(r of document.querySelectorAll('div')){r.ondblclick=(evt)=>{evt.cancelBubble=true; evt.target.requestFullscreen()}}</div>
+<h3>双击替换</h3>
+<div class="code">j avascript:document.body.innerHTML+='&lt;style&gt;div:hover{box-shadow:inset 0 0 10px red;}&lt;style&gt;';for(r of document.querySelectorAll('div')){r.ondblclick=(evt)=>{evt.cancelBubble=true; document.body.innerHTML=evt.target.outerHTML}}</div>
 <script>
 $(function(){
 	// JS
