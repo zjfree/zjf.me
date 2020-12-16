@@ -1,0 +1,831 @@
+<!-- 表格分页 zjfree 2020-12-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>表格分页</title>
+
+  <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+  <link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+    /* css style */
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+      position: relative;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    /* 固定表头 */
+    table th,
+    table td {
+      font-size: 12px;
+      text-align: left;
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    table th:not(:first-of-type) {
+      border-left: 0;
+    }
+
+    table td {
+      border-top: 0;
+    }
+
+    table td:not(:first-of-type) {
+      border-left: 0;
+    }
+
+    table th {
+      background: #c61515;
+      color: white;
+      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    table tr:nth-of-type(even) td {
+      background: whitesmoke;
+    }
+
+    table tr:hover td {
+      background: #ccc;
+    }
+
+    table th {
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 60px;
+      padding: 5px 10px;
+    }
+
+    article {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    p {
+      padding: 0 12px;
+    }
+
+    a:not(:hover) {
+      text-decoration: none;
+    }
+
+    a {
+      color: #c61515;
+      font-weight: 500;
+    }
+
+    small {
+      display: block;
+      color: #666;
+    }
+
+    ul {
+      margin: 0 0 24px;
+      padding: 0 28px;
+      list-style-type: square;
+    }
+
+    .table-page {
+      text-align: left;
+      font-size: 14px;
+      padding: 5px;
+    }
+
+    #tbList tfoot tr:hover td {
+      background: #fff;
+    }
+  </style>
+
+  <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- 内容 -->
+
+  <article>
+    <h1>📌 表格分页</h1>
+    <table id="tbList">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Zip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Olympia</td>
+          <td>72</td>
+          <td>108-5457 Est. Avenue</td>
+          <td>Brucargo</td>
+          <td>3532 KQ</td>
+        </tr>
+        <tr>
+          <td>Rogan</td>
+          <td>40</td>
+          <td>1185 Non Rd.</td>
+          <td>Segovia</td>
+          <td>43028</td>
+        </tr>
+        <tr>
+          <td>Tiger</td>
+          <td>32</td>
+          <td>125 Aliquam Av.</td>
+          <td>Evesham</td>
+          <td>14104</td>
+        </tr>
+        <tr>
+          <td>Eric</td>
+          <td>44</td>
+          <td>1335 Ut Street</td>
+          <td>Bruderheim</td>
+          <td>321726</td>
+        </tr>
+        <tr>
+          <td>Colorado</td>
+          <td>92</td>
+          <td>1500 Laoreet Street</td>
+          <td>Flin Flon</td>
+          <td>35301</td>
+        </tr>
+        <tr>
+          <td>Allen</td>
+          <td>69</td>
+          <td>159-2615 Porttitor Avenue</td>
+          <td>Sherborne</td>
+          <td>V5R 9K9</td>
+        </tr>
+        <tr>
+          <td>Grady</td>
+          <td>64</td>
+          <td>171-2694 Sit St.</td>
+          <td>Calmar</td>
+          <td>00499</td>
+        </tr>
+        <tr>
+          <td>Kiona</td>
+          <td>20</td>
+          <td>187-5861 Condimentum. St.</td>
+          <td>Schiltigheim</td>
+          <td>21911</td>
+        </tr>
+        <tr>
+          <td>Quinn</td>
+          <td>89</td>
+          <td>196-8018 Nulla Rd.</td>
+          <td>Castle Douglas</td>
+          <td>52061</td>
+        </tr>
+        <tr>
+          <td>Ashely</td>
+          <td>37</td>
+          <td>214-7576 Quam. Street</td>
+          <td>Coalhurst</td>
+          <td>X87 2DV</td>
+        </tr>
+        <tr>
+          <td>Dalton</td>
+          <td>58</td>
+          <td>2621 Tristique Av.</td>
+          <td>Blind River</td>
+          <td>3189 VQ</td>
+        </tr>
+        <tr>
+          <td>Anne</td>
+          <td>55</td>
+          <td>2980 Tempus St.</td>
+          <td>Vorselaar</td>
+          <td>07918</td>
+        </tr>
+        <tr>
+          <td>Yuri</td>
+          <td>77</td>
+          <td>301-4152 Nunc Avenue</td>
+          <td>Armadale</td>
+          <td>63-473</td>
+        </tr>
+        <tr>
+          <td>Elijah</td>
+          <td>1</td>
+          <td>313-572 Sit Rd.</td>
+          <td>Nevers</td>
+          <td>4294</td>
+        </tr>
+        <tr>
+          <td>Randall</td>
+          <td>62</td>
+          <td>3160 Dis Rd.</td>
+          <td>Villers-sur-Semois</td>
+          <td>42327</td>
+        </tr>
+        <tr>
+          <td>Laura</td>
+          <td>50</td>
+          <td>322-5731 Tellus Ave</td>
+          <td>Poitiers</td>
+          <td>441315</td>
+        </tr>
+        <tr>
+          <td>Oscar</td>
+          <td>89</td>
+          <td>3423 Vitae Road</td>
+          <td>Alajuela</td>
+          <td>9478</td>
+        </tr>
+        <tr>
+          <td>Jemima</td>
+          <td>18</td>
+          <td>364-8358 Auctor Av.</td>
+          <td>Wekweti</td>
+          <td>47639</td>
+        </tr>
+        <tr>
+          <td>Inga</td>
+          <td>26</td>
+          <td>3796 Vel Avenue</td>
+          <td>Pimpri-Chinchwad</td>
+          <td>JT1B 9HE</td>
+        </tr>
+        <tr>
+          <td>Caryn</td>
+          <td>48</td>
+          <td>3834 Aenean Avenue</td>
+          <td>Buckingham</td>
+          <td>8207</td>
+        </tr>
+        <tr>
+          <td>Rylee</td>
+          <td>87</td>
+          <td>395 Dapibus Av.</td>
+          <td>Reus</td>
+          <td>849155</td>
+        </tr>
+        <tr>
+          <td>Hyatt</td>
+          <td>99</td>
+          <td>399-1710 Et Street</td>
+          <td>Campagna</td>
+          <td>21245</td>
+        </tr>
+        <tr>
+          <td>Tyler</td>
+          <td>52</td>
+          <td>409-801 Malesuada Avenue</td>
+          <td>Vedrin</td>
+          <td>86351</td>
+        </tr>
+        <tr>
+          <td>Clare</td>
+          <td>83</td>
+          <td>4107 Placerat. Rd.</td>
+          <td>Llanidloes</td>
+          <td>30215</td>
+        </tr>
+        <tr>
+          <td>Carissa</td>
+          <td>15</td>
+          <td>5034 Neque St.</td>
+          <td>Prato Carnico</td>
+          <td>57-857</td>
+        </tr>
+        <tr>
+          <td>Ursula</td>
+          <td>38</td>
+          <td>5212 Massa St.</td>
+          <td>Leduc</td>
+          <td>69549</td>
+        </tr>
+        <tr>
+          <td>Elliott</td>
+          <td>30</td>
+          <td>5306 Dui Ave</td>
+          <td>College</td>
+          <td>254003</td>
+        </tr>
+        <tr>
+          <td>Nasim</td>
+          <td>80</td>
+          <td>5489 At, Road</td>
+          <td>Portobuffolè</td>
+          <td>53808</td>
+        </tr>
+        <tr>
+          <td>Channing</td>
+          <td>37</td>
+          <td>5521 Metus. St.</td>
+          <td>Kota</td>
+          <td>08-089</td>
+        </tr>
+        <tr>
+          <td>Gage</td>
+          <td>92</td>
+          <td>584-8560 Ornare, Rd.</td>
+          <td>Hazaribag</td>
+          <td>8085</td>
+        </tr>
+        <tr>
+          <td>Quinn</td>
+          <td>11</td>
+          <td>6514 Eget, St.</td>
+          <td>Zierikzee</td>
+          <td>14170</td>
+        </tr>
+        <tr>
+          <td>Bethany</td>
+          <td>59</td>
+          <td>6522 Et, Road</td>
+          <td>Kington</td>
+          <td>24-005</td>
+        </tr>
+        <tr>
+          <td>Quintessa</td>
+          <td>86</td>
+          <td>674-8671 Laoreet St.</td>
+          <td>Maranello</td>
+          <td>193239</td>
+        </tr>
+        <tr>
+          <td>India</td>
+          <td>73</td>
+          <td>675-2715 Ut St.</td>
+          <td>Attigliano</td>
+          <td>9942</td>
+        </tr>
+        <tr>
+          <td>Rogan</td>
+          <td>64</td>
+          <td>679-1098 Lorem Road</td>
+          <td>Allumiere</td>
+          <td>86831-249</td>
+        </tr>
+        <tr>
+          <td>Gabriel</td>
+          <td>73</td>
+          <td>6794 Suspendisse St.</td>
+          <td>Casanova Elvo</td>
+          <td>16-125</td>
+        </tr>
+        <tr>
+          <td>Jackson</td>
+          <td>82</td>
+          <td>688-1653 Facilisis Avenue</td>
+          <td>Rachecourt</td>
+          <td>86-069</td>
+        </tr>
+        <tr>
+          <td>Laura</td>
+          <td>99</td>
+          <td>6957 Risus. Ave</td>
+          <td>My</td>
+          <td>6000</td>
+        </tr>
+        <tr>
+          <td>Orlando</td>
+          <td>85</td>
+          <td>710-4853 Euismod Av.</td>
+          <td>Kapiti</td>
+          <td>18093-206</td>
+        </tr>
+        <tr>
+          <td>Brandon</td>
+          <td>82</td>
+          <td>7435 Enim, Ave</td>
+          <td>Yellowhead County</td>
+          <td>93431</td>
+        </tr>
+        <tr>
+          <td>Lila</td>
+          <td>96</td>
+          <td>781-2070 Auctor Street</td>
+          <td>Brandenburg</td>
+          <td>79128</td>
+        </tr>
+        <tr>
+          <td>Kelsie</td>
+          <td>1</td>
+          <td>787-3530 Metus Ave</td>
+          <td>Norcia</td>
+          <td>03090</td>
+        </tr>
+        <tr>
+          <td>Olga</td>
+          <td>62</td>
+          <td>7953 In St.</td>
+          <td>Stirling</td>
+          <td>483558</td>
+        </tr>
+        <tr>
+          <td>Zenia</td>
+          <td>31</td>
+          <td>7958 Lorem Street</td>
+          <td>Stourbridge</td>
+          <td>N5P 2A8</td>
+        </tr>
+        <tr>
+          <td>Desiree</td>
+          <td>13</td>
+          <td>821-3088 Maecenas St.</td>
+          <td>Avadi</td>
+          <td>2421</td>
+        </tr>
+        <tr>
+          <td>Jescie</td>
+          <td>17</td>
+          <td>8551 Ad Street</td>
+          <td>Biarritz</td>
+          <td>Y91 0WO</td>
+        </tr>
+        <tr>
+          <td>Otto</td>
+          <td>29</td>
+          <td>865-9791 Vulputate Avenue</td>
+          <td>Constitución</td>
+          <td>8141</td>
+        </tr>
+        <tr>
+          <td>Sebastian</td>
+          <td>94</td>
+          <td>877-300 Adipiscing Rd.</td>
+          <td>Gillette</td>
+          <td>28-991</td>
+        </tr>
+        <tr>
+          <td>Audra</td>
+          <td>98</td>
+          <td>902-5605 Fusce Street</td>
+          <td>Merrickville-Wolford</td>
+          <td>450953</td>
+        </tr>
+        <tr>
+          <td>Aubrey</td>
+          <td>53</td>
+          <td>9149 Nulla Avenue</td>
+          <td>Paiguano</td>
+          <td>55543</td>
+        </tr>
+        <tr>
+          <td>Baxter</td>
+          <td>68</td>
+          <td>9459 Turpis. Road</td>
+          <td>Waarloos</td>
+          <td>21106</td>
+        </tr>
+        <tr>
+          <td>Jonas</td>
+          <td>50</td>
+          <td>9497 Commodo Street</td>
+          <td>Calera de Tango</td>
+          <td>63201-171</td>
+        </tr>
+        <tr>
+          <td>Kyla</td>
+          <td>26</td>
+          <td>9513 Commodo Av.</td>
+          <td>Avernas-le-Bauduin</td>
+          <td>2308</td>
+        </tr>
+        <tr>
+          <td>Jayme</td>
+          <td>41</td>
+          <td>958-8261 Vitae Rd.</td>
+          <td>Grande Prairie</td>
+          <td>21206</td>
+        </tr>
+        <tr>
+          <td>Karyn</td>
+          <td>64</td>
+          <td>9804 Non Rd.</td>
+          <td>Bharuch</td>
+          <td>J9C 6G4</td>
+        </tr>
+        <tr>
+          <td>Margaret</td>
+          <td>50</td>
+          <td>Ap #149-2416 Purus. Avenue</td>
+          <td>Bastogne</td>
+          <td>8834 TZ</td>
+        </tr>
+        <tr>
+          <td>Tanek</td>
+          <td>75</td>
+          <td>Ap #154-6658 Tristique Rd.</td>
+          <td>Buggenhout</td>
+          <td>658320</td>
+        </tr>
+        <tr>
+          <td>Aladdin</td>
+          <td>31</td>
+          <td>Ap #162-3865 Dolor, Ave</td>
+          <td>Bhilai</td>
+          <td>5347</td>
+        </tr>
+        <tr>
+          <td>Anthony</td>
+          <td>43</td>
+          <td>Ap #216-9083 Accumsan Rd.</td>
+          <td>Denver</td>
+          <td>12230</td>
+        </tr>
+        <tr>
+          <td>Nathaniel</td>
+          <td>8</td>
+          <td>Ap #323-2198 Libero. Rd.</td>
+          <td>Poggio Berni</td>
+          <td>61519</td>
+        </tr>
+        <tr>
+          <td>Yuli</td>
+          <td>57</td>
+          <td>Ap #373-3521 Dictum. Rd.</td>
+          <td>Valparaíso de Goiás</td>
+          <td>02077</td>
+        </tr>
+        <tr>
+          <td>Dale</td>
+          <td>56</td>
+          <td>Ap #390-635 Cum St.</td>
+          <td>Poggio San Marcello</td>
+          <td>503979</td>
+        </tr>
+        <tr>
+          <td>Chelsea</td>
+          <td>33</td>
+          <td>Ap #395-5889 Pede. Street</td>
+          <td>Rochester</td>
+          <td>98031</td>
+        </tr>
+        <tr>
+          <td>Katelyn</td>
+          <td>70</td>
+          <td>Ap #431-6354 Lectus. Ave</td>
+          <td>Cedar Rapids</td>
+          <td>99093</td>
+        </tr>
+        <tr>
+          <td>Merrill</td>
+          <td>84</td>
+          <td>Ap #435-3256 Risus Street</td>
+          <td>Gadag Betigeri</td>
+          <td>912623</td>
+        </tr>
+        <tr>
+          <td>Larissa</td>
+          <td>9</td>
+          <td>Ap #457-2173 Arcu. Rd.</td>
+          <td>Westende</td>
+          <td>192263</td>
+        </tr>
+        <tr>
+          <td>Ashton</td>
+          <td>67</td>
+          <td>Ap #534-4315 Semper Rd.</td>
+          <td>Chimay</td>
+          <td>71816-854</td>
+        </tr>
+        <tr>
+          <td>Hasad</td>
+          <td>6</td>
+          <td>Ap #622-7575 Donec Av.</td>
+          <td>Victoria</td>
+          <td>YT40 2ZO</td>
+        </tr>
+        <tr>
+          <td>Candace</td>
+          <td>91</td>
+          <td>Ap #656-7416 Sapien. Rd.</td>
+          <td>Constitución</td>
+          <td>40-696</td>
+        </tr>
+        <tr>
+          <td>Heidi</td>
+          <td>62</td>
+          <td>Ap #663-6617 Pellentesque Av.</td>
+          <td>Gibbons</td>
+          <td>99967-470</td>
+        </tr>
+        <tr>
+          <td>Zane</td>
+          <td>32</td>
+          <td>Ap #664-5007 Sem Ave</td>
+          <td>MabomprŽ</td>
+          <td>6790</td>
+        </tr>
+        <tr>
+          <td>Dillon</td>
+          <td>93</td>
+          <td>Ap #672-2462 Taciti Avenue</td>
+          <td>Issy-les-Moulineaux</td>
+          <td>9890</td>
+        </tr>
+        <tr>
+          <td>Gil</td>
+          <td>32</td>
+          <td>Ap #697-1422 Scelerisque Street</td>
+          <td>Papudo</td>
+          <td>8731 JN</td>
+        </tr>
+        <tr>
+          <td>Emerson</td>
+          <td>95</td>
+          <td>Ap #790-6021 Mauris Road</td>
+          <td>Częstochowa</td>
+          <td>1033</td>
+        </tr>
+        <tr>
+          <td>Sonia</td>
+          <td>11</td>
+          <td>Ap #820-5580 Pede St.</td>
+          <td>Cascavel</td>
+          <td>3906 ZL</td>
+        </tr>
+        <tr>
+          <td>Maia</td>
+          <td>77</td>
+          <td>Ap #882-8068 Aliquam St.</td>
+          <td>Meldert</td>
+          <td>59660</td>
+        </tr>
+        <tr>
+          <td>Jessamine</td>
+          <td>94</td>
+          <td>Ap #949-9997 Tellus. Street</td>
+          <td>Sunderland</td>
+          <td>M7M 1Z8</td>
+        </tr>
+        <tr>
+          <td>Acton</td>
+          <td>13</td>
+          <td>Ap #954-4842 Eget, Street</td>
+          <td>Stekene</td>
+          <td>1091</td>
+        </tr>
+        <tr>
+          <td>Zelenia</td>
+          <td>62</td>
+          <td>P.O. Box 305, 3542 Amet St.</td>
+          <td>Saint-Urbain</td>
+          <td>36260</td>
+        </tr>
+        <tr>
+          <td>Abel</td>
+          <td>76</td>
+          <td>P.O. Box 329, 4526 Sem, Av.</td>
+          <td>Galbiate</td>
+          <td>895886</td>
+        </tr>
+        <tr>
+          <td>Amity</td>
+          <td>19</td>
+          <td>P.O. Box 423, 4526 Mollis. St.</td>
+          <td>Montpellier</td>
+          <td>3082 LC</td>
+        </tr>
+        <tr>
+          <td>Jana</td>
+          <td>33</td>
+          <td>P.O. Box 430, 8910 Fusce Street</td>
+          <td>Fairbanks</td>
+          <td>1996 DJ</td>
+        </tr>
+        <tr>
+          <td>Xerxes</td>
+          <td>43</td>
+          <td>P.O. Box 437, 7828 Volutpat. Street</td>
+          <td>Lions Bay</td>
+          <td>4389</td>
+        </tr>
+        <tr>
+          <td>Willow</td>
+          <td>36</td>
+          <td>P.O. Box 448, 3481 Ultricies Rd.</td>
+          <td>Kearny</td>
+          <td>89994</td>
+        </tr>
+        <tr>
+          <td>David</td>
+          <td>28</td>
+          <td>P.O. Box 460, 4128 Dolor Ave</td>
+          <td>Forchies-la-Marche</td>
+          <td>89869</td>
+        </tr>
+        <tr>
+          <td>Celeste</td>
+          <td>99</td>
+          <td>P.O. Box 538, 3563 In Rd.</td>
+          <td>Medicine Hat</td>
+          <td>80-709</td>
+        </tr>
+        <tr>
+          <td>Joel</td>
+          <td>9</td>
+          <td>P.O. Box 545, 4339 Tempor Road</td>
+          <td>Girona</td>
+          <td>288513</td>
+        </tr>
+        <tr>
+          <td>Honorato</td>
+          <td>62</td>
+          <td>P.O. Box 547, 2597 Curabitur Av.</td>
+          <td>Pointe-aux-Trembles</td>
+          <td>53131</td>
+        </tr>
+        <tr>
+          <td>Xander</td>
+          <td>30</td>
+          <td>P.O. Box 605, 5724 Pretium Ave</td>
+          <td>Osasco</td>
+          <td>2449 QM</td>
+        </tr>
+        <tr>
+          <td>Byron</td>
+          <td>4</td>
+          <td>P.O. Box 667, 6982 Eu Ave</td>
+          <td>Offenbach am Main</td>
+          <td>147775</td>
+        </tr>
+        <tr>
+          <td>Miranda</td>
+          <td>64</td>
+          <td>P.O. Box 754, 3232 Dapibus St.</td>
+          <td>Soma</td>
+          <td>225343</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <div class="table-page"></div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </article>
+  <script>
+
+    var pageMax = 25;
+    var pageCur = 1;
+    $(function () {
+      let list = $('#tbList tbody tr');
+      let count = list.length;
+      if (list.length < pageMax) {
+        $('#tbList tfoot').hide();
+        return;
+      }
+
+      let pageHtml = `<span>共${list.length}条</span> &emsp; 
+        <a href="javascript:;" onclick="goPage(-10000);"><i class="fa fa-fw fa-step-backward"></i></a>
+        <a href="javascript:;" onclick="goPage(-1);"><i class="fa fa-fw fa-chevron-left"></i></a>
+        <span>1/1</span>
+        <a href="javascript:;" onclick="goPage(1);"><i class="fa fa-fw fa-chevron-right"></i></a>
+        <a href="javascript:;" onclick="goPage(10000);"><i class="fa fa-fw fa-step-forward"></i></a>
+      `;
+
+      $('#tbList .table-page').html(pageHtml);
+      goPage(0);
+    });
+
+    function goPage(c) {
+      let list = $('#tbList tbody tr');
+      let count = list.length;
+      let pageCount = Math.ceil(count / pageMax);
+
+      let page = pageCur + c;
+      page = Math.max(page, 1);
+      page = Math.min(page, pageCount);
+
+      list.hide();
+      list.slice((page - 1) * pageMax, Math.min(page * pageMax, count)).show();
+
+      pageCur = page;
+      $('#tbList .table-page').find('span').eq(1).html(`<span>${pageCur}/${pageCount}</span>`);
+    }
+
+  </script>
+</body>
