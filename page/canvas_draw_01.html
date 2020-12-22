@@ -3,9 +3,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Canvas动画</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
@@ -97,33 +97,34 @@ var CC = {
 		this.clear();
 
 		let type = Math.ceil(this.index / 200) % 7;
-		for (let x=0; x<this.width; x+=20)
+		let ms = Math.round(this.width / 20);
+		for (let x=0; x<this.width; x+=ms)
 		{
-			for (let y=0; y<this.height; y+=20)
+			for (let y=0; y<this.height; y+=ms)
 			{
 				switch (type)
 				{
 					case 0:	
-						this.drawCirle(x, y, 5, this.randColor());
+						this.drawCirle(x, y, ms / 4, this.randColor());
 						break;
 					case 1:	
-						this.drawCirle(x, y, 10, this.randColor());
+						this.drawCirle(x, y, ms / 2, this.randColor());
 						break;
 					case 2:	
-						this.drawRect(x, y, 10, 10, this.randColor());
+						this.drawRect(x, y, ms / 2, ms / 2, this.randColor());
 						break;
 					case 3:	
-						this.drawRect(x, y, 20, 20, this.randColor());
+						this.drawRect(x, y, ms, ms, this.randColor());
 						break;
 					case 4:	
-						this.drawRect(x, y, 15, 15, this.randColor());
+						this.drawRect(x, y, ms * 0.75, ms * 0.75, this.randColor());
 						break;
 					case 5:	
-						let size = this.rand(10, 15);
+						let size = this.rand(ms / 2, ms * 0.75);
 						this.drawRect(x - size / 2, y - size / 2, size, size, this.randColor());
 						break;
 					case 6:	
-						this.drawRect(x, y, 15, 15, this.randColor(), null, this.rand(0, 360));
+						this.drawRect(x, y, ms * 0.75, ms * 0.75, this.randColor(), null, this.rand(0, 360));
 						break;
 				}
 			}
