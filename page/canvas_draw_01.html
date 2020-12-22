@@ -53,6 +53,7 @@ var CC = {
 	ctx:null,
 	index:0,
 	fpsList:[],
+	strInfo:'',
 	init:function(el)
 	{
 		this.width = el.width() * window.devicePixelRatio;
@@ -64,13 +65,19 @@ var CC = {
 
 		this.clear();
 
+		window.setInterval(function(){
+			if (CC.strInfo == '') return;
+			$('#divInfo').html(CC.strInfo);
+			CC.strInfo = '';
+		}, 100);
+
 		window.requestAnimationFrame(function(){
 			CC.render();
 		});
 	},
 	showInfo:function(str)
 	{
-		$('#divInfo').html(str);
+		this.strInfo = str;
 	},
 	render:function()
 	{
