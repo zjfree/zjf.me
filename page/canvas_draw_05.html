@@ -321,6 +321,7 @@ $(function(){
 	$('#myCanvas').bind('touchmove', function(e) {
 		if (!mouseDown) return;
 		down_fn(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+		e.preventDefault();
 	});
 	$('#myCanvas').mouseup(function(e) {
 		mouseDown = false;

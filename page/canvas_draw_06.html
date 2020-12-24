@@ -48,7 +48,7 @@ Your browser does not support the HTML5 canvas tag.
 	<button onclick="CC.clear();">清空</button>
 </div>
 
-<img id="img1" style="display: none;" src="https://nie.res.netease.com/r/pic/20181008/f13598aa-8dbd-478a-a570-016354281780.jpg" />
+<img id="img1" style="display: none;" src="../static/img/war.jpg" />
 
 <script>
 var ZTool = {
@@ -322,6 +322,7 @@ $(function(){
 	$('#myCanvas').bind('touchmove', function(e) {
 		if (!mouseDown) return;
 		down_fn(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+		e.preventDefault();
 	});
 	$('#myCanvas').mouseup(function(e) {
 		mouseDown = false;
