@@ -1,0 +1,342 @@
+<!-- Canvas子弹发射 zjfree 2020-12-22 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas子弹发射</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<button onclick="CC.clear();">清空</button>
+</div>
+
+<img id="img1" style="display: none;" src="https://nie.res.netease.com/r/pic/20181008/f13598aa-8dbd-478a-a570-016354281780.jpg" />
+
+<script>
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawRect:function(x,y,w,h, fillStyle, strokeStyle, deg)
+	{
+		deg = deg||0;
+		deg = deg*Math.PI/180;
+
+		let centerX = Math.round(x+w/2);
+		let centerY = Math.round(y+h/2);
+
+		if (deg != 0)
+		{
+			this.ctx.save();
+			this.ctx.translate(centerX, centerY);
+			this.ctx.rotate(deg);
+			this.ctx.translate(-centerX, -centerY);
+		}
+
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.rect(x,y,w,h);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+		if (deg != 0)
+		{
+			this.ctx.restore();
+		}
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawLine:function(x1,y1,x2,y2,strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+
+	drawCurve:function(p1, p2, p3, strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(p1.x, p1.y);
+		this.ctx.quadraticCurveTo(p2.x, p2.y, p3.x, p3.y);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+};
+
+var mousePoint = null;
+var mouseDown = false;
+var pointList = [];
+var speed = 0.05;
+var drawIndex = 0;
+function step(index) 
+{
+	// CC.clear();
+
+	let img1 = document.getElementById('img1');
+	CC.ctx.drawImage(img1, -0.5 * CC.width, -0.5 * CC.height, CC.width, CC.height);
+	
+	if (mouseDown && drawIndex%5==0)
+	{
+		let x = mousePoint.x - CC.width / 2;
+		let y = mousePoint.y - CC.height / 2;
+		
+		pointList.unshift({
+			x:0,
+			y:CC.height/2,
+			size:CC.size * 3,
+			age:100,
+			x1:x,
+			y1:y,
+		});
+	}
+	drawIndex++;
+	
+	let i = 0;
+	while (i<pointList.length)
+	{
+		pointList[i].age--;
+		if (pointList[i].age <= 0)
+		{
+			pointList.pop();
+			break;
+		}
+
+		pointList[i].x += (pointList[i].x1 - pointList[i].x) * speed;
+		pointList[i].y += (pointList[i].y1 - pointList[i].y) * speed;
+		pointList[i].size += (2 - pointList[i].size) * speed;
+
+		let c = pointList[i].age/100*255;
+		CC.drawCirle(pointList[i].x, pointList[i].y, pointList[i].size, `rgb(${c},${c},${c})`);
+
+		i++;
+	}
+}
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+	
+	let down_fn = function(x, y, isFirst) {
+		let ratio = window.devicePixelRatio;
+		mousePoint = {x:x * ratio, y:y * ratio};
+		if (isFirst)
+		{
+			mouseDown = true;
+			drawIndex = 0;
+		}
+	}
+	$('#myCanvas').mousedown(function(e){
+		down_fn(e.offsetX, e.offsetY, true);
+	});
+	$('#myCanvas').bind('touchstart', function(e) {
+		down_fn(e.targetTouches[0].clientX, e.targetTouches[0].clientY, true);
+		return false;
+	});
+	$('#myCanvas').mousemove(function(e) {
+		if (!mouseDown) return;
+		down_fn(e.offsetX, e.offsetY);
+	});
+	$('#myCanvas').bind('touchmove', function(e) {
+		if (!mouseDown) return;
+		down_fn(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+	});
+	$('#myCanvas').mouseup(function(e) {
+		mouseDown = false;
+		lastPoint = null;
+	});
+	$('#myCanvas').bind('touchend', function(e) {
+		mouseDown = false;
+		lastPoint = null;
+	});
+
+	CC.init($('#myCanvas'), step);
+	CC.ctx.translate(CC.width / 2, CC.height / 2);
+});
+</script>
+
+
+
+</body>

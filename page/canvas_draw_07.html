@@ -1,0 +1,222 @@
+<!-- Canvas动态数值 zjfree 2020-12-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas动态数值</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#myCanvas{
+	background: linear-gradient(to bottom, #000000 0%,#666 100%);
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>Canvas动态数值</h1>
+<canvas id="myCanvas" style="width:500px; height:150px;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+<div>
+	<button onclick="isPlay=true;">开始</button>
+	<button onclick="isPlay=false;">停止</button>
+	<input id="range1" type="range" min="0" max="60000" value="30000" />
+</div>
+
+<script>
+var CC = {
+	width:0,
+	height:0,
+	ctx:null,
+	max:100,
+	min:0,
+	curNum:'',
+	list:[],
+	lastTime:0,
+	overtime:2000,
+	sameCount:0,
+	sameMax:10,
+	signalTimer:null,
+	init:function(el, max, min)
+	{
+		this.min = min||0;
+		this.max = max||100;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		// 检测超时
+		window.setInterval(function(){
+			if (CC.curNum === '') return;
+			if (Date.now() - CC.lastTime > CC.overtime)
+			{
+				CC.showText(CC.curNum, 1)
+			}
+		}, 100);
+
+		this.clear();
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawRect:function(x,y,w,h, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.rect(x,y,w,h);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	showText:function(str, color)
+	{
+		color = color||180;
+		this.ctx.save();
+		// this.ctx.shadowBlur=20;
+		// this.ctx.shadowColor="black";
+		this.ctx.font="bold " + this.height + "px 黑体";
+		this.ctx.textAlign = "center";
+		// 创建渐变
+		var gradient = this.ctx.createLinearGradient(0,0,0,this.height);
+		gradient.addColorStop("0", 'hsl(' + color + ',100%,50%)');
+		gradient.addColorStop("1.0", 'hsl(' + color + ',50%,70%)');
+		// 用渐变填色
+		this.ctx.fillStyle = gradient;
+		this.ctx.fillText(str, this.width / 2, this.height * 0.85);
+		this.ctx.restore();
+	},
+	addNum:function(num)
+	{
+		if (this.curNum == num)
+		{
+			this.sameCount++;
+		}
+		else
+		{
+			this.sameCount = 0;
+		}
+		this.curNum = num;
+		this.lastTime = Date.now();
+
+		this.clear();
+		this.drawRect(5, 5, 10, 10, '#0f0');
+		window.clearTimeout(this.signalTimer);
+		this.signalTimer = window.setTimeout(function(){
+			CC.drawRect(5, 5, 10, 10, '#000');
+		}, 100);
+
+		let h = 0;
+		h = Math.max(num, this.min);
+		h = Math.min(num, this.max);
+		h = h / (this.max - this.min) * this.height;
+		
+		// 绘制边条
+		this.drawRect(this.width - 10, 0, 10, this.height, '#666');
+		this.drawRect(this.width - 10, this.height - h, 10, h, '#1AC400');
+
+		// 绘制历史曲线
+		let ww = 5;
+		let barColor = 'rgba(255,255,0,0.15)';
+		let beginWidth = this.width - 10;
+		for (let k in this.list)
+		{
+			let hh = this.list[k];
+			beginWidth -= ww;
+			this.drawRect(beginWidth, this.height - hh, ww, hh, barColor);
+			this.drawRect(beginWidth, this.height - hh, ww, 1, 'rgba(255,255,0,0.5)');
+		}
+		if (beginWidth<0)
+		{
+			this.list.pop();
+		}
+		this.list.unshift(h);
+		
+		this.showText(num, this.sameCount > this.sameMax ? 90 : 180);
+	}
+};
+
+var isPlay = false;
+var num = 50000;
+var sleep = 0;
+var index = 0;
+$(function(){
+	// JS
+	CC.init($('#myCanvas'), 60000, 0);
+
+	window.setInterval(function(){
+		if (!isPlay) return;
+		if (sleep > 0)
+		{
+			sleep--;
+			return;
+		}
+		index++;
+		if (index % 100 < 70)
+		{
+			num += CC.rand(-100, 100);
+		}
+		
+		CC.addNum(num)
+	}, 200);
+
+	$('#range1').bind('input', function(){
+		sleep = 20;
+		num = parseInt($(this).val());
+		CC.addNum(num);
+	});
+});
+</script>
+
+
+
+</body>

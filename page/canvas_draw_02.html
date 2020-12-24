@@ -1,0 +1,458 @@
+<!-- Canvas粒子系统 zjfree 2020-12-22 -->
+<!--
+	https://www.cnblogs.com/miloyip/archive/2010/06/14/Kinematics_ParticleSystem.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas粒子系统</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<button onclick="CC.play();">开始</button>
+	<button onclick="CC.stop();">停止</button>
+</div>
+
+<img id="img1" style="display: none;" src="https://img.lanrentuku.com/img/allimg/1609/14747974667766.jpg" />
+
+<script>
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		// this.ctx.fillStyle = '#000';
+		// this.ctx.fillRect(0,0,this.width,this.height);
+		// this.ctx.height = this.ctx.height;
+		this.ctx.clearRect(0,0,this.width,this.height);
+	},
+	drawRect:function(x,y,w,h, fillStyle, strokeStyle, deg)
+	{
+		deg = deg||0;
+		deg = deg*Math.PI/180;
+
+		let centerX = Math.round(x+w/2);
+		let centerY = Math.round(y+h/2);
+
+		if (deg != 0)
+		{
+			this.ctx.save();
+			this.ctx.translate(centerX, centerY);
+			this.ctx.rotate(deg);
+			this.ctx.translate(-centerX, -centerY);
+		}
+
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.rect(x,y,w,h);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+		if (deg != 0)
+		{
+			this.ctx.restore();
+		}
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawLine:function(x1,y1,x2,y2,strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+
+	drawCurve:function(p1, p2, p3, strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(p1.x, p1.y);
+		this.ctx.quadraticCurveTo(p2.x, p2.y, p3.x, p3.y);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+};
+
+// 向量
+var Vector2 = function(x, y) { this.x = x; this.y = y; };
+
+Vector2.prototype = {
+    copy : function() { return new Vector2(this.x, this.y); },
+    length : function() { return Math.sqrt(this.x * this.x + this.y * this.y); },
+    sqrLength : function() { return this.x * this.x + this.y * this.y; },
+    normalize : function() { var inv = 1/this.length(); return new Vector2(this.x * inv, this.y * inv); },
+    negate : function() { return new Vector2(-this.x, -this.y); },
+    add : function(v) { return new Vector2(this.x + v.x, this.y + v.y); },
+    subtract : function(v) { return new Vector2(this.x - v.x, this.y - v.y); },
+    multiply : function(f) { return new Vector2(this.x * f, this.y * f); },
+    divide : function(f) { var invf = 1/f; return new Vector2(this.x * invf, this.y * invf); },
+    dot : function(v) { return this.x * v.x + this.y * v.y; }
+};
+
+Vector2.zero = new Vector2(0, 0);
+
+// 颜色
+var Color = function(r, g, b) { this.r = r; this.g = g; this.b = b };
+
+Color.prototype = {
+    copy : function() { return new Color(this.r, this.g, this.b); },
+    add : function(c) { return new Color(this.r + c.r, this.g + c.g, this.b + c.b); },
+    multiply : function(s) { return new Color(this.r * s, this.g * s, this.b * s); },
+    modulate : function(c) { return new Color(this.r * c.r, this.g * c.g, this.b * c.b); },
+	saturate : function() { this.r = Math.min(this.r, 1); this.g = Math.min(this.g, 1); this.b = Math.min(this.b, 1); },
+	toRgba : function(alpha) {
+		alpha = alpha||1;
+		return "rgba("
+                + Math.floor(this.r * 255) + ","
+                + Math.floor(this.g * 255) + ","
+                + Math.floor(this.b * 255) + ","
+                + alpha.toFixed(2) + ")"
+	}
+};
+
+Color.black = new Color(0, 0, 0);
+Color.white = new Color(1, 1, 1);
+Color.red = new Color(1, 0, 0);
+Color.green = new Color(0, 1, 0);
+Color.blue = new Color(0, 0, 1);
+Color.yellow = new Color(1, 1, 0);
+Color.cyan = new Color(0, 1, 1);
+Color.purple = new Color(1, 0, 1);
+Color.gray = new Color(0.5, 0.5, 0.5);
+
+// 粒子
+var Particle = function(position, velocity, life, color, size) {
+    this.position = position;
+    this.velocity = velocity;
+    this.acceleration = Vector2.zero;
+    this.age = 0;
+    this.life = life;
+    this.color = color;
+    this.size = size;
+};
+
+function ChamberBox(x1, y1, x2, y2) {
+    this.apply = function(particle) {
+        if (particle.position.x - particle.size < x1 || particle.position.x + particle.size > x2)
+            particle.velocity.x = -particle.velocity.x * ZTool.rand(0.7, 1.3, 2);
+
+        if (particle.position.y - particle.size < y1 || particle.position.y + particle.size > y2)
+            particle.velocity.y = -particle.velocity.y * ZTool.rand(0.7, 1.3, 2);
+    };
+}
+
+// 粒子系统
+function ParticleSystem() {
+    // Private fields
+    var that = this;
+    var particles = new Array();
+
+    // Public fields
+    this.gravity = new Vector2(0, 100);
+    this.effectors = new Array();
+
+    // Public methods
+        
+    this.emit = function(particle) {
+        particles.push(particle);
+    };
+
+    this.simulate = function(dt) {
+        aging(dt);
+        applyGravity();
+        applyEffectors();
+        kinematics(dt);
+    };
+
+    this.render = function() {
+        for (var i in particles) {
+            var p = particles[i];
+			var alpha = 1 - p.age / p.life;
+			CC.drawCirle(p.position.x, p.position.y, p.size, p.color.toRgba(alpha));
+        }
+    }
+
+    // Private methods
+    
+    function aging(dt) {
+        for (var i = 0; i < particles.length; ) {
+            var p = particles[i];
+            p.age += dt;
+            if (p.age >= p.life)
+                kill(i);
+            else
+                i++;
+        }
+    }
+
+    function kill(index) {
+        if (particles.length > 1)
+            particles[index] = particles[particles.length - 1];
+        particles.pop();
+    }
+
+    function applyGravity() {
+        for (var i in particles)
+            particles[i].acceleration = that.gravity;
+    }
+
+    function applyEffectors() {
+        for (var j in that.effectors) {
+            var apply = that.effectors[j].apply;
+            for (var i in particles)
+                apply(particles[i]);    
+        }
+    }
+    
+    function kinematics(dt) {
+        for (var i in particles) {
+            var p = particles[i];
+            p.position = p.position.add(p.velocity.multiply(dt));
+            p.velocity = p.velocity.add(p.acceleration.multiply(dt));
+        }
+    }
+}
+
+// 粒子系统测试
+var ps = new ParticleSystem();
+var dt = 0.01;
+var oldMousePosition = Vector2.zero, newMousePosition = Vector2.zero;
+
+function sampleDirection(angle1, angle2) {
+    var t = Math.random();
+    var theta = angle1 * t + angle2 * (1 - t);
+    return new Vector2(Math.cos(theta), Math.sin(theta));
+}
+
+function sampleColor(color1, color2) {
+    var t = Math.random();
+    return color1.multiply(t).add(color2.multiply(1 - t));
+}
+
+function sampleNumber(value1, value2) {
+    var t = Math.random();
+    return value1 * t + value2 * (1 - t);
+}
+
+function step() {
+	for (let i=0; i<2; i++)
+	{
+		var velocity = newMousePosition.subtract(oldMousePosition).multiply(30);
+		velocity = velocity.add(sampleDirection(0, Math.PI * 2).multiply(20));    
+		var color = sampleColor(Color.red, Color.yellow);
+		var life = sampleNumber(2, 5);    
+		var size = sampleNumber(2, 5);
+		ps.emit(new Particle(newMousePosition, velocity, life, color, size));
+	}
+
+    oldMousePosition = newMousePosition;
+    
+    ps.simulate(dt);
+
+	// 清空
+	// CC.drawRect(0,0,this.width,this.height,'rgba(0,0,0,0.05)');
+	// CC.ctx.globalAlpha = 0.1;
+	// let img1 = document.getElementById('img1');
+	// CC.ctx.drawImage(img1, 0, 0, CC.width, CC.height);
+	// CC.ctx.globalAlpha = 1;
+	CC.clear();
+	
+    ps.render();
+}
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+	
+	$('#myCanvas').mousemove(function(e) {
+		let ratio = window.devicePixelRatio;
+		newMousePosition = new Vector2(e.offsetX * ratio, e.offsetY * ratio);
+	});
+
+	CC.init($('#myCanvas'), step);
+	ps.effectors.push(new ChamberBox(0, 0, CC.width, CC.height));
+});
+</script>
+
+
+
+</body>

@@ -1,0 +1,342 @@
+<!-- 颜色选择 zjfree 2020-12-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>颜色选择</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		.color {
+			border: solid 5px gray;
+			padding: 10px;
+			color: #fff;
+			text-shadow: 0 0 3px #000;
+			font-size: 20px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			margin-bottom: 10px;
+			max-width: 400px;
+		}
+
+		input[type=range] {
+			width: 300px;
+		}
+
+		.op {
+			line-height: 1.5;
+			font-family: 'Courier New', Courier, monospace, 微软雅黑;
+		}
+
+		.clr {
+			display: inline-block;
+			border: solid 2px gray;
+			padding: 10px;
+			color: #fff;
+			text-shadow: 0 0 3px #000;
+			font-size: 20px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			text-align: center;
+			width: 100px;
+			margin-bottom: 5px;
+		}
+
+		#divSafeColor .clr {
+			padding: 5px;
+			font-size: 16px;
+		}
+
+		#myCanvas2{
+			cursor:crosshair;
+		}
+
+		#divColor3 {
+			background-color: blue;
+			width: 300px;
+			height: 200px;
+			position: relative;
+		}
+
+		#divColor3 div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 200px;
+			cursor:crosshair;
+		}
+
+		#divColor3>div {
+			background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0) 100%);
+		}
+
+		#divColor3>div>div {
+			background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0) 100%);
+		}
+		
+		.hue {
+			height: 20px;
+			width: 300px;
+			margin-bottom: 10px;
+			background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+		}
+											
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>颜色选择</h1>
+
+	<h3>RGB颜色</h3>
+	<div id="divColor1" class="color"></div>
+	<div class="op">
+		红 R: <input id="rangeR" type="range" min="0" max="255" value="100" /><br>
+		绿 G: <input id="rangeG" type="range" min="0" max="255" value="100" /><br>
+		蓝 B: <input id="rangeB" type="range" min="0" max="255" value="100" /><br>
+	</div>
+
+	<h3>HSL颜色</h3>
+	<div id="divColor2" class="color"></div>
+	<div class="op">
+		色调 H: <input id="rangeH" type="range" min="0" max="360" value="100" /><br>
+		饱和 S: <input id="rangeS" type="range" min="0" max="100" value="50" /><br>
+		亮度 L: <input id="rangeL" type="range" min="0" max="100" value="50" /><br>
+	</div>
+
+	<h3>简单颜色</h3>
+	<div>
+		<span class="clr">#000</span>
+		<span class="clr">#FFF</span>
+		<br>
+		<span class="clr">#F00</span>
+		<span class="clr">#0F0</span>
+		<span class="clr">#00F</span>
+		<br>
+		<span class="clr">#FF0</span>
+		<span class="clr">#0FF</span>
+		<span class="clr">#F0F</span>
+		<br>
+	</div>
+
+	<h3>调色盘1</h3>
+	<canvas id="myCanvas1" style="width:300px; height:300px;">
+	</canvas>
+
+	<h3>调色盘2</h3>
+	<div id="divColor2_val" class="color"></div>
+	<canvas id="myCanvas2" style="width:300px; height:300px;">
+	</canvas>
+	<div class="op">
+		<div class="hue"></div>
+		<input id="rangeH1" type="range" min="0" max="360" value="100" />
+	</div>
+
+	<h3>调色盘3</h3>
+	<div id="divColor3_val" class="color"></div>
+	<div id="divColor3">
+		<div>
+			<div>
+			</div>
+		</div>
+	</div>
+	<div class="op">
+		<div class="hue"></div>
+		<input id="rangeH2" type="range" min="0" max="360" value="100" />
+	</div>
+
+	<h3>安全色</h3>
+	<div id="divSafeColor">
+		<span class="clr">#000</span>
+		<span class="clr">#333</span>
+		<span class="clr">#666</span>
+		<span class="clr">#999</span>
+		<span class="clr">#CCC</span>
+		<span class="clr">#FFF</span>
+		<br>
+	</div>
+
+	<script>
+		function colorRgb() {
+			let c = 'rgb(';
+			c += $('#rangeR').val() + ',';
+			c += $('#rangeG').val() + ',';
+			c += $('#rangeB').val() + ')';
+			$('#divColor1').html(c);
+			$('#divColor1').css('background', c);
+		}
+		function colorHsl() {
+			let c = 'hsl(';
+			c += $('#rangeH').val() + ',';
+			c += $('#rangeS').val() + '%,';
+			c += $('#rangeL').val() + '%)';
+			$('#divColor2').html(c);
+			$('#divColor2').css('background', c);
+		}
+
+		function showColor1() {
+			let el = $('#myCanvas1');
+			let w = el.width() * window.devicePixelRatio;
+			let h = el.height() * window.devicePixelRatio;
+			el.prop('width', w);
+			el.prop('height', h);
+			let ctx = el[0].getContext("2d");
+
+			ctx.beginPath();
+			ctx.arc(w / 2, h / 2, w / 2 - 8, 0, 2 * Math.PI);
+			ctx.closePath();
+
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = '#000';
+			ctx.stroke();
+
+			let r1 = (w * 0.95 / 2 - 10) / 100;
+
+			for (let r = 100; r >= 0; r -= 10) {
+				let lastDeg = 0;
+				for (let i = 10; i <= 360; i += 10) {
+					let deg = i * Math.PI / 180;
+					ctx.beginPath();
+					ctx.moveTo(w / 2, h / 2);
+					ctx.arc(w / 2, h / 2, 10 + r * r1, lastDeg, deg, false);
+					ctx.closePath();
+
+					ctx.fillStyle = `hsl(${i},${r}%,50%)`;
+					ctx.fill();
+
+					lastDeg = deg;
+				}
+			}
+		}
+
+		function showColor2() {
+			let hh = $('#rangeH1').val();
+			let el = $('#myCanvas2');
+			let w = el.width() * window.devicePixelRatio;
+			let h = el.height() * window.devicePixelRatio;
+			el.prop('width', w);
+			el.prop('height', h);
+			let ctx = el[0].getContext("2d");
+
+			let c = 'hsl(' + hh + ',50%,50%)';
+			$('#divColor2_val').css('background', c);
+			$('#divColor2_val').html(c);
+
+			let size = Math.round(w / 100);
+			let step = 2;
+			for (let x = 0; x < 100; x += step) {
+				for (let y = 0; y < 100; y += step) {
+					ctx.beginPath();
+					ctx.rect(size * x, size * y, size * step, size * step);
+					ctx.closePath();
+
+					ctx.fillStyle = 'hsl(' + hh + ',' + x + '%,' + y + '%)';
+					ctx.fill();
+				}
+			}
+		}
+
+		function showColor3()
+		{
+			let c = 'hsl(' + $('#rangeH2').val() + ',100%,50%)';
+			$('#divColor3').css('background', c);
+			$('#divColor3_val').css('background', c);
+			$('#divColor3_val').html(c);
+		}
+		
+		function HSBToRGB (hsb) {
+			var rgb = {};
+			var h = Math.round(hsb.h);
+			var s = Math.round(hsb.s * 255 / 100);
+			var v = Math.round(hsb.b * 255 / 100);
+
+			if (s == 0) {
+				rgb.r = rgb.g = rgb.b = v;
+			} else {
+				var t1 = v;
+				var t2 = (255 - s) * v / 255;
+				var t3 = (t1 - t2) * (h % 60) / 60;
+
+				if (h == 360) h = 0;
+
+				if (h < 60) { rgb.r = t1; rgb.b = t2; rgb.g = t2 + t3 }
+				else if (h < 120) { rgb.g = t1; rgb.b = t2; rgb.r = t1 - t3 }
+				else if (h < 180) { rgb.g = t1; rgb.r = t2; rgb.b = t2 + t3 }
+				else if (h < 240) { rgb.b = t1; rgb.r = t2; rgb.g = t1 - t3 }
+				else if (h < 300) { rgb.b = t1; rgb.g = t2; rgb.r = t2 + t3 }
+				else if (h < 360) { rgb.r = t1; rgb.g = t2; rgb.b = t1 - t3 }
+				else { rgb.r = 0; rgb.g = 0; rgb.b = 0 }
+			}
+
+			return { r: Math.round(rgb.r), g: Math.round(rgb.g), b: Math.round(rgb.b) };
+		}
+
+		$(function () {
+			// JS
+			$('#rangeR, #rangeG, #rangeB').bind('input', colorRgb);
+			colorRgb();
+			$('#rangeH, #rangeS, #rangeL').bind('input', colorHsl);
+			colorHsl();
+
+			// 安全色
+			let safe = ['0', '3', '6', '9', 'C', 'F'];
+			let html = '';
+			for (let i = 0; i < safe.length; i++) {
+				for (let j = 0; j < safe.length; j++) {
+					for (let k = 0; k < safe.length; k++) {
+						html += '<span class="clr">#' + safe[i] + safe[j] + safe[k] + '</span> ';
+					}
+					html += '<br>';
+				}
+			}
+			$('#divSafeColor').append(html);
+
+			$('.clr').each(function () {
+				$(this).css('background', $(this).text());
+			});
+
+			showColor1();
+			showColor2();
+			$('#rangeH1').bind('input', showColor2);
+			$('#myCanvas2').mousemove(function(e){
+				let hsl = {
+					h:parseInt($('#rangeH1').val()),
+					s:parseInt(100 * e.offsetX / $(this).width()),
+					l:parseInt(100 * e.offsetY / $(this).height()),
+				};
+				
+				let c = `hsl(${hsl.h},${hsl.s}%,${hsl.l}%)`;
+				$('#divColor2_val').css('background', c);
+				$('#divColor2_val').html(c);
+			});
+			
+			showColor3();
+			$('#rangeH2').bind('input', showColor3);
+
+			$('#divColor3').mousemove(function(e){
+				let hsb = {
+					h:parseInt($('#rangeH2').val()),
+					s:parseInt(100 * e.offsetX / $(this).width()),
+					b:parseInt(100 * ($(this).height() - e.offsetY) / $(this).height()),
+				};
+				let rgb = HSBToRGB(hsb);
+				let c = `rgb(${rgb.r},${rgb.g},${rgb.b})`;
+				$('#divColor3_val').css('background', c);
+				$('#divColor3_val').html(c);
+			});
+		});
+	</script>
+
+</body>
+
+</html>
