@@ -447,6 +447,11 @@ $(function(){
 		let ratio = window.devicePixelRatio;
 		newMousePosition = new Vector2(e.offsetX * ratio, e.offsetY * ratio);
 	});
+	$('#myCanvas').bind('touchmove', function(e) {
+		let ratio = window.devicePixelRatio;
+		newMousePosition = new Vector2(e.targetTouches[0].clientX * ratio, e.targetTouches[0].clientY * ratio);
+		e.preventDefault();
+	});
 
 	CC.init($('#myCanvas'), step);
 	ps.effectors.push(new ChamberBox(0, 0, CC.width, CC.height));
