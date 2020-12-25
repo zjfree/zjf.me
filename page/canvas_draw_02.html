@@ -419,7 +419,7 @@ function step() {
 		velocity = velocity.add(sampleDirection(0, Math.PI * 2).multiply(20));    
 		var color = sampleColor(Color.red, Color.yellow);
 		var life = sampleNumber(2, 5);    
-		var size = sampleNumber(2, 5);
+		var size = sampleNumber(CC.size * 0.5, CC.size);
 		ps.emit(new Particle(newMousePosition, velocity, life, color, size));
 	}
 
