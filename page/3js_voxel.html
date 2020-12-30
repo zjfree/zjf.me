@@ -1,0 +1,606 @@
+<!-- ThreeJS 像素图编辑器 zjfree 2020-12-25 -->
+<!--
+	参考：https://threejs.org/examples/webgl_interactive_voxelpainter.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ThreeJS 像素图编辑器</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+
+		canvas {
+			width: 100%;
+			height: 100%
+		}
+
+		.title {
+			position: absolute;
+			top: 10px;
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			text-shadow: 0 3px 10px #000;
+			font-size: 28px;
+			margin: 0;
+		}
+
+		#divMsgBack {
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: none;
+			z-index: 100;
+		}
+
+		#divMsgBack #divSave,
+		#divMsgBack #divLoad {
+			width: 500px;
+			margin: 20px auto;
+			display: none;
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 10px;
+			height: 90%;
+			border-radius: 10px;
+		}
+
+		#divMsgBack textarea {
+			height: calc(100% - 80px);
+			display: block;
+			margin: 10px 0;
+			width: 100%;
+			overflow-y: scroll;
+			box-sizing: border-box;
+			font-size: 12px;
+			font-family: 'Courier New', Courier, monospace;
+		}
+
+		#divColorList {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: solid 2px gray;
+			background-color: #fff;
+			padding: 2px;
+		}
+
+		#divColorList span {
+			display: block;
+			border: solid 1px #fff;
+			font-size: 12px;
+			color: #fff;
+			text-align: center;
+			width: 20px;
+			height: 20px;
+			float: left;
+			cursor: pointer;
+		}
+
+		#divColorList span:hover {
+			border: solid 1px #000;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<!--
+<script src="https://lib.baomitu.com/three.js/107/three.min.js"></script>
+-->
+	<script src="../static/threejs/js/three.js"></script>
+	<script src="../static/threejs/js/controls/OrbitControls.js"></script>
+	<script src="https://lib.baomitu.com/stats.js/16/Stats.min.js"></script>
+	<script src="https://lib.baomitu.com/dat-gui/0.7.6/dat.gui.min.js"></script>
+
+</head>
+
+<body onload="draw();">
+	<!-- 内容 -->
+	<h1 class="title">ThreeJS 像素图编辑器</h1>
+
+	<div id="divColorList">
+		<span style="background: #000;" data-val="0x000000"></span>
+		<span style="background: #666;" data-val="0x666666"></span>
+		<span style="background: #999;" data-val="0x999999"></span>
+		<span style="background: #BBB;" data-val="0xBBBBBB"></span>
+		<span style="background: #FFF;" data-val="0xFFFFFF"></span>
+		<br>
+		<span style="background: #600;" data-val="0x660000"></span>
+		<span style="background: #B00;" data-val="0xBB0000"></span>
+		<span style="background: #F00;" data-val="0xFF0000"></span>
+		<span style="background: #F66;" data-val="0xFF6666"></span>
+		<span style="background: #FBB;" data-val="0xFFBBBB"></span>
+		<br>
+		<span style="background: #060;" data-val="0x006600"></span>
+		<span style="background: #0B0;" data-val="0x00BB00"></span>
+		<span style="background: #0F0;" data-val="0x00FF00"></span>
+		<span style="background: #6F6;" data-val="0x66FF66"></span>
+		<span style="background: #BFB;" data-val="0xBBFFBB"></span>
+		<br>
+		<span style="background: #006;" data-val="0x000066"></span>
+		<span style="background: #00B;" data-val="0x0000BB"></span>
+		<span style="background: #00F;" data-val="0x0000FF"></span>
+		<span style="background: #66F;" data-val="0x6666FF"></span>
+		<span style="background: #BBF;" data-val="0xBBBBFF"></span>
+		<br>
+		<span style="background: #660;" data-val="0x666600"></span>
+		<span style="background: #BB0;" data-val="0xBBBB00"></span>
+		<span style="background: #FF0;" data-val="0xFFFF00"></span>
+		<span style="background: #FF6;" data-val="0xFFFF66"></span>
+		<span style="background: #FFB;" data-val="0xFFFFBB"></span>
+		<br>
+		<span style="background: #606;" data-val="0x660066"></span>
+		<span style="background: #B0B;" data-val="0xBB00BB"></span>
+		<span style="background: #F0F;" data-val="0xFF00FF"></span>
+		<span style="background: #F6F;" data-val="0xFF66FF"></span>
+		<span style="background: #FBF;" data-val="0xFFBBFF"></span>
+		<br>
+		<span style="background: #066;" data-val="0x006666"></span>
+		<span style="background: #0BB;" data-val="0x00BBBB"></span>
+		<span style="background: #0FF;" data-val="0x00FFFF"></span>
+		<span style="background: #6FF;" data-val="0x66FFFF"></span>
+		<span style="background: #BFF;" data-val="0xBBFFFF"></span>
+
+	</div>
+
+	<div id="divMsgBack">
+		<div id="divSave">
+			保存内容：
+			<textarea></textarea>
+			<button onclick="$('#divMsgBack').hide();">关闭</button>
+		</div>
+		<div id="divLoad">
+			加载内容：
+			<textarea></textarea>
+			<button onclick="loadObj();">确定</button>
+			<button onclick="$('#divMsgBack').hide();">取消</button>
+		</div>
+	</div>
+
+	<script>
+		var renderer, camera, scene, light, stats, controls, gui, guiControl = {};
+		var objList = [];
+		var moveCount = 0;
+		var goPosition = null;
+
+
+		let plane;
+		let mouse, raycaster, isShiftDown = false, isCtrlDown = false;
+
+		let rollOverMesh, rollOverMaterial;
+		let cubeGeo, cubeMaterial, cubeTexture;
+
+		var objects = [];
+
+
+		// 初始化渲染器
+		function initRender() {
+			renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setClearColor(0xdddddd); //设置背景颜色
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+		}
+
+		// 初始化相机
+		function initCamera() {
+			camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
+			camera.position.set(0, 1000, 1000);
+		}
+
+		// 初始化场景
+		function initScene() {
+			scene = new THREE.Scene();
+		}
+
+		// 初始化灯光
+		function initLight() {
+			scene.add(new THREE.AmbientLight(0x404040));
+
+			light = new THREE.DirectionalLight(0xffffff);
+			light.position.set(1, 1, 1);
+			scene.add(light);
+
+			light = new THREE.PointLight(0xffffff, 0.8);
+			light.position.set(-500, 500, -500);
+			light.castShadow = false;
+			scene.add(light);
+		}
+
+		// 初始化模型
+		function initModel() {
+
+			// roll-over helpers
+			const rollOverGeo = new THREE.BoxBufferGeometry(20, 20, 20);
+			rollOverMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.8, transparent: true });
+			rollOverMesh = new THREE.Mesh(rollOverGeo, rollOverMaterial);
+			scene.add(rollOverMesh);
+
+			// cubes
+			cubeGeo = new THREE.BoxBufferGeometry(20, 20, 20);
+			// cubeTexture = new THREE.TextureLoader().load('../static/img/square-outline-textured.png');
+			// cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xfeb74c, map: cubeTexture });
+
+			// grid
+			const gridHelper = new THREE.GridHelper(1000, 50);
+			scene.add(gridHelper);
+
+			//
+			raycaster = new THREE.Raycaster();
+			mouse = new THREE.Vector2();
+
+			const geometry = new THREE.PlaneBufferGeometry(1000, 1000);
+			geometry.rotateX(- Math.PI / 2);
+
+			plane = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ visible: false }));
+			scene.add(plane);
+
+			objects.push(plane);
+
+			document.addEventListener('mousemove', onDocumentMouseMove, false);
+			// document.addEventListener('mousedown', onDocumentMouseDown, false);
+			document.addEventListener('mousedown', function (evt) {
+				if (evt.target.tagName != 'CANVAS') return;
+				moveCount = 0;
+			}, false);
+			document.addEventListener('mouseup', onDocumentMouseDown, false);
+			document.addEventListener('keydown', onDocumentKeyDown, false);
+			document.addEventListener('keyup', onDocumentKeyUp, false);
+		}
+
+		// 初始化FPS
+		function initStats() {
+			stats = new Stats();
+			document.body.appendChild(stats.dom);
+		}
+
+		// 初始化控制
+		function initControls() {
+
+			controls = new THREE.OrbitControls(camera, renderer.domElement);
+			// 如果使用animate方法时，将此函数删除
+			//controls.addEventListener( 'change', render );
+			// 使动画循环使用时阻尼或自转 意思是否有惯性
+			controls.enableDamping = true;
+			//动态阻尼系数 就是鼠标拖拽旋转灵敏度
+			//controls.dampingFactor = 0.25;
+			//是否可以缩放
+			controls.enableZoom = true;
+			//是否自动旋转
+			controls.autoRotate = false;
+			//设置相机距离原点的最远距离
+			controls.minDistance = 1;
+			//设置相机距离原点的最远距离
+			controls.maxDistance = 10000;
+			//是否开启右键拖拽
+			controls.enablePan = true;
+			// controls.mouseButtons = {
+			// 	LEFT: THREE.MOUSE.PAN,
+			// 	MIDDLE: THREE.MOUSE.DOLLY,
+			// 	RIGHT: THREE.MOUSE.ROTATE
+			// }
+			controls.minPolarAngle = 0 * Math.PI / 180;
+			controls.maxPolarAngle = 85 * Math.PI / 180;
+		}
+
+		// 初始化自定义参数
+		function initGui() {
+			gui = {
+				type: 'add',
+				color: 0xff0000,
+				color_wave: 0,
+				mirror: false,
+				save: function () {
+
+					let val = '';
+					for (let obj of objects) {
+						if (obj.name != 'voxel') {
+							continue;
+						}
+
+						val += obj.position.x / 10 + ',';
+						val += obj.position.y / 10 + ',';
+						val += obj.position.z / 10 + ',#';
+						val += obj.material.color.getHex().toString(16).padStart(6,'0') + "\n";
+					}
+
+					window.localStorage.setItem('voxel_data', val);
+					$('#divSave textarea').val(val);
+
+					$('#divSave').show();
+					$('#divLoad').hide();
+					$('#divMsgBack').show();
+				},
+				load: function () {
+					$('#divSave').hide();
+					$('#divLoad').show();
+					$('#divMsgBack').show();
+				},
+				clear: function (bo) {
+					if (!bo) {
+						if (!window.confirm('确认清空吗？')) return;
+					}
+					for (i = 0; i < objects.length; i++) {
+						let obj = objects[i];
+						if (obj.name != 'voxel') {
+							continue;
+						}
+
+						scene.remove(obj);
+						objects.splice(objects.indexOf(obj), 1);
+						i--;
+					}
+					goPosition = new THREE.Vector3(0, 0, 0);
+				},
+				goCenter:function(){
+					goPosition = new THREE.Vector3(0, 0, 0);
+				}
+			};
+
+			var datGui = new dat.GUI();
+			//将设置属性添加到gui当中，gui.add(对象，属性，最小值，最大值）
+			datGui.add(gui, 'type', { 添加: 'add', 删除: 'del', 颜色: 'color' }).name('操作');
+			guiControl.color = datGui.addColor(gui, 'color').name('颜色');
+			datGui.add(gui, 'color_wave').name('颜色波动').min(0).max(200).step(1);
+			datGui.add(gui, 'mirror').name('镜像');
+			datGui.add(gui, 'save').name('保存');
+			datGui.add(gui, 'load').name('加载');
+			datGui.add(gui, 'clear').name('清空');
+			datGui.add(gui, 'goCenter').name('返回中心');
+		}
+
+		// 渲染、动画
+		function render() {
+
+			renderer.render(scene, camera);
+		}
+
+		function onWindowResize() {
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			render();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+		}
+
+		function animate() {
+			//更新控制器
+			if (goPosition) {
+				controls.target.x += (goPosition.x - controls.target.x) * 0.1;
+				controls.target.y += (goPosition.y - controls.target.y) * 0.1;
+				controls.target.z += (goPosition.z - controls.target.z) * 0.1;
+
+				if (goPosition.distanceTo(controls.target) < 0.1) {
+					controls.target.set(goPosition.x, goPosition.y, goPosition.z);
+					goPosition = null;
+				}
+			}
+
+			controls.update();
+			render();
+
+			//更新性能插件
+			stats.update();
+			requestAnimationFrame(animate);
+		}
+
+		function draw() {
+			initRender();
+			initScene();
+			initCamera();
+			initLight();
+			initModel();
+			initControls();
+			initStats();
+			initGui();
+
+			animate();
+			window.onresize = onWindowResize;
+
+			$('#divColorList span').click(function () {
+				guiControl.color.setValue(parseInt($(this).data('val')));
+			});
+
+			// 加载数据
+			let data = window.localStorage.getItem('voxel_data');
+			$('#divLoad textarea').val(data);
+			loadObj();
+		}
+
+		// 加载数据
+		function loadObj() {
+			let val = $('#divLoad textarea').val();
+			val = $.trim(val);
+			if (val == '') {
+				return;
+			}
+
+			
+			let list = val.split(/\n/ig);
+			gui.clear(true);
+			for (o of list) {
+				let arr = o.split(/,/ig);
+				let color = parseInt('0x' + arr[3].substr(1));
+				let material = new THREE.MeshLambertMaterial({ color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
+				const voxel = new THREE.Mesh(cubeGeo, material);
+				voxel.position.set(parseInt(arr[0])*10, parseInt(arr[1])*10, parseInt(arr[2])*10);
+				voxel.name = 'voxel';
+				scene.add(voxel);
+				objects.push(voxel);
+			}
+
+			$('#divMsgBack').hide();
+		}
+
+		var lastVoxel = null;
+		function onDocumentMouseMove(event) {
+			if (event.target.tagName != 'CANVAS') return;
+			moveCount++;
+			event.preventDefault();
+			event.stopPropagation();
+
+			mouse.set((event.clientX / window.innerWidth) * 2 - 1, - (event.clientY / window.innerHeight) * 2 + 1);
+
+			raycaster.setFromCamera(mouse, camera);
+
+			const intersects = raycaster.intersectObjects(objects);
+
+			if (intersects.length > 0) {
+
+				const intersect = intersects[0];
+				if (isCtrlDown) {
+					rollOverMesh.visible = false;
+
+					switch (gui.type) {
+						case 'add':
+							if (intersect.object != lastVoxel) {
+								lastVoxel = addObj(intersect);
+							}
+							break;
+						case 'color':
+							if (intersect.object !== plane) {
+								let color = getColor();
+								intersect.object.material.color.set(color);
+							}
+							break;
+					}
+				}
+				else {
+					rollOverMesh.position.copy(intersect.point).add(intersect.face.normal);
+					rollOverMesh.position.divideScalar(20).floor().multiplyScalar(20).addScalar(10);
+					rollOverMesh.visible = true;
+				}
+			}
+
+			render();
+		}
+
+		function onDocumentMouseDown(event) {
+			if (event.target.tagName != 'CANVAS') return;
+			event.preventDefault();
+			if (moveCount > 1) {
+				return;
+			}
+
+			mouse.set((event.clientX / window.innerWidth) * 2 - 1, - (event.clientY / window.innerHeight) * 2 + 1);
+
+			raycaster.setFromCamera(mouse, camera);
+
+			const intersects = raycaster.intersectObjects(objects);
+
+			if (intersects.length == 0) return;
+
+			const intersect = intersects[0];
+
+			switch (gui.type) {
+				case 'add':
+					if (isShiftDown) {
+						// shift 删除
+						if (intersect.object !== plane) {
+							scene.remove(intersect.object);
+							objects.splice(objects.indexOf(intersect.object), 1);
+						}
+
+					} else {
+						// create cube
+						let voxel = addObj(intersect);
+
+						rollOverMesh.visible = false;
+						goPosition = voxel.position;
+					}
+					break;
+				case 'del':
+					if (intersect.object !== plane) {
+						scene.remove(intersect.object);
+						objects.splice(objects.indexOf(intersect.object), 1);
+					}
+					break;
+				case 'color':
+					if (intersect.object !== plane) {
+						let color = getColor();
+						intersect.object.material.color.set(color);
+						goPosition = intersect.object.position;
+					}
+					break;
+			}
+
+			render();
+		}
+
+		function onDocumentKeyDown(event) {
+			switch (event.keyCode) {
+				case 16: isShiftDown = true; break;
+				case 17: isCtrlDown = true; break;
+			}
+		}
+
+		function onDocumentKeyUp(event) {
+			switch (event.keyCode) {
+				case 16: isShiftDown = false; break;
+				case 17:
+					lastVoxel = null;
+					isCtrlDown = false;
+					break;
+			}
+		}
+
+		function getColor() {
+			let color = gui.color;
+			if (gui.color_wave > 0) {
+				let arr = [];
+				arr.push(color % 256);
+				arr.push(Math.floor(color / 256) % 256);
+				arr.push(Math.floor(color / 256 / 256));
+				arr = arr.map(function (v) {
+					let min = Math.max(v - gui.color_wave, 0);
+					let max = Math.min(v + gui.color_wave, 255);
+					v = Math.round(min + Math.random() * (max - min));
+					return v;
+				});
+
+				color = arr[2] * 256 * 256 + arr[1] * 256 + arr[0];
+			}
+
+			return color;
+		}
+
+		function addObj(intersect) {
+			let color = getColor();
+			//let material = new THREE.MeshLambertMaterial({ color: color, map: cubeTexture, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
+			let material = new THREE.MeshLambertMaterial({ color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
+			const voxel = new THREE.Mesh(cubeGeo, material);
+			voxel.position.copy(intersect.point).add(intersect.face.normal);
+			voxel.position.divideScalar(20).floor().multiplyScalar(20).addScalar(10);
+			voxel.name = 'voxel';
+			scene.add(voxel);
+			objects.push(voxel);
+
+			if (gui.mirror) {
+				let material2 = new THREE.MeshLambertMaterial({ color: color, side: THREE.DoubleSide, shadowSide: THREE.BackSide });
+				const voxel2 = new THREE.Mesh(cubeGeo, material2);
+				voxel2.position.copy(intersect.point).add(intersect.face.normal);
+				voxel2.position.divideScalar(20).floor().multiplyScalar(20).addScalar(10);
+				voxel2.position.setX(-1 * voxel2.position.x);
+				voxel2.name = 'voxel';
+				scene.add(voxel2);
+				objects.push(voxel2);
+			}
+
+			return voxel;
+		}
+	</script>
+</body>
+
+</html>
