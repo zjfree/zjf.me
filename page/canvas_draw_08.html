@@ -1,0 +1,288 @@
+<!-- Canvas粒子飘落 zjfree 2020-12-30 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas粒子飘落</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<button onclick="CC.play();">开始</button>
+	<button onclick="CC.stop();">停止</button>
+	<br>
+	<br>
+	<span>速度：</span>
+	<input id="range1" type="range" min="0" max="10" value="3" step="0.1" />
+	<br>
+	<span>风向：</span>
+	<input id="range2" type="range" min="-5" max="5" value="0" step="1" />
+</div>
+
+<script>
+
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+	},
+};
+
+class Point {
+	constructor(x, y, z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+
+		this.x1 = parseInt($('#range2').val()) - 0.2 + 0.4 * Math.random();
+		this.y1 = 1 + $('#range1').val() * 0.5 + $('#range1').val() * 0.5 * Math.random();
+		this.z1 = -0.01 + 0.02 * Math.random();
+	}
+
+	play() {
+		this.x += this.x1;
+		this.y += this.y1;
+		this.z += this.z1;
+	}
+	
+	static create(w, h) {
+
+		let p = new Point(
+				ZTool.rand(0, w),
+				0,
+				ZTool.rand(2, 5)
+			);
+		let r2 = parseInt($('#range2').val());
+		if (r2 != 0 && Math.random() < h / (w+h))
+		{
+			p = new Point(
+				r2 > 0 ? 0 : w,
+				ZTool.rand(0, h),
+				ZTool.rand(2, 5)
+			);
+		}
+
+		return p;
+	}
+}
+
+var list = [];
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+	$('#range1').bind('input', function(){
+		for (let r of list)
+		{
+			r.y1 = 1 + $('#range1').val() * 0.5 + $('#range1').val() * 0.5 * Math.random();
+		}
+	});
+	$('#range2').bind('input', function(){
+		for (let r of list)
+		{
+			r.x1 = parseInt($('#range2').val()) - 0.2 + 0.4 * Math.random();
+		}
+	});
+	
+	CC.init($('#myCanvas'), function(index){
+		CC.clear();
+		if (index % 2 == 0)
+		{
+			list.push(Point.create(CC.width, CC.height));
+		}
+
+		for (let i=0; i<list.length; i++)
+		{
+			let r = list[i];
+			if (r.z < 2 || r.z > 5)
+			{
+				r.z1 = -1 * r.z1;
+			}
+			r.play();
+			if (r.x < -10 || r.x > CC.width + 10 || r.y > CC.height + 10)
+			{
+				list[i] = null;
+				list[i] = list[0];
+				list[0] = null;
+				list.shift();
+				continue;
+			}
+
+			let c = 155 + ((r.z - 2) / 3 * 100);
+			CC.drawCirle(r.x, r.y, r.z, `rgb(${c},${c},${c})`);
+		}
+	});
+
+});
+</script>
+
+
+
+</body>
