@@ -1,0 +1,445 @@
+<!-- Canvas递归 zjfree 2020-12-30 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas递归</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<span>速度：</span>
+	<select id="selType">
+		<option value="1">类型1</option>
+		<option value="2">类型2</option>
+		<option value="3">类型3</option>
+		<option value="4" selected>类型4</option>
+		<option value="5">类型5</option>
+	</select>
+	<span>速度：</span>
+	<input id="range1" type="range" min="1" max="20" value="10" step="1" />
+</div>
+
+<script>
+
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawRect:function(x,y,w,h, fillStyle, strokeStyle, deg)
+	{
+		deg = deg||0;
+		deg = deg*Math.PI/180;
+
+		let centerX = Math.round(x+w/2);
+		let centerY = Math.round(y+h/2);
+
+		if (deg != 0)
+		{
+			this.ctx.save();
+			this.ctx.translate(centerX, centerY);
+			this.ctx.rotate(deg);
+			this.ctx.translate(-centerX, -centerY);
+		}
+
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.rect(x,y,w,h);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+		if (deg != 0)
+		{
+			this.ctx.restore();
+		}
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawLine:function(x1,y1,x2,y2,strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+};
+
+function drawStart()
+{
+	CC.clear();
+
+	let count = parseInt($('#range1').val());
+
+	// 正方形
+	let w = Math.round(Math.min(CC.width, CC.height) * 0.8);
+	let h = w;
+	let x = (CC.width - w) / 2;
+	let y = (CC.height - h) / 2;
+
+	// 正三角
+	let p1 = {
+		x:x,
+		y:y + h,
+	};
+	let p2 = {
+		x:x + w,
+		y:y + h,
+	};
+	let ph = Math.sqrt(Math.pow(w,2)-Math.pow(w/2,2));
+	let p3 = {
+		x:x + w/2,
+		y:y + h - ph,
+	};
+
+	switch ($('#selType').val())
+	{
+		case '1':
+			draw01(count, x, y, w, h);
+			break;
+		case '2':
+			draw02(count, x, y, w, h);
+			break;
+		case '3':
+			draw03(count, p1, p2, p3);
+			break;
+		case '4':
+			draw04(count, x + w/2, y + h/2, w/2);
+			break;
+	}
+}
+
+function draw01(count, x, y, w, h)
+{
+	if (count == 0 || w < 5 || h < 5)
+	{
+		return;
+	}
+
+	CC.drawRect(x, y, w, h, 'rgba(0,0,0,0)', `rgb(${255-count*10},0,0)`);
+
+	count--;
+
+	let padding = 0.05;
+	let ws = w * padding;
+	let hs = h * padding;
+	let ww = w * (1-padding*3) / 2;
+	let hh = h * (1-padding*3) / 2;
+
+	draw01(count, x + ws, y + hs, ww, hh);
+	draw01(count, x + 2*ws + ww, y + hs, ww, hh);
+	draw01(count, x + ws, y + 2*hs + hh, ww, hh);
+	draw01(count, x + 2*ws + ww, y + 2*hs + hh, ww, hh);
+}
+
+function draw02(count, x, y, w, h)
+{
+	if (count == 0 || w < 5 || h < 5)
+	{
+		return;
+	}
+
+	let color = `rgb(${255-count*10},0,0)`;
+	CC.drawLine(x + w/2, y, x + w/2, y + h, color);
+	CC.drawLine(x, y + h/2, x+w, y + h/2, color);
+
+	count--;
+
+	let padding = 0.05;
+	let ws = w * padding;
+	let hs = h * padding;
+	let ww = w * (1-padding*3) / 2;
+	let hh = h * (1-padding*3) / 2;
+
+	draw02(count, x + ws, y + hs, ww, hh);
+	draw02(count, x + 2*ws + ww, y + hs, ww, hh);
+	draw02(count, x + ws, y + 2*hs + hh, ww, hh);
+	draw02(count, x + 2*ws + ww, y + 2*hs + hh, ww, hh);
+}
+
+function draw03(count, p1, p2, p3)
+{
+	let w = p2.x - p1.x;
+	if (count == 0 || w < 5)
+	{
+		return;
+	}
+
+	let color = `rgb(${255-count*10},0,0)`;
+	CC.drawLine(p1.x, p1.y, p2.x, p2.y, color);
+	CC.drawLine(p1.x, p1.y, p3.x, p3.y, color);
+	CC.drawLine(p3.x, p3.y, p2.x, p2.y, color);
+
+	let r = (p2.x-p1.x) / 2 * Math.sqrt(3)/6;
+	CC.drawCirle(p1.x + w/2, p3.y + (p1.y - p3.y) / 2 + r, r, ZTool.randColor());
+
+	count--;
+
+	let c1 = pointCenter(p1, p3);
+	let c2 = pointCenter(p2, p3);
+	let c3 = pointCenter(p1, p2);
+
+	draw03(count, p1, c3, c1);
+	draw03(count, c1, c2, p3);
+	draw03(count, c3, p2, c2);
+}
+
+function pointCenter(p1, p2)
+{
+	let p = {
+		x: (p2.x + p1.x) / 2,
+		y: (p2.y + p1.y) / 2,
+	};
+
+	return p;
+}
+
+function draw04(count, x, y, len)
+{
+	let color = '#fff';
+	CC.drawCirle(x, y, len / 5, color);
+
+	for (let i=0; i<360; i+=60)
+	{
+		drawPart(count, {x:x, y:y}, i, len);
+	}
+}
+
+function drawPart(count, p, deg, len)
+{
+	if (count == 0 || len < 5)
+	{
+		return;
+	}
+
+	let color = '#fff';
+	let p1 = goDeg(p, deg, len);
+
+	CC.drawLine(p.x, p.y, p1.x, p1.y, color, Math.max(len / 20, 0.5));
+	CC.drawCirle(p1.x, p1.y, Math.max(len / 15, 1), color);
+
+	count--;
+
+	let p2 = goDeg(p, deg, len / 2);
+	drawPart(count, p2, deg-60, len * 0.4);
+	drawPart(count, p2, deg+60, len * 0.4);
+	
+	p2 = goDeg(p, deg, len / 4);
+	drawPart(count, p2, deg-60, len / 5);
+	drawPart(count, p2, deg+60, len / 5);
+	
+	p2 = goDeg(p, deg, len * 0.75);
+	drawPart(count, p2, deg-60, len / 5);
+	drawPart(count, p2, deg+60, len / 5);
+}
+
+function goDeg(p1, deg, len)
+{
+	deg = deg * Math.PI / 180;
+	let p2 = {
+		x:p1.x + Math.cos(deg) * len,
+		y:p1.y + Math.sin(deg) * len,
+	};
+	
+	return p2;
+}
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+	$('#range1').bind('input', drawStart);
+	$('#selType').change(drawStart);
+	
+	CC.init($('#myCanvas'));
+
+	drawStart();
+});
+</script>
+
+
+
+</body>
