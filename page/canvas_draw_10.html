@@ -1,0 +1,277 @@
+<!-- Canvas曼德勃罗 zjfree 2021-01-04 -->
+<!--
+	https://www.cnblogs.com/dragonpig/archive/2011/05/26/2059300.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas曼德勃罗</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<button onclick="draw01();">重置</button>
+	<br>
+	<span>精度：</span>
+	<input id="range1" type="range" min="1" max="200" value="100" step="1" />
+</div>
+
+<script>
+
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+	},
+};
+
+// 绘制分形图
+
+var maxIterations = 100;
+var minRe = -2.0;
+var maxRe = 1.0;
+var minIm = -1;
+var maxIm = minIm+(maxRe-minRe);
+
+$(function(){
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+	CC.init($('#myCanvas'));
+	
+	draw01();
+	$('#range1').bind('input', draw01);
+	window.addEventListener('mousewheel', function(evt){
+			evt.preventDefault();
+			console.log(evt);
+	},{ passive: false});
+});
+
+function draw01()
+{
+	console.time('draw');
+
+	maxIterations = parseInt($('#range1').val());
+	
+	maxIm = minIm + (maxRe - minRe) * CC.height / CC.width;
+	
+    CC.ctx.fillRect(0, 0, CC.width, CC.height)
+    let imgd = CC.ctx.getImageData(0, 0, CC.width, CC.height)
+    let pix = imgd.data;
+
+    let drawPixel = function (x, y, itr) {
+        let i = (y * CC.width + x) * 4;
+
+        pix[i] = pix[i + 1] = pix[i + 2] = Math.round(itr * 255 / maxIterations);
+    }
+
+    mandelbrot(CC.width, CC.height, drawPixel);
+	CC.ctx.putImageData(imgd, 0, 0);
+	
+	console.timeEnd('draw');
+}
+
+function mandelbrot(imageWidth, imageHeight, drawPixel) {                
+    let re_factor = (maxRe-minRe)/(imageWidth-1);
+    let im_factor = (maxIm-minIm)/(imageHeight-1);
+
+    for(let y=0; y<imageHeight; ++y)
+    {
+        let c_im = maxIm - y*im_factor;
+        for(let x=0; x<imageWidth; ++x)
+        {
+            let c_re = minRe + x*re_factor;
+
+            let z_re = c_re, z_im = c_im;
+            let isInside = true;
+            let n = 0;
+            for(; n<maxIterations; ++n)
+            {
+                let z_re2 = z_re*z_re, z_im2 = z_im*z_im;
+                if(z_re2 + z_im2 > 4)
+                {
+                    isInside = false;
+                    break;
+                }
+                z_im = 2*z_re*z_im + c_im;
+                z_re = z_re2 - z_im2 + c_re;
+            }
+
+            if (!isInside) { drawPixel(x, y, n); }
+        }
+    }
+}
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!-- Canvas正三角平铺 zjfree 2021-01-05 -->
+<!--
+	https://www.cnblogs.com/dragonpig/archive/2011/05/26/2059300.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas正三角平铺</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+#myCanvas, #myCanvasTop{
+	position:absolute;
+	top:0;
+	left:0;
+}
+#myCanvasTop{
+	pointer-events: none;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+	Your browser does not support the HTML5 canvas tag.
+</canvas>
+<canvas id="myCanvasTop">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<button onclick="CubeList.clear();">清空</button>
+	<button onclick="CubeList.save();">保存</button>
+	<button onclick="CubeList.load();">加载</button>
+	<br>
+	<br>
+	<span>间距：</span>
+	<input id="range1" type="range" min="20" max="100" value="30" step="1" />
+</div>
+
+<script>
+
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+	},
+};
+
+var CT = {
+	width:0,
+	height:0,
+	ctx:null,
+	index:0,
+	init:function(el)
+	{
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.clear();
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+	},
+};
+
+// 在指定角度移动距离
+function goDeg(p1, deg, len)
+{
+	deg = deg * Math.PI / 180;
+	let p2 = {
+		x:p1.x + Math.cos(deg) * len,
+		y:p1.y + Math.sin(deg) * len,
+	};
+	
+	return p2;
+}
+
+var CubeList = {
+	list:[],
+	last:'',
+	getCube:function(p){
+		let step = parseInt($('#range1').val());
+		let rate = Math.sqrt(1 - 0.25);
+		let xIndex = Math.floor((p.x + CC.width) / step);
+		let x = xIndex * step - CC.width;
+		let yStep = step / rate;
+		let yIndex = Math.floor(p.y / yStep);
+		if (xIndex % 2 == 1)
+		{
+			yIndex-=0.5;
+		}
+		y = yIndex * yStep;
+		
+		let res = {
+			x:xIndex,
+			y:yIndex,
+			x1:x,
+			y1:y,
+		};
+
+		return res;
+	},
+	add:function(p, bo){
+		let s = '' + p.x + ',' + p.y;
+		if (s == this.last)
+		{
+			return;
+		}
+
+		this.last = s;
+
+		if (bo)
+		{
+			this.list.unshift(p);
+		}
+		else
+		{
+			this.list.push(p);
+		}
+		this.draw();
+	},
+	draw:function(){
+		drawBackground();
+		for (let r of this.list)
+		{
+			this.drawCube(r);
+		}
+	},
+	clear:function(){
+		this.list = [];
+		this.draw();
+	},
+	cancel:function(){
+		this.list.pop();
+		this.draw();
+	},
+	del:function(p){
+		let list1 = [];
+		for (let r of this.list)
+		{
+			if (r.x == p.x && r.y == p.y)
+			{
+				continue;
+			}
+
+			list1.push(r);
+		}
+		this.list = list1;
+		this.draw();
+	},
+	save:function(){
+		let list1 = [];
+		for (let r of this.list.reverse())
+		{
+			let s = '' + r.x + ',' + r.y;
+			if ($.inArray(s, list1) !== -1)
+			{
+				continue;
+			}
+
+			list1.push(s);
+		}
+
+		window.localStorage.setItem('cube_list', list1.reverse().join(';'));
+	},
+	load:function(){
+		this.list = [];
+		let str = window.localStorage.getItem('cube_list');
+		if (!str) return;
+		let list1 = str.split(';');
+		for (let r of list1)
+		{
+			let arr = r.split(',');
+			this.list.push({
+				x:parseFloat(arr[0]),
+				y:parseFloat(arr[1]),
+			});
+		}
+
+		this.draw();
+	},
+		
+	drawCube:function(p)
+	{
+		let step = parseInt($('#range1').val());
+		let rate = Math.sqrt(1 - 0.25);
+		let yStep = step / rate;
+
+		let p1 = {
+			x: p.x * step - CC.width,
+			y: p.y * yStep,
+		};
+
+		// 顶部
+		CC.ctx.beginPath();
+		CC.ctx.moveTo(p1.x, p1.y);
+		let p12 = goDeg(p1, -30, yStep);
+		CC.ctx.lineTo(p12.x, p12.y);
+		let p13 = goDeg(p12, 30, yStep);
+		CC.ctx.lineTo(p13.x, p13.y);
+		let p14 = goDeg(p13, 150, yStep);
+		CC.ctx.lineTo(p14.x, p14.y);
+		CC.ctx.closePath();
+
+		CC.ctx.fillStyle="#fff";
+		CC.ctx.fill();
+		
+		// 左边
+		CC.ctx.beginPath();
+		CC.ctx.moveTo(p1.x, p1.y);
+		let p22 = goDeg(p1, 90, yStep);
+		CC.ctx.lineTo(p22.x, p22.y);
+		let p23 = goDeg(p22, 30, yStep);
+		CC.ctx.lineTo(p23.x, p23.y);
+		let p24 = goDeg(p23, -90, yStep);
+		CC.ctx.lineTo(p24.x, p24.y);
+		CC.ctx.closePath();
+
+		CC.ctx.fillStyle="#ddd";
+		CC.ctx.fill();
+		
+		// 右边
+		CC.ctx.beginPath();
+		CC.ctx.moveTo(p13.x, p13.y);
+		let p32 = goDeg(p13, 90, yStep);
+		CC.ctx.lineTo(p32.x, p32.y);
+		let p33 = goDeg(p32, 150, yStep);
+		CC.ctx.lineTo(p33.x, p33.y);
+		let p34 = goDeg(p33, -90, yStep);
+		CC.ctx.lineTo(p34.x, p34.y);
+		CC.ctx.closePath();
+
+		CC.ctx.fillStyle="#aaa";
+		CC.ctx.fill();
+	}
+};
+
+$(function(){
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+	$('#myCanvasTop').css('width', $(window).width() + 'px');
+	$('#myCanvasTop').css('height', $(window).height() + 'px');
+
+	CC.init($('#myCanvas'));
+	CT.init($('#myCanvasTop'));
+
+	$(document).bind('keydown', function(evt){
+		if (evt.ctrlKey && evt.keyCode == 90)
+		{
+			CubeList.cancel();
+		}
+	});
+	$('#range1').bind('input', function(){
+		CubeList.draw();
+	});
+	$('#myCanvas').mousedown(function(evt){
+		let p = {
+			x:evt.offsetX * window.devicePixelRatio,
+			y:evt.offsetY * window.devicePixelRatio,
+		};
+
+		p = CubeList.getCube(p);
+
+		if (evt.shiftKey)
+		{
+			CubeList.del(p);
+		}
+		else
+		{
+			CubeList.add(p, evt.ctrlKey);
+		}
+	});
+	$('#myCanvas').mousemove(function(evt){
+		evt.preventDefault();
+		let p = {
+			x:evt.offsetX * window.devicePixelRatio,
+			y:evt.offsetY * window.devicePixelRatio,
+		};
+
+		p = CubeList.getCube(p);
+		drawCubeTop(p);
+
+		if (evt.buttons != 1) return;
+
+		if (evt.shiftKey)
+		{
+			CubeList.del(p);
+		}
+		else
+		{
+			CubeList.add(p);
+		}
+	});
+	
+	drawBackground();
+	CubeList.load();
+});
+
+function drawCubeTop(p)
+{
+	CT.clear();
+
+	let p1 = {x:p.x1, y:p.y1};
+	let step = parseInt($('#range1').val());
+	let rate = Math.sqrt(1 - 0.25);
+	let yStep = step / rate;
+
+	// 顶部
+	CT.ctx.beginPath();
+	CT.ctx.moveTo(p1.x, p1.y);
+	let p12 = goDeg(p1, -30, yStep);
+	CT.ctx.lineTo(p12.x, p12.y);
+	let p13 = goDeg(p12, 30, yStep);
+	CT.ctx.lineTo(p13.x, p13.y);
+	let p14 = goDeg(p13, 90, yStep);
+	CT.ctx.lineTo(p14.x, p14.y);
+	let p15 = goDeg(p14, 150, yStep);
+	CT.ctx.lineTo(p15.x, p15.y);
+	let p16 = goDeg(p15, 210, yStep);
+	CT.ctx.lineTo(p16.x, p16.y);
+	CT.ctx.closePath();
+
+	CT.ctx.strokeStyle = "#0f0";
+	CT.ctx.stroke();
+}
+
+
+function drawBackground()
+{
+	CC.clear();
+	CT.clear();
+	let step = parseInt($('#range1').val());
+	CC.ctx.beginPath();
+	let bo = false;
+	for (let x=-CC.width; x<2*CC.width; x+=step)
+	{
+		let p1 = {x:x, y:0};
+		CC.ctx.moveTo(p1.x, p1.y);
+		CC.ctx.lineTo(x, CC.height);
+
+		bo = !bo;
+
+		if (bo)
+		{
+			CC.ctx.moveTo(p1.x, p1.y);
+			let p2 = goDeg(p1, 30, CC.height * 2);
+			CC.ctx.lineTo(p2.x, p2.y);
+			
+			CC.ctx.moveTo(p1.x, p1.y);
+			let p3 = goDeg(p1, 150, CC.height * 2);
+			CC.ctx.lineTo(p3.x, p3.y);
+		}
+	}
+	
+	CC.ctx.lineWidth = 1;
+	CC.ctx.strokeStyle = '#333';
+	CC.ctx.stroke();
+}
+
+</script>
+
+
+
+</body>
+</html>

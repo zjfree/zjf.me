@@ -58,11 +58,12 @@ Your browser does not support the HTML5 canvas tag.
 		<option value="1">类型1</option>
 		<option value="2">类型2</option>
 		<option value="3">类型3</option>
-		<option value="4" selected>类型4</option>
+		<option value="4">类型4</option>
 		<option value="5">类型5</option>
+		<option value="6" selected>类型6</option>
 	</select>
 	<span>速度：</span>
-	<input id="range1" type="range" min="1" max="20" value="10" step="1" />
+	<input id="range1" type="range" min="0" max="20" value="10" step="1" />
 </div>
 
 <script>
@@ -131,6 +132,9 @@ var CC = {
 		el.prop('width', this.width);
 		el.prop('height', this.height);
 		this.ctx = el[0].getContext("2d");
+
+		this.ctx.translate(this.width / 2, this.height / 2);
+		this.ctx.scale(1, -1);
 
 		this.clear();
 		
@@ -247,6 +251,47 @@ var CC = {
 	},
 };
 
+// 获取中心点
+function pointCenter(p1, p2)
+{
+	let p = {
+		x: (p2.x + p1.x) / 2,
+		y: (p2.y + p1.y) / 2,
+	};
+
+	return p;
+}
+
+// 在指定角度移动距离
+function goDeg(p1, deg, len)
+{
+	deg = deg * Math.PI / 180;
+	let p2 = {
+		x:p1.x + Math.cos(deg) * len,
+		y:p1.y + Math.sin(deg) * len,
+	};
+	
+	return p2;
+}
+
+// 两点间距离
+function getDist(p1, p2)
+{
+	let c1 = p1.x - p2.x;
+	let c2 = p1.y - p2.y;
+	let len = Math.sqrt(c1*c1+c2*c2);
+	
+	return len;
+}
+
+// 两点间角度
+function getDeg(p1, p2)
+{
+	deg = Math.atan2(p2.y-p1.y,p2.x-p1.x) / (Math.PI / 180);
+
+	return deg;
+}
+
 function drawStart()
 {
 	CC.clear();
@@ -256,39 +301,44 @@ function drawStart()
 	// 正方形
 	let w = Math.round(Math.min(CC.width, CC.height) * 0.8);
 	let h = w;
-	let x = (CC.width - w) / 2;
-	let y = (CC.height - h) / 2;
+	let x = 0;
+	let y = 0;
 
 	// 正三角
-	let p1 = {
-		x:x,
-		y:y + h,
-	};
-	let p2 = {
-		x:x + w,
-		y:y + h,
-	};
-	let ph = Math.sqrt(Math.pow(w,2)-Math.pow(w/2,2));
-	let p3 = {
-		x:x + w/2,
-		y:y + h - ph,
-	};
+	let r = Math.sqrt(3) / 3 * w;
+	let c3 = {x:x,y:y - r * 0.2};
+	let p1 = goDeg(c3, 210, r);
+	let p2 = goDeg(c3, -30, r);
+	let p3 = goDeg(c3, 90, r);
 
 	switch ($('#selType').val())
 	{
 		case '1':
-			draw01(count, x, y, w, h);
+			draw01(count, x - w / 2, y - h / 2, w, h);
 			break;
 		case '2':
-			draw02(count, x, y, w, h);
+			draw02(count, x - w / 2, y - h / 2, w, h);
 			break;
 		case '3':
 			draw03(count, p1, p2, p3);
 			break;
 		case '4':
-			draw04(count, x + w/2, y + h/2, w/2);
+			draw04(count, x, y, w/2);
+			break;
+		case '5':
+			c3 = {x:x,y:y};
+			p1 = goDeg(c3, 210, r);
+			p2 = goDeg(c3, -30, r);
+			p3 = goDeg(c3, 90, r);
+			draw05(count, p1, p2);
+			draw05(count, p2, p3);
+			draw05(count, p3, p1);
+			break;
+		case '6':
+			draw06(count, {x:x, y:y-CC.height/2}, {x:x, y:y-CC.height/8});
 			break;
 	}
+
 }
 
 function draw01(count, x, y, w, h)
@@ -341,7 +391,7 @@ function draw02(count, x, y, w, h)
 
 function draw03(count, p1, p2, p3)
 {
-	let w = p2.x - p1.x;
+	let w = getDist(p1, p2);
 	if (count == 0 || w < 5)
 	{
 		return;
@@ -353,7 +403,7 @@ function draw03(count, p1, p2, p3)
 	CC.drawLine(p3.x, p3.y, p2.x, p2.y, color);
 
 	let r = (p2.x-p1.x) / 2 * Math.sqrt(3)/6;
-	CC.drawCirle(p1.x + w/2, p3.y + (p1.y - p3.y) / 2 + r, r, ZTool.randColor());
+	CC.drawCirle(p3.x, p3.y - (p3.y - p1.y) / 2 - r, r, ZTool.randColor());
 
 	count--;
 
@@ -364,16 +414,6 @@ function draw03(count, p1, p2, p3)
 	draw03(count, p1, c3, c1);
 	draw03(count, c1, c2, p3);
 	draw03(count, c3, p2, c2);
-}
-
-function pointCenter(p1, p2)
-{
-	let p = {
-		x: (p2.x + p1.x) / 2,
-		y: (p2.y + p1.y) / 2,
-	};
-
-	return p;
 }
 
 function draw04(count, x, y, len)
@@ -415,16 +455,55 @@ function drawPart(count, p, deg, len)
 	drawPart(count, p2, deg+60, len / 5);
 }
 
-function goDeg(p1, deg, len)
+function draw05(count, p1, p2)
 {
-	deg = deg * Math.PI / 180;
-	let p2 = {
-		x:p1.x + Math.cos(deg) * len,
-		y:p1.y + Math.sin(deg) * len,
-	};
+	// CC.drawCirle(p1.x, p1.y, 3, '#00f');
+	// CC.drawCirle(p2.x, p2.y, 3, '#f00');
 	
-	return p2;
+	let len = getDist(p1, p2);
+	if (count == 0 || len < 2)
+	{
+		CC.drawLine(p1.x, p1.y, p2.x, p2.y, '#fff');
+		return;
+	}
+
+	count--;
+	
+	let deg = getDeg(p1, p2);
+	deg = Math.round(deg / 60) * 60;
+
+	let d1 = goDeg(p1, deg, len / 3);
+	draw05(count, p1, d1);
+
+	let d2 = goDeg(d1, deg - 60, len / 3);
+	draw05(count, d1, d2);
+
+	let d3 = goDeg(p1, deg, len / 3 * 2);
+	draw05(count, d2, d3);
+	draw05(count, d3, p2);
 }
+
+function draw06(count, p1, p2)
+{
+	let len = getDist(p1, p2);
+	if (count == 0 || len < 5)
+	{
+		CC.drawCirle(p2.x, p2.y, 3, '#0f0');
+		return;
+	}
+
+	CC.drawLine(p1.x, p1.y, p2.x, p2.y, '#fff', count / 2);
+
+	count--;
+
+	let deg = getDeg(p1, p2);
+	let p3 = goDeg(p2, deg - 60, len * 0.7);
+	let p4 = goDeg(p2, deg + 60, len * 0.7);
+
+	draw06(count, p2, p3);
+	draw06(count, p2, p4);
+}
+
 
 $(function(){
 	// JS
@@ -443,3 +522,4 @@ $(function(){
 
 
 </body>
+</html>
