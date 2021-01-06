@@ -307,8 +307,9 @@ var CubeList = {
 	getCube:function(p){
 		let step = parseInt($('#range1').val());
 		let rate = Math.sqrt(1 - 0.25);
-		let xIndex = Math.floor((p.x + CC.width) / step);
-		let x = xIndex * step - CC.width;
+		let oversize = Math.round(Math.sqrt(3) * CC.height);
+		let xIndex = Math.floor((p.x + oversize) / step);
+		let x = xIndex * step - oversize;
 		let yStep = step / rate;
 		let yIndex = Math.floor(p.y / yStep);
 		if (xIndex % 2 == 1)
@@ -422,9 +423,10 @@ var CubeList = {
 		let step = parseInt($('#range1').val());
 		let rate = Math.sqrt(1 - 0.25);
 		let yStep = step / rate;
+		let oversize = Math.round(Math.sqrt(3) * CC.height);
 
 		let p1 = {
-			x: p.x * step - CC.width,
+			x: p.x * step - oversize,
 			y: p.y * yStep,
 		};
 
@@ -595,7 +597,7 @@ function drawBackground()
 	let step = parseInt($('#range1').val());
 	CC.ctx.beginPath();
 	let bo = false;
-	let oversize = Math.sqrt(3) * CC.height;
+	let oversize = Math.round(Math.sqrt(3) * CC.height);
 	for (let x=-oversize; x<CC.width+oversize; x+=step)
 	{
 		let p1 = {x:x, y:0};
