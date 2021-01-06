@@ -50,6 +50,33 @@ body{
 #myCanvasTop{
 	pointer-events: none;
 }
+
+#divColor{
+	position:absolute;
+	top:0;
+	width: 480px;
+	left:50%;
+	margin-left:-240px;
+	opacity: 0.7;
+}
+#divColor:hover{
+	opacity: 1;
+}
+#divColor div{
+	width:40px;
+	height: 30px;
+	transition:height 0.1s;
+	float: left;
+	cursor: pointer;
+	border:solid 0.5px #000;
+	box-sizing: border-box;
+}
+#divColor div:hover{
+	height: 50px;
+}
+#divColor .active{
+	height: 50px;
+}
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -69,11 +96,28 @@ Your browser does not support the HTML5 canvas tag.
 	<button onclick="CubeList.clear();">清空</button>
 	<button onclick="CubeList.save();">保存</button>
 	<button onclick="CubeList.load();">加载</button>
+	<button onclick="alert('点击：插入\nCtrl+点击：后面插入\nshift+点击：删除\nCtrl+Z：撤销');">帮助</button>
 	<br>
 	<br>
 	<span>间距：</span>
 	<input id="range1" type="range" min="20" max="100" value="30" step="1" />
 </div>
+
+<div id="divColor">
+	<div class="active" data-color="-1" style="background-color: hsl(0,100%,100%);"></div>
+	<div data-color="-2"  style="background-color: hsl(0,0%,30%);"></div>
+	<div data-color="0"   style="background-color: hsl(0,100%,50%);"></div>
+	<div data-color="36"  style="background-color: hsl(36,100%,50%);"></div>
+	<div data-color="72"  style="background-color: hsl(72,100%,50%);"></div>
+	<div data-color="108" style="background-color: hsl(108,100%,50%);"></div>
+	<div data-color="144" style="background-color: hsl(144,100%,50%);"></div>
+	<div data-color="180" style="background-color: hsl(180,100%,50%);"></div>
+	<div data-color="216" style="background-color: hsl(216,100%,50%);"></div>
+	<div data-color="252" style="background-color: hsl(252,100%,50%);"></div>
+	<div data-color="288" style="background-color: hsl(288,100%,50%);"></div>
+	<div data-color="324" style="background-color: hsl(324,100%,50%);"></div>
+</div>
+
 
 <script>
 
@@ -278,12 +322,13 @@ var CubeList = {
 			y:yIndex,
 			x1:x,
 			y1:y,
+			color:$('#divColor .active').data('color'),
 		};
 
 		return res;
 	},
 	add:function(p, bo){
-		let s = '' + p.x + ',' + p.y;
+		let s = '' + p.x + ',' + p.y + ',' + p.color;
 		if (s == this.last)
 		{
 			return;
@@ -299,6 +344,7 @@ var CubeList = {
 		{
 			this.list.push(p);
 		}
+
 		this.draw();
 	},
 	draw:function(){
@@ -332,6 +378,7 @@ var CubeList = {
 	},
 	save:function(){
 		let list1 = [];
+		let colorList = [];
 		for (let r of this.list.reverse())
 		{
 			let s = '' + r.x + ',' + r.y;
@@ -341,9 +388,16 @@ var CubeList = {
 			}
 
 			list1.push(s);
+			colorList.push(r.color);
 		}
 
-		window.localStorage.setItem('cube_list', list1.reverse().join(';'));
+		let list2 = [];
+		for (let i=0; i<list1.length; i++)
+		{
+			list2.push(list1[i] + ',' + colorList[i]);
+		}
+
+		window.localStorage.setItem('cube_list', list2.reverse().join(';'));
 	},
 	load:function(){
 		this.list = [];
@@ -356,6 +410,7 @@ var CubeList = {
 			this.list.push({
 				x:parseFloat(arr[0]),
 				y:parseFloat(arr[1]),
+				color:parseInt(arr[2]),
 			});
 		}
 
@@ -373,6 +428,8 @@ var CubeList = {
 			y: p.y * yStep,
 		};
 
+		let colors = this.getColor(p.color);
+
 		// 顶部
 		CC.ctx.beginPath();
 		CC.ctx.moveTo(p1.x, p1.y);
@@ -384,7 +441,7 @@ var CubeList = {
 		CC.ctx.lineTo(p14.x, p14.y);
 		CC.ctx.closePath();
 
-		CC.ctx.fillStyle="#fff";
+		CC.ctx.fillStyle = colors[0];
 		CC.ctx.fill();
 		
 		// 左边
@@ -398,7 +455,7 @@ var CubeList = {
 		CC.ctx.lineTo(p24.x, p24.y);
 		CC.ctx.closePath();
 
-		CC.ctx.fillStyle="#ddd";
+		CC.ctx.fillStyle = colors[1];
 		CC.ctx.fill();
 		
 		// 右边
@@ -412,8 +469,28 @@ var CubeList = {
 		CC.ctx.lineTo(p34.x, p34.y);
 		CC.ctx.closePath();
 
-		CC.ctx.fillStyle="#aaa";
+		CC.ctx.fillStyle = colors[2];
 		CC.ctx.fill();
+	},
+		
+	getColor:function(c)
+	{
+		c = parseInt(c);
+		if (c == -1)
+		{
+			return ['#fff', '#ddd', '#aaa'];
+		}
+		if (c == -2)
+		{
+			return ['#999', '#777', '#555'];
+		}
+
+		let arr = [];
+		arr.push('hsl(' + c + ',100%,50%)');
+		arr.push('hsl(' + c + ',100%,40%)');
+		arr.push('hsl(' + c + ',100%,30%)');
+
+		return arr;
 	}
 };
 
@@ -470,8 +547,13 @@ $(function(){
 		}
 		else
 		{
-			CubeList.add(p);
+			CubeList.add(p, evt.ctrlKey);
 		}
+	});
+
+	$('#divColor div').click(function(){
+		$('#divColor div').removeClass('active')
+		$(this).addClass('active');
 	});
 	
 	drawBackground();
@@ -506,7 +588,6 @@ function drawCubeTop(p)
 	CT.ctx.stroke();
 }
 
-
 function drawBackground()
 {
 	CC.clear();
@@ -514,7 +595,8 @@ function drawBackground()
 	let step = parseInt($('#range1').val());
 	CC.ctx.beginPath();
 	let bo = false;
-	for (let x=-CC.width; x<2*CC.width; x+=step)
+	let oversize = Math.sqrt(3) * CC.height;
+	for (let x=-oversize; x<CC.width+oversize; x+=step)
 	{
 		let p1 = {x:x, y:0};
 		CC.ctx.moveTo(p1.x, p1.y);
@@ -538,6 +620,7 @@ function drawBackground()
 	CC.ctx.strokeStyle = '#333';
 	CC.ctx.stroke();
 }
+
 
 </script>
 
