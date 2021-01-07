@@ -1,0 +1,453 @@
+<!-- Canvas多项式曲线 zjfree 2021-01-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas多项式曲线</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+	line-height: 1.5;
+}
+#divTool span{
+	display: inline-block;
+	width:50px;
+	text-align: right;
+}
+#divTool input{
+	width:300px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+#divTitle{
+	position:absolute;
+	top:10px;
+	color: #fff;
+	font-size:24px;
+	right:10px;
+	text-align: right;
+	text-shadow: 0 3px 5px #000;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	<span>ax^4：</span>
+	<input id="rangeA" class="rval" type="range" min="-2" max="2" value="0" step="0.01" />
+	<br>
+	<span>bx^3：</span>
+	<input id="rangeB" class="rval" type="range" min="-2" max="2" value="0" step="0.01" />
+	<br>
+	<span>cx^2：</span>
+	<input id="rangeC" class="rval" type="range" min="-2" max="2" value="0" step="0.01" />
+	<br>
+	<span>dx：</span>
+	<input id="rangeD" class="rval" type="range" min="-20" max="20" value="0" step="0.1" />
+	<br>
+	<span>e：</span>
+	<input id="rangeE" class="rval" type="range" min="-20" max="20" value="0" step="0.1" />
+	<br>
+	<span>FSin(gx)：</span>
+	<input id="rangeF" class="rval" type="range" min="-100" max="100" value="10" step="0.1" />
+	<br>
+	<span>fSin(Gx)：</span>
+	<input id="rangeG" class="rval" type="range" min="-1" max="1" value="0.5" step="0.001" />
+	<br>
+	<span>比例：</span>
+	<input id="rangeRate" type="range" min="0.1" max="100" value="10" step="0.1" />
+</div>
+
+<div id="divTitle">多项式曲线</div>
+
+<script>
+
+var ZTool = {
+	strInfo:'',
+	strInfoTimer:null,
+	fpsList:[],
+	rand:function(min, max, dec)
+	{
+		dec = dec||0;
+		let val = min + Math.random() * (max - min);
+		return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+	},
+	randColor:function(alpha, ext)
+	{
+		ext = ext||'50%,50%';
+		if (alpha)
+		{
+			return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+		}
+		else
+		{
+			return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+		}
+	},
+	showInfo:function(str)
+	{
+		if (!this.strInfoTimer)
+		{
+			this.strInfoTimer = window.setInterval(function(){
+				if (ZTool.strInfo == '') return;
+				$('#divInfo').html(ZTool.strInfo);
+				ZTool.strInfo = '';
+			}, 100);
+		}
+
+		this.strInfo = str;
+	},
+	fps:function()
+	{
+		let now = Date.now();
+		this.fpsList.push(now);
+		while (now - this.fpsList[0] > 1000)
+		{
+			this.fpsList.shift();
+		}
+		this.showInfo('fps:' + this.fpsList.length);
+	}
+};
+
+var CC = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	isPlay:true,
+	call_fn:null,
+	init:function(el, fn)
+	{
+		this.call_fn = fn;
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		this.ctx.translate(this.width / 2, this.height / 2);
+		this.ctx.scale(1, -1);
+
+		this.clear();
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	stop:function()
+	{
+		this.isPlay = false;
+	},
+	play:function()
+	{
+		this.isPlay = true;
+	},
+	render:function()
+	{
+		if (!this.isPlay)
+		{
+			window.requestAnimationFrame(function(){
+				CC.render();
+			});
+
+			return;
+		}
+
+		// 计算FPS
+		ZTool.fps();
+
+		this.index++;
+		if (this.call_fn)
+		{
+			this.call_fn(this.index);
+		}
+		
+		window.requestAnimationFrame(function(){
+			CC.render();
+		});
+	},
+	clear:function(){
+		let s = Math.max(this.width,this.height) * 2;
+		this.ctx.clearRect(-s,-s,s*2,s*2);
+	},
+	drawCirle:function(x,y,r, fillStyle, strokeStyle)
+	{
+		fillStyle = fillStyle||'#ddd';
+
+		this.ctx.beginPath();
+		this.ctx.arc(x,y,r,0,2*Math.PI);
+		this.ctx.closePath();
+
+		if (fillStyle)
+		{
+			this.ctx.fillStyle = fillStyle;
+			this.ctx.fill();
+		}
+		if (strokeStyle)
+		{
+			this.ctx.strokeStyle = strokeStyle;
+			this.ctx.stroke();
+		}
+
+	},
+	drawLine:function(x1,y1,x2,y2,strokeStyle,lineWidth)
+	{
+		lineWidth = lineWidth || 1;
+		strokeStyle = strokeStyle||'#f00';
+
+		this.ctx.beginPath();
+		this.ctx.moveTo(x1, y1);
+		this.ctx.lineTo(x2, y2);
+		
+		this.ctx.lineWidth = lineWidth;
+		this.ctx.strokeStyle = strokeStyle;
+		this.ctx.stroke();
+	},
+	drawText:function(x1,y1,str,fillStyle,font)
+	{
+		this.ctx.scale(1, -1);
+		y1 = -y1;
+
+		this.ctx.font = font||"16px Verdana";
+		this.ctx.fillStyle = fillStyle||'#fff';
+		this.ctx.fillText(str, x1, y1);
+
+		this.ctx.scale(1, -1);
+	},
+};
+
+// 获取中心点
+function pointCenter(p1, p2)
+{
+	let p = {
+		x: (p2.x + p1.x) / 2,
+		y: (p2.y + p1.y) / 2,
+	};
+
+	return p;
+}
+
+// 在指定角度移动距离
+function goDeg(p1, deg, len)
+{
+	deg = deg * Math.PI / 180;
+	let p2 = {
+		x:p1.x + Math.cos(deg) * len,
+		y:p1.y + Math.sin(deg) * len,
+	};
+	
+	return p2;
+}
+
+// 两点间距离
+function getDist(p1, p2)
+{
+	let c1 = p1.x - p2.x;
+	let c2 = p1.y - p2.y;
+	let len = Math.sqrt(c1*c1+c2*c2);
+	
+	return len;
+}
+
+// 两点间角度
+function getDeg(p1, p2)
+{
+	deg = Math.atan2(p2.y-p1.y,p2.x-p1.x) / (Math.PI / 180);
+
+	return deg;
+}
+
+function drawBackground()
+{
+	CC.clear();
+
+	let color = 'rgba(255,255,255,0.7)';
+
+	CC.drawLine(-CC.width/2, 0, CC.width/2, 0, color);
+	CC.drawLine(0, -CC.height/2, 0, CC.height/2, color);
+
+	let rate = 1/parseFloat($('#rangeRate').val());
+
+	// X轴坐标
+	let xLen = CC.width/2*rate;
+	let xStep = Math.floor(Math.log10(xLen));
+	xStep = Math.pow(10, xStep) / 10;
+	if (xStep == 1 && xLen / xStep > 30)
+	{
+		xStep = 2;
+	}
+	for (let x=xStep; x<xLen; x+=xStep)
+	{
+		let x1 = x / rate;
+		CC.drawLine(x1, 10, x1, 0, color);
+		CC.drawText(x1 - (''+x).length*10/2, 15, x, color);
+		x1 = -x1;
+		CC.drawLine(x1, 10, x1, 0, color);
+		CC.drawText(x1 - ('-'+x).length*10/2, 15, -x, color);
+	}
+	
+	// Y轴坐标
+	let yLen = CC.height/2*rate;
+	for (let y=xStep; y<xLen; y+=xStep)
+	{
+		let y1 = y / rate;
+		CC.drawLine(0, y1, 10, y1, color);
+		CC.drawText(15, y1, y, color);
+		y1 = -y1;
+		CC.drawLine(0, y1, 10, y1, color);
+		CC.drawText(15, y1, -y, color);
+	}
+	
+}
+
+function drawStart()
+{
+	drawBackground();
+
+	let a = parseFloat($('#rangeA').val());
+	let b = parseFloat($('#rangeB').val());
+	let c = parseFloat($('#rangeC').val());
+	let d = parseFloat($('#rangeD').val());
+	let e = parseFloat($('#rangeE').val());
+	let f = parseFloat($('#rangeF').val());
+	let g = parseFloat($('#rangeG').val());
+
+	let arr = [a,b,c,d,e];
+
+	let exp = '';
+	for (let k in arr)
+	{
+		let v = arr[k];
+		if (v == 0)
+		{
+			continue;
+		}
+
+		if (v < 0)
+		{
+			exp += '-';
+		}
+		else if (exp != '')
+		{
+			exp += '+';
+		}
+
+		let index = arr.length - k - 1;
+		exp += Math.abs(v);
+		if (index > 1)
+		{
+			exp += 'x^' + index;
+		}
+		else if (index == 1)
+		{
+			exp += 'x';
+		}
+	}
+
+	if (f != 0 && g != 0)
+	{
+		if (f < 0)
+		{
+			exp += '-';
+		}
+		else if (exp != '')
+		{
+			exp += '+';
+		}
+
+		exp += '' + Math.abs(f) + 'Sin(' + g + 'x)';
+	}
+
+	$('#divTitle').html(exp);
+
+	let rate = 1/parseFloat($('#rangeRate').val());
+	let last = null;
+	let w = CC.width/2*rate;
+	for (let x=-w; x<w; x+=rate)
+	{
+		let y = 0;
+		y += a * Math.pow(x, 4);
+		y += b * Math.pow(x, 3);
+		y += c * Math.pow(x, 2);
+		y += d * x;
+		y += e;
+
+		if (f != 0 && g != 0)
+		{
+			y += Math.sin(x*g)*f;
+		}
+
+		let p = {
+			x:x / rate,
+			y:y / rate,
+		};
+
+		if (!last)
+		{
+			last = p;
+			continue;
+		}
+
+		CC.drawLine(last.x, last.y, p.x, p.y, '#fff', 2);
+		last = p;
+	}
+}
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+	$('#rangeRate').bind('input', drawStart);
+	$('.rval').bind('input', drawStart);
+	
+	CC.init($('#myCanvas'));
+
+	drawStart();
+});
+</script>
+
+
+
+</body>
+</html>

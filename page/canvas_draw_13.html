@@ -1,0 +1,747 @@
+<!-- Canvas最小二乘法 zjfree 2021-01-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas最小二乘法</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+		
+		#divMsgBack {
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: none;
+			z-index: 100;
+			color:#000;
+		}
+
+		#divMsgBack #divLoad {
+			width: 500px;
+			margin: 20px auto;
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 10px;
+			height: 90%;
+			border-radius: 10px;
+		}
+
+		#divMsgBack textarea {
+			height: calc(100% - 80px);
+			display: block;
+			margin: 10px 0;
+			width: 100%;
+			overflow-y: scroll;
+			box-sizing: border-box;
+			font-size: 12px;
+			font-family: 'Courier New', Courier, monospace;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+		<select id="selType">
+			<option value="0">线性拟合</option>
+			<option value="1">1次曲线拟合</option>
+			<option value="2" selected>2次曲线拟合</option>
+			<option value="3">3次曲线拟合</option>
+		</select>
+		&nbsp;
+		<button onclick="clearAll();">清空</button>
+		<button onclick="$('#divMsgBack').show();">导入</button>
+	</div>
+
+	<div id="divTitle">多项式曲线</div>
+
+	<div id="divMsgBack">
+		<div id="divLoad">
+			加载内容：&emsp; 格式：x,y[回车]
+			<textarea></textarea>
+			<button onclick="loadData();">确定</button>
+			<button onclick="$('#divMsgBack').hide();">取消</button>
+		</div>
+	</div>
+
+	<script>
+
+		var ZTool = {
+			strInfo: '',
+			strInfoTimer: null,
+			fpsList: [],
+			rand: function (min, max, dec) {
+				dec = dec || 0;
+				let val = min + Math.random() * (max - min);
+				return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+			},
+			randColor: function (alpha, ext) {
+				ext = ext || '50%,50%';
+				if (alpha) {
+					return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+				}
+				else {
+					return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+				}
+			},
+			showInfo: function (str) {
+				if (!this.strInfoTimer) {
+					this.strInfoTimer = window.setInterval(function () {
+						if (ZTool.strInfo == '') return;
+						$('#divInfo').html(ZTool.strInfo);
+						ZTool.strInfo = '';
+					}, 100);
+				}
+
+				this.strInfo = str;
+			},
+			fps: function () {
+				let now = Date.now();
+				this.fpsList.push(now);
+				while (now - this.fpsList[0] > 1000) {
+					this.fpsList.shift();
+				}
+				this.showInfo('fps:' + this.fpsList.length);
+			}
+		};
+
+		var CC = {
+			width: 0,
+			height: 0,
+			size: 1,
+			ctx: null,
+			index: 0,
+			isPlay: true,
+			call_fn: null,
+			init: function (el, fn) {
+				this.call_fn = fn;
+				this.width = el.width() * window.devicePixelRatio;
+				this.height = el.height() * window.devicePixelRatio;
+				this.size = Math.min(this.width, this.height) / 100;
+				el.prop('width', this.width);
+				el.prop('height', this.height);
+				this.ctx = el[0].getContext("2d");
+
+				this.ctx.translate(this.width / 2, this.height / 2);
+				this.ctx.scale(1, -1);
+
+				this.clear();
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			stop: function () {
+				this.isPlay = false;
+			},
+			play: function () {
+				this.isPlay = true;
+			},
+			render: function () {
+				if (!this.isPlay) {
+					window.requestAnimationFrame(function () {
+						CC.render();
+					});
+
+					return;
+				}
+
+				// 计算FPS
+				ZTool.fps();
+
+				this.index++;
+				if (this.call_fn) {
+					this.call_fn(this.index);
+				}
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			clear: function () {
+				let s = Math.max(this.width, this.height) * 2;
+				this.ctx.clearRect(-s, -s, s * 2, s * 2);
+			},
+			drawCirle: function (x, y, r, fillStyle, strokeStyle) {
+				fillStyle = fillStyle || '#ddd';
+
+				this.ctx.beginPath();
+				this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+				this.ctx.closePath();
+
+				if (fillStyle) {
+					this.ctx.fillStyle = fillStyle;
+					this.ctx.fill();
+				}
+				if (strokeStyle) {
+					this.ctx.strokeStyle = strokeStyle;
+					this.ctx.stroke();
+				}
+
+			},
+			drawLine: function (x1, y1, x2, y2, strokeStyle, lineWidth) {
+				lineWidth = lineWidth || 1;
+				strokeStyle = strokeStyle || '#f00';
+
+				this.ctx.beginPath();
+				this.ctx.moveTo(x1, y1);
+				this.ctx.lineTo(x2, y2);
+
+				this.ctx.lineWidth = lineWidth;
+				this.ctx.strokeStyle = strokeStyle;
+				this.ctx.stroke();
+			},
+			drawText: function (x1, y1, str, fillStyle, font) {
+				this.ctx.scale(1, -1);
+				y1 = -y1;
+
+				this.ctx.font = font || "16px Verdana";
+				this.ctx.fillStyle = fillStyle || '#fff';
+				this.ctx.fillText(str, x1, y1);
+
+				this.ctx.scale(1, -1);
+			},
+		};
+
+		// 获取中心点
+		function pointCenter(p1, p2) {
+			let p = {
+				x: (p2.x + p1.x) / 2,
+				y: (p2.y + p1.y) / 2,
+			};
+
+			return p;
+		}
+
+		// 在指定角度移动距离
+		function goDeg(p1, deg, len) {
+			deg = deg * Math.PI / 180;
+			let p2 = {
+				x: p1.x + Math.cos(deg) * len,
+				y: p1.y + Math.sin(deg) * len,
+			};
+
+			return p2;
+		}
+
+		// 两点间距离
+		function getDist(p1, p2) {
+			let c1 = p1.x - p2.x;
+			let c2 = p1.y - p2.y;
+			let len = Math.sqrt(c1 * c1 + c2 * c2);
+
+			return len;
+		}
+
+		// 两点间角度
+		function getDeg(p1, p2) {
+			deg = Math.atan2(p2.y - p1.y, p2.x - p1.x) / (Math.PI / 180);
+
+			return deg;
+		}
+
+		function drawBackground() {
+			CC.clear();
+
+			let color = 'rgba(255,255,255,0.7)';
+
+			CC.drawLine(-CC.width / 2, 0, CC.width / 2, 0, color);
+			CC.drawLine(0, -CC.height / 2, 0, CC.height / 2, color);
+
+			let rate = 1;
+
+			// X轴坐标
+			let xLen = CC.width / 2 * rate;
+			let xStep = Math.floor(Math.log10(xLen));
+			xStep = Math.pow(10, xStep) / 10;
+			if (xStep == 1 && xLen / xStep > 30) {
+				xStep = 2;
+			}
+			for (let x = xStep; x < xLen; x += xStep) {
+				let x1 = x / rate;
+				CC.drawLine(x1, 10, x1, 0, color);
+				CC.drawText(x1 - ('' + x).length * 10 / 2, 15, x, color);
+				x1 = -x1;
+				CC.drawLine(x1, 10, x1, 0, color);
+				CC.drawText(x1 - ('-' + x).length * 10 / 2, 15, -x, color);
+			}
+
+			// Y轴坐标
+			let yLen = CC.height / 2 * rate;
+			for (let y = xStep; y < xLen; y += xStep) {
+				let y1 = y / rate;
+				CC.drawLine(0, y1, 10, y1, color);
+				CC.drawText(15, y1, y, color);
+				y1 = -y1;
+				CC.drawLine(0, y1, 10, y1, color);
+				CC.drawText(15, y1, -y, color);
+			}
+		}
+
+		var PointList = [];
+
+		function draw() {
+			drawBackground();
+			for (let p of PointList) {
+				CC.drawCirle(p.x, p.y, 5, '#c00');
+			}
+
+			if (PointList.length < 3) {
+				return;
+			}
+
+			let res = null;
+			let a, b, c, d, e, f;
+			let type = parseInt($('#selType').val());
+			if (type == 0) {
+				// 线性拟合
+				res = ZMath.lineRegression(PointList);
+				b = res.b < 0 ? res.b : ('+' + res.b);
+				$('#divTitle').html(`${res.a}x${b}=y r=${res.r}%`);
+
+				let x1 = -CC.width / 2;
+				let y1 = res.a * x1 + res.b;
+
+				let x2 = CC.width / 2;
+				let y2 = res.a * x2 + res.b;
+
+				CC.drawLine(x1, y1, x2, y2, '#0f0', 3);
+			}
+			else {
+				// 非线性拟合
+				let cres2 = CMath.MultiLine(PointList, type);
+				console.log(cres2);
+				res = {
+					a0: ZMath.round(cres2[0], 2),
+					a1: ZMath.round(cres2[1], 4),
+					a2: ZMath.round(cres2[2] || 0, 8),
+					a3: ZMath.round(cres2[3] || 0, 10),
+				};
+
+				c = res.a2 < 0 ? res.a2 : ('+' + res.a2);
+				b = res.a1 < 0 ? res.a1 : ('+' + res.a1);
+				a = res.a0 < 0 ? res.a0 : ('+' + res.a0);
+				$('#divTitle').html(`${res.a3}x^3${c}x^2${b}x${a}=y`);
+
+				let last = null;
+				for (let x = -CC.width / 2; x < CC.width / 2; x++) {
+					let p = {
+						x: x,
+						y: res.a3 * x * x * x + res.a2 * x * x + res.a1 * x + res.a0,
+					};
+
+					if (!last) {
+						last = p;
+						continue;
+					}
+
+					CC.drawLine(last.x, last.y, p.x, p.y, '#0f0', 2);
+					last = p;
+				}
+			}
+
+		}
+
+		var ZMath = {
+
+			/**
+			 * 最小二乘法
+			 * @param X
+			 * @param Y
+			 * @return y = ax + b, r
+			 */
+			lineRegression: function (list) {
+				let X = [];
+				let Y = [];
+
+				for (let r of list) {
+					X.push(r.x);
+					Y.push(r.y);
+				}
+
+				// x平方差和
+				let Sxx = this.varianceSum(X);
+				// y平方差和
+				let Syy = this.varianceSum(Y);
+				// xy协方差和
+				let Sxy = this.covarianceSum(X, Y);
+
+				let xAvg = this.arraySum(X) / X.length;
+				let yAvg = this.arraySum(Y) / Y.length;
+
+				let a = Sxy / Sxx;
+				let b = yAvg - a * xAvg;
+
+				// 相关系数
+				let r = Sxy / Math.sqrt(Sxx * Syy);
+
+				let res = {
+					a: this.round(Sxy / Sxx, 2),
+					b: this.round(yAvg - a * xAvg, 2),
+					r: this.round(Sxy / Math.sqrt(Sxx * Syy) * 100, 2),
+				};
+
+				res.r = Math.abs(res.r);
+
+				return res;
+			},
+
+			round: function (x, d) {
+				d = d || 0;
+				d = Math.pow(10, d);
+				x = Math.round(x * d);
+
+				return x / d;
+			},
+
+			/**
+			 * 计算方差和
+			 * @param X
+			 * @return
+			 */
+			varianceSum: function (X) {
+				let xAvg = this.arraySum(X) / X.length;
+
+				return this.arraySqSum(this.arrayMinus(X, xAvg));
+			},
+
+			/**
+			 * 计算协方差和
+			 * @param X
+			 * @param Y
+			 * @return
+			 */
+			covarianceSum: function (X, Y) {
+				let x = this.arraySum(X) / X.length;
+				let y = this.arraySum(Y) / Y.length;
+				x = this.arrayMinus(X, x);
+				y = this.arrayMinus(Y, y);
+
+				return this.arrayMulSum(x, y);
+			},
+
+			/**
+			 * 数组减常数
+			 * @param X
+			 * @param x
+			 * @return
+			 */
+			arrayMinus: function (X, x) {
+				let n = X.length;
+				let result = [];
+				for (let i = 0; i < n; i++) {
+					result.push(X[i] - x);
+				}
+
+				return result;
+			},
+
+			/**
+			 * 数组求和
+			 * @param X
+			 * @return
+			 */
+			arraySum: function (X) {
+				let s = 0;
+				for (let x of X) {
+					s = s + x;
+				}
+
+				return s;
+			},
+
+			/**
+			 * 数组平方求和
+			 * @param X
+			 * @return
+			 */
+			arraySqSum: function (X) {
+				let s = 0;
+				for (let x of X) {
+					s = s + Math.pow(x, 2);
+				}
+
+				return s;
+			},
+
+			/**
+			 * 数组对应元素相乘求和
+			 * @param X
+			 * @return
+			 */
+			arrayMulSum: function (X, Y) {
+				let s = 0;
+				for (let i = 0; i < X.length; i++) {
+					s = s + X[i] * Y[i];
+				}
+
+				return s;
+			}
+		};
+
+		// https://www.cnblogs.com/crhdyl/p/5320046.html
+		var CMath = {
+			///<summary>
+			///用最小二乘法拟合二元多次曲线
+			///例如y=ax+b
+			///<param name="dimension">方程的最高次数</param>
+			MultiLine: function (list, dimension)//二元多次线性方程拟合曲线
+			{
+				let arrX = [];
+				let arrY = [];
+				for (let r of list) {
+					arrX.push(r.x);
+					arrY.push(r.y);
+				}
+				length = list.length;
+
+				let n = dimension + 1;                  //dimension次方程需要求 dimension+1个 系数
+				Guass = [];      //高斯矩阵 例如：y=a0+a1*x+a2*x*x
+
+				for (let i = 0; i < n; i++) {
+					Guass[i] = [];
+					let j;
+					for (j = 0; j < n; j++) {
+						Guass[i].push(0);
+					}
+					Guass[i].push(0);
+				}
+
+				for (let i = 0; i < n; i++) {
+					let j;
+					for (j = 0; j < n; j++) {
+						Guass[i][j] = this.SumArr(arrX, j + i, length);
+					}
+
+					Guass[i][j] = this.SumArr2(arrX, i, arrY, 1, length);
+				}
+
+				return this.ComputGauss(Guass, n);
+			},
+
+			SumArr: function (arr, n, length) //求数组的元素的n次方的和
+			{
+				let s = 0;
+				for (let i = 0; i < length; i++) {
+					if (arr[i] != 0 || n != 0)
+						s = s + Math.pow(arr[i], n);
+					else
+						s = s + 1;
+				}
+
+				return s;
+			},
+
+			SumArr2: function (arr1, n1, arr2, n2, length) {
+				let s = 0;
+				for (let i = 0; i < length; i++) {
+					if ((arr1[i] != 0 || n1 != 0) && (arr2[i] != 0 || n2 != 0))
+						s = s + Math.pow(arr1[i], n1) * Math.pow(arr2[i], n2);
+					else
+						s = s + 1;
+				}
+
+				return s;
+			},
+
+			ComputGauss: function (Guass, n) {
+				let i, j;
+				let k, m;
+				let temp;
+				let max;
+				let s;
+				let x = [];
+
+				for (i = 0; i < n; i++) x[i] = 0.0;//初始化
+
+				for (j = 0; j < n; j++) {
+					max = 0;
+
+					k = j;
+					for (i = j; i < n; i++) {
+						if (Math.abs(Guass[i][j]) > max) {
+							max = Guass[i][j];
+							k = i;
+						}
+					}
+
+					if (k != j) {
+						for (m = j; m < n + 1; m++) {
+							temp = Guass[j][m];
+							Guass[j][m] = Guass[k][m];
+							Guass[k][m] = temp;
+						}
+					}
+
+					if (0 == max) {
+						// "此线性方程为奇异线性方程"
+						return x;
+					}
+
+					for (i = j + 1; i < n; i++) {
+						s = Guass[i][j];
+						for (m = j; m < n + 1; m++) {
+							Guass[i][m] = Guass[i][m] - Guass[j][m] * s / (Guass[j][j]);
+						}
+					}
+				} //结束for (j=0;j<n;j++)
+
+				for (i = n - 1; i >= 0; i--) {
+					s = 0;
+					for (j = i + 1; j < n; j++) {
+						s = s + Guass[i][j] * x[j];
+					}
+
+					x[i] = (Guass[i][n] - s) / Guass[i][i];
+				}
+
+				return x;
+			} //返回值是函数的系数
+		};
+
+		function clearAll() {
+			PointList = [];
+			draw();
+		}
+
+		function loadData() {
+			let val = $('#divLoad textarea').val();
+			val = $.trim(val);
+			if (val == '') {
+				return;
+			}
+
+			let list1 = [];
+			let list = val.split(/\n/ig);
+			let xmin, xmax, ymin, ymax;
+			for (o of list) {
+				let arr = o.split(/,/ig);
+				if (arr.length != 2)
+				{
+					continue;
+				}
+
+				let x = parseFloat(arr[0]);
+				let y = parseFloat(arr[1]);
+
+				list1.push({x:x,y:y});
+
+				if (xmin == null)
+				{
+					xmin = xmax = x;
+					ymin = ymax = y;
+				}
+				else
+				{
+					xmin = Math.min(xmin, x);
+					xmax = Math.max(xmax, x);
+					ymin = Math.min(ymin, y);
+					ymax = Math.max(ymax, y);
+				}
+			}
+
+			let xCenter = (xmin+xmax)/2;
+			let yCenter = (ymin+ymax)/2;
+
+			let w = (xmax - xmin) * 1.2 / CC.width;
+			let h = (ymax - ymin) * 1.2 / CC.height;
+
+			PointList = [];
+			for (r of list1) {
+				PointList.push({
+					x:(r.x - xCenter) / w,
+					y:(r.y - yCenter) / h,
+				});
+			}
+
+			draw();
+			$('#divMsgBack').hide();
+		}
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			CC.init($('#myCanvas'));
+
+			let downFn = function (evt) {
+				PointList.push({
+					x: evt.offsetX * window.devicePixelRatio - CC.width / 2,
+					y: CC.height / 2 - evt.offsetY * window.devicePixelRatio,
+				});
+				draw();
+			};
+
+			$('#myCanvas').click(downFn);
+			$('#myCanvas').mousemove(function (evt) {
+				if (evt.buttons != 1) return;
+				evt.preventDefault();
+				downFn(evt);
+			});
+
+			draw();
+		});
+	</script>
+	
+</body>
+</html>
