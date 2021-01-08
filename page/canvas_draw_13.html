@@ -369,7 +369,6 @@
 			else {
 				// 非线性拟合
 				let cres2 = CMath.MultiLine(PointList, type);
-				console.log(cres2);
 				res = {
 					a0: ZMath.round(cres2[0], 2),
 					a1: ZMath.round(cres2[1], 4),
@@ -732,6 +731,7 @@
 				draw();
 			};
 
+			$('#selType').change(draw);
 			$('#myCanvas').click(downFn);
 			$('#myCanvas').mousemove(function (evt) {
 				if (evt.buttons != 1) return;
