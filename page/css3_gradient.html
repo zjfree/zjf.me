@@ -1,0 +1,205 @@
+<!-- CSS3 渐变 zjfree 2021-01-08 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS3 渐变</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding: 0 10px;
+	padding-bottom: 20px;
+}
+
+.linear, .radial, .conic, .conic-repeat{
+	width: 150px;
+	height: 150px;
+	float: left;
+	border:solid 1px gray;
+	margin-right:20px;
+	margin-top:10px;
+	font-size: 12px;
+	box-shadow: 0 3px 5px #000;
+}
+
+.conic{
+	border-radius: 50%;
+}
+
+.w2{
+	width:320px;
+}
+
+.w3{
+	width: 490px;
+	height: 200px;
+	border:solid 1px gray;
+	margin-top:10px;
+	box-shadow: 0 3px 5px #000;
+}
+
+.clear{
+	clear:both;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>CSS3 渐变</h1>
+
+<h3>
+	线性渐变
+	<small>
+		（Linear Gradients）- 向下/向上/向左/向右/对角方向
+	</small>
+</h3>
+
+<div>
+	参考：
+	<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()">https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()</a>
+</div>
+
+<div>
+	<div class="linear" style="background: linear-gradient(red, orange, yellow, green, teal, blue, purple, red);"></div>
+	<div class="linear" style="background: linear-gradient(45deg, blue, red);"></div>
+	<div class="linear" style="background: linear-gradient(to left top, blue, red);"></div>
+	<div class="linear" style="background: linear-gradient(0deg, blue, green 40%, red);"></div>
+	<div class="linear" style="background: linear-gradient(.25turn, red, 10%, blue);"></div>
+	<div class="linear" style="background: linear-gradient(45deg, red 0 50%, blue 50% 100%);"></div>
+	<div class="linear" style="background: linear-gradient(to right,red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%);"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	线性渐变平铺
+</h3>
+
+<div>
+	<div class="linear w2" style="background: repeating-linear-gradient(45deg,#fb3,#fb3,10px ,#58a 0,#5ba 20px);"></div>
+	<div class="linear w2" style="background: repeating-linear-gradient(45deg,#fb3,transparent 50px), repeating-linear-gradient(-45deg,#fb3,transparent 50px);"></div>
+	<div class="linear w2" style="background: repeating-linear-gradient(45deg, #FF9900, #fb3 25px,transparent 25px 50px), repeating-linear-gradient(-45deg,#FF9900, #fb3 25px,transparent 25px 50px);"></div>
+	<div class="linear w2" style="background: repeating-linear-gradient(90deg,transparent,#8800CC 50px), repeating-linear-gradient(30deg,#8800CC,transparent 50px), repeating-linear-gradient(150deg,#8800CC,transparent 50px);"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	径向渐变
+	<small>
+		（Radial Gradients）- 由中心向外
+	</small>
+</h3>
+
+<div>
+	参考：
+	<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient()">https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient()</a>
+</div>
+
+<div>
+	<div class="radial" style="background: radial-gradient(red, orange, yellow, green, teal, blue, purple, red);"></div>
+	<div class="radial" style="background: radial-gradient(closest-side, #3f87a6, #ebf8e1, #f69d3c);"></div>
+	<div class="radial" style="background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);"></div>
+	<div class="radial" style="background: radial-gradient(ellipse at top, #e66465, transparent), radial-gradient(ellipse at bottom, #4d9f0c, transparent);"></div>
+	<div class="radial" style="background: radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%);"></div>
+	<div class="radial" style="background: radial-gradient(circle at top, #f00, #00f);"></div>
+	<div class="radial" style="background: radial-gradient(circle at top left, #f00, #00f);"></div>
+	<div class="radial" style="background: radial-gradient(circle at 50% 100%, #f00, #00f);"></div>
+	<div class="radial" style="background: radial-gradient(50% 100%, #f00, #00f);"></div>
+	<div class="radial" style="background: radial-gradient(red 0%, red 30%, #0f0 30%, #0f0 60%, #00f 60%);"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	径向渐变平铺
+</h3>
+
+<div>
+	<div class="radial w2" style="background: repeating-radial-gradient(black, white 30px);"></div>
+	<div class="radial w2" style="background: repeating-radial-gradient(circle, black, transparent 30px);"></div>
+	<div class="radial w2" style="background: repeating-radial-gradient(black, black 10px, white 10px, white 20px);"></div>
+	<div class="radial w2" style="background: repeating-radial-gradient(ellipse farthest-corner, red, black 5%, blue 5%, green 10%);"></div>
+	<div class="radial w2" style="background: repeating-radial-gradient(circle at 50% 50%,#000, transparent 20px),
+	repeating-radial-gradient(circle at 0% 50%, #000, transparent 20px),
+	repeating-radial-gradient(circle at 100% 50%, #000, transparent 20px)
+	;"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	圆锥渐变
+	<small>
+		（Conic Gradients）- 扇形旋转
+	</small>
+</h3>
+
+<div>
+	参考：
+	<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/conic-gradient()">https://developer.mozilla.org/en-US/docs/Web/CSS/conic-gradient()</a>
+</div>
+
+<div>
+	<div class="conic" style="background: conic-gradient(red, orange, yellow, green, teal, blue, purple, red);"></div>
+	<div class="conic" style="background: conic-gradient(red, orange, yellow, green, blue);"></div>
+	<div class="conic" style="background: conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #3f87a6, 350deg, #ebf8e1);"></div>
+	<div class="conic" style="background: conic-gradient(from 3.1416rad at 10% 50%, #e66465, #9198e5);"></div>
+	<div class="conic" style="background: conic-gradient(red 6deg, orange 6deg 18deg, yellow 18deg 45deg, green 45deg 110deg, blue 110deg 200deg, purple 200deg);"></div>
+	<div class="conic" style="background: conic-gradient(from 90deg at 0 50%, blue, red, #0f0, #fff, #000);"></div>
+	<div class="conic" style="background: conic-gradient(red 45deg, blue 45deg);"></div>
+	<div class="conic" style="background: conic-gradient(#fff 0.25turn, #000 0.25turn 0.5turn, #fff 0.5turn 0.75turn, #000 0.75turn) top left / 25% 25% repeat;"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	圆锥渐变平铺
+</h3>
+
+<div>
+	<div class="conic-repeat w2" style="background: repeating-conic-gradient(#000, #fff 10deg);"></div>
+	<div class="conic-repeat w2" style="background: repeating-conic-gradient(#fff, #000, #fff 0.1deg);"></div>
+	<div class="conic-repeat w2" style="background: repeating-conic-gradient(from 0deg at 0 50%, #000, transparent 10deg), repeating-conic-gradient(from 0deg at 100% 50%, #000, transparent 10deg);"></div>
+	<div class="conic-repeat w2" style="background: repeating-conic-gradient(from 0deg at 50% 0, #000, transparent 10deg), repeating-conic-gradient(from 0deg at 0 50%, #000, transparent 10deg), repeating-conic-gradient(from 0deg at 100% 50%, #000, transparent 10deg);"></div>
+</div>
+<div class="clear"></div>
+
+<h3>
+	角度控制
+</h3>
+
+<div>
+	<span id="spanRange1">角度：</span><br>
+	<input id="range1" type="range" value="0.1" min="0.01" max="10" step="0.01" />
+</div>
+
+<div id="div1" class="w3"></div>
+<div id="div2" class="w3"></div>
+
+<script>
+function updateBackCss()
+{
+	let deg = $('#range1').val();
+	$('#spanRange1').html('角度：' + deg);
+	$('#div1').css('background', 'repeating-conic-gradient(#fff, #000, #fff ' + deg + 'deg)');
+
+	let backCss = '';
+	backCss += 'repeating-conic-gradient(from 0deg at 50% 0, #000,transparent, transparent ' + deg + 'deg),';
+	backCss += 'repeating-conic-gradient(from 0deg at 50% 100%, #000,transparent, transparent ' + deg + 'deg),';
+	backCss += 'repeating-conic-gradient(from 0deg at 0% 50%, #000,transparent, transparent ' + deg + 'deg),';
+	backCss += 'repeating-conic-gradient(from 0deg at 100% 50%, #000,transparent, transparent ' + deg + 'deg)';
+	$('#div2').css('background', backCss);
+}
+
+$(function(){
+	// JS
+	$('#range1').bind('input', updateBackCss);
+	updateBackCss();
+});
+</script>
+
+</body>
+</html>
