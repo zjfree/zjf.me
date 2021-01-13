@@ -1,0 +1,188 @@
+<!-- Canvas线条螺旋(递增) zjfree 2021-01-12 -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas线条螺旋(递增)</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	background: linear-gradient(to bottom, #444 0%,#000 100%);
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+    line-height: 1.5;;
+}
+#divTool input[type="range"]{
+	width:300px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/canvas_screw.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	颜色：
+	<select id="selColor">
+		<option value="1">白色</option>
+		<option value="2" selected>彩色</option>
+		<option value="3">黑白</option>
+		<option value="4">填充</option>
+	</select>
+    <br>
+	<span id="spanRange1">次数：</span>
+    <br>
+	<input id="range1" type="range" min="1" max="100000" value="10000" step="1" />
+    <br>
+	<span id="spanRange2">角度：</span>
+    <br>
+    <input id="range2" type="range" min="0.01" max="100" value="0.1" step="0.01" />
+    <br>
+	<span id="spanRange3">距离：</span>
+    <br>
+    <input id="range3" type="range" min="1" max="100" value="5" step="1" />
+</div>
+
+<script>
+
+function drawStart()
+{
+    console.time('draw');
+    CC.clear();
+    
+    $('#spanRange1').html('次数：' + $('#range1').val());
+    $('#spanRange2').html('角度：' + $('#range2').val());
+    $('#spanRange3').html('距离：' + $('#range3').val());
+	
+	let maxCount = parseInt($('#range1').val());
+	let degStep = parseFloat($('#range2').val());
+	let lenStep = parseFloat($('#range3').val());
+	let colorType = parseInt($('#selColor').val());
+	let maxLen = Math.round(Math.min(CC.width, CC.height) / 2 * 0.8);
+
+	let isLine = colorType == 1 || colorType == 4;
+
+    if (isLine)
+    {
+        CC.ctx.beginPath();
+    }
+
+	let last = {x:0,y:0};
+	let len = 0;
+	let deg = 0;
+	let bo = true;
+    for (let i=0; i<maxCount; i++)
+    {
+		len += bo ? lenStep : -lenStep;
+		deg += degStep;
+		if (len > maxLen)
+		{
+			bo = false;
+		}
+		if (len < 0)
+		{
+			bo = true;
+		}
+
+        let p = goDeg({x:0,y:0}, deg, len);
+
+		if (last != null)
+		{
+			switch (colorType)
+			{
+				case 1:
+				case 4:
+					CC.ctx.lineTo(p.x, p.y);
+					break;
+				case 2:
+					CC.drawLine(last.x, last.y, p.x, p.y, 'hsl(' + i % 360 + ',100%,50%');
+					break;
+				case 3:
+					let c = i % 255;
+					CC.drawLine(last.x, last.y, p.x, p.y, `rgb(${c},${c},${c})`);
+					break;
+			}
+		}
+		else if (isLine)
+		{
+			CC.ctx.moveTo(p.x, p.y);
+		}
+		
+		last = p;
+    }
+    
+    if (isLine)
+    {
+        CC.ctx.lineWidth = 1;
+        CC.ctx.strokeStyle = '#fff';
+        CC.ctx.stroke();
+
+		if (colorType == 4)
+		{
+			let grd=CC.ctx.createRadialGradient(0,0,5,0,0,maxLen);
+			grd.addColorStop(0,"blue");
+			grd.addColorStop(1,"green");
+
+			CC.ctx.fillStyle = grd;
+			CC.ctx.fill();
+		}
+    }
+
+    console.timeEnd('draw');
+}
+
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+    $('#range1, #range2, #range3').bind('input', drawStart);
+    $('#selColor').change(drawStart);
+
+	CC.init($('#myCanvas'));
+
+	drawStart();
+});
+</script>
+
+
+
+</body>
+</html>
