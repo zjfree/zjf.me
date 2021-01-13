@@ -66,6 +66,10 @@ Your browser does not support the HTML5 canvas tag.
 		<option value="3">黑白</option>
 		<option value="4">填充</option>
 	</select>
+	&emsp;
+	<label>
+		<input id="chkDec" type="checkbox" checked /> 小数
+	</label>
     <br>
 	<span id="spanRange1">次数：</span>
     <br>
@@ -73,7 +77,7 @@ Your browser does not support the HTML5 canvas tag.
     <br>
 	<span id="spanRange2">角度：</span>
     <br>
-    <input id="range2" type="range" min="0.01" max="100" value="0.1" step="0.01" />
+    <input id="range2" type="range" min="0" max="180" value="3" step="0.01" />
     <br>
 	<span id="spanRange3">距离：</span>
     <br>
@@ -175,6 +179,11 @@ $(function(){
 
     $('#range1, #range2, #range3').bind('input', drawStart);
     $('#selColor').change(drawStart);
+
+	$('#chkDec').change(function(){
+		$('#range2').prop('step', this.checked ? 0.01 : 1);
+		drawStart();
+	});
 
 	CC.init($('#myCanvas'));
 
