@@ -1,0 +1,180 @@
+<!-- Canvas覆盖模式 zjfree 2021-01-13 -->
+<!--
+	https://www.w3school.com.cn/tags/canvas_globalcompositeoperation.asp
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas覆盖模式</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	margin:0;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+#divTool{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	font-size:12px;
+    line-height: 1.5;;
+}
+#divTool input[type="range"]{
+	width:300px;
+}
+#divInfo{
+	position:absolute;
+	top:10px;
+	left:10px;
+	font-size:12px;
+	color:#fff;
+}
+#myCanvas{
+	position:fixed;
+	top:0;
+	left:0;
+}
+#img1{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	filter: grayscale(1);
+	width:100%;
+	height:100%;
+}
+#myCanvasTop{
+	position:fixed;
+	right:0;
+	bottom:0;
+	width: 100px;
+	height: 100px;
+	background-color: #fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/canvas_screw.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<img id="img1" src="../static/img/fruit.jpg" />
+
+<canvas id="myCanvas">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<canvas id="myCanvasTop" width="100" height="100">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	类型：
+	<select id="selType">
+		<option value="source-over" selected>source-over</option>
+		<option value="source-atop">source-atop</option>
+		<option value="source-in">source-in</option>
+		<option value="source-out">source-out</option>
+		<option value="destination-over">destination-over</option>
+		<option value="destination-atop">destination-atop</option>
+		<option value="destination-in">destination-in</option>
+		<option value="destination-out">destination-out</option>
+		<option value="lighter">lighter</option>
+		<option value="copy">copy</option>
+		<option value="xor">xor</option>
+	</select>
+	&nbsp;
+	<button onclick="clearCanvas();">清空</button>
+</div>
+
+<script>
+function clearCanvas()
+{
+	CC.ctx.globalCompositeOperation="source-over";
+	CC.clear();
+	let img1 = $('#img1')[0];
+	
+	CC.ctx.scale(1, -1);
+	CC.ctx.drawImage(img1,-CC.width/2,-CC.height/2,CC.width,CC.height);
+	CC.ctx.scale(1, -1);
+
+	CC.ctx.globalCompositeOperation = $('#selType').val();
+
+	// 绘制小图
+	ctx.globalCompositeOperation = "source-over";
+	ctx.clearRect(0,0,100,100);
+	ctx.fillStyle = "blue";
+	ctx.fillRect(10,10,60,60);
+
+	ctx.globalCompositeOperation = $('#selType').val();
+	
+	ctx.beginPath();
+	ctx.arc(60,60,30,0,2*Math.PI);
+	ctx.closePath();
+	ctx.fillStyle = 'red';
+	ctx.fill();
+}
+
+var c = document.getElementById("myCanvasTop");
+var ctx = c.getContext("2d");
+var lastPoint = null;
+$(function(){
+	// JS
+	$('#myCanvas').css('width', $(window).width() + 'px');
+	$('#myCanvas').css('height', $(window).height() + 'px');
+
+    $('#selType').change(clearCanvas);
+	$('#myCanvas').mousedown(function(e) {
+		let ratio = window.devicePixelRatio;
+		lastPoint = {
+			x:e.offsetX * ratio - CC.width/2,
+			y:CC.height/2 - e.offsetY * ratio,
+		};
+		CC.drawCirle(lastPoint.x, lastPoint.y, 15, '#00f');
+	});
+	$('#myCanvas').mouseup(function(e) {
+		lastPoint = null;
+	});
+	$('#myCanvas').mousemove(function(e) {
+		if (e.buttons != 1) return;
+		e.preventDefault();
+		let ratio = window.devicePixelRatio;
+		let p = {
+			x:e.offsetX * ratio - CC.width/2,
+			y:CC.height/2 - e.offsetY * ratio,
+		};
+		CC.drawCirle(p.x, p.y, 15, '#00f');
+		CC.drawLine(p.x, p.y, lastPoint.x, lastPoint.y, '#00f', 30);
+		lastPoint = p;
+	});
+	
+	CC.init($('#myCanvas'));
+
+	clearCanvas();
+});
+</script>
+
+
+
+</body>
+</html>

@@ -180,6 +180,17 @@ var CC = {
 		this.ctx.strokeStyle = strokeStyle;
 		this.ctx.stroke();
 	},
+	drawText:function(x1,y1,str,fillStyle,font)
+	{
+		this.ctx.scale(1, -1);
+		y1 = -y1;
+
+		this.ctx.font = font||"16px Verdana";
+		this.ctx.fillStyle = fillStyle||'#fff';
+		this.ctx.fillText(str, x1, y1);
+
+		this.ctx.scale(1, -1);
+	},
 };
 
 // 获取中心点
