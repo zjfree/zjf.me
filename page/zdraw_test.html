@@ -1,0 +1,158 @@
+<!-- 绘图基础框架测试 zjfree 2021-01-18 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>绘图基础框架测试</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#myCanvas{
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		#myCanvas2{
+			position: absolute;
+			right:10px;
+			bottom:10px;
+			width: 200px;
+			height: 200px;
+			border:double 1px #fff;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+	<canvas id="myCanvas2">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+		<button onclick="ZTool.showInfo(ZTool.formatDate());">时间</button>
+		<button onclick="draw.clear();">清空</button>
+		<button id="btnPlay">停止</button>
+		<button id="btnSwitch">默认坐标</button>
+	</div>
+
+	<script>
+		var draw = null;
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			draw = new ZDraw($('#myCanvas'), function(index, t){
+				ZTool.fps();
+				let p = draw.randPoint();
+				draw.drawCircle(p, 5);
+				if (index % 10 == 0)
+				{
+					draw.clear('rgba(0,0,0,0.1)');
+				}
+			});
+			draw.toCenter();
+
+			draw.mouseDown(function(p){
+				draw.drawCircle(p, 10, '#f00');
+			});
+			draw.mouseDownMove(function(p){
+				draw.drawCircle(p, 5, '#0f0');
+			});
+
+			$('#btnPlay').click(function(){
+				if ($(this).html() == '停止')
+				{
+					draw.stop();
+					$(this).html('播放');
+				}
+				else
+				{
+					draw.play();
+					$(this).html('停止');
+				}
+			});
+
+			$('#btnSwitch').click(function(){
+				if ($(this).html() == '默认坐标')
+				{
+					draw.toNormal();
+					$(this).html('笛卡尔');
+				}
+				else
+				{
+					draw.toCenter();
+					$(this).html('默认坐标');
+				}
+
+				draw.clear();
+				draw.drawLine({x:-30, y:0}, {x:30, y:0}, '#f0f');
+				draw.drawLine({x:0, y:-30}, {x:0, y:30}, '#f0f');
+				draw.drawLine({x:-20, y:10}, {x:20, y:10}, '#ff0');
+				draw.drawLine({x:-20, y:-10}, {x:20, y:-10}, '#ff0');
+				draw.drawLine({x:10, y:-20}, {x:10, y:20}, '#ff0');
+				draw.drawLine({x:-10, y:-20}, {x:-10, y:20}, '#ff0');
+				draw.drawCircle({x:0, y:0}, 5, '#0ff');
+			});
+
+			// 小CANVAS
+			let draw2 = new ZDraw($('#myCanvas2'), function(index, t){
+				draw2.clear('rgba(0,0,0,0.1)');
+				draw2.drawText({x:-70, y:0}, ZTool.formatDate());
+			});
+			draw2.toCenter();
+			draw2.mouseDownMove(function(p){
+				draw2.drawCircle(p, 5, '#0f0');
+			});
+		});
+	</script>
+
+</body>
+</html>
