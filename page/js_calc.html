@@ -1,0 +1,228 @@
+<!-- JS算数表达式 zjfree 2021-03-05 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS算数表达式</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#txtInput{
+	font-size: 24px;
+	width:100%;
+	box-sizing:border-box;
+	line-height: 35px;
+	color:blue;
+}
+.divOp{
+	margin:10px 0;
+}
+#divInfo{
+	border:dashed 1px gray;
+	padding:10px;
+}
+#divInfo div{
+	margin-bottom:5px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>JS算数表达式</h1>
+
+<input id="txtInput" type="text" value="1+8-45/5+(8+{pi})+7*9" />
+
+<div class="divOp">
+	<select id="selType">
+		<option value="1">eval</option>
+		<option value="2">calcVal</option>
+	</select>
+	&emsp;
+	<button onclick="calc();">计算</button>
+	<button onclick="$('#divInfo').html('');">清空显示</button>
+	&emsp;
+	经测试 eval 效率比手工写的效率大概高10倍！
+</div>
+
+<div id="divInfo"></div>
+
+<script>
+var mouseX = 0;
+var mouseY = 0;
+$(function(){
+	// JS
+	$(document).mousemove(function(e){
+		mouseX = e.pageX;
+		mouseY = e.pageY;
+	});
+
+	$('#selType').val(1);
+	$('#selType').change(function(){
+		calc();
+	});
+
+	showInfo('就绪');
+});
+
+// 信息输出
+function showInfo(str, color)
+{
+	if (color)
+	{
+		$('#divInfo').prepend('<div style="color:' + color + ';">' + str + '</div>');
+	}
+	else
+	{
+		$('#divInfo').prepend('<div>' + str + '</div>');
+	}
+}
+
+// 计算算数表达式
+function calc()
+{
+	let str = $('#txtInput').val();
+	str = $.trim(str);
+	str = str.replace(/\s+/g,"");
+	if (str == '')
+	{
+		return;
+	}
+	
+	showInfo($("#selType option:checked").text() + ' 计算表达式：' + str);
+	console.time("calc");
+
+	// 替换变量
+	let varList = {
+		pi:Math.PI,
+		x:mouseX,
+		y:mouseY,
+	};
+
+	for (let k in varList)
+	{
+		str = str.replace( new RegExp( '{' + k + '}' , "g" ) , varList[k] );
+	}
+
+	let val = null;
+
+	switch ($('#selType').val())
+	{
+		case '1':
+			val = eval(str);
+			break;
+		case '2':
+			val = calcVal(str);
+			break;
+	}
+
+	console.timeEnd("calc");
+	showInfo(str + ' = ' + val, 'green');
+}
+
+function calcVal(str)
+{
+	if (str == '')
+	{
+		return null;
+	}
+
+	// 提取括号
+	let first = -1;
+	let last = -1;
+	for (let i=0; i<str.length; i++)
+	{
+		if (str[i] == '(')
+		{
+			first = i;
+		}
+		if (str[i] == ')')
+		{
+			last = i;
+			if (first == -1)
+			{
+				return null;
+			}
+
+			let strNew = str.substring(first+1, last);
+			let v = calcVal(strNew);
+			str = str.substring(0, first) + v + str.substring(last+1, str.length);
+			i = 0;
+			first = last = -1;
+		}
+	}
+	
+	// 根据操作符号分割
+	console.log(str);
+	let list = [];
+	let s = '';
+	for (let i=0; i<str.length; i++)
+	{
+		let op = str[i];
+		if (op == '*' || op == '/' || op == '+' || op == '-')
+		{
+			if (s == '')
+			{
+				s = '0';
+			}
+
+			list.push(parseFloat(s));
+			s = '';
+			list.push(op);
+		}
+		else
+		{
+			s += str[i];
+		}
+	}
+	list.push(parseFloat(s));
+	console.log(list);
+
+	// 合并运算 乘除优先
+	for (let i=0; i<list.length; i++)
+	{
+		if (list[i] == '*')
+		{
+			list[i-1] = list[i-1] * list[i+1];
+			list.splice(i, 2);
+			i--;
+		}
+		
+		if (list[i] == '/')
+		{
+			list[i-1] = list[i-1] / list[i+1];
+			list.splice(i, 2);
+			i--;
+		}
+	}
+	for (let i=0; i<list.length; i++)
+	{
+		if (list[i] == '+')
+		{
+			list[i-1] = list[i-1] + list[i+1];
+			list.splice(i, 2);
+			i--;
+		}
+		
+		if (list[i] == '-')
+		{
+			list[i-1] = list[i-1] - list[i+1];
+			list.splice(i, 2);
+			i--;
+		}
+	}
+
+	return list[0];
+}
+</script>
+
+</body>
+</html>
