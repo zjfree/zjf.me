@@ -49,8 +49,8 @@ textarea{
 <h3>字节数字转换</h3>
 <div style="line-height: 2;">
 	类型：
-	<label><input id="r1" type="radio" name="r1" value="1" /> 大端</label> &nbsp;
-	<label><input type="radio" name="r1" value="2" checked /> 小端</label><br>
+	<label><input type="radio" name="r1" value="1" /> 小端</label> &nbsp;
+	<label><input id="r1" type="radio" name="r1" value="2" checked /> 大端</label><br>
 	字节：<input id="txtByteNum" type="text" value="AA BB" /><br>
 	数字：<input id="txtNum" type="text" value="43707" />
 </div>
@@ -112,6 +112,11 @@ $(function(){
 	$('#txtNum').keyup(function(){
 		let num = $(this).val();
 		$('#txtByteNum').val(numToHex(num));
+	});
+	
+	$('input[type=radio]').change(function(){
+		let hex = $('#txtByteNum').val();
+		$('#txtNum').val(hexToNum(hex));
 	});
 });
 
@@ -229,8 +234,8 @@ function hexToNum(hex)
 		return '';
 	}
 
-	let isBig = $('#r1')[0].checked;
-	if (isBig)
+	let isSmall = $('#r1')[0].checked;
+	if (!isSmall)
 	{
 		let hex1 = hex;
 		if (hex1.length % 2 != 0)
@@ -243,8 +248,6 @@ function hexToNum(hex)
 		{
 			hex += hex1.substr(i, 2);
 		}
-
-		console.log(hex);
 	}
 	
 	let val = parseInt(hex, 16);
@@ -267,12 +270,12 @@ function numToHex(num)
 		hex = '0' + hex;
 	}
 
-	let isBig = $('#r1')[0].checked;
+	let isSmall = $('#r1')[0].checked;
 
 	let str = '';
 	for (let i=0; i<hex.length; i+=2)
 	{
-		if (isBig)
+		if (!isSmall)
 		{
 			str += hex.substr(hex.length - i - 2, 2) + ' ';
 		}
