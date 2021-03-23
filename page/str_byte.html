@@ -1,0 +1,291 @@
+<!-- 标准HTML模板 zjfree 2021-03-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>字节字符串转换</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+textarea{
+	display: block;
+	height:500px;
+	width: 100%;
+	resize:vertical;
+	font-family: Consolas, 'Courier New', Courier, monospace;
+	box-sizing: border-box;
+}
+
+.title{
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+#tbForm{
+	width:100%;
+	box-sizing: border-box;
+}
+#tbForm th{
+	background-color: #ddd;
+	padding:5px 0;
+}
+#tbForm th,#tbForm td{
+	border:solid 1px #fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h3>字节数字转换</h3>
+<div style="line-height: 2;">
+	类型：
+	<label><input id="r1" type="radio" name="r1" value="1" /> 大端</label> &nbsp;
+	<label><input type="radio" name="r1" value="2" checked /> 小端</label><br>
+	字节：<input id="txtByteNum" type="text" value="AA BB" /><br>
+	数字：<input id="txtNum" type="text" value="AA BB" />
+</div>
+
+<h3>字节字符串转换</h3>
+
+<div style="margin-bottom: 10px;">
+	<button onclick="clearAll();">清空</button>
+	<button onclick="formatVal();">格式化</button>
+</div>
+
+<table id="tbForm">
+	<tr>
+		<th>字节 16进制</th>
+		<th>字符串 <span id="spanCount">0</span> 个</th>
+		<th>二进制</th>
+	</tr>
+	<tr>
+		<td><textarea id="txtByte"></textarea></td>
+		<td><textarea id="txtString">Hello abc123!!!!</textarea></td>
+		<td><textarea id="txtBin"></textarea></td>
+	</tr>
+</table>
+
+<script>
+$(function(){
+	// JS
+	$('#txtString').keyup(function(){
+		let str = $(this).val();
+		$('#spanCount').html(str.length);
+		$('#txtByte').val(strToHex(str));
+		$('#txtBin').val(strToBin(str));
+	});
+	$('#txtByte').keyup(function(){
+		let hex = $(this).val();
+		let str = hexToStr(hex);
+		$('#spanCount').html(str.length);
+		$('#txtString').val(str);
+		$('#txtBin').val(strToBin(str));
+	});
+	$('#txtBin').keyup(function(){
+		let bin = $(this).val();
+		let str = binToStr(bin);
+		$('#spanCount').html(str.length);
+		$('#txtString').val(str);
+		$('#txtByte').val(strToHex(str));
+	});
+	
+	let str = $('#txtString').val();
+	$('#spanCount').html(str.length);
+	$('#txtByte').val(strToHex(str));
+	$('#txtBin').val(strToBin(str));
+
+	$('#txtByteNum').keyup(function(){
+		let hex = $(this).val();
+		$('#txtNum').val(hexToNum(hex));
+	});
+	
+	$('#txtNum').keyup(function(){
+		let num = $(this).val();
+		$('#txtByteNum').val(numToHex(num));
+	});
+});
+
+function clearAll()
+{
+	$('#txtByte').val('');
+	$('#txtString').val('');
+	$('#txtBin').val('');
+}
+
+function strToHex(str)
+{
+	let hex = '';
+	str = str.toString();
+	for (let i=0; i<str.length; i++)
+	{
+		if (i!=0 && i%8==0)
+		{
+			hex += "\r\n";
+		}
+		hex += ('0' + str.charCodeAt(i).toString(16)).substr(-2) + ' ';
+	}
+
+	return hex.toUpperCase();
+}
+
+function strToBin(str)
+{
+	let hex = '';
+	str = str.toString();
+	for (let i=0; i<str.length; i++)
+	{
+		if (i!=0 && i%4==0)
+		{
+			hex += "\r\n";
+		}
+		hex += ('00000000' + str.charCodeAt(i).toString(2)).substr(-8) + ' ';
+	}
+
+	return hex.toUpperCase();
+}
+
+function hexToStr(hex)
+{
+	hex = hex.toUpperCase().replace(/\s/ig, '');
+    hex = hex.replace(/[^0-9, ^A-F]/ig, '');
+	
+	let str = '';
+	for (let i=0; i<hex.length; i+=2)
+	{
+		let val = parseInt(hex.substr(i, 2), 16);
+		str += String.fromCharCode(val);
+	}
+
+	return str;
+}
+
+function binToStr(bin)
+{
+    bin = bin.replace(/[^0-1]/ig, '');
+
+	let str = '';
+	for (let i=0; i<bin.length; i+=8)
+	{
+		let val = parseInt(bin.substr(i, 8), 2);
+		str += String.fromCharCode(val);
+	}
+
+	return str;
+}
+
+// 格式化
+function formatVal()
+{
+	// 16进制
+	let hex = $('#txtByte').val().toUpperCase().replace(/\s/ig, '');
+    hex = hex.replace(/[^0-9, ^A-F]/ig, '');
+	
+	let str = '';
+	for (let i=0; i<hex.length; i+=2)
+	{
+		if (i!=0 && i%16==0)
+		{
+			str += "\r\n";
+		}
+		str += hex.substr(i, 2) + ' ';
+	}
+
+	$('#txtByte').val(str);
+
+	// 2进制
+	let bin = $('#txtBin').val();
+    bin = bin.replace(/[^0-1]/ig, '');
+	
+	str = '';
+	for (let i=0; i<bin.length; i+=8)
+	{
+		if (i!=0 && i%32==0)
+		{
+			str += "\r\n";
+		}
+		str += bin.substr(i, 8) + ' ';
+	}
+
+	$('#txtBin').val(str);
+}
+
+function hexToNum(hex)
+{
+	hex = hex.toUpperCase().replace(/\s/ig, '');
+    hex = hex.replace(/[^0-9, ^A-F]/ig, '');
+	
+	if (hex == '')
+	{
+		return '';
+	}
+
+	let isBig = $('#r1')[0].checked;
+	if (isBig)
+	{
+		let hex1 = hex;
+		if (hex1.length % 2 != 0)
+		{
+			hex1 = '0' + hex1;
+		}
+
+		hex = '';
+		for (let i=hex1.length-2; i>=0; i-=2)
+		{
+			hex += hex1.substr(i, 2);
+		}
+
+		console.log(hex);
+	}
+	
+	let val = parseInt(hex, 16);
+
+	return val;
+}
+
+function numToHex(num)
+{
+    num = num.replace(/[^0-9]/ig, '');
+	if (num == '')
+	{
+		return '';
+	}
+	num = parseInt(num);
+
+	let hex = num.toString(16).toUpperCase();
+	if (hex.length % 2 != 0)
+	{
+		hex = '0' + hex;
+	}
+
+	let isBig = $('#r1')[0].checked;
+
+	let str = '';
+	for (let i=0; i<hex.length; i+=2)
+	{
+		if (isBig)
+		{
+			str += hex.substr(hex.length - i - 2, 2) + ' ';
+		}
+		else
+		{
+			str += hex.substr(i, 2) + ' ';
+		}
+	}
+
+	return str;
+}
+
+</script>
+
+</body>
+</html>
