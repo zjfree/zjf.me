@@ -108,10 +108,10 @@ body{
 	<tbody>
 		<tr id="trFirst">
 			<td class="td-index">1</td>
-			<td contenteditable></td>
-			<td contenteditable></td>
-			<td contenteditable></td>
-			<td contenteditable></td>
+			<td contenteditable="plaintext-only"></td>
+			<td contenteditable="plaintext-only"></td>
+			<td contenteditable="plaintext-only"></td>
+			<td contenteditable="plaintext-only"></td>
 			<td class="td-op">
 				<button onclick="delTr(this);">删除</button>
 			</td>
@@ -247,7 +247,7 @@ function buildTable()
 	let trEdit = '<td class="td-index">1</td>';
 	for (let i=0; i<col_count; i++)
 	{
-		trEdit += '<td contenteditable></td>';
+		trEdit += '<td contenteditable="plaintext-only"></td>';
 	}
 	trEdit += '<td class="td-op"><button onclick="delTr(this);">删除</button></td>';
 	$('#trFirst').html(trEdit);
@@ -268,11 +268,11 @@ function buildTable()
 		{
 			if (j<vals.length)
 			{
-				content += '<td contenteditable>' + vals[j] + '</td>';
+				content += '<td contenteditable="plaintext-only">' + vals[j] + '</td>';
 			}
 			else
 			{
-				content += '<td contenteditable></td>';
+				content += '<td contenteditable="plaintext-only"></td>';
 			}
 		}
 		content += '<td class="td-op"><button onclick="delTr(this);">删除</button></td>';
