@@ -221,6 +221,7 @@ function buildTable()
 	{
 		return;
 	}
+	strCsv = strCsv.replace(/[\t]/ig, ",");
 
 	let lines = strCsv.split("\n");
 	let first_line = $.trim(lines[0]).split(',');
@@ -290,6 +291,8 @@ function downloadCsv()
 	// '\n' 表示一行的结束
 	// ','表示数据依次放在新的单元格
 	let strCsv = $('#txtEditor').val();
+	strCsv = strCsv.replace(/[\t]/ig, ",");
+	
 	// encodeURIComponent解决中文乱码
 	let uri =
 	"data:text/csv;charset=utf-8,\ufeff" + encodeURIComponent(strCsv); 
