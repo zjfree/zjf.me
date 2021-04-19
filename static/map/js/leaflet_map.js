@@ -65,6 +65,19 @@ var SuperMap = {
                 maxZoom: 20,
                 subdomains:['mt0','mt1','mt2','mt3']
             }),
+			
+			// http://www.z1.com/gmap_tile/E5496813B2B9031615F1151856AC0416/{z}/map_{x}_{y}_{z}.png
+			// http://www.z1.com/gmap_tile/proxy.php?x={x}&y={y}&z={z}
+			// http://www.z1.com/gmap_tile/map_20210408_175857/lyrs_h_gl_cn_x_{x}_y_{y}_z_{z}.png
+			// http://www.z1.com/gmap_tile/map_20210408_175857/lyrs_s_gl_cn_x_{x}_y_{y}_z_{z}.png
+            "gmap": L.tileLayer('http://www.z1.com/gmap_tile/E5496813B2B9031615F1151856AC0416/{z}/map_{x}_{y}_{z}.png',{
+                maxZoom: 20,
+                subdomains:[]
+            }),
+            "gmap2": L.layerGroup([
+                L.tileLayer('http://www.z1.com/gmap_tile/map_20210408_175857/lyrs_s_gl_cn_x_{x}_y_{y}_z_{z}.png', {foo: 'bar'}),
+                L.tileLayer('http://www.z1.com/gmap_tile/map_20210408_175857/lyrs_h_gl_cn_x_{x}_y_{y}_z_{z}.png', {foo: 'bar'}),
+            ]),
         };
 
         /*
