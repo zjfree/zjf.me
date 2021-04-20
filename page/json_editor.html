@@ -305,6 +305,15 @@ $(function(){
 		
 		updateObjVal(node.parent().parent());
 	});
+
+	let obj = {
+		id:123,
+		name:'abc123',
+		list:[1,2,3,118],
+		attr:{a:1, b:2, c:'hello'}
+	};
+	parseObjJson(obj);
+	buildJson();
 });
 
 function autoHeight()
@@ -514,6 +523,11 @@ function parseJson()
 		return;
 	}
 
+	parseObjJson(obj);
+}
+
+function parseObjJson(obj)
+{
 	// 清空所有
 	$('#divRoot>.list').html('');
 	$('#divRoot .count').html('0');
