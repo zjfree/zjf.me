@@ -1,0 +1,625 @@
+<!-- JSON编辑器 zjfree 2021-03-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON编辑器</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+#divRoot{
+	width:50%;
+	float: left;
+	box-sizing: border-box;
+	margin-left:0;
+	overflow-y: auto;
+}
+
+#txtJson{
+	width:50%;
+	float: left;
+	box-sizing: border-box;
+	resize:none;
+	overflow-y: auto;
+}
+
+.level_0{ background-color: #eff; }
+.level_1{ background-color: #fef; }
+.level_2{ background-color: #ffe; }
+.level_3{ background-color: #efe; }
+.level_4{ background-color: #eef; }
+.level_5{ background-color: #fee; }
+
+.node{
+	position: relative;
+	margin-left:15px;
+	border:solid 1px #eee;
+	border-left:solid 2px #eee;
+	padding:5px 0;
+}
+.node-root{
+	border:solid 1px gray;
+	border-left:solid 2px gray;
+}
+.node:hover{
+	border:solid 1px gray;
+	border-left:solid 2px blue;
+}
+
+.node .show{
+	font-size:14px;
+	line-height: 1.2;
+	padding-left:5px;
+	font-family: Consolas, verdana,arial,sans-serif,'Courier New', Courier, monospace, '微软雅黑';
+}
+
+.name{
+	max-width: 200px;
+	vertical-align:top;
+}
+.value{
+	max-width: 500px;
+	vertical-align:top;
+}
+
+.node .show .name{
+	padding:0 2px;
+}
+.node .show .name::after{
+	content: ':';
+}
+.node .show .name:focus:after{
+	content:none;
+}
+
+.node .show .value{
+	color:blue;
+	padding:0 2px;
+}
+.node .show .type{
+	font-size: 12px;
+	padding:0px 3px;
+	background-color: #999;
+	color:#fff;
+}
+.node .show .count{
+	font-size: 12px;
+	padding:0px 3px;
+	background-color: #666;
+	color:#fff;
+}
+.node>.list{
+	margin-top:2px;
+}
+
+.op{
+	position:absolute;
+	top:3px;
+	right:3px;
+	display: none;
+}
+
+.op button{
+	font-size:12px;
+	padding:1px 2px;
+}
+
+.op .del{
+	color:red;
+}
+
+.node:hover >.op{
+	display: block;
+}
+
+#divNode{
+	display: none;
+}
+
+.plus{
+	border-radius: 5px;
+	padding:0px 5px;
+	font-size:12px;
+	cursor: pointer;
+	background-color: #ddd;
+}
+
+.count0>.show>.plus{
+	color:#ddd;
+	background-color: #ddd;
+}
+.plus.plus-close{
+	background-color: #000;
+	color:#fff;
+}
+
+.type_Str .plus,.type_Num .plus{
+	display: none;
+}
+.type_Str .add,.type_Num .add{
+	display: none;
+}
+
+.type_Str .count,.type_Num .count{
+	display: none;
+}
+
+span[contenteditable]{
+	padding:0 5px;
+	display: inline-block;
+}
+span[contenteditable]:focus{
+	color:blue;
+	min-width: 100px;
+	background-color: #fff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>JSON编辑器</h1>
+
+<div style="margin:10px 0;">
+	<button onclick="showAll();">全部显示</button>
+	<button onclick="hideAll();">全部隐藏</button>
+	<button onclick="parseJson();">解析JSON</button>
+</div>
+
+<div id="divPath" style="margin:10px 0;">
+	变量路径：<span>ROOT.</span>
+</div>
+
+<div id="divMain">
+	<div id="divRoot" class="node node-root count0" data-type="Obj" data-level="0" data-count="0">
+		<div class="show">
+			<span class="plus">-</span>
+			<span class="name">ROOT</span><span class="value"></span>
+			<span class="type">Obj</span><span class="count">0</span>
+		</div>
+		<div class="list"></div>
+		<div class="op">
+			<button class="add addStr">+Str</button>
+			<button class="add addNum">+Num</button>
+			<button class="add addArr">+Arr</button>
+			<button class="add addObj">+Obj</button>
+		</div>
+	</div>
+	<textarea id="txtJson"></textarea>
+</div>
+
+
+<div id="divNode" class="node" data-type="Obj" data-count="0">
+	<div class="show">
+		<span class="plus">-</span>
+		<span class="name" contenteditable="plaintext-only">node</span><span class="value" contenteditable="plaintext-only">123</span>
+		<span class="type">Str</span><span class="count">0</span>
+	</div>
+	<div class="list"></div>
+	<div class="op">
+		<button class="add addStr">+Str</button>
+		<button class="add addNum">+Num</button>
+		<button class="add addArr">+Arr</button>
+		<button class="add addObj">+Obj</button>
+		<button class="del">DEL</button>
+	</div>
+</div>
+
+<script>
+
+// 键索引
+var keyIndex = 0;
+
+// obj默认显示键值
+var objKeyList = ['name', 'code', 'no', 'id'];
+
+$(function(){
+
+	$(window).resize(autoHeight);
+	autoHeight();
+
+	document.onkeydown = function(e){
+        if(e.keyCode == 13){
+	        e.preventDefault();//禁用回车的默认事件
+	    }
+	};
+	// 添加
+	$('.add').click(function(){addNode(this)});
+
+	// 删除
+	$('.del').click(function(){delNode(this)});
+
+	// 更新路径
+	$('.node').hover(function(e){
+		e.stopPropagation();
+		let node = $(this);
+		let path = '';
+		while (node.attr('id') != 'divRoot')
+		{
+			if (node[0] == this)
+			{
+				path = node.data('key');
+			}
+			else
+			{
+				path = node.data('key') + ' / ' + path;
+			}
+			node = node.parent().parent();
+		}
+		path = 'ROOT / ' + path;
+		$('#divPath span').html(path);
+	});
+
+	// 隐藏子项
+	$('.plus').click(function(){
+		if ($(this).parent().parent().hasClass('count0'))
+		{
+			return;
+		}
+		if ($(this).html() == '-')
+		{
+			$(this).html('+');
+			$(this).parent().parent().find('>.list').hide();
+			$(this).removeClass('plus-open');
+			$(this).addClass('plus-close');
+		}
+		else
+		{
+			$(this).html('-');
+			$(this).parent().parent().find('>.list').show();
+			$(this).addClass('plus-open');
+			$(this).removeClass('plus-close');
+		}
+	});
+
+	// key 修改判断
+	$('.name').blur(function(){
+		let name = $(this).text();
+		let node = $(this).parent().parent();
+		if (name == '')
+		{
+			$(this).html(node.data('key'));
+			return;
+		}
+
+		node.data('key', name);
+
+		updateObjVal(node.parent().parent());
+	});
+
+	// value 修改判断
+	$('.value').blur(function(){
+		let val = $(this).text();
+		let name = $(this).parent().find('>.name').text();
+		let node = $(this).parent().parent();
+		node.data('val', val);
+		
+		updateObjVal(node.parent().parent());
+	});
+});
+
+function autoHeight()
+{
+	let h = $(window).height() - $('#divMain').offset().top - 5;
+	h = h + 'px';
+	$('#divMain, #divRoot, #txtJson').css('height', h);
+}
+
+// 添加结点
+function addNode(o)
+{
+	let parent = $(o).parent().parent();
+	let node = $('#divNode').clone(true);
+	let level = parent.data('level') + 1;
+	let count = parent.data('count') + 1;
+
+	node.attr('id', '');
+
+	let type = $(o).html().substr(1);
+	node.data('type', type);
+	node.data('level', level);
+	node.addClass('type_' + type);
+	node.addClass('level_' + level % 6);
+	node.find('.type').html(type);
+
+	let defaultVal = '';
+	let val = node.find('.value');
+	switch (type)
+	{
+		case 'Obj':
+			val.removeAttr('contenteditable');
+			node.find('.count').html('0');
+			defaultVal = '';
+			break;
+		case 'Arr':
+			val.removeAttr('contenteditable');
+			node.find('.count').html('0');
+			defaultVal = '';
+			node.data('arr_index', '0');
+			break;
+		case 'Str':
+			defaultVal = 'str';
+			break;
+		case 'Num':
+			defaultVal = '0';
+			break;
+	}
+	val.html(defaultVal);
+	node.data('val', defaultVal);
+
+	// 数组子项无KEY
+	if (parent.data('type') == 'Arr')
+	{
+		let arrIndex = parent.data('arr_index');
+		arrIndex++;
+		parent.data('arr_index', arrIndex);
+		node.data('key', arrIndex);
+		node.find('.name').html(arrIndex);
+		node.find('.name').removeAttr('contenteditable');
+	}
+	else
+	{
+		keyIndex++;
+		let key = 'key_' + keyIndex;
+		node.find('.name').html(key);
+		node.data('key', key);
+	}
+
+	parent.data('count', count);
+	parent.find('>.show>.count').html(count);
+	
+	parent.removeClass('count0');
+	if (type == 'Arr' || type == 'Obj')
+	{
+		node.addClass('count0');
+	}
+
+	parent.find('>.list').append(node);
+	buildJson();
+}
+
+// 删除结点
+function delNode(o)
+{
+	let parent = $(o).parent().parent();
+	let par = parent.parent().parent();
+	let count = par.data('count') - 1;
+
+	par.data('count', count);
+	par.find('>.show>.count').html(count);
+	if (count == 0)
+	{
+		par.addClass('count0');
+	}
+	
+	parent.remove();
+	updateObjVal(par);
+}
+
+// 更新OBJ的快捷显示值
+function updateObjVal(obj)
+{
+	if (obj.data('type') != 'Obj')
+	{
+		buildJson();
+		return;
+	}
+
+	let nodeList = obj.find('>.list>.node');
+	let keyObj = {};
+	for (let i=0; i<nodeList.length; i++)
+	{
+		keyObj[nodeList.eq(i).data('key')] = nodeList.eq(i).data('val');
+	}
+
+	let val = '';
+	for (let k of objKeyList)
+	{
+		if (keyObj[k])
+		{
+			val = keyObj[k];
+			break;
+		}
+	}
+
+	obj.find('>.show>.value').html(val);
+	buildJson();
+}
+
+function buildJson()
+{
+	let obj = getJson($('#divRoot'));
+	let json = JSON.stringify(obj, null, "\t");
+
+	$('#txtJson').val(json);
+}
+
+function getJson(o)
+{
+	let type = $(o).data('type');
+	let obj = null;
+	switch (type)
+	{
+		case 'Obj':
+			obj = {};
+			$(o).find('>.list>.node').each(function(){
+				let k = $(this).find('>.show>.name').text();
+				obj[k] = getJson(this);
+			});
+			break;
+		case 'Arr':
+			obj = [];
+			$(o).find('>.list>.node').each(function(){
+				obj.push(getJson(this));
+			});
+			break;
+		case 'Str':
+			obj = $(o).find('>.show>.value').text();
+			break;
+		case 'Num':
+			let v = $(o).find('>.show>.value').text();
+			obj = parseFloat(v);
+			break;
+		default:
+			obj = $(o).find('>.show>.value').text();
+			break;
+	}
+
+	return obj;
+}
+
+function showAll()
+{
+	$('#divRoot .plus').each(function(){
+		$(this).html('-');
+		$(this).addClass('plus-open');
+		$(this).removeClass('plus-close');
+	});
+
+	$('#divRoot .list').show();
+}
+
+function hideAll()
+{
+	$('#divRoot .plus').each(function(){
+		$(this).html('+');
+		$(this).removeClass('plus-open');
+		$(this).addClass('plus-close');
+	});
+
+	$('#divRoot .list').hide();
+}
+
+function parseJson()
+{
+	let obj = JSON.parse($('#txtJson').val());
+	if (!obj)
+	{
+		alert('JSON解析失败');
+		return;
+	}
+
+	if ((obj instanceof Array))
+	{
+		alert('JSON非OBJ');
+		return;
+	}
+
+	// 清空所有
+	$('#divRoot>.list').html('');
+	$('#divRoot .count').html('0');
+	$('#divRoot').data('count', 0);
+	$('#divRoot').addClass('count0');
+	
+	for (let k in obj)
+	{
+		addJsonNode($('#divRoot'), k, obj[k]);
+	}
+}
+
+function addJsonNode(parent, key, val)
+{
+	let node = $('#divNode').clone(true);
+	let level = parent.data('level') + 1;
+	let count = parent.data('count') + 1;
+
+	// 获取类型
+	let type = 'Str';
+	switch (typeof(val))
+	{
+		case 'string':
+			type = 'Str';
+			break;
+		case 'number':
+			type = 'Num';
+			break;
+		case 'object':
+			type = (val instanceof Array) ? 'Arr' : 'Obj';
+			break;
+	}
+
+	node.attr('id', '');
+
+	node.data('type', type);
+	node.data('level', level);
+	node.addClass('type_' + type);
+	node.addClass('level_' + level % 6);
+	node.find('.type').html(type);
+
+	let curVal = '';
+	switch (type)
+	{
+		case 'Obj':
+			node.find('.value').removeAttr('contenteditable');
+			node.find('.count').html('0');
+			break;
+		case 'Arr':
+			node.find('.value').removeAttr('contenteditable');
+			node.find('.count').html('0');
+			node.data('arr_index', '0');
+			break;
+		case 'Str':
+			curVal = val;
+			break;
+		case 'Num':
+			curVal = parseFloat(val);
+			break;
+	}
+	
+	node.find('.value').html(curVal);
+	node.data('val', curVal);
+
+	// 数组子项无KEY
+	if (parent.data('type') == 'Arr')
+	{
+		parent.data('arr_index', key);
+		node.data('key', key);
+		node.find('.name').html(key);
+		node.find('.name').removeAttr('contenteditable');
+	}
+	else
+	{
+		node.find('.name').html(key);
+		node.data('key', key);
+	}
+
+	parent.data('count', count);
+	parent.find('>.show>.count').html(count);
+	
+	parent.removeClass('count0');
+	if (type == 'Arr' || type == 'Obj')
+	{
+		node.addClass('count0');
+	}
+
+	parent.find('>.list').append(node);
+
+	if (type == 'Arr')
+	{
+		for (let k in val)
+		{
+			addJsonNode(node, parseInt(k) + 1, val[k]);
+		}
+	}
+	else if (type == 'Obj')
+	{
+		for (let k in val)
+		{
+			addJsonNode(node, k, val[k]);
+		}
+	}
+}
+
+</script>
+
+</body>
+</html>
