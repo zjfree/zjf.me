@@ -1,0 +1,142 @@
+<!-- 毛玻璃拖动 zjfree 2021-07-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>毛玻璃拖动</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	padding:0;
+	margin:0;
+	height:100%;
+}
+body{
+	padding:0;
+	margin:0;
+	background: conic-gradient(#eee 25%, white 0deg 50%, #eee 0deg 75%, white 0deg) 0 / 40px 40px;	
+	height:100%;
+}
+.drag {
+    position: absolute;
+    width: 150px; height: 150px;
+    display: grid;
+    place-items:center;
+    border: 1px solid;
+    user-select: none;
+    cursor: move;
+    z-index: 1;
+	backdrop-filter: blur(3px);
+	background:rgba(0,0,0,0.1);
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="div1" style="padding: 1em;">
+	<div class="drag">父范围拖拽</div>
+	<div class="drag" data-nolimit="1">无限制拖拽</div>
+	
+	<div>毛玻璃拖动</div>
+	<div>
+	参考：<a href="https://www.zhangxinxu.com/study/202107/svg-backdrop-filter-blur-demo.php">SVG滤镜实现背景毛玻璃</a>
+	</div>
+	
+	<img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" />
+	
+</div>
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+<script>
+let mousedown = 'mousedown';
+let mousemove = 'mousemove';
+let mouseup = 'mouseup';
+
+if ('ontouchstart' in document) {
+	mousedown = 'touchstart';
+	mousemove = 'touchmove';
+	mouseup = 'touchend';
+}
+
+var store = {
+	el: null,
+	isMoving: false,
+	offsetX: 0,
+	offsetY: 0,
+};
+
+$('.drag').bind(mousedown, function(event){
+	event.preventDefault();
+	event = event.touches && event.touches[0] || event;
+
+	store.el = this;
+	store.y = event.pageY;
+	store.x = event.pageX;
+	store.isMoving = true;
+	store.top = $(this).data('y') || 0;
+	store.left = $(this).data('x') || 0;
+});
+
+document.addEventListener(mousemove, event => {	
+	if (store.isMoving) {
+		event.preventDefault();
+		
+		event = event.touches && event.touches[0] || event;
+		let drag = store.el;
+
+		let distanceY = event.pageY - store.y;
+		let distanceX = event.pageX - store.x;
+		let offsetY = store.top + distanceY;
+		let offsetX = store.left + distanceX;
+
+		if (!drag.dataset.nolimit)
+		{
+			let pw = drag.parentElement.clientWidth;
+			let ph = drag.parentElement.clientHeight;
+			pw -= parseInt(window.getComputedStyle(div1, null)['padding-left']);
+			pw -= parseInt(window.getComputedStyle(div1, null)['padding-right']);
+			ph -= parseInt(window.getComputedStyle(div1, null)['padding-top']);
+			ph -= parseInt(window.getComputedStyle(div1, null)['padding-bottom']);
+
+			if (offsetY < 0) {
+				offsetY = 0;
+			} else if (offsetY + drag.offsetHeight > ph) {
+				offsetY = ph - drag.offsetHeight;
+			}
+			
+			if (offsetX < 0) {
+				offsetX = 0;
+			} else if (offsetX + drag.offsetWidth > pw) {
+				offsetX = pw - drag.offsetWidth;
+			}
+		}
+
+		drag.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+		$(drag).data('x', offsetX);
+		$(drag).data('y', offsetY);
+	}
+}, {
+	passive: false	
+});
+
+document.addEventListener(mouseup, function () {
+	if (store.isMoving) {
+		store.isMoving = false;		
+	}
+});
+</script>
+
+</body>
+</html>
