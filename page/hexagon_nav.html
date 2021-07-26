@@ -1,0 +1,426 @@
+<!-- 六边形导航 zjfree 2021-07-26 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>六边形导航</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/twitter-bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+
+		body {
+			background: rgba(14, 17, 24, 0.97);
+			color: #fff;
+			padding: 10px;
+		}
+
+		.hexagon-item:first-child {
+			margin-left: 0;
+		}
+
+		/* End of container */
+		.hexagon-item {
+			cursor: pointer;
+			width: 200px;
+			height: 173.20508px;
+			float: left;
+			margin-left: -29px;
+			margin-top: -27px;
+			z-index: 0;
+			position: relative;
+			transform: rotate(30deg);
+		}
+		
+		.hexagon-item-1 {
+			margin-left:0;
+		}
+		.hexagon-item-2 {
+			margin-left:85px;
+		}
+
+		.hexagon-item:first-child {
+			margin-left: 0;
+		}
+
+		.hexagon-item:hover {
+			z-index: 1;
+		}
+
+		.hexagon-item:hover .hex-item:last-child {
+			opacity: 1;
+			transform: scale(1.3);
+		}
+
+		.hexagon-item:hover .hex-item:first-child {
+			opacity: 1;
+			transform: scale(1.2);
+		}
+
+		.hexagon-item:hover .hex-item:first-child div:before,
+		.hexagon-item:hover .hex-item:first-child div:after {
+			height: 5px;
+		}
+
+		.hexagon-item:hover .hex-item div::before,
+		.hexagon-item:hover .hex-item div::after {
+			background-color: #0099CD;
+		}
+		
+		.hexagon-item:hover .icon i {
+			color: #0099CD;
+			transition: 0.6s;
+		}
+
+		.hexagon-item:hover .hex-content svg,
+		.hexagon-item:hover .hex-content img {
+			transform: scale(0.97);
+		}
+
+		.page-home .hexagon-item:nth-last-child(1),
+		.page-home .hexagon-item:nth-last-child(2),
+		.page-home .hexagon-item:nth-last-child(3) {
+			transform: rotate(30deg) translate(87px, -80px);
+		}
+
+		.hex-item {
+			position: absolute;
+			top: 0;
+			left: 50px;
+			width: 100px;
+			height: 173.20508px;
+		}
+
+		.hex-item:first-child {
+			z-index: 0;
+			transform: scale(0.9);
+			transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+		}
+
+		.hex-item:last-child {
+			transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+			z-index: 1;
+		}
+
+		.hex-item div {
+			box-sizing: border-box;
+			position: absolute;
+			top: 0;
+			width: 100px;
+			height: 173.20508px;
+			transform-origin: center center;
+		}
+
+		.hex-item div::before,
+		.hex-item div::after {
+			background-color: #1e2530;
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+		}
+
+		.hex-item div:before {
+			top: 0;
+		}
+
+		.hex-item div:after {
+			bottom: 0;
+		}
+
+		.hex-item div:nth-child(1) {
+			transform: rotate(0deg);
+		}
+
+		.hex-item div:nth-child(2) {
+			transform: rotate(60deg);
+		}
+
+		.hex-item div:nth-child(3) {
+			transform: rotate(120deg);
+		}
+
+		.hex-content {
+			color: #fff;
+			display: block;
+			height: 180px;
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+			transform: rotate(-30deg);
+			width: 156px;
+		}
+
+		.hex-content .hex-content-inner {
+			left: 50%;
+			margin: -3px 0 0 2px;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width:100%;
+		}
+
+		.hex-content .icon {
+			display: block;
+			font-size: 36px;
+			line-height: 30px;
+			margin-bottom: 11px;
+		}
+
+		.hex-content .title {
+			display: block;
+			font-family: "Open Sans", sans-serif;
+			font-size: 14px;
+			letter-spacing: 1px;
+			line-height: 24px;
+			text-transform: uppercase;
+		}
+
+		.hex-content svg,
+		.hex-content img {
+			left: -7px;
+			position: absolute;
+			top: -13px;
+			transform: scale(0.87);
+			z-index: -1;
+			transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+		}
+
+		.hex-content:hover {
+			color: #fff;
+		}
+
+		.hexagon-item:first-child {
+			margin-left: 0;
+		}
+
+		.pt-table.desktop-768 .pt-tablecell {
+			padding-bottom: 110px;
+			padding-top: 60px;
+		}
+
+
+		.hexagon-item:hover .title {
+			animation: focus-in-contract 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+		}
+
+		@keyframes focus-in-contract {
+			0% {
+				letter-spacing: 1em;
+				filter: blur(12px);
+				opacity: 0;
+			}
+
+			100% {
+				filter: blur(0px);
+				opacity: 1;
+			}
+		}
+
+		
+
+		@media only screen and (max-width: 767px) {
+			.hexagon-item {
+				float: none;
+				margin: 0 auto 50px;
+			}
+
+			.hexagon-item:first-child {
+				margin-left: auto;
+			}
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1 style="text-align: center;">六边形导航</h1>
+
+	<hr>
+
+	<div style="max-width: 750px; margin:0 auto; margin-top:100px; ">
+
+		<div class="hexagon-menu clear">
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-universal-access"></i>
+						</span>
+						<span class="title">Welcome</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-universal-access"></i>
+						</span>
+						<span class="title">Welcome</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-bullseye"></i>
+						</span>
+						<span class="title">About</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-braille"></i>
+						</span>
+						<span class="title">Services</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+
+			<div class="hexagon-item hexagon-item-2">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-id-badge"></i>
+						</span>
+						<span class="title">Resume</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-life-ring"></i>
+						</span>
+						<span class="title">Works</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-clipboard"></i>
+						</span>
+						<span class="title">Testimonials</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+
+			<div style="clear: both;"></div>
+
+			<div class="hexagon-item hexagon-item-1">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+
+			<div class="hexagon-item hexagon-item-2">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-home"></i>
+						</span>
+						<span class="title">中文测试</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+			<div class="hexagon-item">
+				<a href="" class="hex-content">
+					<span class="hex-content-inner">
+						<span class="icon">
+							<i class="fa fa-map-signs"></i>
+						</span>
+						<span class="title">Contact</span>
+					</span>
+					<img src="../static/img/hexagon.svg" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			// JS
+			let str = '<div class="hex-item"><div></div><div></div><div></div></div>';
+			str += str;
+
+			$('.hexagon-item').prepend(str);
+		});
+	</script>
+
+</body>
+
+</html>
