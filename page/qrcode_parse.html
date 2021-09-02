@@ -1,0 +1,59 @@
+<!-- 二维码识别 zjfree 2021-03-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二维码识别</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/reqrcode.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>二维码识别</h1>
+
+<input type="file" id="newfile">
+</body>
+
+<script>
+var newfile = document.getElementById('newfile');
+var getObjectURL = function (file) {
+	var url = null;
+	if (window.createObjectURL != undefined) { // basic
+		url = window.createObjectURL(file);
+	} else if (window.URL != undefined) { // mozilla(firefox)
+	url = window.URL.createObjectURL(file);
+	} else if (window.webkitURL != undefined) { // webkit or chrome
+		url = window.webkitURL.createObjectURL(file);
+	}
+	return url;
+}
+
+
+newfile.onchange = function () {
+	console.log(getObjectURL(this.files[0]));// newfile[0]是通过input file上传的二维码图片文件
+	qrcode.decode(getObjectURL(this.files[0]));
+	qrcode.callback = function (imgMsg) {
+		alert("二维码解析后内容：" + imgMsg)
+	}
+}
+
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
