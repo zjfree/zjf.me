@@ -18,6 +18,7 @@ body{
 #signMain{
 	border:dashed 1px gray;
 	margin-top:10px;
+	max-width: 600px;
 }
 
 #signature{
@@ -66,7 +67,9 @@ body{
 var sigdiv = null;
 $(function(){
 	// JS
-	sigdiv = $("#signature").jSignature({'lineWidth':3, color:'#33F'});
+	let h = $('#signature').width() * 0.4;
+	$("#signature").css('height', h + 'px');
+	sigdiv = $("#signature").jSignature({'lineWidth':3, color:'#33F', height:h, width:$('#signature').width()});
 	$("#signature").css('height', 'auto');
 });
 
