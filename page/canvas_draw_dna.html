@@ -1,0 +1,280 @@
+<!-- Canvas旋转DNA zjfree 2021-09-09 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas旋转DNA</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+		
+	</div>
+
+	<div id="divTitle">Canvas旋转DNA</div>
+
+	<script>
+
+		var ZTool = {
+			strInfo: '',
+			strInfoTimer: null,
+			fpsList: [],
+			rand: function (min, max, dec) {
+				dec = dec || 0;
+				let val = min + Math.random() * (max - min);
+				return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+			},
+			randColor: function (alpha, ext) {
+				ext = ext || '50%,50%';
+				if (alpha) {
+					return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+				}
+				else {
+					return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+				}
+			},
+			showInfo: function (str) {
+				if (!this.strInfoTimer) {
+					this.strInfoTimer = window.setInterval(function () {
+						if (ZTool.strInfo == '') return;
+						$('#divInfo').html(ZTool.strInfo);
+						ZTool.strInfo = '';
+					}, 100);
+				}
+
+				this.strInfo = str;
+			},
+			fps: function () {
+				let now = Date.now();
+				this.fpsList.push(now);
+				while (now - this.fpsList[0] > 1000) {
+					this.fpsList.shift();
+				}
+				this.showInfo('fps:' + this.fpsList.length);
+			}
+		};
+
+		var CC = {
+			width: 0,
+			height: 0,
+			size: 1,
+			ctx: null,
+			index: 0,
+			isPlay: true,
+			call_fn: null,
+			init: function (el, fn) {
+				this.call_fn = fn;
+				this.width = el.width() * window.devicePixelRatio;
+				this.height = el.height() * window.devicePixelRatio;
+				this.size = Math.min(this.width, this.height) / 100;
+				el.prop('width', this.width);
+				el.prop('height', this.height);
+				this.ctx = el[0].getContext("2d");
+
+				this.ctx.translate(this.width / 2, this.height / 2);
+				this.ctx.scale(1, -1);
+
+				this.clear();
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			stop: function () {
+				this.isPlay = false;
+			},
+			play: function () {
+				this.isPlay = true;
+			},
+			render: function () {
+				if (!this.isPlay) {
+					window.requestAnimationFrame(function () {
+						CC.render();
+					});
+
+					return;
+				}
+
+				// 计算FPS
+				ZTool.fps();
+
+				this.index++;
+				if (this.call_fn) {
+					this.call_fn(this.index);
+				}
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			clear: function () {
+				let s = Math.max(this.width, this.height) * 2;
+				this.ctx.clearRect(-s, -s, s * 2, s * 2);
+			},
+			drawCirle: function (x, y, r, fillStyle, strokeStyle) {
+				fillStyle = fillStyle || '#ddd';
+
+				this.ctx.beginPath();
+				this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+				this.ctx.closePath();
+
+				if (fillStyle) {
+					this.ctx.fillStyle = fillStyle;
+					this.ctx.fill();
+				}
+				if (strokeStyle) {
+					this.ctx.strokeStyle = strokeStyle;
+					this.ctx.stroke();
+				}
+
+			},
+			drawLine: function (x1, y1, x2, y2, strokeStyle, lineWidth) {
+				lineWidth = lineWidth || 1;
+				strokeStyle = strokeStyle || '#f00';
+
+				this.ctx.beginPath();
+				this.ctx.moveTo(x1, y1);
+				this.ctx.lineTo(x2, y2);
+
+				this.ctx.lineWidth = lineWidth;
+				this.ctx.strokeStyle = strokeStyle;
+				this.ctx.stroke();
+			},
+			drawText: function (x1, y1, str, fillStyle, font) {
+				this.ctx.scale(1, -1);
+				y1 = -y1;
+
+				this.ctx.font = font || "16px Verdana";
+				this.ctx.fillStyle = fillStyle || '#fff';
+				this.ctx.fillText(str, x1, y1);
+
+				this.ctx.scale(1, -1);
+			},
+		};
+
+		var PointList = [];
+		var a = 300;
+		var b = 100;
+		
+		function draw() {
+			CC.clear();
+
+			let last = null;
+			for (let k in PointList)
+			{
+				let r = PointList[k];
+				let deg = r.deg;
+				let x1 = r.x + a * Math.cos(deg2rad(deg));
+				let y1 = r.y + b * Math.sin(deg2rad(deg));
+				let x2 = r.x + a * Math.cos(deg2rad(deg-180));
+				let y2 = r.y + b * Math.sin(deg2rad(deg-180));
+
+				r.deg++;
+				PointList[k] = r;
+
+				CC.drawLine(x1, y1, x2, y2, 'hsl(' + (k * 5 % 360) + ', 100%, 50%)', 3);
+				CC.drawCirle(x1, y1, 10, '#AFF');
+				CC.drawCirle(x2, y2, 10, '#FFA');
+				if (last != null)
+				{
+					CC.drawLine(last.x1, last.y1, x1, y1, '#AFF', 10);
+					CC.drawLine(last.x2, last.y2, x2, y2, '#FFA', 10);
+				}
+				last = {
+					x1:x1,
+					y1:y1,
+					x2:x2,
+					y2:y2,
+				};
+			}
+		}
+
+		function deg2rad(deg)
+		{
+			return deg * Math.PI / 180;
+		}
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			CC.init($('#myCanvas'), draw);
+			
+			a = CC.size * 3;
+			b = CC.size * 10;
+			for (let i=-30; i<=30; i++)
+			{
+				PointList.push({
+					id:i,
+					y:0,
+					x:i*CC.size*2,
+					deg:i*10,
+				});
+			}
+		});
+	</script>
+	
+</body>
+</html>
