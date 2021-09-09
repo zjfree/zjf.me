@@ -1,0 +1,97 @@
+<!-- 手写签名 zjfree 2021-09-09 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手写签名</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+#signMain{
+	border:dashed 1px gray;
+	margin-top:10px;
+}
+
+#signature{
+	height: 50vw;
+}
+
+.jSignature{
+	display: block;
+}
+
+#img1{
+	display: none;
+	border:solid 1px gray;
+	margin-top:10px;
+	max-width: 100%;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/jSignature/2.1.3/jSignature.min.js"></script>
+
+</head>
+<body>
+<!-- 内容 -->
+<h1>手写签名</h1>
+
+<div class="tool">
+	<button onclick="sigdiv.jSignature('reset');">清空</button>
+	<button onclick="saveImg();">保存</button>
+	<select id="sel1">
+		<option value="image/png" selected>image/png</option>
+		<option value="image/jpeg">image/jpeg</option>
+		<option value="image/webp">image/webp</option>
+		<option value="svg">svg</option>
+	</select>
+</div>
+
+<div id="signMain">
+	<div id="signature"></div>
+</div>
+
+<img id="img1" />
+
+<script>
+var sigdiv = null;
+$(function(){
+	// JS
+	sigdiv = $("#signature").jSignature({'lineWidth':3, color:'#33F'});
+	$("#signature").css('height', 'auto');
+});
+
+function saveImg()
+{
+	let data = '';
+	let imgType = $('#sel1').val();
+	if (imgType == 'svg')
+	{
+		data = sigdiv.jSignature('getData', 'svg');
+		
+		console.log(data[1].length, data[1]);
+		$('#img1').attr('src', 'data:' + data[0] + ';base64,' + btoa( data[1] ));
+	}
+	else
+	{
+		data = $('.jSignature')[0].toDataURL(imgType);
+		console.log(data.length, data);
+		$('#img1').attr('src', data);
+	}
+
+	$('#img1').show();
+}
+
+</script>
+
+</body>
+</html>
