@@ -55,6 +55,10 @@
 			text-align: right;
 			text-shadow: 0 3px 5px #000;
 		}
+
+		input[type=range]{
+			width:300px;
+		}
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -69,7 +73,19 @@
 	<div id="divInfo"></div>
 
 	<div id="divTool">
-		
+			
+		<span id="lbl_range1">A：<b>0</b></span>
+		<br>
+		<input id="range1" type="range" min="1" max="100000" value="10000" step="1" />
+		<br>
+
+		<span id="lbl_range2">B：<b>0</b></span>
+		<br>
+		<input id="range2" type="range" min="1" max="100000" value="10000" step="1" />
+		<br>
+
+		<button onclick="CC.play();">开始</button>
+		<button onclick="CC.stop();">停止</button>
 	</div>
 
 	<div id="divTitle">Canvas旋转DNA</div>
@@ -214,12 +230,12 @@
 		};
 
 		var PointList = [];
-		var a = 300;
-		var b = 100;
 		
 		function draw() {
 			CC.clear();
 
+			let a = $('#range1').val();
+			let b = $('#range2').val();
 			let last = null;
 			for (let k in PointList)
 			{
@@ -260,10 +276,21 @@
 			$('#myCanvas').css('width', $(window).width() + 'px');
 			$('#myCanvas').css('height', $(window).height() + 'px');
 
+			$('input[type=range]').bind('input', function(){
+				let id = $(this).attr('id');
+				$('#lbl_' + id + ' b').html($(this).val());
+			});
+
 			CC.init($('#myCanvas'), draw);
 			
-			a = CC.size * 3;
-			b = CC.size * 10;
+			$('#range1').val(Math.round(CC.size * 3));
+			$('#range1').attr('max', CC.size * 20);
+			$('#lbl_range1 b').html(Math.round(CC.size * 3));
+			
+			$('#range2').val(Math.round(CC.size * 10));
+			$('#range2').attr('max', CC.size * 20);
+			$('#lbl_range2 b').html(Math.round(CC.size * 10));
+			
 			for (let i=-30; i<=30; i++)
 			{
 				PointList.push({
