@@ -1,0 +1,332 @@
+
+<!-- Canvas星球旋转 zjfree 2021-09-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas星球旋转</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+
+		input[type=range]{
+			width:300px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+			
+		<span id="lbl_range1">比例：<b>2</b></span>
+		<br>
+		<input id="range1" type="range" min="1" max="5" value="2" step="0.1" />
+		<br>
+
+		<span id="lbl_range3">deg：<b>30</b></span>
+		<br>
+		<input id="range3" type="range" min="0" max="360" value="30" step="1" />
+		<br>
+
+		<button onclick="CC.play();">开始</button>
+		<button onclick="CC.stop();">停止</button>
+		<button onclick="rangeBall();">随机位置</button>
+	</div>
+
+	<div id="divTitle">Canvas星球旋转</div>
+
+	<script>
+
+		var ZTool = {
+			strInfo: '',
+			strInfoTimer: null,
+			fpsList: [],
+			rand: function (min, max, dec) {
+				dec = dec || 0;
+				let val = min + Math.random() * (max - min);
+				return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+			},
+			randColor: function (alpha, ext) {
+				ext = ext || '50%,50%';
+				if (alpha) {
+					return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+				}
+				else {
+					return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+				}
+			},
+			showInfo: function (str) {
+				if (!this.strInfoTimer) {
+					this.strInfoTimer = window.setInterval(function () {
+						if (ZTool.strInfo == '') return;
+						$('#divInfo').html(ZTool.strInfo);
+						ZTool.strInfo = '';
+					}, 100);
+				}
+
+				this.strInfo = str;
+			},
+			fps: function () {
+				let now = Date.now();
+				this.fpsList.push(now);
+				while (now - this.fpsList[0] > 1000) {
+					this.fpsList.shift();
+				}
+				this.showInfo('fps:' + this.fpsList.length);
+			}
+		};
+
+		var CC = {
+			width: 0,
+			height: 0,
+			size: 1,
+			ctx: null,
+			index: 0,
+			isPlay: true,
+			call_fn: null,
+			init: function (el, fn) {
+				this.call_fn = fn;
+				this.width = el.width() * window.devicePixelRatio;
+				this.height = el.height() * window.devicePixelRatio;
+				this.size = Math.min(this.width, this.height) / 100;
+				el.prop('width', this.width);
+				el.prop('height', this.height);
+				this.ctx = el[0].getContext("2d");
+
+				this.ctx.translate(this.width / 2, this.height / 2);
+				this.ctx.scale(1, -1);
+
+				this.clear();
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			stop: function () {
+				this.isPlay = false;
+			},
+			play: function () {
+				this.isPlay = true;
+			},
+			render: function () {
+				if (!this.isPlay) {
+					window.requestAnimationFrame(function () {
+						CC.render();
+					});
+
+					return;
+				}
+
+				// 计算FPS
+				ZTool.fps();
+
+				this.index++;
+				if (this.call_fn) {
+					this.call_fn(this.index);
+				}
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			clear: function () {
+				let s = Math.max(this.width, this.height) * 2;
+				this.ctx.clearRect(-s, -s, s * 2, s * 2);
+			},
+			drawCirle: function (x, y, r, fillStyle, strokeStyle) {
+				fillStyle = fillStyle || '#ddd';
+
+				this.ctx.beginPath();
+				this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+				this.ctx.closePath();
+
+				if (fillStyle) {
+					this.ctx.fillStyle = fillStyle;
+					this.ctx.fill();
+				}
+				if (strokeStyle) {
+					this.ctx.strokeStyle = strokeStyle;
+					this.ctx.stroke();
+				}
+
+			},
+			drawLine: function (x1, y1, x2, y2, strokeStyle, lineWidth) {
+				lineWidth = lineWidth || 1;
+				strokeStyle = strokeStyle || '#f00';
+
+				this.ctx.beginPath();
+				this.ctx.moveTo(x1, y1);
+				this.ctx.lineTo(x2, y2);
+
+				this.ctx.lineWidth = lineWidth;
+				this.ctx.strokeStyle = strokeStyle;
+				this.ctx.stroke();
+			},
+			drawText: function (x1, y1, str, fillStyle, font) {
+				this.ctx.scale(1, -1);
+				y1 = -y1;
+
+				this.ctx.font = font || "16px Verdana";
+				this.ctx.fillStyle = fillStyle || '#fff';
+				this.ctx.fillText(str, x1, y1);
+
+				this.ctx.scale(1, -1);
+			},
+		};
+
+		var PointList = [];
+		
+		function draw() {
+			CC.clear();
+
+			let rate = $('#range1').val()/1;
+			let deg = $('#range3').val()/1;
+
+			let step = CC.size*4;
+			let i = 0;
+			for (let r=step; r<CC.size*40; r+=step)
+			{
+				let last = null;
+				for (let d=0; d<=360; d+=5)
+				{
+					let p1 = getEllipsePoint({x:0, y:0}, r, r/rate, d, deg);
+					// CC.drawCirle(p1.x, p1.y, 3, '#AFF');
+					
+					if (last != null)
+					{
+						CC.drawLine(last.x, last.y, p1.x, p1.y, 'rgba(255,255,255,0.5)', 2);
+					}
+
+					last = p1;
+				}
+
+				
+				let p2 = getEllipsePoint({x:0, y:0}, r, r/rate, PointList[i].deg, deg);
+				PointList[i].deg += PointList[i].speed;
+				CC.drawCirle(p2.x, p2.y, PointList[i].size, PointList[i].color);
+
+				i++;
+			}
+			
+			CC.drawCirle(0,0,CC.size*1.5, 'red', '#666');
+		}
+
+		function deg2rad(deg)
+		{
+			return deg * Math.PI / 180;
+		}
+
+		function getEllipsePoint(center, a, b, deg, rotate = 0)
+		{
+			let rad = deg2rad(deg);
+			let x = center.x + a * Math.cos(rad);
+			let y = center.y + b * Math.sin(rad);
+
+			let p1 = {x:x, y:y};
+
+			if (rotate != 0)
+			{
+				p1 = rotatePoint(center, p1, rotate);
+			}
+
+			return p1;
+		}
+
+		function rotatePoint(center, p1, deg)
+		{
+			let rad = deg2rad(deg);
+			let x=(p1.x-center.x)*Math.cos(rad)-(p1.y-center.y)*Math.sin(rad)+center.x;
+			let y=(p1.y-center.y)*Math.cos(rad)+(p1.x-center.x)*Math.sin(rad)+center.y;
+
+			return {x:x, y:y};
+		}
+
+		function rangeBall()
+		{
+			PointList = [];
+			for (let i=0; i<=10; i++)
+			{
+				PointList.push({
+					id:i,
+					speed:0.2 + Math.round(Math.random() * 1),
+					size:5 + Math.round(Math.random() * 5),
+					deg:Math.round(Math.random() * 360),
+					color:ZTool.randColor(0, '100%,50%'),
+				});
+			}
+		}
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			$('input[type=range]').bind('input', function(){
+				let id = $(this).attr('id');
+				$('#lbl_' + id + ' b').html($(this).val());
+			});
+
+			CC.init($('#myCanvas'), draw);
+			rangeBall();
+		});
+	</script>
+	
+</body>
+</html>
