@@ -1,0 +1,424 @@
+
+<!-- Canvas摇杆控制 zjfree 2021-09-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas摇杆控制</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+
+		input[type=range]{
+			width:300px;
+		}
+	</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/nipplejs/0.9.0/nipplejs.min.js"></script>
+	
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+			
+		<div id="divJoystick" style="width:150px; height:150px;"></div>
+		
+	</div>
+
+	<div id="divTitle">Canvas摇杆控制</div>
+
+	<script>
+
+		var ZTool = {
+			strInfo: '',
+			strInfoTimer: null,
+			fpsList: [],
+			rand: function (min, max, dec) {
+				dec = dec || 0;
+				let val = min + Math.random() * (max - min);
+				return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+			},
+			randColor: function (alpha, ext) {
+				ext = ext || '50%,50%';
+				if (alpha) {
+					return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+				}
+				else {
+					return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+				}
+			},
+			showInfo: function (str) {
+				if (!this.strInfoTimer) {
+					this.strInfoTimer = window.setInterval(function () {
+						if (ZTool.strInfo == '') return;
+						$('#divInfo').html(ZTool.strInfo);
+						ZTool.strInfo = '';
+					}, 100);
+				}
+
+				this.strInfo = str;
+			},
+			fps: function () {
+				let now = Date.now();
+				this.fpsList.push(now);
+				while (now - this.fpsList[0] > 1000) {
+					this.fpsList.shift();
+				}
+				this.showInfo('fps:' + this.fpsList.length);
+			}
+		};
+
+		var CC = {
+			width: 0,
+			height: 0,
+			size: 1,
+			ctx: null,
+			index: 0,
+			isPlay: true,
+			call_fn: null,
+			init: function (el, fn) {
+				this.call_fn = fn;
+				this.width = el.width() * window.devicePixelRatio;
+				this.height = el.height() * window.devicePixelRatio;
+				this.size = Math.min(this.width, this.height) / 100;
+				el.prop('width', this.width);
+				el.prop('height', this.height);
+				this.ctx = el[0].getContext("2d");
+
+				this.ctx.translate(this.width / 2, this.height / 2);
+				this.ctx.scale(1, -1);
+
+				this.clear();
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			stop: function () {
+				this.isPlay = false;
+			},
+			play: function () {
+				this.isPlay = true;
+			},
+			render: function () {
+				if (!this.isPlay) {
+					window.requestAnimationFrame(function () {
+						CC.render();
+					});
+
+					return;
+				}
+
+				// 计算FPS
+				ZTool.fps();
+
+				this.index++;
+				if (this.call_fn) {
+					this.call_fn(this.index);
+				}
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			clear: function () {
+				let s = Math.max(this.width, this.height) * 2;
+				this.ctx.clearRect(-s, -s, s * 2, s * 2);
+			},
+			drawCirle: function (x, y, r, fillStyle, strokeStyle) {
+				fillStyle = fillStyle || '#ddd';
+
+				this.ctx.beginPath();
+				this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+				this.ctx.closePath();
+
+				if (fillStyle) {
+					this.ctx.fillStyle = fillStyle;
+					this.ctx.fill();
+				}
+				if (strokeStyle) {
+					this.ctx.strokeStyle = strokeStyle;
+					this.ctx.stroke();
+				}
+
+			},
+			drawLine: function (x1, y1, x2, y2, strokeStyle, lineWidth) {
+				lineWidth = lineWidth || 1;
+				strokeStyle = strokeStyle || '#f00';
+
+				this.ctx.beginPath();
+				this.ctx.moveTo(x1, y1);
+				this.ctx.lineTo(x2, y2);
+
+				this.ctx.lineWidth = lineWidth;
+				this.ctx.strokeStyle = strokeStyle;
+				this.ctx.stroke();
+			},
+			drawText: function (x1, y1, str, fillStyle, font) {
+				this.ctx.scale(1, -1);
+				y1 = -y1;
+
+				this.ctx.font = font || "16px Verdana";
+				this.ctx.fillStyle = fillStyle || '#fff';
+				this.ctx.fillText(str, x1, y1);
+
+				this.ctx.scale(1, -1);
+			},
+		};
+
+		var PointList = [];
+		var PointCur = {};
+		var joystick = null;
+		
+		function draw() {
+			CC.clear();
+
+			let ww = CC.width / 2;
+			let hh = CC.height / 2;
+
+			// 计算控制球位置
+			if (PointCur.speed > 0)
+			{
+				let p1 = goDeg(PointCur.p, PointCur.deg, PointCur.speed);
+				if (p1.x-PointCur.size < -ww || p1.x+PointCur.size > ww)
+				{}
+				else if (p1.y-PointCur.size < -hh || p1.y+PointCur.size > hh)
+				{}
+				else
+				{
+					PointCur.p = p1;
+				}
+			}
+
+			// 画随机点
+			let newList = [];
+			for (let k in PointList)
+			{
+				let r = PointList[k];
+
+				let p1 = goDeg(r.p, r.deg, r.speed);
+				if (p1.x-r.size < -ww || p1.x+r.size > ww)
+				{
+					r.deg = 180 - r.deg;
+				}
+				else if (p1.y-r.size < -hh)
+				{
+					r.deg = r.deg - 180;
+					r.deg = 90 - r.deg + 90;
+				}
+				else if (p1.y+r.size > hh)
+				{
+					r.deg = r.deg - 180;
+					r.deg = 270 - r.deg + 270;
+				}
+				else
+				{
+					r.p = p1;
+				}
+				
+				r.deg = r.deg % 360;
+
+				if (getDist(PointCur.p, r.p) < PointCur.size + r.size)
+				{
+					continue;
+				}
+
+				newList.push(r);
+
+				CC.drawCirle(r.p.x, r.p.y, r.size, r.color);
+			}
+
+			PointList = newList;
+			
+			// 画控制球
+			CC.drawCirle(PointCur.p.x, PointCur.p.y, PointCur.size, 'red', '#fff');
+		}
+
+		function deg2rad(deg)
+		{
+			return deg * Math.PI / 180;
+		}
+
+		function getEllipsePoint(center, a, b, deg, rotate = 0)
+		{
+			let rad = deg2rad(deg);
+			let x = center.x + a * Math.cos(rad);
+			let y = center.y + b * Math.sin(rad);
+
+			let p1 = {x:x, y:y};
+
+			if (rotate != 0)
+			{
+				p1 = rotatePoint(center, p1, rotate);
+			}
+
+			return p1;
+		}
+
+		function rotatePoint(center, p1, deg)
+		{
+			let rad = deg2rad(deg);
+			let x=(p1.x-center.x)*Math.cos(rad)-(p1.y-center.y)*Math.sin(rad)+center.x;
+			let y=(p1.y-center.y)*Math.cos(rad)+(p1.x-center.x)*Math.sin(rad)+center.y;
+
+			return {x:x, y:y};
+		}
+
+		function goDeg(p, deg, dist)
+		{
+			let rad = deg2rad(deg);
+			let p1 = {
+				x: p.x + Math.cos(rad) * dist,
+				y: p.y + Math.sin(rad) * dist,
+			};
+
+			return p1;
+		}
+
+		function getDist(p1, p2)
+		{
+			let dist = Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+			dist = Math.sqrt(dist);
+
+			return dist;
+		}
+
+		function createBall()
+		{
+			if (PointList.length > 30)
+			{
+				return;
+			}
+			
+			let count = 30 - PointList.length;
+			let w = CC.width / 2 - 100;
+			let h = CC.height / 2 - 100;
+
+			for (let i=0; i<=count; i++)
+			{
+				PointList.push({
+					p:{
+						x: Math.round(Math.random() * w * 2) - w,
+						y: Math.round(Math.random() * h * 2) - h,
+					},
+					size:5 + Math.round(Math.random() * 10),
+					color:ZTool.randColor(0, '100%,50%'),
+					deg: Math.round(Math.random() * 360),
+					speed: 0.5 + Math.round(Math.random() * 5),
+				});
+			}
+		}
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			$('input[type=range]').bind('input', function(){
+				let id = $(this).attr('id');
+				$('#lbl_' + id + ' b').html($(this).val());
+			});
+
+			CC.init($('#myCanvas'), draw);
+
+			// 初始化摇杆
+			joystick = nipplejs.create({
+				zone: $('#divJoystick')[0],
+				mode: 'static',
+				position: {
+					left: '50%',
+					top: '50%' 
+				},
+    			color: 'blue' 
+			});
+
+						
+			joystick.on('start end', function (evt, data) {
+				if (evt.type == 'end')
+				{
+					PointCur.speed = 0;
+				}
+			}).on('move', function (evt, data) {
+				if (data.distance < 5) return;
+				PointCur.deg = data.angle.degree;
+				PointCur.speed = (data.distance - 5) / 5;
+			}).on('dir:up plain:up dir:left plain:left dir:down ' +
+			'plain:down dir:right plain:right',
+			function (evt, data) {
+				//console.log(evt, data);
+			}).on('pressure', function (evt, data) {
+				//console.log(evt, data);
+			});
+
+			PointCur = {
+				p:{
+					x: 0,
+					y: 0,
+				},
+				size: 30,
+				deg: 0,
+				speed: 0,
+			};
+
+			window.setInterval(createBall, 1000);
+		});
+	</script>
+	
+</body>
+</html>
