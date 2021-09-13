@@ -1,0 +1,77 @@
+<!-- JS强制横屏显示 zjfree 2021-09-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS强制横屏显示</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	margin:0;
+	padding:0;
+	position: relative;
+}
+
+/*
+ * 强制横屏显示：通过竖屏时旋转解决横屏问题
+ *
+ */
+ @media screen and  (orientation:  portrait){
+    #wrapper {
+		position:absolute;
+        transform: rotate(90deg);
+        transform-origin:0% 0%;
+
+        width: 100vh;/*2.利用 vh 重置 ‘宽度’ */
+        height: 100vw;/* 3.利用 vw 重置 ‘高度’ */
+
+        top: 0;
+        left: 100vw;/* 4.旋转后页面超出屏幕，重置页面定位位置 */
+		overflow:auto;
+    }
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="wrapper">
+	<h1>JS强制横屏显示</h1>
+	<img src="../static/img/fruit.jpg" style="max-width: 100%;" />
+</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+
+//setRem();
+window.addEventListener("onorientationchange" in window ? "orientationchange":"resize",function(){
+	//setRem();
+});
+function setRem(){
+	var html = document.querySelector("html");
+	var width = html.getBoundingClientRect().width;
+	var height = html.getBoundingClientRect().height;
+	//判断横屏
+	if(width < height){
+		//竖屏
+		html.style.fontSize = height/16 +"px";
+	};
+	if(width > height){
+		//横屏
+		html.style.fontSize = width/16 +"px";
+	}
+
+}
+</script>
+
+</body>
+</html>
