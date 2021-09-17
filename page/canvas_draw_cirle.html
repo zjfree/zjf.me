@@ -1,0 +1,319 @@
+<!-- Canvas旋转圆形 zjfree 2021-09-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas旋转圆形</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+
+		input[type=range]{
+			width:300px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+			
+		<span id="lbl_range1">A：<b>20</b></span>
+		<br>
+		<input id="range1" type="range" min="1" max="100" value="20" step="1" />
+		<br>
+
+		<span id="lbl_range2">B：<b>20</b></span>
+		<br>
+		<input id="range2" type="range" min="1" max="100" value="20" step="1" />
+		<br>
+
+		<button onclick="CC.play();">开始</button>
+		<button onclick="CC.stop();">停止</button>
+	</div>
+
+	<div id="divTitle">Canvas旋转圆形</div>
+
+	<script>
+
+		var ZTool = {
+			strInfo: '',
+			strInfoTimer: null,
+			fpsList: [],
+			rand: function (min, max, dec) {
+				dec = dec || 0;
+				let val = min + Math.random() * (max - min);
+				return Math.round(val * Math.pow(10, dec)) / Math.pow(10, dec);
+			},
+			randColor: function (alpha, ext) {
+				ext = ext || '50%,50%';
+				if (alpha) {
+					return 'hsla(' + this.rand(0, 360) + ',' + ext + ',' + (this.rand(0, 100) / 100) + ')';
+				}
+				else {
+					return 'hsl(' + this.rand(0, 360) + ',' + ext + ')';
+				}
+			},
+			showInfo: function (str) {
+				if (!this.strInfoTimer) {
+					this.strInfoTimer = window.setInterval(function () {
+						if (ZTool.strInfo == '') return;
+						$('#divInfo').html(ZTool.strInfo);
+						ZTool.strInfo = '';
+					}, 100);
+				}
+
+				this.strInfo = str;
+			},
+			fps: function () {
+				let now = Date.now();
+				this.fpsList.push(now);
+				while (now - this.fpsList[0] > 1000) {
+					this.fpsList.shift();
+				}
+				this.showInfo('fps:' + this.fpsList.length);
+			}
+		};
+
+		var CC = {
+			width: 0,
+			height: 0,
+			size: 1,
+			ctx: null,
+			index: 0,
+			isPlay: true,
+			call_fn: null,
+			init: function (el, fn) {
+				this.call_fn = fn;
+				this.width = el.width() * window.devicePixelRatio;
+				this.height = el.height() * window.devicePixelRatio;
+				this.size = Math.min(this.width, this.height) / 100;
+				el.prop('width', this.width);
+				el.prop('height', this.height);
+				this.ctx = el[0].getContext("2d");
+
+				this.ctx.translate(this.width / 2, this.height / 2);
+				this.ctx.scale(1, -1);
+
+				this.clear();
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			stop: function () {
+				this.isPlay = false;
+			},
+			play: function () {
+				this.isPlay = true;
+			},
+			render: function () {
+				if (!this.isPlay) {
+					window.requestAnimationFrame(function () {
+						CC.render();
+					});
+
+					return;
+				}
+
+				// 计算FPS
+				ZTool.fps();
+
+				this.index++;
+				if (this.call_fn) {
+					this.call_fn(this.index);
+				}
+
+				window.requestAnimationFrame(function () {
+					CC.render();
+				});
+			},
+			clear: function () {
+				let s = Math.max(this.width, this.height) * 2;
+				this.ctx.clearRect(-s, -s, s * 2, s * 2);
+			},
+			drawCirle: function (x, y, r, fillStyle, strokeStyle) {
+				fillStyle = fillStyle || '#ddd';
+
+				this.ctx.beginPath();
+				this.ctx.arc(x, y, r, 0, 2 * Math.PI);
+				this.ctx.closePath();
+
+				if (fillStyle) {
+					this.ctx.fillStyle = fillStyle;
+					this.ctx.fill();
+				}
+				if (strokeStyle) {
+					this.ctx.strokeStyle = strokeStyle;
+					this.ctx.stroke();
+				}
+
+			},
+			drawLine: function (x1, y1, x2, y2, strokeStyle, lineWidth) {
+				lineWidth = lineWidth || 1;
+				strokeStyle = strokeStyle || '#f00';
+
+				this.ctx.beginPath();
+				this.ctx.moveTo(x1, y1);
+				this.ctx.lineTo(x2, y2);
+
+				this.ctx.lineWidth = lineWidth;
+				this.ctx.strokeStyle = strokeStyle;
+				this.ctx.stroke();
+			},
+			drawText: function (x1, y1, str, fillStyle, font) {
+				this.ctx.scale(1, -1);
+				y1 = -y1;
+
+				this.ctx.font = font || "16px Verdana";
+				this.ctx.fillStyle = fillStyle || '#fff';
+				this.ctx.fillText(str, x1, y1);
+
+				this.ctx.scale(1, -1);
+			},
+		};
+
+		var PointList = [];
+		
+		function draw(index) {
+			CC.clear();
+
+			let a = $('#range1').val();
+			let b = $('#range2').val();
+
+			let last = null;
+			for (let k in PointList)
+			{
+				let r = PointList[k];
+				
+				CC.drawCirle(r.x, r.y, 1, '#666');
+
+				let deg = (index * 2 + r.x + 30 * Math.cos(deg2rad(r.y))) % 360;
+				let rad = deg2rad(deg);
+				let x = r.x + a * Math.cos(rad);
+				let y = r.y + b * Math.sin(rad);
+				
+				CC.drawCirle(x, y, 3, '#fff');
+			}
+		}
+
+		function deg2rad(deg)
+		{
+			return deg * Math.PI / 180;
+		}
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			$('input[type=range]').bind('input', function(){
+				let id = $(this).attr('id');
+				$('#lbl_' + id + ' b').html($(this).val());
+			});
+
+			CC.init($('#myCanvas'), draw);
+			
+			let step = Math.round(Math.max(CC.width, CC.height) / 50);
+			$('#range1').val(step);
+			$('#lbl_range1 b').html(step);
+			
+			$('#range2').val(step);
+			$('#lbl_range2 b').html(step);
+			
+			
+			for (let x=0; x<CC.width / 2; x+=step)
+			{
+				for (let y=0; y<CC.height / 2; y+=step)
+				{
+					PointList.push({
+						x:x,
+						y:y,
+					});
+
+					if (x != 0)
+					{
+						PointList.push({
+							x:-x,
+							y:y,
+						});
+					}
+					
+					if (y != 0)
+					{
+						PointList.push({
+							x:x,
+							y:-y,
+						});
+					}
+
+					if (x != 0 && y != 0)
+					{
+						PointList.push({
+							x:-x,
+							y:-y,
+						});
+					}
+				}
+			}
+		});
+	</script>
+	
+</body>
+</html>
