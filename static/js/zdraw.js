@@ -23,7 +23,7 @@ class ZPoint{
 
     // 在指定角度移动距离
     goDeg(deg, len) {
-        deg = deg * Math.PI / 180;
+        deg = ZTool.deg2rad(deg);
         let x = this.x + Math.cos(deg) * len;
         let y = this.y + Math.sin(deg) * len;
 
@@ -50,6 +50,33 @@ class ZPoint{
     add(p) {
         this.x += p.x;
         this.y += p.y;
+    }
+
+    // 获取椭圆点位置
+    getEllipsePoint(a, b, deg, rotate = 0)
+    {
+        let rad = ZTool.deg2rad(deg);
+        let x = this.x + a * Math.cos(rad);
+        let y = this.y + b * Math.sin(rad);
+
+        let p1 = {x:x, y:y};
+
+        if (rotate != 0)
+        {
+            p1 = rotatePoint(p1, rotate);
+        }
+
+        return p1;
+    }
+
+    // 旋转指定点
+    rotatePoint(p1, deg)
+    {
+        let rad = ZTool.deg2rad(deg);
+        let x = (p1.x-this.x)*Math.cos(rad)-(p1.y-this.y)*Math.sin(rad)+this.x;
+        let y = (p1.y-this.y)*Math.cos(rad)+(p1.x-this.x)*Math.sin(rad)+this.y;
+
+        return {x:x, y:y};
     }
 }
 
@@ -120,6 +147,11 @@ class ZTool{
             + f(d.getHours()) + ':'
             + f(d.getMinutes()) + ':'
             + f(d.getSeconds());
+    }
+
+    static deg2rad(deg)
+    {
+        return deg * Math.PI / 180;
     }
 }
 

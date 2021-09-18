@@ -1,0 +1,176 @@
+<!-- Canvas圆形随机旋转 zjfree 2021-09-18 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas圆形随机旋转</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #fff;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #000;
+		}
+
+		input[type=range]{
+			width:300px;
+		}
+	</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+			
+		<span id="lbl_range1">A：<b>3</b></span>
+		<br>
+		<input id="range1" type="range" min="0" max="30" value="3" step="0.1" />
+		<br>
+
+		<span id="lbl_range2">B：<b>3</b></span>
+		<br>
+		<input id="range2" type="range" min="0" max="30" value="3" step="0.1" />
+		<br>
+
+		<button onclick="draw.play();">开始</button>
+		<button onclick="draw.stop();">停止</button>
+	</div>
+
+	<div id="divTitle">Canvas圆形随机旋转</div>
+
+	<script>
+
+		var draw = null;
+		var PointList = [];
+		
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			$('input[type=range]').bind('input', function(){
+				let id = $(this).attr('id');
+				$('#lbl_' + id + ' b').html($(this).val());
+			});
+
+			draw = new ZDraw($('#myCanvas'), function(index, t){
+				ZTool.fps();
+				draw.clear();
+					
+				let a = $('#range1').val();
+				let b = $('#range2').val();
+
+				for (let k in PointList)
+				{
+					let r = PointList[k];
+					
+					draw.drawCircle(r.p, 1, '#666');
+
+					r.deg = (r.deg + r.speed) % 360;
+					let rad = ZTool.deg2rad(r.deg);
+					let x = r.p.x + (r.a + a) * Math.cos(rad);
+					let y = r.p.y + (r.b + b) * Math.sin(rad);
+					
+					draw.drawCircle({x:x, y:y}, r.size, r.color);
+				}
+			});
+			draw.toCenter();
+
+			draw.mouseDown(function(p){
+				addPoint(p);
+			});
+			
+			let step = Math.round(Math.max(draw.width, draw.height) / 30);
+			for (let x=0; x<draw.width / 2; x+=step)
+			{
+				for (let y=0; y<draw.height / 2; y+=step)
+				{
+					addPoint({x:x, y:y});
+
+					if (x != 0)
+					{
+						addPoint({x:-x, y:y});
+					}
+					
+					if (y != 0)
+					{
+						addPoint({x:x, y:-y});
+					}
+
+					if (x != 0 && y != 0)
+					{
+						addPoint({x:-x, y:-y});
+					}
+				}
+			}
+		});
+
+		function addPoint(p1)
+		{
+			PointList.push({
+				p:p1,
+				a: ZTool.rand(1, draw.size),
+				b: ZTool.rand(1, draw.size),
+				deg: ZTool.rand(0, 360),
+				speed: ZTool.rand(-3, 3, 2),
+				color: ZTool.randColor(),
+				size: ZTool.rand(2, 5),
+			});
+		}
+	</script>
+	
+</body>
+</html>
