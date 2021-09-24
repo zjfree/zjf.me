@@ -1,0 +1,425 @@
+<!-- SVG滤镜 zjfree 2021-09-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG滤镜</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+.img-list img{
+	max-width: 200px;
+	border:solid 1px gray;
+}
+.img-list img:hover{
+	background-color: gray;
+}
+
+svg{
+	border:solid 1px gray;
+}
+
+#tbColorMatrix th{
+	font-weight: normal;
+	font-family: 'Courier New', Courier, monospace;
+}
+#tbColorMatrix th span{
+	color:blue;
+	display: inline-block;
+	width:30px;
+	font-size:12px;
+}
+#tbColorMatrix td{
+	padding-right: 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>SVG滤镜</h1>
+
+<div>
+	<a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element" target="_blank">SVG参考</a><br>
+	<a href="https://apike.ca/prog_svg_filters.html" target="_blank">SVG滤镜参考</a>
+</div>
+
+<h3>原始图片</h3>
+<div class="img-list">
+	<img src="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" />
+	<img src="../static/img/pink_design_03.png" />
+	<img src="../static/img/pink_design_05.png" />
+</div>
+
+<h3>feBlend - 混合滤镜</h3>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="f1">
+      <feFlood result="floodFill" x="0" y="0" width="100%" height="100%" flood-color="green" flood-opacity="1"/>
+      <feBlend in="SourceGraphic" in2="floodFill" mode="multiply"/>
+    </filter>
+  </defs>
+
+  <image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png"  width="100%" height="100%" style="filter:url(#f1);"/>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f2">
+		<feImage width="200" height="200" xlink:href="../static/img/pink_design_03.png" result="img1" />
+		<feBlend in="SourceGraphic" in2="img1" mode="normal"/>
+	  </filter>
+	</defs>
+	<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="100%" height="100%" style="filter:url(#f2);"/>
+	<text x="10" y="25" fill="#000">normal — 正常</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f3">
+		<feImage width="200" height="200" xlink:href="../static/img/pink_design_03.png" result="img1" />
+		<feBlend in="SourceGraphic" in2="img1" mode="multiply"/>
+	  </filter>
+	</defs>
+	<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="100%" height="100%" style="filter:url(#f3);"/>
+	<text x="10" y="25" fill="#000">multiply — 正片叠底</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f4">
+		<feImage width="200" height="200" xlink:href="../static/img/pink_design_03.png" result="img1" />
+		<feBlend in="SourceGraphic" in2="img1" mode="screen"/>
+	  </filter>
+	</defs>
+	<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="100%" height="100%" style="filter:url(#f4);"/>
+	<text x="10" y="25" fill="#000">screen — 滤色</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f5">
+		<feImage width="200" height="200" xlink:href="../static/img/pink_design_03.png" result="img1" />
+		<feBlend in="SourceGraphic" in2="img1" mode="darken"/>
+	  </filter>
+	</defs>
+	<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="100%" height="100%" style="filter:url(#f5);"/>
+	<text x="10" y="25" fill="#000">darken — 变暗</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f6">
+		<feImage width="200" height="200" xlink:href="../static/img/pink_design_03.png" result="img1" />
+		<feBlend in="SourceGraphic" in2="img1" mode="lighten"/>
+	  </filter>
+	</defs>
+	<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" width="100%" height="100%" style="filter:url(#f6);"/>
+	<text x="10" y="25" fill="#000">lighten — 变亮</text>
+</svg>
+
+<h3>feColorMatrix - 颜色滤镜</h3>
+
+<table>
+	<tr>
+		<td>
+			饱和度：<input id="range01" type="range" min="0" max="1" step="0.01" value="1" /><br>
+			<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+				  <filter id="f7">
+					<feColorMatrix type="saturate" values="1" />
+				  </filter>
+				</defs>
+				<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f7);"/>
+				<text x="10" y="25" fill="#000">saturate - 饱和度</text>
+				<text id="txt01" x="10" y="45" fill="#000">1</text>
+			</svg>
+		</td>
+		<td>
+			色相：<input id="range02" type="range" min="0" max="360" step="1" value="0" /><br>
+			<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+				  <filter id="f8">
+					<feColorMatrix type="hueRotate" values="0" />
+				  </filter>
+				</defs>
+				<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f8);"/>
+				<text x="10" y="25" fill="#000">hueRotate - 色相</text>
+				<text id="txt02" x="10" y="45" fill="#000">0</text>
+			</svg>
+		</td>
+		<td>
+			阿尔法通道亮度<br>
+			<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+				  <filter id="f9">
+					<feColorMatrix type="luminanceToAlpha" />
+				  </filter>
+				</defs>
+				<image xlink:href="../static/img/pink_design_05.png" x="0" y="0" width="100%" height="100%"/>
+				<image xlink:href="https://developer.mozilla.org/files/6457/mdn_logo_only_color.png" x="0" y="0" width="100%" height="100%" style="filter:url(#f9);"/>
+				<text x="10" y="25" fill="#000">luminanceToAlpha</text>
+			</svg>
+		</td>
+		<td>
+			颜色矩阵转换<br>
+			<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+				  <filter id="f10">
+					<feColorMatrix type="matrix" values="1 0 0 0 0    0 1 0 0 0    0 0 1 0 0    0 0 0 1 0" />
+				  </filter>
+				</defs>
+				<image xlink:href="../static/img/pink_design_05.png" x="0" y="0" width="100%" height="100%" style="filter:url(#f10);"/>
+				<text x="10" y="25" fill="#000">matrix</text>
+			</svg>
+		</td>
+	</tr>
+</table>
+
+颜色矩阵转换参数：<button onclick="$('#myForm')[0].reset(); setColorMatrix();">重置</button>
+<form id="myForm">
+<table id="tbColorMatrix">
+	<tr>
+		<th>RR:<span></span></th><td><input type="range" value="1" min="-1" max="2" step="0.1" /></td>
+		<th>GR:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>BR:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>AR:<span></span></th><td><input type="range" value="0" min="0"  max="2" step="0.1"/></td>
+		<th>+R:<span></span></th><td><input type="range" value="0" min="-1" max="1" step="0.1"/></td>
+	</tr>
+	<tr>
+		<th>RG:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>GG:<span></span></th><td><input type="range" value="1" min="-1" max="2" step="0.1"/></td>
+		<th>BG:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>AG:<span></span></th><td><input type="range" value="0" min="0"  max="2" step="0.1"/></td>
+		<th>+G:<span></span></th><td><input type="range" value="0" min="-1" max="1" step="0.1"/></td>
+	</tr>
+	<tr>
+		<th>RB:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>GB:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>BB:<span></span></th><td><input type="range" value="1" min="-1" max="2" step="0.1"/></td>
+		<th>AB:<span></span></th><td><input type="range" value="0" min="0"  max="2" step="0.1"/></td>
+		<th>+B:<span></span></th><td><input type="range" value="0" min="-1" max="1" step="0.1"/></td>
+	</tr>
+	<tr>
+		<th>RA:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>GA:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>BA:<span></span></th><td><input type="range" value="0" min="-1" max="2" step="0.1"/></td>
+		<th>AA:<span></span></th><td><input type="range" value="1" min="0"  max="2" step="0.1"/></td>
+		<th>+A:<span></span></th><td><input type="range" value="0" min="-1" max="1" step="0.1"/></td>
+	</tr>
+</table>
+</form>
+
+<h3>feSpecularLighting/feDiffuseLighting 光照滤镜</h3>
+
+<svg class="svg-light" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f11">
+		<feSpecularLighting in="SourceGraphic" specularExponent="100" specularConstant="0.75" lighting-color="#fff" result="spec">
+		  <fePointLight x="100" y="100" z="50" />
+		</feSpecularLighting>
+		<feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+		<text x="10" y="25" fill="#000">feSpecularLighting</text>
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f11);"/>
+</svg>
+
+<svg class="svg-light" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f12">
+		<feDiffuseLighting in="SourceGraphic" specularExponent="100" specularConstant="0.75" lighting-color="#fff" result="spec">
+		  <fePointLight x="100" y="100" z="30" />
+		</feDiffuseLighting>
+		<feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f12);"/>
+	<text x="10" y="25" fill="#000">feDiffuseLighting</text>
+</svg>
+
+<svg class="svg-light" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f13">
+		<feSpecularLighting in="SourceGraphic" specularExponent="100" specularConstant="0.75" lighting-color="#00f" result="spec">
+			<feSpotLight x="100" y="100" z="50" limitingConeAngle="5.5" />
+		</feSpecularLighting>
+		<feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f13);"/>
+	<text x="10" y="25" fill="#000">feSpotLight</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f14">
+		<feSpecularLighting in="SourceGraphic" specularExponent="100" specularConstant="0.75" lighting-color="#00f" result="spec">
+			<feDistantLight azimuth='45' elevation='60'/>
+		</feSpecularLighting>
+		<feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" />
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_05.png" width="100%" height="100%" style="filter:url(#f14);"/>
+	<text x="10" y="25" fill="#000">feDistantLight</text>
+</svg>
+
+<h3>feMorphology 形态滤镜</h3>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f15">
+		<feMorphology operator="erode" radius="0">
+            <animate attributeName="radius" values="0;3;0" dur="3s" repeatCount="indefinite" />
+        </feMorphology>
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_03.png" width="100%" height="100%" style="filter:url(#f15);"/>
+	<text x="100" y="100" fill="#000" style='dominant-baseline:middle;text-anchor:middle;font-size:36px; filter:url(#f15);'>erode</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f16">
+		<feMorphology operator="dilate" radius="0">
+            <animate attributeName="radius" values="0;5;0" dur="3s" repeatCount="indefinite" />
+        </feMorphology>
+	  </filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_03.png" width="100%" height="100%" style="filter:url(#f16);"/>
+	<text x="100" y="100" fill="#000" style='dominant-baseline:middle;text-anchor:middle;font-size:36px;filter:url(#f16);'>dilate</text>
+</svg>
+
+<h3>feTurbulence 湍流滤镜</h3>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f17">
+		<feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1"/>
+	  </filter>
+	  <filter id="f19">
+		<feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1"/>
+		<feDisplacementMap in="SourceGraphic" scale="50"></feDisplacementMap>
+	  </filter>
+	</defs>
+	<rect x="0" y="0" width="200" height="200" fill="#bbb" style="filter:url(#f17);"/>
+	<text x="100" y="100" fill="#000" style='dominant-baseline:middle;text-anchor:middle;font-size:24px;filter:url(#f19);'>fractalNoise</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f18">
+		<feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="1"/>
+	  </filter>
+	  <filter id="f20">
+		<feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="1"/>
+		<feDisplacementMap in="SourceGraphic" scale="50"></feDisplacementMap>
+	  </filter>
+	</defs>
+	<rect x="0" y="0" width="200" height="200" fill="#bbb" style="filter:url(#f18);"/>
+	<text x="100" y="100" fill="#000" style='dominant-baseline:middle;text-anchor:middle;font-size:24px;filter:url(#f20);'>turbulence</text>
+</svg>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+	  <filter id="f21">
+		<feTurbulence type="fractalNoise" baseFrequency='0.04' result='noise' numOctaves="5" />
+        <feDiffuseLighting in='noise' lighting-color='#fff' surfaceScale='2'>
+            <feDistantLight azimuth='45' elevation='60' />
+        </feDiffuseLighting>
+	  </filter>
+	</defs>
+	<rect x="0" y="0" width="200" height="200" fill="#fff" style="filter:url(#f21);"/>
+	<text x="100" y="100" fill="#000" style='dominant-baseline:middle;text-anchor:middle;font-size:24px;'>纸张褶皱</text>
+</svg>
+<br><br>
+基频：<input id="range03" type="range" value="0.01" min="0" max="0.1" step="0.001" style="width:300px;" /> <br>
+八度：<input id="range04" type="range" value="1" min="1" max="10" style="width:300px;" />
+
+<h3>feDisplacementMap 映射置换滤镜</h3>
+
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<filter id="f22" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+			<feTurbulence type="fractalNoise" baseFrequency="0.1 0.1" numOctaves="1" >
+				<animate
+						attributeName="baseFrequency"
+						values="0.1 0.1;0.08 0.01;0.1 0.1"
+						dur="3.5s"
+						repeatCount="indefinite"/>
+			</feTurbulence>
+			<feDisplacementMap in="SourceGraphic" scale="15"></feDisplacementMap>
+		</filter>
+	</defs>
+	<image xlink:href="../static/img/pink_design_03.png" width="100%" height="100%" style="filter:url(#f22);"/>
+</svg>
+
+<h3></h3>
+<h3></h3>
+<h3></h3>
+<h3></h3>
+
+<script>
+$(function(){
+	// JS
+	$('#range01').bind('input', function(){
+		$('#f7 feColorMatrix').attr('values', $(this).val());
+		$('#txt01').html($(this).val());
+	});
+	
+	$('#range02').bind('input', function(){
+		$('#f8 feColorMatrix').attr('values', $(this).val());
+		$('#txt02').html($(this).val());
+	});
+
+	$('#tbColorMatrix input').bind('input', function(){
+		let index = $('#tbColorMatrix input').index(this);
+		$('#tbColorMatrix span').eq(index).html($(this).val());
+		setColorMatrix();
+	});
+	
+	$('#tbColorMatrix input').each(function(){
+		let index = $('#tbColorMatrix input').index(this);
+		$('#tbColorMatrix span').eq(index).html($(this).val());
+	});
+
+	setColorMatrix()
+
+	$('.svg-light').click(function(evt){
+		let x = evt.pageX - $(this).offset().left;
+		let y = evt.pageY - $(this).offset().top;
+
+		$(this).find('fePointLight').attr('x', x).attr('y', y);
+		$(this).find('feSpotLight').attr('x', x).attr('y', y);
+	});
+
+	$('#range03').bind('input', function(){
+		$('feTurbulence').attr('baseFrequency', $(this).val());
+	});
+	$('#range04').bind('input', function(){
+		$('feTurbulence').attr('numOctaves', $(this).val());
+	});
+});
+
+function setColorMatrix()
+{
+	let list = [];
+	$('#tbColorMatrix input').each(function(){
+		list.push($(this).val());
+	});
+
+	$('#f10 feColorMatrix').attr('values', list.join(' '));
+}
+</script>
+
+</body>
+</html>
