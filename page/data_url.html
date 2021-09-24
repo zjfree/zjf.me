@@ -1,0 +1,134 @@
+<!-- DataUrl zjfree 2021-09-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DataUrl</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+img{
+	border:solid 1px gray;
+}
+
+.img10{
+	zoom: 10;
+}
+
+rect:hover{
+	fill:blue;
+	cursor: pointer;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>DataUrl</h1>
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAABNJREFUOMtjGAWjYBSMglFAVwAABXgAAcVQ1XUAAAAASUVORK5CYII=" title="100*100透明PNG" />
+<pre>
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAABNJREFUOMtjGAWjYBSMglFAVwAABXgAAcVQ1XUAAAAASUVORK5CYII=
+</pre>
+
+<img class="img10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=" title="1*1透明PNG" />
+<pre>
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=
+</pre>
+
+<img class="img10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==" title="1*1黑色PNG" />
+<pre>
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==
+</pre>
+
+<img class="img10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==" title="1*1白色PNG" />
+<pre>
+data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX///+nxBvIAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==
+</pre>
+
+<h3>展示 iFrame</h3>
+<iframe id="frm"></iframe>
+<br><br>
+<button onclick="$('#frm').attr('src', 'data:text/html,<html contenteditable></html>');">编辑模式的HTML</button>
+<pre>
+data:text/html,&lt;html contenteditable&gt;&lt;/html&gt;
+</pre>
+
+<button onclick="$('#frm').attr('src', 'data:text/plain,文本输出模式 abc123');">文本输出</button>
+<pre>
+data:text/plain,文本输出模式 abc123
+</pre>
+
+<button onclick="$('#frm').attr('src', 'data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiMwMDA7fQpkaXZ7Y29sb3I6Ymx1ZTt9');">CSS输出</button>
+<pre>
+data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiMwMDA7fQpkaXZ7Y29sb3I6Ymx1ZTt9
+</pre>
+
+<button onclick="$('#frm').attr('src', 'data:text/plain,文本输出模式 abc123');">文本输出</button>
+<pre>
+data:text/plain,文本输出模式 abc123
+</pre>
+
+<button onclick="$('#frm').attr('src', $('#pre_01').text());">JSON输出</button>
+<pre id="pre_01">
+data:application/json,{"a":123, "b":[1,3,4,5]}
+</pre>
+
+<textarea style="width:600px; height:250px; font-size:14px;" id="txt1">
+<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
+<g>
+	<rect height="20" width="20" y="0" x="0"   stroke-width="0" fill="#FFB27C"/>
+	<rect height="20" width="20" y="0" x="20"  stroke-width="0" fill="#FFE7A2"/>
+	<rect height="20" width="20" y="0" x="40"  stroke-width="0" fill="#529D94"/>
+	<rect height="20" width="20" y="20" x="0"  stroke-width="0" fill="#8B4D4B"/>
+	<rect height="20" width="20" y="20" x="20" stroke-width="0" fill="#2D6862"/>
+	<rect height="20" width="20" y="20" x="40" stroke-width="0" fill="#D1FFB4"/>
+	<rect height="20" width="20" y="40" x="0"  stroke-width="0" fill="#6F5C2A"/>
+	<rect height="20" width="20" y="40" x="20" stroke-width="0" fill="#083734"/>
+	<rect height="20" width="20" y="40" x="40" stroke-width="0" fill="#CC7C65"/>
+</g>
+</svg>
+</textarea>
+<br>
+<div id="div2"></div>
+<br>
+<button onclick="svgBackground();">SVG转背景</button>
+<br>
+<div id="div1" style="width:600px; height:300px;"></div>
+
+<script>
+$(function(){
+	// JS
+	svgBackground();
+});
+
+function svgBackground()
+{
+	if ($('#div2').html() == '')
+	{
+		$('#div2').html($('#txt1').val());
+		$('rect').each(function(){
+			$(this).attr('fill', 'hsl(' + Math.round(360 * Math.random()) + ',50%,50%)');
+		});
+	}
+	else
+	{
+		$('#div2').html($('#txt1').val());
+	}
+
+	let str = 'url("data:image/svg+xml;charset=utf-8;base64,' + window.btoa($('#div2').html()) + '")';
+	$('#div1').css('background', str);
+}
+</script>
+
+</body>
+</html>
