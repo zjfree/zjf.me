@@ -1,0 +1,56 @@
+<!-- TTS语音合成 zjfree 2021-09-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TTS语音合成</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>TTS语音合成</h1>
+参考：百度翻译TTS <br>
+https://fanyi.baidu.com/gettts?lan=zh&text=中国加油&spd=5&source=web<br>
+<br>
+播放速度：<br>
+<input id="rangeSpeed" type="range" value="5" min="1" max="7" style="width: 400px;" /><br>
+输入播放文字：
+<div style="margin:10px 0;">
+	<textarea id="txt1" style="width:400px; height: 150px;">中国加油</textarea>
+</div>
+
+<button onclick="playText();">播放</button>
+<br><br>
+<audio id="audio1" controls>
+	<source src="https://fanyi.baidu.com/gettts?lan=zh&text=中国加油&spd=5&source=web" type="audio/mpeg">
+	您的浏览器不支持 audio 元素。
+</audio>
+<script>
+$(function(){
+	// JS
+	
+});
+
+var audio1 = null;
+function playText()
+{
+	$('#audio1').attr('src', 'https://fanyi.baidu.com/gettts?lan=zh&spd=' + $('#rangeSpeed').val() + '&source=web&text=' + $('#txt1').val());
+	audio1 = $('#audio1')[0];
+	audio1.play();
+}
+</script>
+
+</body>
+</html>
