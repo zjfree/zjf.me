@@ -1,0 +1,65 @@
+<!-- 噪音生成器 zjfree 2021-10-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>噪音生成器</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://lib.baomitu.com/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>噪音生成器</h1>
+
+	比例：<input id="range1" type="range" value="50" min="1" max="100" style="width: 300px;" />
+	<br>
+
+	<canvas id="c" width=256 height=256 style="width:512px;height:512px;"></canvas>
+
+	<script>
+		var simplex = new SimplexNoise(),
+			canvas = document.getElementById('c'),
+			ctx = canvas.getContext('2d'),
+			imgdata = ctx.getImageData(0, 0, canvas.width, canvas.height),
+			data = imgdata.data,
+			rate = 50,
+			t = 0;
+
+		window.setInterval(function () {
+			for (var x = 0; x < 256; x++) {
+				for (var y = 0; y < 256; y++) {
+					data[(x + y * 256) * 4 + 0] = simplex.noise3D(x / rate, y / rate, t / rate) * 255;
+					data[(x + y * 256) * 4 + 1] = simplex.noise3D(t / rate, x / rate, y / rate) * 255;
+					data[(x + y * 256) * 4 + 2] = simplex.noise3D(y / rate, t / rate, x / rate) * 255;
+					data[(x + y * 256) * 4 + 3] = 255;
+				}
+			}
+			t++;
+			ctx.putImageData(imgdata, 0, 0);
+		}, 1000 / 60);
+		
+		$(function () {
+			// JS
+			$('#range1').bind('input', function(){
+				rate = parseInt($(this).val());
+			});
+		});
+	</script>
+
+</body>
+
+</html>
