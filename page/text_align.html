@@ -1,0 +1,105 @@
+<!-- 文字对齐 zjfree 2021-10-26 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文字对齐</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+.divText{
+	width: 15%;
+	height: 10vw;
+	border:solid 1px gray;
+	padding: 10px;
+	margin: 0 10px 10px 0;
+	float: left;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>文字对齐</h1>
+
+<div>
+	<div class="divText" style="text-align: left;">
+		左上<br>text-align: left;
+	</div>
+	<div class="divText" style="text-align: center;">
+		中上<br>text-align: center;
+	</div>
+	<div class="divText" style="text-align: right;">
+		右上<br>text-align: right;
+	</div>
+	<div style="clear: both;"></div>
+	<div class="divText" style="display: flex; justify-content: flex-start; align-items: center; text-align: left;">
+		左中<br>
+		display: flex;<br>
+		justify-content: flex-start;<br>
+		align-items: center;<br>
+		text-align: left;
+	</div>
+	<div class="divText" style="display: flex; justify-content: center; align-items: center; text-align: center;">
+		中中<br>
+		display: flex;<br>
+		justify-content: center;<br>
+		align-items: center;<br>
+		text-align: center;
+	</div>
+	<div class="divText flex-middle" style="display: flex; justify-content: flex-end; align-items: center; text-align: right;">
+		右中<br>
+		display: flex;<br>
+		justify-content: flex-end;<br>
+		align-items: center;<br>
+		text-align: right;
+	</div>
+	<div style="clear: both;"></div>
+	<div class="divText" style="display: flex; justify-content: flex-start; align-items: flex-end; text-align: left;">
+		左下<br>
+		display: flex;<br>
+		justify-content: flex-start;<br>
+		align-items: center;<br>
+		text-align: left;
+	</div>
+	<div class="divText" style="display: flex; justify-content: center; align-items: flex-end; text-align: center;">
+		中下<br>
+		display: flex;<br>
+		justify-content: center;<br>
+		align-items: center;<br>
+		text-align: center;
+	</div>
+	<div class="divText flex-middle" style="display: flex; justify-content: flex-end; align-items: flex-end; text-align: right;">
+		右下<br>
+		display: flex;<br>
+		justify-content: flex-end;<br>
+		align-items: center;<br>
+		text-align: right;
+	</div>
+	<div style="clear: both;"></div>
+	<div class="divText" style="text-align:justify;">
+		文字两端对齐
+		<i style="display: inline-block; width: 100%;"></i>
+		text-align: justify;
+	</div>
+</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
