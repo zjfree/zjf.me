@@ -1,0 +1,229 @@
+<!-- 正交投影计算 zjfree 2021-11-08 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正交投影计算</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+
+<style>
+	/* css style */
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	body {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	#divTool {
+		position: absolute;
+		bottom: 10px;
+		left: 10px;
+		font-size: 12px;
+	}
+
+	#divInfo {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		font-size: 12px;
+		color: #fff;
+	}
+
+	input[type=range]{
+		width: 300px;
+	}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/wagerfield/axonometric-projection.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+
+<canvas id="myCanvas">
+	Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<div id="divInfo"></div>
+
+<div id="divTool">
+	参考：<a target="_blank" href="https://github.com/wagerfield/axonometric-projection">https://github.com/wagerfield/axonometric-projection</a><br>
+	<br>
+	旋转：<label id="range1val">0</label> <br>
+	<input id="range1" type="range" min="0" max="360" value="0" /><br>
+
+	视角：<label id="range2val">-30</label> <br>
+	<input id="range2" type="range" min="-100" max="100" value="-30" /><br>
+</div>
+
+<script>
+
+var scene = new AP.Scene();
+var ctx = null;
+var sceneDeg = 45;
+
+$(function(){
+	// JS
+	var el = $('#myCanvas');
+	el.css('width', $(window).width() + 'px');
+	el.css('height', $(window).height() + 'px');
+
+	let ratio = window.devicePixelRatio;
+	let width = el.width() * ratio;
+	let height = el.height() * ratio;
+	el.prop('width', width);
+	el.prop('height', height);
+
+	// Create instance variables.
+	var canvas = document.getElementById('myCanvas');
+	ctx = canvas.getContext('2d');
+	ctx.width = width;
+	ctx.height = height;
+
+	// Configure the scene.
+	scene.setOrigin(width/2, height/2);
+	scene.rotate(0);
+	scene.pitch(-30);
+
+	//scene.addChild(createSide());
+
+	scene.addChild(createSide(0, -50, 0, 50));
+	scene.addChild(createSide(90, 50, 0, -50));
+	scene.addChild(createSide(0, -50, 0, -50));
+	scene.addChild(createSide(90, -50, 0, -50));
+
+	for (let i=0; i<360; i+=20)
+	{
+		scene.addChild(createSide(i, 300, 0));
+	}
+
+	scene.addChild(createCube(-300, 0, 0));
+	scene.addChild(createCube(-300, 200, 0, 30));
+	scene.addChild(createCube(-300, 200, 200, -30));
+
+	// Project the nodes in the scene.
+	// scene.projectNodes();
+
+	// Draw the result to the canvas.
+	draw();
+
+	//window.setInterval(draw, 100);
+	$('#range1').bind('input', function(){
+		$('#range1val').html($(this).val());
+		draw();
+	});
+	$('#range2').bind('input', function(){
+		$('#range2val').html($(this).val());
+		draw();
+	});
+});
+
+function createCube(x=0, y=0, z=0, deg=0)
+{
+	let nodeA = new AP.Node();
+
+	nodeA.x = x;
+	nodeA.y = y;
+	nodeA.z = z;
+	nodeA.localRotation = false;
+	nodeA.rotate(0, deg, 0);
+
+	nodeA.addChild(createSide(0, -50, 0, 50));
+	nodeA.addChild(createSide(90, 50, 0, -50));
+	nodeA.addChild(createSide(0, -50, 0, -50));
+	nodeA.addChild(createSide(90, -50, 0, -50));
+
+	return nodeA;
+}
+
+function createSide(deg=0, x=0, y=0, z=0)
+{
+	let nodeA = new AP.Node();
+	nodeA.color = randColor();
+	//nodeA.translate(x, y, z);
+	nodeA.x = x;
+	nodeA.y = y;
+	nodeA.z = z;
+	nodeA.rotate(0, deg, 0);
+
+	let n1 = new AP.Node();
+	nodeA.addChild(n1);
+	n1.translate(0, 0, 0);
+
+	let n2 = new AP.Node();
+	nodeA.addChild(n2);
+	n2.translate(100, 0, 0);
+
+	let n3 = new AP.Node();
+	nodeA.addChild(n3);
+	n3.translate(100, 100, 0);
+
+	let n4 = new AP.Node();
+	nodeA.addChild(n4);
+	n4.translate(0, 100, 0);
+
+	return nodeA;
+}
+
+function randColor()
+{
+	return 'hsl(' + Math.round(360 * Math.random()) + ',100%,40%)';
+}
+
+function draw()
+{
+	ctx.clearRect(0,0,ctx.width,ctx.height);
+	scene.sortNodes();
+	scene.rotate($('#range1').val());
+	scene.pitch($('#range2').val());
+	scene.projectNodes();
+	for (let k in scene.children)
+	{
+		let node = scene.children[k];
+		drawSide(node);
+	}
+}
+
+function drawSide(node)
+{
+	if (node.children.length == 0)
+	{
+		ctx.lineTo(node.px, node.py);
+		return;
+	}
+	
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = '#000';
+	ctx.fillStyle = node.color;
+
+	ctx.beginPath();
+	ctx.moveTo(node.px, node.py);
+	for (let k in node.children)
+	{
+		let node1 = node.children[k];
+		drawSide(node1);
+	}
+	ctx.closePath();
+
+	ctx.fill();
+	ctx.stroke();
+}
+
+</script>
+
+</body>
+</html>
