@@ -209,6 +209,7 @@ function drawSide(node)
 	ctx.lineWidth = 3;
 	ctx.strokeStyle = '#000';
 	ctx.fillStyle = node.color;
+	ctx.lineJoin = "round";
 
 	ctx.beginPath();
 	ctx.moveTo(node.px, node.py);
