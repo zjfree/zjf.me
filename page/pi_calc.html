@@ -1,0 +1,135 @@
+<!-- PI的计算 zjfree 2021-12-01 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PI的计算</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>PI的计算</h1>
+
+<h3>π的莱布尼茨公式</h3>
+<div style="line-height: 2;">
+	参考：<a target="_blank" href="https://blog.csdn.net/zp235711/article/details/91491020">https://blog.csdn.net/zp235711/article/details/91491020</a>
+	<br>
+	π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - ...
+	<br>
+	Math.IP = <b id="bPI"></b>
+</div>
+<hr>
+<div>
+	计算次数：
+	<input id="numCount" type="number" value="10000000" min="1" />
+	&nbsp;
+	<button onclick="calcPi();">计算PI</button>
+	&emsp;
+	<label>
+		<input id="chkWorker" type="checkbox" checked value="1" >
+		使用worker计算（异步多线程）
+	</label>
+</div>
+<div id="divInfo" style="margin-top: 10px; font-size: 14px; line-height: 1.5;"></div>
+
+<script id="myWorker" type="app/worker">
+	self.addEventListener('message', function(e){
+		let count = e.data;
+		let pi = 0;
+		let bo = 1;
+		for (let i=0; i<count; i++)
+		{
+			pi += bo * 1 / (i*2+1);
+			bo *= -1;
+		}
+		pi = pi * 4;
+
+		self.postMessage({pi:pi, count:count});
+	});
+</script>
+
+<script>
+var myWorker = null;
+var workerData = new Blob([document.getElementById('myWorker').textContent],{
+	type:'text/javascript'
+});
+
+function showInfo(str)
+{
+	$('#divInfo').prepend('<div>' + str + '</div>');
+}
+
+var t1 = 0;
+function calcPi()
+{
+	if (t1 > 0) return;
+
+	showInfo('开始计算PI...');
+	
+	t1 = performance.now();
+	let count = parseInt($('#numCount').val());
+	if ($('#chkWorker')[0].checked)
+	{
+		myWorker.postMessage(count);
+		return;
+	}
+	
+	let pi = 0;
+	let bo = 1;
+	for (let i=0; i<count; i++)
+	{
+		pi += bo * 1 / (i*2+1);
+		bo *= -1;
+	}
+	pi = pi * 4;
+
+	calcPiBack({pi:pi, count:count});
+}
+
+function calcPiBack(res)
+{
+	let pi = res.pi;
+	let count = res.count;
+	let ms = Math.round(performance.now() - t1);
+	let rawPI = '' + Math.PI;
+	let curPI = '' + pi;
+	let sameCount = -2;
+	for (let i=0; i<rawPI.length; i++)
+	{
+		if (rawPI[i] != curPI[i])
+		{
+			break;
+		}
+		sameCount++;
+	}
+
+	let str = 'PI=' + pi + '&emsp; 精度：' + sameCount + '&emsp; 计算次数：' + count + '&emsp; 用时：' + ms + 'ms';
+	showInfo(str);
+	t1 = 0;
+}
+
+$(function(){
+	// JS
+	myWorker = new Worker(window.URL.createObjectURL(workerData));
+	myWorker.addEventListener('message', function(e){
+		calcPiBack(e.data);
+	}, false);
+
+	$('#bPI').html(Math.PI);
+});
+</script>
+
+</body>
+</html>
