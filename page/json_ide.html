@@ -1,0 +1,99 @@
+<!-- JSON代码编辑 zjfree 2021-12-10 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JSON代码编辑</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+		
+	<script src="https://lib.baomitu.com/codemirror/5.62.2/codemirror.min.js"></script>
+	<link href="https://lib.baomitu.com/codemirror/5.62.2/codemirror.min.css" rel="stylesheet">
+	<link href="https://lib.baomitu.com/codemirror/5.62.2/theme/material-ocean.min.css" rel="stylesheet">
+	<script src="https://lib.baomitu.com/codemirror/5.62.2/mode/javascript/javascript.min.js"></script>
+
+	<style>
+		/* css style */
+		body{
+			margin:0 10px;
+		}
+		.CodeMirror{
+			border:solid 1px #000;
+			font-size:16px;
+			font-family: Consolas, verdana,arial,sans-serif,'Courier New', Courier, monospace, '微软雅黑';
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h3>JSON代码编辑</h3>
+
+	<div style="margin-bottom: 10px;">
+		<button onclick="saveConfig();" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> 保存</button>
+		&emsp; <span>光标位置：<b id="bline">0</b>,<b id="bcolumn">0</b></span>
+	</div>
+	
+	<textarea id="txtEditor">{"a":123, "b":[1,"abc",true]}</textarea>
+	
+	<script>
+	var editor = null;
+	$(function(){
+		let h = document.documentElement.clientHeight - $('#txtEditor').offset().top - 10;
+		h = Math.max(h, 500);
+	
+		window.setInterval(function(){
+			let cur = editor.getCursor();
+			$('#bline').html(cur.line+1);
+			$('#bcolumn').html(cur.ch);
+		}, 100);
+	
+		editor = CodeMirror.fromTextArea(document.getElementById("txtEditor"), {
+			lineNumbers: true,
+			styleActiveLine: true, // 当前行背景高亮
+			matchBrackets: true,   // 括号匹配
+			mode: {name: "javascript", json: true},
+			theme:'material-ocean',
+		});
+	
+		editor.setSize('100%', h + 'px');
+	});
+	
+	function saveConfig()
+	{
+		editor.save();
+		let txt = $('#txtEditor').val();
+		txt = $.trim(txt);
+		if (txt == '')
+		{
+			alert('未输入配置内容');
+			return;
+		}
+	
+		let content = '';
+		try{
+			let obj = JSON.parse(txt);
+			// content = JSON.stringify(obj, null, '\t');
+			content = JSON.stringify(obj, null, '  ');
+		}
+		catch(err)
+		{
+			console.log(err);
+			alert('JSON解析失败！' + err.message);
+			return;
+		}
+	
+		console.log('json内容：', content);
+		alert(content);
+	}
+	
+	</script>
+	
+
+</body>
