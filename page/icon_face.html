@@ -1,0 +1,56 @@
+<!-- 图标资源01 zjfree 2022-02-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>图标资源01</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+#div1 img{
+	display: block;
+	float: left;
+	border: solid 1px #ddd;
+	margin:5px;
+	width:45px;
+	height:45px;
+	border-radius: 5px;
+}
+#div1 img:hover{
+	border: solid 1px #000;
+	background-color: #ffd;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>图标资源01</h1>
+<div>
+	来自百度评论图标
+</div>
+<hr>
+
+<div id="div1"></div>
+
+<script>
+$(function(){
+	// JS
+	for (let i=1; i<256; i++)
+	{
+		$('#div1').append('<img src="https://mbdp03.bdstatic.com/sdks/emoticon/img/face_' + (i < 10 ? '0' + i : i) + '.png" />');
+	}
+});
+</script>
+
+</body>
+</html>
