@@ -1,0 +1,150 @@
+<!-- HTML5-draggable(拖放) zjfree 2022-04-11 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML5-draggable(拖放)</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		.dragMain {
+			float: left;
+			width: 300px;
+			height: 300px;
+			margin: 10px;
+			padding: 10px;
+			border: 3px solid #aaa;
+		}
+
+		[draggable="true"] {
+			user-select: none;
+			position: relative;
+		}
+
+		[draggable="true"] * {
+			pointer-events: none;
+		}
+
+		.draghover {
+			outline: solid 1px #000;
+		}
+
+		.draghover::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			padding: 10px;
+			background-color: rgba(0, 0, 0, .3);
+		}
+
+		p {
+			border: 1px solid #aaa;
+			margin: 0;
+			width: 200px;
+			margin: 5px 0;
+			background-color: #eff;
+			padding: 5px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<!-- 内容 -->
+	<h1>HTML5 draggable 拖动、排序、移动位置</h1>
+	<label>
+		<input id="chkPosition" type="checkbox" value="1" /> 拖动移动位置
+	</label>
+	<hr>
+	<div class="dragMain">
+		<img src="http://www.w3school.com.cn/i/w3school_logo_black.gif" draggable="true" />
+		<img src="http://www.w3school.com.cn/i/w3school_logo_black.gif" draggable="true" />
+		<p draggable="true">hello 123</p>
+		<p draggable="true">hello 456</p>
+		<p draggable="true">hello 789</p>
+		<p draggable="true">中文123</p>
+		<p draggable="true">xxxxoooo <span style="color:red;">TTTT</span></p>
+	</div>
+
+	<div class="dragMain"></div>
+	<div class="dragMain"></div>
+
+	<script type="text/javascript">
+		/// 开始拖动
+		var curDragTarget = null;
+		var x = 0, y = 0;
+		document.addEventListener('dragstart', function drag(ev) {
+			console.log('start', ev);
+			x = ev.pageX;
+			y = ev.pageY;
+			ev.dataTransfer.effectAllowed = "move";
+			curDragTarget = ev.target;
+			ev.target.classList.add("draghover");
+
+			// 设置拖动传递的数据
+			// ev.dataTransfer.setData("Text", ev.target.id);
+		});
+		document.addEventListener('dragend', function drag(ev) {
+			ev.target.classList.remove("draghover");
+
+			// 设置拖动传递的数据
+			// ev.dataTransfer.setData("Text", ev.target.id);
+		});
+
+		/// 允许接受拖动释放
+		document.querySelectorAll('.dragMain').forEach(function (el) {
+			el.addEventListener('dragover', function drag(ev) {
+				ev.preventDefault();
+				ev.dataTransfer.dropEffect = 'move';
+			});
+		});
+
+		/// 拖动释放
+		document.querySelectorAll('.dragMain').forEach(function (el) {
+			el.addEventListener('drop', function drop(ev) {
+				ev.preventDefault();
+
+				// 过滤未知拖动内容
+				if (curDragTarget == null) return;
+
+				if (document.getElementById('chkPosition').checked) {
+					let x1 = ev.pageX - x + parseInt(curDragTarget.dataset.x || 0);
+					let y1 = ev.pageY - y + parseInt(curDragTarget.dataset.y || 0);
+					curDragTarget.style.transform = 'translate(' + x1 + 'px, ' + y1 + 'px)';
+					curDragTarget.dataset.x = x1;
+					curDragTarget.dataset.y = y1;
+				}
+				else {
+					curDragTarget.style.transform = 'translate(0, 0)';
+					if (ev.target.draggable) {
+						// 拖动到其他可拖动节点上了，插入到目标节点前面
+						ev.target.parentNode.insertBefore(curDragTarget, ev.target)
+					}
+					else {
+						// 添加到容器尾部
+						ev.target.appendChild(curDragTarget);
+					}
+				}
+
+				curDragTarget = null;
+
+				//获取拖动数据
+				// let data = ev.dataTransfer.getData("Text"); 
+			});
+		});
+
+	</script>
+</body>
+</html>
