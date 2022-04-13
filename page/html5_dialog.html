@@ -1,0 +1,120 @@
+<!-- HTML5弹出框 zjfree 2021-04-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HTML5弹出框</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+dialog{
+	border:solid 5px rgba(0,0,0,0.5);
+	box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+	background-color: #fff;
+	min-width: 300px;
+	max-width: 100%;
+	max-height: 100vh;
+	padding:0;
+	overflow-y: auto;
+	resize: both;
+	position: fixed;
+}
+dialog .msg-close{
+	font-size: 2rem;
+	font-weight: bold;
+	position:absolute;
+	top:-4px;
+	right:5px;
+	color:#666;
+	line-height: 1;
+	cursor: pointer;
+	text-shadow: 0 0 3px #fff;
+}
+dialog .msg-close:hover{
+	color:#000;
+}
+dialog::backdrop{
+	background: rgba(0,0,50,0.1);
+	box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+}
+dialog>iframe{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+dialog>h3{
+	margin: 0; 
+	padding:5px 10px; 
+	border-bottom:solid 1px gray;
+	background-color: #eee;
+}
+dialog>div{
+	margin:10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>HTML5弹出框</h1>
+
+<button onclick="$('#dialogMsg')[0].show();">弹出框</button>
+<button onclick="$('#dialogMsg')[0].showModal();">顶层模式弹出框</button>
+<button onclick="showDialogFrame('http://www.cnblogs.com');">iframe弹出框</button>
+&nbsp;
+<a href="http://www.cnblogs.com" target="frame">连接弹出框</a>
+
+<div style="height: 500px;"></div>
+<button onclick="$('#dialogMsg')[0].show();">弹出框</button>
+<button onclick="$('#dialogMsg')[0].showModal();">顶层模式弹出框</button>
+
+<div style="height: 1000px;"></div>
+为了添加添加body滚动条
+
+<dialog id="dialogMsg">
+	<h3>弹框提示</h3>
+	<div>
+		弹出框提示内容
+	</div>
+</dialog>
+<dialog id="dialogFrame" style="width: 50vw; height: 90vh;">
+	<iframe scrolling="auto" allowtransparency="true" frameborder="0"></iframe>
+</dialog>
+
+<script>
+$(function(){
+	// JS
+	$('dialog').append('<a class="msg-close">&times;</a>');
+	$('dialog .msg-close').click(function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		$(this).parent().find('iframe').prop('src', '');
+		this.parentNode.close();
+	});
+	$('a[target=frame]').click(function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		showDialogFrame($(this).attr('href'));
+		return false;
+	});
+});
+
+function showDialogFrame(url)
+{
+	$('#dialogFrame').find('iframe').prop('src', url);
+	$('#dialogFrame')[0].showModal();
+}
+</script>
+
+</body>
+</html>
