@@ -1,0 +1,192 @@
+<!-- CSS3球体旋转 zjfree 2022-04-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS3球体旋转</title>
+
+  <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+  <style>
+    /* css style */
+    :root {
+      --w: 50%;
+      --rw: 95%;
+      --rleft: 10%;
+      --rcolor: 10deg;
+    }
+
+    body {
+      padding: 0 10px;
+    }
+
+    .circle {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      margin: 100px;
+      border: dashed 2px gray;
+      border-radius: 50%;
+    }
+
+    .circle div {
+      mix-blend-mode: difference;
+      position: absolute;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .circle *::after {
+      content: '';
+      mix-blend-mode: difference;
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 0, 0, 0.5);
+      z-index: 2;
+      top: 0;
+      right: 0;
+      width: var(--w);
+      height: var(--w);
+      border-radius: 50%;
+    }
+
+    .circle div {
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 50%;
+    }
+
+    .circle>div {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes spin {
+      0% {
+        filter: hue-rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .circle-repeat {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      border: solid 1px gray;
+      border-radius: 50%;
+      margin: 20px;
+      margin-left: 200px;
+    }
+
+    .circle-repeat div {
+      position: relative;
+      top: var(--rleft);
+      left: var(--rleft);
+      width: var(--rw);
+      height: var(--rw);
+      border-radius: 50%;
+      filter: hue-rotate(var(--rcolor));
+      transform: rotate(18deg);
+      border-radius: 50%;
+      mix-blend-mode: difference;
+      background-color: rgba(255, 0, 0, 1);
+      border: solid 1px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+  <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- 内容 -->
+  <h1>CSS3球体旋转</h1>
+  <hr>
+  大小：<span id="span_w">50</span>%
+  <br>
+  <input type="range" data-bind="w" value="50" min="5" max="100" style="width:400px;" />
+
+  <div class="circle">
+    <div>
+      <div>
+        <div></div>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+    <div>
+      <div>
+        <div></div>
+      </div>
+      <div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="circle">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <hr>
+  大小：<span id="span_rw">95</span>%
+  <br>
+  <input type="range" data-bind="rw" data-unit="%" value="95" min="50" max="100" style="width:400px;" /><br>
+
+  偏移：<span id="span_rleft">10</span>%
+  <br>
+  <input type="range" data-bind="rleft" data-unit="%" value="10" min="0" max="20" step="0.1" style="width:400px;" /><br>
+
+  颜色：<span id="span_rcolor">10</span>deg
+  <br>
+  <input type="range" data-bind="rcolor" data-unit="deg" value="10" min="1" max="60" style="width:400px;" /><br>
+  <button onclick="$('.circle-repeat div:last-child').last().append('<div></div>');">添加</button>
+  &nbsp;
+  <label>
+    <input type="checkbox" onchange="$('.circle-repeat').css('overflow', this.checked?'hidden':'visible');" /> 超出隐藏
+  </label>
+
+  <div class="circle-repeat">
+    <div>
+      <div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // JS
+      $('input[type=range]').on('input', function () {
+        let val = $(this).val();
+        let tag = $(this).data('bind');
+        $('#span_' + tag).html(val);
+        document.body.style.setProperty('--' + tag, val + $(this).data('unit'));
+      });
+
+      $('.circle div').each(function () {
+        let s = 2 + Math.random() * 10;
+        $(this).css('animation', 'spin ' + s + 's linear infinite' + (Math.random() < 0.5 ? ' reverse' : ''));
+      });
+    });
+  </script>
+
+</body>
+
+</html>
