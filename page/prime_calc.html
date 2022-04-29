@@ -1,0 +1,177 @@
+<!-- 素数计算 zjfree 2022-04-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>素数计算</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+#divResult{
+	border-top:solid 1px gray;
+	padding:5px 0;
+}
+
+#divNumList{
+	margin-top:10px;
+	padding:5px;
+	max-width: 100%;
+	word-break: break-all;
+	font-size: 12px;
+	border-top:solid 1px gray;
+	display: none;
+}
+#divNumList span{
+	display: inline-block;
+	margin-right: 5px;
+	background-color: #eee;
+	margin-top:10px;
+	padding:3px 5px;
+	border-radius: 3px;
+	border: solid 1px #999;
+}
+#divNumList span:hover{
+	color:red;
+	cursor:default;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>素数计算</h1>
+
+<div>
+	参考：
+	<a href="https://baike.baidu.com/item/%E8%B4%A8%E6%95%B0/263515">质数/素数</a>
+</div>
+
+计算n以内的素数个数：
+<input id="curNum" type="number" value="10000" />
+<label>
+	<input id="chkShow" type="checkbox" /> 显示素数列表
+</label>
+<div style="margin:10px 0;">
+	<button onclick="prime(0);">原始计算</button>
+	<button onclick="prime(1);">平方根一半</button>
+	<button onclick="prime(2);">6倍+-1</button>
+</div>
+
+<div id="divResult">等待计算</div>
+<div id="divNumList"></div>
+
+<script>
+
+function getMS(v=0)
+{
+	return Math.round(performance.now() - v);
+}
+
+function prime(fnIndex)
+{
+	let ms = getMS();
+	let fnList = [checkPrime, checkPrime1, checkPrime2];
+
+	let show = $('#chkShow')[0].checked;
+	let $num = parseInt($('#curNum').val());
+	let list = [];
+
+	$('#divResult').html('计算中...');
+	$('#divNumList').html('').hide();
+
+	let $count = 0;
+	for (let $i=2; $i<=$num; $i++)
+	{
+		if (fnList[fnIndex]($i))
+		{
+			if (show)
+			{
+				list.push($i);
+			}
+			$count++;
+		}
+	}
+	
+	$('#divResult').html('计算完成，' + $num + '以内的素数 ' + $count + ' 个，用时：' + getMS(ms) + 'ms');
+
+	if (show)
+	{
+		let html = '';
+		for (let k in list)
+		{
+			html += '<span>' + list[k] + '</span>';
+		}
+
+		$('#divNumList').html(html).show();
+	}
+	
+	return $count;
+}
+
+function checkPrime($num)
+{
+	for (let $j=2; $j<$num; $j++)
+	{
+		if ($num%$j == 0)
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+function checkPrime1($num)
+{
+	let $max = Math.floor(Math.sqrt($num));
+	for (let $j=2; $j<=$max; $j++)
+	{
+		if ($num%$j == 0)
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+function checkPrime2($num) {
+    if ($num <= 3) {
+        return $num > 1;
+    }
+    if($num == 5) return true;
+    if($num == 7) return true;
+    if($num%2==0 || $num%3==0 || $num%5==0 || $num%7==0)
+          return false;
+	  
+    // 不在6的倍数两侧的一定不是质数
+    if ($num % 6 != 1 && $num % 6 != 5) {
+        return false;
+    }
+    
+	let $sqrt = Math.floor(Math.sqrt($num));
+    for (let $i = 5; $i <= $sqrt; $i += 6) {  // 步进为6
+        if ($num % $i == 0 || $num % ($i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
