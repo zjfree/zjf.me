@@ -1,0 +1,76 @@
+<!-- JS表格 zjfree 2022-05-06 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JS表格</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zfix_table.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>JS Canvas表格 100万行数据</h1>
+
+	<div id="divTable"></div>
+
+	<script>
+		
+		$(function () {
+			// JS
+			let list = [];
+			for (let i = 0; i < 1000000; i++) {
+				list.push({
+					id: i + 1,
+					name: '姓名ABC' + i,
+					age: ZFixTable.rand(10, 99),
+					phone: ZFixTable.rand(130000000000, 13999999999),
+					sex: ZFixTable.rand(0, 100) > 50 ? '男' : '女',
+					high: ZFixTable.rand(150, 190),
+					task: ZFixTable.rand(0, 100),
+					memo: 'ABC0123456789 中文~~' + ZFixTable.rand(100, 9999999999),
+				});
+			}
+
+			let option = {
+				column: [
+					{ code: 'id', name: 'id', },
+					{ code: 'name', name: '名称', },
+					{ code: 'age', name: '年龄', align: 'left', width: '100px' },
+					{ code: 'phone', name: '手机号', color: 'blue' },
+					{ code: 'sex', name: '性别', color: function(r){return r.sex=='男'?'green':'red'}, width: '3em' },
+					{ code: 'high', name: '身高', align: 'right', format: '{0}cm', width: '+20px' },
+					{ code: 'task', name: '任务进度', type: 'bar', width:'20em', align:'left' },
+					{ code: 'memo', name: '备注' },
+					{ code: '_op', name: '操作', type:'btn', btnList:['编辑', '删除'], width:'10em' },
+				],
+				list: list,
+				fixColumn: 2,
+				btnCallback:function(btn){
+					console.log(btn);
+					alert('【' + btn.name + '】按钮被按下！data:' + btn.data.id);
+				},
+			};
+
+			console.time('init');
+			new ZFixTable($('#divTable'), option);
+			console.timeEnd('init');
+		});
+	</script>
+
+</body>
+
+</html>
