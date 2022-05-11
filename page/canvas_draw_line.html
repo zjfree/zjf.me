@@ -1,0 +1,150 @@
+<!-- Canvas柱子阴影 zjfree 2022-05-11 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas柱子阴影</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #000;
+			background: #fff;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #000;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #000;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #fff;
+		}
+
+		input[type=range] {
+			width: 300px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTitle">Canvas柱子阴影</div>
+
+	<script>
+
+		var draw = null;
+		var PointList = [];
+		var mouseHeight = 5;
+		var lastPoint = null;
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			draw = new ZDraw($('#myCanvas'), function (index, t) {
+				ZTool.fps();
+			});
+
+			draw.mouseDownMove(function (p) {
+				lastPoint = p;
+				drawPoint();
+			});
+
+			lastPoint = new ZPoint(draw.width / 2, draw.height / 2);
+			pointInit();
+			drawPoint();
+
+			$('#myCanvas')[0].onmousewheel = function (ev, delta) {
+				ev.preventDefault();
+				if (ev.wheelDelta > 0)
+					mouseHeight *= 1.1;
+				else
+					mouseHeight /= 1.1;
+
+				drawPoint();
+			};
+		});
+
+		function drawPoint() {
+			console.log(mouseHeight);
+			draw.clear();
+			let p = lastPoint;
+			for (let k in PointList) {
+				let r = PointList[k];
+				let dist = p.getDist(r.p);
+				let deg = p.getDeg(r.p);
+				let p1 = r.p.goDeg(deg, r.h * dist / draw.width * mouseHeight);
+
+				let a = Math.round(Math.sqrt(draw.width * draw.width + draw.height * draw.height));
+				a = 0.1 + 0.5 * (1 - dist / a);
+				let color = 'rgba(0,0,0,' + a + ')';
+
+				draw.drawLine(r.p, p1, color, r.r * 2);
+			}
+
+			for (let k in PointList) {
+				let r = PointList[k];
+				draw.drawCircle(r.p, r.r, r.color);
+			}
+		}
+
+		function pointInit() {
+			for (let i = 0; i < 100; i++) {
+				PointList.push({
+					p: draw.randPoint(),
+					r: ZTool.rand(3, 10),
+					h: ZTool.rand(20, 200),
+					color: ZTool.randColor(),
+				});
+			}
+		}
+	</script>
+
+</body>
+
+</html>
