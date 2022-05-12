@@ -78,7 +78,7 @@
 
 		var draw = null;
 		var PointList = [];
-		var mouseHeight = 5;
+		var mouseHeight = 100;
 		var lastPoint = null;
 
 		$(function () {
@@ -90,6 +90,7 @@
 				ZTool.fps();
 			});
 
+			draw.ctx.lineCap = "round";
 			draw.mouseDownMove(function (p) {
 				lastPoint = p;
 				drawPoint();
@@ -105,24 +106,30 @@
 					mouseHeight *= 1.1;
 				else
 					mouseHeight /= 1.1;
-
+				console.log(mouseHeight);
 				drawPoint();
 			};
 		});
 
 		function drawPoint() {
-			console.log(mouseHeight);
 			draw.clear();
 			let p = lastPoint;
 			for (let k in PointList) {
 				let r = PointList[k];
 				let dist = p.getDist(r.p);
 				let deg = p.getDeg(r.p);
-				let p1 = r.p.goDeg(deg, r.h * dist / draw.width * mouseHeight);
 
-				let a = Math.round(Math.sqrt(draw.width * draw.width + draw.height * draw.height));
-				a = 0.1 + 0.5 * (1 - dist / a);
-				let color = 'rgba(0,0,0,' + a + ')';
+				let maxDist = Math.round(Math.sqrt(draw.width * draw.width + draw.height * draw.height));
+				let dist1 =  dist * r.h / (mouseHeight - r.h);
+				if (dist1 <= 0)
+				{
+					dist1 = maxDist;
+				}
+				
+				let p1 = r.p.goDeg(deg, dist1);
+
+				let a = 0.1 + 0.8 * (1 - dist / maxDist);
+				let color = r.color.replace(')', ',' + a + ')');
 
 				draw.drawLine(r.p, p1, color, r.r * 2);
 			}
@@ -137,9 +144,9 @@
 			for (let i = 0; i < 100; i++) {
 				PointList.push({
 					p: draw.randPoint(),
-					r: ZTool.rand(3, 10),
-					h: ZTool.rand(20, 200),
-					color: ZTool.randColor(),
+					r: ZTool.rand(draw.size/2, draw.size*2),
+					h: ZTool.rand(20, 50),
+					color: 'rgb(' + ZTool.rand(50, 200) + ',' + ZTool.rand(50, 200) + ',' + ZTool.rand(50, 200) + ')',
 				});
 			}
 		}
