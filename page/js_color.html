@@ -1,0 +1,244 @@
+<!-- JS颜色转换 zjfree 2022-05-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JS颜色转换</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+.span-color{
+	display: inline-block;
+	min-width: 3em;
+	border:solid 1px gray;
+	min-height: 1em;
+	padding:2px 10px;
+	text-transform: uppercase;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>JS颜色转换</h1>
+
+<div style="margin-bottom: 10px;">
+	颜色选择：
+	<input id="color1" data-index="1" type="color" />
+	&emsp;
+	颜色值：
+	<span id="spanVal1"></span>
+	<span id="spanColor1" class="span-color"></span>
+</div>
+
+<div style="margin-bottom: 10px;">
+	颜色HEX值：
+	<input id="color2" data-index="2" type="text" value="#FF0" list="list1" />
+	&emsp;
+	颜色值：
+	<span id="spanVal2"></span>
+	<span id="spanColor2" class="span-color"></span>
+	<span id="spanCalc2"></span>
+</div>
+
+<div style="margin-bottom: 10px;">
+	<button onclick="curColor = ZColor.rand(); updateColor();">随机颜色</button>
+	<button onclick="curColor.reverse(); updateColor();">反色</button>
+	<button onclick="$('body').css('background-color', ZColor.randHsl('100%,97%'));">随机背景</button>
+	&emsp;
+	<button onclick="$('#spanHsl').html(curColor.toHsl());">ToHSL</button>
+	&nbsp;
+	<span id="spanHsl"></span>
+</div>
+
+<datalist id="list1">
+	<option value="red"></option>
+	<option value="#F00"></option>
+	<option value="#FF0000"></option>
+	<option value="rgb(255,0,0)"></option>
+	<option value="rgba(255,0,0,0.5)"></option>
+	<option value="hsl(0,50%,50%)"></option>
+	<option value="hsla(150,50%,50%,0.5)"></option>
+</datalist>
+
+<script>
+
+
+// 颜色
+class ZColor{
+    constructor(...args) {
+		switch (args.length)
+		{
+			case 1:
+				this.parseStr(args[0]);
+				break;
+			case 2:
+				this.parseStr(args[0]);
+				this.A = parseFloat(args[1]);
+				break;
+			case 3:
+				this.R = parseInt(args[0]);
+				this.G = parseInt(args[1]);
+				this.B = parseInt(args[2]);
+				this.A = 1;
+				break;
+			case 4:
+				this.R = parseInt(args[0]);
+				this.G = parseInt(args[1]);
+				this.B = parseInt(args[2]);
+				this.A = parseFloat(args[3]);
+				break;
+			default:
+				this.R = 0;
+				this.G = 0;
+				this.B = 0;
+				this.A = 1;
+				break;
+		}
+    }
+
+	parseStr(str) {
+		$('html').css('outline-color', str);
+		let colorVal = getComputedStyle($('html')[0])['outline-color'].replace(' ','');
+		if (colorVal.indexOf('rgba') == -1)
+		{
+			let arr = colorVal.substr(4, colorVal.length - 5).split(',');
+			this.R = parseInt(arr[0]);
+			this.G = parseInt(arr[1]);
+			this.B = parseInt(arr[2]);
+			this.A = 1;
+		}
+		else
+		{
+			let arr = colorVal.substr(5, colorVal.length - 6).split(',');
+			this.R = parseInt(arr[0]);
+			this.G = parseInt(arr[1]);
+			this.B = parseInt(arr[2]);
+			this.A = parseFloat(arr[3]);
+		}
+	}
+
+    toString() {
+		let str = '';
+		if (this.A == 1)
+		{
+			str = 'RGB(' + this.R + ',' + this.G + ',' + this.B + ')';
+		}
+		else
+		{
+			str = 'RGBA(' + this.R + ',' + this.G + ',' + this.B + ',' + this.A + ')';
+		}
+
+        return str;
+    }
+
+	toHex() {
+		let fn = (v) => ('0' + Math.round(v).toString(16)).substr(-2);
+		let str = '#' + fn(this.R) + fn(this.G) + fn(this.B);
+
+		return str.toUpperCase();
+	}
+
+	toHslVal() {
+		let r = this.R / 255, g = this.G / 255, b = this.B / 255;
+		let max = Math.max(r, g, b), min = Math.min(r, g, b);
+		let h, s, l = (max + min) / 2;
+
+		if(max == min){
+			h = s = 0; // achromatic
+		}else{
+			let d = max - min;
+			s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+			switch(max){
+				case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+				case g: h = (b - r) / d + 2; break;
+				case b: h = (r - g) / d + 4; break;
+			}
+			h /= 6;
+		}
+
+		let hsl = {h:Math.floor(h*100), s:Math.round(s*100), l:Math.round(l*100)};
+		return hsl;
+	}
+
+	toHsl() {
+		let hsl = this.toHslVal();
+		let str = hsl.h + ',' + hsl.s + '%,' + hsl.l + '%';
+		str = this.A == 1 ? ('HSL(' + str + ')') : ('HSLA(' + str + ',' + this.A + ')');
+
+		return str;
+	}
+
+	getLight(){
+		let r = this.R / 255, g = this.G / 255, b = this.B / 255;
+		let max = Math.max(r, g, b), min = Math.min(r, g, b);
+		let l = (max + min) / 2;
+		l = Math.round(l*100);
+
+		return l;
+	}
+
+	reverse(){
+		this.R = 255 - this.R;
+		this.G = 255 - this.G;
+		this.B = 255 - this.B;
+	}
+
+	/// 静态函数
+
+	static rand() {
+		let fn = function(){return Math.round(255 * Math.random())};
+		return new ZColor(fn(), fn(), fn());
+	}
+
+	static randHex() {
+		return '#' + Math.random().toString(16).substr(2, 6).toUpperCase();
+	}
+	
+	static randHsl(sv) {
+		sv = sv || '50%,50%';
+		return 'HSL(' + Math.round(360*Math.random()) + ',' + sv + ')';
+	}
+
+	static parse(str){
+		return new ZColor(str);
+	}
+}
+
+function setColor(o)
+{
+	let v = $(o).val();
+	let index = $(o).data('index');
+
+	$('#spanVal'+index).html(v);
+	curColor = ZColor.parse(v);
+	$('#spanColor'+index).html(curColor.toString());
+	$('#spanColor'+index).css('background-color', curColor.toString());
+	$('#spanColor'+index).css('color', curColor.getLight() > 50 ? '#000' : '#fff');
+}
+
+var curColor = ZColor.rand();
+$(function(){
+	// JS
+	$('#color1,#color2').change(function(){setColor(this);});
+	$('#color2').on('input', function(){setColor(this);});
+	updateColor();
+});
+
+function updateColor()
+{
+	$('#color2').val(curColor.toHex());
+	setColor($('#color2')[0]);
+}
+</script>
+
+</body>
+</html>
