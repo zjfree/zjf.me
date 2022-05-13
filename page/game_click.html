@@ -1,0 +1,324 @@
+<!-- 反应速度测试 zjfree 2022-05-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>反应速度测试</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html, body{
+	padding:0;
+	margin:0;
+	min-height: 100%;
+	height: 100%;
+}
+
+.main{
+	padding:0 10px;
+	max-width: 800px;
+	background-color: #333;
+	color:#fff;
+	margin: 0 auto;
+	min-height: 100%;
+	padding-bottom: 10px;
+}
+.main h3{
+	margin: 0;
+	text-align: center;
+	padding: 10px;
+	font-size:1.5rem;
+}
+.main .info{
+	text-align: center;
+	margin:10px auto;
+}
+.main hr{
+	height: 1px;
+	background-color: #fff;
+	border:0;
+}
+
+#divClick{
+	margin:20px auto;
+	width: 80%;
+	background-color: #fff;
+	color:#000;
+	border: solid 5px #999;
+	border-radius: 20px;
+	height: 10rem;
+	line-height: 2.5rem;
+	cursor: pointer;
+	font-size: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	user-select: none;
+	font-weight: bolder;
+}
+#divClickScore{
+	text-align: center;
+}
+#divClickScore .score{
+	margin:10px 0;
+}
+
+#tbRect{
+    width:80%;
+    border: solid 5px #999;
+    background:#fff;
+    color:#333;
+    border-collapse: collapse;
+	margin:20px auto;
+}
+#tbRect td{
+	width: 20%;
+	height: 3rem;
+	border: solid 3px #999;
+}
+
+#divRectScore {
+	width: 80%;
+	margin: 0 auto;
+}
+#divRectScore span{
+	float: left;
+	width: 20%;
+	outline: solid 2px #999;
+	background-color: #006;
+	text-align: center;
+	padding: 5px 0;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div class="main">
+	<h3>
+		★ 点击速度测试 ★
+	</h3>
+	<hr>
+	<div class="info">变色后点击，测试反应时间</div>
+	<div id="divClick" data-status="wait">
+		点击开始
+	</div>
+	<div id="divClickScore">
+		<div class="stat">测试 <b>0</b> 次，平均速度：<b>0</b>ms</div>
+		<div class="score"></div>
+	</div>
+	<hr>
+	<div class="info">
+		点击随机出现的10个色块
+	</div>
+	<div class="info">
+		<button id="btnGame2Start">开始测试</button>
+		&emsp;
+		<span>平均速度：<b id="bGame2Score">0</b>ms</span>
+	</div>
+	<div id="divRectScore">
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+		<span> - </span>
+	</div>
+	<div style="clear:both;"></div>
+	<table id="tbRect">
+		<tbody>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script>
+var game1 = {
+	status:'wait',
+	timer:null,
+	ms:0,
+	scoreList:[],
+	start:function(){
+		window.clearTimeout(this.timer);
+		let t = 1000 + 5000 * Math.random();
+		this.timer = window.setTimeout(function(){
+			game1.status = 'color';
+			let color = 'hsl(' + Math.round(360 * Math.random()) + ',80%,50%)';
+			$('#divClick').html('');
+			$('#divClick').css('background-color', color);
+			game1.ms = window.performance.now();
+		}, t);
+	},
+	click:function(){
+		let str = '';
+		switch (this.status)
+		{
+			case 'wait':
+				status = 'run';
+				str = '变色后点击';
+				$('#divClick').css('color', '#33F');
+				this.start();
+				break;
+			case 'run':
+				window.clearTimeout(this.timer);
+				status = 'fail';
+				str = '测试失败';
+				$('#divClick').css('color', '#B00');
+				break;
+			case 'color':
+				status = 'success';
+				let ms = window.performance.now() - this.ms;
+				ms =  Math.round(ms);
+				str = '速度：' + ms + 'ms';
+				$('#divClick').css('background-color', '#fff');
+				$('#divClick').css('color', '#0B0');
+				this.scoreList.push(ms);
+				if (this.scoreList.length > 10)
+				{
+					this.scoreList.shift();
+				}
+
+				let html = '';
+				let total = 0;
+				for (let k in this.scoreList)
+				{
+					let r = this.scoreList[k];
+					html += r + 'ms ';
+					total += r;
+				}
+
+				
+				$('#divClickScore b').eq(0).html(this.scoreList.length);
+				$('#divClickScore b').eq(1).html(Math.round(total / this.scoreList.length));
+				$('#divClickScore .score').html(html);
+
+				break;
+			case 'fail':
+			case 'success':
+				status = 'wait';
+				str = '点击开始';
+				$('#divClick').css('color', '#000');
+				break;
+		}
+		this.status = status;
+		$('#divClick').html(str);
+	},
+};
+
+var game2 = {
+	status:'wait',
+	timer:null,
+	ms:0,
+	scoreList:[],
+	curIndex:-1,
+	start:function(){
+		$('#btnGame2Start').html('重新开始');
+		$('#divRectScore span').css('background-color', '#006').html(' - ');
+		this.status = 'run';
+		this.scoreList = [];
+		this.curIndex = -1;
+
+		this.timerRun();
+	},
+	timerRun:function(){
+		$('#tbRect td').css('background-color', '#fff');
+		window.clearTimeout(this.timer);
+
+		let t = 1000 + 3000 * Math.random();
+		this.timer = window.setTimeout(function(){
+			game2.curIndex = Math.round(Math.random() * $('#tbRect td').length);
+			let color = 'hsl(' + Math.round(360 * Math.random()) + ',50%,50%)';
+			$('#tbRect td').eq(game2.curIndex).css('background-color', color);
+			game2.ms = window.performance.now();
+		}, t);
+	},
+	click:function(index){
+		if (this.status != 'run') return;
+		if (index != this.curIndex) return;
+		
+		let ms = window.performance.now() - this.ms;
+		ms =  Math.round(ms);
+		this.scoreList.push(ms);
+		
+		let total = 0;
+		for (let k in this.scoreList)
+		{
+			let r = this.scoreList[k];
+			$('#divRectScore span').eq(k).html(r);
+			total += r;
+		}
+		$('#bGame2Score').html(Math.round(total / this.scoreList.length));
+
+		if (this.scoreList.length >= 10)
+		{
+			$('#btnGame2Start').html('开始测试');
+			this.status = 'wait';
+			this.init();
+			return;
+		}
+		
+		this.timerRun();
+	},
+	init:function(){
+		$('#tbRect td').each(function(){
+			$(this).css('background-color', game2.randColor());
+		});
+	},
+	randColor:function(){
+		return 'hsl(' + Math.round(360 * Math.random()) + ',100%,50%)';
+	},
+};
+
+$(function(){
+	// JS
+	if ('ontouchstart' in document.documentElement)
+	{
+		$('#divClick').on('touchstart', function(){game1.click();});
+	}
+	else
+	{
+		$('#divClick').mousedown(function(){game1.click();});
+	}
+
+	$('#tbRect td').each(function(index){
+		$(this).data('index', index);
+	});
+	game2.init();
+	$('#btnGame2Start').click(function(){game2.start()});
+	if ('ontouchstart' in document.documentElement)
+	{
+		$('#tbRect td').on('touchstart', function(){game2.click($(this).data('index'));});
+	}
+	else
+	{
+		$('#tbRect td').mousedown(function(){game2.click($(this).data('index'));});
+	}
+});
+</script>
+
+</body>
+</html>
