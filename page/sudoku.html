@@ -1,0 +1,278 @@
+<!-- 数独 zjfree 2022-05-20 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>数独</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		h1{
+			text-align: center;
+		}
+
+		#tbList{
+			border: solid 5px #666;
+			border-collapse: collapse;
+			margin:10px auto;
+		}
+		
+		#tbList td{
+			border:solid 1px #aaa;
+			vertical-align: middle;
+			text-align: center;
+			width: 1.5em;
+			height: 1.5em;
+			padding: 0;
+			font-size: min(6vw, 2rem);
+			font-weight:bold;
+		}
+
+		.r00, .r02, .r20, .r22{
+			background-color: #cff;
+		}
+		.r01, .r10, .r12, .r21{
+			background-color: #ffc;
+		}
+		.r11{
+			background-color: #fcf;
+		}
+		.n0{
+			color:red;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>随机数计算</h1>
+
+	<table id="tbList">
+		<tbody></tbody>
+	</table>
+
+	<script>
+
+		var shudu = {
+
+			errCount:0,
+			list: [],
+			rectArea: [
+				[1, 2, 3],
+				[4, 5, 6],
+				[7, 8, 9],
+			],
+			numIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+
+			// 数字生成记录
+			numLogList:[],
+
+			init: function () {
+
+				// 使用多次生成，指定符合要求
+				console.time('build');
+				let i = 0;
+				while (this.build() > 0)
+				{
+					i++;
+				}
+				console.log('计算次数：', i);
+				console.timeEnd('build');
+
+				this.show();
+			},
+
+			build: function () {
+
+				// 初始化
+				this.errCount = 0;
+				this.list = [];
+				this.numLogList = [];
+
+				let arr = [0,0,0,0,0,0,0,0,0,0]
+				for (let i = 0; i < 10; i++) {
+					this.list.push([...arr]);
+				}
+
+				// 生成中间数字
+				this.setRect(1, 1);
+
+				// 生成上下左右数字
+				for (let x of this.rectArea[1]) {
+					for (let y of this.rectArea[1]) {
+						this.randRectNum(x, y);
+					}
+				}
+
+				// 填充角块
+				for (let v of this.numIndex) {
+					this.fillCorner(v);
+				}
+
+				return this.errCount;
+			},
+
+			// 设置数值
+			setNum:function(x,y,v)
+			{
+				this.list[x][y] = v;
+				this.numLogList.push({x:x, y:y, v:v});
+			},
+
+			// 随机设置3*3小格子的值
+			setRect: function (xi, yi) {
+				let arr = [...this.numIndex];
+				arr.sort(function(a, b){return Math.random() - 0.5}); 
+				let i = 0;
+				for (let x of this.rectArea[xi]) {
+					for (let y of this.rectArea[yi]) {
+						this.setNum(x, y, arr[i++])
+					}
+				}
+			},
+
+			// 随机值
+			rand: function (min, max) {
+				let v = min + Math.random() * (max - min + 1);
+				return Math.floor(v);
+			},
+
+			// 在列表中随机挑选位置设置值
+			listRandSet(list, v) {
+				if (list.length == 0) {
+					this.errCount++;
+					return false;
+				}
+				let i = this.rand(0, list.length - 1);
+				let xy = list[i];
+
+				this.setNum(xy[0], xy[1], v)
+
+				return true;
+			},
+
+			// 小格子随机数
+			randRectNum: function (x, y) {
+				let v = this.list[x][y];
+
+				// 从中间取一个数字，随机出上下左右的对应数字，防止横竖重复
+				let rule = [
+					{type:'x', areaX:0, areaY:1, next:{4:5,5:6,6:4}},
+					{type:'x', areaX:2, areaY:1, next:{4:6,5:4,6:5}},
+					{type:'y', areaX:1, areaY:0, next:{4:5,5:6,6:4}},
+					{type:'y', areaX:1, areaY:2, next:{4:6,5:4,6:5}},
+				];
+
+				for (let r of rule)
+				{
+					let arr = [];
+					for (let x1 of this.rectArea[r.areaX])
+						for (let y1 of this.rectArea[r.areaY]) {
+							if (r.type == 'x')
+							{
+								if (y1 == y || y1 == r.next[y]) continue;
+							}
+							else
+							{
+								if (x1 == x || x1 == r.next[x]) continue;
+							}
+							if (this.list[x1][y1] == 0) {
+								arr.push([x1, y1]);
+							}
+						}
+
+					this.listRandSet(arr, v);
+				}
+			},
+
+			fillCorner: function (v) {
+				for (let kk of [[0, 0], [0, 2], [2, 2], [2, 0]]) {
+					let arr = [];
+					let vList = this.getVList(v);
+					for (let x of this.rectArea[kk[0]])
+						for (let y of this.rectArea[kk[1]]) {
+							if (!this.inListXY(vList, x, y) && this.list[x][y] == 0) {
+								arr.push([x, y]);
+							}
+						}
+
+					this.listRandSet(arr, v);
+				}
+			},
+
+			inListXY: function (list, x, y) {
+				for (let r of list) {
+					if (r[0] == x || r[1] == y) {
+						return true;
+					}
+				}
+
+				return false;
+			},
+
+			getVList: function (v) {
+				let arr = [];
+				for (let x of this.numIndex)
+					for (let y of this.numIndex) {
+						if (this.list[x][y] == v) {
+							arr.push([x, y]);
+						}
+					}
+
+				return arr;
+			},
+
+			show:function(){
+				let html = '';
+				for (let x of this.numIndex)
+				{
+					html += '<tr>';
+					for (let y of this.numIndex)
+					{
+						let c = 'r' + Math.floor((x-1)/3) + Math.floor((y-1)/3);
+						html += '<td id="num'+x+''+y+'" class="' + c + ' n' + this.list[x][y] + '">' + this.list[x][y] + '</td>';
+					}
+					html += '</tr>';
+				}
+
+				$('#tbList tbody').html(html);
+			},
+		};
+
+		$(function () {
+			// JS
+
+			shudu.init();
+
+			// 打字机出现
+			$('#tbList td').html('');
+			playIndex = 0;
+			play();
+		});
+
+		var playIndex = 0;
+		function play()
+		{
+			window.setTimeout(function(){
+				let r = shudu.numLogList[playIndex++];
+				$('#num'+r.x+r.y).html(r.v);
+				if (playIndex > 80) return;
+				play();
+			}, 100);
+		}
+	</script>
+
+</body>
+
+</html>
