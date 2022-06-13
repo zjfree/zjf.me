@@ -1,0 +1,162 @@
+<!-- Canvas椭圆旋转 zjfree 2022-06-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Canvas椭圆旋转</title>
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #000;
+			background: #fff;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 12px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #000;
+		}
+
+		#divTitle {
+			position: absolute;
+			top: 10px;
+			color: #000;
+			font-size: 24px;
+			right: 10px;
+			text-align: right;
+			text-shadow: 0 3px 5px #fff;
+		}
+
+		input[type=range] {
+			width: 300px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTitle">Canvas椭圆旋转</div>
+	
+	<div id="divTool">
+		类型：
+		<select id="selType">
+			<option value="1" selected>样式1</option>
+			<option value="2">样式2</option>
+			<option value="3">样式3</option>
+			<option value="4">样式4</option>
+			<option value="5">样式5</option>
+		</select>
+	</div>
+
+
+	<script>
+
+		var draw = null;
+
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			draw = new ZDraw($('#myCanvas'), function (index, t) {
+				ZTool.fps();
+
+				draw.clear();
+				
+				let type = $('#selType').val();
+				let center1 = new ZPoint(draw.width/2, draw.height/2);
+				let a = draw.width/2*0.8;
+				let b = a * 0.3;
+				
+				for (let deg=0; deg<360; deg+=5)
+				{
+					let curDeg = (deg + index/5) % 360;
+					
+					let p1 = center1.getEllipsePoint(a, b, curDeg);
+					let rate = 0.5 + (p1.y - center1.y + b) / (2*b) * 0.5;
+
+					let color = 'hsla(' + (curDeg+index)%360 + ',70%,50%,' + rate + ')';
+					let h1 = 200 + 80 * Math.sin(ZTool.deg2rad((curDeg*5+index)%360));
+
+					switch (type)
+					{
+						case '1':
+							let a1 = 200 + h1 * rate;
+							let p2 = center1.getEllipsePoint(a1, a1*0.3, curDeg);
+							draw.drawLine(p1, p2, color, 10 * rate);
+							break;
+						case '2':
+							color = 'rgba(0,0,0,' + rate + ')';
+							draw.drawLine(p1, {x:p1.x, y:p1.y-20-100*rate}, color, 10 * rate);
+							break;
+						case '3':
+							draw.drawLine(p1, {x:p1.x, y:p1.y- h1 * rate}, color, 10 * rate);
+							break;
+						case '4':
+							color = 'rgba(0,0,0,' + rate + ')';
+							let a2 = a / 2 + a / 2 * (1-rate);
+							let p3 = center1.getEllipsePoint(a2, a2*0.3, curDeg);
+							draw.drawLine(p1, p3, color, 10 * rate);
+							break;
+						case '5':
+							color = 'rgba(0,0,0,' + rate + ')';
+							let p4 = center1.getEllipsePoint(a, b, curDeg+1);
+							let p5 = center1.getEllipsePoint(a*0.9, b*0.9, curDeg+2);
+							let p6 = center1.getEllipsePoint(a*0.9, b*0.9, curDeg+3);
+							let p7 = center1.getEllipsePoint(a, b, curDeg+4);
+							let p8 = center1.getEllipsePoint(a, b, curDeg+5);
+							draw.drawLine(p1, p4, color, 10 * rate);
+							draw.drawLine(p4, p5, color, 10 * rate);
+							draw.drawLine(p5, p6, color, 10 * rate);
+							draw.drawLine(p6, p7, color, 10 * rate);
+							draw.drawLine(p7, p8, color, 10 * rate);
+							break;
+					}
+				}
+			});
+
+			draw.ctx.lineCap = "round";
+
+		});
+
+	</script>
+
+</body>
+
+</html>
