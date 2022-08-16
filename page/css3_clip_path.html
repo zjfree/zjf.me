@@ -1,0 +1,90 @@
+<!-- CSS3 clip-path zjfree 2022-08-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS3 clip-path</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+.list div{
+	float: left;
+	border:solid 1px gray;
+	margin: 10px 10px 0 0;
+	width: 30em;
+	height: 20em;
+	background-image: url(../static/img/fruit.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+	position: relative;
+}
+
+.list div span{
+	color:#fff;
+	text-align: center;
+	font-size: 3em;
+	width: 100%;
+	position:absolute;
+	top:50%;
+	margin-top:-0.5em;
+	text-shadow: 0 3px 5px #000;
+}
+
+.inset{
+	clip-path: inset(3em 3em 3em 3em round 2em);
+}
+.circle {
+     clip-path: circle(30%);
+}
+.ellipse {
+	clip-path: ellipse(45% 30% at 50% 50%);
+}
+.polygon {
+	clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.animation
+{
+	clip-path: inset(3em 3em 3em 3em round 3em);
+	transition: clip-path 1s;
+}
+.animation:hover
+{
+	clip-path: inset(3em 3em 3em 3em);
+}
+
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>CSS3 clip-path</h1>
+
+<div class="list">
+	<div class="inset"><span>inset</span></div>
+	<div class="circle"><span>circle</span></div>
+	<div class="ellipse"><span>ellipse</span></div>
+	<div class="polygon"><span>polygon</span></div>
+	<div class="animation"><span>animation</span></div>
+</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
