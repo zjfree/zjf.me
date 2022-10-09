@@ -1,0 +1,124 @@
+<!-- 冰雹猜想 zjfree 2022-10-09 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>冰雹猜想</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+/* 简易表格 */
+table#tbList {
+    font-family: Consolas,verdana,arial,sans-serif;
+    font-size:14px;
+    color:#333333;
+    border-collapse: collapse;
+    border: solid 2px #ddd;
+	width:100%;
+	margin: 20px 0;
+}
+table#tbList th {
+    border: solid 1px #ddd;
+    padding: 5px;
+    background-color: #dedede;
+    text-align: center;
+}
+table#tbList td {
+    border: solid 1px #ddd;
+    padding: 0;
+    background-color: #ffffff;
+    text-align:center;
+}
+.thIndex{
+	width:3em;
+}
+.thVal{
+	width:5em;
+}
+#tbList div{
+	height: 0.7em;
+	background-color: #66f;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>冰雹猜想</h1>
+<p>
+	<a href="https://baijiahao.baidu.com/s?id=1705362097669210976">参考资料</a>
+</p>
+<p>
+	取任意一个正整数n，<br>
+	若n为奇数，则下一步变成3n+1；<br>
+	若n为偶数，则下一步变成n/2。<br>
+	人们发现，无论n是怎样一个数字，最终都无法逃脱回到谷底1。准确地说，是无法逃出落入底部的4-2-1循环，永远也逃不出这样的宿命。这便是著名的“冰雹猜想（3N+1猜想）”。
+</p>
+
+<div>
+	测试值：
+	<input id="txtVal" type="number" value="27" />
+	<button onclick="testVal();">测试</button>
+</div>
+
+<table id="tbList">
+	<thead>
+		<tr>
+			<th class="thIndex">序号</th>
+			<th class="thVal">值</th>
+			<th style="text-align:left;">对比</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+
+<script>
+$(function(){
+	// JS
+	testVal();
+});
+
+function testVal()
+{
+	let v = parseInt($('#txtVal').val());
+	$('#tbList tbody').html('');
+
+	let max = 0;
+	let index = 1;
+	while(true)
+	{
+		max = Math.max(v, max);
+
+		let str = '<tr><td>' + (index++) + '</td><td>' + v + '</td><td><div></div></td></tr>';
+		$('#tbList tbody').append(str);
+		if (v == 1) break;
+
+		if (v % 2 == 0)
+		{
+			v = v / 2;
+		}
+		else
+		{
+			v = v * 3 + 1;
+		}
+	}
+
+	$('#tbList tbody tr').each(function(){
+		let v = parseInt($(this).find('td').eq(1).html());
+		$(this).find('div').css('width', '' + (v / max * 100) + '%');
+	});
+}
+</script>
+
+</body>
+</html>
