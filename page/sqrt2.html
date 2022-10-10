@@ -1,0 +1,100 @@
+<!-- 计算根号2 zjfree 2022-10-10 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>计算根号2</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+/* 简易表格 */
+table#tbList {
+    font-family: Consolas,verdana,arial,sans-serif;
+    font-size:14px;
+    color:#333333;
+    border-collapse: collapse;
+    border: solid 2px #ddd;
+	margin: 20px 0;
+}
+table#tbList th {
+    border: solid 1px #ddd;
+    padding: 5px;
+    background-color: #dedede;
+    text-align: center;
+}
+table#tbList td {
+    border: solid 1px #ddd;
+    padding: 0 5px;
+    background-color: #ffffff;
+    text-align:left;
+}
+</style>
+
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>计算根号2</h1>
+
+<script src="https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js"></script>
+
+计算公式：
+<div style="margin:10px 0;">\(a_5=1+\frac{1}{2+\frac{1}{2+\frac{1}{2+\frac{1}{2+\frac{1}{2+\frac{1}{2}}}}}}\)</div>
+
+
+<div>
+	计算次数：
+	<input id="txtVal" type="number" value="20" style="width: 4em;" />
+	<button onclick="calc();">计算</button>
+	&emsp;
+	<span id="spanSqrt"></span>
+</div>
+
+<table id="tbList">
+	<thead>
+		<tr>
+			<th class="thIndex">序号</th>
+			<th class="thVal">值</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+
+<script>
+$(function(){
+	// JS
+	$('#spanSqrt').html('sqrt(2) = ' + Math.sqrt(2));
+	calc();
+});
+
+function calc()
+{
+	$('#tbList tbody').html('');
+
+	let c = parseInt($('#txtVal').val());
+	let v = 2;
+	for (let i=0; i<c; i++)
+	{
+		v = sqrt2(v);
+		let str = '<tr><td>' + (i+1) + '</td><td>' + v + '</td></tr>';
+		$('#tbList tbody').append(str);
+	}
+}
+
+function sqrt2(v)
+{
+	return 2 + 1 / v;
+}
+</script>
+
+</body>
+</html>
