@@ -71,6 +71,10 @@
 		border-bottom: solid 1px gray;
 	}
 
+	.canvas-container{
+		margin:0 auto;
+	}
+
 	#myCanvas{
 		border:solid 1px gray;
 		display: block;
@@ -209,6 +213,7 @@
 			<button onclick="Feditor.addImage('../static/img/test.svg');">添加 ImageSvg</button>
 			<button onclick="Feditor.addButton();">添加 Button</button>
 			<button onclick="Feditor.addPipe();">添加 Pipe</button>
+			<button onclick="Feditor.addTextRect();">添加 TextRect</button>
 			
 		</div>
 		<div id="divStatus" class="block">就绪</div>
@@ -481,7 +486,40 @@
 					</tr>
 				</table>
 			</div>
-			
+			<div class="attr-group attr-type attr-type-TextRect">
+				<h3>TextRect 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>文字内容:</th>
+						<td><input class="attr" id="attr_text" type="text" value="" /></td>
+						<th>文字颜色:</th>
+						<td><input class="attr" id="attr_textFill" type="text" value="" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Pipe">
+				<h3>Pipe 属性</h3>
+				<table>
+					<tr>
+						<th>管道颜色:</th>
+						<td><input class="attr" id="attr_pipeBackColor" type="text" value="" /></td>
+						<th>流体颜色:</th>
+						<td><input class="attr" id="attr_pipeColor" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>管道直径:</th>
+						<td><input class="attr" id="attr_pipeWidth" type="number" value="" /></td>
+						<th>流体透明:</th>
+						<td><input class="attr" id="attr_pipeOpacity" type="number" value="1" data-fix="2" /></td>
+					</tr>
+				</table>
+			</div>
 			
 		</div>
 	</div>
@@ -524,6 +562,9 @@
 		canvas:null,
 		width: 0,
 		height: 0,
+		pipePList:[],
+		pipeCur:null,
+
 		init:function(el){
 			this.el = el;
 			
@@ -544,6 +585,7 @@
       		fabric.Text.prototype.originX = 'center';
 			fabric.Object.prototype.transparentCorners = false;
 
+			this.createComponent();
 			this.bindInput();
 			this.reload();
 			this.bindAnimate();
@@ -551,24 +593,159 @@
 
 		resize:function(){},
 
-		// 绑定编辑值
+		/////// 自定义组件
+		createComponent:function(){
+			// 文本框
+			fabric.TextRect = fabric.util.createClass(fabric.Rect, {
+				type: 'TextRect',
+				initialize: function(options) {
+					options || (options = {});
+					options.width = options.width || 100;
+					options.height = options.height || 30;
+					this.callSuper('initialize', options);
+					this.set('text', options.text || '中文A123');
+					this.set('textFill', options.textFill || '#000');
+				},
+				toObject: function() {
+					return fabric.util.object.extend(this.callSuper('toObject'), {
+						_zid: this.get('_zid'),
+						_zbind: this.get('_zbind'),
+						text: this.get('text'),
+						textFill: this.get('textFill'),
+					});
+				},
+				_render: function(ctx) {
+					this.callSuper('_render', ctx);
+					ctx.font = (this.height * 0.7) + 'px Helvetica';
+					ctx.fillStyle = this.textFill;
+					ctx.textAlign="center";
+					ctx.textBaseline="middle";
+					ctx.fillText(this.text,0, this.height * 0.05);
+				}
+			});
+
+			fabric.TextRect.fromObject = function(object, callback) {
+				return fabric.Object._fromObject('TextRect', object, callback);
+			};
+
+			// 管道
+			fabric.Pipe = fabric.util.createClass(fabric.Group, {
+				type: 'Pipe',
+				initialize: function(options) {
+					options || (options = {});
+
+					options.pipeBackColor = options.pipeBackColor || '#000';
+					options.pipeColor = options.pipeColor || '#0F0';
+					options.pipeWidth = options.pipeWidth || 15;
+					options.pipeOpacity = options.pipeOpacity || 1;
+					options.hasControls = false;
+					options.objectCaching = false;
+
+					options.list = options.list || [
+						{x:0, y:0},
+						{x:200, y:100},
+						{x:200, y:200},
+					];
+
+					let item1 = new fabric.Polyline(options.list, {
+						top:0,
+						left:0,
+						fill: 'transparent',
+						stroke: options.pipeBackColor, 
+						strokeWidth: options.pipeWidth,
+						strokeLineCap:'round',
+						strokeLineJoin:'round',
+						objectCaching:false,
+					});
+					let item2 = new fabric.Polyline(options.list, {
+						top:options.pipeWidth * 0.2,
+						left:options.pipeWidth * 0.2,
+						fill: 'transparent',
+						stroke: options.pipeColor, 
+						strokeWidth: options.pipeWidth * 0.6,
+						strokeLineCap:'round',
+						strokeLineJoin:'round',
+						strokeDashArray: [options.pipeWidth * 1.2, options.pipeWidth],
+						strokeDashOffset: 0,
+						opacity:options.pipeOpacity,
+						objectCaching:false,
+					});
+
+					this.callSuper('initialize', [item1, item2], options);
+					this.set('pipeBackColor', options.pipeBackColor);
+					this.set('pipeColor', options.pipeColor);
+					this.set('pipeWidth', options.pipeWidth);
+					this.set('pipeOpacity', options.pipeOpacity);
+					this.set('list', options.list);
+				},
+				toObject: function() {
+					return fabric.util.object.extend(this.callSuper('toObject'), {
+						_zid: this.get('_zid'),
+						_zbind: this.get('_zbind'),
+						pipeBackColor: this.get('pipeBackColor'),
+						pipeColor: this.get('pipeColor'),
+						pipeWidth: this.get('pipeWidth'),
+						pipeOpacity: this.get('pipeOpacity'),
+						list: this.get('list'),
+					});
+				},
+				_updateAttr() {
+					this._objects[0].set({
+						stroke: this.pipeBackColor, 
+						strokeWidth: this.pipeWidth,
+					});
+					this._objects[1].set({
+						top:this._objects[0].top + this.pipeWidth * 0.2,
+						left:this._objects[0].left + this.pipeWidth * 0.2,
+						stroke: this.pipeColor, 
+						strokeWidth: this.pipeWidth * 0.6,
+						strokeDashArray: [this.pipeWidth * 1.2, this.pipeWidth],
+						opacity:this.pipeOpacity,
+					});
+					this._objects[0].setCoords();
+					this._objects[1].setCoords();
+					this.setCoords();
+				},
+				_render: function(ctx) {
+					console.log(this, ctx);
+					this.callSuper('_render', ctx);
+				}
+			});
+
+			fabric.Pipe.fromObject = function(object, callback) {
+				return fabric.Object._fromObject('Pipe', object, callback);
+			};
+		},
+
+		/////// 绑定编辑值
 		bindInput:function(){
 			this.canvas.on('selection:created', function(options) {
 				if (options.selected.length != 1) return;
 				Feditor.bindObj(options.selected[0]);
+				if (options.selected[0].type == 'Pipe')
+				{
+					Feditor.createPipePoint(options.selected[0]);
+				}
 			});
 			this.canvas.on('selection:updated', function(options) {
 				if (options.selected.length != 1) return;
 				$('.attr-type').hide();
 				Feditor.bindObj(options.selected[0]);
+				if (options.selected[0].type == 'Pipe')
+				{
+					Feditor.clearPipePoint();
+					Feditor.createPipePoint(options.selected[0]);
+				}
 			});
 			this.canvas.on('selection:cleared', function(options) {
 				$('.attr-type').hide();
+				Feditor.clearPipePoint();
 				console.log(options);
 			});
 			this.canvas.on('object:moving', function(options) {
 				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
+				Feditor.pipePointMove(options.target);
 			});
 			this.canvas.on('object:scaling', function(options) {
 				if (!options.target._zid) return;
@@ -631,7 +808,12 @@
 					obj.set(key, $(this).val());
 				}
 
-				Feditor.canvas.renderAll();
+				if (obj._updateAttr)
+				{
+					obj._updateAttr();
+				}
+				obj.dirty = true;
+				//Feditor.canvas.renderAll();
 			});
 			$('#divAttrList .attrBind').change(function(){
 				let key = $(this).attr('id').substr(9);
@@ -645,6 +827,7 @@
 				}
 
 				obj._zbind[key] = $(this).val();
+				console.log(obj);
 			});
 		},
 
@@ -966,7 +1149,7 @@
 			});
 		},
 		
-		addPipe:function(){
+		addPipe1:function(){
 			let list = [
 				{x:0, y:0},
 				{x:200, y:100},
@@ -997,6 +1180,24 @@
 			});
 
 			this.addItem(group);
+		},
+		
+		addPipe:function(){
+			let item = new fabric.Pipe({
+				left: 50, top: 50,
+			});
+
+			this.addItem(item);
+		},
+
+		addTextRect:function(){
+			let item = new fabric.TextRect({
+				left: 50, top: 50,
+				fill: '#99F',
+				stroke: '#000', strokeWidth: 1,
+			});
+
+			this.addItem(item);
 		},
 
 		/// 操作
@@ -1083,7 +1284,10 @@
 
 			this.canvas.loadFromJSON(saveData.data, function(){
 				Feditor.canvas.forEachObject(function(obj){
-					//obj.visible = false;
+					if (obj._ztype && obj._ztype.indexOf('temp') === 0)
+					{
+						Feditor.canvas.remove(obj);
+					}
 				});
 				Feditor.canvas.renderAll();
 				$('#attr_page_backgroundColor').val(Feditor.canvas.backgroundColor);
@@ -1287,6 +1491,106 @@
 
 			return val;
 		},
+
+		///// Pipe 管道位置编辑
+		clearPipePoint:function(){
+			for (let r of this.pipePList)
+			{
+				this.canvas.remove(r);
+			}
+
+			this.pipeCur = null;
+			this.pipePList = [];
+		},
+
+		createPipePoint:function(o){
+			let list = o._objects[0].points;
+			for (let k in list)
+			{
+				let r = list[k];
+				let item = new fabric.Circle({
+					radius: 5, 
+					left: o.left + r.x + o.pipeWidth * 0.5, 
+					top: o.top + r.y + o.pipeWidth * 0.5, 
+					fill: 'rgba(255,0,0,0.9)',
+					stroke: '#000', 
+					strokeWidth: 0,
+					hasControls: false,
+					originX:'center',
+					originY:'center',
+				});
+
+				let kIndex = parseInt(k);
+				item._zPipePointIndex = kIndex;
+				item._ztype = 'temp_pipe_point';
+				this.addItem(item, false);
+				this.pipePList.push(item);
+
+				if (k < list.length - 1)
+				{
+					let x = (r.x + list[kIndex+1].x) / 2;
+					let y = (r.y + list[kIndex+1].y) / 2;
+					let item2 = new fabric.Circle({
+						radius: 5, 
+						left: o.left + x + o.pipeWidth * 0.5, 
+						top: o.top + y + o.pipeWidth * 0.5, 
+						fill: 'rgba(255,0,0,0.5)',
+						stroke: '#000', 
+						strokeWidth: 0,
+						hasControls: false,
+						originX:'center',
+						originY:'center',
+					});
+
+					item2._zPipePointIndex = kIndex + 0.5;
+					item2._ztype = 'temp_pipe_point';
+					this.addItem(item2, false);
+					this.pipePList.push(item2);
+				}
+			}
+			this.pipeCur = o;
+		},
+
+		pipePointMove:function(o){
+			if (o._ztype != 'temp_pipe_point') return;
+			if (this.pipeCur == null) return;
+
+			let x = o.left - this.pipeCur.left - this.pipeCur.pipeWidth * 0.5;
+			let y = o.top - this.pipeCur.top - this.pipeCur.pipeWidth * 0.5;
+
+			if (o._zPipePointIndex % 1 != 0)
+			{
+				// 创建拐点
+				this.pipeCur._objects[0].points.splice(o._zPipePointIndex + 0.5, 0, {x:x, y:y});
+				console.log(o._zPipePointIndex, this.pipeCur._objects[0].points, x, y);
+				let item = this.pipeCur;
+				this.clearPipePoint();
+				this.createPipePoint(item);
+				return;
+			}
+
+			this.pipeCur._objects[0].points[o._zPipePointIndex].x = x;
+			this.pipeCur._objects[0].points[o._zPipePointIndex].y = y;
+
+			if (o._zPipePointIndex > 0)
+			{
+				let p1 = this.pipePList[o._zPipePointIndex * 2 - 1];
+				let p2 = this.pipePList[o._zPipePointIndex * 2 - 2];
+				p1.set({
+					left: (o.left + p2.left) / 2, 
+					top: (o.top + p2.top) / 2, 
+				});
+			}
+			if (o._zPipePointIndex < this.pipeCur._objects[0].points.length - 1)
+			{
+				let p1 = this.pipePList[o._zPipePointIndex * 2 + 1];
+				let p2 = this.pipePList[o._zPipePointIndex * 2 + 2];
+				p1.set({
+					left: (o.left + p2.left) / 2, 
+					top: (o.top + p2.top) / 2, 
+				});
+			}
+		}
 	};
 
 	</script>
