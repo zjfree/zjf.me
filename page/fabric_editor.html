@@ -129,20 +129,47 @@
 		width: 5em;
 		text-align: right;
 		padding:0;
+		vertical-align: text-top;
 	}
 	#divAttrList table td{
 		text-align: left;
 		padding:0;
 	}
-	#divAttrList table input{
+	#divAttrList table input,
+	#divAttrList table select,
+	#divAttrList table textarea
+	{
 		width:100%;
 		text-align: center;
 		display: block;
 		padding: 0;
 		margin:0;
 	}
+	#divAttrList table textarea{
+		resize: vertical;
+		text-align: left;
+		height: 4em;
+	}
 	#divAttrList table input[type=checkbox]{
 		width:auto;
+		display: inline;
+	}
+
+	.h3-btn{
+		float:right;
+		cursor: pointer;
+		color:#999;
+	}
+	.h3-btn:hover{
+		color:#0F0;
+	}
+
+	.attr-type{
+		display: none;
+	}
+
+	.hhide{
+		visibility: hidden;
 	}
 </style>
 
@@ -181,6 +208,7 @@
 			<button onclick="Feditor.addImage();">添加 Image</button>
 			<button onclick="Feditor.addImage('../static/img/test.svg');">添加 ImageSvg</button>
 			<button onclick="Feditor.addButton();">添加 Button</button>
+			<button onclick="Feditor.addPipe();">添加 Pipe</button>
 			
 		</div>
 		<div id="divStatus" class="block">就绪</div>
@@ -219,41 +247,59 @@
 		<div id="divAttrList" class="block">
 			
 			<div class="attr-group">
-				<h3>基础属性</h3>
+				<h3>基础属性 <span class="h3-btn" onclick="Feditor.attrReset();">Reset</span></h3>
 				<table>
 					<tr>
 						<th>距左:</th>
-						<td><input id="attr_left" type="number" value="0" /></td>
+						<td><input class="attr" id="attr_left" type="number" value="0" /></td>
 						<th>距顶:</th>
-						<td><input id="attr_top" type="number" value="0" /></td>
+						<td><input class="attr" id="attr_top" type="number" value="0" /></td>
 					</tr>
 					<tr>
 						<th>宽度:</th>
-						<td><input id="attr_width" type="number" value="0" /></td>
+						<td><input class="attr" id="attr_width" type="number" value="0" /></td>
 						<th>高度:</th>
-						<td><input id="attr_height" type="number" value="0" /></td>
+						<td><input class="attr" id="attr_height" type="number" value="0" /></td>
 					</tr>
 					<tr>
 						<th>X缩放:</th>
-						<td><input id="attr_scaleX" type="number" value="0" data-fix="2" /></td>
+						<td><input class="attr" id="attr_scaleX" type="number" value="0" data-fix="2" /></td>
 						<th>Y缩放:</th>
-						<td><input id="attr_scaleY" type="number" value="0" data-fix="2" /></td>
+						<td><input class="attr" id="attr_scaleY" type="number" value="0" data-fix="2" /></td>
 					</tr>
 					<tr>
 						<th>X翻转:</th>
-						<td><input id="attr_flipX" type="checkbox" value="1" /></td>
+						<td><input class="attr" id="attr_flipX" type="checkbox" value="1" /></td>
 						<th>Y翻转:</th>
-						<td><input id="attr_flipY" type="checkbox" value="1" /></td>
+						<td><input class="attr" id="attr_flipY" type="checkbox" value="1" /></td>
 					</tr>
 					<tr>
 						<th>X倾斜:</th>
-						<td><input id="attr_skewX" type="number" value="0" data-fix="2" /></td>
+						<td><input class="attr" id="attr_skewX" type="number" value="0" data-fix="2" /></td>
 						<th>Y倾斜:</th>
-						<td><input id="attr_skewY" type="number" value="0" data-fix="2" /></td>
+						<td><input class="attr" id="attr_skewY" type="number" value="0" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>X对齐:</th>
+						<td>
+							<select class="attr" id="attr_originX">
+								<option value="left">left</option>
+								<option value="center">center</option>
+								<option value="right">right</option>
+							</select>
+						</td>
+						<th>Y对齐:</th>
+						<td>
+							<select class="attr" id="attr_originY">
+								<option value="top">top</option>
+								<option value="center">center</option>
+								<option value="bottom">bottom</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th>旋转角度:</th>
-						<td colspan="3"><input id="attr_angle" type="number" value="0" /></td>
+						<td colspan="3"><input class="attr" id="attr_angle" type="number" value="0" /></td>
 					</tr>
 				</table>
 				
@@ -264,19 +310,19 @@
 				<table>
 					<tr>
 						<th>填充颜色:</th>
-						<td><input id="attr_fill" type="text" value="" /></td>
+						<td><input class="attr" id="attr_fill" type="text" value="" /></td>
 						<th>不透明度:</th>
-						<td><input id="attr_opacity" type="number" value="1" data-fix="2" /></td>
+						<td><input class="attr" id="attr_opacity" type="number" value="1" data-fix="2" /></td>
 					</tr>
 					<tr>
 						<th>边框颜色:</th>
-						<td><input id="attr_stroke" type="text" value="" /></td>
+						<td><input class="attr" id="attr_stroke" type="text" value="" /></td>
 						<th>边框宽度:</th>
-						<td><input id="attr_strokeWidth" type="number" value="1" data-fix="2" /></td>
+						<td><input class="attr" id="attr_strokeWidth" type="number" value="1" data-fix="2" /></td>
 					</tr>
 					<tr>
 						<th>阴影:</th>
-						<td colspan="3"><input id="attr_shadow" type="text" value="" /></td>
+						<td colspan="3"><input class="attr" id="attr_shadow" type="text" value="" /></td>
 					</tr>
 				</table>
 			</div>
@@ -286,12 +332,157 @@
 				<table>
 					<tr>
 						<th>宽度:</th>
-						<td><input id="attr_page_width" type="number" value="0" /></td>
+						<td><input class="attrPage" id="attrPage_width" type="number" value="0" /></td>
 						<th>高度:</th>
-						<td><input id="attr_page_height" type="number" value="0" /></td>
+						<td><input class="attrPage" id="attrPage_height" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>背景色:</th>
+						<td><input class="attrPage" id="attrPage_backgroundColor" type="text" value="" /></td>
+						<th>放大系数:</th>
+						<td><input class="attrPage" id="attrPage_zoom" type="number" value="1" step="0.01" /></td>
 					</tr>
 				</table>
 			</div>
+			
+			<div class="attr-group">
+				<h3>属性绑定</h3>
+				<table>
+					<tr>
+						<th>是否显示:</th>
+						<td><input class="attrBind" id="attrBind_visable" type="text" value="1" /></td>
+						<th>不透明度:</th>
+						<td><input class="attrBind" id="attrBind_opacity" type="text" value="1" /></td>
+					</tr>
+					<tr>
+						<th>动画1:</th>
+						<td colspan="3"><input class="attrBind" id="attrBind_am1" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>动画2:</th>
+						<td colspan="3"><input class="attrBind" id="attrBind_am2" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>动画3:</th>
+						<td colspan="3"><input class="attrBind" id="attrBind_am3" type="text" value="" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group attr-type attr-type-text">
+				<h3>文字属性</h3>
+				<table>
+					<tr>
+						<th>文字内容:</th>
+						<td colspan="3"><textarea class="attr" id="attr_text"></textarea></td>
+					</tr>
+					<tr>
+						<th>字背景色:</th>
+						<td><input class="attr" id="attr_textBackgroundColor" type="text" value="" /></td>
+						<th>文字大小:</th>
+						<td><input class="attr" id="attr_fontSize" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>样式:</th>
+						<td>
+							<select class="attr" id="attr_fontStyle">
+								<option value="normal">normal</option>
+								<option value="italic">italic</option>
+								<option value="oblique">oblique</option>
+							</select>
+						</td>
+						<th>行高:</th>
+						<td><input class="attr" id="attr_lineHeight" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>字体:</th>
+						<td colspan="3"><input class="attr" id="attr_fontFamily" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>粗体:</th>
+						<td>
+							<select class="attr" id="attr_fontWeight">
+								<option value="normal">normal</option>
+								<option value="bold">bold</option>
+								<option value="bolder">bolder</option>
+								<option value="lighter">lighter</option>
+							</select>
+						</td>
+						<th>对齐:</th>
+						<td>
+							<select class="attr" id="attr_textAlign">
+								<option value="left">left</option>
+								<option value="center">center</option>
+								<option value="right">right</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>划线:</th>
+						<td colspan="3">
+							&nbsp;
+							<label><input class="attr" id="attr_underline" type="checkbox" value="1" /> 下划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_linethrough" type="checkbox" value="1" /> 中划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_overline" type="checkbox" value="1" /> 上划线</label>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group attr-type attr-type-rect">
+				<h3>Rect 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-circle">
+				<h3>Circle 属性</h3>
+				<table>
+					<tr>
+						<th>半径:</th>
+						<td><input class="attr" id="attr_radius" type="number" value="0" /></td>
+						<th></th>
+						<td><input class="hhide" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-ellipse">
+				<h3>Ellipse 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-line">
+				<h3>Line 属性</h3>
+				<table>
+					<tr>
+						<th>X1:</th>
+						<td><input class="attr" id="attr_x1" type="number" value="0" /></td>
+						<th>Y1:</th>
+						<td><input class="attr" id="attr_y1" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>X2:</th>
+						<td><input class="attr" id="attr_x2" type="number" value="0" /></td>
+						<th>Y2:</th>
+						<td><input class="attr" id="attr_y2" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			
+			
 		</div>
 	</div>
 
@@ -323,6 +514,7 @@
 		page:{
 			width:1000,
 			height:600,
+			zoom:1,
 		},
 		list:[],
 	};
@@ -335,8 +527,8 @@
 		init:function(el){
 			this.el = el;
 			
-			$('#attr_page_width').val(FeditorData.page.width);
-			$('#attr_page_height').val(FeditorData.page.height);
+			$('#attrPage_width').val(FeditorData.page.width);
+			$('#attrPage_height').val(FeditorData.page.height);
 			this.width = FeditorData.page.width * window.devicePixelRatio;
 			this.height = FeditorData.page.height * window.devicePixelRatio;
 			el.prop('width', this.width);
@@ -347,46 +539,57 @@
 				preserveObjectStacking:true,
 				selectionKey:'ctrlKey',
 			});
+
 			//fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
       		fabric.Text.prototype.originX = 'center';
 			fabric.Object.prototype.transparentCorners = false;
 
+			this.bindInput();
+			this.reload();
+			this.bindAnimate();
+		},
+
+		resize:function(){},
+
+		// 绑定编辑值
+		bindInput:function(){
 			this.canvas.on('selection:created', function(options) {
 				if (options.selected.length != 1) return;
 				Feditor.bindObj(options.selected[0]);
 			});
 			this.canvas.on('selection:updated', function(options) {
 				if (options.selected.length != 1) return;
+				$('.attr-type').hide();
 				Feditor.bindObj(options.selected[0]);
 			});
 			this.canvas.on('selection:cleared', function(options) {
+				$('.attr-type').hide();
 				console.log(options);
 			});
 			this.canvas.on('object:moving', function(options) {
-				if (!options.target._eid) return;
+				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
 			});
 			this.canvas.on('object:scaling', function(options) {
-				if (!options.target._eid) return;
+				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
 			});
 			this.canvas.on('object:rotating', function(options) {
-				if (!options.target._eid) return;
+				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
 			});
 			this.canvas.on('object:skewing', function(options) {
-				if (!options.target._eid) return;
+				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
 			});
 			this.canvas.on('object:resizing', function(options) {
-				if (!options.target._eid) return;
+				if (!options.target._zid) return;
 				Feditor.bindObj(options.target);
 			});
 
-			// 绑定编辑值
-			$('#attr_page_width, #attr_page_height').change(function(){
-				let w = parseInt($('#attr_page_width').val());
-				let h = parseInt($('#attr_page_height').val());
+			$('#attrPage_width, #attrPage_height').change(function(){
+				let w = parseInt($('#attrPage_width').val());
+				let h = parseInt($('#attrPage_height').val());
 				FeditorData.page.width = w;
 				FeditorData.page.height = h;
 
@@ -395,9 +598,17 @@
 					height: h * window.devicePixelRatio,
 				});
 			});
-			$('#divAttrList input').change(function(){
+			$('#attrPage_backgroundColor').change(function(){
+				Feditor.canvas.backgroundColor = $(this).val();
+				Feditor.canvas.renderAll();
+			});
+			$('#attrPage_zoom').change(function(){
+				FeditorData.page.zoom = $(this).val();
+				Feditor.canvas.setZoom($(this).val());
+				Feditor.canvas.renderAll();
+			});
+			$('#divAttrList .attr').change(function(){
 				let key = $(this).attr('id').substr(5);
-				if (key.indexOf('page_') === 0) return;
 
 				let obj = Feditor.canvas.getActiveObject();
 				if (!obj || obj.type == 'activeSelection') return;
@@ -422,14 +633,49 @@
 
 				Feditor.canvas.renderAll();
 			});
+			$('#divAttrList .attrBind').change(function(){
+				let key = $(this).attr('id').substr(9);
+
+				let obj = Feditor.canvas.getActiveObject();
+				if (!obj || obj.type == 'activeSelection') return;
+
+				if (!obj._zbind)
+				{
+					obj._zbind = {};
+				}
+
+				obj._zbind[key] = $(this).val();
+			});
 		},
 
-		resize:function(){},
+		attrReset:function(){
+			let obj = Feditor.canvas.getActiveObject();
+			if (!obj || obj.type == 'activeSelection') return;
+			$('#attr_scaleX').val(1);
+			$('#attr_scaleY').val(1);
+			$('#attr_flipX')[0].checked = false;
+			$('#attr_flipY')[0].checked = false;
+			$('#attr_skewX').val(0);
+			$('#attr_skewY').val(0);
+			$('#attr_angle').val(0);
+			obj.set({
+				scaleX:1,
+				scaleY:1,
+				flipX:false,
+				flipY:false,
+				skewX:0,
+				skewY:0,
+				angle:0,
+			});
+
+			Feditor.canvas.renderAll();
+		},
 
 		bindObj:function(obj){
-			$('#divAttrList input').each(function(){
+			$('.attr-type-' + obj.type).show();
+			$('#divAttrList .attr').each(function(){
 				let key = $(this).attr('id').substr(5);
-				if (key.indexOf('page_') === 0) return;
+			
 				if ($(this).attr('type') == 'checkbox')
 				{
 					this.checked = obj[key];
@@ -441,6 +687,17 @@
 				else
 				{
 					$(this).val(obj[key]);
+				}
+			});
+			$('#divAttrList .attrBind').each(function(){
+				let key = $(this).attr('id').substr(9);
+				if (obj._zbind)
+				{
+					$(this).val(obj._zbind[key]);
+				}
+				else
+				{
+					$(this).val('');
 				}
 			});
 		},
@@ -484,7 +741,7 @@
 
 		addItem:function(item, active = true){
 			this.canvas.add(item);
-			item.set('_eid', FeditorData.elIndex++);
+			item.set('_zid', FeditorData.elIndex++);
 			if (active)
 			{
 				this.canvas.setActiveObject(item);
@@ -499,6 +756,9 @@
 				fill: '#99F',
 				stroke: '#000', strokeWidth: 1,
 			});
+
+			item.lockScalingX = true;
+			item.lockScalingY = true;
 
 			this.addItem(item);
 		},
@@ -541,31 +801,8 @@
 
 			this.addItem(item);
 		},
-		
-		addPolygon:function(num){
-			num = num || 5;
-			let list = [];
-			let bo = true;
-			for (let i=0; i<360; i+=360/num/2)
-			{
-				bo = !bo;
-				let du = i * 0.017453293;
-				list.push({
-					x: 200 + Math.sin(du) * (bo ? 100 : 40),
-					y: 200 + Math.cos(du) * (bo ? 100 : 40),
-				});
-			}
 
-			let item = new fabric.Polygon(list, {
-				fill: '#9F9',
-				stroke: '#000', strokeWidth: 1,
-			});
-
-			this.addItem(item);
-		},
-		
-		addPolyline:function(num){
-			num = num || 5;
+		getStarPath:function(num){
 			let list = [];
 			let bo = true;
 			for (let i=0; i<=360; i+=360/num/2)
@@ -578,6 +815,23 @@
 				});
 			}
 
+			return list;
+		},
+		
+		addPolygon:function(num){
+			num = num || 5;
+			let list = this.getStarPath(num);
+			let item = new fabric.Polygon(list, {
+				fill: '#9F9',
+				stroke: '#000', strokeWidth: 1,
+			});
+
+			this.addItem(item);
+		},
+		
+		addPolyline:function(num){
+			num = num || 5;
+			let list = this.getStarPath(num);
 			let item = new fabric.Polyline(list, {
 				fill: 'transparent',
 				stroke: '#000', strokeWidth: 1,
@@ -649,10 +903,14 @@
 			this.addItem(item);
 		},
 
-		addPath:function(){
-			let item = new fabric.Path('M 0 0 L 300 100 L 200 300 z');
+		addPath:function(path){
+			if (!path)
+			{
+				path = window.prompt('输入绘图路径：', 'M 0 0 L 300 100 L 200 300 Z');
+				if (!path) return;
+			}
+			let item = new fabric.Path(path);
 			item.set({ stroke: 'green', fill:'transparent', left:100, top:100 });
-
 			this.addItem(item);
 		},
 		
@@ -696,7 +954,7 @@
 			let group = new fabric.Group([ rect, text ], { left: 100, top: 100, hasControls: false, hasBorders:false });
 			
 			this.addItem(group);
-			this.canvas.calcOffset();
+			//this.canvas.calcOffset();
 
 			group.on('mouseover', function() {
 				rect.fill = '#F00';
@@ -706,6 +964,39 @@
 				rect.fill = '#FAA';
 				group.dirty = true;
 			});
+		},
+		
+		addPipe:function(){
+			let list = [
+				{x:0, y:0},
+				{x:200, y:100},
+				{x:200, y:200},
+			];
+
+			let item1 = new fabric.Polyline(list, {
+				fill: 'transparent',
+				stroke: '#0F0', 
+				strokeWidth: 10,
+				strokeLineCap:'round',
+				strokeLineJoin:'round',
+				strokeDashArray: [20,15],
+				strokeDashOffset: 0,
+			});
+			let item2 = new fabric.Polyline(list, {
+				fill: 'transparent',
+				stroke: '#000', 
+				strokeWidth: 15,
+				strokeLineCap:'round',
+				strokeLineJoin:'round',
+			});
+			
+			let group = new fabric.Group([ item2, item1 ], { left: 100, top: 100 });
+			group.set('_ztype', 'pipe');
+			group.set('_zbind', {
+				am1:'flow,1',
+			});
+
+			this.addItem(group);
 		},
 
 		/// 操作
@@ -768,7 +1059,7 @@
 		},
 
 		save:function(){
-			let json = this.canvas.toJSON(['_eid']);
+			let json = this.canvas.toJSON(['_zid', '_ztype', '_zbind']);
 			let saveData = {
 				editor:FeditorData,
 				data:json,
@@ -791,7 +1082,13 @@
 			$('#attr_page_height').val(FeditorData.page.height);
 
 			this.canvas.loadFromJSON(saveData.data, function(){
+				Feditor.canvas.forEachObject(function(obj){
+					//obj.visible = false;
+				});
 				Feditor.canvas.renderAll();
+				$('#attr_page_backgroundColor').val(Feditor.canvas.backgroundColor);
+				$('#attr_page_zoom').val(FeditorData.page.zoom);
+				Feditor.canvas.setZoom(FeditorData.page.zoom);
 			});
 		},
 
@@ -802,13 +1099,17 @@
 
 			if (type == 'mhcenter')
 			{
-				obj.set({left:this.canvas.width / 2 - obj.width / 2});
+				//obj.set({left:this.canvas.width / 2 - obj.width / 2});
+				obj.centerH();
+				obj.setCoords();
 				this.canvas.renderAll();
 				return;
 			}
 			if (type == 'mvcenter')
 			{
-				obj.set({top:this.canvas.height / 2 - obj.height / 2});
+				//obj.set({top:this.canvas.height / 2 - obj.height / 2});
+				obj.centerV();
+				obj.setCoords();
 				this.canvas.renderAll();
 				return;
 			}
@@ -823,7 +1124,7 @@
 
 				let totalW = 0;
 				obj._objects.forEach(function(item){
-					totalW += item.width;
+					totalW += item.width * item.scaleX;
 				});
 
 				let stepW = (obj.width - totalW) / (obj.size() - 1);
@@ -844,7 +1145,7 @@
 
 				let totalH = 0;
 				obj._objects.forEach(function(item){
-					totalH += item.height;
+					totalH += item.height * item.scaleY;
 				});
 
 				let stepH = (obj.height - totalH) / (obj.size() - 1);
@@ -885,6 +1186,106 @@
 			});
 
 			this.canvas.renderAll();
+		},
+
+		// 动画处理
+		amIndex:0,
+		bindAnimate:function(){
+			setTimeout(function animate() {
+				Feditor.amIndex++;
+				Feditor.canvas.forEachObject(function(obj){
+					if (!obj._zbind) return;
+					if (obj._zbind.am1) Feditor.parseAnimate(obj, obj._zbind.am1, Feditor.amIndex);
+					if (obj._zbind.am2) Feditor.parseAnimate(obj, obj._zbind.am2, Feditor.amIndex);
+					if (obj._zbind.am3) Feditor.parseAnimate(obj, obj._zbind.am3, Feditor.amIndex);
+				});
+				Feditor.canvas.renderAll();
+				setTimeout(animate, 10);
+			}, 100);
+		},
+
+		parseAnimate:function(obj, am, index){
+			let arr = am.split(',');
+			let v = 0;
+			if (arr.length < 2) return;
+			switch (arr[0])
+			{
+				case 'flow':
+					v = parseFloat(arr[1]);
+					if (v != 0)
+					{
+						obj._objects[1].strokeDashOffset = index * v;
+						obj.dirty = true; 
+					}
+					break;
+				case 'rotate':
+					v = parseFloat(arr[1]);
+					if (v != 0)
+					{
+						obj.rotate((index * v) % 360);
+						obj.dirty = true; 
+					}
+					break;
+				case 'blink':
+					v = parseFloat(arr[1]) / 100;
+					let blinkStep = arr.length > 2 ? parseFloat(arr[2]) : 100;
+					if (v != 0)
+					{
+						obj.set('opacity', index % blinkStep / blinkStep > v ? 1 : 0.1);
+						obj.dirty = true; 
+					}
+					break;
+				case 'mHeight':
+					v = parseFloat(arr[1]);
+					if (v != obj.height)
+					{
+						let h = this.goVal(v, obj.height);
+						obj.set('height', h);
+						obj.dirty = true; 
+					}
+					break;
+				case 'mWidth':
+					v = parseFloat(arr[1]);
+					if (v != obj.width)
+					{
+						let w = this.goVal(v, obj.width);
+						obj.set('width', w);
+						obj.dirty = true; 
+					}
+					break;
+				case 'move':
+					if (arr.length == 3)
+					{
+						let x = arr[1] === '' ? obj.left : parseFloat(arr[1]);
+						let y = arr[2] === '' ? obj.top : parseFloat(arr[2]);
+						if (x != obj.left)
+						{
+							obj.set('left', this.goVal(x, obj.left));
+							obj.dirty = true; 
+						}
+						if (y != obj.top)
+						{
+							obj.set('top', this.goVal(y, obj.top));
+							obj.dirty = true; 
+						}
+					}
+					break;
+			}
+		},
+
+		goVal:function(v, cur){
+			let val = cur + (v - cur) * 0.02;
+			if (Math.abs(v - cur) < 50)
+			{
+				val = cur + (v > cur ? 1 : -1);
+			}
+			
+			if (Math.abs(v-cur) < 1)
+			{
+				val = v;
+			}
+
+			return val;
 		},
 	};
 
