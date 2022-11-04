@@ -1,0 +1,187 @@
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+}
+body{
+    overflow: hidden;
+}
+
+#divMainLeft{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: max(15%, 300px);
+    background-color: #eff;
+    overflow:auto;
+    border-right: solid 2px gray;
+}
+#divMainRight{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width: max(15%, 300px);
+    background-color: #eff;
+    overflow:auto;
+    border-left: solid 2px gray;
+}
+#divMainEditor{
+    position:absolute;
+    top:0;
+    left: max(15%, 300px);
+    right:max(15%, 300px);
+    bottom:0;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+    overflow:auto;
+    background-color: #eee;
+}
+
+#divMainLeft>.title{
+    text-align: center;
+    margin:0;
+    padding:5px;
+    border-bottom: solid 1px gray;
+}
+#divMainLeft>.block{
+    padding:10px;
+    border-bottom: solid 1px gray;
+}
+
+.canvas-container{
+    margin:0 auto;
+}
+
+#myCanvas{
+    border:solid 1px gray;
+    display: block;
+    background-color: #fff;
+}
+
+.hr{
+    height:10px;
+}
+
+#divStatus{
+    font-size: 12px;
+    line-height: 1.3;
+}
+#divBtnList{
+    line-height: 2;
+}
+
+#divMainRight>.block{
+    padding:10px;
+    border-bottom: solid 1px gray;
+    line-height: 2;
+}
+
+#divMainRight>#divAttrList{
+    line-height: 1.8;
+    font-size:12px;
+}
+
+#divAttrList h3{
+    background-color: #666;
+    color:#fff;
+    margin:0;
+    padding:0 10px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    box-shadow: inset 0 0 5px #000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#divAttrList .attr-group{
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding-bottom: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border:solid 1px #666;
+}
+
+#divAttrList table{
+    margin-right:10px;
+}
+#divAttrList table th{
+    font-weight: normal;
+    width: 5em;
+    text-align: right;
+    padding:0;
+    vertical-align: text-top;
+}
+#divAttrList table td{
+    text-align: left;
+    padding:0;
+}
+#divAttrList table input,
+#divAttrList table select,
+#divAttrList table textarea
+{
+    width:100%;
+    text-align: center;
+    display: block;
+    padding: 0;
+    margin:0;
+}
+#divAttrList table textarea{
+    resize: vertical;
+    text-align: left;
+    height: 4em;
+}
+#divAttrList table input[type=checkbox]{
+    width:auto;
+    display: inline;
+}
+
+.h3-btn{
+    float:right;
+    cursor: pointer;
+    color:#999;
+}
+.h3-btn:hover{
+    color:#0F0;
+}
+
+.attr-type{
+    display: none;
+}
+
+.hhide{
+    visibility: hidden;
+}
+
+.tbFilter{
+    width: 100%;
+}
+#divAttrList .divImageFilter{
+    padding:0 10px;
+}
+
+#divAttrList .divImageFilter select{
+    width: auto;
+    display: inline-block;
+}
+#divAttrList .divImageFilter p{
+    margin:0;
+    padding:0 10px;
+    margin-left:1em;
+}
+#divAttrList .divImageFilter input[type=range]{
+    display: block;
+    width: 100%;
+    margin:5px;
+}
