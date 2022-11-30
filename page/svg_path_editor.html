@@ -1,0 +1,930 @@
+<!-- Canvas Path编辑器 zjfree 2022-11-28 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Canvas Path编辑器</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html, body{
+	height: 100%;
+	width: 100%;
+}
+body{
+	overflow: hidden;
+	color:#fff;
+	background: #000;
+	margin:0;
+	padding:0;
+}
+
+#divMainLeft{
+	border-right: solid 1px gray;
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	width: 300px;
+	text-align: center;
+	line-height: 30px;
+}
+#divMainLeft h3{
+	margin: 0;
+	padding: 0;
+	height: 30px;
+	border-bottom: solid 1px gray;
+}
+#divMainRight{
+	width: 300px;
+	border-left: solid 1px gray;
+	position:absolute;
+	top:0;
+	right:0;
+	bottom: 0;
+}
+#divMainTop{
+	position:absolute;
+	top:0;
+	left:300px;
+	right:300px;
+	background: linear-gradient(to bottom, #999 0%,#000 100%);
+	color:#fff;
+	border-bottom: solid 1px gray;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+#divPostion{
+	position:absolute;
+	top:40px;
+	left:310px;
+}
+
+#svgMain{
+	position:absolute;
+}
+#svgMain .draw{
+	cursor: move;
+}
+#svgMain .cur1,#svgMain .cur2{
+	pointer-events: none;
+}
+#svgMain .line{
+	cursor: pointer;
+}
+#divDraw{
+	position:absolute;
+	outline: solid 3px gray;
+	box-sizing: border-box;
+	pointer-events: none;
+}
+#divDrawPoint{
+	position:absolute;
+	box-sizing: border-box;
+	pointer-events: none;
+}
+#myCanvas{
+	width: 100%;
+	height: 100%;
+}
+#divDrawPoint div{
+	border-radius: 50%;
+	background-color: rgba(255,255,255,0.5);
+	position:absolute;
+}
+#divDrawPoint div.hover{
+	background-color: rgba(0,200,0,0.9);
+}
+#divDrawPoint div.active{
+	background-color: rgba(255, 247, 0, 0.9);
+}
+#divDrawPoint div[nodeType=M]{
+	box-shadow: inset 0 1px 2px red, inset 0 -1px 2px red;
+}
+
+#divDemo{
+	margin-top:20px;
+}
+#svgDemo{
+	width: 250px;
+	height: 250px;
+	background-color: #333;
+}
+
+#divDemoList{
+	text-align: left;
+	margin-top:10px;
+}
+#divDemoList svg{
+	background-color: #333;
+	margin: 0 5px;
+	cursor: pointer;
+}
+#divDemoList svg:hover{
+	background-color: #999;
+}
+
+#tbList{
+	width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border:solid 2px gray;
+    font-size:1.2em;
+    font-family: consolas, 'Courier New', 微软雅黑, Courier, monospace;
+}
+#tbList th{
+	background-color: #333;
+	height: 20px;
+	line-height: 20px;
+	font-weight: normal;
+}
+#tbList td, #tbList th{
+	text-align: center;
+	padding:5px 0;
+	border:solid 1px gray;
+}
+#tbList a{
+	text-decoration: none;
+	color:#aaa;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+#tbList a:hover{
+	text-decoration: none;
+	color:#fff;
+}
+
+#tbList .active{
+	color:aqua;
+}
+#tbList select{
+	font-size:0.8em;
+	background-color: #333;
+	color:#fff;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+
+<svg id="svgMain"
+	xmlns='http://www.w3.org/2000/svg'
+	viewBox='0 0 64 64'
+	width='64' height='64'
+	fill='#006'
+	stroke="#F29100" stroke-width="0.3">
+	<path class="draw" d='' />
+	<path class="cur1" d='' stroke="#0F0" fill="transparent" />
+</svg>
+
+<div id="divDraw">
+	<canvas id="myCanvas"></canvas>
+</div>
+
+<div id="divDrawPoint"></div>
+
+<div id="divPostion"></div>
+
+<div id="divMainLeft">
+	<h3>Canvas Path编辑器</h3>
+	<div id="divDemo">
+		<svg id="svgDemo"
+		xmlns='http://www.w3.org/2000/svg'
+		viewBox='0 0 64 64'
+		width='64' height='64'
+		fill='#006'
+		stroke="#FFF" stroke-width="0.5">
+		<path d='' />
+		</svg>
+	</div>
+	<div id="divDemoList"></div>
+</div>
+
+<div id="divMainRight">
+	<table id="tbList">
+		<thead>
+			<tr>
+				<th>类型</th>
+				<th>X</th>
+				<th>Y</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>
+
+<div id="divMainTop"></div>
+<script>
+
+var ZPath = {
+	width:0,
+	height:0,
+	size:1,
+	ctx:null,
+	index:0,
+	fpsList:[],
+	strInfo:'',
+
+	gridCount:32,
+	gridSize:0,
+	PS:0,
+
+	curEl:null,
+	pointId:0,
+	isChange:false,
+
+	moveType:'',
+	moveStartPoint:null,
+
+	init:function(el)
+	{
+		let w = $(window).width();
+		let h = $(window).height() - 30;
+		let size = Math.min(w - 600, h);
+		size = size * 0.9;
+
+		let x = (w - size) / 2;
+		let y = (h - size) / 2 + 30;
+		$('#divDraw').data('x', x);
+		$('#divDraw').data('y', y);
+		$('#divDraw, #divDrawPoint, #svgMain').css({
+			width: size + 'px',
+			height: size + 'px',
+			top: y + 'px',
+			left: x + 'px',
+		});
+
+		
+		$('#svgMain').mousedown(function(e){
+			ZPath.moveType = 'svgMain';
+			ZPath.downPoint(e);
+		});
+		$('#svgMain .draw').mousedown(function(e){
+			if (ZPath.downPoint(e)) return;
+			e.stopPropagation();
+			e.preventDefault();
+			ZPath.moveStart(e);
+		});
+		$(document).mousemove(function(e){
+			e.offsetX = e.clientX - $('#divDraw').data('x');
+			e.offsetY = e.clientY - $('#divDraw').data('y');
+			if (e.buttons == 1){
+				ZPath.movePoint(e);
+				return;
+			}
+			ZPath.hoverPoint(e);
+		});
+		$(document).mouseup(function(e){
+			ZPath.upPoint();
+		});
+
+		this.gridSize = size;
+		this.PS = size/this.gridCount;
+		
+		this.width = el.width() * window.devicePixelRatio;
+		this.height = el.height() * window.devicePixelRatio;
+		this.size = Math.min(this.width,this.height) / 100;
+		el.prop('width', this.width);
+		el.prop('height', this.height);
+		this.ctx = el[0].getContext("2d");
+
+		//ZPath.render();
+		this.draw();
+	},
+	render:function()
+	{
+		this.index++;
+
+		// 清空
+		this.draw();
+
+		window.requestAnimationFrame(function(){
+			ZPath.render();
+		});
+	},
+	clear:function(){
+		this.ctx.clearRect(0,0,this.width,this.height);
+	},
+	draw:function(){
+		this.clear();
+		this.drawGrid();
+	},
+	drawGrid:function(){
+		let c = this.gridCount;
+		let size = this.width / c;
+
+		this.ctx.lineWidth = 1;
+		this.ctx.strokeStyle = 'rgba(255,255,255, 0.2)';
+		for (let i=0; i<=c; i++){
+			if (i % 8 == 0){
+				continue;
+			}
+			this.ctx.beginPath();
+			this.ctx.moveTo(i * size, 0);
+			this.ctx.lineTo(i * size, this.height);
+			this.ctx.moveTo(0, i * size);
+			this.ctx.lineTo(this.width, i * size);
+		
+			this.ctx.stroke();
+		}
+
+		this.ctx.lineWidth = 2;
+		this.ctx.strokeStyle = 'rgba(255,255,255, 0.4)';
+		for (let i=0; i<=c; i++){
+			if (i % 8 !== 0){
+				continue;
+			}
+			this.ctx.beginPath();
+			this.ctx.moveTo(i * size, 0);
+			this.ctx.lineTo(i * size, this.height);
+			this.ctx.moveTo(0, i * size);
+			this.ctx.lineTo(this.width, i * size);
+		
+			this.ctx.stroke();
+		}
+		
+		if (this.curEl){
+			this.ctx.lineWidth = 1;
+			this.ctx.strokeStyle = 'rgba(255,255,0, 0.5)';
+			this.ctx.beginPath();
+			this.ctx.moveTo(this.curEl.data('x') * size, 0);
+			this.ctx.lineTo(this.curEl.data('x') * size, this.height);
+			this.ctx.moveTo(0, this.curEl.data('y') * size);
+			this.ctx.lineTo(this.width, this.curEl.data('y') * size);
+		
+			this.ctx.stroke();
+		}
+
+	},
+
+	drawPath:function(){
+		let rate = 64 / this.gridCount;
+		let path = '';
+		$('#divDrawPoint div').each(function(index){
+			let x = $(this).data('x') * rate;
+			let y = $(this).data('y') * rate;
+			let t = $(this).data('type');
+
+			if (index != 0 && t == 'M'){
+				path += ' Z ';
+			}
+
+			path += ' ' + t;
+			switch (t){
+				case 'H':
+					path += x + ' ';
+					break;
+				case 'V':
+					path += y + ' ';
+					break;
+				case 'Q':
+				case 'S':
+					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += `${x},${y}`;
+					break;
+				case 'C':
+					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
+					path += `${x},${y}`;
+					break;
+				default:
+					path += `${x},${y}`;
+					break;
+			}
+		});
+		path += ' Z';
+
+		$('#divMainTop').html(path);
+
+		$('#svgMain .draw').attr('d', path);
+		$('#svgDemo path').attr('d', path);
+
+		this.drawCurPath();
+		this.drawLinePath();
+
+		this.loadNode();
+	},
+
+	drawLinePath:function(){
+		$('#svgMain .line').remove();
+		
+		let rate = 64 / this.gridCount;
+		let m = '';
+		let first = '';
+		$('#divDrawPoint div').each(function(index){
+			let xy = '';
+			xy += $(this).data('x') * rate + ',';
+			xy += $(this).data('y') * rate + ' ';
+
+			if (m == ''){
+				m = 'M' + xy;
+				first = 'L' + xy;
+				return;
+			}
+
+			let pre = null;
+			if (index > 0){
+				pre = $('#divDrawPoint div').eq(index-1);
+			}
+
+			let type = $(this).data('type');
+			let path = m;
+			switch (type){
+				case 'H':
+					path += type + x;
+					break;
+				case 'V':
+					path += type + y;
+					break;
+				case 'Q':
+					path += type + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
+					break;
+				case 'C':
+					path += type;
+					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
+					path += xy;
+					break;
+				case 'S':
+					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
+					break;
+				case 'T':
+					let tp = ZPath.getTControlPoint(pre);
+					if (pre && tp){
+						let qx = pre.data('x');
+						let qy = pre.data('y');
+						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + xy;
+						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + qx * rate + ',' + qy * rate;
+					}else{
+						path += 'T' + xy;
+					}
+					break;
+				default:
+					path += type + xy;
+					break;
+			}
+			m = 'M' + xy;
+			ZPath.addLinePath(path, index-1);
+		});
+
+		this.addLinePath(m + first, $('#divDrawPoint div').length-1);
+	},
+
+	addLinePath:function(path, index){
+		let line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		$(line).attr('d', path);
+		$(line).attr('fill', 'transparent');
+		$(line).attr('stroke', 'rgba(0,0,0,0.01)');
+		$(line).attr('stroke-width', '1');
+		$(line).data('index', index);
+		$(line).addClass('line');
+
+		$(line).mousedown(function(e){
+			if (ZPath.downPoint(e)) return;
+			e.stopPropagation();
+			e.preventDefault();
+			
+			ZPath.moveType = 'svgMain';
+			ZPath.addLinePoint(e, $(this).data('index'));
+			ZPath.drawPath();
+		});
+
+		$('#svgMain').append(line);
+	},
+
+	drawCurPath:function(){
+		let rate = 64 / this.gridCount;
+		let path1 = '';
+		if (this.curEl){
+			let el = this.curEl;
+			let pre = el.prev();
+			if (pre.length > 0){
+				let x = el.data('x') * rate;
+				let y = el.data('y') * rate;
+				let type = el.data('type');
+				path1 += 'M' + pre.data('x') * rate + ',' + pre.data('y') * rate + ' ';
+				switch (el.data('type')){
+					case 'L':
+							path1 += `L${x},${y}`;
+						break;
+					case 'H':
+							path1 += 'H' + x;
+						break;
+					case 'V':
+							path1 += 'V' + y;
+						break;
+					case 'Q':
+							path1 += 'Q' + el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+						break;
+					case 'C':
+							path1 += 'C';
+							path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + ',';
+							path1 += el.data('x2') * rate + ',' + el.data('y2') * rate + ',';
+							path1 += `${x},${y}`;
+						break;
+					case 'S':
+							path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+						break;
+					case 'T':
+							let tp = this.getTControlPoint(pre);
+							if (tp){
+								path1 += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + `${x},${y}`;
+							}else{
+								path1 += `T${x},${y}`;
+							}
+						break;
+					default:
+							path1 += `${type}${x},${y}`;
+						break;
+				}
+			}
+		}
+
+		$('#svgMain .cur1').attr('d', path1);
+	},
+
+	getTControlPoint:function(pre){
+		if (!pre) return null;
+		let type = pre.data('type');
+		if (type == 'Q'){
+			let qx1 = pre.data('x') * 2 - pre.data('x1');
+			let qy1 = pre.data('y') * 2 - pre.data('y1');
+			return {x:qx1, y:qy1};
+		}else if(type == 'T'){
+			let p = this.getTControlPoint(pre.prev());
+			if (!p) return null;
+			let x1 = pre.data('x') * 2 - p.x;
+			let y1 = pre.data('y') * 2 - p.y;
+			return {x:x1, y:y1};
+		}
+		
+		return null;
+	},
+
+	rand:function(min, max)
+	{
+		let val = min + Math.random() * (max - min);
+		return Math.round(val);
+	},
+
+	downPoint:function(e){
+		let p = this.getPoint(e);
+		if (!p.el) return false;
+
+		this.setActive(p.el);
+		this.drawPath();
+
+		return true;
+	},
+
+	addPoint:function(p, addEl, t){
+		if (!t){
+			t = $('#divDrawPoint div').length == 0 ? 'M' : 'L';
+		}
+
+		let el = $('<div></div>');
+		if (addEl){
+			addEl.after(el);
+		}else{
+			$('#divDrawPoint').append(el);
+		}
+
+		this.pointId++;
+		el.data('x', p.x);
+		el.data('y', p.y);
+		el.data('type', t);
+		el.attr('id', 'p_' + this.pointId);
+		el.attr('nodeType', t);
+
+		el.css({
+			width: this.PS + 'px',
+			height: this.PS + 'px',
+			left:(p.x * this.PS - this.PS/2) + 'px',
+			top:(p.y * this.PS - this.PS/2) + 'px',
+		});
+
+		this.isChange = true;
+		this.setActive(el);
+	},
+
+	addLinePoint:function(e, index){
+		let p = this.getPoint(e);
+		this.addPoint(p, $('#divDrawPoint div').eq(index));
+	},
+
+	hoverPoint:function(e){
+		$('#divDrawPoint .hover').removeClass('hover');
+		let p = this.getPoint(e);
+		$('#divPostion').html('P: ' + p.x + ',' + p.y);
+		if (!p.el) return;
+
+		p.el.addClass('hover');
+	},
+
+	moveStart:function(e){
+		this.moveStartPoint = this.getPoint(e);
+		this.moveStartPoint.moveX = 0;
+		this.moveStartPoint.moveY = 0;
+		this.moveType = 'pathLine';
+	},
+	
+	movePoint:function(e){
+		if (this.moveType == '') return;
+		let p = this.getPoint(e);
+		$('#divPostion').html('P: ' + p.x + ',' + p.y);
+
+		if (this.moveType == 'pathLine'){
+			this.moveStartPoint.moveX = p.x - this.moveStartPoint.x;
+			this.moveStartPoint.moveY = p.y - this.moveStartPoint.y;
+			let moveX = (p.x - this.moveStartPoint.x) * this.PS;
+			let moveY = (p.y - this.moveStartPoint.y) * this.PS;
+			$('#svgMain, #divDrawPoint').css('transform', `translate(${moveX}px, ${moveY}px)`);
+			return;
+		}
+
+		if (this.curEl == null) return;
+
+		let t = this.curEl.data('type');
+		if (t != 'H'){
+			this.curEl.data('y', p.y);
+			this.curEl.css({
+				top:(p.y * this.PS - this.PS/2) + 'px',
+			});
+		}
+		if (t != 'V'){
+			this.curEl.data('x', p.x);
+			this.curEl.css({
+				left:(p.x * this.PS - this.PS/2) + 'px',
+			});
+		}
+
+		let next = this.curEl.next();
+		if (next){
+			this.setNextV(next, p);
+			this.setNextH(next, p);
+		}
+
+		this.draw();
+		this.drawPath();
+		this.isChange = true;
+	},
+
+	setNextV:function(next, p){
+		if (next.data('type') != 'V') return;
+		next.data('x', p.x);
+		next.css({
+			left:(p.x * this.PS - this.PS/2) + 'px',
+		});
+		next = next.next();
+		if (!next) return;
+		this.setNextV(next, p);
+	},
+	
+	setNextH:function(next, p){
+		if (next.data('type') != 'H') return;
+		next.data('y', p.y);
+		next.css({
+			top:(p.y * this.PS - this.PS/2) + 'px',
+		});
+		next = next.next();
+		if (!next) return;
+		this.setNextH(next, p);
+	},
+
+	upPoint:function(){
+		if (this.moveType == 'pathLine'){
+			let p = this.moveStartPoint;
+			if (p.moveX != 0 || p.moveY != 0)
+			{
+				$('#svgMain, #divDrawPoint').css('transform', `translate(0px, 0px)`);
+				$('#divDrawPoint div').each(function(){
+					let x = $(this).data('x') + p.moveX;
+					let y = $(this).data('y') + p.moveY;
+					$(this).data('x', x);
+					$(this).data('y', y);
+					$(this).css({
+						left:(x * ZPath.PS - ZPath.PS/2) + 'px',
+						top:(y * ZPath.PS - ZPath.PS/2) + 'px',
+					});
+					let type = $(this).data('type');
+					switch (type){
+						case 'Q':
+						case 'S':
+							let qx1 = $(this).data('x1') + p.moveX;
+							let qy1 = $(this).data('y1') + p.moveY;
+							$(this).data('x1', qx1);
+							$(this).data('y1', qy1);
+							break;
+						case 'C':
+							let cx1 = $(this).data('x1') + p.moveX;
+							let cy1 = $(this).data('y1') + p.moveY;
+							$(this).data('x1', cx1);
+							$(this).data('y1', cy1);
+							let cx2 = $(this).data('x2') + p.moveX;
+							let cy2 = $(this).data('y2') + p.moveY;
+							$(this).data('x2', cx2);
+							$(this).data('y2', cy2);
+							break;
+					}
+				});
+				this.draw();
+				this.drawPath();
+				this.isChange = true;
+			}
+		}
+		
+		this.moveType = '';
+
+		if (this.isChange){
+			this.saveDemo();
+			this.isChange = false;
+		}
+	},
+
+	updatePath:function(isSave){
+		this.draw();
+		this.drawPath();
+		if (isSave){
+			this.saveDemo();
+		}
+	},
+
+	saveDemo:function(){
+		let el = $('#svgDemo').clone();
+		el.attr('id', '');
+		$('#divDemoList').prepend(el);
+		if ($('#divDemoList svg').length > 32){
+			$('#divDemoList svg').last().remove();
+		}
+	},
+
+	getPoint:function(e){
+		let x = Math.round(e.offsetX / this.PS);
+		let y = Math.round(e.offsetY / this.PS);
+
+		x = Math.max(0, x);
+		x = Math.min(x, this.gridCount);
+		y = Math.max(0, y);
+		y = Math.min(y, this.gridCount);
+
+		let res = {
+			rawX:e.offsetX,
+			rawY:e.offsetY,
+			x:x, 
+			y:y, 
+			el:null,
+		};
+
+		$('#divDrawPoint div').each(function(){
+			if ($(this).data('x') == res.x && $(this).data('y') == res.y){
+				res.el = $(this);
+			}
+		});
+
+		return res;
+	},
+
+	setActive:function(el){
+		this.curEl = el;
+		$('#divDrawPoint .hover').removeClass('hover');
+		$('#divDrawPoint .active').removeClass('active');
+		el.addClass('active');
+		this.draw();
+	},
+
+	load:function(){
+		let rate = ZPath.gridCount / 32;
+		this.addPoint({x:16 * rate, y:8 * rate});
+		this.addPoint({x:8 * rate, y:24 * rate});
+		this.addPoint({x:24 * rate, y:24 * rate});
+		this.drawPath();
+	},
+
+	loadNode:function(){
+		$('#tbList tbody').html('');
+
+		let nodeZ = $('<tr><td>Z</td><td></td><td></td><td></td></tr>');
+
+		$('#divDrawPoint div').each(function(index){
+			let type = $(this).data('type');
+			if (index != 0 && type == 'M'){
+				$('#tbList tbody').append(nodeZ.clone());
+			}
+
+			let str = '<tr data-index="' + index + '">';
+			if (index == 0){
+				str += '<td>M</td>';
+			}else{
+				str += '<td><select>';
+				str += '<option value="M">M 移动</option>';
+				str += '<option value="L">L 连线</option>';
+				str += '<option value="H">H 水平移动</option>';
+				str += '<option value="V">V 竖直移动</option>';
+				str += '<option value="C">C 三次曲线</option>';
+				str += '<option value="S">S 三次平滑</option>';
+				str += '<option value="Q">Q 二次曲线</option>';
+				str += '<option value="T">T 二次平滑</option>';
+				str += '</select></td>';
+			}
+			str += '<td>' + $(this).data('x') + '</td>';
+			str += '<td>' + $(this).data('y') + '</td>';
+			if (index == 0){
+				str += '<td><a class="add" href="javascript:;">+</a></td>';
+			}else{
+				str += '<td><a class="del" href="javascript:;">&times;</a> <a class="add" href="javascript:;">+</a></td>';
+			}
+			str += '</tr>';
+			let el = $(str);
+			el.find('select').val(type);
+			el.find('select').data('old', type);
+			if ($(this).hasClass('active')){
+				el.addClass('active');
+			}
+			$('#tbList tbody').append(el);
+
+			switch(type){
+				case 'Q':
+					let q1 = $('<tr><td>Q1</td><td>' + $(this).data('x1') + '</td><td>' + $(this).data('y1') + '</td><td></td></tr>');
+					$('#tbList tbody').append(q1);
+					break;
+				case 'C':
+					let c1 = $('<tr><td>C1</td><td>' + $(this).data('x1') + '</td><td>' + $(this).data('y1') + '</td><td></td></tr>');
+					$('#tbList tbody').append(c1);
+					let c2 = $('<tr><td>C2</td><td>' + $(this).data('x2') + '</td><td>' + $(this).data('y2') + '</td><td></td></tr>');
+					$('#tbList tbody').append(c2);
+					break;
+			}
+		});
+		
+		$('#tbList tbody').append(nodeZ.clone());
+
+		$('#tbList .del').click(function(){
+			let index = $(this).parent().parent().data('index');
+			let o = $('#divDrawPoint div').eq(index);
+			o.remove();
+			ZPath.updatePath(true);
+		});
+		$('#tbList .add').click(function(){
+			let index = $(this).parent().parent().data('index');
+			let o = $('#divDrawPoint div').eq(index);
+			let rate = ZPath.gridCount / 32;
+			ZPath.addPoint({x:16 * rate, y:16 * rate}, o);
+			ZPath.updatePath(true);
+		});
+		$('#tbList select').change(function(){
+			let index = $(this).parent().parent().data('index');
+			let o = $('#divDrawPoint div').eq(index);
+			ZPath.changeType(o, $(this).val());
+		});
+	},
+
+	changeType:function(o, type){
+		o.data('type', type);
+		o.attr('nodeType', type);
+		let p1 = {x:o.data('x'), y:o.data('y')};
+		let pre = o.prev();
+		let p = {x:pre.data('x'), y:pre.data('y')};
+		switch (type){
+			case 'H':
+				this.setNextH(o, p);
+				break;
+			case 'V':
+				this.setNextV(o, p);
+				break;
+			case 'Q':
+			case 'S':
+				o.data('x1', Math.round((p.x+p1.x)/2));
+				o.data('y1', Math.round((p.y+p1.y)/2));
+				break;
+			case 'C':
+				o.data('x1', Math.round((p.x+p1.x)/2));
+				o.data('y1', Math.round((p.y+p1.y)/2));
+				o.data('x2', Math.round((p.x+p1.x)/2));
+				o.data('y2', Math.round((p.y+p1.y)/2));
+				break;
+		}
+		ZPath.setActive(o);
+		ZPath.updatePath(true);
+	},
+};
+
+$(function(){
+	// JS
+	ZPath.init($('#myCanvas'));
+	ZPath.load();
+});
+</script>
+
+
+
+</body>
