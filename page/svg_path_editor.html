@@ -63,7 +63,7 @@ body{
 
 #divPostion{
 	position:absolute;
-	top:40px;
+	bottom:10px;
 	left:310px;
 }
 
@@ -978,7 +978,6 @@ var ZPath = {
 
 	load:function(){
 		let path = this.urlParam('d') || localStorage.getItem('svg_path');
-		console.log(path);
 		if (!path || !this.parsePath(path))
 		{
 			this.parsePath('M32,16 L16,48 L48,48');
@@ -1057,7 +1056,7 @@ var ZPath = {
 		$('#tbList .del').click(function(){
 			let index = $(this).parent().parent().data('index');
 			let o = $('#divDrawPoint div').eq(index);
-			if (o.attr('id') == ZPath.curEl.attr('id')){
+			if (ZPath.curEl && o.attr('id') == ZPath.curEl.attr('id')){
 				ZPath.curEl = null;
 			}
 			o.remove();
