@@ -1,4 +1,4 @@
-<!-- Canvas Path编辑器 zjfree 2022-11-28 -->
+<!-- SVG Path编辑器 zjfree 2022-11-28 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<title>Canvas Path编辑器</title>
+<title>SVG Path编辑器</title>
 
 <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
 <style>
@@ -46,6 +46,7 @@ body{
 	top:0;
 	right:0;
 	bottom: 0;
+	overflow-y: auto;
 }
 #divMainTop{
 	position:absolute;
@@ -78,13 +79,16 @@ body{
 #svgMain .line{
 	cursor: pointer;
 }
+#svgMain .ctrl{
+	pointer-events: none;
+}
 #divDraw{
 	position:absolute;
 	outline: solid 3px gray;
 	box-sizing: border-box;
 	pointer-events: none;
 }
-#divDrawPoint{
+#divDrawPoint, #divDrawCtrl{
 	position:absolute;
 	box-sizing: border-box;
 	pointer-events: none;
@@ -97,15 +101,39 @@ body{
 	border-radius: 50%;
 	background-color: rgba(255,255,255,0.5);
 	position:absolute;
+	cursor: pointer;
+	pointer-events: all;
+	user-select: none;
 }
-#divDrawPoint div.hover{
+#divDrawPoint div:hover{
 	background-color: rgba(0,200,0,0.9);
+	box-shadow: inset 0 0 5px #000;
 }
 #divDrawPoint div.active{
 	background-color: rgba(255, 247, 0, 0.9);
 }
 #divDrawPoint div[nodeType=M]{
 	box-shadow: inset 0 1px 2px red, inset 0 -1px 2px red;
+}
+
+#divDrawCtrl div{
+	background-color: rgba(255,0,0,0.7);
+	position:absolute;
+	cursor: pointer;
+	pointer-events: all;
+	user-select: none;
+}
+#divDrawCtrl div:hover{
+	background-color: rgba(255,0,0,0.9);
+	outline: solid 1px #fff;
+}
+#divDrawCtrl div.other{
+	background-color: rgba(255, 255, 255, 0.8);
+	cursor:default;
+}
+#divDrawCtrl div.other:hover{
+	background-color: rgba(255, 255, 255, 0.8);
+	outline: none;
 }
 
 #divDemo{
@@ -191,11 +219,12 @@ body{
 </div>
 
 <div id="divDrawPoint"></div>
+<div id="divDrawCtrl"></div>
 
 <div id="divPostion"></div>
 
 <div id="divMainLeft">
-	<h3>Canvas Path编辑器</h3>
+	<h3>SVG Path编辑器</h3>
 	<div id="divDemo">
 		<svg id="svgDemo"
 		xmlns='http://www.w3.org/2000/svg'
@@ -205,6 +234,16 @@ body{
 		stroke="#FFF" stroke-width="0.5">
 		<path d='' />
 		</svg>
+	</div>
+	<div>
+		<button onclick="ZPath.clearPath();">清空</button>
+		&nbsp;
+		<button onclick="ZPath.downSvg();">下载</button>
+		&nbsp;
+		<select id="selSize">
+			<option selected value="32">尺寸：32&times;32</option>
+			<option value="64">尺寸：64&times;64</option>
+		</select>
 	</div>
 	<div id="divDemoList"></div>
 </div>
@@ -223,7 +262,7 @@ body{
 	</table>
 </div>
 
-<div id="divMainTop"></div>
+<div id="divMainTop" contenteditable="plaintext-only"></div>
 <script>
 
 var ZPath = {
@@ -240,6 +279,7 @@ var ZPath = {
 	PS:0,
 
 	curEl:null,
+	curCtrlEl:null,
 	pointId:0,
 	isChange:false,
 
@@ -248,6 +288,13 @@ var ZPath = {
 
 	init:function(el)
 	{
+		let gridCount = localStorage.getItem('gridCount');
+		if (gridCount){
+			console.log(gridCount);
+			this.gridCount = parseInt(gridCount);
+		}
+		$('#selSize').val(this.gridCount);
+
 		let w = $(window).width();
 		let h = $(window).height() - 30;
 		let size = Math.min(w - 600, h);
@@ -257,35 +304,80 @@ var ZPath = {
 		let y = (h - size) / 2 + 30;
 		$('#divDraw').data('x', x);
 		$('#divDraw').data('y', y);
-		$('#divDraw, #divDrawPoint, #svgMain').css({
+		$('#divDraw, #divDrawPoint, #divDrawCtrl, #svgMain').css({
 			width: size + 'px',
 			height: size + 'px',
 			top: y + 'px',
 			left: x + 'px',
 		});
 
-		
-		$('#svgMain').mousedown(function(e){
-			ZPath.moveType = 'svgMain';
-			ZPath.downPoint(e);
-		});
-		$('#svgMain .draw').mousedown(function(e){
-			if (ZPath.downPoint(e)) return;
-			e.stopPropagation();
-			e.preventDefault();
-			ZPath.moveStart(e);
-		});
-		$(document).mousemove(function(e){
-			e.offsetX = e.clientX - $('#divDraw').data('x');
-			e.offsetY = e.clientY - $('#divDraw').data('y');
-			if (e.buttons == 1){
-				ZPath.movePoint(e);
-				return;
+		$(document).mousedown(function(e){
+			e.gridX = e.clientX - $('#divDraw').data('x');
+			e.gridY = e.clientY - $('#divDraw').data('y');
+
+			let el = $(e.target);
+			let pid = el.parent().attr('id');
+			let eventSkip = true;
+			
+			if (pid == 'divDrawPoint'){
+				ZPath.moveType = 'divDrawPoint';
+				ZPath.nodeSelect(el);
+			}else if (pid == 'divDrawCtrl'){
+				ZPath.curCtrlEl = el;
+				ZPath.moveType = 'divDrawCtrl';
+			}else if (el.nodeName = 'path' && el.hasClass('draw')){
+				ZPath.moveStart(e);
+			}else if (el.nodeName = 'path' && el.hasClass('line')){
+				ZPath.moveType = 'divDrawPoint';
+				ZPath.addLinePoint(e, el.data('index'));
+			}else{
+				eventSkip = false;
+				//console.log(e.target);
 			}
-			ZPath.hoverPoint(e);
+
+			if (eventSkip){
+				e.stopPropagation();
+				e.preventDefault();
+			}
 		});
+		
+		$(document).mousemove(function(e){
+			e.gridX = e.clientX - $('#divDraw').data('x');
+			e.gridY = e.clientY - $('#divDraw').data('y');
+			let p = ZPath.getPoint(e);
+			let strInfo = 'P: ' + p.x + ',' + p.y;
+			if (ZPath.curEl){
+				strInfo += ' ' + ZPath.curEl.data('type');
+			}
+			$('#divPostion').html(strInfo);
+
+			if (e.buttons != 1) return;
+			ZPath.movePoint(e);
+		});
+
 		$(document).mouseup(function(e){
 			ZPath.upPoint();
+		});
+
+		$('#divDemoList').on('click', 'svg', function(){
+			ZPath.parsePath($(this).find('path').attr('d'));
+		});
+
+		$('#divMainTop').blur(function(){
+			if ($(this).html() == $(this).data('path')) return;
+			ZPath.parsePath($(this).html());
+		});
+		$('#divMainTop').keydown(function(e){
+			if(e.keyCode==13){
+				e.stopPropagation();
+				e.preventDefault();
+				$(this).blur();
+				ZPath.parsePath($(this).html());
+			}
+		});
+		$('#selSize').change(function(){
+			localStorage.setItem('gridCount', $(this).val());
+			location.reload();
 		});
 
 		this.gridSize = size;
@@ -364,7 +456,6 @@ var ZPath = {
 		
 			this.ctx.stroke();
 		}
-
 	},
 
 	drawPath:function(){
@@ -376,7 +467,7 @@ var ZPath = {
 			let t = $(this).data('type');
 
 			if (index != 0 && t == 'M'){
-				path += ' Z ';
+				path += ' Z';
 			}
 
 			path += ' ' + t;
@@ -405,12 +496,14 @@ var ZPath = {
 		path += ' Z';
 
 		$('#divMainTop').html(path);
+		$('#divMainTop').data('path', path);
 
 		$('#svgMain .draw').attr('d', path);
 		$('#svgDemo path').attr('d', path);
 
 		this.drawCurPath();
 		this.drawLinePath();
+		this.showCtrlLine();
 
 		this.loadNode();
 	},
@@ -421,50 +514,70 @@ var ZPath = {
 		let rate = 64 / this.gridCount;
 		let m = '';
 		let first = '';
+		let lastIndex = 0;
 		$('#divDrawPoint div').each(function(index){
+			let type = $(this).data('type');
+
 			let xy = '';
 			xy += $(this).data('x') * rate + ',';
 			xy += $(this).data('y') * rate + ' ';
 
-			if (m == ''){
+			if (type == 'M'){
+				if (first != ''){
+					ZPath.addLinePath(m + first, lastIndex);
+				}
 				m = 'M' + xy;
 				first = 'L' + xy;
 				return;
 			}
-
+			
+			lastIndex = index;
 			let pre = null;
+			let preXY = '';
 			if (index > 0){
 				pre = $('#divDrawPoint div').eq(index-1);
+				preXY += pre.data('x') * rate + ',';
+				preXY += pre.data('y') * rate + ' ';
 			}
 
-			let type = $(this).data('type');
 			let path = m;
 			switch (type){
 				case 'H':
-					path += type + x;
+					path += type + $(this).data('x') * rate;
 					break;
 				case 'V':
-					path += type + y;
+					path += type + $(this).data('y') * rate;
 					break;
 				case 'Q':
-					path += type + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
+					path += 'Q' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
+					path += 'Q' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + preXY;
 					break;
 				case 'C':
-					path += type;
+					path += 'C';
 					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
 					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
 					path += xy;
+					path += 'C';
+					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
+					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += preXY;
 					break;
 				case 'S':
+					let sp = ZPath.getSControlPoint(pre);
+					if (!sp){
+						sp = {x:pre.data('x'), y:pre.data('y')};
+					}
+					path += 'C' + sp.x * rate + ',' + sp.y * rate + ',';
 					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
+					path += 'C' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += sp.x * rate + ',' + sp.y * rate + ',';
+					path += preXY;
 					break;
 				case 'T':
 					let tp = ZPath.getTControlPoint(pre);
 					if (pre && tp){
-						let qx = pre.data('x');
-						let qy = pre.data('y');
 						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + xy;
-						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + qx * rate + ',' + qy * rate;
+						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + preXY;
 					}else{
 						path += 'T' + xy;
 					}
@@ -477,7 +590,9 @@ var ZPath = {
 			ZPath.addLinePath(path, index-1);
 		});
 
-		this.addLinePath(m + first, $('#divDrawPoint div').length-1);
+		if (first){
+			this.addLinePath(m + first, lastIndex);
+		}
 	},
 
 	addLinePath:function(path, index){
@@ -488,16 +603,6 @@ var ZPath = {
 		$(line).attr('stroke-width', '1');
 		$(line).data('index', index);
 		$(line).addClass('line');
-
-		$(line).mousedown(function(e){
-			if (ZPath.downPoint(e)) return;
-			e.stopPropagation();
-			e.preventDefault();
-			
-			ZPath.moveType = 'svgMain';
-			ZPath.addLinePoint(e, $(this).data('index'));
-			ZPath.drawPath();
-		});
 
 		$('#svgMain').append(line);
 	},
@@ -533,7 +638,14 @@ var ZPath = {
 							path1 += `${x},${y}`;
 						break;
 					case 'S':
-							path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+							let sp = this.getSControlPoint(pre);
+							if (sp){
+								path1 += 'C';
+								path1 += sp.x * rate + ',' + sp.y * rate + ',';
+								path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+							}else{
+								path1 += 'S' + el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+							}
 						break;
 					case 'T':
 							let tp = this.getTControlPoint(pre);
@@ -571,23 +683,36 @@ var ZPath = {
 		return null;
 	},
 
+	getSControlPoint:function(pre){
+		if (!pre) return null;
+		let type = pre.data('type');
+		if (type == 'C'){
+			let sx2 = pre.data('x') * 2 - pre.data('x2');
+			let sy2 = pre.data('y') * 2 - pre.data('y2');
+			return {x:sx2, y:sy2};
+		}else if(type == 'S'){
+			let sx1 = pre.data('x') * 2 - pre.data('x1');
+			let sy1 = pre.data('y') * 2 - pre.data('y1');
+			return {x:sx1, y:sy1};
+		}
+		
+		return null;
+	},
+
 	rand:function(min, max)
 	{
 		let val = min + Math.random() * (max - min);
 		return Math.round(val);
 	},
 
-	downPoint:function(e){
-		let p = this.getPoint(e);
-		if (!p.el) return false;
-
-		this.setActive(p.el);
+	nodeSelect:function(el){
+		this.setActive(el);
 		this.drawPath();
 
 		return true;
 	},
 
-	addPoint:function(p, addEl, t){
+	addPoint:function(p, addEl, t, ext){
 		if (!t){
 			t = $('#divDrawPoint div').length == 0 ? 'M' : 'L';
 		}
@@ -606,6 +731,12 @@ var ZPath = {
 		el.attr('id', 'p_' + this.pointId);
 		el.attr('nodeType', t);
 
+		if (ext){
+			for (let k in ext){
+				el.data(k, ext[k]);
+			}
+		}
+
 		el.css({
 			width: this.PS + 'px',
 			height: this.PS + 'px',
@@ -620,15 +751,7 @@ var ZPath = {
 	addLinePoint:function(e, index){
 		let p = this.getPoint(e);
 		this.addPoint(p, $('#divDrawPoint div').eq(index));
-	},
-
-	hoverPoint:function(e){
-		$('#divDrawPoint .hover').removeClass('hover');
-		let p = this.getPoint(e);
-		$('#divPostion').html('P: ' + p.x + ',' + p.y);
-		if (!p.el) return;
-
-		p.el.addClass('hover');
+		this.drawPath();
 	},
 
 	moveStart:function(e){
@@ -641,42 +764,78 @@ var ZPath = {
 	movePoint:function(e){
 		if (this.moveType == '') return;
 		let p = this.getPoint(e);
-		$('#divPostion').html('P: ' + p.x + ',' + p.y);
+		let strInfo = 'P: ' + p.x + ',' + p.y;
+		if (this.curEl){
+			strInfo += ' ' + this.curEl.data('type');
+		}
+		$('#divPostion').html(strInfo);
 
 		if (this.moveType == 'pathLine'){
 			this.moveStartPoint.moveX = p.x - this.moveStartPoint.x;
 			this.moveStartPoint.moveY = p.y - this.moveStartPoint.y;
 			let moveX = (p.x - this.moveStartPoint.x) * this.PS;
 			let moveY = (p.y - this.moveStartPoint.y) * this.PS;
-			$('#svgMain, #divDrawPoint').css('transform', `translate(${moveX}px, ${moveY}px)`);
+			$('#svgMain, #divDrawPoint, #divDrawCtrl').css('transform', `translate(${moveX}px, ${moveY}px)`);
 			return;
 		}
 
-		if (this.curEl == null) return;
+		if (this.moveType == 'divDrawPoint'){
+			if (this.curEl == null) return;
 
-		let t = this.curEl.data('type');
-		if (t != 'H'){
-			this.curEl.data('y', p.y);
-			this.curEl.css({
-				top:(p.y * this.PS - this.PS/2) + 'px',
+			let t = this.curEl.data('type');
+			if (t != 'H'){
+				this.curEl.data('y', p.y);
+				this.curEl.css({
+					top:(p.y * this.PS - this.PS/2) + 'px',
+				});
+			}
+			if (t != 'V'){
+				this.curEl.data('x', p.x);
+				this.curEl.css({
+					left:(p.x * this.PS - this.PS/2) + 'px',
+				});
+			}
+
+			let next = this.curEl.next();
+			if (next){
+				this.setNextV(next, p);
+				this.setNextH(next, p);
+			}
+
+			this.draw();
+			this.drawPath();
+			this.isChange = true;
+			return;
+		}
+		
+		if (this.moveType == 'divDrawCtrl'){
+			if (!this.curEl || !this.curCtrlEl) return;
+			if (this.curCtrlEl.hasClass('other')) return;
+
+			this.curCtrlEl.data('x', p.x);
+			this.curCtrlEl.data('y', p.y);
+			this.curCtrlEl.css({
+				top:(p.y * this.PS - this.PS/4) + 'px',
+				left:(p.x * this.PS - this.PS/4) + 'px',
 			});
-		}
-		if (t != 'V'){
-			this.curEl.data('x', p.x);
-			this.curEl.css({
-				left:(p.x * this.PS - this.PS/2) + 'px',
-			});
-		}
 
-		let next = this.curEl.next();
-		if (next){
-			this.setNextV(next, p);
-			this.setNextH(next, p);
-		}
+			let ctrlType = this.curCtrlEl.data('type');
+			switch (ctrlType){
+				case 'p1':
+					this.curEl.data('x1', p.x);
+					this.curEl.data('y1', p.y);
+					break;
+				case 'p2':
+					this.curEl.data('x2', p.x);
+					this.curEl.data('y2', p.y);
+					break;
+			}
 
-		this.draw();
-		this.drawPath();
-		this.isChange = true;
+			this.draw();
+			this.drawPath();
+			this.isChange = true;
+			return;
+		}
 	},
 
 	setNextV:function(next, p){
@@ -706,7 +865,7 @@ var ZPath = {
 			let p = this.moveStartPoint;
 			if (p.moveX != 0 || p.moveY != 0)
 			{
-				$('#svgMain, #divDrawPoint').css('transform', `translate(0px, 0px)`);
+				$('#svgMain, #divDrawPoint, #divDrawCtrl').css('transform', `translate(0px, 0px)`);
 				$('#divDrawPoint div').each(function(){
 					let x = $(this).data('x') + p.moveX;
 					let y = $(this).data('y') + p.moveY;
@@ -737,6 +896,17 @@ var ZPath = {
 							break;
 					}
 				});
+				
+				$('#divDrawCtrl div').each(function(){
+					let x = $(this).data('x') + p.moveX;
+					let y = $(this).data('y') + p.moveY;
+					$(this).data('x', x);
+					$(this).data('y', y);
+					$(this).css({
+						left:(x * ZPath.PS - ZPath.PS/4) + 'px',
+						top:(y * ZPath.PS - ZPath.PS/4) + 'px',
+					});
+				});
 				this.draw();
 				this.drawPath();
 				this.isChange = true;
@@ -744,6 +914,7 @@ var ZPath = {
 		}
 		
 		this.moveType = '';
+		this.curCtrlEl = null;
 
 		if (this.isChange){
 			this.saveDemo();
@@ -760,6 +931,7 @@ var ZPath = {
 	},
 
 	saveDemo:function(){
+		window.localStorage.setItem('svg_path', $('#divMainTop').html());
 		let el = $('#svgDemo').clone();
 		el.attr('id', '');
 		$('#divDemoList').prepend(el);
@@ -769,17 +941,19 @@ var ZPath = {
 	},
 
 	getPoint:function(e){
-		let x = Math.round(e.offsetX / this.PS);
-		let y = Math.round(e.offsetY / this.PS);
+		let x = Math.round(e.gridX / this.PS);
+		let y = Math.round(e.gridY / this.PS);
 
-		x = Math.max(0, x);
-		x = Math.min(x, this.gridCount);
-		y = Math.max(0, y);
-		y = Math.min(y, this.gridCount);
+		if (this.moveType != 'divDrawCtrl'){
+			x = Math.max(0, x);
+			x = Math.min(x, this.gridCount);
+			y = Math.max(0, y);
+			y = Math.min(y, this.gridCount);
+		}
 
 		let res = {
-			rawX:e.offsetX,
-			rawY:e.offsetY,
+			rawX:e.gridX,
+			rawY:e.gridY,
 			x:x, 
 			y:y, 
 			el:null,
@@ -799,15 +973,17 @@ var ZPath = {
 		$('#divDrawPoint .hover').removeClass('hover');
 		$('#divDrawPoint .active').removeClass('active');
 		el.addClass('active');
+		this.showCtrlPoint();
 		this.draw();
 	},
 
 	load:function(){
-		let rate = ZPath.gridCount / 32;
-		this.addPoint({x:16 * rate, y:8 * rate});
-		this.addPoint({x:8 * rate, y:24 * rate});
-		this.addPoint({x:24 * rate, y:24 * rate});
-		this.drawPath();
+		let path = localStorage.getItem('svg_path');
+		if (!path || !this.parsePath(path))
+		{
+			this.parsePath('M32,16 L16,48 L48,48');
+		}
+		this.saveDemo();
 	},
 
 	loadNode:function(){
@@ -871,6 +1047,9 @@ var ZPath = {
 		$('#tbList .del').click(function(){
 			let index = $(this).parent().parent().data('index');
 			let o = $('#divDrawPoint div').eq(index);
+			if (o.attr('id') == ZPath.curEl.attr('id')){
+				ZPath.curEl = null;
+			}
 			o.remove();
 			ZPath.updatePath(true);
 		});
@@ -915,6 +1094,294 @@ var ZPath = {
 		}
 		ZPath.setActive(o);
 		ZPath.updatePath(true);
+	},
+
+	showCtrlPoint:function(){
+		$('#divDrawCtrl div').remove();
+		if (!this.curEl) return;
+		let o = this.curEl;
+		let type = o.data('type');
+		if (type == 'M') return;
+
+		switch (type){
+			case 'Q':
+				this.addCtrlPoint({
+					x:o.data('x1'),
+					y:o.data('y1'),
+				}, 'p1');
+				break;
+			case 'C':
+				this.addCtrlPoint({
+					x:o.data('x1'),
+					y:o.data('y1'),
+				}, 'p1');
+				this.addCtrlPoint({
+					x:o.data('x2'),
+					y:o.data('y2'),
+				}, 'p2');
+				break;
+			case 'T':
+				let tp = this.getTControlPoint(o.prev());
+				if (tp){
+					this.addCtrlPoint({
+						x:tp.x,
+						y:tp.y,
+					}, 'p1', 'other');
+				}
+				break;
+			case 'S':
+				this.addCtrlPoint({
+					x:o.data('x1'),
+					y:o.data('y1'),
+				}, 'p1');
+				let sp = this.getSControlPoint(o.prev());
+				if (sp){
+					this.addCtrlPoint({
+						x:sp.x,
+						y:sp.y,
+					}, 'p2', 'other');
+				}
+				break;
+		}
+	},
+
+	addCtrlPoint:function(p, t, cls){
+		let el = $('<div></div>');
+		$('#divDrawCtrl').append(el);
+
+		el.data('x', p.x);
+		el.data('y', p.y);
+		el.data('type', t);
+		if (cls){
+			el.addClass(cls);
+		}
+
+		el.css({
+			width: this.PS*0.5 + 'px',
+			height: this.PS*0.5 + 'px',
+			left:(p.x * this.PS - this.PS*0.25) + 'px',
+			top:(p.y * this.PS - this.PS*0.25) + 'px',
+		});
+	},
+
+	showCtrlLine:function(){
+		$('#svgMain .ctrl').remove();
+		if (!this.curEl) return;
+		
+		let o = this.curEl;
+		let type = o.data('type');
+		if (type == 'M') return;
+
+		let pre = o.prev();
+		let preP = {
+			x:pre.data('x'),
+			y:pre.data('y'),
+		};
+		let curP = {
+			x:o.data('x'),
+			y:o.data('y'),
+		};
+		switch (type){
+			case 'Q':
+				let qp1 = {
+					x:o.data('x1'),
+					y:o.data('y1'),
+				};
+				this.addCtrlLine(qp1, preP);
+				this.addCtrlLine(qp1, curP);
+				break;
+			case 'C':
+				let cp1 = {
+					x:o.data('x1'),
+					y:o.data('y1'),
+				};
+				this.addCtrlLine(cp1, preP);
+				let cp2 = {
+					x:o.data('x2'),
+					y:o.data('y2'),
+				};
+				this.addCtrlLine(cp2, curP);
+				break;
+			case 'T':
+				let tp = this.getTControlPoint(o.prev());
+				if (tp){
+					this.addCtrlLine(tp, preP);
+					this.addCtrlLine(tp, curP);
+				}
+				break;
+			case 'S':
+				let sp1 = {
+					x:o.data('x1'),
+					y:o.data('y1'),
+				};
+				this.addCtrlLine(sp1, curP);
+				let sp = this.getSControlPoint(o.prev());
+				if (sp){
+					this.addCtrlLine(sp, preP);
+				}
+				break;
+		}
+	},
+
+	addCtrlLine:function(p1, p2){
+		let rate = 64 / this.gridCount;
+		let path = 'M' + p1.x * rate + ',' + p1.y * rate + ' ';
+		path += 'L' + p2.x * rate + ',' + p2.y * rate;
+		let line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		$(line).attr('d', path);
+		$(line).attr('fill', 'transparent');
+		$(line).attr('stroke', 'rgba(0,255,255,0.7)');
+		$(line).attr('stroke-width', '0.2');
+		$(line).attr('stroke-dasharray', '1,0.3');
+		$(line).addClass('ctrl');
+
+		$('#svgMain').append(line);
+	},
+
+	parsePath:function(path){
+		path = $.trim(path).toUpperCase();
+		path = path.replace(' ', '');
+		let tag = 'MLHVCSQTZ';
+		let list = [];
+		let cur = '';
+		let type = '';
+		for (let i=0; i<path.length; i++){
+			if (tag.indexOf(path[i]) != -1){
+				if (cur){
+					list.push(this.parsePathNode(type, cur));
+				}
+				type=path[i];
+				cur = '';
+				continue;
+			}
+			cur += path[i];
+		}
+		if (cur){
+			list.push(this.parsePathNode(type, cur));
+		}
+
+		let newList = [];
+		let last = null;
+		for (let k in list){
+			if (!list[k]) continue;
+			if (list[k].type == 'H' && last){
+				list[k].y = last.y;
+			}
+			if (list[k].type == 'V' && last){
+				list[k].x = last.x;
+			}
+			last = list[k];
+			newList.push(list[k]);
+		}
+
+		if (newList.length == 0){
+			alert('PATH解析失败');
+			return false;
+		}
+		if (newList[0].type != 'M'){
+			alert('PATH解析失败, 首元素非M');
+			return false;
+		}
+
+		$('#divDrawPoint div').remove();
+		$('#divDrawCtrl div').remove();
+		this.curCtrlEl = null;
+		this.curEl = null;
+		for (let r of newList){
+			this.addPoint({x:r.x, y:r.y}, null, r.type, r.ext);
+		}
+		this.drawPath();
+
+		return true;
+	},
+
+	parsePathNode:function(type, str){
+		let rate = 64 / this.gridCount;
+		let arr = str.split(',');
+		let res = {type:type, ext:null};
+		switch (type)
+		{
+			case 'M':
+			case 'L':
+			case 'T':
+				if (arr.length < 2) return null;
+				res.x = parseFloat(arr[0]) / rate;
+				res.y = parseFloat(arr[1]) / rate;
+				if (isNaN(res.x + res.y)){
+					return null;
+				}
+				break;
+			case 'H':
+				res.x = parseFloat(arr[0]) / rate;
+				res.y = 0;
+				if (isNaN(res.x)){
+					return null;
+				}
+				break;
+			case 'V':
+				res.x = 0;
+				res.y = parseFloat(arr[0]) / rate;
+				if (isNaN(res.y)){
+					return null;
+				}
+				break;
+			case 'Q':
+			case 'S':
+				if (arr.length < 4) return null;
+				res.x = parseFloat(arr[2]) / rate;
+				res.y = parseFloat(arr[3]) / rate;
+				if (isNaN(res.x + res.y)){
+					return null;
+				}
+				res.ext = {
+					x1:parseFloat(arr[0]) / rate,
+					y1:parseFloat(arr[1]) / rate,
+				};
+				if (isNaN(res.ext.x1 + res.ext.y1)){
+					return null;
+				}
+				break;
+			case 'C':
+				if (arr.length < 6) return null;
+				res.x = parseFloat(arr[4]) / rate;
+				res.y = parseFloat(arr[5]) / rate;
+				if (isNaN(res.x + res.y)){
+					return null;
+				}
+				res.ext = {
+					x1:parseFloat(arr[0]) / rate,
+					y1:parseFloat(arr[1]) / rate,
+					x2:parseFloat(arr[2]) / rate,
+					y2:parseFloat(arr[3]) / rate,
+				};
+				if (isNaN(res.ext.x1 + res.ext.y1 + res.ext.x2 + res.ext.y2)){
+					return null;
+				}
+				break;
+			default:
+				return null;
+				break;
+		}
+
+		return res;
+	},
+
+	downSvg:function(){
+		let pom = document.createElement('a');
+		pom.setAttribute('href', 'data:image/svg;charset=utf-8,' + encodeURIComponent($('#divDemo')[0].outerHTML));
+		pom.setAttribute('download', 'demo.svg');
+		if (document.createEvent) {
+			let event = document.createEvent('MouseEvents');
+			event.initEvent('click', true, true);
+			pom.dispatchEvent(event);
+		} else {
+			pom.click();
+		}
+	},
+
+	clearPath:function(){
+		this.parsePath('M32,16 L16,48 L48,48');
+		this.saveDemo();
 	},
 };
 
