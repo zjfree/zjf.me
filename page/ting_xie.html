@@ -164,7 +164,9 @@
 
 		function playWordAudio(w) {
 			w = w || '中国人民';
-			const voiceFileUrl = `https://fanyi.baidu.com/gettts?lan=zh&text=${w}&spd=4&source=web`;
+			//const voiceFileUrl = `https://fanyi.baidu.com/gettts?lan=zh&text=${w}&spd=4&source=web`;
+			const voiceFileUrl = `https://tts.baidu.com/text2audio?tex=${w}&cuid=baike&lan=ZH&ctp=1&pdt=301&vol=9&rate=32&per=0`;
+			
 			const audio = document.getElementById("voice-file");
 			document.getElementById('audioSource').src = voiceFileUrl;
 			audio.load();
