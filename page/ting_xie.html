@@ -1,0 +1,175 @@
+<!-- 汉字听写 zjfree 2023-02-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>汉字听写</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+			text-align: center;
+		}
+
+		#voice-file {
+			display: none;
+		}
+
+		.step {
+			display: none;
+			text-align: center;
+		}
+		#divInput{
+			display: block;
+		}
+		#divInput textarea{
+			width: 90%;
+			height: 500px;
+			display:block;
+			margin: 10px auto;
+		}
+
+		#divRun .big{
+			font-size: 2em;
+		}
+		#divRun progress{
+			display: block;
+			width: 100%;
+		}
+		#divProgress{
+			font-size: 3em;
+			font-weight: bold;
+			margin:10px 0;
+		}
+		#divTime{
+			font-size: 2em;
+			margin:10px 0;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>汉字听写</h1>
+	<hr>
+	<div id="divInput" class="step">
+		<button onclick="start();">开始听写</button>
+		<button onclick="$('#divInput textarea').val('');">清空</button>
+		<textarea placeholder="听写内容"></textarea>
+	</div>
+	<div id="divRun" class="step">
+		<div id="divProgress">1 / 20</div>
+		<div id="divTime">11:00</div>
+		<progress></progress>
+		<p style="margin:20px 0;">
+		<button onclick="runIndex++; goWord();" class="big">下一个</button>
+		&nbsp;
+		<button onclick="playWordAudio(wordList[runIndex-1]);" class="big">朗&emsp;读</button>
+		</p>
+		<hr>
+		<button onclick="if (runIndex>1){runIndex--; goWord();}">上一个</button>
+		&nbsp;
+		<button onclick="goStep('divInput');">取&emsp;消</button>
+	</div>
+	<div id="divResult" class="step">
+		听写完成 用时：<span id="spanTime"></span>
+		<hr>
+		<button onclick="goStep('divInput');">确定</button>
+	</div>
+
+	<audio id="voice-file" preload="none">
+		<source id="audioSource" src="">
+	</audio>
+
+	<script>
+		var wordList = [];
+		var timeTimer = null;
+		var dtStart = null;
+		var runIndex = 0;
+
+		$(function () {
+			// JS
+			$('#divInput textarea').val(window.localStorage.getItem('tingxie')||'');
+		});
+
+		function goStep(el)
+		{
+			$('.step').hide();
+			$('#'+el).show();
+			window.clearInterval(timeTimer);
+		}
+
+		function start()
+		{
+			let str = $('#divInput textarea').val();
+			if (str == '') return;
+
+			window.localStorage.getItem('tingxie', str);
+
+			wordList = [];
+			let list = str.replaceAll(',', ' ').replaceAll("\t", ' ').split(' ');
+			for (let v of list)
+			{
+				v = $.trim(v);
+				if (v == '') continue;
+				wordList.push(v);
+			}
+
+			if (wordList.length == 0) return;
+
+			$('#divTime').html('00:00');
+			$('#divProgress').html('1 / ' + wordList.length);
+			$('#divRun progress').prop('max', wordList.length);
+			dtStart = new Date();
+			runIndex = 1;
+
+			goStep('divRun');
+
+			timeTimer = window.setInterval(function(){
+				let t = Math.round((new Date().getTime() - dtStart.getTime()) / 1000);
+				let t1 = Math.floor(t / 60);
+				let t2 = t % 60;
+				let str = (t1 < 10 ? '0'+t1:t1) + ':' + (t2 < 10 ? '0'+t2:t2);
+				$('#divTime').html(str);
+			}, 200);
+
+			goWord();
+		}
+
+		function goWord()
+		{
+			if (runIndex > wordList.length)
+			{
+				goStep('divResult');
+				$('#spanTime').html($('#divTime').html());
+				playWordAudio('听写完成');
+				return;
+			}
+
+			$('#divProgress').html(runIndex + ' / ' + wordList.length);
+			$('#divRun progress').val(runIndex);
+
+			playWordAudio(wordList[runIndex-1]);
+		}
+
+		function playWordAudio(w) {
+			w = w || '中国人民';
+			const voiceFileUrl = `https://fanyi.baidu.com/gettts?lan=zh&text=${w}&spd=4&source=web`;
+			const audio = document.getElementById("voice-file");
+			document.getElementById('audioSource').src = voiceFileUrl;
+			audio.load();
+			audio.play();
+		}
+	</script>
+
+</body>
+
+</html>
