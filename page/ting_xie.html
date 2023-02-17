@@ -116,8 +116,15 @@
 
 			window.localStorage.getItem('tingxie', str);
 
+			str = str.replaceAll(',', ' ');
+			str = str.replaceAll("\t", ' ');
+			str = str.replaceAll("\n", ' ');
+			str = str.replaceAll("\r", ' ');
+			str = str.replaceAll('、', ' ');
+			str = str.replaceAll('，', ' ');
+
 			wordList = [];
-			let list = str.replaceAll(',', ' ').replaceAll("\t", ' ').split(' ');
+			let list = str.split(' ');
 			for (let v of list)
 			{
 				v = $.trim(v);
