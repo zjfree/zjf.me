@@ -133,6 +133,7 @@
 			}
 
 			if (wordList.length == 0) return;
+			$('#divInput textarea').val(wordList.join("\r\n"));
 
 			$('#divTime').html('00:00');
 			$('#divProgress').html('1 / ' + wordList.length);
