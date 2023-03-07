@@ -1,0 +1,81 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="100px" viewBox="0 0 112.5 99.886" enable-background="new 0 0 112.5 99.886" xml:space="preserve">
+<g id="Group_Body">
+	<path fill="#7F7F7F" d="M90.09,19.932v74.886l-10.135,5.068l-49.887-5.068V20.495L110.021,0l2.478,2.365V12.5l-2.478,2.365   l-10.135,5.067H90.09z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M50,6.081l9.347-4.504l1.577-0.789l1.914-0.563L64.978,0h45.044   L99.887,5.067H54.279L50,6.081z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M27.365,12.5H0.001l10.022-5.068H37.5L27.365,12.5z" />
+	<path fill="#B2B2B2" d="M99.887,5.067l2.478,2.365l10.135-5.067L110.021,0L99.887,5.067z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M37.5,25v-2.703l-0.226-1.802l-0.563-1.915l-1.013-1.802   l-1.126-1.351l-1.576-1.352l-1.577-0.788l-2.14-0.563L27.365,12.5L37.5,7.432l1.914,0.226l1.802,0.563l1.915,0.788l1.352,1.352   l1.351,1.576l0.788,1.577l0.563,1.915l0.225,2.14v2.365L37.5,25z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="91.6816" y1="90.0474" x2="15.6168" y2="-0.6032">
+		<stop offset="0" style="stop-color:#4D4D4D" />
+		<stop offset="0.4" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#C6C6C6" />
+		<stop offset="1" style="stop-color:#E0E0E0" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M85.021,19.932l-2.928,0.788l-0.563,0.789l-0.789,0.563   L79.955,25v74.887H19.933V34.121l-1.577-2.703l-3.491-1.577H0.001V12.5h27.364l4.054,0.788l3.153,2.14l2.14,3.153l0.789,3.716   v37.612h7.545V13.063l1.576-3.716l2.59-2.703l3.829-1.577h46.846l2.478,2.365v10.135l-2.478,2.365H85.021z" />
+</g>
+<g id="Group_Stripes">
+	<polygon fill="#3D3D3D" points="90.09,49.774 79.955,54.841 79.955,52.476 90.09,47.409  " />
+	<polygon fill="#3D3D3D" points="90.09,42.342 79.955,47.409 79.955,45.044 90.09,39.977  " />
+	<polyline fill="#3D3D3D" points="45.045,36.119 37.5,39.977 37.5,37.5 45.045,33.727  " />
+	<polyline fill="#3D3D3D" points="45.045,43.551 37.5,47.409 37.5,44.932 45.045,41.159  " />
+	<polyline fill="#3D3D3D" points="45.045,50.983 37.5,54.841 37.5,52.364 45.045,48.591  " />
+	<rect x="19.933" y="52.476" fill="#666666" width="17.567" height="2.365" />
+	<rect x="19.933" y="45.044" fill="#666666" width="17.567" height="2.365" />
+	<rect x="19.933" y="37.5" fill="#666666" width="17.567" height="2.477" />
+	<rect x="45.045" y="52.476" fill="#666666" width="34.91" height="2.365" />
+	<rect x="45.045" y="45.044" fill="#666666" width="34.91" height="2.365" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="99.887" y1="19.932" x2="99.887" y2="5.067" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="101.013" y1="0.788" x2="105.292" y2="0" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="99.324" y1="1.577" x2="103.603" y2="0.788" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="97.521" y1="2.365" x2="101.801" y2="1.577" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="95.945" y1="3.153" x2="100.111" y2="2.365" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="94.369" y1="4.167" x2="98.311" y2="3.153" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="5.067" x2="96.733" y2="4.167" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="102.814" y1="0" x2="92.454" y2="5.067" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="105.292" y1="0" x2="95.156" y2="5.067" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="7.432" x2="95.156" y2="5.067" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="9.797" x2="95.156" y2="7.432" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="12.5" x2="95.156" y2="9.797" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="14.865" x2="95.156" y2="12.5" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="17.567" x2="95.156" y2="14.865" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="19.932" x2="95.156" y2="17.567" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="92.454" y1="5.067" x2="92.454" y2="19.932" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="95.156" y1="5.067" x2="95.156" y2="19.932" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="79.955" y1="32.544" x2="80.742" y2="29.504" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="80.742" y1="31.981" x2="81.193" y2="29.279" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="81.193" y1="31.644" x2="82.094" y2="28.716" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="82.094" y1="31.418" x2="82.883" y2="28.49" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="82.883" y1="30.855" x2="83.333" y2="28.265" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="83.333" y1="30.63" x2="84.121" y2="27.702" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="84.121" y1="30.292" x2="85.021" y2="27.364" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="85.021" y1="29.842" x2="85.473" y2="27.139" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="85.473" y1="29.504" x2="86.373" y2="26.576" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="86.373" y1="29.279" x2="87.162" y2="26.351" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="87.162" y1="28.716" x2="87.949" y2="26.125" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="87.949" y1="28.49" x2="88.4" y2="25.563" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="88.4" y1="28.265" x2="89.301" y2="25.337" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="89.301" y1="27.702" x2="90.09" y2="25" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="79.955" y1="29.842" x2="90.09" y2="25" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="79.955" y1="32.544" x2="90.09" y2="27.364" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="45.045" y1="32.544" x2="47.41" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="47.41" y1="32.544" x2="50" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="50" y1="32.544" x2="52.478" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="52.478" y1="32.544" x2="54.842" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="54.842" y1="32.544" x2="57.545" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="57.545" y1="32.544" x2="59.91" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="59.91" y1="32.544" x2="62.387" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="62.387" y1="32.544" x2="64.978" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="64.978" y1="32.544" x2="67.342" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="67.342" y1="32.544" x2="70.045" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="70.045" y1="32.544" x2="72.41" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="72.41" y1="32.544" x2="74.887" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="74.887" y1="32.544" x2="77.477" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="77.477" y1="32.544" x2="79.955" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="45.045" y1="29.842" x2="79.955" y2="29.842" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="45.045" y1="32.544" x2="79.955" y2="32.544" />
+</g>
+<g id="Group_Magnet">
+	<path fill="#3D3D3D" stroke="#4C4C4C" stroke-width="0.25" d="M102.364,17.567V7.432l10.135-5.067V12.5L102.364,17.567z" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M112.499,12.5h-10.135" />
+</g>
+</svg>

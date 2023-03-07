@@ -1,0 +1,14 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="112px" viewBox="0 0 17.791 112.5" enable-background="new 0 0 17.791 112.5" xml:space="preserve">
+<g id="Group_Joint">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M0,109.455h17.791v-2.928H0V109.455z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M0,5.748h17.791V2.933H0V5.748z" />
+</g>
+<g id="Group_Rod">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.9678" y1="56.25" x2="11.9365" y2="56.25">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.44" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#D1D1D1" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" d="M5.968,0.005h5.969v112.49H5.968V0.005z" />
+</g>
+</svg>

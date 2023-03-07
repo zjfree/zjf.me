@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87px" height="112px" viewBox="0 0 87.047 112.5" enable-background="new 0 0 87.047 112.5" xml:space="preserve">
+<g id="Group_Segmented_45_Bend">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="79.2065" y1="63.877" x2="29.2507" y2="40.5822" gradientTransform="matrix(-1 0 0 1 87.0479 0)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M49.323,22.41l16.216,39.414L16.441,82.319L0,42.681   L49.323,22.41z" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="55.6763" y1="97.335" x2="15.1309" y2="56.7896" gradientTransform="matrix(-1 0 0 1 87.0479 0)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M87.047,72.061L56.753,41.625L16.172,82.134L46.538,112.5L87.047,72.061z" />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="126.4126" y1="69.8281" x2="85.8672" y2="29.2827" gradientTransform="matrix(-0.7071 -0.7071 -0.7071 0.7071 138.7763 61.5082)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M57.253,42.994l0.101-42.942L0.015,0L0.014,42.944L57.253,42.994z" />
+</g>
+<g id="Group_Stripes">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-3.2764" y1="130.1504" x2="-3.0173" y2="72.9039" gradientTransform="matrix(-0.7039 -0.7103 -0.7103 0.7039 136.0006 17.8395)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="45.387,111.305 46.32,112.235 86.813,71.778 85.911,70.869  " />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="38.0142" y1="130.3818" x2="38.2737" y2="73.0387" gradientTransform="matrix(-0.7039 -0.7103 -0.7103 0.7039 136.0006 17.8395)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_5_)" points="16.172,82.154 17.101,83.067 57.604,42.528 56.74,41.625  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="57.772" y1="42.676" x2="17.286" y2="83.232" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="87.047" y1="71.943" x2="46.563" y2="112.5" />
+	
+		<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="66.1851" y1="160.6328" x2="66.4441" y2="103.3873" gradientTransform="matrix(0.0045 -1 -1 -0.0045 160.3812 108.8665)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_6_)" points="0.045,41.285 0.048,42.604 57.288,42.629 57.292,41.348  " />
+	
+		<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="107.4751" y1="160.8633" x2="107.7346" y2="103.5211" gradientTransform="matrix(0.0045 -1 -1 -0.0045 160.3812 108.8665)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_7_)" points="0,0.015 0.011,1.317 57.316,1.292 57.344,0.042  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="57.332" y1="1.515" x2="0.025" y2="1.564" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="57.336" y1="42.911" x2="0.032" y2="42.962" />
+</g>
+</svg>

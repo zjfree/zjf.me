@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35px" height="112px" viewBox="0 0 35.475 112.5" enable-background="new 0 0 35.475 112.5" xml:space="preserve">
+<g id="Group_Bottle_Cap">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.5728" y1="4.4482" x2="26.915" y2="4.4482">
+		<stop offset="0.01" style="stop-color:#333333" />
+		<stop offset="0.5" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M25.789,8.896l1.126-0.451V5.968l-1.126-1.126l0.45-2.478l-0.45-1.689L23.312,0H13.176l-2.478,0.676   l-0.675,1.689l0.675,2.478L9.573,5.968v2.478l1.126,0.451H25.789" />
+	<path fill="#4C4C4C" d="M25.113,5.968l-0.901-1.126l0.226-1.351H12.05l0.225,1.351l-0.901,1.126H25.113z" />
+</g>
+<g id="Group_Bottle">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="60.6982" x2="35.4736" y2="60.6982">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M34.798,110.022l-1.126,0.901l-2.253,0.563l-3.378,0.563l-3.829,0.112l-4.279,0.338h-4.504   l-4.504-0.338l-3.829-0.112l-3.153-0.563l-2.252-0.563l-1.014-0.901L0,107.771v-4.955l0.676-0.563v-4.166L0,96.283v-1.801   l0.676-0.676V49.212L0,48.761v-3.153l0.676-0.45v-3.604L0,40.203l1.689-4.504l2.252-3.829l3.153-3.153l2.478-4.73l1.126-15.09   h15.09l0.45,15.09l1.802,4.73l3.378,3.153l2.027,3.829l1.803,4.504l-0.451,1.352v3.604l0.676,0.45v3.153l-0.676,0.451v44.595   l0.676,0.676v1.801l-0.676,1.803v4.166l0.676,0.563v4.955L34.798,110.022" />
+</g>
+<g id="Group_Stripes">
+	<path fill="#CCCCCC" d="M6.419,44.482h1.802v55.293H6.419V44.482z" />
+	<path fill="#E5E5E5" d="M10.699,37.275H12.5V92.68h-1.802V37.275z" />
+</g>
+</svg>

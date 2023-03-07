@@ -1,0 +1,52 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="112px" viewBox="0 0 15.199 112.5" enable-background="new 0 0 15.199 112.5" xml:space="preserve">
+<g id="Group_Level_Indicators">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.45,0.013h14.187v112.473H0.45V0.013z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M1.576,97.176h11.709v3.49H1.576V97.176z" />
+</g>
+<g id="Group_3">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1.5762" y1="53.2104" x2="13.2852" y2="53.2104">
+		<stop offset="0.01" style="stop-color:#737373" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M1.576,9.245h11.709v87.931H1.576V9.245z" />
+</g>
+<g id="Group_2">
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" d="M6.417,9.245h2.364v90.856H6.417V9.245z" />
+</g>
+<g id="Group_1">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.814,93.798h3.603" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.814,74.883h3.603" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.814,56.194h3.603" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.814,37.504h3.603" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.814,18.59h3.603" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.781,84.453h3.49" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.781,65.539h3.49" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.781,46.849h3.49" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.781,28.16h3.49" />
+</g>
+<g id="Group_Meter_Support">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="103.1426" x2="15.1992" y2="103.1426">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M13.285,93.798h1.914v18.688H0V93.798h1.576l0.113,1.126   l0.337,1.125l0.563,1.014l0.676,0.789l0.9,0.787l1.014,0.563l1.013,0.338l1.238,0.112l1.126-0.112l1.125-0.338l1.014-0.563   l0.9-0.787l0.676-0.789l0.563-1.014l0.338-1.125L13.285,93.798z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0" y1="9.3018" x2="15.1992" y2="9.3018">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M1.576,18.59H0V0.013h15.199V18.59h-1.914l-0.112-1.126   l-0.338-1.126l-0.45-1.013l-0.789-0.788l-0.787-0.788l-1.014-0.563l-1.126-0.338l-1.238-0.112l-1.238,0.112L5.18,13.186   l-1.014,0.563l-0.9,0.788L2.59,15.325l-0.563,1.013L1.69,17.464L1.576,18.59z" />
+</g>
+<g id="Group_Meter_Box">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M13.285,98.301v12.272H1.576V98.525l0.563,0.676l0.563,0.451   l0.675,0.449l0.788,0.45l0.788,0.226l0.788,0.226l0.901,0.226H7.43h0.901l0.787-0.226l0.899-0.226l0.789-0.338l0.676-0.338   l0.676-0.563l0.563-0.563L13.285,98.301z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M1.576,14.086V1.814h11.709l0.225,12.272l-0.563-0.676l-0.676-0.563   l-0.676-0.563l-0.787-0.338l-0.789-0.338l-0.9-0.225l-0.787-0.225H7.431H6.643l-0.901,0.225l-0.788,0.225l-0.788,0.338   l-0.788,0.338l-0.675,0.563L2.14,13.41L1.576,14.086z" />
+</g>
+<g id="Group_Fixures">
+	<circle stroke="#4C4C4C" stroke-width="0.25" cx="0.675" cy="103.368" r="0.225" />
+	<circle stroke="#4C4C4C" stroke-width="0.25" cx="14.186" cy="103.367" r="0.338" />
+	<circle stroke="#4C4C4C" stroke-width="0.25" cx="0.675" cy="8.907" r="0.225" />
+	<circle stroke="#4C4C4C" stroke-width="0.25" cx="14.186" cy="8.907" r="0.338" />
+</g>
+</svg>

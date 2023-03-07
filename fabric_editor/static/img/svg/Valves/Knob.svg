@@ -1,0 +1,55 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Knob_sub">
+	<radialGradient id="SVGID_1_" cx="55.5869" cy="58.5869" r="41.3641" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" d="M98.424,36.689L75.25,18.75c-2.125,8.171-10.162,14.213-19,14.213c-8.837,0-16.875-6.042-19-14.213   l-24.5,17.553c10.494,0,19,9.454,19,19.948c0,10.492-8.506,19.948-19,19.948l23.939,22.226c0-10.494,9.068-18.999,19.561-18.999   c10.495,0,19.56,8.505,19.561,18.999l22.613-22.613c-10.494,0-19-9.068-19-19.56C79.424,45.756,87.93,36.689,98.424,36.689z" />
+</g>
+<g id="Group_Knob_Edge4">
+	<radialGradient id="SVGID_2_" cx="18.625" cy="18.625" r="18.6245" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" cx="18.625" cy="18.625" r="18.625" />
+</g>
+<g id="Group_Knob_Edge3">
+	<radialGradient id="SVGID_3_" cx="93.875" cy="18.625" r="18.6248" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_3_)" cx="93.875" cy="18.625" r="18.625" />
+</g>
+<g id="Group_Knob_Edge2">
+	<radialGradient id="SVGID_4_" cx="18.625" cy="93.875" r="18.6248" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_4_)" cx="18.625" cy="93.876" r="18.625" />
+</g>
+<g id="Group_Knob_Edge1">
+	<radialGradient id="SVGID_5_" cx="93.875" cy="93.875" r="18.625" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_5_)" cx="93.875" cy="93.876" r="18.625" />
+</g>
+<g id="Group_Knob_Centre">
+	<circle fill="#FFFFFF" cx="56.194" cy="56.194" r="16.441" />
+</g>
+</svg>

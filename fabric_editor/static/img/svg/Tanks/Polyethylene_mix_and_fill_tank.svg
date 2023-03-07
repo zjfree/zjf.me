@@ -1,0 +1,42 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54px" height="112px" viewBox="0 0 54.446 112.5" enable-background="new 0 0 54.446 112.5" xml:space="preserve">
+<g id="Group_BackLegs">
+	<polygon points="47.683,110.246 28.407,107.959 28.407,30.549 26.04,30.549 26.04,107.991 6.764,110.246 6.764,111.373    26.04,109.118 28.407,109.118 28.407,109.096 47.683,111.373  " />
+</g>
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.0181" y1="2.9639" x2="45.4282" y2="2.9639">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M9.018,2.254h36.41v1.419H9.018V2.254z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2.2544" y1="35.2271" x2="52.4175" y2="35.2271">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M2.254,5.636v36.41l20.403,25.026h9.243l20.517-25.026V5.636l-2.479-2.254H4.509L2.254,5.636" />
+	
+		<radialGradient id="SVGID_3_" cx="27.3359" cy="54.5596" r="19.8198" gradientTransform="matrix(1 0 0 1.2 0 -10.9119)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M2.254,42.046l20.403,25.026h9.243l20.517-25.026" />
+</g>
+<g id="Group_Top">
+	<path fill="#606060" d="M14.88,1.29h5.523V0.014H14.88V1.29z" />
+	<path fill="#606060" d="M34.156,1.303h5.636V0.015h-5.636V1.303z" />
+	<path fill="#333333" d="M12.625,2.449h29.421V1.127H12.625V2.449z" />
+</g>
+<g id="Group_FrontLegs">
+	<path fill="#333333" d="M49.938,110.246V30.549h-2.255v11.498H6.764V30.549H4.509v79.697H0v2.254h54.446v-2.254H49.938z    M47.683,44.301v16.007H6.764V44.301H47.683z M6.764,61.436h40.919v48.811H6.764V61.436z" />
+</g>
+</svg>

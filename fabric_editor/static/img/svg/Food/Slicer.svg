@@ -1,0 +1,35 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="82px" viewBox="0 0 112.5 82.094" enable-background="new 0 0 112.5 82.094" xml:space="preserve">
+<g id="Group_Bench">
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.1" d="M0,18.806h110.248v63.288h-7.207V53.942H6.87v28.152H0V18.806z" />
+</g>
+<g id="Group_Design">
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M103.717,23.987v25.225H7.545" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M103.717,23.987H7.545v25.225" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.87,48.536V23.311h96.171" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M6.87,48.536h96.171V23.311" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M79.617,17.455h29.279v1.351H79.617V17.455z" />
+	<path fill="#4D4D4D" d="M92.004,17.455h16.893v-1.014H92.004V17.455z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M6.87,55.068h96.171v2.478H6.87V55.068z" />
+</g>
+<g id="Group_Inlet">
+	<path fill="#F2E5CC" stroke="#4C4C4C" stroke-width="0.25" d="M112.5,19.933h-1.127v15.314h1.127V19.933z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M108.896,5.743h1.352v13.063h-1.352V5.743z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M109.91,10.473h1.463v34.009h-1.463V10.473z" />
+</g>
+<g id="Group_Supply">
+	<path fill="#B2B2B2" d="M44.482,0h35.135v18.806H44.482V0z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.1" d="M6.87,18.806l7.207-7.207h30.405v7.207H6.87z" />
+	<path fill="#4D4D4D" d="M73.762,2.478h4.729V4.28h-4.729V2.478z" />
+</g>
+<g id="Group_Motor">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="99.8877" y1="16.4417" x2="99.8877" y2="7.095">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M90.879,7.095h18.018v9.347H90.879V7.095" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M94.257,7.095v9.347" />
+	<path fill="none" stroke="#E5E5E5" stroke-width="0.25" d="M95.383,15.202v-3.604h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M95.383,15.202h3.604v-3.604" />
+</g>
+</svg>

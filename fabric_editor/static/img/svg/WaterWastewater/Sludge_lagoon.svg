@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="39px" viewBox="0 0 112.5 39.074" enable-background="new 0 0 112.5 39.074" xml:space="preserve">
+<g id="Group_Holder">
+	<path fill="#194C32" d="M103.939,0.788h6.53l2.027,2.252h-5.405l-3.152,0.45V0.788z" />
+	<path fill="#194C32" d="M8.449,0.788H1.917L0.003,3.041h5.292l3.153,0.45V0.788z" />
+</g>
+<g id="Group_Sludge">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.1938" y1="37.0469" x2="56.1938" y2="4.882813e-004">
+		<stop offset="0" style="stop-color:#7F330D" />
+		<stop offset="0.61" style="stop-color:#A06445" />
+		<stop offset="1" style="stop-color:#B27F65" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M6.872,1.464l0.451,35.583h97.742l0.451-35.583l-3.717-0.676L98.421,0.45h-4.616l-4.279,0.338   l-3.941,0.676L81.643,2.14l-4.054,0.676l-4.167,0.45l-4.504,0.112l-3.266-0.112l-3.604-0.45l-3.828-0.789L54.73,1.126l-4.279-0.788   L46.059,0h-1.464h-1.464l-4.504,0.113L34.123,0.45l-4.617,0.451l-4.729,0.45l-4.729,0.338l-4.842,0.225L10.25,1.802L8.561,1.577   L6.872,1.464z" />
+	<path fill="none" stroke="#7F4C4C" stroke-width="0.25" d="M105.516,1.464l-3.717-0.676L98.421,0.45h-4.616l-4.279,0.338   l-4.055,0.676L81.53,2.14l-4.054,0.676l-4.166,0.45l-1.465,0.112h-1.463h-1.577L65.54,3.266l-3.491-0.45l-3.828-0.789L54.73,1.126   l-4.279-0.788l-4.279-0.225L44.708,0h-1.464L38.74,0.225l-4.504,0.338l-4.729,0.451l-4.617,0.45l-4.842,0.338l-4.842,0.112   L10.25,1.802L8.561,1.577L6.872,1.464" />
+</g>
+<g id="Group_LiquidContainer">
+	<path fill="#A6BABA" d="M5.07,39.074h102.021V2.815h-1.802L81.868,34.795H30.745L7.323,2.815H5.295L5.07,39.074z" />
+</g>
+</svg>

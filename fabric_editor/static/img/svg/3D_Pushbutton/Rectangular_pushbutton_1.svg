@@ -1,0 +1,14 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="75px" viewBox="0 0 112.5 75.226" enable-background="new 0 0 112.5 75.226" xml:space="preserve">
+<g id="Group_Rectangular_Push_Button" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#333333" d="M1.451,1h111.487v74.324H1.451V1z" />
+	<path fill="#CCCCCC" d="M1.013,75.226l4.73-4.729L107.77,5.632l4.73-4.729H1.013V75.226z" />
+</g>
+<g id="Group_Rectangular_Push_Button_Face" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.1802" y1="38.6128" x2="107.207" y2="38.6128">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.52" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#7F7F7F" stroke-width="0.5" d="M5.18,6.18h102.027v64.865H5.18V6.18z" />
+</g>
+</svg>

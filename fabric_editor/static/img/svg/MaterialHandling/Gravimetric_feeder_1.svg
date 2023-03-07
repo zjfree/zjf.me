@@ -1,0 +1,26 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94px" height="112px" viewBox="0 0 93.809 112.5" enable-background="new 0 0 93.809 112.5" xml:space="preserve">
+<g id="Group_Gravimetric_Feeder">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M60.587,53.716H1.916v51.013h58.671V53.716z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M62.613,55.743H0.001v46.96h62.612V55.743z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M62.613,104.729H0.001v7.771h62.612V104.729z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M62.613,51.802H0.001v1.915h62.612V51.802z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M55.182,102.703h-8.333v0.9h8.333V102.703z" />
+</g>
+<g id="Group_Gravimetric_Top_Layer">
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M54.618,51.802H7.659V4.842h46.959V51.802z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M54.618,46.059H7.659" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M54.618,50.338H7.659v1.464h46.959V50.338z" />
+</g>
+<g id="Group_Handle">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M39.19,4.842V0H23.425v4.842h1.464V1.352h12.5v3.491H39.19z" />
+</g>
+<g id="Group_Axial">
+	
+		<radialGradient id="SVGID_1_" cx="82.9053" cy="23.9375" r="10.7105" gradientTransform="matrix(0 1 -7.5223 0 258.1973 9.1992)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E5E5E5" />
+		<stop offset="0.34" style="stop-color:#999999" />
+		<stop offset="1" style="stop-color:#999999" />
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1129" d="M62.457,88.041c1.236-0.034,27.832,0,27.832,0   s3.52,0.765,3.52,4.03c0,3.268-3.52,4.112-3.52,4.112H62.457" />
+</g>
+</svg>

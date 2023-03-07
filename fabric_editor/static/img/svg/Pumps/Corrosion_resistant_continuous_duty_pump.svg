@@ -1,0 +1,40 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31px" height="112px" viewBox="0 0 30.629 112.5" enable-background="new 0 0 30.629 112.5" xml:space="preserve">
+<g id="Group_Upstream_Pipe_Flange">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="8.896" y1="33.3911" x2="24.0977" y2="33.3911" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,112.496v-4.729H8.896V84.346h2.928V65.54h-1.802   v-4.054h1.802v-1.803h-1.802V45.721h12.951v13.962H21.17v1.803h1.803v4.054H21.17v18.806h2.928v23.422H21.17v4.729L11.824,112.496" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,59.797h9.232" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,61.6h9.232" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,65.652h9.232" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,84.346h9.232" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.824,107.768h9.232" />
+	<path d="M11.824,56.194l-0.901-0.676l-0.338-1.689l0.338-1.689l0.901-0.675l0.788,0.675l0.338,1.689l-0.338,1.689L11.824,56.194z" />
+</g>
+<g id="Group_Volute_Chamber">
+	<ellipse fill="#404040" stroke="#4C4C4C" stroke-width="0.25" cx="15.814" cy="41.33" rx="14.702" ry="4.503" />
+	<ellipse fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" cx="16.104" cy="41.33" rx="14.412" ry="3.603" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="1.689" y1="90.876" x2="30.6289" y2="90.876" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M1.689,3.607l1.689-3.041l1.238-0.563h0.676h1.351h20.382   l2.928,1.577l0.563,1.351l0.113,0.676v7.207h-0.9v28.827l-1.688,2.928l-1.238,0.563l-0.676,0.113h-1.353H6.193l-2.928-1.689   L2.59,39.641V10.813H1.689V3.607" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.59,10.701h27.025" />
+</g>
+<g id="Group_Humidifier">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M25.111,28.718h-2.703V11.602h2.703V28.718z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M9.797,23.313H5.292V11.602h4.504L9.797,23.313L9.797,23.313z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M25.111,28.718l5.404-1.802V11.602h-5.404V28.718z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M5.292,23.313L0,22.412v-10.81h5.292V23.313z" />
+</g>
+<g id="Group_Label">
+	<path fill="#4C4C4C" d="M12.499,4.395h7.207v4.504h-7.207V4.395z" />
+	<path fill="#E5E5E5" d="M13.4,5.296h5.405v0.901H13.4V5.296z" />
+	<path fill="#D9D9D9" d="M14.301,7.098h3.604v0.901h-3.604V7.098z" />
+</g>
+</svg>

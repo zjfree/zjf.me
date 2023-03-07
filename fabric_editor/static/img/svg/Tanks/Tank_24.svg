@@ -1,0 +1,21 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="75" x2="112.5" y2="75">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.45" style="stop-color:#ECECEC" />
+	<stop offset="0.55" style="stop-color:#D9D9D9" />
+	<stop offset="0.76" style="stop-color:#A8A8A8" />
+	<stop offset="0.77" style="stop-color:#A6A6A6" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M0,37.5v60.9c0,0,5.453,14.1,50.7,14.1c1.425,0,4.275,0,5.7,0c49.835,0,56.1-14.1,56.1-14.1V37.5" />
+<radialGradient id="SVGID_2_" cx="56.1611" cy="25.7998" r="43.7246" gradientTransform="matrix(1 0 0 1.3 0 -7.74)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#ECECEC" />
+	<stop offset="0.14" style="stop-color:#DDDDDD" />
+	<stop offset="0.4" style="stop-color:#B8B8B8" />
+	<stop offset="0.75" style="stop-color:#7C7C7C" />
+	<stop offset="1" style="stop-color:#4D4D4D" />
+</radialGradient>
+<path fill="url(#SVGID_2_)" d="M56.25,0C12.106,0-0.81,29.388,0,37.5c0,0,1.75,14.1,56.25,14.1c52,0,55.95-12.6,55.95-12.6  C114.063,27.235,99.582,0,56.25,0z" />
+</g>
+</svg>

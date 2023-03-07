@@ -1,0 +1,40 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85px" height="112px" viewBox="0 0 84.571 112.5" enable-background="new 0 0 84.571 112.5" xml:space="preserve">
+<g id="Group_Vertical">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-31.0942" y1="259.5996" x2="26.1167" y2="259.5996" gradientTransform="matrix(-1 0 0 1 53.4414 -203.4902)">
+		<stop offset="0" style="stop-color:#5C6666" />
+		<stop offset="0.41" style="stop-color:#FCFFFF" />
+		<stop offset="0.61" style="stop-color:#FCFFFF" />
+		<stop offset="1" style="stop-color:#5C6666" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_1_)" points="27.325,-0.133 27.532,112.353 84.536,112.353 84.536,-0.133  " />
+</g>
+<g id="Group_Gas_Segmented">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="136.0308" y1="151.0225" x2="78.4937" y2="151.0225" gradientTransform="matrix(0 1 -1 0 178.2427 -51.4536)">
+		<stop offset="0" style="stop-color:#5C6666" />
+		<stop offset="0.41" style="stop-color:#FCFFFF" />
+		<stop offset="0.61" style="stop-color:#FCFFFF" />
+		<stop offset="1" style="stop-color:#5C6666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="27.343,27.04 54.579,55.659 27.343,84.577 -0.139,84.368 -0.139,27.04  " />
+	<path fill="none" stroke="#4C4C4C" d="M83.946,14.415H28.203" />
+	<path fill="none" stroke="#4C4C4C" d="M83.946,84.009H28.203v-55.63h55.743" />
+	<path fill="none" stroke="#4C4C4C" d="M83.946,97.973H28.203" />
+	<path fill="none" stroke="#4C4C4C" d="M14.24,28.379v55.63" />
+	<path fill="none" stroke="#4C4C4C" d="M28.203,84.009l27.815-27.815L28.203,28.379" />
+	<path fill="none" stroke="#4C4C4C" d="M42.167,42.23h41.779" />
+	<path fill="none" stroke="#4C4C4C" d="M56.018,56.194h27.928" />
+	<path fill="none" stroke="#4C4C4C" d="M42.167,70.158h41.779" />
+	<path fill="none" stroke="#4C4C4C" d="M42.167,42.23v27.928" />
+	<path fill="none" stroke="#FAFFFF" d="M84.396,13.415H28.654" />
+	<path fill="none" stroke="#FAFFFF" stroke-width="0.997" d="M84.396,83.009H28.987v-55.63h55.409" />
+	<path fill="none" stroke="#FAFFFF" d="M84.396,96.973H28.654" />
+	<path fill="none" stroke="#FAFFFF" d="M15.191,28.879v55.63" />
+	<path fill="none" stroke="#FAFFFF" stroke-width="0.9955" d="M28.654,82.509l27.815-27.565L28.654,27.379" />
+	<path fill="none" stroke="#FAFFFF" d="M42.618,41.23h41.778" />
+	<path fill="none" stroke="#FAFFFF" d="M56.469,55.194h27.927" />
+	<path fill="none" stroke="#FAFFFF" d="M42.618,69.158h41.778" />
+	<path fill="none" stroke="#FAFFFF" d="M43.118,41.23v27.928" />
+</g>
+</svg>

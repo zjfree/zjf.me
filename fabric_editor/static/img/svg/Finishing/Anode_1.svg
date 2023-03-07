@@ -1,0 +1,52 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="112px" viewBox="0 0 25.113 112.5" enable-background="new 0 0 25.113 112.5" xml:space="preserve">
+<g id="Group_Stand">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,63.626h25.113" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,110.586h25.113" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,16.779h25.113" />
+</g>
+<g id="Group_Side_Box">
+	<path fill="#7F7F7F" d="M0.788,107.658V19.707h3.379v87.951H0.788z" />
+	<path fill="#7F7F7F" d="M20.609,107.658V19.707h3.604v87.951H20.609z" />
+</g>
+<g id="Group_Edge">
+	<path fill="#7F7F7F" d="M0.788,107.658h23.424v3.716H0.788V107.658z" />
+	<path fill="#7F7F7F" d="M0.788,16.104h23.424v3.604H0.788V16.104z" />
+</g>
+<g id="Group_Horizontal_Strip">
+	<path fill="#CCCCCC" d="M0,108.127V17.924h3.717v90.203H0z" />
+	<path fill="#CCCCCC" d="M20.834,108.783V18.581h3.604v90.202H20.834z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.3381" y1="110.6416" x2="24.4377" y2="110.6416">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.338,108.783h24.1v3.717h-24.1V108.783z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.3381" y1="16.7793" x2="24.4377" y2="16.7793">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0.338,14.978h24.1v3.604h-24.1V14.978z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.3381" y1="63.626" x2="24.4377" y2="63.626">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M0.338,61.824h24.1v3.604h-24.1V61.824z" />
+</g>
+<g id="Group_Mesh">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.338,14.978h24.1V112.5h-24.1V14.978" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.055,21.059l2.478-2.478h2.364l-4.842,4.729v2.478l7.094-7.207h2.478   l-9.571,9.685v2.252l12.049-11.937h2.478L4.055,32.996v2.478l16.779-16.892v2.478L4.055,37.725v2.478l16.779-16.892v2.478   L4.055,42.68v2.478l16.779-16.892v2.252L4.055,47.41v2.477l16.779-16.892v2.478L4.055,52.365v2.252l16.779-16.892v2.478   L4.055,57.095v2.478L20.834,42.68v2.478L4.055,61.824h2.478L20.834,47.41v2.477L8.897,61.824h2.252l9.686-9.459v2.252l-7.208,7.207   h2.478l4.73-4.729v2.478l-2.253,2.252" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M20.834,21.059l-2.253-2.478h-2.478l4.73,4.729v2.478l-7.208-7.207   h-2.252l9.46,9.685v2.252L8.897,18.581H6.532l14.302,14.415v2.478L4.167,18.581v2.478l16.667,16.667v2.478L4.167,23.311v2.478   L20.834,42.68v2.478L4.167,28.266v2.252L20.834,47.41v2.477L4.167,32.996v2.478l16.667,16.892v2.252L4.167,37.725v2.478   l16.667,16.892v2.478L4.167,42.68v2.478l16.667,16.667h-2.253L4.167,47.41v2.477l11.937,11.937h-2.478l-9.459-9.459v2.252   l7.207,7.207H8.897l-4.729-4.729v2.478l2.365,2.252" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.055,18.581h16.779v43.243H4.055V18.581" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.055,67.905l2.478-2.478h2.364l-4.842,4.955v2.478l7.094-7.433h2.478   l-9.571,9.686v2.477l12.049-12.162h2.478L4.055,80.067v2.253l16.779-16.893v2.478L4.055,84.797v2.479l16.779-16.893v2.478   L4.055,89.527v2.477l16.779-16.891v2.477L4.055,94.482v2.477l16.779-16.892v2.253L4.055,99.1v2.59l16.779-16.893v2.479   L4.055,104.166v2.253l16.779-16.892v2.477L4.055,108.783h2.478l14.302-14.301v2.477L8.897,108.783h2.252l9.686-9.684v2.59   l-7.208,7.094h2.478l4.73-4.617v2.253l-2.253,2.364" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M20.834,67.905l-2.253-2.478h-2.478l4.73,4.955v2.478l-7.208-7.433   h-2.252l9.46,9.686v2.477L8.897,65.428H6.532l14.302,14.64v2.253L4.167,65.428v2.478l16.667,16.892v2.479L4.167,70.383v2.478   l16.667,16.667v2.477L4.167,75.113v2.477l16.667,16.893v2.477L4.167,80.067v2.253L20.834,99.1v2.59L4.167,84.797v2.479   l16.667,16.891v2.253L4.167,89.527v2.477l16.667,16.779h-2.253L4.167,94.482v2.477l11.937,11.824h-2.478L4.167,99.1v2.59   l7.207,7.094H8.897l-4.729-4.617v2.253l2.365,2.364" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.055,65.428h16.779v43.355H4.055V65.428" />
+</g>
+<g id="Group_Hanger">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M5.293,0h2.365v14.978H5.293V0z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M17.343,0h2.364v14.978h-2.364V0z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M5.293,0h2.365L6.532,6.532H4.055L5.293,0z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M17.343,0h2.364l1.127,6.532h-2.365L17.343,0z" />
+</g>
+</svg>

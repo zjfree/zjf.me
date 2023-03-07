@@ -1,0 +1,45 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="75px" viewBox="0 0 112.5 75.377" enable-background="new 0 0 112.5 75.377" xml:space="preserve">
+<g id="Group_Volute_Chamber">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M86.4,27.226h26.1V3.151H52.2l-3.6,0.225L45,3.826l-3.6,0.9   l-3.15,1.35l-3.15,1.35l-3.15,1.8l-2.7,2.25l-2.475,2.25L24.3,16.201l-2.025,2.925l-1.8,2.925l-1.575,3.15l-1.35,3.375l-0.9,3.375   l-0.45,3.6l-0.225,3.601l0.225,3.601l0.45,3.601l0.9,3.601l1.35,3.375l1.575,3.149l1.8,2.926l2.025,2.699l2.475,2.699l2.475,2.25   l2.7,2.25l3.15,1.801l3.15,1.351l3.15,1.35l3.6,0.9l3.6,0.45l3.6,0.225l3.6-0.225l3.601-0.45l3.601-0.9l3.149-1.35l3.149-1.351   l3.15-1.801l2.7-2.25l2.699-2.25l2.25-2.699l2.024-2.699l1.8-2.926l1.575-3.149l1.351-3.375l0.899-3.601l0.45-3.601l0.225-3.601   l-0.225-4.5l-0.676-3.15l-0.676-2.925L86.4,27.226z" />
+</g>
+<g id="Group_Upstream_Pipe_Flange">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="82.3506" y1="50.1758" x2="82.3506" y2="70.2012" gradientTransform="matrix(1 0 0 -1 0 75.377)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M52.2,5.176h60.3v20.025H52.2V5.176z" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="108.4502" y1="45.2256" x2="108.4502" y2="75.376" gradientTransform="matrix(1 0 0 -1 0 75.377)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M104.4,0.001h8.1v30.15h-8.1V0.001" />
+</g>
+<g id="Group_Drivershaft_Flange">
+	
+		<radialGradient id="SVGID_3_" cx="52.2002" cy="36.2261" r="34.2" gradientTransform="matrix(1 0 0 -1 0 75.377)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</radialGradient>
+	<circle fill="url(#SVGID_3_)" cx="52.2" cy="39.151" r="34.2" />
+</g>
+<g id="Group_Downstream_Pipe_Flange">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="36.2246" y1="24.0762" x2="36.2246" y2="48.1509" gradientTransform="matrix(1 0 0 -1 0 75.377)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M8.1,27.226h44.1l2.475,0.225l2.25,0.675l2.025,1.125   l1.8,1.575l1.575,1.8l1.125,2.025l0.675,2.25l0.225,2.475l-0.225,2.475l-0.675,2.25l-1.125,2.025l-1.575,1.575l-1.8,1.575   l-2.025,1.125l-2.25,0.675L52.2,51.301H8.1" />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="4.0503" y1="20.9258" x2="4.0503" y2="51.0767" gradientTransform="matrix(1 0 0 -1 0 75.377)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,24.301h8.1v30.15H0V24.301" />
+</g>
+</svg>

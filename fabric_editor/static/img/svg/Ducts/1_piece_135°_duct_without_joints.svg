@@ -1,0 +1,30 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Base_Layer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="89.4482" y1="89.4482" x2="23.0527" y2="23.0527">
+		<stop offset="0" style="stop-color:#D9D9D9" />
+		<stop offset="0.32" style="stop-color:#D7D7D7" />
+		<stop offset="0.55" style="stop-color:#E6E6E6" />
+		<stop offset="1" style="stop-color:#EBEBEB" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" d="M46.104,0L112.5,66.396L66.396,112.5L0,46.104L46.104,0z" />
+</g>
+<g id="Group_Left_Layer">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="34.438" y1="77.9492" x2="56.1938" y2="56.1934">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.78" style="stop-color:#C6C6C6" />
+		<stop offset="1" style="stop-color:#D1D1D1" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M2.818,46.104l63.352,63.577L56.25,56.25L2.818,46.104z" />
+</g>
+<g id="Group_Top_Layer">
+	<path fill="#B2B2B2" d="M56.25,56.25L2.818,46.104L46.104,2.818L56.25,56.25z" />
+</g>
+<g id="Group_Right_Layer">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="46.1045" y1="34.6069" x2="109.6816" y2="34.6069">
+		<stop offset="0" style="stop-color:#CCCCCC" />
+		<stop offset="0.22" style="stop-color:#C6C6C6" />
+		<stop offset="1" style="stop-color:#B2B2B2" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M46.104,2.818l63.577,63.577L56.25,56.25L46.104,2.818z" />
+</g>
+</svg>

@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37px" height="112px" viewBox="0 0 37.346 112.5" enable-background="new 0 0 37.346 112.5" xml:space="preserve">
+<g id="Group_Flange">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="23.2844" y1="112.4941" x2="23.2844" y2="0.0059">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.16" style="stop-color:#909091" />
+		<stop offset="0.49" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#646566" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M9.224,0.005h28.122v112.489H9.224V0.005" />
+</g>
+<g id="Group_Bolt">
+	<path fill="#E5E5E5" d="M0,9.455V6.979l9.224-2.25v3.6L0,9.455z" />
+	<polygon fill="#7F7F7F" points="0,21.153 9.224,23.403 9.224,20.028 0,18.679  " />
+	<polygon fill="#B2B2B2" points="0,18.679 9.224,20.028 9.224,8.33 0,9.455  " />
+	<path fill="#E5E5E5" d="M0,51.525v-2.25l9.224-2.25V50.4L0,51.525z" />
+	<polygon fill="#7F7F7F" points="0,63.449 9.224,65.699 9.224,62.1 0,60.975  " />
+	<polygon fill="#B2B2B2" points="0,60.975 9.224,62.1 9.224,50.4 0,51.525  " />
+	<path fill="#E5E5E5" d="M0,93.821v-2.249l9.224-2.476v3.6L0,93.821z" />
+	<polygon fill="#7F7F7F" points="0,105.521 9.224,107.77 9.224,104.396 0,103.271  " />
+	<polygon fill="#B2B2B2" points="0,103.271 9.224,104.396 9.224,92.696 0,93.821  " />
+</g>
+</svg>

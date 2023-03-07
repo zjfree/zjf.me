@@ -1,0 +1,67 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="109px" height="112px" viewBox="0 0 109.346 112.5" enable-background="new 0 0 109.346 112.5" xml:space="preserve">
+<g id="Group_Makeup_Tank">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.3245" y1="15.3164" x2="100.3372" y2="15.3164" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M24.324,85.021h76.013v24.324H24.324V85.021z" />
+</g>
+<g id="Group_Drivershaft_Flange">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="15.1462" y1="0" x2="15.1462" y2="97.1851" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M5.968,15.315h18.356V112.5H5.968V15.315" />
+</g>
+<g id="Group_Volute_Chamber">
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="24.3245" y1="35.0215" x2="85.0208" y2="35.0215" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M24.324,69.934h60.696v15.09H24.324V69.934z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M24.324,78.941h27.14V15.315h-27.14V78.941z" />
+</g>
+<g id="Group_Downstream_Pipe_Flange">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="74.4368" y1="36.4863" x2="74.4368" y2="79.0542" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M42.454,76.014l6.081-6.08h57.883V39.527H48.535l-6.081-6.081   V76.014" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M103.265,36.374h3.153v3.153h-3.153V36.374z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M100.337,27.365h9.009v9.009h-9.009V27.365z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M100.337,57.771h6.081v15.09h-6.081V57.771z" />
+</g>
+<g id="Group_Flip_Box">
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="66.6848" y1="77.1045" x2="54.2394" y2="111.2977" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" stroke="#4C4C4C" stroke-width="0.25" d="M29.392,42.23l-4.729-17.568L24.437,12.05l26.353-6.982   L93.58,0l6.307,23.311L29.392,42.23z" />
+	<path fill="#333333" d="M24.662,24.662L95.157,5.744l4.729,17.567L29.392,42.23L24.662,24.662z" />
+	<path fill="#CCCCCC" d="M26.914,33.446L97.409,14.64l0.9,2.815L27.816,36.374L26.914,33.446z" />
+</g>
+<g id="Group_Pressure_Side">
+	
+		<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="27.4775" x2="30.2922" y2="27.4775" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_6_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,78.941h30.292v12.162H0V78.941z" />
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M19.707,96.396l-3.041,0.676h-3.152l-3.267-0.676l-2.59-1.465   L5.293,92.68l-1.465-2.928l-0.9-3.152v-3.154l0.9-2.928l1.465-2.928l2.364-2.252l2.59-1.576l3.267-0.9h3.152l3.041,0.9l2.702,1.576   L25,77.59l1.237,2.928l0.901,2.928V86.6l-0.676,3.152L25,92.68l-2.591,2.252L19.707,96.396z" />
+	<circle fill="#666666" cx="15.09" cy="85.135" r="9.122" />
+</g>
+<g id="Group_Pump_Support">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M24.324,109.348h82.094v3.152H24.324V109.348z" />
+</g>
+</svg>

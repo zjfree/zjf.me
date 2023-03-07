@@ -1,0 +1,18 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="113px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Button_Base" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.25" r="55.8472" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#575757" />
+		<stop offset="0.82" style="stop-color:#DEDEDE" />
+		<stop offset="1" style="stop-color:#575757" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" cx="56.25" cy="56.25" rx="56.25" ry="55.441" />
+</g>
+<g id="Group_Button_Side" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#4C4C4C" d="M99.041,54.25c0,24.258-19.663,43.919-43.919,43.919S11.203,78.508,11.203,54.25   c0-24.251,19.663-43.918,43.919-43.918S99.041,29.998,99.041,54.25z" />
+</g>
+<g id="Group_Button_Face" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	
+		<ellipse transform="matrix(-1 0.0056 -0.0056 -1 95.5689 93.1019)" fill="#616161" stroke="#333333" stroke-width="0.25" cx="47.654" cy="46.685" rx="42.54" ry="42.655" />
+	<circle fill="none" stroke="#C9C9C9" cx="47.75" cy="47.25" r="32.896" />
+</g>
+</svg>

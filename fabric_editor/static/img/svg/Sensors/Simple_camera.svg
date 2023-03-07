@@ -1,0 +1,32 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="61px" viewBox="0 0 112.5 61.322" enable-background="new 0 0 112.5 61.322" xml:space="preserve">
+<g id="Group_Camera">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="40.9194" y1="61.3232" x2="40.9194" y2="4.882813e-004">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.3" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M81.838,51.177v10.146H0v-0.001V0h30.662l15.331,10.146   l35.846,2.592v22.996" />
+</g>
+<g id="Group_Lens">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="97.1699" y1="61.3232" x2="97.1699" y2="25.5894">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.5" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M81.839,35.733h12.853l15.33-10.145h2.479v35.734h-2.479   l-15.33-10.146H81.838" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M94.689,51.177V35.733" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M86.911,51.177V35.733" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M92.098,51.177V35.733" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M110.02,61.322V25.588" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M81.838,35.733v15.442" />
+</g>
+<g id="Group_Camera_Focal">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="61.3789" y1="20.4028" x2="61.3789" y2="0">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M45.992,20.403V0l5.185,2.48h22.997l2.592,7.666l-2.592,7.665   H51.177L45.992,20.403z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M51.177,17.811V2.48" />
+</g>
+</svg>

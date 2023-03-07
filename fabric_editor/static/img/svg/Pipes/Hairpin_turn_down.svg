@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Layer_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="99px" viewBox="0 0 112.5 98.547" enable-background="new 0 0 112.5 98.547" xml:space="preserve">
+<g id="Group_Layer_6">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="43.3462" y1="55.573" x2="43.3462" y2="98.774" gradientTransform="matrix(1 0 0 -1 0 98.5464)">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.16" style="stop-color:#909091" />
+		<stop offset="0.53" style="stop-color:#E0E0E0" />
+		<stop offset="0.68" style="stop-color:#B6B6B7" />
+		<stop offset="0.9" style="stop-color:#7B7C7D" />
+		<stop offset="1" style="stop-color:#646566" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="0.859,0 81.779,0 84.217,0.083 85.834,42.973 0.859,42.973  " />
+	
+		<radialGradient id="SVGID_2_" cx="160.3506" cy="338.8767" r="10.4621" gradientTransform="matrix(2.9288 0.072 -0.0737 2.5164 -361.2839 -838.0261)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#BEBEBE" />
+		<stop offset="0.24" style="stop-color:#E0E0E0" />
+		<stop offset="0.39" style="stop-color:#C3C3C3" />
+		<stop offset="0.75" style="stop-color:#878782" />
+		<stop offset="1" style="stop-color:#646566" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" d="M81.779,0c14.967,0,30.699,9.348,30.699,27.863l-26.021,0.07c-0.544-3.259-2.027-4.043-4.595-4.254   C81.563,17.472,81.779,0,81.779,0z" />
+	
+		<radialGradient id="SVGID_3_" cx="158.04" cy="307.0183" r="10.4611" gradientTransform="matrix(2.9221 -0.2031 -0.2132 -2.759 -312.9139 907.6856)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#BEBEBE" />
+		<stop offset="0.24" style="stop-color:#E0E0E0" />
+		<stop offset="0.39" style="stop-color:#C3C3C3" />
+		<stop offset="0.75" style="stop-color:#878782" />
+		<stop offset="1" style="stop-color:#5A5A5A" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M81.816,55.917c14.968,0,30.698-9.743,30.698-29.042l-26.02-0.071   c-0.544,3.396-2.025,4.214-4.594,4.434C81.6,37.706,81.816,55.917,81.816,55.917z" />
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="70.6445" y1="77.6013" x2="113.2695" y2="77.6013" gradientTransform="matrix(-1 0 0 1 113.2695 0.7803)">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.18" style="stop-color:#959595" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="42.594,98.32 0,98.32 0,58.442 42.625,58.442  " />
+	
+		<radialGradient id="SVGID_5_" cx="152.4121" cy="303.78" r="17.6059" gradientTransform="matrix(-2.8361 0.2042 0.2069 2.7751 417.0245 -813.5992)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.1" style="stop-color:#656666" />
+		<stop offset="0.22" style="stop-color:#868788" />
+		<stop offset="0.4" style="stop-color:#BCBDBE" />
+		<stop offset="0.52" style="stop-color:#E0E0E0" />
+		<stop offset="0.64" style="stop-color:#C1C2C2" />
+		<stop offset="0.89" style="stop-color:#787878" />
+		<stop offset="1" style="stop-color:#545454" />
+	</radialGradient>
+	<path fill="url(#SVGID_5_)" d="M50.266,14.218c-24.443,0-50.146,16.448-50.146,49.107l42.494,0.123   c0.888-5.746,3.311-7.133,7.504-7.503C50.612,44.995,50.266,14.218,50.266,14.218z" />
+	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="68.6777" y1="14.217" x2="68.6777" y2="55.928">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.16" style="stop-color:#909091" />
+		<stop offset="0.49" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#646566" />
+	</linearGradient>
+	<path fill="url(#SVGID_6_)" d="M86.072,19.683c-0.128-0.211-0.876-1.771-2.041-3.149v-0.07c-0.135-0.129-0.278-0.266-0.427-0.406   c-0.388-0.404-0.813-0.771-1.27-1.062c-0.021-0.014-0.042-0.028-0.063-0.042c-0.008-0.005-0.015-0.01-0.022-0.014   c-0.641-0.431-1.349-0.743-2.11-0.722H49.173v41.709l32.644-0.011l2.215-0.071V36.544c1.289-0.492,2.368-1.38,2.968-3.061   C88.893,28.402,88.465,23.632,86.072,19.683z" />
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="100px" viewBox="0 0 112.5 100.117" enable-background="new 0 0 112.5 100.117" xml:space="preserve">
+<g id="Group_Metal_Coating_System">
+	<path fill="#B2B2B2" d="M0,0.002l7.32,9.797v90.316L0,97.636V0.002z" />
+	<path fill="#B2B2B2" d="M112.5,0.002l-7.433,9.797v90.316l7.433-2.479V0.002z" />
+	<path fill="#CCCCCC" d="M7.32,9.574h97.748v90.541H7.32V9.574z" />
+	<path fill="#E5E5E5" d="M7.32,9.574h97.748l7.433-9.572H0L7.32,9.574z" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M87.951,95.16V14.529" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M88.626,95.16V9.574" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M7.32,14.078h80.631V9.574" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M7.32,14.529h80.631" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,0.002h112.5v97.634l-7.433,2.253H7.32L0,97.636V0.002" />
+</g>
+<g id="Group_Mid_Part">
+	<path fill="#333333" d="M112.5,37.614l-7.433,1.352H7.32L0,37.614v4.955l7.32,1.352h97.748l7.433-1.352V37.614z" />
+	<path fill="#333333" d="M112.5,92.681l-7.433,2.479H7.32L0,92.681v4.955l7.32,2.479h97.748l7.433-2.479V92.681z" />
+</g>
+<g id="Group_Label">
+	<path fill="#CC8C8C" d="M78.266,24.213h2.928v9.234h-2.928V24.213z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M81.193,24.213v9.234h-2.928" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M81.193,24.213h-2.928v9.234" />
+</g>
+<g id="Group_Display">
+	<path fill="#CCCCCC" d="M2.478,0.452h5.968v1.802H2.478V0.452z" />
+</g>
+<g id="Group_Label2">
+	<path fill="#7F7F7F" d="M109.234,65.993l2.027-0.676V90.88l-2.027,0.676V65.993z" />
+</g>
+</svg>

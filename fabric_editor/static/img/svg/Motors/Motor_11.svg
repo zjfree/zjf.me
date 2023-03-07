@@ -1,0 +1,57 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="60px" viewBox="0 0 112.5 59.57" enable-background="new 0 0 112.5 59.57" xml:space="preserve">
+<g id="Group_Base">
+	<rect x="1.689" y="54.392" fill="#B2B2B2" width="66.667" height="5.181" />
+	<polygon fill="#808080" points="83.896,47.522 83.896,52.703 68.355,59.572 68.355,54.392  " />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="42.793" y1="54.3916" x2="42.793" y2="47.5225">
+		<stop offset="0" style="stop-color:#F7F7F7" />
+		<stop offset="0.02" style="stop-color:#EDEDED" />
+		<stop offset="0.14" style="stop-color:#C2C2C2" />
+		<stop offset="0.25" style="stop-color:#9E9E9E" />
+		<stop offset="0.38" style="stop-color:#808080" />
+		<stop offset="0.5" style="stop-color:#696969" />
+		<stop offset="0.64" style="stop-color:#595959" />
+		<stop offset="0.8" style="stop-color:#505050" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="1.689,54.392 68.355,54.392 83.896,47.522 18.131,47.522  " />
+</g>
+<g id="Group_MotorBody">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="35.811" y1="51.8018" x2="35.811" y2="9.765625e-004">
+		<stop offset="0.17" style="stop-color:#4D4D4D" />
+		<stop offset="0.23" style="stop-color:#5A5A5A" />
+		<stop offset="0.34" style="stop-color:#7D7D7D" />
+		<stop offset="0.48" style="stop-color:#B2B2B2" />
+		<stop offset="0.57" style="stop-color:#A8A8A8" />
+		<stop offset="0.73" style="stop-color:#8B8B8B" />
+		<stop offset="0.94" style="stop-color:#5C5C5C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M11.657,0C5.219,0,0,11.597,0,25.901s5.219,25.9,11.657,25.9h59.964V0H11.657z" />
+</g>
+<g id="Group_ShaftFacePlate">
+	<ellipse fill="#4D4D4D" cx="71.34" cy="25.901" rx="11.656" ry="25.9" />
+	
+		<ellipse fill="none" stroke="#808080" stroke-width="0.25" stroke-miterlimit="10" cx="72.185" cy="25.901" rx="9.91" ry="23.311" />
+</g>
+<g id="Group_HeatSink">
+	<path fill="#4D4D4D" d="M18.131,10.36h42.342v0.788H18.131V10.36z" />
+	<path fill="#4D4D4D" d="M24.212,7.658h38.063v0.9H24.212V7.658z" />
+	<path fill="#4D4D4D" d="M33.784,5.067h29.279v0.901H33.784V5.067z" />
+	<path fill="#4D4D4D" d="M25,46.622h36.374v-0.789H25V46.622z" />
+</g>
+<g id="Group_WiringBox">
+	<path fill="#FFFFFF" d="M10.36,22.41h11.261v11.261H10.36V22.41z" />
+	<path fill="#4D4D4D" d="M10.36,22.41l1.689-0.901h10.473v11.149l-0.901,0.9V22.41H10.36z" />
+</g>
+<g id="Group_Shaft">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="92.1172" y1="29.4082" x2="92.1172" y2="24.0996">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M73.417,24.1H112.5v5.292H73.417c0,0-1.683,0.395-1.683-2.688C71.734,24.1,73.417,24.1,73.417,24.1z   " />
+</g>
+</svg>

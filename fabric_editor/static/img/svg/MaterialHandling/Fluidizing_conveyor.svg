@@ -1,0 +1,35 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="26px" viewBox="0 0 112.5 25.791" enable-background="new 0 0 112.5 25.791" xml:space="preserve">
+<g id="Group_Conveyor_Top">
+	<path fill="#5959FF" stroke="#4C4C4C" stroke-width="0.25" d="M2.252,17.568h107.882l-0.563-5.292l-1.802-4.167H4.617l-1.802,4.167   L2.252,17.568z" />
+	<path fill="none" stroke="#0000BF" stroke-width="0.25" d="M109.572,12.276H2.815" />
+</g>
+<g id="Group_Conveyor_Bottom">
+	<path fill="#0000BF" stroke="#4C4C4C" stroke-width="0.25" d="M2.252,16.33l0.563,5.293l1.802,4.166h103.153l1.802-4.166   l0.563-5.293H2.252z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M109.572,21.623H2.815" />
+</g>
+<g id="Group_Conveyor_Holder">
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M4.617,13.965h2.365v7.095H4.617V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M13.739,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M22.973,13.965h2.252v7.095h-2.252V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M32.095,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M41.329,13.965h2.252v7.095h-2.252V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M50.451,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M59.572,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M68.807,13.965h2.252v7.095h-2.252V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M77.928,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M87.162,13.965h2.252v7.095h-2.252V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M96.283,13.965h2.365v7.095h-2.365V13.965z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M105.405,13.965h2.365v7.095h-2.365V13.965z" />
+</g>
+<g id="Group_Conveyo_Mid_Layer">
+	<path fill="#0000D9" stroke="#4C4C4C" stroke-width="0.25" d="M0,17.568h112.5v2.365H0V17.568z" />
+	<path fill="#4040FF" stroke="#4C4C4C" stroke-width="0.25" d="M0,15.204h112.5v2.364H0V15.204z" />
+</g>
+<g id="Group_Conveyor_Inlet">
+	<path fill="#00008C" stroke="#4C4C4C" stroke-width="0.25" d="M78.491,3.38h21.058v1.802H78.491V3.38z" />
+	<path fill="#0000D9" stroke="#4C4C4C" stroke-width="0.25" d="M79.617,3.492h18.807v4.617H79.617V3.492z" />
+	<path fill="#5959FF" stroke="#4C4C4C" stroke-width="0.25" d="M75,2.254h28.041v1.238H75V2.254z" />
+	<path fill="#7F7FFF" stroke="#4C4C4C" stroke-width="0.25" d="M75,2.254l3.491-2.253h21.058l3.492,2.253H75z" />
+	<path d="M79.055,1.465l1.125-1.238h17.568l1.238,1.238H79.055z" />
+</g>
+</svg>

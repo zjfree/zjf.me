@@ -1,0 +1,17 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="62px" viewBox="0 0 112.5 61.66" enable-background="new 0 0 112.5 61.66" xml:space="preserve">
+<g id="Group_Motor_Body">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.2495" y1="1.7451" x2="56.2495" y2="59.9155" gradientTransform="matrix(1 0 0 -1 0 61.6602)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M110.755,45.373L81.67,52.586v7.329H8.958l-7.213-7.329V8.958   l7.213-7.213H81.67v7.213l29.085,7.33V45.373" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M81.67,52.586V8.958" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.958,59.915V1.745" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M74.457,59.915V1.745" />
+</g>
+<g id="Group_Indicator">
+	<path fill="#7F7F7F" stroke="#E0E0E0" stroke-width="0.25" d="M45.372,59.915V23.501H16.288v36.414H45.372z" />
+</g>
+</svg>

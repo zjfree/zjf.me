@@ -1,0 +1,30 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="112px" viewBox="0 0 50.111 112.5" enable-background="new 0 0 50.111 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="50.9009" x2="50.1116" y2="50.9009">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M50.067,20.608C49.221,12.815,37.946,7.996,24.55,7.996C12.668,7.996,2.993,11.938,0,19.19v1.418   V80.18v1.03c1.174,5.11,3.944,9.521,7.689,12.596h34.29c4.068-3.106,6.971-7.768,8.133-13.21V80.18V21.059v-0.451H50.067z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="17.2297" y1="4.3359" x2="31.8694" y2="4.3359">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M17.23,0h14.64v8.672H17.23V0" />
+	<radialGradient id="SVGID_3_" cx="25.0554" cy="13.5933" r="18.0429" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M24.71,7.996c-11.881,0-21.556,3.941-24.549,11.194h49.79C47.971,12.235,37.273,7.996,24.71,7.996z" />
+	<radialGradient id="SVGID_4_" cx="25.0559" cy="87.4023" r="18.251" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</radialGradient>
+	<path fill="url(#SVGID_4_)" d="M0.052,81v0.21c1.174,5.11,3.944,9.521,7.689,12.596h34.29c3.966-3.028,6.811-7.54,8.029-12.806   H0.052z" />
+</g>
+<g id="Group_FrontLegs">
+	<path fill="#4D4D4D" d="M7.689,93.806L0,108.221c0,0,7.158-8.199,9.811-8.74c1.589-0.324,4.206,3.813,4.968,5.544   s4.027,7.476,4.027,7.476h12.388c0,0,4.539-9.647,6.237-11.625s3.481-1.293,3.785-1.125s4.282,3.356,8.896,8.471l-8.133-14.415   H7.689z" />
+	<path fill="#231F20" d="M29.111,97.859l-2.928,11.486h-2.929l-2.702-11.486H29.111z" />
+</g>
+</svg>

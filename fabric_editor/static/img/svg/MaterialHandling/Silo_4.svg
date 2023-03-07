@@ -1,0 +1,32 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37px" height="112px" viewBox="0 0 37.426 112.5" enable-background="new 0 0 37.426 112.5" xml:space="preserve">
+<g id="Group_Outlet">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="8.9116" y1="102.6992" x2="28.3916" y2="102.6992">
+		<stop offset="0" style="stop-color:#00007F" />
+		<stop offset="0.5" style="stop-color:#6500E5" />
+		<stop offset="1" style="stop-color:#00007F" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M8.912,92.897l0.445,0.89v4.734l4.622,6.99v6.988h9.469v-6.988l4.621-6.99v-4.734l0.323-0.647" />
+</g>
+<g id="Group_Silo">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="37.5376" x2="37.4258" y2="37.5376">
+		<stop offset="0" style="stop-color:#00007F" />
+		<stop offset="0.5" style="stop-color:#6500E5" />
+		<stop offset="1" style="stop-color:#00007F" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M37.426,75.075V0H0v75.075" />
+</g>
+<g id="Group_Bottle_Neck">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="9.3564" y1="102.0166" x2="28.0684" y2="102.0166">
+		<stop offset="0.05" style="stop-color:#000059" />
+		<stop offset="0.5" style="stop-color:#3F00BF" />
+		<stop offset="0.95" style="stop-color:#000059" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M9.356,98.521l4.622,6.99h9.469l4.621-6.99H9.356z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="84.4316" x2="37.4258" y2="84.4316">
+		<stop offset="0.05" style="stop-color:#000059" />
+		<stop offset="0.5" style="stop-color:#3F00BF" />
+		<stop offset="0.95" style="stop-color:#000059" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M0,75.075l9.356,18.712h18.712l9.357-18.712H0z" />
+</g>
+</svg>

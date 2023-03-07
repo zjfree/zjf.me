@@ -1,0 +1,66 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94px" height="112px" viewBox="0 0 94.032 112.5" enable-background="new 0 0 94.032 112.5" xml:space="preserve">
+<g id="Group_Racking_Back">
+	<path fill="#4C4C4C" d="M42.005,8.333h3.153v3.266h31.981v-1.577h5.181v4.955H42.005V8.333z" />
+</g>
+<g id="Group_Racking_Inlet">
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M82.32,1.464h8.222v13.514H82.32V1.464z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M78.942,1.464h15.09V0h-15.09V1.464z" />
+</g>
+<g id="Group_Compressor">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="67.6997" y1="50.707" x2="51.2346" y2="5.4696">
+		<stop offset="0" style="stop-color:#B4B4B4" />
+		<stop offset="0.35" style="stop-color:#B6B6B6" />
+		<stop offset="0.64" style="stop-color:#CECFD0" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M25.113,14.978h60.474v-4.955h6.644v31.757H25.113V14.978z" />
+</g>
+<g id="Group_Compressor_Rod">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="63.7954" y1="13.4009" x2="63.7954" y2="11.5991">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M85.586,13.401H42.005v-1.802h43.582V13.401z" />
+</g>
+<g id="Group_Compressor_nit">
+	<path fill="#999999" d="M70.383,36.824v3.378h-6.757v-3.378H70.383z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M65.428,6.644h1.576v8.333h-1.576V6.644z" />
+</g>
+<g id="Group_Machine_Part">
+	<path fill="#4C4C4C" d="M30.068,38.626v1.577h-1.577v-1.577H30.068z" />
+	<path fill="#4C4C4C" d="M89.077,38.626v1.577h-1.802v-1.577H89.077z" />
+	<path fill="#4C4C4C" d="M58.671,38.626v1.577h-1.577v-1.577H58.671z" />
+</g>
+<g id="Group_Compressor_Display">
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.1" d="M26.689,16.779h13.514v6.757H26.689V16.779z" />
+	<path fill="#FF6600" d="M26.689,16.779h13.514v3.378H26.689V16.779z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="36.7539" y1="17.1138" x2="30.3621" y2="-0.4477">
+		<stop offset="0" style="stop-color:#B4B4B4" />
+		<stop offset="0.23" style="stop-color:#B6B6B6" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M25.113,1.464h16.892v13.739H25.113V1.464z" />
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.1" d="M26.689,3.378h6.757v8.221h-6.757V3.378z" />
+	<path fill="#FF6600" d="M26.689,3.378h6.757v1.577h-6.757V3.378z" />
+</g>
+<g id="Group_Compressor_Support_Structure">
+	<path fill="#666666" d="M85.924,84.572V87.5H31.419v-2.928H85.924z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M89.077,87.275v3.378H28.491v-3.378H89.077z" />
+	<path fill="#333333" d="M89.077,40.203v3.378H28.491v-3.378H89.077z" />
+	<path fill="#666666" d="M28.491,42.004h2.928v65.316h-2.928V42.004z" />
+	<path fill="#666666" d="M85.924,42.004h3.152v65.316h-3.152V42.004z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M25.113,41.779h3.378V112.5h-3.378V41.779z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M88.852,41.779h3.378V112.5h-3.378V41.779z" />
+</g>
+<g id="Group_Air_Racking_Unit">
+	<path fill="#424242" d="M6.645,28.491v3.378h18.468v-1.802h-15.09v-1.576H6.645z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M3.266,14.978H0v15.09h3.266V14.978z" />
+	<path fill="#E5E5E5" d="M8.221,16.779h16.892v11.712H8.221V16.779z" />
+	<path fill="#CCCCCC" d="M8.221,18.356h16.892v3.378H8.221V18.356z" />
+	<path fill="#CCCCCC" d="M8.221,23.311h16.892v3.379H8.221V23.311z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.221,16.779h16.892v11.712H8.221V16.779" />
+	<path fill="#404040" d="M8.221,16.779H1.464v11.712h6.757V16.779z" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M3.266,26.689v-8.333" />
+</g>
+</svg>

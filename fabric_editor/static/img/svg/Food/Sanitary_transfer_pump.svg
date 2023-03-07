@@ -1,0 +1,31 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="112px" viewBox="0 0 23.76 112.5" enable-background="new 0 0 23.76 112.5" xml:space="preserve">
+<g id="Group_Pump">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="4.8423" y1="87.2734" x2="18.8057" y2="87.2734">
+		<stop offset="0.01" style="stop-color:#65657F" />
+		<stop offset="0.5" style="stop-color:#B2B2CC" />
+		<stop offset="1" style="stop-color:#65657F" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M8.445,112.497l-1.013-1.239v-3.715l-2.59-1.915v-1.013   l2.59-0.676v-2.928L6.081,99.66v-1.127H7.77V75.337h0.675v-4.954h1.239v-8.334h4.167v8.334h1.352v4.954h0.563v23.196h1.914v1.127   l-1.238,1.352v2.928l2.365,0.676v1.013l-2.365,1.915v3.715l-1.238,1.239H8.445" />
+	<path fill="#D8D8E5" stroke="#4C4C4C" stroke-width="0.25" d="M6.081,78.49h1.352v20.043H6.081V78.49z" />
+	<path fill="#D8D8E5" stroke="#4C4C4C" stroke-width="0.25" d="M9.684,78.49h1.352v20.043H9.684V78.49z" />
+	<path fill="#D8D8E5" stroke="#4C4C4C" stroke-width="0.25" d="M13.4,78.49h1.126v20.043H13.4V78.49z" />
+	<path fill="#D8D8E5" stroke="#4C4C4C" stroke-width="0.25" d="M16.44,78.49h1.238v20.043H16.44V78.49z" />
+</g>
+<g id="Group_Sanitary_Cylinder">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="26.6348" x2="23.7598" y2="26.6348">
+		<stop offset="0.01" style="stop-color:#65657F" />
+		<stop offset="0.5" style="stop-color:#B2B2CC" />
+		<stop offset="1" style="stop-color:#65657F" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M1.802,45.609v-15.99H0l0.676-17.905l2.477-3.378l3.041-1.239h2.928V6.759h0.563V5.408h4.167v1.351   h0.676v0.338l4.504,0.451l2.703,1.576l1.352,2.59l0.675,17.905h-2.026v15.99l2.026,0.675v0.451l-4.729,0.901l-2.59,0.225H7.432   L2.478,47.41L0,46.735v-0.451L1.802,45.609" />
+</g>
+<g id="Group_Piston">
+	<path fill="#9999A6" stroke="#4C4C4C" stroke-width="0.25" d="M11.036,47.41h1.689v14.639h-1.689V47.41z" />
+	<path fill="#9999A6" stroke="#4C4C4C" stroke-width="0.25" d="M3.491,47.41h2.027v30.404H3.491V47.41z" />
+	<path fill="#9999A6" stroke="#4C4C4C" stroke-width="0.25" d="M18.13,47.41h1.914v30.404H18.13V47.41z" />
+	<path fill="#9999A6" stroke="#4C4C4C" stroke-width="0.25" d="M3.491,75.337H20.72v3.153H3.491V75.337z" />
+</g>
+<g id="Group_Hanger">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.473,5.408L9.121,2.706l1.352-2.703h2.702l1.352,2.703l-1.352,2.703   H10.473" />
+</g>
+</svg>

@@ -1,0 +1,26 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="113px" viewBox="0 0 112.385 112.5" enable-background="new 0 0 112.385 112.5" xml:space="preserve">
+<g id="Group_Yellow_Push_Button_Back_Ground" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<circle cx="56.192" cy="56.533" r="55.967" />
+</g>
+<g id="Group_Yellow_Button_Octagen" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#E5E5E5" d="M35.458,6.321L8.207,33.573l-0.901,2.703v37.837l0.901,2.702l27.251,27.365l2.703,0.9h37.837l2.702-0.9   l27.365-27.365l0.676-2.702V36.275l-0.676-2.703L78.7,6.321L75.998,5.42H38.161L35.458,6.321z" />
+</g>
+<g id="Group_Yellow_Button_Pin" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<circle fill="#7F7F7F" stroke="#000000" stroke-width="0.25" cx="57.024" cy="56.532" r="46.733" />
+	<rect x="49.267" y="4.623" fill="#7F7F7F" width="13.852" height="6.151" />
+</g>
+<g id="Group_Button_Ring" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="57.0234" cy="56.5322" r="43.3326" gradientUnits="userSpaceOnUse">
+		<stop offset="0.72" style="stop-color:#000000" />
+		<stop offset="0.73" style="stop-color:#7A7A7A" />
+		<stop offset="0.82" style="stop-color:#404040" />
+		<stop offset="0.82" style="stop-color:#000000" />
+		<stop offset="0.86" style="stop-color:#ADADAD" />
+		<stop offset="0.93" style="stop-color:#7A7A7A" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#000000" stroke-width="0.25" cx="57.024" cy="56.533" rx="43.423" ry="43.243" />
+</g>
+<g id="Group_Yellow_Button_Face" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#FFFF00" d="M85.714,56.508c0,15.569-12.769,28.191-28.514,28.191c-15.749,0-28.518-12.622-28.518-28.191   c0-15.571,12.769-28.192,28.518-28.192C72.945,28.316,85.714,40.937,85.714,56.508z" />
+</g>
+</svg>

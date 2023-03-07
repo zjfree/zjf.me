@@ -1,0 +1,160 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="54px" viewBox="0 0 112.5 53.598" enable-background="new 0 0 112.5 53.598" xml:space="preserve">
+<g id="Group_Port2">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="99.925" y="0" width="12.575" height="38.025" />
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_" overflow="visible" />
+		</clipPath>
+		
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-0.0024" y1="53.5957" x2="0.9976" y2="53.5957" gradientTransform="matrix(12.5752 0 0 -12.5752 99.9668 692.9796)">
+			<stop offset="0" style="stop-color:#5C5D60" />
+			<stop offset="0.45" style="stop-color:#ECECED" />
+			<stop offset="0.57" style="stop-color:#D9DADB" />
+			<stop offset="0.77" style="stop-color:#B1B3B6" />
+			<stop offset="1" style="stop-color:#5C5D60" />
+		</linearGradient>
+		<rect x="99.925" y="0" clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" width="12.575" height="38.025" />
+	</g>
+	<g>
+		<defs>
+			<polygon id="SVGID_4_" points="99.939,37.532 99.813,38.585 99.397,39.747 98.484,40.909 105.128,51.59 107.779,49.207      108.94,47.963 109.937,46.635 110.837,44.944 111.433,43.644 111.89,42.255 112.24,40.82 112.406,39.406 112.5,37.981    " />
+		</defs>
+		<clipPath id="SVGID_5_">
+			<use xlink:href="#SVGID_4_" overflow="visible" />
+		</clipPath>
+		
+			<radialGradient id="SVGID_6_" cx="4.882813e-004" cy="53.6211" r="0.9997" gradientTransform="matrix(13.0435 5.4939 5.4939 -13.0435 -196.098 738.895)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#4D4D4D" />
+			<stop offset="0.09" style="stop-color:#4D4D4D" />
+			<stop offset="0.14" style="stop-color:#656565" />
+			<stop offset="0.23" style="stop-color:#939393" />
+			<stop offset="0.28" style="stop-color:#A5A5A5" />
+			<stop offset="0.42" style="stop-color:#D5D7D8" />
+			<stop offset="0.49" style="stop-color:#DCDEDE" />
+			<stop offset="0.55" style="stop-color:#E6E6E6" />
+			<stop offset="0.61" style="stop-color:#E1E1E1" />
+			<stop offset="0.68" style="stop-color:#D1D1D1" />
+			<stop offset="0.77" style="stop-color:#B8B8B8" />
+			<stop offset="0.86" style="stop-color:#959595" />
+			<stop offset="0.95" style="stop-color:#686868" />
+			<stop offset="1" style="stop-color:#4D4D4D" />
+		</radialGradient>
+		<polygon clip-path="url(#SVGID_5_)" fill="url(#SVGID_6_)" points="100.596,32.519 117.528,39.65 110.388,56.604 93.455,49.472       " />
+	</g>
+	<g>
+		<defs>
+			<polygon id="SVGID_7_" points="89.758,51.048 90.713,51.613 91.898,52.306 93.006,52.818 94.37,53.226 95.827,53.468      97.285,53.598 98.715,53.563 100.193,53.392 102.398,53.098 103.825,52.444 105.152,51.613 98.729,40.645 98.001,40.817      96.984,40.597 96.247,40.225 95.644,39.937    " />
+		</defs>
+		<clipPath id="SVGID_8_">
+			<use xlink:href="#SVGID_7_" overflow="visible" />
+		</clipPath>
+		
+			<radialGradient id="SVGID_9_" cx="0" cy="53.5977" r="1" gradientTransform="matrix(3 13.75 13.75 -3 -639.9683 201.0957)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#4D4D4D" />
+			<stop offset="0.09" style="stop-color:#4D4D4D" />
+			<stop offset="0.13" style="stop-color:#696969" />
+			<stop offset="0.2" style="stop-color:#949494" />
+			<stop offset="0.23" style="stop-color:#A5A5A5" />
+			<stop offset="0.35" style="stop-color:#C2C2C2" />
+			<stop offset="0.36" style="stop-color:#C7C7C7" />
+			<stop offset="0.41" style="stop-color:#D8D8D8" />
+			<stop offset="0.47" style="stop-color:#E3E3E3" />
+			<stop offset="0.53" style="stop-color:#E6E6E6" />
+			<stop offset="0.6" style="stop-color:#E1E1E1" />
+			<stop offset="0.67" style="stop-color:#D1D1D1" />
+			<stop offset="0.76" style="stop-color:#B7B7B7" />
+			<stop offset="0.86" style="stop-color:#939393" />
+			<stop offset="0.95" style="stop-color:#656565" />
+			<stop offset="1" style="stop-color:#4D4D4D" />
+		</radialGradient>
+		<polygon clip-path="url(#SVGID_8_)" fill="url(#SVGID_9_)" points="104.452,36.73 107.997,52.977 90.457,56.804 86.913,40.558       " />
+	</g>
+</g>
+<g id="Group_Port1">
+	<g>
+		<defs>
+			<polygon id="SVGID_12_" points="89.781,51.089 95.643,39.962 22.002,1.973 16.141,13.098    " />
+		</defs>
+		<clipPath id="SVGID_13_">
+			<use xlink:href="#SVGID_12_" overflow="visible" />
+		</clipPath>
+		
+			<linearGradient id="SVGID_14_" gradientUnits="userSpaceOnUse" x1="-0.0117" y1="53.5928" x2="0.9883" y2="53.5928" gradientTransform="matrix(-6.1945 11.7577 11.7577 6.1945 -571.2109 -311.1919)">
+			<stop offset="0" style="stop-color:#5C5D60" />
+			<stop offset="0.45" style="stop-color:#ECECED" />
+			<stop offset="0.57" style="stop-color:#D9DADB" />
+			<stop offset="0.77" style="stop-color:#B1B3B6" />
+			<stop offset="1" style="stop-color:#5C5D60" />
+		</linearGradient>
+		<polygon clip-path="url(#SVGID_13_)" fill="url(#SVGID_14_)" points="115.897,12.644 78.37,83.874 -4.114,40.418 33.414,-30.813       " />
+	</g>
+</g>
+<g id="Group_Port_Middle">
+	<g>
+		<defs>
+			<polygon id="SVGID_15_" points="4.484,4.189 3.469,5.314 2.727,6.524 1.936,7.784 1.289,9.062 0.777,10.432 0.371,11.851      0.15,13.258 0,14.675 0.028,16.153 0.168,17.607 0.463,19.008 12.93,16.813 12.913,15.818 12.895,14.931 13.185,14.12      13.53,13.328 5.656,3.112    " />
+		</defs>
+		<clipPath id="SVGID_16_">
+			<use xlink:href="#SVGID_15_" overflow="visible" />
+		</clipPath>
+		
+			<radialGradient id="SVGID_17_" cx="0" cy="53.5977" r="0.9996" gradientTransform="matrix(-12.25 -5 -5 12.25 280.9941 -642.0239)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#4D4D4D" />
+			<stop offset="0.02" style="stop-color:#4D4D4D" />
+			<stop offset="0.07" style="stop-color:#696969" />
+			<stop offset="0.16" style="stop-color:#949494" />
+			<stop offset="0.2" style="stop-color:#A5A5A5" />
+			<stop offset="0.35" style="stop-color:#D5D7D8" />
+			<stop offset="0.45" style="stop-color:#DFE0E0" />
+			<stop offset="0.56" style="stop-color:#E6E6E6" />
+			<stop offset="0.67" style="stop-color:#C6C6C6" />
+			<stop offset="0.89" style="stop-color:#767676" />
+			<stop offset="1" style="stop-color:#4D4D4D" />
+		</radialGradient>
+		<polygon clip-path="url(#SVGID_16_)" fill="url(#SVGID_17_)" points="11.598,23.742 -5.562,16.738 1.932,-1.622 19.092,5.382       " />
+	</g>
+	<g>
+		<defs>
+			<rect id="SVGID_18_" x="0.005" y="16.71" width="12.921" height="36.887" />
+		</defs>
+		<clipPath id="SVGID_19_">
+			<use xlink:href="#SVGID_18_" overflow="visible" />
+		</clipPath>
+		
+			<linearGradient id="SVGID_20_" gradientUnits="userSpaceOnUse" x1="-9.765625e-004" y1="53.5977" x2="0.999" y2="53.5977" gradientTransform="matrix(12.9209 0 0 12.9209 0.0124 -657.3699)">
+			<stop offset="0" style="stop-color:#5C5D60" />
+			<stop offset="0.45" style="stop-color:#ECECED" />
+			<stop offset="0.57" style="stop-color:#D9DADB" />
+			<stop offset="0.77" style="stop-color:#B1B3B6" />
+			<stop offset="1" style="stop-color:#5C5D60" />
+		</linearGradient>
+		<rect x="0.005" y="16.71" clip-path="url(#SVGID_19_)" fill="url(#SVGID_20_)" width="12.921" height="36.887" />
+	</g>
+	<g>
+		<defs>
+			<polygon id="SVGID_21_" points="16.79,13.45 15.967,13.089 15.103,12.895 14.247,12.966 13.497,13.348 5.633,3.107 6.924,2.245      8.236,1.496 9.603,0.903 11.025,0.461 12.425,0.167 13.88,0.028 15.357,0 16.773,0.151 18.181,0.37 19.601,0.78 20.859,1.375      22.203,2.064    " />
+		</defs>
+		<clipPath id="SVGID_22_">
+			<use xlink:href="#SVGID_21_" overflow="visible" />
+		</clipPath>
+		
+			<radialGradient id="SVGID_23_" cx="0.0034" cy="53.6152" r="1" gradientTransform="matrix(-2.5 -14 -14 2.5 766.3711 -119.9463)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#4D4D4D" />
+			<stop offset="0.09" style="stop-color:#4D4D4D" />
+			<stop offset="0.16" style="stop-color:#7B7B7B" />
+			<stop offset="0.22" style="stop-color:#9A9A9A" />
+			<stop offset="0.25" style="stop-color:#A5A5A5" />
+			<stop offset="0.41" style="stop-color:#D5D7D8" />
+			<stop offset="0.48" style="stop-color:#DEDFDF" />
+			<stop offset="0.58" style="stop-color:#E6E6E6" />
+			<stop offset="0.64" style="stop-color:#DADADA" />
+			<stop offset="0.74" style="stop-color:#B9B9B9" />
+			<stop offset="0.87" style="stop-color:#848484" />
+			<stop offset="1" style="stop-color:#4D4D4D" />
+		</radialGradient>
+		<polygon clip-path="url(#SVGID_22_)" fill="url(#SVGID_23_)" points="6.145,16.317 3.306,0.416 21.691,-2.868 24.531,13.034   " />
+	</g>
+</g>
+</svg>

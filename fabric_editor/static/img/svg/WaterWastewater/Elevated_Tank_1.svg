@@ -1,0 +1,45 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77px" height="112px" viewBox="0 0 77.176 112.5" enable-background="new 0 0 77.176 112.5" xml:space="preserve">
+<g id="Group_Tank_Support">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="28.126" y1="70.7627" x2="49.2759" y2="70.7627">
+		<stop offset="0.01" style="stop-color:#737373" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M28.126,29.025h21.15V112.5h-21.15V29.025" />
+	<path fill="none" stroke="#666666" stroke-width="0.25" d="M44.776,84.375h-6.075" />
+	<path fill="none" stroke="#666666" stroke-width="0.25" d="M41.176,86.175h-5.4" />
+	<path fill="none" stroke="#666666" stroke-width="0.25" d="M47.476,90.45h-7.2" />
+	<path fill="none" stroke="#666666" stroke-width="0.25" d="M36.001,106.425h6.975" />
+	<path fill="none" stroke="#666666" stroke-width="0.25" d="M39.601,101.925h8.774" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M32.401,53.55v58.95" />
+	<path fill="#4D4D4D" d="M26.326,109.8h24.525v1.8H26.326V109.8z" />
+	<path fill="#7F7F7F" d="M26.326,109.8h24.525v0.9H26.326V109.8z" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M29.926,63.225h11.25" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M33.301,69.525h10.575" />
+	<path fill="#4D4D4D" d="M26.326,51.075h24.525v1.8H26.326V51.075z" />
+	<path fill="#7F7F7F" d="M26.326,51.075h24.525v0.9H26.326V51.075z" />
+</g>
+<g id="Group_Elevated_Tank">
+	
+		<radialGradient id="SVGID_2_" cx="38.4761" cy="26.3252" r="32.6092" gradientTransform="matrix(-4.371139e-008 -1 1.5 -6.556708e-008 -1.0117 64.8013)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E5E5E5" />
+		<stop offset="0.5" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="38.476" cy="26.325" rx="38.475" ry="25.425" />
+	<ellipse fill="none" stroke="#CCCCCC" stroke-width="0.25" cx="38.476" cy="26.325" rx="26.774" ry="25.425" />
+	<ellipse fill="none" stroke="#CCCCCC" stroke-width="0.25" cx="38.701" cy="26.325" rx="11.025" ry="25.425" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M6.076,26.775H42.75" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M13.726,22.275h36.675" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M10.351,13.95h15.75" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M22.726,10.35h36.675" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M32.401,31.275h36.675" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M13.726,40.5h29.7" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M39.826,1.35V0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.351,1.35V0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M42.076,1.35V0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.101,1.35V0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.201,0.225h8.775" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.201,0.675h8.775" />
+</g>
+</svg>

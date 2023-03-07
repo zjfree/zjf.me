@@ -1,0 +1,45 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="50px" viewBox="0 0 112.5 49.939" enable-background="new 0 0 112.5 49.939" xml:space="preserve">
+<g id="Group_Segmented_Pipe">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="73.7998" y1="43.0205" x2="39.0459" y2="8.2666" gradientTransform="matrix(-0.7071 0.7071 0.7071 0.7071 78.1695 -32.4647)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M111.683,1.077L1.258,0.99l-0.13,49.149h110.425L111.683,1.077z" />
+</g>
+<g id="Group_Ring">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-4.1011" y1="85.9424" x2="-3.879" y2="36.876" gradientTransform="matrix(-1 -0.0045 -0.0045 1 106.9869 -35.8723)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="110.126,50.089 111.256,50.089 111.276,1.026 110.18,1.021  " />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="31.29" y1="86.1416" x2="31.5125" y2="36.9902" gradientTransform="matrix(-1 -0.0045 -0.0045 1 106.9869 -35.8723)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_3_)" points="74.752,50.129 75.867,50.12 75.845,1.001 74.775,0.977  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.405" x1="76.037" y1="0.989" x2="76.08" y2="50.107" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.405" x1="111.52" y1="0.983" x2="111.563" y2="50.103" />
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="69.083" y1="86.2715" x2="69.3051" y2="37.2051" gradientTransform="matrix(-1 -0.0045 -0.0045 1 106.9869 -35.8723)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="36.94,50.089 38.071,50.089 38.091,1.026 36.994,1.021  " />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="104.9746" y1="86.4727" x2="105.1971" y2="37.3218" gradientTransform="matrix(-1 -0.0045 -0.0045 1 106.9869 -35.8723)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_5_)" points="1.066,50.129 2.181,50.12 2.16,1.001 1.09,0.977  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.405" x1="2.352" y1="0.989" x2="2.394" y2="50.107" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.405" x1="38.443" y1="0.988" x2="38.485" y2="50.107" />
+</g>
+</svg>

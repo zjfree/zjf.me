@@ -1,0 +1,51 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110px" height="112px" viewBox="0 0 109.908 112.5" enable-background="new 0 0 109.908 112.5" xml:space="preserve">
+<g id="Group_Supporter">
+	<path fill="#BFB299" stroke="#4C4C4C" stroke-width="0.25" d="M4.617,109.909l7.319-28.716h86.035l7.319,28.716l-21.621-7.208   H26.238L4.617,109.909z" />
+</g>
+<g id="Group_OuterFrame">
+	<path fill="#D9CCB3" stroke="#4C4C4C" stroke-width="0.25" d="M106.305,68.581l3.604,4.054l-3.604,8.783l-5.405,0.226   l-10.135,9.122l7.207,16.891h9.684v4.843H93.354v-4.843l-6.081-13.287l-5.405,6.531l-0.451,5.18l-8.783,3.829l-4.054-3.604H41.328   l-4.054,3.604l-8.783-3.829l-0.226-5.18l-5.63-6.531l-6.081,13.287v4.843H2.252v-4.843h9.684l7.095-16.891L9.009,81.644   l-5.18-0.226L0,72.41l3.491-3.829V41.329L0,37.275l3.829-8.783l5.18-0.451L28.265,9.01l0.226-5.518L37.5,0.001l3.829,3.491H68.58   l4.054-3.491l8.783,3.491l0.451,5.518l19.031,19.031l5.405,0.451l3.604,8.783l-3.604,4.054V68.581z" />
+	<radialGradient id="SVGID_1_" cx="55.0664" cy="54.7856" r="47.9436" gradientUnits="userSpaceOnUse">
+		<stop offset="0.3" style="stop-color:#FAEDD4" />
+		<stop offset="1" style="stop-color:#D7CEB5" />
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#998C73" stroke-width="0.25" d="M35.247,102.701L7.094,74.662V35.023L35.247,6.87h39.639   l28.152,28.153v39.639l-28.152,28.039H35.247z" />
+</g>
+<g id="Group_Bolts">
+	<path fill="#665940" d="M105.403,32.771l0.901,2.027l-2.253,1.126l-0.9-2.252L105.403,32.771z" />
+	<path fill="#665940" d="M106.305,74.887l-0.901,2.252l-2.252-0.9l0.9-2.252L106.305,74.887z" />
+	<path fill="#665940" d="M77.138,105.404l-2.026,0.9l-1.126-2.252l2.252-0.9L77.138,105.404z" />
+	<path fill="#665940" d="M35.022,106.305l-2.252-0.9l0.901-2.252l2.252,0.9L35.022,106.305z" />
+	<path fill="#665940" d="M4.504,77.139l-1.014-2.026l2.252-1.126l1.014,2.252L4.504,77.139z" />
+	<path fill="#665940" d="M3.491,34.798l1.014-2.027l2.252,0.901l-1.014,2.252L3.491,34.798z" />
+	<path fill="#665940" d="M32.77,4.505l2.252-1.014l0.901,2.252L33.67,6.758L32.77,4.505z" />
+	<path fill="#665940" d="M75.111,3.492l2.026,1.014l-0.9,2.252l-2.252-1.014L75.111,3.492z" />
+</g>
+<g id="Group_InnerFrame">
+	<path fill="#D9CCB3" d="M55.066,71.734l27.478,20.494l10.811-9.684L55.066,38.176L16.554,82.545l10.811,9.684L55.066,71.734z" />
+	<path fill="none" stroke="#998C73" stroke-width="0.25" d="M16.554,82.545l38.513-44.369l38.288,44.369" />
+	<path fill="none" stroke="#FFF2D9" stroke-width="0.25" d="M27.364,92.229l27.702-20.494l27.478,20.494" />
+</g>
+<g id="Group_Pump">
+	<path fill="#F2E5CC" d="M37.049,80.066h36.036v25.226H37.049V80.066z" />
+	<path fill="#BFB299" d="M41.778,89.752H68.13v15.54H41.778V89.752z" />
+	<path fill="none" stroke="#BFB299" stroke-width="0.25" d="M37.049,105.292h36.036V80.066" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M37.049,105.292V80.066h36.036" />
+</g>
+<g id="Group_Pipe">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="40.6523" y1="101.0127" x2="69.4814" y2="101.0127">
+		<stop offset="0" style="stop-color:#998C73" />
+		<stop offset="0.5" style="stop-color:#D9CCB3" />
+		<stop offset="1" style="stop-color:#998C73" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M45.382,90.766v16.891h-4.73v3.604h28.829v-3.604h-4.955V90.766H45.382z" />
+	<path fill="none" stroke="#665940" stroke-width="0.25" d="M45.382,90.766v16.891h-4.73v3.604h28.829v-3.604h-4.955V90.766H45.382" />
+</g>
+<g id="Group_Frame">
+	<path fill="#FFF2D9" stroke="#BFB299" stroke-width="0.25" d="M54.954,35.699c4.585,0,8.796,1.603,12.103,4.278   c4.363,3.53,7.153,8.928,7.153,14.978c0,10.635-8.621,19.256-19.256,19.256c-8.054,0-14.953-4.944-17.828-11.964   c-0.921-2.249-1.429-4.711-1.429-7.292C35.698,44.32,44.319,35.699,54.954,35.699z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M37.126,62.247c-0.921-2.249-1.429-4.711-1.429-7.292   c0-10.635,8.621-19.256,19.256-19.256c4.585,0,8.796,1.603,12.103,4.278" />
+</g>
+<g id="Group_CenterPoint">
+	<circle fill="#B2B2B2" cx="54.954" cy="54.955" r="9.572" />
+	<circle fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" cx="54.954" cy="54.955" r="7.094" />
+</g>
+</svg>

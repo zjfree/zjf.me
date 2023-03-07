@@ -1,0 +1,38 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="98px" height="112px" viewBox="0 0 98.295 112.5" enable-background="new 0 0 98.295 112.5" xml:space="preserve">
+<g id="Group_Backegs">
+	<polygon points="81.273,108.779 81.273,88.715 77.216,88.715 77.216,108.779 21.079,108.779 21.079,88.715 17.134,88.715    17.134,108.779 6.876,108.779 6.876,110.808 91.419,110.808 91.419,108.779  " />
+</g>
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.2546" y1="42.2153" x2="95.9275" y2="42.2153">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M95.917,6.088C95.688,2.721,74.815,0,49.091,0C23.366,0,2.494,2.721,2.265,6.088H2.255v78.342   h93.673V6.088H95.917z" />
+	<polygon fill="#333333" points="13.865,93.899 44.301,103.143 49.035,103.143 18.599,93.899  " />
+	<polygon fill="#333333" points="79.695,93.899 49.035,103.143 53.769,103.143 84.429,93.899  " />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2.2546" y1="91.5322" x2="95.9275" y2="91.5322">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M95.927,84.431v7.891c0,0-8.947,6.313-46.893,6.313c-37.055,0-46.78-6.313-46.78-6.313v-7.891   H95.927z" />
+</g>
+<g id="Group_FrontLegs">
+	<path fill="#333333" d="M98.295,86.686v-4.51H0v4.51h11.61v23.559H0v2.254h98.295v-2.254h-11.61V86.686H98.295z M79.695,86.686   L51.514,99.74V86.686H79.695z M46.78,86.686v13.15l-28.181-13.15H46.78z M16.344,110.244V87.843l27.956,13.046h9.469L81.95,87.834   v22.41H16.344z" />
+	<path fill="#CCCCCC" d="M44.525,98.634h9.244v9.243h-9.244V98.634z" />
+</g>
+<g id="Group_Icon">
+	<path fill="#CCCC33" d="M46.78,14.204l-1.578-1.916v-2.48L46.78,8.23h5.411l1.578,1.578v2.48l-1.578,1.916H46.78z" />
+	<path fill="#999999" d="M53.769,12.288v-2.48l-2.706,0.451v1.578L53.769,12.288z" />
+	<path fill="#999999" d="M45.202,12.288v-2.48l2.705,0.451v1.578L45.202,12.288z" />
+	<path fill="#999999" d="M46.78,14.204l1.578-1.916h2.255l1.578,1.916H46.78z" />
+	<path fill="#999999" d="M46.78,8.23l1.578,1.917h2.255l1.578-1.917H46.78z" />
+</g>
+</svg>

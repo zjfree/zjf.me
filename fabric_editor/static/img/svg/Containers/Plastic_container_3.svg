@@ -1,0 +1,35 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="112px" viewBox="0 0 39.527 112.5" enable-background="new 0 0 39.527 112.5" xml:space="preserve">
+<g id="Group_Bottle">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="60.6416" x2="39.5276" y2="60.6416">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M39.528,13.514L27.14,8.784H12.276L0,13.514v96.847c0,0,4.339,2.14,17.005,2.14   c1.352,0,4.054,0,5.405,0c12.354,0,17.117-2.14,17.117-2.14V13.514z" />
+	<radialGradient id="SVGID_2_" cx="19.7639" cy="11.0537" r="14.0829" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" d="M39.528,13.514l-12.795-4.92H12.858L0,13.514H39.528z" />
+</g>
+<g id="Group_Cap">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="11.1487" y1="4.3916" x2="28.4915" y2="4.3916">
+		<stop offset="0.06" style="stop-color:#808080" />
+		<stop offset="0.13" style="stop-color:#8D8D8D" />
+		<stop offset="0.28" style="stop-color:#B0B0B0" />
+		<stop offset="0.48" style="stop-color:#E8E8E8" />
+		<stop offset="0.48" style="stop-color:#EBEBEB" />
+		<stop offset="0.57" style="stop-color:#E0E0E0" />
+		<stop offset="0.72" style="stop-color:#C3C3C3" />
+		<stop offset="0.92" style="stop-color:#949494" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M11.149,8.784V0h17.343v8.784H11.149z" />
+</g>
+</svg>

@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="101px" height="112px" viewBox="0 0 101.239 112.5" enable-background="new 0 0 101.239 112.5" xml:space="preserve">
+<g id="Group_Bend_Duct">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.5" d="M89.752,103.491H37.951L0,65.653L65.653,0l10.361,10.248h13.738   V103.491z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.5" d="M37.951,103.491l38.063-93.244" />
+</g>
+<g id="Group_Joints">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M83.897,7.996h17.342V5.067H83.897V7.996z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M83.897,109.459h17.342v-2.814H83.897V109.459z" />
+</g>
+<g id="Group_Rod">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="89.7524" y1="57.3203" x2="95.6079" y2="57.3203">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M89.752,2.14h5.855V112.5h-5.855V2.14z" />
+</g>
+</svg>

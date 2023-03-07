@@ -1,0 +1,67 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="34px" viewBox="0 0 112.5 34.121" enable-background="new 0 0 112.5 34.121" xml:space="preserve">
+<g id="Group_Belt_Support">
+	<ellipse fill="#333333" cx="14.229" cy="18.824" rx="12.146" ry="12.176" />
+	<ellipse fill="#333333" cx="98.062" cy="18.824" rx="12.146" ry="12.176" />
+	<rect x="13.583" y="6.651" fill="#333333" width="84.479" height="24.349" />
+</g>
+<g id="Group_Connector">
+	<path fill="#4C3F26" d="M14.303,16.553h83.781v13.063H14.303V16.553z" />
+	<path fill="#BFB299" stroke="#4C4C4C" stroke-width="0.25" d="M27.591,16.553h57.206v13.063H27.591V16.553z" />
+</g>
+<g id="Group_Rotors">
+	<radialGradient id="SVGID_1_" cx="98.084" cy="18.6931" r="11.0361" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="98.084" cy="18.693" r="11.036" />
+	<radialGradient id="SVGID_2_" cx="14.3027" cy="18.6931" r="11.0359" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="14.303" cy="18.693" r="11.036" />
+</g>
+<g id="Group_Conveyor">
+	<path fill="#333333" d="M95.832,34.121h4.505v-4.505h-4.505V34.121z" />
+	<path fill="#333333" d="M74.887,34.121h4.504v-4.505h-4.504V34.121z" />
+	<path fill="#333333" d="M53.941,34.121h4.504v-4.505h-4.504V34.121z" />
+	<path fill="#333333" d="M33.221,34.121H37.5v-4.505h-4.279V34.121z" />
+	<path fill="#333333" d="M12.051,34.121h4.504v-4.505h-4.504V34.121z" />
+	<path fill="#333333" d="M110.134,28.265l2.364-3.829l-3.828-2.252l-2.252,3.828L110.134,28.265z" />
+	<path fill="#333333" d="M112.498,12.725l-2.364-3.604l-3.716,2.026l2.252,3.829L112.498,12.725z" />
+	<path fill="#333333" d="M0.001,24.436l2.252,3.829l3.716-2.253l-2.252-3.828L0.001,24.436z" />
+	<path fill="#333333" d="M2.253,9.122l-2.252,3.604l3.716,2.252l2.252-3.829L2.253,9.122z" />
+</g>
+<g id="Group_Label">
+	<path fill="#B2A58C" stroke="#4C4C4C" stroke-width="0.1" d="M29.843,23.085h8.784v4.279h-8.784V23.085z" />
+	<path fill="#B2A58C" stroke="#4C4C4C" stroke-width="0.1" d="M73.761,23.085h8.784v4.279h-8.784V23.085z" />
+	<path fill="none" stroke="#D9CCB3" stroke-width="0.25" d="M27.591,27.364h57.206" />
+</g>
+<g id="Group_Axial">
+	<circle fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" cx="97.973" cy="18.693" r="4.392" />
+	<circle fill="#7F7F7F" cx="97.973" cy="18.693" r="3.266" />
+	<circle fill="#E5E5E5" cx="98.084" cy="18.693" r="2.252" />
+	<circle fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" cx="14.416" cy="18.693" r="4.392" />
+	<circle fill="#7F7F7F" cx="14.416" cy="18.693" r="3.266" />
+	<circle fill="#E5E5E5" cx="14.416" cy="18.693" r="2.14" />
+</g>
+<g id="Group_Display">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="57.7158" y1="22.3113" x2="54.6702" y2="-2.4937">
+		<stop offset="0" style="stop-color:#E3D6BD" />
+		<stop offset="0.5" style="stop-color:#E3D6BD" />
+		<stop offset="0.55" style="stop-color:#F0E3CA" />
+		<stop offset="1" style="stop-color:#F2E5CC" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M7.771,3.265h96.844v13.288H7.771V3.265" />
+</g>
+<g id="Group_Labels_2">
+	<path fill="none" stroke="#F2E5CC" stroke-width="0.25" d="M7.771,14.302h96.844" />
+	<path fill="#D9CCB3" stroke="#4C4C4C" stroke-width="0.1" d="M93.58,5.518h8.783v4.278H93.58V5.518z" />
+	<path fill="#D9CCB3" stroke="#4C4C4C" stroke-width="0.1" d="M10.023,5.518h8.784v4.278h-8.784V5.518z" />
+</g>
+<g id="Group_Rings">
+	<circle fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="96.396" cy="1.576" r="1.689" />
+	<circle fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="15.992" cy="1.576" r="1.689" />
+</g>
+</svg>

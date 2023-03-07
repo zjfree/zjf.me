@@ -1,0 +1,68 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="112px" viewBox="0 0 79.617 112.5" enable-background="new 0 0 79.617 112.5" xml:space="preserve">
+<g id="Group_BoilerBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.3655" y1="58.5586" x2="77.2522" y2="58.5586">
+		<stop offset="0" style="stop-color:#263A59" />
+		<stop offset="0.45" style="stop-color:#A6BAD9" />
+		<stop offset="0.55" style="stop-color:#93A7C6" />
+		<stop offset="0.73" style="stop-color:#637796" />
+		<stop offset="0.77" style="stop-color:#596D8C" />
+		<stop offset="1" style="stop-color:#263A59" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M2.365,112.5V37.162c0-24.015,25.676-32.545,32.545-32.545c2.506,0,7.517,0,10.022,0   c11.541,0,30.303,8.53,32.319,32.545V112.5H2.365z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="23.6013" y1="83.2207" x2="56.1106" y2="83.2207">
+		<stop offset="0" style="stop-color:#263A59" />
+		<stop offset="0.54" style="stop-color:#A6BAD9" />
+		<stop offset="0.63" style="stop-color:#93A7C6" />
+		<stop offset="0.81" style="stop-color:#627695" />
+		<stop offset="1" style="stop-color:#263A59" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M56.111,83.219c0,8.978-7.278,16.256-16.255,16.256c-8.977,0-16.254-7.278-16.254-16.256   c0-8.975,7.277-16.253,16.254-16.253C48.832,66.966,56.111,74.244,56.111,83.219z" />
+	<circle fill="#596D8C" cx="39.865" cy="83.358" r="14.02" />
+	<circle fill="#263A59" cx="39.752" cy="83.108" r="9.234" />
+	<circle fill="#231F20" cx="39.752" cy="83.108" r="4.617" />
+	<path fill="#000033" d="M28.518,77.252l0.424-0.788l0.901,0.45l-0.45,0.815L28.518,77.252z" />
+	<path fill="#000033" d="M39.302,70.945h1.014v1.127h-1.014V70.945z" />
+	<path fill="#000033" d="M50.45,75.788l0.676,1.126l-1.067,0.628l-0.734-1.078L50.45,75.788z" />
+	<path fill="#000033" d="M50.676,88.751l-0.57,0.929l-0.909-0.545l0.578-0.959L50.676,88.751z" />
+</g>
+<g id="Group_BaseBody">
+	<path fill="#263A59" d="M0,107.771h79.617v4.729H0V107.771z" />
+</g>
+<g id="Group_AccessDoor">
+	<path fill="#263A59" d="M6.653,65.13h66.313v-1.544H6.653V65.13z" />
+	<path fill="#596D8C" d="M6.869,23.311h65.879v40.428H6.869V23.311z" />
+	<path fill="none" stroke="#A6BAD9" stroke-width="0.5" d="M6.869,63.738V23.311h65.879" />
+	<path fill="none" stroke="#231F20" stroke-width="0.5" d="M72.748,23.001v40.737H6.653" />
+</g>
+<g id="Group_DoorHandle">
+	<path fill="#231F20" d="M37.5,28.041v4.73h1.126v14.076h2.365V32.771h1.238v-4.73H37.5z" />
+</g>
+<g id="Group_1">
+	<path fill="#263A59" d="M46.847,6.869h2.252v7.658h-2.252V6.869z" />
+	<path fill="#263A59" d="M33.897,6.869h2.478v7.658h-2.478V6.869z" />
+	<path fill="#263A59" d="M40.991,6.869h2.252v7.658h-2.252V6.869z" />
+	<path fill="#263A59" d="M28.041,6.869h2.477v7.658h-2.477V6.869z" />
+	<path fill="#B2B2B2" d="M42.23,0.136v6.733h9.347V0.136H42.23z" />
+	<path fill="#B2B2B2" d="M25.788,0.146v6.723h9.347V0.146H25.788z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M42.23,6.869" />
+	<path fill="none" stroke="#4D4D4D" stroke-width="0.5" d="M25.788,6.871" />
+	<path fill="none" stroke="#4D4D4D" stroke-width="0.5" d="M35.253,6.88" />
+	<path fill="none" stroke="#4D4D4D" stroke-width="0.5" d="M35.253-0.011" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.5" d="M25.788,7.156" />
+	<polyline fill="none" stroke="#A6BAD9" stroke-width="0.5" stroke-miterlimit="10" points="35.253,0.266 25.788,0.276    25.788,6.869  " />
+	<polyline fill="none" stroke="#4D4D4D" stroke-width="0.5" stroke-miterlimit="10" points="25.559,6.875 35.194,6.864    35.194,-0.005  " />
+	<polyline fill="none" stroke="#A6BAD9" stroke-width="0.5" stroke-miterlimit="10" points="51.576,0.276 42.23,0.276 42.23,6.88     " />
+	<polyline fill="none" stroke="#4D4D4D" stroke-width="0.5" stroke-miterlimit="10" points="41.995,6.875 51.579,6.864    51.579,-0.005  " />
+</g>
+<g id="Group_FuelBurner">
+	<path fill="#263A59" d="M4.617,88.852H37.5V112.5H4.617V88.852z" />
+	<path fill="none" stroke="#A6BAD9" stroke-width="0.5" d="M4.617,112.5V88.852H37.5" />
+	<path fill="none" stroke="#231F20" stroke-width="0.5" d="M37.5,88.584V112.5" />
+	<path fill="#999999" d="M5.407,94.257h31.307v4.729H5.407V94.257z" />
+	<path fill="none" stroke="#98B2E5" stroke-width="0.5" d="M5.407,99.5v-5.243h31.55" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M36.714,94.016v5.234H5.16" />
+	<path d="M5.743,108.783H37.05v-2.139H5.743V108.783z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M51.576,5.15c0,0,15.389,3.012,21.715,14.802s5.935,31.965,5.935,31.965   s0.259,20.389-8.413,26.125s-17.423,4.31-23.91,8.559s-6.288,5.748-6.587,7.657" />
+	<path d="M37.5,91.329v9.459h4.729v-9.459H37.5z" />
+</g>
+</svg>

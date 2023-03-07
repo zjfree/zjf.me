@@ -1,0 +1,38 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="19px" viewBox="0 0 112.5 18.583" enable-background="new 0 0 112.5 18.583" xml:space="preserve">
+<g id="Group_Side_1">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M18.581,0.001L0,9.235v9.347l18.581-9.347V0.001z" />
+</g>
+<g id="Group_Left_Grate">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M18.581,0.001H112.5v9.234H18.581V0.001z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M16.329,1.015h46.847v8.221H16.329V1.015z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M13.852,2.141h47.072v8.108H13.852V2.141z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M11.599,3.267h47.073V11.6H11.599V3.267z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M9.347,4.505h46.847v8.221H9.347V4.505z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M6.869,5.744h47.072v8.108H6.869V5.744z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.617,6.871h46.847v8.108H4.617V6.871z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M2.14,7.997h47.072v8.107H2.14V7.997z" />
+</g>
+<g id="Group_Middle_Magnet">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M65.653,0.001L46.734,9.235v9.347l18.919-9.347V0.001z" />
+</g>
+<g id="Group_Right_Grate">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M63.176,1.015h47.072v8.221H63.176V1.015z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M60.924,2.141h46.847v8.108H60.924V2.141z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M58.445,3.267h47.072V11.6H58.445V3.267z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M56.194,4.505h46.847v8.221H56.194V4.505z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M53.941,5.744h46.847v8.108H53.941V5.744z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M51.464,6.871h47.072v8.108H51.464V6.871z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M49.212,7.997h46.847v8.107H49.212V7.997z" />
+</g>
+<g id="Group_Side_2">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M112.5,0.001L93.807,9.235v9.347L112.5,9.235V0.001z" />
+</g>
+<g id="Group_Front_Magnet">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="47.9019" y1="23.4077" x2="45.9052" y2="4.4108">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#BFBFBF" />
+		<stop offset="1" style="stop-color:#EBEBEB" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,9.235h93.807v9.347H0V9.235z" />
+</g>
+</svg>

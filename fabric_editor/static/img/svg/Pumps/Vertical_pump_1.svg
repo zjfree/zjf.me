@@ -1,0 +1,49 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67px" height="112px" viewBox="0 0 67.457 112.5" enable-background="new 0 0 67.457 112.5" xml:space="preserve">
+<g id="Group_Volute_Chamber">
+	<path fill="#669999" stroke="#4C4C4C" stroke-width="0.25" d="M66.555,102.141l-2.703,2.701H7.546l-2.703-2.701H66.555z" />
+	<path fill="#669999" stroke="#4C4C4C" stroke-width="0.25" d="M58.896,12.5H12.501l2.59-1.464L14.19,8.108l-1.351-0.45   l-0.338-0.113h46.396l-2.59,1.802l1.127,2.928l1.127,0.225H58.896z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M56.195,112.5H15.204l-3.491-1.014l-2.815-2.479l-1.239-3.49   l-0.113-0.677h56.306l-1.013,3.492l-2.478,2.813l-3.379,1.238L56.195,112.5z" />
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="4.8428" y1="98.6484" x2="66.5547" y2="98.6484" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#99CCCC" />
+		<stop offset="0.51" style="stop-color:#99FFFF" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.843,15.203L7.546,12.5h56.306l2.703,2.703H4.843" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.8428" y1="53.8281" x2="66.5547" y2="53.8281" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#99CCCC" />
+		<stop offset="0.51" style="stop-color:#99FFFF" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.843,102.141h61.712V15.203H4.843V102.141" />
+	<path fill="#336666" d="M15.204,10.248l-1.689-2.477l-0.676-0.113l-0.338-0.113h46.396l-2.59,1.802l-0.111,0.676v0.225h-0.113   H15.204z" />
+	<path fill="#669999" d="M3.492,25.563h63.964v1.352H3.492V25.563z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M3.492,25.563h63.964v1.352H3.492V25.563" />
+</g>
+<g id="Group_Drivershaft_Flange">
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="7.5459" y1="108.7275" x2="63.8496" y2="108.7275" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#99CCCC" />
+		<stop offset="0.51" style="stop-color:#99FFFF" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M7.546,7.545V7.207V6.982v-0.45V2.59l2.027-2.477L10.023,0   h0.225h1.689h49.211l2.59,1.915l0.111,0.45V2.59v4.955H7.546" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M11.6,16.554h2.252v7.658H11.6V16.554z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M47.186,16.554h4.056v7.658h-4.056V16.554z" />
+</g>
+<g id="Group_Upstream_Pipe_Flange">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="2.4219" y1="87.8379" x2="2.4219" y2="96.8467" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#99CCCC" />
+		<stop offset="0.51" style="stop-color:#99FFFF" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.843,24.662H0.001v-9.009h4.842V24.662" />
+</g>
+<g id="Group_Level_Indicator">
+	<path fill="#00FFFF" stroke="#4C4C4C" stroke-width="0.25" d="M7.546,94.482h10.36V66.555H7.546V94.482z" />
+	<path fill="#99CCCC" stroke="#4C4C4C" stroke-width="0.25" d="M7.546,94.482V66.555h10.36H17.23l-1.239-0.113H14.64l-1.126-0.225   l-1.239-0.113l-1.126-0.225l-1.013-0.338l-1.014-0.227l-1.239-0.449l-1.126-0.563l-0.789-0.563l-0.788-0.9l-0.225-0.563   L4.843,62.05H0.001v27.929l0.338,1.352l0.563,0.9l0.788,0.676l1.126,0.563l1.239,0.45l1.351,0.338l1.464,0.226H7.546L7.546,94.482z   " />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,62.05v0.45l0.113,0.338l0.225,0.45l0.225,0.45l0.338,0.338   l0.338,0.338l0.45,0.451l0.563,0.225l0.563,0.338l0.563,0.338l0.676,0.227l0.675,0.226l0.676,0.112l0.676,0.111l0.788,0.113h0.676" />
+</g>
+</svg>

@@ -1,0 +1,24 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="809px" height="999px" viewBox="0 0 90 112.5" enable-background="new 0 0 90 112.5" xml:space="preserve">
+<g id="Group_Base">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="56.25" x2="90" y2="56.25">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.35" style="stop-color:#EBEBEB" />
+		<stop offset="0.75" style="stop-color:#EBEBEB" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<rect fill="url(#SVGID_1_)" stroke="#7F7F7F" stroke-width="0.25" width="90" height="112.5" />
+</g>
+<g id="Group_Scale">
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,0h90" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,22.5h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,45h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,67.5h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,90h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,112.5h90" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,11.25h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,33.75h22.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,56.25h45" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M22.5,78.75H0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M0,101.25h22.5" />
+</g>
+</svg>

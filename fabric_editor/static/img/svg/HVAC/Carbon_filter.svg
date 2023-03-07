@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="63px" height="112px" viewBox="0 0 63.172 112.5" enable-background="new 0 0 63.172 112.5" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#474747" d="M4.504,107.768h51.687v4.73H4.504V107.768z" />
+</g>
+<g id="Group_Filter">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="57.4517" y1="107.04" x2="-1.2603" y2="5.348">
+		<stop offset="0" style="stop-color:#575757" />
+		<stop offset="0.4" style="stop-color:#575757" />
+		<stop offset="0.5" style="stop-color:#666666" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,4.62h56.191v103.148H0V4.62z" />
+</g>
+<g id="Group_Support">
+	<path fill="#7F7F7F" d="M56.191,0.002h4.729v112.496h-4.729V0.002z" />
+</g>
+<g id="Group_Filter_Beams">
+	<path fill="#474747" d="M60.696,90.651h2.477v0.676h-2.477V90.651z" />
+	<path fill="#474747" d="M60.696,21.06h2.477v0.676h-2.477V21.06z" />
+	<path fill="#474747" d="M60.696,67.904h2.477v0.676h-2.477V67.904z" />
+	<path fill="#474747" d="M60.696,44.482h2.477v0.676h-2.477V44.482z" />
+</g>
+</svg>

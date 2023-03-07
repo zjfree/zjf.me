@@ -1,0 +1,15 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="103px" viewBox="0 0 112.5 103.039" enable-background="new 0 0 112.5 103.039" xml:space="preserve">
+<g id="Group_Batch_Oven">
+	<path fill="#E5E5E0" stroke="#40401A" stroke-width="0.25" d="M112.499,0L93.693,9.347H0.001L21.059,0H112.499z" />
+	<path fill="#BFBFB2" stroke="#40401A" stroke-width="0.25" d="M112.499,0L93.693,9.347v93.692l18.806-11.711V0z" />
+	<path fill="#CCCCC2" stroke="#40401A" stroke-width="0.25" d="M0.001,9.347h93.692v93.692H0.001V9.347z" />
+</g>
+<g id="Group_Doors">
+	<path fill="#A6A694" stroke="#40401A" stroke-width="0.25" d="M6.982,16.329h79.729v79.728H6.982V16.329z" />
+	<path fill="none" stroke="#40401A" stroke-width="0.25" d="M46.847,16.329v79.728" />
+</g>
+<g id="Group_Handle">
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.25" d="M38.063,57.77L37.5,56.193l0.563-1.689l1.689-0.676l1.689,0.676   l0.676,1.689l-0.676,1.576l-1.689,0.676L38.063,57.77z" />
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.25" d="M52.252,57.77l-0.676-1.576l0.676-1.689l1.689-0.676l1.577,0.676   l0.676,1.689l-0.676,1.576l-1.577,0.676L52.252,57.77z" />
+</g>
+</svg>

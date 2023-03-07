@@ -1,0 +1,33 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35px" height="112px" viewBox="0 0 35.395 112.5" enable-background="new 0 0 35.395 112.5" xml:space="preserve">
+<g id="Group_Port">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="12.7375" y1="4.688" x2="21.9807" y2="4.688">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M12.738,0.001h9.243v9.374h-9.243V0.001" />
+</g>
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="1.4651" y1="47.8516" x2="33.7043" y2="47.8516">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M33.704,75.525V20.178H1.465v55.347" />
+	<radialGradient id="SVGID_3_" cx="17.5852" cy="14.2773" r="12.1657" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFCC66" />
+		<stop offset="0.4" style="stop-color:#EDBA54" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M33.704,20.29v-0.112c0,0,0.431-9.803-14.429-11.836c-0.781-0.107-2.373-0.099-3.156,0   C1.465,10.188,1.465,20.178,1.465,20.178v0.112H33.704z" />
+	<radialGradient id="SVGID_4_" cx="17.5847" cy="82.3105" r="12.386" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</radialGradient>
+	<path fill="url(#SVGID_4_)" d="M1.465,75.457c0.451,9.128,5.186,13.708,5.186,13.708h22.094c0,0,4.662-5.37,4.96-13.708H1.465z" />
+</g>
+<g id="Group_Base">
+	<path fill="#4D4D4D" d="M0,108.328L5.41,90.18l1.24-1.015h22.094l1.141,1.022l5.51,18.141c0,0-6.01-8.828-7.665-8.68   c-2.584,0.231-7.552,12.851-7.552,12.851h-5.411c0,0-4.507-11.667-7.215-12.851c-2.48-1.084-7.326,8.229-7.326,8.229L0,108.328z" />
+	<path fill="#231F20" d="M20.403,92.772l-2.028,16.909h-2.029l-2.029-16.909H20.403z" />
+</g>
+</svg>

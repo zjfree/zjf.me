@@ -1,0 +1,57 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="90px" viewBox="0 0 112.5 90.425" enable-background="new 0 0 112.5 90.425" xml:space="preserve">
+<g id="Group_Conveyor_Bottom">
+	<path fill="#4C0000" stroke="#4C4C4C" stroke-width="0.25" d="M14.641,85.47h78.263v4.955H14.641V85.47z" />
+</g>
+<g id="Group_Conveyor_Main">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M14.641,31.756V85.47" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="74.4785" y1="99.3081" x2="45.4779" y2="19.6297">
+		<stop offset="0" style="stop-color:#700000" />
+		<stop offset="0.37" style="stop-color:#730000" />
+		<stop offset="0.53" style="stop-color:#7E0000" />
+		<stop offset="1" style="stop-color:#7F0000" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M12.164,31.756h83.217v14.638h17.117V85.47H12.164V31.756z" />
+	<path fill="none" stroke="#4C0000" stroke-width="0.25" d="M95.381,85.47V46.394" />
+	<path fill="none" stroke="#B20000" stroke-width="0.25" d="M95.381,32.882H12.164" />
+</g>
+<g id="Group_Conveyor_Washer_Knob">
+	<path fill="#4C0000" d="M85.035,70.472c-0.542-1.951,1.002-4.089,3.449-4.774c2.447-0.687,4.869,0.336,5.411,2.29   c0.542,1.949-1.003,4.088-3.45,4.773C87.999,73.447,85.577,72.421,85.035,70.472z" />
+	<polygon fill="#4C0000" points="94.038,68.967 85.252,71.085 83.689,65.094 92.478,62.976  " />
+	<radialGradient id="SVGID_2_" cx="88.0625" cy="63.5112" r="4.8418" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#A60000" />
+		<stop offset="0.42" style="stop-color:#9E0000" />
+		<stop offset="0.62" style="stop-color:#8C0000" />
+		<stop offset="1" style="stop-color:#8C0000" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="88.063" cy="63.511" r="4.842" />
+</g>
+<g id="Group_Conveyor_Level">
+	<path fill="#4C0000" d="M99.098,50.111h2.478v29.166h-2.478V50.111z" />
+	<path fill="#990000" stroke="#4C0000" stroke-width="0.25" d="M97.972,48.647h2.252V78.15h-2.252V48.647z" />
+</g>
+<g id="Group_Conveyor_Inlet">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="19.4834" y1="15.8779" x2="29.1675" y2="15.8779">
+		<stop offset="0.01" style="stop-color:#7F0000" />
+		<stop offset="0.5" style="stop-color:#BF0000" />
+		<stop offset="1" style="stop-color:#7F0000" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M19.483,0h9.684v31.756h-9.684V0z" />
+</g>
+<g id="Group_Conveyor_Top_Elements">
+	<path fill="#8C0000" stroke="#4C4C4C" stroke-width="0.25" d="M25.564,19.481H39.19v12.274H25.564V19.481z" />
+	<path fill="#7F0000" stroke="#4C4C4C" stroke-width="0.25" d="M41.442,26.688h4.955v5.067h-4.955V26.688z" />
+	<path fill="#990000" stroke="#4C4C4C" stroke-width="0.25" d="M43.919,29.166h51.461v2.59H43.919V29.166z" />
+	<path fill="#BF0000" stroke="#4C4C4C" stroke-width="0.25" d="M51.239,29.166l19.707-4.729h2.478v4.729h-2.478v-3.604   l-15.878,3.604H51.239z" />
+</g>
+<g id="Group_Display_Control">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.479,87.947V34.233" />
+	<path fill="#7F0000" stroke="#4C4C4C" stroke-width="0.25" d="M1.016,34.233h11.148v52.589H1.016V34.233z" />
+	<path fill="#7F0000" stroke="#4C4C4C" stroke-width="0.25" d="M1.016,34.233H0.002v53.714h1.014V34.233z" />
+	<path fill="#333333" d="M4.957,38.963h4.73v19.707h-4.73V38.963z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.083,41.44H8.56" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.083,42.792H8.56" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M8.56,45.043h1.126" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.083,47.633h1.126" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M4.957,53.714h1.126" />
+</g>
+</svg>

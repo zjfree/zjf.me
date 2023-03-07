@@ -1,0 +1,27 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82px" height="113px" viewBox="0 0 82.094 112.5" enable-background="new 0 0 82.094 112.5" xml:space="preserve">
+<g id="Group_Switch_Holder" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<ellipse fill="#E3E3E3" stroke="#5A5A5A" stroke-width="0.5" cx="41.047" cy="30.743" rx="31.363" ry="30.834" />
+</g>
+<g id="Group_Bevel" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="41.0471" cy="31.0615" r="27.4893" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E6E6E6" />
+		<stop offset="0.5" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#242424" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" cx="41.047" cy="31.063" r="27.49" />
+</g>
+<g id="Group_Flip" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.4504" y1="66.2168" x2="81.6438" y2="66.2168">
+		<stop offset="0" style="stop-color:#969696" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#616161" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.5" d="M81.644,101.689L61.261,30.743h-40.54L0.45,101.689H81.644z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.4504" y1="106.8125" x2="81.6438" y2="106.8125">
+		<stop offset="0" style="stop-color:#969696" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#616161" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.5" d="M81.644,111.937H0.45v-10.247h81.193V111.937z" />
+</g>
+</svg>

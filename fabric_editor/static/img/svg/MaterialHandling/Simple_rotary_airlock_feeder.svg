@@ -1,0 +1,22 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="112px" viewBox="0 0 79.617 112.5" enable-background="new 0 0 79.617 112.5" xml:space="preserve">
+<g id="Group_Centre">
+	
+		<radialGradient id="SVGID_1_" cx="39.7317" cy="56.2256" r="37.4488" gradientTransform="matrix(1 0 0 1.0066 0 -0.1237)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.29" style="stop-color:#D1D1D1" />
+		<stop offset="0.57" style="stop-color:#C0C0C0" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.2508" cx="39.731" cy="56.472" rx="37.521" ry="37.624" />
+</g>
+<g id="Group_Hammer">
+	<path fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" d="M18.919,25l-4.843-11.036H0V0h79.505l0.112,13.964H65.428L60.586,25" />
+	<polyline fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="18.919,87.5 13.964,98.311 0,98.311 0,112.387    79.617,112.387 79.505,98.311 65.541,98.311 60.586,87.5  " />
+</g>
+<g id="Group_Core">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.617,56.194h70.271" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M14.865,81.081L64.64,31.306" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M39.752,91.329V21.059" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M64.64,81.081L14.865,31.306" />
+</g>
+</svg>

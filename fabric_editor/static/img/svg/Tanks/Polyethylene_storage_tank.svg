@@ -1,0 +1,31 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="85px" height="112px" viewBox="0 0 84.658 112.5" enable-background="new 0 0 84.658 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.4509" y1="62.8584" x2="84.0935" y2="62.8584">
+		<stop offset="0" style="stop-color:#B2B29B" />
+		<stop offset="0.45" style="stop-color:#E5E5DD" />
+		<stop offset="0.61" style="stop-color:#D7D7CA" />
+		<stop offset="0.77" style="stop-color:#C4C4B2" />
+		<stop offset="1" style="stop-color:#B2B29B" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.451,14.141v93.174h0.048c-0.03,0.037-0.048,0.074-0.048,0.111c0,1.246,9.003,4.539,38.326,4.539   c31.552,0,45.316-3.293,45.316-4.539c0-0.037-0.024-0.074-0.067-0.111h0.067V14.429v-0.676L0.451,14.141z" />
+	
+		<radialGradient id="SVGID_2_" cx="42.2605" cy="9.7754" r="30.2581" gradientTransform="matrix(1 0 0 1.5 0 -4.8877)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E5E5DD" />
+		<stop offset="0.28" style="stop-color:#DADACF" />
+		<stop offset="0.81" style="stop-color:#BDBDAA" />
+		<stop offset="1" style="stop-color:#B2B29B" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" d="M84.049,14.141C83.111,6.552,64.77,0.563,42.272,0.563c-22.804,0-41.333,6.093-41.799,13.577   c0,0,10.02,4.847,41.856,4.847C72.97,18.987,84.049,14.141,84.049,14.141z" />
+</g>
+<g id="Group_Fill">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="3.946" y1="85.2764" x2="80.5994" y2="85.2764">
+		<stop offset="0" style="stop-color:#99997A" />
+		<stop offset="0.45" style="stop-color:#CCCCBD" />
+		<stop offset="0.56" style="stop-color:#BEBEAA" />
+		<stop offset="0.77" style="stop-color:#99997A" />
+		<stop offset="1" style="stop-color:#99997A" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M80.599,60.871H3.946v45.316h0.192c-0.125,0.074-0.192,0.149-0.192,0.226   c0,1.246,17.216,3.269,38.383,3.269s38.271-2.022,38.271-3.269c0-0.076-0.066-0.151-0.191-0.226h0.191V60.871z" />
+	<ellipse fill="#B2B29B" cx="42.272" cy="60.872" rx="38.327" ry="2.255" />
+</g>
+</svg>

@@ -1,0 +1,72 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55px" height="112px" viewBox="0 0 54.727 112.5" enable-background="new 0 0 54.727 112.5" xml:space="preserve">
+<g id="Group_Process_Heater">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.567,23.425l9.797-3.941l9.797,3.941" />
+	<path fill="#CCCCC4" d="M37.16,23.425v1.915H17.567v-1.915H37.16z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M0,43.019h54.727v-2.027H0V43.019z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M15.54,87.949h23.534v2.027H15.54V87.949z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M15.54,43.019h23.534v44.931H15.54V43.019z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M19.481,39.077h15.652v1.915H19.481V39.077z" />
+	<path fill="#CCCCC4" d="M23.422,89.977l3.941,2.928l3.829-2.928h-1.915l-1.914,0.9l-2.027-0.9H23.422z" />
+</g>
+<g id="Group_Diagonal_Stand">
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M15.54,58.671v-2.928L2.928,43.019H0L15.54,58.671z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M54.727,43.019L39.074,58.671v-2.928l12.725-12.725H54.727z" />
+</g>
+<g id="Group_Top_Layer">
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M37.16,27.366h1.914v9.684H37.16V27.366z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M17.567,39.077H37.16V25.339H17.567V39.077z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.1" d="M15.54,27.366h2.026v9.684H15.54V27.366z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.25" d="M25.336,11.714h3.941V3.831h-3.941V11.714z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.25" d="M23.422,11.714h7.771v5.855h-7.771V11.714z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.25" d="M17.567,23.425l5.855-5.855h7.771l5.968,5.855H17.567z" />
+	<path fill="#99998A" stroke="#4C4C4C" stroke-width="0.25" d="M25.336,3.831h3.941V0.002h-3.941V3.831z" />
+</g>
+<g id="Group_Motor">
+	<path fill="#CCCCC4" d="M40.99,102.588h3.94v3.941h-3.94V102.588z" />
+	<path fill="#CCCCC4" d="M40.99,111.484h4.954v1.014H40.99V111.484z" />
+	<path fill="#CCCCC4" d="M42.002,108.557h2.928v2.928h-2.928V108.557z" />
+	<path fill="#CCCCC4" d="M43.016,106.529h0.901v2.027h-0.901V106.529z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.99,102.588h3.94v3.941h-3.94V102.588" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.99,111.484h4.954v1.014H40.99V111.484" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M42.002,108.557h2.928v2.928h-2.928V108.557" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M43.016,106.529h0.901v2.027h-0.901V106.529" />
+</g>
+<g id="Group_Hand_Rails">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.567,23.425v-4.842h19.481v4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.364,23.425v-4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.567,20.497H37.16" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,40.992v-4.842h54.727v4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M43.016,40.992v-4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.193,40.992v-4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.481,40.992v-4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M7.77,40.992v-4.842" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,38.064h54.727" />
+</g>
+<g id="Group_Stairs">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,43.019v69.479" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.856,43.019v69.479" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,46.847h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,50.789h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,54.73h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,58.671h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,62.5h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,66.441h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,70.383h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,74.323h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,78.152h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,82.094h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,86.035h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,89.977h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,93.805h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,97.746h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,101.688h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,105.629h3.941" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.914,109.457h3.941" />
+</g>
+<g id="Group_Stand">
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.25" d="M38.062,88.963h2.026v6.869h-2.026V88.963z" />
+	<path fill="#CCCCC4" stroke="#4C4C4C" stroke-width="0.25" d="M14.639,88.963h1.914v6.869h-1.914V88.963z" />
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" d="M37.16,95.832h3.829v16.666H37.16V95.832z" />
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" d="M13.625,95.832h3.941v16.666h-3.941V95.832z" />
+</g>
+</svg>

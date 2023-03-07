@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Blades" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="114px" viewBox="0 0 80.453 113.998" enable-background="new 0 0 80.453 113.998" xml:space="preserve">
+<g id="Group_Blades">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="62.9451" y1="91.3162" x2="65.3386" y2="89.6619">
+	<stop offset="0" style="stop-color:#8C8C8C" />
+	<stop offset="0.5" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#8C8C8C" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M46.218,68.924l33.549,45.074h0.57l0.114-0.799L55.917,75.542l-1.939-3.081l-1.142-1.483l-3.31-2.511  l-1.722-1.39L46.218,68.924z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="50.324" y1="31.7429" x2="52.7249" y2="32.1971">
+	<stop offset="0" style="stop-color:#8C8C8C" />
+	<stop offset="0.5" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#8C8C8C" />
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M47.424,64.298L57.743,0.457L57.514,0l-0.57,0.229L46.445,49.297l-0.912,3.766l-0.343,2.396  l0.114,5.362l0.114,3.081L47.424,64.298z" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="21.9534" y1="75.5427" x2="23.0234" y2="78.3861">
+	<stop offset="0" style="stop-color:#8C8C8C" />
+	<stop offset="0.5" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#8C8C8C" />
+</linearGradient>
+<path fill="url(#SVGID_3_)" d="M43.707,65.975L0.23,84.785l-0.229,0.57l0.457,0.457l35.032-11.411l2.738-0.799l1.598-0.685  l3.081-2.854l1.94-1.825L43.707,65.975z" />
+</g>
+</svg>

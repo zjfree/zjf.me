@@ -1,0 +1,71 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108px" height="112px" viewBox="0 0 108.439 112.5" enable-background="new 0 0 108.439 112.5" xml:space="preserve">
+<g id="Group_Boiler_Stand">
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M60.983,83.078h4.509v22.77h-4.509V83.078z" />
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M97.167,83.078h4.622v22.77h-4.622V83.078z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M54.219,83.078h4.509v22.77h-4.509V83.078z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M103.93,83.078h4.509v22.77h-4.509V83.078z" />
+</g>
+<g id="Group_Boiler">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="54.2195" y1="66.6758" x2="108.4392" y2="66.6758" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M88.713,87.587H74.058L61.434,86.46l-7.215-2.255V7.103l7.215-1.917L74.058,4.06h14.653   l12.625,1.127l7.103,1.917v77.102l-7.103,2.255L88.713,87.587" />
+</g>
+<g id="Group_Boiler_Out">
+	
+		<radialGradient id="SVGID_2_" cx="73.6082" cy="53.0938" r="3.3821" gradientTransform="matrix(1 0 0 -1 0 112.5)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.65" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" cx="73.608" cy="59.406" r="3.382" />
+</g>
+<g id="Group_Heat_Control">
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="53.0657" y1="9.3296" x2="-2.6765" y2="65.0718" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.35" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#E0E0E0" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M0,44.752h50.389v61.096H0V44.752z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,44.752h50.389v61.096H0V44.752" />
+	<path fill="#A6A6A6" d="M31.676,76.314h9.019v27.278h-9.019V76.314z" />
+	<path fill="#A6A6A6" d="M8.905,85.332h9.018v18.262H8.905V85.332z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M33.929,60.533V45.654h13.525" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M33.929,60.533h13.525V45.654" />
+	<path fill="#FF7F7F" d="M13.414,58.279h13.527v9.018H13.414V58.279z" />
+	<path fill="#4C4C4C" d="M17.923,46.781h4.51v9.243h-4.51V46.781z" />
+	<path fill="#4C4C4C" d="M36.184,62.788h6.763v9.019h-6.763V62.788z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M13.414,67.297v-9.018h13.527" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.166,58.279v9.018H13.639" />
+	<path fill="#CC9933" d="M19.163,43.625h2.143V53.77h-2.143V43.625z" />
+	<path fill="#FFCC00" d="M19.952,42.949h0.677V53.77h-0.677V42.949z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M0,38.44h1.578v6.313H0V38.44z" />
+</g>
+<g id="Group_Boiler_Membranes">
+	<path fill="#CC9933" d="M78.117,27.619v2.254h-14.88v-2.254H78.117z" />
+	<path fill="#CC9933" d="M60.983,19.728h2.254v27.053h-2.254V19.728z" />
+	<path fill="#FFCC00" d="M61.659,19.728h0.902v27.729h-0.902V19.728z" />
+	<path fill="#FFCC00" d="M78.117,28.295v0.902h-15.33v-0.902H78.117z" />
+	<path fill="#CC9933" d="M101.789,102.467v2.141H66.844v-2.141H101.789z" />
+	<path fill="#CC9933" d="M66.619,43.625h2.255v58.842h-2.255V43.625z" />
+	<path fill="#FFCC00" d="M67.296,42.949h0.901v59.968h-0.901V42.949z" />
+	<path fill="#FFCC00" d="M101.789,103.143v0.789H67.296v-0.789H101.789z" />
+	<path fill="#CC9933" d="M63.237,46.781v2.479H20.177v-2.479H63.237z" />
+	<path fill="#FFCC00" d="M62.787,47.458v1.127h-42.61v-1.127H62.787z" />
+	<path fill="#CC9933" d="M68.874,41.145v2.48H19.163v-2.48H68.874z" />
+	<path fill="#FFCC00" d="M68.423,41.821v1.127H19.726v-1.127H68.423z" />
+</g>
+<g id="Group_Base_Support">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,105.848h108.439v1.467H0V105.848z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,110.809h108.439v1.689H0V110.809z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M2.141,107.313h104.155v3.494H2.141V107.313z" />
+</g>
+<g id="Group_Rings">
+	<ellipse fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="92.77" cy="2.481" rx="2.255" ry="2.48" />
+	<ellipse fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="70.001" cy="2.481" rx="2.255" ry="2.48" />
+</g>
+</svg>

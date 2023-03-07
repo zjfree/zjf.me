@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Transmitter_Unit">
+	<rect x="4.617" y="28.041" fill="#BBBBBB" stroke="#4C4C4C" stroke-width="0.25" width="84.347" height="84.459" />
+</g>
+<g id="Group_Transmitting_Outlets">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="46.8462" y1="89.0762" x2="46.8462" y2="107.8828" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<rect y="4.617" fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" width="93.693" height="18.807" />
+</g>
+<g id="Group_Line">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="103.0967" y1="93.8047" x2="103.0967" y2="103.1523" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<rect x="93.693" y="9.347" fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" width="18.807" height="9.348" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M93.693,11.599h16.439v4.73H93.693V11.599" />
+</g>
+<g id="Group_Reader">
+	
+		<radialGradient id="SVGID_3_" cx="46.8477" cy="75" r="37.5" gradientTransform="matrix(1 0 0 -1 0 112.5)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.39" style="stop-color:#4F4F4F" />
+		<stop offset="0.53" style="stop-color:#565656" />
+		<stop offset="0.63" style="stop-color:#616161" />
+		<stop offset="0.71" style="stop-color:#727272" />
+		<stop offset="0.78" style="stop-color:#888888" />
+		<stop offset="0.84" style="stop-color:#A3A3A3" />
+		<stop offset="0.86" style="stop-color:#ACACAC" />
+		<stop offset="0.87" style="stop-color:#B1B1B1" />
+		<stop offset="0.89" style="stop-color:#BEBEBE" />
+		<stop offset="0.9" style="stop-color:#D5D5D5" />
+		<stop offset="0.92" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" cx="46.847" cy="37.5" r="37.5" />
+	
+		<radialGradient id="SVGID_4_" cx="46.8467" cy="75.1133" r="31.6211" gradientTransform="matrix(1 0 0 -1 0 112.5)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.8" style="stop-color:#F5F5F5" />
+		<stop offset="0.9" style="stop-color:#ACACAC" />
+		<stop offset="0.92" style="stop-color:#A7A7A7" />
+		<stop offset="0.94" style="stop-color:#9A9A9A" />
+		<stop offset="0.96" style="stop-color:#838383" />
+		<stop offset="0.99" style="stop-color:#636363" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" cx="46.847" cy="37.387" r="31.621" />
+</g>
+<g id="Group_Indicators">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M46.847,37.5l14.077-23.536" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M30.405,37.5l0.113-1.689l0.225-1.689l0.451-1.577l0.563-1.464   l0.676-1.464l0.788-1.352l1.014-1.239l1.013-1.126l1.126-1.126l1.239-0.901l1.351-0.789l1.464-0.788l1.464-0.451l1.576-0.45   l1.689-0.226l1.689-0.112l1.689,0.112l1.577,0.226l1.576,0.45l1.464,0.451l1.464,0.788l1.351,0.789l1.239,0.901l1.237,1.126   l1.015,1.126l0.901,1.239l0.899,1.352l0.677,1.464l0.563,1.464l0.338,1.577l0.338,1.689V37.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M28.041,37.5l0.451-3.829l1.013-3.491l1.802-3.153l2.252-2.815   l2.815-2.365l3.153-1.689l3.491-1.126l3.829-0.338l3.716,0.338l3.604,1.126l3.153,1.689l2.813,2.365l2.253,2.815l1.688,3.153   l1.127,3.491L65.54,37.5" />
+</g>
+</svg>

@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="61px" viewBox="0 0 112.5 61.265" enable-background="new 0 0 112.5 61.265" xml:space="preserve">
+<g id="Group_Magnet">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.2505" y1="61.2632" x2="56.2505" y2="0.0024">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,61.263V0.002h2.365v7.545h76.801V0.002h2.479v17.68h2.702   v10.36H112.5v5.18H84.347v10.023h-2.702v18.018h-2.479V53.38H2.365v7.883H0" />
+</g>
+<g id="Group_Outer_Layer">
+	<path fill="#7F7F7F" d="M2.815,16.781h76.239v1.126H2.815V16.781z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.815,52.48V7.997" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M79.055,7.997v44.932" />
+</g>
+<g id="Group_Supply">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="98.4238" y1="33.2222" x2="98.4238" y2="28.043">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<rect x="84.347" y="28.042" fill="url(#SVGID_2_)" width="28.153" height="5.18" />
+</g>
+</svg>

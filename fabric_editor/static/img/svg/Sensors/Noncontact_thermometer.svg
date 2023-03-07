@@ -1,0 +1,52 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="112px" viewBox="0 0 24.551 112.5" enable-background="new 0 0 24.551 112.5" xml:space="preserve">
+<g id="Group_Thermometer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="85.1914" x2="24.5508" y2="85.1914">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,57.883h24.55V112.5H0.001V57.883z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,73.762h24.55v3.49H0.001V73.762z" />
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,50.901h24.55v0.901H0.001V50.901z" />
+</g>
+<g id="Group_Oval">
+	<ellipse fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" cx="12.164" cy="93.919" rx="10.473" ry="7.883" />
+</g>
+<g id="Group_Thermo_Reader">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="38.5698" x2="24.5508" y2="38.5698">
+		<stop offset="0.01" style="stop-color:#BFBFBF" />
+		<stop offset="0.51" style="stop-color:#EBEBEB" />
+		<stop offset="1" style="stop-color:#BFBFBF" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,19.257h24.55v38.626H0.001V19.257z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.69,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.28,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.871,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M9.46,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.164,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M14.753,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.456,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M20.046,47.41V19.257" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M22.637,47.41V19.257" />
+</g>
+<g id="Group_Layer_5">
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,47.41h24.55v1.802H0.001V47.41z" />
+</g>
+<g id="Group_Projector">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="9.6284" x2="24.5508" y2="9.6284">
+		<stop offset="0.01" style="stop-color:#262626" />
+		<stop offset="0.51" style="stop-color:#BFBFBF" />
+		<stop offset="1" style="stop-color:#262626" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,19.257v-5.293l3.491-1.689l-0.901-0.901V0H21.96   v11.374l-0.901,0.901l3.492,1.689v5.293H0.001z" />
+</g>
+<g id="Group_Coil">
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.591,10.473L21.96,8.671" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.591,8.671L21.96,6.982" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.591,6.982L21.96,5.18" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.591,5.18L21.96,3.378" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M2.591,3.378L21.96,1.689" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M21.059,12.275H3.492" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,13.964h24.55" />
+</g>
+</svg>

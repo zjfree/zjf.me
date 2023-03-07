@@ -1,0 +1,44 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_BoilerBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="30.5488" y1="55.0664" x2="82.1768" y2="55.0664">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M82.177,110.133H30.549V4.734c0,0,1.618-4.734,23.221-4.734c1.635,0,4.904,0,6.539,0   c21.305,0,21.868,4.509,21.868,4.509V110.133z" />
+</g>
+<g id="Group_ExpansionTank">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.7344" y1="57.3203" x2="28.1812" y2="57.3203">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M28.181,34.832v47.119H4.734V34.832c0,0,0.828-2.142,10.483-2.142c0.902,0,2.706,0,3.607,0   C28.181,32.69,28.181,34.832,28.181,34.832z" />
+	<path fill="#4C4C4C" d="M16.345,50.388l-0.789-0.338l-0.338-0.789l0.338-0.79l0.789-0.338l0.902,0.338l0.338,0.79l-0.338,0.789   L16.345,50.388z" />
+	<path fill="#4C4C4C" d="M16.345,57.377l-0.789-0.338l-0.338-0.789l0.338-0.789l0.789-0.338l0.902,0.338l0.338,0.789l-0.338,0.789   L16.345,57.377z" />
+</g>
+<g id="Group_ControlCircuitJunctionBox">
+	<path fill="#7F7F7F" d="M81.613,16.458h1.465V1.465L81.613,0V16.458z" />
+	<path fill="#B2B2B2" d="M77.442,0h4.171v16.458h-4.171V0z" />
+	<path fill="none" stroke="#666666" stroke-width="2" stroke-miterlimit="10" d="M26.998,79.375c0,0,4.699-13.693,28.351-19.688   c16.276-4.125,20.901-2.875,26.589-11.125" />
+	<path fill="#B2B2B2" d="M77.442,23.447h6.876v25.814h-6.876V23.447z" />
+	<path fill="#7F7F7F" d="M84.318,49.261h2.367V25.814l-2.367-2.367V49.261z" />
+</g>
+<g id="Group_AccessLadder">
+	<polygon fill="#999999" points="25.814,69.664 25.814,93.675 7.102,93.675 7.102,69.664 4.734,69.664 4.734,108.563 7.102,108.563    7.102,96.042 25.814,96.042 25.814,108.563 28.181,108.563 28.181,69.664  " />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#4C4C4C" d="M79.81,11.724h-8.454v76.766H20.403v-8.003h-2.142v10.482h55.573V14.091h5.975V11.724z" />
+	<path fill="#CCCCCC" d="M11.611,73.835h9.356v9.356h-9.356V73.835z" />
+	<path fill="#999999" d="M11.611,73.835h9.356v-1.239h-9.356V73.835z" />
+</g>
+<g id="Group_BaseBody">
+	<path fill="#999999" d="M0,107.766h112.5v4.734H0V107.766z" />
+</g>
+</svg>

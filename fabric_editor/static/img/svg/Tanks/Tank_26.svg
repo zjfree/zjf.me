@@ -1,0 +1,27 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="47px" viewBox="0 0 112.5 46.8" enable-background="new 0 0 112.5 46.8" xml:space="preserve">
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="60.9746" y1="46.8003" x2="60.9746" y2="4.882813e-004">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M103.05,46.8H9.45V0h93.6c0,0,9.45,1.316,9.45,23.4C112.5,45.817,103.05,46.8,103.05,46.8z" />
+	<ellipse fill="#999999" cx="9.225" cy="23.4" rx="9.225" ry="23.4" />
+	<path fill="#7F7F7F" d="M9.892,0.067C4.992,0.935,1.125,11.046,1.125,23.4c0,12.354,3.867,22.465,8.767,23.333   c4.783-0.868,8.558-10.979,8.558-23.333C18.45,11.046,14.675,0.935,9.892,0.067z" />
+</g>
+<g id="Group_Cap">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="5.625" y1="46.8003" x2="5.625" y2="37.5757">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M7.425,46.8H1.8v-9.225h5.625c0,0,2.025,1.105,2.025,4.725C9.45,46.628,7.425,46.8,7.425,46.8z" />
+	<path fill="#4C4C4C" d="M1.8,37.576c0.994,0,1.8,2.014,1.8,4.5c0,2.484-0.806,4.725-1.8,4.725S0,44.56,0,42.076   C0,39.589,0.806,37.576,1.8,37.576z" />
+</g>
+</svg>

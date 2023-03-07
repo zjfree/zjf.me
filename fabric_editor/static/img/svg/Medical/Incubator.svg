@@ -1,0 +1,39 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61px" height="112px" viewBox="0 0 60.926 112.5" xml:space="preserve" enable-background="new 0 0 60.926 112.5">
+<g id="Group_Wheel">
+	<path d="M6.308,111.486h-2.14v-4.392h2.14l1.126,0.676l0.45,0.9v1.239l-0.45,0.9L6.308,111.486z" />
+	<path d="M55.294,107.095h2.252v4.279h-2.252l-1.014-0.563l-0.563-1.014v-1.126l0.563-1.013L55.294,107.095z" />
+	<path d="M60.925,108.334H0.001v-1.689h60.924V108.334z" />
+	<path d="M59.123,112.5h-2.365v-4.729h2.365l1.126,0.675l0.676,1.014v1.239l-0.676,1.126L59.123,112.5z" />
+	<path d="M4.056,112.5H1.691v-4.729h2.365l1.126,0.675l0.563,1.014v1.239l-0.563,1.126L4.056,112.5z" />
+	<circle cx="57.322" cy="110.135" r="2.252" fill="#999999" stroke="#4C4C4C" stroke-width="0.25" />
+	<circle cx="2.254" cy="110.135" r="2.252" fill="#999999" stroke="#4C4C4C" stroke-width="0.25" />
+</g>
+<g id="Group_Frame_1_">
+	<path d="M57.322,62.05H9.348v-1.126h47.974V62.05z" />
+	<path d="M2.817,54.392h8.896v8.784H2.817V54.392z" fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M4.618,2.815h7.095V1.126H4.618V2.815z" fill="#999999" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M2.817,2.815h8.896v8.784H2.817V2.815z" fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M5.744,0L4.618,98.424l-4.617,4.617v4.729h60.924v-4.729h-46.96   l-4.617-4.617v-37.5h47.974v-1.803H9.348V0H5.744z" fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.25" />
+</g>
+<g id="Group_CradelFrame">
+	<path d="M58.56,59.121H9.348v-1.125v-2.028h4.055H58.56V59.121z" fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M58.56,45.045h-1.126v12.951h1.126V45.045z" fill="#BFCCCC" stroke="#4C4C4C" stroke-width="0.25" />
+</g>
+<g id="Group_Cradle">
+	<path d="M10.475,45.045h45.721v12.951H10.475V45.045z" fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M11.037,45.608h44.595V57.32H11.037V45.608z" fill="#CCD9D9" />
+	<path d="M55.069,48.536l-43.355,4.167v-6.532h43.355V48.536z" fill="#BFCCCC" />
+	<path d="M55.406,57.095H11.263v-0.901h44.144V57.095z" fill="#A5B2B2" />
+	<path d="M39.191,53.829l7.095-5.293" fill="none" stroke="#FFFFFF" stroke-width="0.25" />
+	<path d="M21.623,51.464l4.729-3.491" fill="none" stroke="#FFFFFF" stroke-width="0.25" />
+	<path d="M15.767,53.829l7.095-5.293" fill="none" stroke="#FFFFFF" stroke-width="0.25" />
+	<path d="M28.042,52.027l5.293-4.729l-5.856,3.604l-4.054,3.491L28.042,52.027z" fill="#FFFFFF" />
+</g>
+<g id="Group_Light">
+	<path d="M8.673,11.036L11.713,0H53.83l2.928,11.036H8.673z" fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M8.673,11.036l3.04,1.239H53.83l2.928-1.239H8.673z" fill="#FFC9A6" stroke="#4C4C4C" stroke-width="0.25" />
+	<path d="M11.713,13.401v0.563H53.83v-0.563H11.713z" fill="#FFE8D9" />
+	<path d="M13.403,14.64v0.563h38.738V14.64H13.403z" fill="#FFE8D9" />
+	<path d="M16.33,16.329v0.563h32.883v-0.563H16.33z" fill="#FFE8D9" />
+</g>
+</svg>

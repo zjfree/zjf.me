@@ -1,0 +1,18 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="25px" viewBox="0 0 112.5 25.424" enable-background="new 0 0 112.5 25.424" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M100.122,23.624v1.8l10.574-6.975v-1.8L100.122,23.624z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M1.804,23.624v1.8h98.318v-1.8H1.804z" />
+</g>
+<g id="Group_Scale_Box">
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.904,9.675L11.478,2.7h100.118l-10.574,6.975H0.904z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.004,23.624l0.9-13.949h100.118l0.9,13.949h0.225H0.004z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M101.021,9.675L111.596,2.7l0.9,13.949l-10.574,6.975L101.021,9.675z   " />
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M14.853,6.974v0.9h72.219v-0.9H14.853z" />
+</g>
+<g id="Group_Top_Layer">
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M87.072,7.875L92.248,4.5v-0.9l-5.176,3.375V7.875z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M14.178,6.974l0.675-3.375h72.219l0.9,3.375H14.178z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M87.072,3.599L92.248,0l0.899,3.6l-5.175,3.375L87.072,3.599z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M87.072,3.599L92.248,0H20.252l-5.399,3.6H87.072z" />
+</g>
+</svg>

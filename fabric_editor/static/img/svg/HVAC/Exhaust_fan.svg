@@ -1,0 +1,20 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="64px" viewBox="0 0 112.5 63.742" enable-background="new 0 0 112.5 63.742" xml:space="preserve">
+<g id="Group_Exhaust_Fan">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.4507" y1="27.2537" x2="111.9375" y2="27.2537">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M0.451,53.943l2.252-6.194l3.604-6.869l5.293-5.518   l7.433-2.365V21.398l1.802-6.982l2.928-6.869l3.491-4.617l5.743-2.365h46.397l6.418,2.365l2.815,4.617l2.929,6.869l1.801,6.982   v11.599l7.433,2.365l5.293,5.518l3.491,6.869l2.365,6.194H0.451" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.032,21.398h74.324" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.707,32.997h73.648" />
+</g>
+<g id="Group_Bottom_Layer">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="13.8516" y1="58.5603" x2="98.5361" y2="58.5603">
+		<stop offset="0.01" style="stop-color:#454545" />
+		<stop offset="0.5" style="stop-color:#C2C2C2" />
+		<stop offset="1" style="stop-color:#454545" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M13.852,53.943v9.234h84.685v-9.234H13.852" />
+</g>
+</svg>

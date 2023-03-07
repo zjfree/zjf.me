@@ -1,0 +1,11 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Pole" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4px" height="114px" viewBox="0 0 4.111 113.998" enable-background="new 0 0 4.111 113.998" xml:space="preserve">
+<g id="Group_Pole">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.0015" y1="56.9988" x2="4.1094" y2="56.9988">
+	<stop offset="0" style="stop-color:#999999" />
+	<stop offset="0.5" style="stop-color:#E5E5E5" />
+	<stop offset="1" style="stop-color:#999999" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M4.109,113.998L3.196,0H0.915L0.001,113.998H4.109z" />
+<path fill="#999999" stroke="#999999" stroke-width="0.25" d="M0.001,113.998h4.108v-0.229H0.001V113.998z" />
+</g>
+</svg>

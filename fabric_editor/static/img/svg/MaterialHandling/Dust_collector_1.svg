@@ -1,0 +1,41 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49px" height="112px" viewBox="0 0 48.65 112.5" enable-background="new 0 0 48.65 112.5" xml:space="preserve">
+<g id="Group_Rear_Stand">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M47.186,43.581h-2.14v64.978l2.14,0.225V43.581z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M46.96,52.14l-1.014-0.788l-40.54,53.266l1.464,0.676L46.96,52.14z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M5.406,52.14l1.126-0.788l40.428,53.266l-1.463,0.676L5.406,52.14z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M45.946,52.14h0.563l-3.716,54.617l-0.789-0.226L45.946,52.14z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M6.87,43.581H4.843v65.202H6.87V43.581z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M6.87,109.234H3.83v-0.451H6.87V109.234z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M27.253,72.522l3.717-3.716l12.274-23.086h-1.915L27.253,72.522z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M47.974,109.234h-2.928v-0.676h2.928V109.234z" />
+</g>
+<g id="Group_Collector">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="22.8608" y1="72.5225" x2="22.8608" y2="45.7212">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="1" style="stop-color:#E5E5E5" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.393,45.721h1.126h1.126h1.239h32.32h1.125l-0.449,0.901   L39.077,50l-1.689,3.378l-1.801,3.378l-1.689,3.266L32.096,63.4l-1.802,3.379l-1.689,3.266l-0.9,1.689l-0.451,0.788H26.69h-7.996   l-1.802-3.266l-1.802-3.378l-1.802-3.266l-1.802-3.379l-1.802-3.378L7.884,52.59l-1.802-3.491l-1.239-2.478L4.393,45.721" />
+</g>
+<g id="Group_Stand">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M0.451,112.5h3.153v-0.563H0.451V112.5z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M44.483,112.5h-2.929v-0.563h2.929V112.5z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M43.019,53.829h-0.676l3.604,50.788h0.789L43.019,53.829z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M43.244,53.829l-0.901-0.451L2.141,106.531l1.013,0.789   L43.244,53.829z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M2.141,53.829l1.013-0.451l40.09,53.378l-0.901,0.563L2.141,53.829z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M1.465,46.509h2.14v65.429h-2.14V46.509z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M43.808,46.509h-2.253v65.429h2.253V46.509z" />
+</g>
+<g id="Group_Dust_Collector">
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,6.081l45.27,0.225l3.379-3.153H4.393L0.001,6.081z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.677,6.081l2.928-0.225V4.617L2.929,1.689H1.465L0.677,4.842V6.081   z" />
+	<ellipse fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" cx="2.141" cy="3.266" rx="0.676" ry="1.239" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M4.167,3.378h2.365V2.14l-0.45-1.915L4.618,0L4.167,2.14V3.378z" />
+	<path fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" d="M5.068,0.225h0.225l0.789,0.451L5.969,1.689L5.857,1.915L5.293,2.14   H5.068V2.027L4.843,1.689V1.464V0.45L5.068,0.225z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M42.343,5.856h2.928V4.617l-0.787-2.928h-1.465l-0.676,2.928V5.856z" />
+	<ellipse fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" cx="43.694" cy="3.266" rx="0.676" ry="1.351" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M48.649,3.378l-3.379,3.153v40.653l3.379-2.928V3.378z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M45.946,3.378h2.253V2.14l-0.45-1.915H46.51L45.946,2.14V3.378z" />
+	<ellipse fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" cx="47.073" cy="1.126" rx="0.563" ry="0.901" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,5.856l45.27,0.225v41.104H0.001V5.856z" />
+</g>
+</svg>

@@ -1,0 +1,64 @@
+<!-- broadcast-channel 跨页面通信 zjfree 2023-03-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>broadcast-channel 跨页面通信</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>broadcast-channel 跨页面通信</h1>
+
+输入内容：
+<input id="txtContent" type="text" value="Hello 123" />
+<button onclick="sendMsg();">发送</button>
+<button onclick="$('#divInfo').html('');">清空</button>
+<hr>
+<div id="divInfo"></div>
+
+<div style="margin-top:30px;">
+<iframe src="./broadcast_iframe.html" style="width:70%; height:500px;"></iframe>
+</div>
+<script>
+$(function(){
+	// JS
+	bc = new BroadcastChannel('alienzhou');
+	bc.onmessage = function(e) {
+		let data = e.data;
+		showInfo(data.from + ': ' + data.msg);
+	};
+	bc.onmessageerror = function(e) {
+		showInfo(e, '#f00');
+	};
+	
+	showInfo('BroadcastChannel 注册完成', '#999');
+});
+
+function showInfo(str, color) {
+	color = color || '#000';
+	let el = $(`<div style="color:${color};">${str}</div>`);
+	$('#divInfo').append(el);
+}
+
+function sendMsg(){
+	let msg = $('#txtContent').val();
+	bc.postMessage({from: 'index', msg});
+	showInfo('me: ' + msg);
+}
+</script>
+
+</body>
+</html>

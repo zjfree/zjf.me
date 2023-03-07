@@ -1,0 +1,35 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42px" height="112px" viewBox="0 0 42.3 112.5" enable-background="new 0 0 42.3 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="56.25" x2="42.3008" y2="56.25">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.12" style="stop-color:#6F6F6F" />
+		<stop offset="0.25" style="stop-color:#A4A4A4" />
+		<stop offset="0.36" style="stop-color:#CBCBCB" />
+		<stop offset="0.45" style="stop-color:#E3E3E3" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.56" style="stop-color:#E1E1E1" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.78" style="stop-color:#999999" />
+		<stop offset="0.92" style="stop-color:#5C5C5C" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M42.301,98.325V13.95c0,0-1.613-13.95-21.151-13.95C0,0,0,13.95,0,13.95v84.375   c0,0,0,14.175,21.15,14.175C41.5,112.5,42.301,98.325,42.301,98.325z" />
+</g>
+<g id="Group_Label">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="10.3501" y1="38.7002" x2="30.8262" y2="38.7002">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.09" style="stop-color:#4F4F4F" />
+		<stop offset="0.28" style="stop-color:#7E7E7E" />
+		<stop offset="0.43" style="stop-color:#9B9B9B" />
+		<stop offset="0.52" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M30.826,48.375c0,0-3.801,0.9-10.126,0.9c-7.425,0-10.35-0.9-10.35-0.9V28.8   c0,0,4.717-0.675,10.35-0.675c6.616,0,10.126,0.675,10.126,0.675" />
+</g>
+<g id="Group_Valve">
+	<path fill="#BDBABA" d="M18.225,98.775l-2.7-2.926l0.9-3.824l3.825-0.9l2.926,2.7l-1.125,4.05L18.225,98.775z" />
+	<circle fill="#54504F" cx="19.351" cy="94.949" r="2.475" />
+	<circle fill="#BDBABA" cx="19.351" cy="94.725" r="1.8" />
+	<circle fill="#D6D4D4" cx="19.35" cy="94.725" r="1.35" />
+</g>
+</svg>

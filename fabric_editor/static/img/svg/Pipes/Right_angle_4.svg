@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Right_Angle">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.4751" y1="56.25" x2="112.5" y2="56.25">
+	<stop offset="0.01" style="stop-color:#646566" />
+	<stop offset="0.18" style="stop-color:#959595" />
+	<stop offset="0.5" style="stop-color:#E0E0E0" />
+	<stop offset="1" style="stop-color:#666666" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M56.475,0H112.5v112.5l-56.025-9.802V0z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="56.2495" y1="56.25" x2="56.2495" y2="112.5005">
+	<stop offset="0.01" style="stop-color:#646566" />
+	<stop offset="0.16" style="stop-color:#909091" />
+	<stop offset="0.49" style="stop-color:#E0E0E0" />
+	<stop offset="1" style="stop-color:#646566" />
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M0,56.25v56.25h112.5L56.475,56.25H0z" />
+</g>
+</svg>

@@ -1,0 +1,61 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="46px" viewBox="0 0 112.5 46.059" enable-background="new 0 0 112.5 46.059" xml:space="preserve">
+<g id="Group_Heat_Exchanger">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="106.8193" y1="40.7656" x2="106.8193" y2="2.8159">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M102.09,2.815l9.459,19.031l-9.459,18.919" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="5.5928" y1="28.9414" x2="5.5928" y2="14.7524">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M10.322,28.941l-4.729-4.73H0.863v-4.729h4.729l4.729-4.73" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="101.1826" y1="43.1309" x2="101.1826" y2="0.5635">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<rect x="100" y="0.563" fill="url(#SVGID_3_)" width="2.365" height="42.568" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="14.1948" y1="28.9414" x2="14.1948" y2="14.7524">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_4_)" points="10.272,28.941 18.117,28.941 18.117,14.752 10.272,14.752  " />
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="23.2793" y1="40.7656" x2="23.2793" y2="2.8159">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_5_)" points="29.191,2.815 17.367,14.752 17.367,28.941 29.191,40.766  " />
+	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="64.4707" y1="40.7656" x2="64.4707" y2="2.8159">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<rect x="28.941" y="2.815" fill="url(#SVGID_6_)" width="71.059" height="37.95" />
+</g>
+<g id="Group_Lines">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M5.293,24.211v-4.729" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M10.022,28.941V14.752" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M17.117,28.941V14.752" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M28.941,40.766V2.815" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M100,40.766V2.815" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M102.365,40.766V2.815" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M52.59,40.766V2.815" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M76.352,40.766V2.815" />
+</g>
+<g id="Group_Supply">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M36.036,45.495v-5.292h9.459v5.292H36.036z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M59.685,45.495v-5.292h9.46v5.292H59.685z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M83.445,45.495v-5.292h9.46v5.292H83.445z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M83.445,40.203l3.492-3.492V20.045h2.364v16.666l3.604,3.492H83.445z   " />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M59.685,40.203l3.604-3.492V20.045h2.365v16.666l3.491,3.492H59.685z   " />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M36.036,40.203l3.604-3.492V20.045h2.252v16.666l3.604,3.492H36.036z   " />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M39.64,36.6h2.252" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M63.288,36.6h2.365" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M86.938,36.6h2.364" />
+</g>
+</svg>

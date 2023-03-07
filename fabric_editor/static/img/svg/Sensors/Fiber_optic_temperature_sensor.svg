@@ -1,0 +1,66 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43px" height="112px" viewBox="0 0 42.754 112.5" enable-background="new 0 0 42.754 112.5" xml:space="preserve">
+<g id="Group_Yellow_Sensor">
+	<circle fill="#FFCC00" stroke="#4C4C4C" stroke-width="0.25" cx="21.377" cy="19.35" r="19.35" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M4.952,9.675h33.075v0.9H4.952V9.675z" />
+</g>
+<g id="Group_Fibre_Optic_Cable">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.0269" y1="62.0996" x2="40.7266" y2="62.0996">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M2.027,11.7h38.7v100.8h-38.7V11.7z" />
+</g>
+<g id="Group_Optic_Protectors">
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,105.75h42.75v-2.925H0.002V105.75z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,94.5h42.75v-2.925H0.002V94.5z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,83.475h42.75V80.55H0.002V83.475z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,72.225h42.75V69.3H0.002V72.225z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,60.975h42.75V58.05H0.002V60.975z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,49.95h42.75v-2.925H0.002V49.95z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,38.7h42.75v-2.925H0.002V38.7z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,27.45h42.75v-2.925H0.002V27.45z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,99.9h42.75v-2.926H0.002V99.9z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,88.65h42.75v-2.926H0.002V88.65z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,77.625h42.75V74.7H0.002V77.625z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,66.375h42.75V63.45H0.002V66.375z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,55.125h42.75V52.2H0.002V55.125z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,44.1h42.75v-2.925H0.002V44.1z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,32.85h42.75v-2.925H0.002V32.85z" />
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M0.002,21.6h42.75v-2.925H0.002V21.6z" />
+</g>
+<g id="Group_Optic_Cable">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,102.825h5.175v2.925H5.627V102.825z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,91.575h5.175V94.5H5.627V91.575z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,80.55h5.175v2.7H5.627V80.55z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,69.3h5.175v2.925H5.627V69.3z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,58.05h5.175v2.925H5.627V58.05z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,47.025h5.175v2.7H5.627V47.025z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,35.775h5.175V38.7H5.627V35.775z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,24.525h5.175v2.925H5.627V24.525z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,96.975h5.175V99.9H5.627V96.975z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,85.725h5.175v2.926H5.627V85.725z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,74.7h5.175v2.7H5.627V74.7z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,63.45h5.175v2.925H5.627V63.45z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,52.2h5.175v2.925H5.627V52.2z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,41.175h5.175v2.7H5.627V41.175z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,29.925h5.175v2.925H5.627V29.925z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.627,18.675h5.175V21.6H5.627V18.675z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,102.825h6.75v2.925h-6.75V102.825z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,91.575h6.75V94.5h-6.75V91.575z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,80.55h6.75v2.7h-6.75V80.55z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,69.3h6.75v2.925h-6.75V69.3z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,58.05h6.75v2.925h-6.75V58.05z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,47.025h6.75v2.7h-6.75V47.025z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,35.775h6.75V38.7h-6.75V35.775z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,24.525h6.75v2.925h-6.75V24.525z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,96.975h6.75V99.9h-6.75V96.975z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,85.725h6.75v2.926h-6.75V85.725z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,74.7h6.75v2.7h-6.75V74.7z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,63.45h6.75v2.925h-6.75V63.45z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,52.2h6.75v2.925h-6.75V52.2z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,41.175h6.75v2.7h-6.75V41.175z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,29.925h6.75v2.925h-6.75V29.925z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M32.177,18.675h6.75V21.6h-6.75V18.675z" />
+</g>
+</svg>

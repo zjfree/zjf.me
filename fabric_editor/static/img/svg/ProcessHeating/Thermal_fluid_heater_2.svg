@@ -1,0 +1,29 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="67px" viewBox="0 0 112.5 66.781" enable-background="new 0 0 112.5 66.781" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M6.194,58.109h2.59v5.518h-2.59V58.109z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M71.847,58.109h2.591v5.518h-2.591V58.109z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M38.626,58.109h2.703v5.518h-2.703V58.109z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.279,66.78h74.549v-3.829H4.279V66.78z" />
+</g>
+<g id="Group_Pump">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,20.833h83.107v29.393H0V20.833z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,58.559h83.107v-8.333H0V58.559z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M9.797,42.906V14.077H3.041v37.838l0.788,3.266l1.915,2.928   l2.815,2.139l3.604,0.789l3.604-0.789l2.928-2.139l1.914-2.928l0.789-3.266l-0.789-3.717l-1.914-2.815l-2.928-1.915l-3.604-0.787   L9.797,42.906z" />
+	<circle fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.25" cx="13.063" cy="51.352" r="3.716" />
+</g>
+<g id="Group_Feeder">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.2347" d="M83.288,34.798h24.819v9.571H83.288V34.798z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M98.536,15.09l3.604-1.915v21.623h-3.604V15.09z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M99.212,10.248l-1.689,3.604H79.504v-3.604H99.212z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M97.522,13.852l1.689-3.604l2.928,2.928l-3.604,1.915L97.522,13.852z   " />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M108.107,38.851h4.393v4.393h-4.393V38.851z" />
+</g>
+<g id="Group_Supply">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M11.036,13.401h6.193v8.446h-6.193V13.401z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M39.865,13.401h6.419v8.446h-6.419V13.401z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0.451,4.055h59.572v10.022H0.451V4.055z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M49.212,0h8.446v18.018h-8.446V0z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M49.212,4.955h8.446v8.221h-8.446V4.955z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M58.896,2.59h20.607v22.635H58.896V2.59z" />
+</g>
+</svg>

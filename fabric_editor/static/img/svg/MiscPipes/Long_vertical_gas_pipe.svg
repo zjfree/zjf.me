@@ -1,0 +1,11 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="112px" viewBox="0 0 28.943 112.5" enable-background="new 0 0 28.943 112.5" xml:space="preserve">
+<g id="Group_Long_Gas_Vertical">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.4514" y1="56.1938" x2="28.3801" y2="56.1938">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.41" style="stop-color:#FCFFFF" />
+	<stop offset="0.61" style="stop-color:#FCFFFF" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M28.38,0.45v111.487H0.451V0.45H28.38z" />
+</g>
+</svg>

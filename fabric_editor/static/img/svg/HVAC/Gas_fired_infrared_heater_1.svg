@@ -1,0 +1,32 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="28px" viewBox="0 0 112.5 28.043" enable-background="new 0 0 112.5 28.043" xml:space="preserve">
+<g id="Group_Connector">
+	<path fill="#7F7F7F" d="M11.036,19.034h90.315v0.676H11.036V19.034z" />
+</g>
+<g id="Group_Support_Rods">
+	<path fill="#474747" d="M12.387,19.034h0.901v0.676h-0.901V19.034z" />
+	<path fill="#474747" d="M99.1,19.034h0.9v0.676h-0.9V19.034z" />
+	<path fill="#474747" d="M55.518,19.034h0.676v0.676h-0.676V19.034z" />
+</g>
+<g id="Group_Infrared_Heater">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="59.2031" y1="26.5845" x2="53.1845" y2="-7.5491">
+		<stop offset="0" style="stop-color:#BDBDBD" />
+		<stop offset="0.41" style="stop-color:#BFBFBF" />
+		<stop offset="0.48" style="stop-color:#CBCBCB" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M10.36,0.002h91.667v19.032H10.36V0.002z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M11.036,0.677h90.315" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M11.036,1.353h90.315" />
+</g>
+<g id="Group_Base_Support">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="56.8652" y1="33.8901" x2="54.8904" y2="15.1011">
+		<stop offset="0" style="stop-color:#D1D1D1" />
+		<stop offset="0.39" style="stop-color:#D1D1D1" />
+		<stop offset="0.48" style="stop-color:#E3E3E3" />
+		<stop offset="1" style="stop-color:#E0E0E0" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M11.036,19.709L0,28.042h112.5l-11.148-8.332H11.036z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.036,19.709L0,28.042h112.5l-11.148-8.332H11.036" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M1.352,27.367h109.685" />
+</g>
+</svg>

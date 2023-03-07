@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="112px" viewBox="0 0 35.618 112.5" enable-background="new 0 0 35.618 112.5" xml:space="preserve">
+<g id="Group_Bottle">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="56.25" x2="35.6177" y2="56.25">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M25.924,9.022L25.7,8.571V5.979l-1.127-1.015l0.338-2.479l-0.338-1.804l-1.805-0.676h-8.566   l-1.916,0.676l-0.451,1.804l0.451,2.479l-1.015,1.015v2.592l-0.563,0.451L9.694,24.126L7.327,28.86l-3.381,3.156l-2.254,3.832   l-1.578,4.509l0.451,1.127v3.607L0,45.768v2.931l0.563,0.676v44.411L0,94.461l0.563,3.607v4.283L0,102.802v4.96l0.563,2.254   l1.127,1.24l2.254,0.451l3.381,0.338l3.945,0.225l4.171,0.227h4.508l4.396-0.227l4.059-0.225l3.156-0.338l2.254-0.451l1.127-1.24   l0.676-2.254v-4.96l-0.676-0.45v-4.283l0.676-1.805v-1.803l-0.676-0.676V49.375l0.676-0.676v-2.931l-0.676-0.676v-3.607   l0.676-1.127l-1.803-4.509l-2.254-3.832l-3.156-3.156l-1.916-4.734L25.924,9.022" />
+</g>
+<g id="Group_Shadow">
+	<path fill="#CCCCCC" d="M6.65,44.64h1.803v55.231H6.65V44.64z" />
+	<path fill="#E6E6E6" d="M10.708,37.426h1.916v55.231h-1.916V37.426z" />
+</g>
+<g id="Group_Bottle_Edge">
+	<path fill="#B2B2B2" d="M24.797,5.415l-13.3,1.353v1.803l13.751-1.353v-1.24L24.797,5.415z" />
+	<path fill="#B2B2B2" d="M24.797,1.808L12.061,3.161l0.563,1.803l12.173-1.353V1.808z" />
+</g>
+</svg>

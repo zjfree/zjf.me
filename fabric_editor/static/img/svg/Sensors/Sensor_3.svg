@@ -1,0 +1,31 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65px" height="112px" viewBox="0 0 65.426 112.5" enable-background="new 0 0 65.426 112.5" xml:space="preserve">
+<g id="Group_Yellow_Part">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="76.0723" y1="80.2129" x2="-15.7146" y2="27.2197">
+		<stop offset="0.01" style="stop-color:#FFFF00" />
+		<stop offset="0.5" style="stop-color:#FFFFBD" />
+		<stop offset="1" style="stop-color:#FFFF00" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,0.001h60.357v107.431H0V0.001z" />
+</g>
+<g id="Group_Sensor_Box">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="56.25" x2="65.4258" y2="56.25">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,107.432l3.378,5.066h62.048V3.38l-5.066-3.378v107.43H0z" />
+</g>
+<g id="Group_Readers">
+	<path fill="#4D4D4D" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,100.675h20.156v-1.688H4.955V100.675z" />
+	<path fill="#4D4D4D" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,83.896h43.691v3.267H4.955V83.896z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,90.54h35.246" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,92.342H28.49" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,95.607H15.09" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,104.053h21.846" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.868,104.053h21.847" />
+</g>
+<g id="Group_Layer_4">
+	<ellipse stroke="#7F7F7F" stroke-width="0.25" cx="62.836" cy="26.802" rx="0.788" ry="3.378" />
+	<ellipse stroke="#7F7F7F" stroke-width="0.25" cx="62.836" cy="77.139" rx="0.788" ry="3.378" />
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="108px" viewBox="0 0 112.5 107.77" enable-background="new 0 0 112.5 107.77" xml:space="preserve">
+<g id="Group_Support">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="10.3032" y1="13.2634" x2="83.8945" y2="13.2634" gradientTransform="matrix(1 0 0 -1 0 107.77)">
+		<stop offset="0.01" style="stop-color:#008C00" />
+		<stop offset="0.5" style="stop-color:#00C400" />
+		<stop offset="1" style="stop-color:#008C00" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="74.773,81.884 83.895,107.129 10.303,107.129 19.033,82.967 19.033,81.884  " />
+</g>
+<g id="Group_Port">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="79.2793" y1="70.1584" x2="79.2793" y2="107.3196" gradientTransform="matrix(1 0 0 -1 0 107.77)">
+		<stop offset="0.01" style="stop-color:#008C00" />
+		<stop offset="0.51" style="stop-color:#00FF00" />
+		<stop offset="1" style="stop-color:#008C00" />
+	</linearGradient>
+	<rect x="45.608" y="0.45" fill="url(#SVGID_2_)" width="67.342" height="37.161" />
+</g>
+<g id="Group_PumpBody">
+	
+		<radialGradient id="SVGID_3_" cx="46.9033" cy="61.5452" r="45.9449" gradientTransform="matrix(1 0 0 -1 0 107.77)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.56" style="stop-color:#00B400" />
+		<stop offset="0.78" style="stop-color:#005000" />
+		<stop offset="0.8" style="stop-color:#009600" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M93.074,46.226c0,25.249-20.672,45.716-46.171,45.716c-25.5,0-46.171-20.467-46.171-45.716   c0-25.252,20.671-45.719,46.171-45.719C72.402,0.506,93.074,20.973,93.074,46.226z" />
+</g>
+</svg>

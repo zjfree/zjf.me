@@ -1,0 +1,57 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="40px" viewBox="0 0 112.5 39.527" enable-background="new 0 0 112.5 39.527" xml:space="preserve">
+<g id="Group_Stand">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M12.951,29.617h2.477v9.91h-2.477V29.617z" />
+	<path fill="none" stroke="#CCCCCC" stroke-width="0.25" d="M14.077,29.617v9.91" />
+</g>
+<g id="Group_Infrared_Heater">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="35.4668" y1="32.3528" x2="15.2095" y2="-2.7339">
+		<stop offset="0" style="stop-color:#BDBDBD" />
+		<stop offset="0.4" style="stop-color:#BDBDBD" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#CFCFCF" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M10.473,0h29.729v29.617H10.473V0z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.473,0h29.729v29.617H10.473V0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.951,4.955h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.933,4.955h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.14,4.955h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.122,4.955h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.951,7.321h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.933,7.321h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.14,7.321h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.122,7.321h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.951,22.185h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.933,22.185h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.14,22.185h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.122,22.185h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.951,24.662h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M19.933,24.662h3.604" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.14,24.662h3.378" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M34.122,24.662h3.604" />
+	<ellipse fill="#7F7F7F" cx="25.338" cy="12.276" rx="7.433" ry="2.478" />
+</g>
+<g id="Group_Tuner">
+	<rect x="5.237" y="9.122" fill="#333333" width="5.236" height="11.261" />
+	<ellipse fill="#333333" cx="5.237" cy="14.777" rx="5.237" ry="5.654" />
+	<circle fill="#5C5C5C" cx="5.518" cy="14.753" r="4.955" />
+	
+		<ellipse transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 19.5879 21.1291)" fill="#CCCCCC" cx="5.418" cy="14.621" rx="2.373" ry="5.047" />
+	<path fill="#454545" d="M2.815,12.951L3.378,12.5l0.788,0.901l-0.45,0.45L2.815,12.951z" />
+	<path fill="#454545" d="M4.617,14.753l0.45-0.451l0.901,0.901l-0.337,0.45L4.617,14.753z" />
+	<path fill="#454545" d="M6.532,16.555l0.337-0.451l0.901,0.901l-0.451,0.45L6.532,16.555z" />
+	<path fill="#454545" d="M3.716,12.05l0.45-0.45l0.901,0.9l-0.45,0.451L3.716,12.05z" />
+	<path fill="#454545" d="M5.631,13.852l0.337-0.45l0.901,0.9l-0.337,0.451L5.631,13.852z" />
+	<path fill="#454545" d="M7.32,15.654l0.451-0.45l1.013,0.9l-0.563,0.451L7.32,15.654z" />
+</g>
+<g id="Group_Gas_Supply">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M40.203,16.104l1.126-12.387h68.018l-1.126,12.387H40.203z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.0822" d="M40.203,6.645h7.477v2.478h-7.477V6.645z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="76.9141" y1="17.2307" x2="76.9141" y2="3.717">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.39" style="stop-color:#949494" />
+		<stop offset="0.5" style="stop-color:#818181" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M44.482,17.231L41.329,3.717h68.018l3.153,13.514H44.482" />
+</g>
+</svg>

@@ -1,0 +1,46 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="54px" viewBox="0 0 112.5 54.281" enable-background="new 0 0 112.5 54.281" xml:space="preserve">
+<g id="Group_Basin">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.9009" y1="24.4314" x2="112.4121" y2="24.4314">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<rect x="0.901" y="5.087" fill="url(#SVGID_1_)" width="111.511" height="38.689" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.8008" y1="48.6541" x2="112.4121" y2="48.6541">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0.801,43.104c0,2.337,0,4.673,0,7.009c10.284,2.618,31.709,4.418,56.489,4.418   c23.73,0,44.383-1.649,55.122-4.09c0-2.438,0-5.227,0-7.665" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.2001" d="M112.786,34.044c0,2.775-24.991,5.025-55.817,5.025   c-30.823,0-55.812-2.25-55.812-5.025" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.199" d="M111.536,20.044c0,2.775-24.711,5.025-55.192,5.025   c-30.478,0-55.187-2.25-55.187-5.025" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="9.234" y1="51.69" x2="9.234" y2="7.32" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="1.234" y1="49.94" x2="1.234" y2="5.57" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="3.234" y1="50.608" x2="3.234" y2="6.902" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="5.734" y1="51.19" x2="5.734" y2="6.82" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="9.484" y1="51.69" x2="9.484" y2="7.82" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="13.734" y1="52.44" x2="13.734" y2="8.07" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="18.541" y1="52.523" x2="18.541" y2="8.153" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="24.984" y1="53.19" x2="24.984" y2="8.82" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="31.734" y1="53.939" x2="31.734" y2="8.981" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="39.234" y1="54.281" x2="39.234" y2="9.14" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="47.734" y1="54.281" x2="47.734" y2="9.14" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="56.234" y1="54.281" x2="56.234" y2="9.46" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="65.734" y1="54.281" x2="65.734" y2="9.347" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="73.984" y1="54.281" x2="73.984" y2="9.123" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="81.234" y1="54.053" x2="81.234" y2="9.048" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="87.734" y1="53.364" x2="87.734" y2="8.187" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="94.234" y1="52.662" x2="94.234" y2="7.848" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="99.484" y1="52.19" x2="99.484" y2="7.82" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="103.734" y1="51.94" x2="103.734" y2="7.57" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="107.234" y1="51.19" x2="107.234" y2="6.82" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="109.984" y1="50.44" x2="109.984" y2="6.07" />
+	<line fill="none" stroke="#4C4C43" stroke-width="0.25" x1="112.3" y1="49.44" x2="112.3" y2="5.07" />
+</g>
+<g id="Group_Cover">
+	<ellipse fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" cx="56.194" cy="4.843" rx="55.855" ry="4.504" />
+	<path fill="#F0F0F0" stroke="#4C4C4C" stroke-width="0.25" d="M55.631,4.73l5.518,0.113l2.365,0.45l-2.365,0.45l-5.518,0.112   l-5.518-0.112l-2.365-0.45l2.365-0.45L55.631,4.73z" />
+	<path fill="#F0F0F0" stroke="#4C4C4C" stroke-width="0.25" d="M73.986,4.73l3.379,0.113l1.352,0.225l-1.352,0.226l-3.379,0.112   l-3.379-0.112l-1.463-0.226l1.463-0.225L73.986,4.73z" />
+	<path fill="#F0F0F0" stroke="#4C4C4C" stroke-width="0.25" d="M29.617,4.73l3.378,0.113l1.351,0.225l-1.351,0.226l-3.378,0.112   l-3.378-0.112l-1.352-0.226l1.352-0.225L29.617,4.73z" />
+</g>
+</svg>

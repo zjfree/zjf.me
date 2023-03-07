@@ -1,0 +1,29 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="78px" viewBox="0 0 112.5 78.156" enable-background="new 0 0 112.5 78.156" xml:space="preserve">
+<g id="Group_SafetyValve">
+	<path fill="#191919" d="M39.527,0h4.955v1.495h-4.955V0z" />
+	<path fill="#191919" d="M73.762,0h5.293v1.495h-5.293V0z" />
+</g>
+<g id="Group_FuelOilHeatingandFilteringSystems">
+	<polygon points="88.964,26.127 88.964,46.285 90.766,46.285 90.766,27.704 92.342,27.704 92.342,46.285 93.919,46.285    93.919,26.127  " />
+	<path fill="none" d="M0,0.79h84.459v73.875H0V0.79" />
+</g>
+<g id="Group_Fan">
+	<path fill="#333333" d="M82.035,15.767h5.352V36.15h-5.352V15.767z" />
+	<path fill="#CCCCCC" d="M83.42,20.947h5.544v9.685H83.42V20.947z" />
+	<path fill="none" d="M82.035,20.947h6.929v9.685h-6.929V20.947" />
+</g>
+<g id="Group_Burner">
+	<path fill="#324C7F" d="M84.009,59.573h16.667l0.9-3.378l3.379-0.676V42.906l-6.757-3.378h-4.505l-2.928,2.365h-6.757V59.573z" />
+	<path fill="#333333" d="M84.208,51.015h3.179l4.955,20.271h-8.134V51.015z" />
+	<path fill="none" d="M84.459,53.042h16.217v16.667H84.459V53.042" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#98B2E5" d="M83.42,53.042h17.256v16.667H83.42V53.042z" />
+</g>
+<g id="Group_BoilerBody">
+	<path fill="#B2B2B2" d="M0,0.79h84.459v75.62H0V0.79z" />
+</g>
+<g id="Group_Base">
+	<path fill="#191919" d="M0,78.154h112.5v-3.49H0V78.154z" />
+</g>
+</svg>

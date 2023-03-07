@@ -1,0 +1,89 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 74.549 112.5" enable-background="new 0 0 74.549 112.5" xml:space="preserve">
+<g id="Group_GeneratorBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-3.2842" y1="37.3374" x2="73.8971" y2="73.3276">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.01" style="stop-color:#3B3B3B" />
+		<stop offset="0.25" style="stop-color:#757575" />
+		<stop offset="0.42" style="stop-color:#989898" />
+		<stop offset="0.51" style="stop-color:#A6A6A6" />
+		<stop offset="0.69" style="stop-color:#818181" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,112.5h55.63L74.549,0L0,30.292V112.5z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="15.1465" x2="63.6914" y2="15.1465">
+		<stop offset="0.06" style="stop-color:#808080" />
+		<stop offset="0.13" style="stop-color:#8D8D8D" />
+		<stop offset="0.28" style="stop-color:#B0B0B0" />
+		<stop offset="0.48" style="stop-color:#E8E8E8" />
+		<stop offset="0.48" style="stop-color:#EBEBEB" />
+		<stop offset="0.57" style="stop-color:#E0E0E0" />
+		<stop offset="0.72" style="stop-color:#C3C3C3" />
+		<stop offset="0.92" style="stop-color:#949494" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M6.644,5.068L63.691,0L55.63,30.292H0L6.644,5.068z" />
+	<path fill="#CCCCCC" d="M6.644,5.068h67.905V0h-55.63L6.644,5.068z" />
+	<path fill="#4D4D4D" d="M74.549,93.469L55.63,112.5V30.292l6.757-25.224l12.162-4.843V93.469z" />
+</g>
+<g id="Group_Panel">
+	<path fill="#7F7F7F" d="M17.905,8.56h30.18l-4.617,18.806H13.514L17.905,8.56z" />
+	<polyline fill="none" stroke="#FFFFFF" stroke-width="0.25" stroke-miterlimit="10" points="13.514,27.365 43.468,27.365    48.085,8.56  " />
+	<polyline fill="none" stroke="#4D4D4D" stroke-width="0.25" stroke-miterlimit="10" points="48.212,8.56 17.975,8.56    13.357,27.531  " />
+</g>
+<g id="Group_Labels">
+	<path fill="#FFFFFF" d="M22.41,23.086h6.081L28.04,25h-6.193L22.41,23.086z" />
+	<path fill="#FFFFFF" d="M23.311,19.145h6.081l-0.45,2.141H22.86L23.311,19.145z" />
+	<path fill="#FFFFFF" d="M36.374,25l1.463-6.306h1.803L38.288,25H36.374z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M22.635,23.311l-0.225,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M23.536,19.595l-0.225,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M36.937,24.437h0.9" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M23.536,23.311l-0.45,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.324,19.595l-0.338,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.162,23.762h0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.324,23.311l-0.338,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.225,19.595L25,20.496" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.162,22.861h1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25,23.311l-0.226,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.9,19.595l-0.226,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.387,22.186h1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.9,23.311l-0.226,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M26.802,19.595l-0.451,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.612,21.285h0.9" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M26.802,23.311l-0.226,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.702,19.595l-0.337,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.837,20.271h0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.59,23.311l-0.225,1.126" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M28.491,19.595l-0.225,0.901" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.063,19.595h0.901" />
+</g>
+<g id="Group_Button2">
+	<path fill="#87C879" d="M19.933,23.706c-0.104,0.591-0.667,1.069-1.258,1.069s-0.985-0.479-0.881-1.069s0.667-1.07,1.258-1.07   C19.642,22.635,20.037,23.115,19.933,23.706z" />
+</g>
+<g id="Group_Button1">
+	<path fill="#AE2F2F" d="M20.889,19.989c-0.104,0.591-0.667,1.071-1.258,1.071c-0.591,0-0.985-0.48-0.881-1.071   c0.104-0.59,0.667-1.069,1.258-1.069C20.598,18.92,20.993,19.398,20.889,19.989z" />
+</g>
+<g id="Group_Gauge2">
+	<path fill="#231F20" d="M43.659,13.986c-0.342,1.94-2.191,3.514-4.133,3.514c-1.939,0-3.236-1.573-2.894-3.514   c0.343-1.94,2.192-3.513,4.134-3.513C42.706,10.473,44.002,12.046,43.659,13.986z" />
+	<path fill="#FFFFFF" d="M42.966,13.964c-0.273,1.554-1.758,2.815-3.313,2.815s-2.592-1.261-2.318-2.815   c0.273-1.555,1.758-2.815,3.313-2.815S43.239,12.41,42.966,13.964z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.653,11.6l-0.226,0.564" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.852,12.164l0.45,0.449" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.726,13.964h0.676" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M42.567,13.964h-0.9" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M42.343,12.164l-0.676,0.449" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M41.441,15.879l-0.338-0.45" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M37.838,15.879l0.676-0.789" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M39.978,13.964l-1.126-1.126" />
+</g>
+<g id="Group_Gauge1">
+	<path fill="#231F20" d="M27.049,13.986c-0.342,1.94-2.192,3.514-4.133,3.514c-1.94,0-3.236-1.573-2.894-3.514   c0.342-1.94,2.192-3.513,4.133-3.513C26.096,10.473,27.392,12.046,27.049,13.986z" />
+	<path fill="#FFFFFF" d="M26.355,13.964c-0.274,1.554-1.758,2.815-3.312,2.815c-1.555,0-2.593-1.261-2.319-2.815   c0.273-1.555,1.757-2.815,3.312-2.815C25.591,11.149,26.629,12.41,26.355,13.964z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.043,11.6l-0.226,0.564" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M22.241,12.164l0.45,0.449" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M21.115,13.964h0.675" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.957,13.964h-0.9" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.732,12.164l-0.675,0.449" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.831,15.879l-0.338-0.45" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M21.228,15.879l0.676-0.789" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M23.367,13.964l-1.126-1.126" />
+</g>
+</svg>

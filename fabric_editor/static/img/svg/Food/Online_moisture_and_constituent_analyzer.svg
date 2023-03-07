@@ -1,0 +1,37 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95px" height="112px" viewBox="0 0 95.156 112.5" enable-background="new 0 0 95.156 112.5" xml:space="preserve">
+<g id="Group_Red_Indicator">
+	<path fill="#FF0000" stroke="#4C4C4C" stroke-width="0.25" d="M1.802,52.14h2.59v4.054h-2.59V52.14z" />
+</g>
+<g id="Group_Analyzer">
+	<path fill="#143366" d="M0,47.635h92.453l2.703-2.703v2.027l-2.703,2.702H0V47.635z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="23.8184" x2="95.1558" y2="23.8184">
+		<stop offset="0" style="stop-color:#2D4C7F" />
+		<stop offset="0.18" style="stop-color:#7B99CC" />
+		<stop offset="0.35" style="stop-color:#5271A4" />
+		<stop offset="1" style="stop-color:#476699" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,42.23L10.473,0.001h81.98l2.703,2.59v42.341l-2.703,2.703H0V42.23z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.3916" y1="56.8691" x2="28.2651" y2="56.8691">
+		<stop offset="0" style="stop-color:#2D4C7F" />
+		<stop offset="0.5" style="stop-color:#7B99CC" />
+		<stop offset="1" style="stop-color:#2C4C7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.392,47.635h23.874v18.468H4.392V47.635" />
+</g>
+<g id="Group_Support">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0,108.332h95.156v2.815H0V108.332z" />
+	<path fill="#4D4D4D" d="M0.563,112.498H94.48v-1.351H0.563V112.498z" />
+</g>
+<g id="Group_Labels">
+	<path fill="#F2F2F2" d="M4.392,40.879h13.964v4.054H4.392V40.879z" />
+	<path fill="#F2F2F2" d="M71.282,1.916h21.171v2.14H71.282V1.916z" />
+</g>
+<g id="Group_Stand">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="78.0386" y1="77.9834" x2="84.7944" y2="77.9834">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M78.039,108.332V47.635h6.756v60.697H78.039" />
+</g>
+</svg>

@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 75.002 112.5" enable-background="new 0 0 75.002 112.5" xml:space="preserve">
+<g id="Group_Oxidizer">
+	<rect x="9.442" y="12.348" fill="none" stroke="#4C4C4C" stroke-width="0.1001" width="56.008" height="100.152" />
+	<path fill="#FFD9B2" stroke="#4C4C4C" stroke-width="0.0996" d="M37.105,26.683c12.438,0,23.178-3.025,28.347-7.424   c0-3.921,0-7.847,0-11.768c-5.169-4.422-15.909-7.424-28.347-7.424c-11.896,0-22.263,2.761-27.641,6.865c0,4.104,0,8.781,0,12.877   C14.842,23.907,25.209,26.683,37.105,26.683z" />
+	<rect x="9.526" y="12.596" fill="#FFD9B2" width="55.841" height="100.152" />
+</g>
+<g id="Group_FLameless_Inner_Layer">
+	<path fill="#FFFF00" d="M37.214,27.5c10.358,0,19.302-2.65,23.608-6.503c0-3.436,0-6.874,0-10.31   c-4.307-3.874-13.25-6.503-23.608-6.503c-9.908,0-18.542,2.419-23.021,6.014c0,3.595,0,7.693,0,11.281   C18.672,25.067,27.306,27.5,37.214,27.5z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="37.4988" y1="93.6982" x2="37.4988" y2="14.2285">
+		<stop offset="0" style="stop-color:#FF6100" />
+		<stop offset="1" style="stop-color:#FFFF00" />
+	</linearGradient>
+	<rect x="14.22" y="14.228" fill="url(#SVGID_1_)" width="46.556" height="79.47" />
+</g>
+<g id="Group_Feeder">
+	<path fill="#FF0000" d="M60.925,93.693v14.077h-46.96v-4.729H0.001v-9.348H60.925z" />
+	<path fill="#FF7F00" d="M75.001,75H60.925v9.234h14.076V75z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,103.041h13.964v4.729h46.96V84.347h14.076" />
+</g>
+<g id="Group_Coils">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M13.965,88.964h3.716V16.329h7.208v72.635h3.49V16.329h7.32v72.635h3.491   V16.329h7.319v72.635h3.491V16.329h7.207v72.635h3.717" />
+</g>
+</svg>

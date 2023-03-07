@@ -1,0 +1,19 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Motion" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="104px" height="114px" viewBox="0 0 103.615 113.998" enable-background="new 0 0 103.615 113.998" xml:space="preserve">
+<g id="Group_Motion">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="74.5811" y1="45.2312" x2="76.5624" y2="64.5358" gradientTransform="matrix(0.9855 0.0013 0.0013 0.987 0.4031 0.5796)">
+	<stop offset="0" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#B5B5B5" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M101.991,71.318c2.918-11.468,2.387-23.825-2.079-35.379L46.16,56.508L101.991,71.318z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="73.4521" y1="44.115" x2="75.4333" y2="63.4175" gradientTransform="matrix(-0.4937 0.8587 -0.8697 -0.4873 115.9494 45.1995)">
+	<stop offset="0" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#B5B5B5" />
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M4.422,98.351c8.638,8.219,19.783,13.869,32.188,15.692l8.753-57.044L4.422,98.351z" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="74.3486" y1="45.1711" x2="76.9139" y2="64.4058" gradientTransform="matrix(-0.5021 -0.8565 0.8565 -0.5116 20.1829 124.6541)">
+	<stop offset="0" style="stop-color:#F2F2F2" />
+	<stop offset="1" style="stop-color:#B5B5B5" />
+</linearGradient>
+<path fill="url(#SVGID_3_)" d="M29.655-0.115C18.207,3.282,7.749,10.136-0.004,19.991l45.308,36.038L29.655-0.115z" />
+</g>
+</svg>

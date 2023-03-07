@@ -1,0 +1,28 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="56px" viewBox="0 0 112.5 56.305" enable-background="new 0 0 112.5 56.305" xml:space="preserve">
+<g id="Group_Wings">
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="68.018,4.391 78.828,0 100.336,51.8 89.525,56.304  " />
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="56.081,22.859 60.473,11.936 112.498,33.557 107.881,44.255     " />
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="60.473,44.255 56.081,33.557 107.993,11.936 112.498,22.859     " />
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="78.828,56.304 68.131,51.8 89.525,0 100.449,4.391  " />
+	<rect x="22.186" y="0" fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" width="11.711" height="56.191" />
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="4.056,12.386 12.276,4.053 52.027,43.804 43.694,52.137  " />
+	<rect x="0.002" y="22.297" fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" width="56.191" height="11.711" />
+	<polygon fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" points="12.276,52.137 4.056,43.804 43.694,4.053 52.027,12.386  " />
+</g>
+<g id="Group_Radial">
+	<radialGradient id="SVGID_1_" cx="84.3457" cy="28.1521" r="16.4409" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.5" style="stop-color:#CACACA" />
+		<stop offset="0.73" style="stop-color:#C4C3C3" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="84.346" cy="28.152" r="16.44" />
+	<radialGradient id="SVGID_2_" cx="28.0415" cy="28.1521" r="16.3281" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.5" style="stop-color:#CACACA" />
+		<stop offset="0.73" style="stop-color:#C4C3C3" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="28.042" cy="28.152" r="16.328" />
+</g>
+</svg>

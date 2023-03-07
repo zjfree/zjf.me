@@ -1,0 +1,58 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="34px" viewBox="0 0 112.5 33.898" enable-background="new 0 0 112.5 33.898" xml:space="preserve">
+<g id="Group_Vent">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="59.3311" y1="31.1919" x2="53.0572" y2="-4.3891">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.35" style="stop-color:#B2B2B2" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#D9D9D9" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M18.581,1.69h75.226v23.423H18.581V1.69z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="104.8643" y1="22.5396" x2="101.158" y2="1.5201">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.35" style="stop-color:#B2B2B2" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#D9D9D9" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M93.807,2.816H112.5l-9.459,20.045h-9.234V2.816z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M18.581,25.113h75.226v1.803H18.581V25.113z" />
+	<path fill="#B2B2B2" d="M21.059,11.149h12.838v1.239H21.059V11.149z" />
+	<path fill="#383838" d="M22.185,8.784h1.126v1.014h-1.126V8.784z" />
+	<path fill="#B2B2B2" d="M93.581,12.388V2.816h1.352v9.572H93.581z" />
+	<path fill="#ADADAD" d="M93.581,12.388v1.013h1.352v-1.013H93.581z" />
+	<path fill="#A8A8A8" d="M93.581,13.401v1.126h1.352v-1.126H93.581z" />
+	<path fill="#A3A3A3" d="M93.581,22.861v-8.333h1.352v8.333H93.581z" />
+	<path fill="#383838" d="M37.5,26.916h56.307v0.449H37.5V26.916z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M93.807,2.816H112.5l-9.459,20.045h-9.234V2.816" />
+</g>
+<g id="Group_Bottom_Support">
+	<path fill="#7F7F7F" d="M0,33.897l2.478-1.126v-4.055H37.5v4.055l2.252,1.126H0z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M2.478,26.916H37.5v1.801H2.478V26.916z" />
+	<path fill="#B2B2B2" d="M0,33.897l2.478-1.126H37.5l2.252,1.126H0z" />
+	<path fill="#4C4C4C" d="M2.478,28.716H37.5v0.451H2.478V28.716z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,33.897l2.478-1.126v-4.055H37.5v4.055l2.252,1.126H0" />
+</g>
+<g id="Group_Stand">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="77.3652" y1="30.4058" x2="84.3467" y2="30.4058">
+		<stop offset="0" style="stop-color:#4C4C4C" />
+		<stop offset="0.5" style="stop-color:#999999" />
+		<stop offset="1" style="stop-color:#4C4C4C" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M77.365,33.897l2.252-1.126v-5.855h2.252v5.855l2.478,1.126H77.365" />
+</g>
+<g id="Group_Controls">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M9.347,5.744h9.234v21.172H9.347V5.744z" />
+	<path fill="#CCCCCC" d="M5.293,26.24l0.45,0.676h11.712l1.126-1.127V14.077l-1.126,1.126v10.585H5.743L5.293,26.24z" />
+	<path fill="#CCCCCC" d="M7.545,10.699l0.451,0.451h9.685l0.901-0.901V1.69L17.68,2.591v7.658H7.996L7.545,10.699z" />
+	<path fill="#F2F2F2" d="M17.455,15.203l1.126-1.126H5.743l-1.126,1.126v10.585l0.676,0.451l0.45-0.451V15.203H17.455z" />
+	<path fill="#F2F2F2" d="M17.68,2.591l0.901-0.901H7.996L6.982,2.591v7.658l0.563,0.45l0.451-0.45V2.591H17.68z" />
+	<path fill="#E5E5E5" d="M7.996,2.591h9.685v7.658H7.996V2.591z" />
+	<path fill="#E5E5E5" d="M5.743,15.203h11.712v10.585H5.743V15.203z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M18.581,10.249V1.69H7.996L6.982,2.591v7.658l1.014,0.901h9.685   L18.581,10.249" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M18.581,25.789V14.077H5.743l-1.126,1.126v10.585l1.126,1.127h11.712   L18.581,25.789" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M8.784,0h8.671V1.69H8.784V0z" />
+</g>
+<g id="Group_Top_Unit">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M20.383,0h0.676V1.69h-0.676V0z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M92.455,0h0.676V1.69h-0.676V0z" />
+</g>
+</svg>

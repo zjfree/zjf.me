@@ -1,0 +1,21 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="_x23__x23_Slider3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="79px" viewBox="0 0 112.5 79.057" enable-background="new 0 0 112.5 79.057" xml:space="preserve">
+<g id="Group_Slider3" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="79.9336" y1="38.1555" x2="83.6934" y2="40.7881">
+	<stop offset="0" style="stop-color:#666666" />
+	<stop offset="0.97" style="stop-color:#CCCCCC" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" d="M51.689,78.492l9.235-5.855l51.014-72.186l-8.896,5.631" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="84.584" y1="50.8904" x2="27.7588" y2="-16.8312">
+	<stop offset="0" style="stop-color:#666666" />
+	<stop offset="0.56" style="stop-color:#666666" />
+	<stop offset="1" style="stop-color:#ABABAB" />
+</linearGradient>
+<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.5" d="M103.041,6.082l-2.253,2.928l-2.14,2.703l-2.252,2.14  l-3.717,1.464l-3.04,1.014l-3.04,1.014l-3.266,0.788l-3.492,0.788l-3.49,0.676l-3.717,0.45l-3.828,0.451l-3.941,0.225h-3.941  l-4.392-0.112l-4.279-0.226l-4.167-0.563l-4.167-0.676l-3.941-0.788l-3.829-0.901l-3.604-1.126l-3.491-1.239l-3.266-1.464  l-3.041-1.464l-2.928-1.688l-2.59-1.803l-3.378-2.814l-2.815-3.153l-0.789-1.126L9.572,0.451L0.451,6.082l51.238,72.41" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.4507" y1="42.3992" x2="102.8154" y2="42.3992">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.5" style="stop-color:#CCCCCC" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.5" d="M102.815,6.307l-2.253,3.266l-3.04,3.041l-3.491,2.814  l-2.703,1.689l-3.04,1.577l-3.153,1.464l-3.266,1.238l-3.604,1.239l-3.717,1.013l-3.941,0.901l-3.941,0.676L62.5,25.789  l-4.279,0.338l-4.279,0.113h-4.392l-4.279-0.113l-4.279-0.338l-4.167-0.563l-4.054-0.676l-3.829-0.901l-3.716-1.013l-3.604-1.239  l-3.378-1.238l-3.153-1.464l-3.041-1.577l-2.703-1.689l-2.478-1.914l-3.153-2.928l-2.59-3.153L0.451,6.307l51.238,72.185  L102.815,6.307z" />
+</g>
+</svg>

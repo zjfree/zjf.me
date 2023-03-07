@@ -1,0 +1,57 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61px" height="112px" viewBox="0 0 61.488 112.5" enable-background="new 0 0 61.488 112.5" xml:space="preserve">
+<g id="Group_Base_Stand">
+	<path fill="#4C4C4C" d="M55.632,104.842l1.126,4.73h2.365v-4.73H55.632z" />
+	<path fill="#4C4C4C" d="M7.546,104.842v4.73h2.365l1.126-4.73H7.546z" />
+	<path fill="#474747" d="M0.001,107.771v1.126h56.193l4.73-2.928v-1.127l-4.73,2.929H0.001z" />
+	<path fill="#E5E5D8" stroke="#4C4C4C" stroke-width="0.25" d="M50.339,107.771l1.238,4.729h2.253v-4.729H50.339z" />
+	<path fill="#E5E5D8" stroke="#4C4C4C" stroke-width="0.25" d="M2.253,107.771v4.729h2.365l1.126-4.729H2.253z" />
+</g>
+<g id="Group_Control_Unit">
+	<path fill="#F7F7F0" stroke="#4C4C4C" stroke-width="0.1" d="M0.001,18.694L1.127,2.252h56.194l-1.127,16.441H0.001z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="50.1736" y1="110.5771" x2="6.0186" y2="15.8866">
+		<stop offset="0" style="stop-color:#D8D8CB" />
+		<stop offset="0.3" style="stop-color:#D8D8CB" />
+		<stop offset="0.6" style="stop-color:#F2F2E5" />
+		<stop offset="1" style="stop-color:#F2F2E5" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,107.771V18.694h56.193v89.077H0z" />
+	<path fill="#FCFCFA" stroke="#4C4C4C" stroke-width="0.25" d="M1.127,2.252L5.744,0h55.743l-4.166,2.252H1.127z" />
+	<path fill="#E5E5CC" stroke="#4C4C4C" stroke-width="0.25" d="M57.321,2.252l-1.127,16.441v89.077l5.293-2.929V0L57.321,2.252z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,35.135h56.193" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,18.694h56.193" />
+</g>
+<g id="Group_Brown_Stripe">
+	<path fill="#990000" d="M0.001,71.396v-5.855h56.193v5.855H0.001z" />
+</g>
+<g id="Group_Red_Stripe">
+	<path fill="#FF0000" d="M0.001,77.252v-5.855h56.193v5.855H0.001z" />
+</g>
+<g id="Group_Yellow_Stripe">
+	<path fill="#FFCC00" d="M0.001,83.107v-5.855h56.193v5.855H0.001z" />
+</g>
+<g id="Group_Vents">
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M44.483,103.041l4.729-2.365" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,88.964l4.73-2.364" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,91.329l9.46-4.729" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,93.693l9.46-4.729" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,96.059l9.46-4.729" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,98.424l9.46-4.73" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,100.676l9.46-4.617" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M39.753,103.041l9.46-4.617" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M11.713,103.041l4.617-2.365" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,88.964l4.729-2.364" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,91.329L16.33,86.6" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,93.693l9.347-4.729" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,96.059l9.347-4.729" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,98.424l9.347-4.73" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,100.676l9.347-4.617" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M6.983,103.041l9.347-4.617" />
+</g>
+<g id="Group_Display">
+	<path fill="#474747" d="M6.983,16.329L7.546,4.617h42.229l-0.563,11.712H6.983z" />
+	<path fill="#474747" d="M21.059,40.991v-2.365h14.076v2.365H21.059z" />
+	<ellipse fill="#474747" cx="28.042" cy="44.482" rx="4.616" ry="1.239" />
+	<path fill="#F2F2F2" d="M8.109,15.203l0.676-9.459h19.932l-0.675,9.459H8.109z" />
+	<path fill="#474747" d="M13.402,8.671V6.982h8.221v1.689H13.402z" />
+</g>
+</svg>

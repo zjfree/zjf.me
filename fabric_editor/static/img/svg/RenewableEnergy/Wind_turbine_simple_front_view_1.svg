@@ -1,0 +1,15 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68px" height="114px" viewBox="0 0 67.672 113.998" enable-background="new 0 0 67.672 113.998" xml:space="preserve">
+<g id="Group_Pole">
+	<path fill="#7F7F7F" stroke="#999999" stroke-width="0.25" d="M25.906,113.313h4.678v0.685h-4.678V113.313z" />
+	<path fill="#C1D4D2" stroke="#999999" stroke-width="0.25" d="M30.584,113.313l-1.027-74.287h-2.51l-1.141,74.287H30.584z" />
+</g>
+<g id="Group_Blades">
+	<path fill="#C1D4D2" stroke="#999999" stroke-width="0.25" d="M29.101,37.771L17.804,0.114L17.347,0l-0.342,0.343l6.847,29.897   l0.457,2.396l0.457,1.256l1.711,2.738l1.141,1.483L29.101,37.771z" />
+	<path fill="#C1D4D2" stroke="#999999" stroke-width="0.25" d="M29.101,40.395l38.228,8.901l0.342-0.229l-0.229-0.457l-29.326-9.015   l-2.282-0.799l-1.255-0.228l-3.196,0.114l-1.94,0.113L29.101,40.395z" />
+	<path fill="#C1D4D2" stroke="#999999" stroke-width="0.25" d="M26.818,39.14L0.002,67.782v0.457h0.456l22.48-20.769l1.826-1.598   l0.913-1.141l1.483-2.739l0.799-1.712L26.818,39.14z" />
+</g>
+<g id="Group_Center">
+	<circle fill="#C1D4D2" stroke="#999999" stroke-width="0.25" cx="28.188" cy="39.027" r="1.94" />
+	<circle fill="#C1D4D2" stroke="#999999" stroke-width="0.25" cx="28.188" cy="39.027" r="1.141" />
+</g>
+</svg>

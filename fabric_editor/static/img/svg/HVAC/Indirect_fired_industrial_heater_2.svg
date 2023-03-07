@@ -1,0 +1,27 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="56px" viewBox="0 0 112.5 56.195" enable-background="new 0 0 112.5 56.195" xml:space="preserve">
+<g id="Group_Industrial_Heater">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="86.6318" y1="68.2571" x2="49.1789" y2="-12.0609">
+		<stop offset="0.01" style="stop-color:#939393" />
+		<stop offset="0.44" style="stop-color:#F0F0F0" />
+		<stop offset="0.74" style="stop-color:#D6D6D6" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M23.311,0.001H112.5v56.193H23.311V0.001z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M25.788,2.141h84.46v51.576h-84.46V2.141" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M86.6,2.141v51.576" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M51.464,2.141v51.576" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M56.194,2.141v51.576" />
+</g>
+<g id="Group_Infrared_Port">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="25.8579" y1="40.8186" x2="9.3415" y2="5.3991">
+		<stop offset="0.03" style="stop-color:#A7A9AC" />
+		<stop offset="0.23" style="stop-color:#B6B8BA" />
+		<stop offset="0.38" style="stop-color:#C4C6C8" />
+		<stop offset="0.73" style="stop-color:#B5B7BA" />
+		<stop offset="1" style="stop-color:#A7A9AC" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.1" d="M23.311,42.006h-6.982L0,18.582L16.329,2.141h6.982V42.006z" />
+</g>
+<g id="Group_Lead">
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M23.311,35.024h-2.252V21.06h2.252V35.024z" />
+</g>
+</svg>

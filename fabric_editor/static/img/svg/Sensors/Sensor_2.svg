@@ -1,0 +1,32 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34px" height="112px" viewBox="0 0 34.006 112.5" enable-background="new 0 0 34.006 112.5" xml:space="preserve">
+<g id="Group_Yellow_Part">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="3.3779" y1="97.1807" x2="30.6279" y2="97.1807">
+		<stop offset="0.01" style="stop-color:#FFFF00" />
+		<stop offset="0.5" style="stop-color:#FFFFBD" />
+		<stop offset="1" style="stop-color:#FFFF00" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M6.756,81.867l-3.378,3.377l3.378,3.266v17.115l-3.265,3.379   l3.265,3.49H27.25l3.378-3.49l-3.378-3.379V88.51l3.378-3.377l-3.378-3.266H6.756z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.247,88.623h13.625" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.247,105.738h13.625" />
+</g>
+<g id="Group_Sensor">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="3.3779" y1="40.8799" x2="30.6279" y2="40.8799">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M3.378,0.006v54.499l3.378,27.249H27.25l3.378-27.362V0.006   H3.378z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0" y1="44.2578" x2="34.0059" y2="44.2578">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,34.011h34.006v20.494H0V34.011z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="0" y1="17.0088" x2="34.0059" y2="17.0088">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,6.762h34.006v20.493H0V6.762z" />
+</g>
+</svg>

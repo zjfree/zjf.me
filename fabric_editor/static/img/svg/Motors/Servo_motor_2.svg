@@ -1,0 +1,56 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="52px" viewBox="0 0 112.5 51.912" enable-background="new 0 0 112.5 51.912" xml:space="preserve">
+<g id="Group_Shaft">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.1938" y1="0.7593" x2="95.6064" y2="0.7593">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M56.194,0h39.413v1.519H56.194V0z" />
+</g>
+<g id="Group_Base">
+	<path fill="#231F20" d="M42.23,47.984h56.304v3.928H42.23V47.984z" />
+</g>
+<g id="Group_MotorBody">
+	<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="105.0527" y1="48.3086" x2="105.0527" y2="1.915">
+		<stop offset="0" style="stop-color:#E04700" />
+		<stop offset="0" style="stop-color:#A83C24" />
+		<stop offset="0.5" style="stop-color:#FF8A00" />
+		<stop offset="1" style="stop-color:#A83C24" />
+	</linearGradient>
+	<path id="XMLID_1_" fill="url(#XMLID_3_)" d="M97.608,1.915h14.89v46.394h-14.89V1.915" />
+	<path fill="#BA3E1D" d="M1.383,6.869h41.759v45.043H1.383v-8.558l-1.381-1.352v-8.334l1.381-1.576v-5.63l-1.381-1.352v-8.333   l1.381-1.576V6.869z" />
+	<path fill="#BA3E1D" d="M42.23,1.239h56.304v47.746H42.23V1.239z" />
+	<path fill="#DB5E1E" d="M56.194,6.869h39.413v45.043H56.194V6.869z" />
+	<circle fill="#4C4C4C" cx="21.736" cy="29.391" r="11.261" />
+	<circle fill="#B2B2B2" cx="21.736" cy="29.39" r="5.63" />
+	<circle fill="#CCCCCC" cx="21.736" cy="29.278" r="3.604" />
+	<circle fill="#333333" cx="21.736" cy="29.278" r="2.252" />
+	<path fill="#DB5E1E" d="M56.194,4.842h39.413v1.351H56.194V4.842z" />
+	<path fill="#DB5E1E" d="M56.194,2.59h39.413v1.352H56.194V2.59z" />
+	<path fill="#4D4D4D" d="M3.494,6.193h2.027v0.676H3.494V6.193z" />
+	<path fill="#4D4D4D" d="M37.951,6.193h2.027v0.676h-2.027V6.193z" />
+	<path fill="#DB5E1E" d="M25.564,15.202l-0.225-5.63h14.639v16.215L36.6,26.012c0,0-1.163-4.806-3.941-6.869   C29.008,16.433,25.564,15.202,25.564,15.202z" />
+	<path fill="#DB5E1E" d="M10.813,19.143c-2.779,2.063-3.941,6.869-3.941,6.869l-3.378-0.225V9.572h14.639l-0.225,5.63   C17.907,15.202,14.464,16.433,10.813,19.143z" />
+	<path fill="#DB5E1E" d="M17.907,44.255l0.225,5.631H3.494V33.67l3.378-0.226c0,0,1.163,4.807,3.941,6.869   C14.464,43.024,17.907,44.255,17.907,44.255z" />
+	<path fill="#DB5E1E" d="M32.659,40.313c2.779-2.063,3.941-6.869,3.941-6.869l3.378,0.226v16.216H25.339l0.225-5.631   C25.564,44.255,29.008,43.024,32.659,40.313z" />
+	<circle fill="#231F20" cx="21.848" cy="14.639" r="0.788" />
+	<circle fill="#231F20" cx="6.308" cy="30.065" r="0.788" />
+	<circle fill="#231F20" cx="21.736" cy="45.606" r="0.788" />
+	<circle fill="#231F20" cx="37.276" cy="30.065" r="0.788" />
+	<polygon fill="#FF8A00" points="59.572,10.473 91.803,10.473 90.666,11.65 59.572,11.65  " />
+	<polygon fill="#AE4B1B" points="59.572,10.473 59.572,48.309 60.75,48.309 60.764,11.65  " />
+	<polygon fill="#AE4B1B" points="91.803,48.309 59.572,48.309 60.709,47.131 91.803,47.131  " />
+	<polygon fill="#FF8A00" points="91.803,48.309 91.803,10.473 90.625,11.65 90.611,47.131  " />
+	<polygon fill="#4D4D4D" points="57.266,9.683 56.648,8.614 57.266,7.545 58.5,7.545 59.117,8.614 58.5,9.683  " />
+	<polygon fill="#4D4D4D" points="93.3,9.683 92.683,8.614 93.3,7.545 94.534,7.545 95.151,8.614 94.534,9.683  " />
+	<polygon fill="#E04700" points="93.3,51.122 92.683,50.054 93.3,48.984 94.534,48.984 95.151,50.054 94.534,51.122  " />
+	<polygon fill="#E04700" points="57.266,51.122 56.648,50.054 57.266,48.984 58.5,48.984 59.117,50.054 58.5,51.122  " />
+	<polygon fill="#4D4D4D" points="21.399,15.417 20.95,14.639 21.399,13.861 22.298,13.861 22.747,14.639 22.298,15.417  " />
+	<polygon fill="#4D4D4D" points="5.859,30.845 5.41,30.067 5.859,29.288 6.758,29.288 7.207,30.067 6.758,30.845  " />
+	<polygon fill="#4D4D4D" points="36.826,30.845 36.377,30.067 36.826,29.288 37.725,29.288 38.174,30.067 37.725,30.845  " />
+	<polygon fill="#4D4D4D" points="21.286,46.386 20.837,45.608 21.286,44.829 22.185,44.829 22.634,45.608 22.185,46.386  " />
+</g>
+</svg>

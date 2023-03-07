@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74px" height="112px" viewBox="0 0 73.648 112.5" enable-background="new 0 0 73.648 112.5" xml:space="preserve">
+<g id="Group_Transmitter_Unit">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="81.3923" y1="100.8164" x2="-7.8537" y2="11.5704">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M42.004,109.234h30.97V3.153h-30.97v-2.59H31.644v2.59H0.563   v106.082h31.081l1.465,1.802l3.716,0.788l3.604-0.788L42.004,109.234z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.333,109.234v-3.829H4.504V7.095h64.641v98.312h-3.941v3.828" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.644,3.153h10.359" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.333,105.405h56.869" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M4.504,98.874h64.641" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.644,109.234h10.359" />
+</g>
+<g id="Group_Label">
+	<path fill="#E4E4E4" stroke="#4C4C4C" stroke-width="0.25" d="M8.333,80.743V34.234h56.869v46.509H39.414l-2.59-2.591l-2.59,2.591   H8.333z" />
+</g>
+</svg>

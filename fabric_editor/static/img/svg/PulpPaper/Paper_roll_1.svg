@@ -1,0 +1,21 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_PaperStart">
+	<circle fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" cx="56.194" cy="56.193" r="56.193" />
+</g>
+<g id="Group_RolledPaper">
+	<circle fill="#FF6600" cx="56.194" cy="56.193" r="51.576" />
+</g>
+<g id="Group_PaperEnd">
+	<circle fill="#D9CCB3" cx="56.081" cy="56.081" r="42.229" />
+	<circle fill="none" stroke="#998C73" stroke-width="0.25" cx="56.194" cy="56.194" r="37.613" />
+</g>
+<g id="Group_Roller">
+	<path fill="none" stroke="#998C73" stroke-width="0.25" d="M67.793,44.542c2.99,2.978,4.842,7.099,4.842,11.652   c0,9.08-7.361,16.441-16.441,16.441c-4.554,0-8.675-1.852-11.652-4.842" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="64.2148" y1="70.3486" x2="48.1427" y2="41.986">
+		<stop offset="0" style="stop-color:#FFCCBD" />
+		<stop offset="1" style="stop-color:#F9E5CC" />
+	</linearGradient>
+	<circle fill="url(#SVGID_1_)" cx="56.194" cy="56.194" r="16.441" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M44.542,67.793c-2.96-2.973-4.789-7.072-4.789-11.599   c0-9.081,7.361-16.441,16.441-16.441c4.527,0,8.626,1.829,11.599,4.789" />
+</g>
+</svg>

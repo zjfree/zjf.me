@@ -1,0 +1,29 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 75.002 112.5" enable-background="new 0 0 75.002 112.5" xml:space="preserve">
+<g id="Group_Aisel">
+	<path fill="#A8A8A8" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,112.5l35.135-46.959h4.617L75.001,112.5h-4.729L37.501,70.271   L4.618,112.5H0.001z" />
+</g>
+<g id="Group_Stand">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="35.1362" y1="42.1172" x2="39.7529" y2="42.1172">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M35.136,65.541h4.617V18.694h-4.617V65.541z" />
+</g>
+<g id="Group_Vision_System">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="18.6948" y1="9.3467" x2="56.1943" y2="9.3467">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M18.695,0h37.5v18.694h-37.5V0z" />
+</g>
+<g id="Group_Cam">
+	<radialGradient id="SVGID_3_" cx="37.4453" cy="9.291" r="7.0381" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M37.501,16.329l-5.067-2.027l-2.027-4.955l2.027-5.067l5.067-2.027l4.955,2.027l2.027,5.067   l-2.027,4.955L37.501,16.329" />
+</g>
+</svg>

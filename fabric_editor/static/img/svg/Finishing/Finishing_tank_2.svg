@@ -1,0 +1,38 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="65px" viewBox="0 0 112.5 64.98" enable-background="new 0 0 112.5 64.98" xml:space="preserve">
+<g id="Group_Finishing_Tank">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.676,0.677h111.036v59.091H0.676V0.677z" />
+</g>
+<g id="Group_Finishing_Tank_Bottom">
+	<path fill="#404040" d="M3.491,59.799h105.405v4.505H3.491V59.799z" />
+</g>
+<g id="Group_Finishing_Tank_Seal">
+	<path fill="#7F7F7F" d="M112.5,11.6v-1.126H0V11.6H112.5z" />
+	<path fill="#7F7F7F" d="M111.712,49.888v-1.126H0.676v1.126H111.712z" />
+	<path fill="#7F7F7F" d="M13.176,0.002h-1.126v64.977h1.126V0.002z" />
+	<path fill="#7F7F7F" d="M26.014,0.002h-1.126v64.977h1.126V0.002z" />
+	<path fill="#7F7F7F" d="M38.176,0.002h-0.451v64.977h0.451V0.002z" />
+	<path fill="#7F7F7F" d="M51.464,0.002h-0.45v64.977h0.45V0.002z" />
+	<path fill="#7F7F7F" d="M61.374,0.002h-0.45v64.977h0.45V0.002z" />
+	<path fill="#7F7F7F" d="M74.212,0.002h-0.676v64.977h0.676V0.002z" />
+	<path fill="#7F7F7F" d="M87.5,0.002h-1.126v64.977H87.5V0.002z" />
+	<path fill="#7F7F7F" d="M100.338,0.002h-1.126v64.977h1.126V0.002z" />
+</g>
+<g id="Group_Finishing_TankSeal">
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M111.712,49.888v5.856H0.676v-5.856H111.712z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M112.5,6.871v3.604H0V6.871H112.5z" />
+	<path fill="#E5E5E5" d="M100.338,0.002h2.14v64.977h-2.14l-9.91-9.459h2.928l6.982,6.307V0.002z" />
+	<path fill="#E5E5E5" d="M12.049,0.002H9.91v64.977h2.14l9.91-9.459h-2.928l-6.982,6.307V0.002z" />
+	<path fill="#E5E5E5" d="M22.635,0.002h2.478v64.977h-2.478V0.002z" />
+	<path fill="#E5E5E5" d="M35.698,0.002h2.252v64.977h-2.252V0.002z" />
+	<path fill="#E5E5E5" d="M48.536,0.002h2.478v64.977h-2.478V0.002z" />
+	<path fill="#E5E5E5" d="M61.6,0.002h2.252v64.977H61.6V0.002z" />
+	<path fill="#E5E5E5" d="M74.438,0.002h2.477v64.977h-2.477V0.002z" />
+	<path fill="#E5E5E5" d="M87.5,0.002h2.252v64.977H87.5V0.002z" />
+</g>
+<g id="Group_Finishing_Tank_Labels">
+	<path fill="#E5E5E5" d="M63.626,14.303h9.91v5.855h-9.91V14.303z" />
+	<path fill="#999999" d="M63.626,20.835h9.91v-0.676h-9.91V20.835z" />
+	<path fill="#E5E5E5" d="M26.014,14.303h9.91v5.855h-9.91V14.303z" />
+	<path fill="#999999" d="M26.014,20.835h9.91v-0.676h-9.91V20.835z" />
+</g>
+</svg>

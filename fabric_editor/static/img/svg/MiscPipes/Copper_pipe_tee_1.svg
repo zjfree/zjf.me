@@ -1,0 +1,20 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="84px" height="112px" viewBox="0 0 84.232 112.5" enable-background="new 0 0 84.232 112.5" xml:space="preserve">
+<g id="Group_Vertical">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-31.2634" y1="259.5986" x2="27.4475" y2="259.5986" gradientTransform="matrix(1 0 0 1 30.9551 -203.4902)">
+		<stop offset="0" style="stop-color:#663300" />
+		<stop offset="0.5" style="stop-color:#CC6633" />
+		<stop offset="1" style="stop-color:#663300" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_1_)" points="58.403,-0.133 58.19,112.351 -0.308,112.351 -0.308,-0.133  " />
+</g>
+<g id="Group_Copper_Pipe_Tee">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="136.4485" y1="151.0225" x2="77.7375" y2="151.0225" gradientTransform="matrix(0 1 1 0 -94.0154 -51.2844)">
+		<stop offset="0" style="stop-color:#663300" />
+		<stop offset="0.5" style="stop-color:#CC6633" />
+		<stop offset="1" style="stop-color:#663300" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="56.884,26.453 29.649,55.656 56.884,85.164 84.366,84.951 84.366,26.453  " />
+</g>
+</svg>

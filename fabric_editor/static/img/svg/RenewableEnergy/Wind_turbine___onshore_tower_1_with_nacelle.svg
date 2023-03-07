@@ -1,0 +1,19 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="114px" viewBox="0 0 9.583 113.998" enable-background="new 0 0 9.583 113.998" xml:space="preserve">
+<g id="Group_Pole">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1.0269" y1="57.6257" x2="5.248" y2="57.6257">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M5.248,113.984L4.335,1.268H2.054L1.027,113.984H5.248z" />
+	<path fill="#999999" stroke="#999999" stroke-width="0.25" d="M1.084,113.984h4.107v-0.228H1.084V113.984z" />
+</g>
+<g id="Group_Motor">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.6011" y1="3.6804" x2="4.8221" y2="0.2249">
+		<stop offset="0" style="stop-color:#6D6D6D" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#6D6D6D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M8.01,3.889L0,3.435V0.013l9.469,0.456c0,0,0.197,1.201,0,2.107C9.197,3.828,8.01,3.889,8.01,3.889z   " />
+</g>
+</svg>

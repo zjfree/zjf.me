@@ -1,0 +1,13 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="101px" height="112px" viewBox="0 0 100.778 112.5" enable-background="new 0 0 100.778 112.5" xml:space="preserve">
+<g id="Group_Bend_Duct">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.5" d="M88.377,76.428l-35.959,35.847L0.001,112.5V21.08h14.203l9.695-9.356   L88.377,76.428z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.5" d="M52.418,112.274L14.204,21.08" />
+</g>
+<g id="Group_Joints">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M18.15,14.204L30.099,2.029L28.069,0L16.008,12.174L18.15,14.204z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M88.603,84.656l12.175-11.948l-2.029-2.029L86.575,82.628   L88.603,84.656z" />
+</g>
+<g id="Group_Rod">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.5" d="M18.15,5.975l4.171-3.945l76.428,76.428l-3.945,4.171L18.15,5.975z" />
+</g>
+</svg>

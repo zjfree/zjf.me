@@ -1,0 +1,29 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="64px" viewBox="0 0 112.5 63.742" enable-background="new 0 0 112.5 63.742" xml:space="preserve">
+<g id="Group_Solvent">
+	<path fill="#4C4C16" d="M109.572,51.578L77.14,55.632v7.546H72.41v-6.982L57.996,58.56h-3.492L2.815,51.578v-4.617l6.982-0.563   l7.545,1.688l6.419-1.126l2.928-1.238l4.505,0.676l2.478-0.676l11.599,1.802l6.306-1.126l7.544,1.126l2.928-1.126l4.617,0.563   l8.109,1.689l4.053-0.563l5.856,0.563l6.981-1.126h2.365l3.941,0.563l6.982-1.688l4.617,1.126V51.578z" />
+</g>
+<g id="Group_Liquid">
+	<g>
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M6.306,49.888l6.419-0.676" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M16.779,50.452l4.617-0.563l5.856,1.126" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M26.014,49.326l5.855-0.676l1.689,0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M45.721,54.506l-5.18-1.238" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M38.176,51.578l6.419-0.563l8.108,0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M45.158,47.524l-5.18,0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M62.613,49.213l6.306,0.676l5.856-1.238" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M73.648,52.366l4.055-0.788l4.617,0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M86.374,50.452l4.054-0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M91.555,51.578l4.053-0.563l5.856,1.127" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M72.973,55.069l-3.49-0.563l-5.181,0.563" />
+		<path fill="none" stroke="#4C4C4C" stroke-width="0.75" stroke-linecap="round" d="M2.815,46.961l6.982-0.563l7.545,1.688    l6.419-1.126l2.815-1.238l4.617,0.676l2.365-0.676l11.599,1.802l6.419-1.126l7.544,1.126l2.816-1.126l4.729,0.563l8.109,1.689    l4.617-0.563l5.292,0.563l6.87-1.126h2.364l4.054,0.563l6.982-1.688l4.617,1.126" />
+	</g>
+	<g>
+		<polygon fill="#73878C" points="72.41,56.609 72.41,56.195 57.996,58.56   " />
+		<polygon fill="#73878C" points="77.14,55.969 109.572,51.578 77.14,55.632   " />
+		<polygon fill="#73878C" points="2.815,7.433 2.815,46.961 9.797,46.398 17.342,48.087 23.761,46.961 26.689,45.722 31.194,46.398     33.671,45.722 45.271,47.524 51.577,46.398 59.121,47.524 62.049,46.398 66.666,46.961 74.775,48.65 78.828,48.087 84.685,48.65     91.666,47.524 94.031,47.524 97.973,48.087 104.955,46.398 109.572,47.524 109.572,7.433   " />
+	</g>
+</g>
+<g id="Group_Clarifier">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.451,56.195V0.564h9.347v4.617H2.815v46.396l51.689,6.869V2.817   h-2.928V0.452h9.234v2.365h-2.928v55.63l14.527-2.252v6.982h4.729v-7.546l32.433-4.054V5.181h-6.982V0.564h9.348v55.631   l-33.109,3.829v3.153h-8.107V61.15l-14.527,2.027L0.451,56.195z" />
+</g>
+</svg>

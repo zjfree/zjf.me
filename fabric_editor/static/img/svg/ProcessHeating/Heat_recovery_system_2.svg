@@ -1,0 +1,27 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49px" height="112px" viewBox="0 0 49.211 112.5" enable-background="new 0 0 49.211 112.5" xml:space="preserve">
+<g id="Group_Heat_Recovery_System">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="57.2383" x2="49.2114" y2="57.2383">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" points="3.491,6.957 0,107.521 49.211,107.521 45.608,6.957     " />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="3.4019" y1="3.9482" x2="45.8569" y2="3.9482">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.15" style="stop-color:#979797" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="0.84" style="stop-color:#9F9F9F" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.1012" d="M3.402,7.359C4.148,3.257,13.356,0,24.605,0   c11.737,0,21.251,3.545,21.251,7.897" />
+</g>
+<g id="Group_Stand">
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M9.347,107.771h30.405v4.729H9.347V107.771z" />
+</g>
+<g id="Group_Lever">
+	<path fill="#B2B2B2" d="M23.536,10.585l4.504,3.491h2.478v-2.478l-4.729-3.378L23.536,10.585z" />
+	<path fill="#B2B2B2" d="M23.536,98.536l4.504,3.266h2.478v-2.14l-4.729-3.604L23.536,98.536z" />
+	<path fill="#333333" d="M23.536,8.221h2.252v2.365h-2.252V8.221z" />
+	<path fill="#333333" d="M23.536,96.059h2.252v2.478h-2.252V96.059z" />
+</g>
+</svg>

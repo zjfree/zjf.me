@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="85px" viewBox="0 0 112.5 84.571" enable-background="new 0 0 112.5 84.571" xml:space="preserve">
+<g id="Group_Gas_Pipe_Tee">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.8701" y1="245.4341" x2="68.5811" y2="245.4341" gradientTransform="matrix(0 -1 1 0 -188.9468 67.478)">
+		<stop offset="0" style="stop-color:#5C6666" />
+		<stop offset="0.41" style="stop-color:#FCFFFF" />
+		<stop offset="0.61" style="stop-color:#FCFFFF" />
+		<stop offset="1" style="stop-color:#5C6666" />
+	</linearGradient>
+	<polyline fill="url(#SVGID_1_)" points="0.246,-1.103 112.73,-0.89 112.73,57.608 0.246,57.608  " />
+</g>
+<g id="Group_Vertical">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="150.582" y1="136.7163" x2="91.8711" y2="136.7163" gradientTransform="matrix(1 0 0 1 -64.8389 -79.083)">
+		<stop offset="0" style="stop-color:#5C6666" />
+		<stop offset="0.41" style="stop-color:#FCFFFF" />
+		<stop offset="0.61" style="stop-color:#FCFFFF" />
+		<stop offset="1" style="stop-color:#5C6666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="27.032,57.509 56.235,30.275 85.743,57.509 85.53,84.993 27.032,84.993  " />
+</g>
+</svg>

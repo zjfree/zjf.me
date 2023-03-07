@@ -1,0 +1,46 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="73px" height="112px" viewBox="0 0 73.311 112.5" enable-background="new 0 0 73.311 112.5" xml:space="preserve">
+<g id="Group_RailsBack">
+	<line fill="none" stroke="#FFCC00" stroke-width="0.495" x1="57.338" y1="0.5" x2="57.338" y2="8.303" />
+	<line fill="none" stroke="#FFCC00" stroke-width="0.495" x1="15.865" y1="0.5" x2="15.865" y2="8.303" />
+	<line fill="none" stroke="#FFCC00" stroke-width="0.495" x1="36.602" y1="0.054" x2="36.602" y2="7.746" />
+	<line fill="none" stroke="#FFCC00" stroke-width="0.495" x1="0.48" y1="2.952" x2="0.48" y2="7.969" />
+	<path fill="none" stroke="#FFCC00" stroke-width="0.495" d="M0.368,7.6c0-1.575,16.326-2.852,36.463-2.852   c20.135,0,36.46,1.277,36.46,2.852" />
+	<path fill="none" stroke="#FFCC00" stroke-width="0.495" d="M0.368,5.291c0-1.575,16.326-2.853,36.463-2.853   c20.136,0,36.459,1.277,36.459,2.853" />
+	<path fill="none" stroke="#FFCC00" stroke-width="0.495" d="M0.368,2.906c0-1.576,16.326-2.853,36.463-2.853   c20.136,0,36.459,1.277,36.459,2.853" />
+	<line fill="none" stroke="#FFCC00" stroke-width="0.495" x1="72.945" y1="2.952" x2="72.945" y2="7.969" />
+</g>
+<g id="Group_RailsFront">
+	<line fill="none" stroke="#CC9900" stroke-width="0.495" x1="54.885" y1="4.848" x2="54.885" y2="10.087" />
+	<line fill="none" stroke="#CC9900" stroke-width="0.495" x1="18.541" y1="4.848" x2="18.541" y2="10.087" />
+	<path fill="none" stroke="#CC9900" stroke-width="0.495" d="M73.29,2.769c0,1.574-16.325,2.852-36.463,2.852   c-20.135,0-36.459-1.277-36.459-2.852" />
+	<path fill="none" stroke="#CC9900" stroke-width="0.495" d="M73.291,5.409c0,1.573-16.325,2.852-36.464,2.852   c-20.134,0-36.458-1.278-36.458-2.852" />
+	<path fill="none" stroke="#CC9900" stroke-width="0.495" d="M73.291,7.719c0,1.575-16.325,2.852-36.464,2.852   c-20.135,0-36.459-1.276-36.459-2.852" />
+</g>
+<g id="Group_TankSupport">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="15.7095" y1="80.4688" x2="57.2461" y2="80.4688">
+		<stop offset="0" style="stop-color:#E5CB98" />
+		<stop offset="0.01" style="stop-color:#E5CB98" />
+		<stop offset="0.5" style="stop-color:#FFF5E0" />
+		<stop offset="1" style="stop-color:#E5CB98" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#996600" stroke-width="0.25" d="M15.709,48.438v61.773h0.059c0,0.267,0,0.533,0,0.8   c3.823,0.884,11.785,1.489,20.994,1.489c8.821,0,16.493-0.557,20.484-1.38c0-0.289,0-0.601,0-0.909c0-0.228,0-0.443,0-0.672   c0-0.34,0-0.683,0-1V49.438v-1H15.709z" />
+</g>
+<g id="Group_ElivatedTank">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.2891" y1="28.584" x2="73.0215" y2="28.584">
+		<stop offset="0" style="stop-color:#E5CB98" />
+		<stop offset="0.01" style="stop-color:#E5CB98" />
+		<stop offset="0.5" style="stop-color:#FFF5E0" />
+		<stop offset="1" style="stop-color:#E5CB98" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#996600" stroke-width="0.25" d="M72.996,10.084c-6.993-1.59-20.442-2.667-35.896-2.667   c-16.137,0-30.09,1.175-36.786,2.881c0,1.524-0.025,35.047-0.025,36.572c6.7,1.707,20.663,2.881,36.811,2.881   c15.464,0,28.923-1.076,35.922-2.667C73.021,45.493,72.996,11.675,72.996,10.084z" />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-269.3428" y1="452.2441" x2="-268.3452" y2="452.2441" gradientTransform="matrix(73.3105 0 0 -73.3105 19745.7813 33208.9375)">
+		<stop offset="0" style="stop-color:#CC9735" />
+		<stop offset="0.01" style="stop-color:#CC9735" />
+		<stop offset="0.5" style="stop-color:#E5CB98" />
+		<stop offset="1" style="stop-color:#CC9735" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_3_)" points="57.129,49.018 57.105,62.425 15.796,51.721 15.827,48.875 7.452,48.117 2.624,47.344    0.166,46.766 73.311,46.922 70.679,47.441 65.702,48.188  " />
+	<line fill="none" stroke="#996600" stroke-width="0.25" x1="15.653" y1="49.662" x2="57.545" y2="49.662" />
+</g>
+</svg>

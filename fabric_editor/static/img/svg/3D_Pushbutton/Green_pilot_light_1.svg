@@ -1,0 +1,34 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108px" height="113px" viewBox="0 0 107.654 112.5" enable-background="new 0 0 107.654 112.5" xml:space="preserve">
+<g id="Group_BackplateBevel" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#A8A8A8" stroke="#000000" stroke-width="0.25" d="M102.228,66.313l-0.091-8.881l0.226-1.352l4.954-3.604l0.338-2.027   l-3.604-44.368l-1.013-3.153l-2.479-2.252l-3.152-0.675H10.135L6.982,0.677L4.729,2.93L3.716,6.083L0,50.451l0.338,2.027   l4.842,3.604l0.45,1.352l-0.295,9.635c0.111,0.456,0.164,0.929,0.16,1.401h96.032C101.609,67.706,101.842,66.965,102.228,66.313z" />
+	<path fill="#A8A8A8" stroke="#000000" stroke-width="0.25" d="M102.153,65.247c0,26.094-21.67,47.253-48.401,47.253   c-26.731,0-48.4-21.159-48.4-47.253" />
+</g>
+<g id="Group_Bannet_Assembly" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path d="M98.195,56.081l1.914-4.054l3.153-3.041L99.884,6.42l-0.787-1.689l-1.689-0.789H10.135L8.671,4.731L7.77,6.42L4.167,48.649   l3.378,3.041l2.027,4.054L98.195,56.081z" />
+</g>
+<g id="Group_Backplate" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#6E6E6E" d="M99.078,65.416c0-24.938-20.311-45.158-45.365-45.158c-25.054,0-45.364,20.22-45.364,45.158   c0,24.943,20.31,45.169,45.364,45.169C78.768,110.585,99.078,90.359,99.078,65.416z" />
+</g>
+<g id="Group_Bannet_Nut" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="47.5767" y1="23.6792" x2="59.8506" y2="23.6792">
+		<stop offset="0" style="stop-color:#808080" />
+		<stop offset="0.5" style="stop-color:#DEDEDE" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<rect x="47.577" y="20.523" fill="url(#SVGID_1_)" width="12.274" height="6.312" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="13.5791" y1="65.3145" x2="93.8496" y2="65.3145">
+		<stop offset="0" style="stop-color:#808080" />
+		<stop offset="0.5" style="stop-color:#DEDEDE" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M93.85,65.31c0-22.063-17.969-39.952-40.136-39.952c-22.166,0-40.135,17.889-40.135,39.952   c0,22.068,17.969,39.963,40.135,39.963C75.881,105.272,93.85,87.378,93.85,65.31z" />
+</g>
+<g id="Group_Pilot_Light_Red" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#009900" stroke="#000000" stroke-width="0.25" d="M87.835,65.132c0-18.84-15.276-34.12-34.121-34.12   c-18.844,0-34.121,15.28-34.121,34.12c0,18.841,15.277,34.121,34.121,34.121C72.559,99.253,87.835,83.973,87.835,65.132z" />
+	<radialGradient id="SVGID_3_" cx="44.4888" cy="54.25" r="18.6772" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CAF0CA" />
+		<stop offset="1" style="stop-color:#009900" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_3_)" cx="44.489" cy="54.25" rx="19.163" ry="18.177" />
+</g>
+</svg>

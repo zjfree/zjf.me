@@ -1,0 +1,86 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="106px" height="112px" viewBox="0 0 105.746 112.5" enable-background="new 0 0 105.746 112.5" xml:space="preserve">
+<g id="Group_Compact_Dryer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="76.8274" y1="121.7842" x2="19.9105" y2="-0.2744">
+		<stop offset="0" style="stop-color:#8ABDBD" />
+		<stop offset="0.3" style="stop-color:#8ABDBD" />
+		<stop offset="0.45" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.001,9.009h96.734V112.5H0.001V9.009z" />
+	<path fill="#99CCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,9.009h96.734L105.744,0H9.011L0.001,9.009z" />
+</g>
+<g id="Group_Side_Face">
+	<path fill="#669999" stroke="#4C4C4C" stroke-width="0.25" d="M105.744,0l-9.009,9.009V112.5l9.009-9.121V0z" />
+</g>
+<g id="Group_Box">
+	<path fill="#404040" d="M80.294,63.4h7.32l0.788,0.676V74.55L87.615,75h-7.32l-0.676-0.45V64.076L80.294,63.4z" />
+	<path fill="#217F21" d="M80.97,64.978h5.969v8.671H80.97V64.978z" />
+	<path fill="#404040" d="M74.777,45.946h17.905v7.883H74.777V45.946z" />
+</g>
+<g id="Group_Red_Gree_Display">
+	<path fill="#00FF00" d="M80.97,64.978h5.969v4.054H80.97V64.978z" />
+	<path fill="#FF6600" d="M76.015,46.734h15.428v6.419H76.015V46.734z" />
+	<path fill="#00FF00" d="M76.015,46.734h4.955v6.419h-4.955V46.734z" />
+	<path fill="#FF0000" d="M86.489,46.734h4.954v6.419h-4.954V46.734z" />
+</g>
+<g id="Group_Yellow">
+	<path fill="#FFFF00" stroke="#4C4C4C" stroke-width="0.25" d="M33.11,24.55l2.59-3.604l10.698,3.378l-1.688,1.802l10.247,3.153   l-1.126,1.464l9.572,3.716l-12.726-1.689l1.239-1.352l-11.712-3.153l1.689-1.914L33.11,24.55z" />
+</g>
+<g id="Group_Side">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M98.199,43.806l6.419-6.419v46.734l-6.419,6.42V43.806z" />
+</g>
+<g id="Group_Reader">
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M22.862,39.752v-24.55h50.451" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M22.862,39.752h50.451v-24.55" />
+</g>
+<g id="Group_Vent">
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M13.065,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M13.065,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M17.344,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M17.344,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M21.623,65.203V47.185h2.702" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M21.623,65.203h2.702V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M25.677,65.203V47.185h2.591" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M25.677,65.203h2.591V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M29.956,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M29.956,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M34.236,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M34.236,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M38.515,65.203V47.185h2.703" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M38.515,65.203h2.703V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M42.794,65.203V47.185h2.703" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M42.794,65.203h2.703V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M46.961,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M46.961,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M51.24,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M51.24,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M55.52,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M55.52,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M59.799,65.203V47.185h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M59.799,65.203h2.59V47.185" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M13.065,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M13.065,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M17.344,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M17.344,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M21.623,87.162V69.031h2.702" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M21.623,87.162h2.702V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M25.677,87.162V69.031h2.591" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M25.677,87.162h2.591V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M29.956,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M29.956,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M34.236,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M34.236,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M38.515,87.162V69.031h2.703" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M38.515,87.162h2.703V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M42.794,87.162V69.031h2.703" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M42.794,87.162h2.703V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M46.961,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M46.961,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M51.24,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M51.24,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M55.52,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M55.52,87.162h2.59V69.031" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M59.799,87.162V69.031h2.59" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M59.799,87.162h2.59V69.031" />
+</g>
+</svg>

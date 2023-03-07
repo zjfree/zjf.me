@@ -1,0 +1,30 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="112px" viewBox="0 0 19.93 112.5" enable-background="new 0 0 19.93 112.5" xml:space="preserve">
+<g id="Group_Pipe3">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="88.7344" x2="19.9297" y2="88.7344">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" stroke-miterlimit="10" d="M19.93,107.426V67.453l-2.477-2.477   H2.477L0,67.453v39.973c0,0,1.544,5.066,9.909,5.066C18.43,112.492,19.93,107.426,19.93,107.426z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,67.453h19.93" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,107.426h19.93" />
+</g>
+<g id="Group_Pipe2">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2.4771" y1="46.229" x2="17.4531" y2="46.229">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" stroke-miterlimit="10" points="17.453,64.977 2.572,64.977    2.477,29.958 4.954,27.481 14.976,27.481 17.453,29.958  " />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.453,29.958H2.477" />
+</g>
+<g id="Group_Pipe1">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="4.9541" y1="13.7446" x2="14.9756" y2="13.7446">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#000000" stroke-width="0.25" d="M14.976,27.481V2.598l-2.478-2.59H7.431l-2.477,2.59v24.884   H14.976z" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="4.954" y1="2.598" x2="14.976" y2="2.598" />
+</g>
+</svg>

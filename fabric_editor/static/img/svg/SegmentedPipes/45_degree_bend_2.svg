@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="87px" viewBox="0 0 112.5 87.047" enable-background="new 0 0 112.5 87.047" xml:space="preserve">
+<g id="Group_Segmented_45_Bend">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="91.9326" y1="51.1509" x2="41.9768" y2="27.8561" gradientTransform="matrix(0 -1 1 0 12.7261 99.7739)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M22.411,49.324L61.824,65.54l20.495-49.099L42.681,0   L22.411,49.324z" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="68.4014" y1="84.6089" x2="27.8553" y2="44.0628" gradientTransform="matrix(0 -1 1 0 12.7261 99.7739)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M72.061,87.048L41.625,56.754l40.509-40.582L112.5,46.539L72.061,87.048z" />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="139.1387" y1="57.1021" x2="98.5933" y2="16.5567" gradientTransform="matrix(-0.7071 -0.7071 0.7071 -0.7071 79.5054 138.7763)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M42.994,57.254l-42.942,0.1L0,0.015l42.944-0.001L42.994,57.254z" />
+</g>
+<g id="Group_Stripes">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="9.4497" y1="117.4243" x2="9.7088" y2="60.1793" gradientTransform="matrix(-0.7103 -0.7039 0.7039 -0.7103 35.8367 135.9211)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="111.305,45.388 112.235,46.321 71.778,86.813 70.869,85.911  " />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="50.7402" y1="117.6577" x2="50.9998" y2="60.3136" gradientTransform="matrix(-0.7103 -0.7039 0.7039 -0.7103 35.8367 135.9211)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_5_)" points="82.154,16.172 83.067,17.101 42.528,57.604 41.625,56.741  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="42.676" y1="57.773" x2="83.232" y2="17.286" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="71.943" y1="87.048" x2="112.5" y2="46.563" />
+	
+		<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="78.9111" y1="147.9067" x2="79.1702" y2="90.6612" gradientTransform="matrix(-1 0.0045 -0.0045 -1 121.5353 147.5979)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_6_)" points="41.285,0.045 42.604,0.048 42.629,57.288 41.348,57.292  " />
+	
+		<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="120.2012" y1="148.1372" x2="120.4607" y2="90.794" gradientTransform="matrix(-1 0.0045 -0.0045 -1 121.5353 147.5979)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_7_)" points="0.015,0 1.317,0.011 1.292,57.317 0.042,57.345  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="1.515" y1="57.332" x2="1.564" y2="0.025" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4725" x1="42.911" y1="57.337" x2="42.962" y2="0.032" />
+</g>
+</svg>

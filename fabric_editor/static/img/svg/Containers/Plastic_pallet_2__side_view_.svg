@@ -1,0 +1,21 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="14px" viewBox="0 0 112.5 14.076" enable-background="new 0 0 112.5 14.076" xml:space="preserve">
+<g id="Group_FrontLegs">
+	<path fill="#333333" d="M0.002,5.743h112.496V4.617H0.002V5.743z" />
+	<path fill="#4C4C4C" d="M0.002,4.617l2.14,9.459h7.207l2.252-9.459H0.002z" />
+	<path fill="#7F7F7F" d="M1.917,4.617l1.577,9.459h4.504l1.689-9.459H1.917z" />
+	<path fill="none" d="M0.002,4.617l2.14,9.459h7.207l2.252-9.459H0.002" />
+	<path fill="#4C4C4C" d="M100.787,4.617l2.252,9.459h7.207l2.252-9.459H100.787z" />
+	<path fill="#7F7F7F" d="M102.701,4.617l1.689,9.459h4.504l1.576-9.459H102.701z" />
+	<path fill="none" d="M100.787,4.617l2.252,9.459h7.207l2.252-9.459H100.787" />
+	<path fill="#4C4C4C" d="M50.338,4.617l2.252,9.459h7.207l2.252-9.459H50.338z" />
+	<path fill="#7F7F7F" d="M52.365,4.617l1.576,9.459h4.504l1.577-9.459H52.365z" />
+	<path fill="none" d="M50.338,4.617l2.252,9.459h7.207l2.252-9.459H50.338" />
+</g>
+<g id="Group_GridSides">
+	<rect x="0.002" fill="#CCCCCC" width="112.496" height="2.478" />
+	<rect x="36.896" fill="#4C4C4C" width="1.149" height="2.478" />
+	<rect x="36.896" fill="#4C4C4C" width="1.149" height="2.478" />
+	<rect x="74.313" fill="#4C4C4C" width="1.148" height="2.478" />
+	<path fill="#7F7F7F" d="M0.002,2.478h112.496v2.373H0.002V2.478z" />
+</g>
+</svg>

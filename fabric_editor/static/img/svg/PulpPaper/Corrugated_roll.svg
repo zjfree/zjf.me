@@ -1,0 +1,25 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66px" height="112px" viewBox="0 0 65.649 112.5" enable-background="new 0 0 65.649 112.5" xml:space="preserve">
+<g id="Group_Body">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="58.0518" x2="65.6489" y2="58.0518">
+		<stop offset="0" style="stop-color:#996633" />
+		<stop offset="0.5" style="stop-color:#E5B27F" />
+		<stop offset="1" style="stop-color:#996633" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M65.649,103.038c0,0-9.758,9.459-32.88,9.459C8.917,112.497,0,103.038,0,103.038V3.606h65.649   V103.038z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M65.649,103.038c0,0-9.942,9.459-32.88,9.459   C9.225,112.497,0,103.038,0,103.038V3.606h65.649V103.038" />
+</g>
+<g id="Group_Main">
+	<path fill="#CCCCCC" d="M62.272,9.575l2.252-0.451v9.234l-2.252,0.676V9.575z" />
+</g>
+<g id="Group_Cap">
+	<path fill="none" stroke="#996633" stroke-width="0.25" d="M65.538,5.746c0,1.866-14.672,3.378-32.769,3.378   C14.671,9.124,0,7.612,0,5.746" />
+</g>
+<g id="Group_Top">
+	
+		<radialGradient id="SVGID_2_" cx="32.769" cy="3.3809" r="25.0561" gradientTransform="matrix(1 0 0 0.0977 0 3.0506)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D9A673" />
+		<stop offset="0.99" style="stop-color:#E5B27F" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="32.769" cy="3.381" rx="32.769" ry="3.378" />
+</g>
+</svg>

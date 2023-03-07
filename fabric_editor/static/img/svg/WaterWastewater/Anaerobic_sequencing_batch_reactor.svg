@@ -1,0 +1,57 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="88px" viewBox="0 0 112.5 88.402" enable-background="new 0 0 112.5 88.402" xml:space="preserve">
+<g id="Group_Tank">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="46.228" x2="112.5" y2="46.228">
+		<stop offset="0" style="stop-color:#596D8C" />
+		<stop offset="0.5" style="stop-color:#BFD3F2" />
+		<stop offset="1" style="stop-color:#596D8C" />
+	</linearGradient>
+	<rect y="13.401" fill="url(#SVGID_1_)" width="112.5" height="65.653" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="79.0581" x2="112.5" y2="79.0581">
+		<stop offset="0" style="stop-color:#596D8C" />
+		<stop offset="0.5" style="stop-color:#BFD3F2" />
+		<stop offset="1" style="stop-color:#596D8C" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0,79.06c0-5.162,25.184-9.346,56.25-9.346c31.066,0,56.25,4.184,56.25,9.346   c0,5.158-25.184,9.342-56.25,9.342C25.184,88.402,0,84.218,0,79.06z" />
+	<ellipse fill="#8CA0BF" stroke="#4C4C4C" stroke-width="0.25" cx="56.194" cy="13.401" rx="56.193" ry="9.347" />
+</g>
+<g id="Group_Liquid">
+	<path fill="#405473" stroke="#4C4C4C" stroke-width="0.25" d="M13.937,8.541c-6.17,1.407-9.818,3.135-9.818,5.003   c0,4.725,23.254,8.554,51.938,8.554c10.901,0,21-0.557,29.352-1.503" />
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M85.022,20.496l-9.009,0.675l-7.32,0.451l-55.63-9.91V8.671   L85.022,20.496z" />
+	<path fill="#405473" stroke="#4C4C4C" stroke-width="0.25" d="M106.657,15.549c1.19-0.719,1.839-1.475,1.839-2.256   c0-4.725-23.254-8.555-51.938-8.555c-7.657,0-14.92,0.275-21.461,0.766" />
+</g>
+<g id="Group_Rails">
+	<path fill="#CCB24C" d="M32.207,1.126V0l71.51,8.671V9.91L32.207,1.126z" />
+	<path fill="#CCB24C" d="M32.207,4.055V2.815l71.51,8.784v1.239L32.207,4.055z" />
+	<path fill="#CCB24C" d="M13.964,6.419V5.181l18.243-2.365v1.239L13.964,6.419z" />
+	<path fill="#CCB24C" d="M13.964,3.491V2.252L32.207,0v1.126L13.964,3.491z" />
+	<path fill="#CCB24C" d="M103.717,15.09h-1.127V8.671h1.127V15.09z" />
+	<path fill="#CCB24C" d="M86.036,12.838h-1.014V6.982h1.014V12.838z" />
+	<path fill="#CCB24C" d="M68.469,10.473h-1.127V4.618h1.127V10.473z" />
+	<path fill="#CCB24C" d="M50.901,8.108h-1.126V2.815h1.126V8.108z" />
+	<path fill="#CCB24C" d="M33.333,5.744h-1.126V0.451h1.126V5.744z" />
+	<path fill="#CCB24C" d="M23.874,6.982h-1.126V1.689h1.126V6.982z" />
+	<path fill="#E5CB65" d="M85.473,20.383h-1.126v-6.982h1.126V20.383z" />
+	<path fill="#E5CB65" d="M67.905,17.455h-1.126v-6.419h1.126V17.455z" />
+	<path fill="#E5CB65" d="M50.338,14.527h-1.126V8.108h1.126V14.527z" />
+	<path fill="#E5CB65" d="M15.09,8.671h-1.126V2.815h1.126V8.671z" />
+	<path fill="#E5CB65" d="M32.658,11.6h-1.014V5.744h1.014V11.6z" />
+	<path fill="#E5CB65" d="M13.964,3.491V2.252l71.509,10.586v1.126L13.964,3.491z" />
+	<path fill="#E5CB65" d="M13.964,6.419V5.181l71.509,10.585v1.126L13.964,6.419z" />
+	<path fill="#E5CB65" d="M96.621,15.766v72.636h-1.125V16.329l-0.901-1.239l-1.126-0.338l-0.901,0.563v3.942h-1.239v-4.73   l1.803-1.014l2.027,0.338L96.621,15.766z" />
+	<path fill="#E5CB65" d="M103.041,14.64v72.635h-1.127V15.766l-0.788-1.126l-1.239-1.239l-0.9,1.239v3.491H97.86v-4.729l1.802-1.126   h1.914L103.041,14.64z" />
+	<path fill="#CCB24C" d="M102.478,81.982l-5.856,1.127v-1.127l5.856-1.238V81.982z" />
+	<path fill="#CCB24C" d="M102.478,77.252l-5.856,1.126v-1.126l5.856-1.126V77.252z" />
+	<path fill="#CCB24C" d="M102.478,72.636l-5.856,1.125v-1.125l5.856-1.239V72.636z" />
+	<path fill="#CCB24C" d="M102.478,67.906l-5.856,1.126v-1.126l5.856-1.126V67.906z" />
+	<path fill="#CCB24C" d="M102.478,63.175l-5.856,1.24v-1.24l5.856-1.125V63.175z" />
+	<path fill="#CCB24C" d="M102.478,58.559l-5.856,1.126v-1.126l5.856-1.239V58.559z" />
+	<path fill="#CCB24C" d="M102.478,53.83l-5.856,1.125V53.83l5.856-1.127V53.83z" />
+	<path fill="#CCB24C" d="M102.478,49.099l-5.856,1.239v-1.239l5.856-1.126V49.099z" />
+	<path fill="#CCB24C" d="M102.478,44.482l-5.856,1.126v-1.126l5.856-1.239V44.482z" />
+	<path fill="#CCB24C" d="M102.478,39.752l-5.856,1.126v-1.126l5.856-1.126V39.752z" />
+	<path fill="#CCB24C" d="M102.478,35.136l-5.856,1.126v-1.126l5.856-1.239V35.136z" />
+	<path fill="#CCB24C" d="M102.478,30.406l-5.856,1.126v-1.126l5.856-1.126V30.406z" />
+	<path fill="#CCB24C" d="M102.478,25.676l-5.856,1.239v-1.239l5.856-1.126V25.676z" />
+	<path fill="#CCB24C" d="M102.478,21.059l-5.856,1.126v-1.126l5.856-1.239V21.059z" />
+</g>
+</svg>

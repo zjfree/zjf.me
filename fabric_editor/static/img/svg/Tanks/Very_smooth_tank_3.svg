@@ -1,0 +1,31 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68px" height="112px" viewBox="0 0 67.903 112.5" enable-background="new 0 0 67.903 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="17.1396" y1="4.168" x2="50.8794" y2="4.168">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.51" style="stop-color:#ECECEC" />
+	<stop offset="0.58" style="stop-color:#D9D9D9" />
+	<stop offset="0.72" style="stop-color:#A8A8A8" />
+	<stop offset="0.92" style="stop-color:#5A5A5A" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M50.766,6.313l0.113-5.515l-4.332-0.457L33.896,0L21.357,0.341L17.14,0.798v5.515  c0,0,7.86,2.106,16.87,2.021C39.663,8.28,45.702,8.336,50.766,6.313z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="9.9595" y1="10.1807" x2="57.9448" y2="10.1807">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.51" style="stop-color:#ECECEC" />
+	<stop offset="0.58" style="stop-color:#D9D9D9" />
+	<stop offset="0.72" style="stop-color:#A8A8A8" />
+	<stop offset="0.92" style="stop-color:#5A5A5A" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M50.764,6.383l0.002-0.07C37.581,4.875,17.14,6.383,17.14,6.383l-7.18,0.798l0.113,5.471  l23.937,2.019l23.823-2.019l0.112-5.471L50.764,6.383z" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.1567" y1="61.835" x2="67.6333" y2="61.835">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.51" style="stop-color:#ECECEC" />
+	<stop offset="0.58" style="stop-color:#D9D9D9" />
+	<stop offset="0.72" style="stop-color:#A8A8A8" />
+	<stop offset="0.92" style="stop-color:#5A5A5A" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_3_)" d="M33.896,11.17c-32.819,0-33.739,5.699-33.739,5.699v89.932c0,0,0,5.699,33.739,5.699  c32.681,0,33.738-5.699,33.738-5.699V16.869C67.633,16.869,67.633,11.17,33.896,11.17z" />
+</g>
+</svg>

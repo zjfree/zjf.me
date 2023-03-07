@@ -1,0 +1,26 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="108px" viewBox="0 0 112.5 107.77" enable-background="new 0 0 112.5 107.77" xml:space="preserve">
+<g id="Group_TankBody">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="65.5967" x2="112.5" y2="65.5967">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.45" style="stop-color:#ECECEC" />
+	<stop offset="0.52" style="stop-color:#E0E0E0" />
+	<stop offset="0.63" style="stop-color:#C1C1C1" />
+	<stop offset="0.78" style="stop-color:#8E8E8E" />
+	<stop offset="0.96" style="stop-color:#494949" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M0,23.423v74.641c0,0.001,0,0.001,0,0.001s0,0,0,0.001l0,0c0,0.001,0,0.001,0,0.001  c0,0.001,0,0.002,0,0.004v0.352h0.047c1.004,5.639,25.773,9.347,56.203,9.347c30.427,0,55.197-3.708,56.201-9.347h0.048v-75H0z" />
+<radialGradient id="SVGID_2_" cx="56.25" cy="14.02" r="40.9916" gradientTransform="matrix(1 0 0 1.2 0 -2.804)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#ECECEC" />
+	<stop offset="0.14" style="stop-color:#DDDDDD" />
+	<stop offset="0.4" style="stop-color:#B8B8B8" />
+	<stop offset="0.75" style="stop-color:#7C7C7C" />
+	<stop offset="1" style="stop-color:#4D4D4D" />
+</radialGradient>
+<path fill="url(#SVGID_2_)" d="M112.5,23.8C112.5,10.663,87.316,0,56.249,0C25.184,0,0,10.663,0,23.8c0,0.002,0,0.004,0,0.006  l0,0.001c0,0,0,0.001,0,0.001v0l0,0c0.012,2.722,32.411,4.23,56.249,4.23c24.776,0,56.251-1.51,56.251-4.232  c0,0-0.001-0.001-0.001-0.002C112.5,23.804,112.5,23.802,112.5,23.8z" />
+<path fill="#B2B2B1" d="M51.464,10.473l5.293-6.418l-0.563,2.928l-4.73,21.059V10.473z" />
+<path fill="#C4C4C4" d="M51.464,10.473v17.568l-28.153-0.789l0.113-16.779H51.464z" />
+<path fill="#E0E0E0" d="M51.464,10.473l5.293-6.418h-2.928l-30.405,6.418H51.464z" />
+<path fill="#666666" d="M26.915,12.838h14.077v1.802H26.915V12.838z" />
+</g>
+</svg>

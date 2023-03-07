@@ -1,0 +1,40 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="58px" viewBox="0 0 112.5 58.054" enable-background="new 0 0 112.5 58.054" xml:space="preserve">
+<g id="Group_Slider_Switch_Platform" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="121.1201" y1="-133.8306" x2="176.75" y2="-133.8306" gradientTransform="matrix(0 -1 -1 0 -77.5806 176.8921)">
+		<stop offset="0.73" style="stop-color:#8C8C8C" />
+		<stop offset="0.96" style="stop-color:#E6E6E6" />
+		<stop offset="1" style="stop-color:#878787" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M108.967,3.746L3.532,52.506L0,55.772V0.142h112.5L108.967,3.746z" />
+	<path fill="#A6A6A6" d="M77.883,18.315l31.126-14.57l3.491-3.604v55.63" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="121.1201" y1="-134.5063" x2="158.5762" y2="-134.5063" gradientTransform="matrix(0 -1 -1 0 -77.5806 176.8921)">
+		<stop offset="0" style="stop-color:#A6A6A6" />
+		<stop offset="0.04" style="stop-color:#E6E6E6" />
+		<stop offset="0.07" style="stop-color:#A6A6A6" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M112.5,55.772H1.352l3.49-3.266l73.041-34.191" />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="124.3857" y1="-135.4556" x2="173.1465" y2="-135.4556" gradientTransform="matrix(0 -1 -1 0 -77.5806 176.8921)">
+		<stop offset="0.02" style="stop-color:#888888" />
+		<stop offset="0.51" style="stop-color:#E6E6E6" />
+		<stop offset="1" style="stop-color:#878787" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M6.25,52.506V3.746H109.5v48.761H6.25z" />
+</g>
+<g id="Group_Slider_Switch_Button_Set" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#870000" stroke="#4C4C4C" stroke-width="0.5" d="M1.802,10.727L5.969,3.97H62.5l-4.166,6.757v47.185H1.802V10.727z" />
+	<path fill="#CF0000" stroke="#4C4C4C" stroke-width="0.5" d="M39.076,17.372l3.829-6.645h13.626l-3.942,6.645v40.54H39.076V17.372z   " />
+	<path fill="#FF5454" stroke="#4C4C4C" stroke-width="0.5" d="M52.59,17.372l3.942-6.645v40.429l-3.942,6.756V17.372z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M52.59,17.372H39.076" />
+	<path fill="#CF0000" stroke="#4C4C4C" stroke-width="0.5" d="M19.482,17.372l4.279-6.645h13.514l-4.279,6.645v40.54H19.482V17.372z   " />
+	<path fill="#FF5454" stroke="#4C4C4C" stroke-width="0.5" d="M32.996,17.372l4.279-6.645v40.429l-4.279,6.756V17.372z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M32.996,17.372H19.482" />
+	<path fill="#CF0000" stroke="#4C4C4C" stroke-width="0.5" d="M0,17.372l4.393-6.645h13.513l-4.392,6.645v40.54H0V17.372z" />
+	<path fill="#FF5454" stroke="#4C4C4C" stroke-width="0.5" d="M13.514,17.372l4.392-6.645v40.429l-4.392,6.756V17.372z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M13.514,17.372H0" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M58.334,10.727H1.802" />
+	<path fill="#FF5454" stroke="#4C4C4C" stroke-width="0.5" d="M58.334,10.727L62.5,3.97v47.186l-4.166,6.756V10.727z" />
+</g>
+</svg>

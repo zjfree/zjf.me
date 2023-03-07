@@ -1,0 +1,33 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="89px" height="112px" viewBox="0 0 89.1 112.5" enable-background="new 0 0 89.1 112.5" xml:space="preserve">
+<g id="Group_5_Gallon_Buket">
+	<rect x="2.475" fill="none" width="84.375" height="112.5" />
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-4.882813e-004" y1="112.5" x2="0.9995" y2="112.5" gradientTransform="matrix(84.375 0 0 -84.375 2.5474 9548.4688)">
+		<stop offset="0" style="stop-color:#5C5D60" />
+		<stop offset="0.5" style="stop-color:#ECECED" />
+		<stop offset="0.57" style="stop-color:#DCDDDE" />
+		<stop offset="0.72" style="stop-color:#B3B5B7" />
+		<stop offset="0.92" style="stop-color:#77797B" />
+		<stop offset="1" style="stop-color:#5C5D60" />
+	</linearGradient>
+	<rect x="2.475" fill="url(#SVGID_1_)" width="84.375" height="112.5" />
+	<rect y="8.1" fill="#B3B3B3" width="89.1" height="1.35" />
+	<rect y="24.525" fill="#B3B3B3" width="89.1" height="1.125" />
+	<rect x="0.675" y="12.825" fill="#CECECE" width="1.8" height="11.7" />
+	<rect x="86.85" y="12.825" fill="#CECECE" width="1.575" height="11.7" />
+	<rect y="11.7" fill="#B3B3B3" width="89.1" height="1.125" />
+	<rect fill="none" width="89.1" height="112.5" />
+</g>
+<g id="Group_">
+	<path fill="#A09F9F" d="M88.425,18.675c0,0-1.575,39.375-43.875,39.375c-46.662,0-43.875-39.375-43.875-39.375H1.8   c0,0-1.8,38.25,42.75,38.25c39.511,0,42.75-38.25,42.75-38.25H88.425z" />
+</g>
+<g id="Group_Handle">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.0366" y1="112.5371" x2="1.0366" y2="112.5371" gradientTransform="matrix(0 -4.7241 -4.7241 0 576.1865 60.4721)">
+		<stop offset="0" style="stop-color:#CB9933" />
+		<stop offset="0.5" style="stop-color:#FFCC67" />
+		<stop offset="1" style="stop-color:#CB9933" />
+	</linearGradient>
+	<rect x="32.85" y="55.575" fill="url(#SVGID_2_)" width="23.4" height="4.725" />
+</g>
+</svg>

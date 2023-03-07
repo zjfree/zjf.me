@@ -1,0 +1,69 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102px" height="112px" viewBox="0 0 102.016 112.5" enable-background="new 0 0 102.016 112.5" xml:space="preserve">
+<g id="Group_Wheel_Base">
+	<path d="M0,103.369h102.016v-1.353H0V103.369z" />
+	<radialGradient id="SVGID_1_" cx="98.0708" cy="108.5547" r="3.9453" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#BFBFBF" />
+		<stop offset="0.32" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#404040" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" cx="98.071" cy="108.555" r="3.945" />
+	<radialGradient id="SVGID_2_" cx="3.8325" cy="108.5547" r="3.8325" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#BFBFBF" />
+		<stop offset="0.32" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#404040" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" cx="3.833" cy="108.554" r="3.833" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M96.606,102.017h2.705v7.891h-2.705V102.017z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M2.48,102.017h2.593v7.891H2.48V102.017z" />
+</g>
+<g id="Group_Arc_Tester_Top">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="55.7163" y1="60.5811" x2="43.751" y2="-7.2774">
+		<stop offset="0" style="stop-color:#BFBFBF" />
+		<stop offset="0.28" style="stop-color:#BFBFBF" />
+		<stop offset="0.52" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#D9D9D9" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M0,52.417h102.016L99.311,0H2.48L0,52.417z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,52.417h102.016L99.311,0H2.48L0,52.417" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M7.778,0L6.425,44.526" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.425,44.526h89.054L94.125,0" />
+</g>
+<g id="Group_Control_Back">
+	<path fill="#193366" d="M7.778,0L7.44,16.684h87.137L94.125,0H7.778z" />
+	<path fill="#4C6699" d="M9.356,0L9.018,16.684h83.755L92.323,0H9.356z" />
+</g>
+<g id="Group_Control_Unit">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M65.268,2.593h20.967v9.243H65.268V2.593z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M23.334,2.593h31.563v11.724H23.334V2.593z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M23.334,14.316V2.593h31.563" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M65.268,11.836V2.593h20.967" />
+</g>
+<g id="Group_Label">
+	<path fill="#7F99CC" d="M41.821,9.131h10.371v3.833H41.821V9.131z" />
+</g>
+<g id="Group_Brown">
+	<path fill="#666666" d="M39.116,5.298h13.076v2.48H39.116V5.298z" />
+	<path fill="#666666" d="M66.622,5.298h5.185v1.127h-5.185V5.298z" />
+	<path fill="#666666" d="M73.159,5.298h5.186v1.127h-5.186V5.298z" />
+	<path fill="#666666" d="M79.698,5.298h5.185v1.127h-5.185V5.298z" />
+</g>
+<g id="Group_Yellow">
+	<path fill="#FFCC00" d="M26.04,5.298h13.076v2.48H26.04V5.298z" />
+	<path fill="#FFCC00" d="M66.622,3.945h5.185v1.127h-5.185V3.945z" />
+	<path fill="#FFCC00" d="M73.159,3.945h5.186v1.127h-5.186V3.945z" />
+	<path fill="#FFCC00" d="M79.698,3.945h5.185v1.127h-5.185V3.945z" />
+</g>
+<g id="Group_Xenon_Arc_Tester">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="64.9448" y1="115.5088" x2="37.0705" y2="38.9248">
+		<stop offset="0" style="stop-color:#B4B4B4" />
+		<stop offset="0.33" style="stop-color:#B6B6B6" />
+		<stop offset="0.6" style="stop-color:#CECFD0" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M0,52.417h102.016v49.599H0V52.417z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M0,57.603h102.016" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,52.417h102.016v49.599H0V52.417" />
+	<path fill="#B2B2B2" d="M6.425,60.082h89.054v1.354H7.778v40.581H6.425V60.082z" />
+	<path fill="#E5E5E5" d="M95.479,60.082v41.935h-1.354V61.436L95.479,60.082z" />
+</g>
+</svg>

@@ -1,0 +1,75 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="57px" viewBox="0 0 112.5 57.32" enable-background="new 0 0 112.5 57.32" xml:space="preserve">
+<g id="Group_Shaft">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="103.1523" y1="31.4185" x2="103.1523" y2="26.6895">
+		<stop offset="0" style="stop-color:#4D4D4D" />
+		<stop offset="0.03" style="stop-color:#5F5F5F" />
+		<stop offset="0.1" style="stop-color:#848484" />
+		<stop offset="0.17" style="stop-color:#A3A3A3" />
+		<stop offset="0.25" style="stop-color:#BBBBBB" />
+		<stop offset="0.33" style="stop-color:#CCCCCC" />
+		<stop offset="0.41" style="stop-color:#D6D6D6" />
+		<stop offset="0.52" style="stop-color:#D9D9D9" />
+		<stop offset="0.63" style="stop-color:#D6D6D6" />
+		<stop offset="0.72" style="stop-color:#CCCCCC" />
+		<stop offset="0.8" style="stop-color:#BBBBBB" />
+		<stop offset="0.87" style="stop-color:#A3A3A3" />
+		<stop offset="0.94" style="stop-color:#858585" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M93.806,26.689H112.5v4.729H93.806V26.689" />
+</g>
+<g id="Group_ShaftFacePlate">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="95.4951" y1="54.8413" x2="95.4951" y2="1.0142">
+		<stop offset="0" style="stop-color:#4D4D4D" />
+		<stop offset="0.52" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M94.932,1.014h1.127v53.828h-1.127V1.014z" />
+</g>
+<g id="Group_MotorBody">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="42.1606" y1="57.3208" x2="42.1606" y2="1.001">
+		<stop offset="0.17" style="stop-color:#4D4D4D" />
+		<stop offset="0.23" style="stop-color:#5A5A5A" />
+		<stop offset="0.34" style="stop-color:#7D7D7D" />
+		<stop offset="0.48" style="stop-color:#B2B2B2" />
+		<stop offset="0.57" style="stop-color:#A8A8A8" />
+		<stop offset="0.73" style="stop-color:#8B8B8B" />
+		<stop offset="0.94" style="stop-color:#5C5C5C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M14.077,57.32V1.014c0,0-13.035-0.479-14.077,4.392c0,0-0.06,46.843,0,47.184   C0.875,57.536,11.6,57.32,11.6,57.32h72.747V1.014h-70.27" />
+	<path fill="#B2B2B2" d="M18.582,7.996h7.207V1.014h-7.207V7.996z" />
+	<circle fill="#333333" cx="22.185" cy="4.505" r="2.252" />
+	<path fill="#4C4C4C" d="M14.077,44.482l-3.604-1.352v-4.505l3.604-2.478V44.482z" />
+	<path fill="#666666" d="M13.952,1.008h0.251v56.306h-0.251V1.008z" />
+	<path fill="#666666" d="M84.221,1.008h0.251v56.306h-0.251V1.008z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="89.0762" y1="54.8413" x2="89.0762" y2="3.3789">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.52" style="stop-color:#D9D9D9" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M84.347,54.841h3.491c5.203,0,5.968-2.252,5.968-2.252V5.856c0,0-1.138-2.478-6.869-2.478h-2.59" />
+</g>
+<g id="Group_BodySupport">
+	<path fill="#999999" d="M28.041,0h54.053v5.856H28.041V0z" />
+</g>
+<g id="Group_HeatSink">
+	<path fill="#4C4C4C" d="M14.077,7.996h70.27v2.252h-70.27V7.996z" />
+	<path fill="#4C4C4C" d="M14.077,12.725h70.27v2.252h-70.27V12.725z" />
+	<path fill="#4C4C4C" d="M14.077,17.455h70.27v2.252h-70.27V17.455z" />
+	<path fill="#4C4C4C" d="M14.077,22.185h70.27v2.252h-70.27V22.185z" />
+	<path fill="#4C4C4C" d="M14.077,26.689h70.27v2.478h-70.27V26.689z" />
+	<path fill="#4C4C4C" d="M14.077,31.418h70.27v2.478h-70.27V31.418z" />
+	<path fill="#4C4C4C" d="M14.077,36.148h70.27V38.4h-70.27V36.148z" />
+	<path fill="#4C4C4C" d="M14.077,40.878h70.27v2.252h-70.27V40.878z" />
+	<path fill="#4C4C4C" d="M14.077,45.607h70.27v2.253h-70.27V45.607z" />
+</g>
+<g id="Group_Wiring_Box">
+	<path fill="#999999" d="M46.734,24.437h35.359V57.32H46.734V24.437z" />
+	<path fill="#B2B2B2" d="M50.338,28.04H78.49v25.676H50.338V28.04z" />
+	<polygon fill="#4D4D4D" points="50.338,53.716 50.338,28.04 49.212,27.013 49.212,54.561  " />
+	<polygon fill="#C6C6C6" points="50.338,28.04 78.49,28.04 79.416,27.013 49.212,27.013  " />
+	<polygon fill="#C6C6C6" points="78.29,27.858 78.29,53.534 79.416,54.561 79.416,27.013  " />
+	<polygon fill="#4D4D4D" points="78.29,53.534 50.138,53.535 49.212,54.561 79.416,54.561  " />
+</g>
+</svg>

@@ -1,0 +1,36 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56px" height="112px" viewBox="0 0 56.195 112.5" enable-background="new 0 0 56.195 112.5" xml:space="preserve">
+<g id="Group_BoilerBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-14.0754" y1="14.0767" x2="70.2719" y2="98.424">
+		<stop offset="0" style="stop-color:#AD845B" />
+		<stop offset="0.51" style="stop-color:#D6B297" />
+		<stop offset="1" style="stop-color:#AD845B" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.001,0h56.193v112.5H0.001V0z" />
+	<path d="M1.127,98.986h1.126v1.127H1.127V98.986z" />
+	<path d="M1.127,89.527h1.126v1.352H1.127V89.527z" />
+	<path d="M1.127,79.617h1.126v1.126H1.127V79.617z" />
+	<path d="M53.943,98.986h1.126v1.127h-1.126V98.986z" />
+	<path d="M53.717,89.527h1.352v1.352h-1.352V89.527z" />
+	<path d="M53.717,79.617h1.352v1.126h-1.352V79.617z" />
+	<path fill="#98B2E5" d="M0.001,0H9.46L0.001,9.347V0z" />
+	<rect x="0" y="77.104" fill="#333333" width="56.194" height="0.299" />
+	<rect x="0" y="102.779" fill="#333333" width="56.194" height="0.299" />
+</g>
+<g id="Group_Base">
+	<path fill="#665940" d="M2.253,103.041h51.689v9.459H2.253V103.041z" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#FF8C40" d="M46.736,13.852h9.459v28.153h-9.459V13.852z" />
+	<path fill="#FF8C40" d="M18.695,13.852h18.807v2.478H18.695V13.852z" />
+	<path fill="#E5E5E5" d="M46.736,16.329h9.459v6.981h-9.459V16.329z" />
+	<path fill="#E5E5E5" d="M46.736,25.563h9.459v7.208h-9.459V25.563z" />
+	<path fill="#E5E5E5" d="M46.736,35.022h9.459V37.5h-9.459V35.022z" />
+	<path fill="#333333" d="M18.695,11.599h18.807v2.252H18.695V11.599z" />
+	<path fill="#333333" d="M21.06,56.194h13.964v2.251H21.06V56.194z" />
+	<path fill="#333333" d="M2.253,11.599h2.478v4.73H2.253V11.599z" />
+	<path fill="#333333" d="M2.253,53.716h2.478v4.729H2.253V53.716z" />
+	<path fill="#333333" d="M2.253,32.771h2.478V37.5H2.253V32.771z" />
+	<polyline fill="none" stroke="#4D4D4D" stroke-width="0.5" stroke-miterlimit="10" points="46.486,42.004 55.945,42.004    55.945,13.852  " />
+	<polyline fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-miterlimit="10" points="56.195,13.852 46.736,13.852    46.736,42.271  " />
+</g>
+</svg>

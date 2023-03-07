@@ -1,0 +1,47 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Gas_90_Curve">
+<radialGradient id="SVGID_1_" cx="138.4736" cy="323.1963" r="27.4649" gradientTransform="matrix(-0.2115 2.8617 -2.8735 -0.2088 995.54 -291.0865)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.09" style="stop-color:#5E6868" />
+	<stop offset="0.2" style="stop-color:#909898" />
+	<stop offset="0.42" style="stop-color:#FCFFFF" />
+	<stop offset="0.6" style="stop-color:#FCFFFF" />
+	<stop offset="0.86" style="stop-color:#878D8D" />
+	<stop offset="0.95" style="stop-color:#5E6868" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</radialGradient>
+<path fill="url(#SVGID_1_)" d="M112.454,33.536c0,38.482-26.641,78.93-79.405,78.93l-0.198-66.9  c9.282-1.398,11.522-5.215,12.122-11.814C62.661,32.975,112.454,33.536,112.454,33.536z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="96.6445" y1="118.9717" x2="28.7354" y2="118.9717" gradientTransform="matrix(0 1 -1 0 137.5078 15.8516)">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.41" style="stop-color:#FCFFFF" />
+	<stop offset="0.61" style="stop-color:#FCFFFF" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</linearGradient>
+<rect x="-0.128" y="44.587" fill="url(#SVGID_2_)" width="37.329" height="67.909" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="2.437" y1="92.6992" x2="2.437" y2="25.1104" gradientTransform="matrix(0 1 -1 0 137.5078 15.8516)">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.39" style="stop-color:#FCFFFF" />
+	<stop offset="0.59" style="stop-color:#FCFFFF" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</linearGradient>
+<rect x="44.809" y="0.17" fill="url(#SVGID_3_)" width="67.589" height="36.236" />
+<path fill="none" stroke="#4C4C4C" d="M33.501,45.041v67.455" />
+<path fill="none" stroke="#4C4C4C" d="M44.763,33.779h67.567" />
+<path fill="none" stroke="#4C4C4C" d="M41.496,41.775l47.748,47.748" />
+<path fill="none" stroke="#4C4C4C" d="M39.132,43.577l33.784,58.446" />
+<path fill="none" stroke="#4C4C4C" d="M36.429,44.703l17.455,65.203" />
+<path fill="none" stroke="#4C4C4C" d="M43.298,39.41l58.446,33.784" />
+<path fill="none" stroke="#4C4C4C" d="M44.425,36.708l65.202,17.454" />
+<path fill="none" stroke="#4C4C4C" d="M16.609,45.041v67.455" />
+<path fill="none" stroke="#4C4C4C" d="M44.763,16.889h67.567" />
+<path fill="none" stroke="#FCFFFF" d="M32.501,45.041v67.455" />
+<path fill="none" stroke="#FCFFFF" d="M44.763,34.678h67.567" />
+<path fill="none" stroke="#FCFFFF" d="M41.246,43.025l47.748,47.748" />
+<path fill="none" stroke="#FCFFFF" d="M38.132,44.327l33.784,58.446" />
+<path fill="none" stroke="#FCFFFF" d="M35.179,44.703l17.455,65.203" />
+<path fill="none" stroke="#FCFFFF" stroke-width="1.0073" d="M43.854,40.882l58.615,33.677" />
+<path fill="none" stroke="#FCFFFF" d="M44.175,37.708l65.202,17.454" />
+<path fill="none" stroke="#FCFFFF" d="M15.609,45.041v67.455" />
+<path fill="none" stroke="#FCFFFF" d="M44.763,17.889h67.567" />
+</g>
+</svg>

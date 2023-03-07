@@ -1,0 +1,14 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="28px" viewBox="0 0 112.5 28.043" enable-background="new 0 0 112.5 28.043" xml:space="preserve">
+<g id="Group_Inner">
+	<path fill="#D9D9D9" d="M0,9.349h93.807v18.693H0V9.349z" />
+</g>
+<g id="Group_Side">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.5" d="M93.807,9.349L112.5,0.002v18.581l-18.693,9.459V9.349z" />
+</g>
+<g id="Group_Top">
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.5" d="M93.807,9.349L112.5,0.002H18.581L0,9.349H93.807z" />
+</g>
+<g id="Group_Cover">
+	<path fill="#EDEDED" stroke="#4C4C4C" stroke-width="0.5" d="M0,9.349h93.807l-4.73,16.216H4.617L0,9.349z" />
+</g>
+</svg>

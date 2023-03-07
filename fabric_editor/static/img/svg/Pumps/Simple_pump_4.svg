@@ -1,0 +1,19 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 75.002 112.5" enable-background="new 0 0 75.002 112.5" xml:space="preserve">
+<g id="Group_Support">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.5459" y1="775.7832" x2="74.6318" y2="775.7832" gradientTransform="matrix(1 0 0 1 0 -679.5)">
+		<stop offset="0.01" style="stop-color:#808080" />
+		<stop offset="0.5" style="stop-color:#BFBFBF" />
+		<stop offset="1" style="stop-color:#808080" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M62.59,80.294l-2.675,2.97l-2.678,2.741l-3.01,2.283   l-3.008,2.057l-3.347,1.371l-3.347,1.144l-3.344,0.685l-3.513,0.229l-3.512-0.229l-3.512-0.685l-3.345-1.144l-3.345-1.598   l-3.178-2.058l-3.01-2.283l-2.676-2.741l-2.508-2.97L0.546,112.5h74.086L62.59,80.294z" />
+</g>
+<g id="Group_PumpBody">
+	
+		<radialGradient id="SVGID_2_" cx="37.3311" cy="65.6523" r="42.3569" gradientTransform="matrix(1 0 0 -1.25 0 128.9131)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.63" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="37.331" cy="46.847" rx="37.331" ry="46.846" />
+</g>
+</svg>

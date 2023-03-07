@@ -1,0 +1,10 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 75.002 112.5" enable-background="new 0 0 75.002 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+	<path fill="#C0C0C0" d="M0.388,98.035c0,0-2.3,14.465,38.53,14.465c36.246,0,36.084-14.465,36.084-14.465l-0.001-83.558   c0,0,1.899-14.477-37.314-14.477C-2.069,0,0.388,14.477,0.388,14.477V98.035z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,13.964h75" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,98.424h75" />
+</g>
+<g id="Group_Ladder">
+	<path fill="none" stroke="#4C4C4C" stroke-width="2" d="M23.425,28.041h28.04v14.077h-28.04V13.964v84.46v-42.23h28.04v14.077   h-28.04v14.076h28.04v14.077v-84.46" />
+</g>
+</svg>

@@ -1,0 +1,20 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="83px" height="113px" viewBox="0 0 82.994 112.5" enable-background="new 0 0 82.994 112.5" xml:space="preserve">
+<g id="Group_Rocker_Base" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#141414" stroke="#4C4C4C" stroke-width="0.5" d="M26.801,0.451h55.63v111.484h-55.63V0.451z" />
+</g>
+<g id="Group_Rocker_Switch" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="58.22" y1="25.4512" x2="21.6776" y2="-11.0912">
+		<stop offset="0" style="stop-color:#969696" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#616161" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" d="M52.815,3.83h-5.293l-5.18,0.113l-4.955,0.225l-4.843,0.225   l-4.616,0.225l-4.279,0.338l-4.055,0.338l-3.716,0.451L12.5,6.194L8.108,6.982l-3.49,0.789L1.576,9.01l-1.014,1.013L0.45,10.249   h52.364l2.815-2.027l3.378-1.013l3.604-0.676l3.153-0.563l3.491-0.451l4.054-0.45l4.279-0.451l1.576-0.112V3.83H52.815z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="20.1052" y1="44.5962" x2="59.5104" y2="21.8456">
+		<stop offset="0" style="stop-color:#969696" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#616161" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.5" d="M26.801,56.194L0.45,10.249h52.364l26.351,45.945H26.801z" />
+	<path fill="#ABABAB" stroke="#4C4C4C" stroke-width="0.5" d="M26.801,56.193h55.63v55.742h-55.63V56.193z" />
+</g>
+</svg>

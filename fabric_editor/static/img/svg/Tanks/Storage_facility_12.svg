@@ -1,0 +1,61 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53px" height="112px" viewBox="0 0 53.043 112.5" enable-background="new 0 0 53.043 112.5" xml:space="preserve">
+<g id="Group_Exhaust">
+	<path fill="#CCCCCC" d="M42.23,6.194l8.108,0.45v1.802l-8.108-0.45V6.194z" />
+	<path fill="#CCCCCC" d="M22.411,4.842h8.108v2.252h-8.108V4.842z" />
+</g>
+<g id="Group_Rail">
+	<path fill="#939393" d="M34.573,7.095V4.842H21.059V3.041h13.514V2.14h1.352v4.955H34.573z" />
+</g>
+<g id="Group_Pipes">
+	
+		<radialGradient id="SVGID_1_" cx="17.4558" cy="1.2388" r="1.0074" gradientTransform="matrix(-4.371139e-008 -1 1.2 -5.245367e-008 15.9693 18.6946)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" d="M18.807,1.689h-2.703c0,0,0.229-0.901,1.352-0.901C18.807,0.788,18.807,1.689,18.807,1.689" />
+	
+		<radialGradient id="SVGID_2_" cx="19.7083" cy="0.7944" r="1.0074" gradientTransform="matrix(-4.371139e-008 -1 1.2 -5.245367e-008 18.7549 20.5027)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" d="M21.06,1.245h-2.703c0,0,0.229-0.901,1.352-0.901C21.06,0.344,21.06,1.245,21.06,1.245" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="16.1042" y1="4.6172" x2="18.8074" y2="4.6172">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M16.104,1.689h2.703v5.855h-2.703V1.689" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="18.3572" y1="4.0566" x2="21.0593" y2="4.0566">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M18.357,1.239h2.702v5.636h-2.702V1.239" />
+</g>
+<g id="Group_TankBody">
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="7.324219e-004" y1="59.5723" x2="53.0417" y2="59.5723">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M53.042,110.698V8.446l0,0c0,0-4.458-1.802-25.226-1.802c-0.338,0-1.014,0-1.352,0   c-22.242,0-26.464,1.802-26.464,1.802l0,0v102.252l0,0c0,0,0,1.688,23.874,1.688c1.183,0,3.548,0.113,4.73,0.113   C47.605,112.5,53.042,110.698,53.042,110.698L53.042,110.698" />
+</g>
+<g id="Group_Ladder">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M27.816,110.698h-2.702v-1.352h2.702v-1.351h-2.702v-1.352h2.702v-1.352   h-2.702v-1.352h2.702v-1.352h-2.702v-1.352h2.702v-1.352h-2.702v-1.351h2.702v-1.352h-2.702v-1.351h2.702v-1.352h-2.702v-1.352   h2.702v-0.901h-2.702v-1.351h2.702v-1.352h-2.702v-1.352h2.702v-1.352h-2.702v-1.352h2.702v-1.352h-2.702v-1.351h2.702v-1.352   h-2.702v-1.352h2.702v-2.702h-2.702v1.352h2.702v-2.703h-2.702v-1.352h2.702v-1.352h-2.702v-1.352h2.702v-1.352h-2.702v-1.351   h2.702v-1.352h-2.702v-0.901h2.702v-1.351h-2.702v-1.352h2.702V62.95h-2.702V61.6h2.702v-1.352h-2.702v-1.352h2.702v-1.352h-2.702   v-1.351h2.702v-1.352h-2.702v-1.351h2.702V52.14h-2.702v-1.352h2.702v-1.351h-2.702v-1.352h2.702v-1.351h-2.702v-1.352h2.702   v-1.351h-2.702v-0.901h2.702v-1.352h-2.702v-1.352h2.702v-1.351h-2.702v-1.352h2.702v-1.351h-2.702v-1.352h2.702v-1.352h-2.702   V32.32h2.702v-1.352h-2.702v-1.351h2.702v-1.352h-2.702v-1.351h2.702v-1.352h-2.702v-1.351h2.702V22.86h-2.702v-0.901h2.702v-1.352   h-2.702v-1.351h2.702v-1.352h-2.702v-1.351h2.702v-1.352h-2.702v-1.351h2.702V12.5h-2.702v-1.352h2.702V9.797h-2.702V8.446h2.702   V7.095h-2.702V5.743V112.5v-0.45h2.702v0.45V5.743" />
+</g>
+</svg>

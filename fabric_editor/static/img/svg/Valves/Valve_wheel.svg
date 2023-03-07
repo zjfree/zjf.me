@@ -1,0 +1,38 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Spokes">
+	<polygon fill="#B3B3B3" points="56.194,56.194 100.788,30.518 107.545,56.194  " />
+	<polygon fill="#B3B3B3" points="11.599,30.518 30.518,11.599 56.194,56.194  " />
+	<polygon fill="#B3B3B3" points="56.194,107.545 30.518,100.788 56.194,56.194  " />
+</g>
+<g id="Group_Wheel">
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M10.248,56.151c0-25.375,20.571-45.945,45.945-45.945c25.376,0,45.945,20.57,45.945,45.945     c0,25.376-20.568,45.947-45.945,45.947C30.819,102.098,10.248,81.527,10.248,56.151 M52.829,0     C24.171,1.691,1.281,24.837,0,53.603v5.096c1.331,29.885,25.98,53.702,56.193,53.702c31.067,0,56.25-25.184,56.25-56.25     c0-29.935-23.388-54.41-52.887-56.151H52.829z" />
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_" overflow="visible" />
+		</clipPath>
+		
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="112.5" x2="1.0005" y2="112.5" gradientTransform="matrix(112.5 0 0 -112.5 -0.0625 12712.375)">
+			<stop offset="0" style="stop-color:#5C5D60" />
+			<stop offset="0.45" style="stop-color:#ECECED" />
+			<stop offset="0.55" style="stop-color:#DCDDDE" />
+			<stop offset="0.76" style="stop-color:#B3B5B8" />
+			<stop offset="0.77" style="stop-color:#B1B3B6" />
+			<stop offset="1" style="stop-color:#5C5D60" />
+		</linearGradient>
+		<rect clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" width="112.443" height="112.401" />
+	</g>
+</g>
+<g id="Group_Center">
+	<g>
+		<defs>
+			<rect id="SVGID_4_" width="112.5" height="112.5" />
+		</defs>
+		<clipPath id="SVGID_5_">
+			<use xlink:href="#SVGID_4_" overflow="visible" />
+		</clipPath>
+		<path clip-path="url(#SVGID_5_)" fill="#989898" d="M66.555,56.151c0,5.777-4.639,10.461-10.361,10.461    c-5.721,0-10.36-4.684-10.36-10.461c0-5.777,4.639-10.46,10.36-10.46C61.916,45.691,66.555,50.375,66.555,56.151" />
+	</g>
+</g>
+</svg>

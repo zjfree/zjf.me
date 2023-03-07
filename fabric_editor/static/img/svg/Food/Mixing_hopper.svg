@@ -1,0 +1,16 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 74.887 112.5" enable-background="new 0 0 74.887 112.5" xml:space="preserve">
+<g id="Group_Mixing_Hopper">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="53.3274" y1="61.6006" x2="-13.5596" y2="37.2557">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.37" style="stop-color:#E0E0E0" />
+		<stop offset="0.53" style="stop-color:#B6B6B6" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#7F7F7F" stroke-width="0.25" d="M2.365,112.5V7.545v-5.18H0V0h74.887v2.365h-2.478v5.18   l-57.657,100v4.955H2.365z" />
+</g>
+<g id="Group_Ridges">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.365,2.365h70.045" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M72.409,7.545H2.365" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M14.752,107.545H2.365" />
+</g>
+</svg>

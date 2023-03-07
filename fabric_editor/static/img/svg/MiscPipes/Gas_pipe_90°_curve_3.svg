@@ -1,0 +1,29 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Group_x5F_Gas_x5F_Pipe_x5F_90" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Gas_Pipe_90">
+<radialGradient id="SVGID_1_" cx="130.0898" cy="325.4063" r="27.4649" gradientTransform="matrix(-2.8299 0.2082 0.2065 2.8288 375.9068 -873.1875)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.09" style="stop-color:#5E6868" />
+	<stop offset="0.2" style="stop-color:#909898" />
+	<stop offset="0.42" style="stop-color:#FCFFFF" />
+	<stop offset="0.6" style="stop-color:#FCFFFF" />
+	<stop offset="0.86" style="stop-color:#878D8D" />
+	<stop offset="0.95" style="stop-color:#5E6868" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</radialGradient>
+<path fill="url(#SVGID_1_)" d="M79.081,0.668c-38.054,0-78.052,26.227-78.052,78.171l66.156,0.195  c1.383-9.139,5.157-11.344,11.684-11.934C79.637,49.687,79.081,0.668,79.081,0.668z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="72.6436" y1="121.6357" x2="5.4902" y2="121.6357" gradientTransform="matrix(-1 0 0 1 73.6445 -28.5098)">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.41" style="stop-color:#FCFFFF" />
+	<stop offset="0.61" style="stop-color:#FCFFFF" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</linearGradient>
+<rect x="1" y="74.751" fill="url(#SVGID_2_)" width="67.153" height="36.749" />
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-20.5151" y1="29.2334" x2="-20.5151" y2="95.772" gradientTransform="matrix(-1 0 0 1 73.6445 -28.5098)">
+	<stop offset="0" style="stop-color:#5C6666" />
+	<stop offset="0.41" style="stop-color:#FCFFFF" />
+	<stop offset="0.61" style="stop-color:#FCFFFF" />
+	<stop offset="1" style="stop-color:#5C6666" />
+</linearGradient>
+<rect x="76.243" y="0.724" fill="url(#SVGID_3_)" width="35.833" height="66.538" />
+</g>
+</svg>

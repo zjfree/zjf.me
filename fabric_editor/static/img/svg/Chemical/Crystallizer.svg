@@ -1,0 +1,59 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="89px" viewBox="0 0 112.5 88.963" enable-background="new 0 0 112.5 88.963" xml:space="preserve">
+<g id="Group_Crystalizer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="28.041" y1="87.1047" x2="84.3467" y2="87.1047">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M28.041,85.247h56.306v3.716H28.041V85.247z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="42.6238" x2="112.5" y2="42.6238">
+		<stop offset="0" style="stop-color:#CC9933" />
+		<stop offset="0.5" style="stop-color:#FFCC66" />
+		<stop offset="1" style="stop-color:#CC9933" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0,0v22.185l28.041,63.063h56.306L112.5,22.185V0H0z" />
+	<rect x="0.002" y="1.255" fill="#CC9933" width="112.5" height="0.547" />
+	<rect x="0.002" y="10.763" fill="#CC9933" width="112.5" height="0.547" />
+	<rect x="0.002" y="21.911" fill="#CC9933" width="112.5" height="0.547" />
+	<rect x="3.184" y="29.343" fill="#CC9933" width="105.999" height="0.547" />
+	<rect x="6.711" y="36.776" fill="#CC9933" width="99.031" height="0.547" />
+</g>
+<g id="Group_Legs">
+	<path fill="#CC9933" d="M72.973,33.558l2.027-0.9l32.77,44.932l-2.027,0.901L72.973,33.558z" />
+	<path fill="#CC9933" d="M38.964,33.558l2.027-0.9l32.771,44.932l-1.915,0.901L38.964,33.558z" />
+	<path fill="#CC9933" d="M4.843,33.558l1.915-0.9L39.64,77.589l-2.027,0.901L4.843,33.558z" />
+	<path fill="#CC9933" d="M105.742,32.657l2.027,0.9L75,78.49l-2.027-0.901L105.742,32.657z" />
+	<path fill="#CC9933" d="M71.847,32.657l1.915,0.9L40.991,78.49l-2.027-0.901L71.847,32.657z" />
+	<path fill="#CC9933" d="M37.613,32.657l2.027,0.9L6.757,78.49l-1.915-0.901L37.613,32.657z" />
+	<path fill="#D9B366" d="M110.697,32h-10.585v56.963h10.585V32z" />
+	<path fill="#CC9933" d="M100.676,32h-2.253v56.963h2.253V32z" />
+	<path fill="#D9B366" d="M1.689,32h10.586v56.963H1.689V32z" />
+	<path fill="#CC9933" d="M11.712,32h2.252v56.963h-2.252V32z" />
+	<path fill="#D6AD5C" d="M12.838,77.815h86.71v5.631h-86.71V77.815z" />
+	<path fill="#D1A347" d="M44.482,32h1.126v56.963h-1.126V32z" />
+	<path fill="#D1A347" d="M67.905,32h-1.126v56.963h1.126V32z" />
+	<path fill="#E3C78F" d="M81.982,32H67.905v56.963h14.077V32z" />
+	<path fill="#E3C78F" d="M30.406,32h14.076v56.963H30.406V32z" />
+	<path fill="#E3C78F" d="M44.482,77.815h23.423v5.631H44.482V77.815z" />
+	<path fill="#D1A347" d="M46.847,11.036h1.126v22.297h-1.126V11.036z" />
+	<path fill="#CC9933" d="M98.311,11.036h-2.252v22.297h2.252V11.036z" />
+	<path fill="#CC9933" d="M14.077,11.036h2.252v22.297h-2.252V11.036z" />
+	<path fill="#D1A347" d="M65.541,11.036h-1.127v22.297h1.127V11.036z" />
+	<path fill="#D9B366" d="M112.5,25.901H98.423v7.433H112.5V25.901z" />
+	<path fill="#D9B366" d="M84.347,25.901H65.653v7.433h18.693V25.901z" />
+	<path fill="#D9B366" d="M28.041,25.901h18.806v7.433H28.041V25.901z" />
+	<path fill="#D9B366" d="M0,25.901h13.964v7.433H0V25.901z" />
+	<path fill="#E3C78F" d="M112.5,18.468H98.423v7.433H112.5V18.468z" />
+	<path fill="#E3C78F" d="M84.347,18.468H65.653v7.433h18.693V18.468z" />
+	<path fill="#E3C78F" d="M28.041,18.468h18.806v7.433H28.041V18.468z" />
+	<path fill="#E3C78F" d="M0,18.468h13.964v7.433H0V18.468z" />
+	<path fill="#EBD7AE" d="M112.5,11.036H98.423v7.432H112.5V11.036z" />
+	<path fill="#EBD7AE" d="M84.347,11.036H65.653v7.432h18.693V11.036z" />
+	<path fill="#EBD7AE" d="M28.041,11.036h18.806v7.432H28.041V11.036z" />
+	<path fill="#EBD7AE" d="M0,11.036h13.964v7.432H0V11.036z" />
+	<rect x="6.438" y="11.036" fill="#CC9933" width="0.547" height="20.964" />
+	<rect x="37.227" y="11.036" fill="#CC9933" width="0.547" height="20.964" />
+	<rect x="74.67" y="11.036" fill="#CC9933" width="0.547" height="20.964" />
+	<rect x="105.188" y="11.036" fill="#CC9933" width="0.547" height="20.964" />
+</g>
+</svg>

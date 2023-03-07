@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72px" height="112px" viewBox="0 0 71.618 112.5" enable-background="new 0 0 71.618 112.5" xml:space="preserve">
+<g id="Group_Silo">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.4502" y1="56.1938" x2="71.0552" y2="56.1938">
+		<stop offset="0" style="stop-color:#B2B2AA" />
+		<stop offset="0.5" style="stop-color:#E5E5E2" />
+		<stop offset="1" style="stop-color:#B2B2AA" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.45,6.083v79.388l8.896,17.792l26.463,8.671l26.688-8.671   l8.559-17.792V6.083H66.1v-5.63H49.096v5.63H0.45z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.45,85.472h70.605" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M47.858,4.957h19.481" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M47.858,3.944h19.481" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M49.096,6.083H66.1" />
+</g>
+<g id="Group_Bar">
+	<path fill="#7F7F72" stroke="#4C4C4C" stroke-width="0.25" d="M4.955,101.124h61.935v-2.252H4.955V101.124z" />
+</g>
+<g id="Group_V">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M9.346,103.264l26.463,8.671l26.688-8.671l0.789-2.14l-27.477,8.558   L8.22,101.124L9.346,103.264" />
+	<path fill="#CCCCC7" stroke="#4C4C4C" stroke-width="0.25" d="M32.543,111.935v-2.815h6.645v2.815H32.543z" />
+</g>
+</svg>

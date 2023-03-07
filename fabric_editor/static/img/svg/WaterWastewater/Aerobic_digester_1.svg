@@ -1,0 +1,61 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="63px" viewBox="0 0 112.5 63.172" enable-background="new 0 0 112.5 63.172" xml:space="preserve">
+<g id="Group_Tank">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.8003" y1="35.9614" x2="112.0498" y2="35.9614">
+		<stop offset="0.01" style="stop-color:#661900" />
+		<stop offset="0.5" style="stop-color:#E5986D" />
+		<stop offset="1" style="stop-color:#661900" />
+	</linearGradient>
+	<rect x="0.8" y="21.307" fill="url(#SVGID_1_)" width="111.25" height="29.309" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.7388" y1="52.1372" x2="111.9805" y2="52.1372">
+		<stop offset="0.01" style="stop-color:#661900" />
+		<stop offset="0.5" style="stop-color:#E5986D" />
+		<stop offset="1" style="stop-color:#661900" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0.739,41.56c0,4.389,0,9.405,0,13.794c10.703,4.389,31.288,7.361,54.939,7.361   c24.696,0,46.054-3.241,56.302-7.951c0-4.204,0-8.409,0-12.611" />
+	<path fill="#661900" d="M0.822,15.958c0,3.786,0,8.111,0,11.897c10.661,3.786,31.163,6.349,54.721,6.349   c24.598,0,45.87-2.795,56.077-6.856c0-3.627,0-7.254,0-10.879" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.8887" y1="23.332" x2="112.1309" y2="23.332">
+		<stop offset="0.01" style="stop-color:#661900" />
+		<stop offset="0.5" style="stop-color:#E5CEBF" />
+		<stop offset="1" style="stop-color:#661900" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M0.889,14.172c0,3.801,0,8.144,0,11.944c10.703,3.801,31.288,6.375,54.94,6.375   c24.697,0,46.054-2.807,56.302-6.885c0-3.642,0-7.282,0-10.923" />
+	<ellipse fill="#F2DBCC" stroke="#4C4C4C" stroke-width="0.25" cx="56.194" cy="13.963" rx="55.628" ry="6.982" />
+</g>
+<g id="Group_Liquid">
+	<ellipse fill="#826B5C" stroke="#4C4C4C" stroke-width="0.25" cx="56.194" cy="13.513" rx="46.282" ry="5.067" />
+	<ellipse fill="#596D8C" cx="56.419" cy="15.089" rx="43.354" ry="3.491" />
+</g>
+<g id="Group_Platform">
+	<path fill="#826B5C" stroke="#4C4C4C" stroke-width="0.5" d="M72.409,43.917l9.233,2.479l24.999-3.604v-1.803L81.643,44.03   l-9.233-2.478V43.917z" />
+	<path fill="#E5CEBF" stroke="#4C4C4C" stroke-width="0.5" d="M72.409,41.552l9.233,2.478l24.999-3.041l-9.233-1.689L72.409,41.552z   " />
+</g>
+<g id="Group_Rails">
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="45.158" y1="0.45" x2="45.158" y2="7.432" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="67.229" y1="0.45" x2="67.229" y2="7.432" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="89.863" y1="1.689" x2="89.863" y2="8.558" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="111.935" y1="6.194" x2="111.935" y2="13.851" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="43.469" y1="20.833" x2="43.469" y2="11.486" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="68.918" y1="20.833" x2="68.918" y2="11.486" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="95.043" y1="19.369" x2="95.043" y2="10.36" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="0.4" y1="5.557" x2="0.4" y2="12.538" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="22.524" y1="1.689" x2="22.524" y2="8.558" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="17.344" y1="19.369" x2="17.344" y2="10.36" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="41.552" x2="79.954" y2="8.22" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="85.81" y1="7.77" x2="85.81" y2="41.102" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="11.148" x2="85.81" y2="10.698" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="15.765" x2="85.81" y2="15.314" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="20.382" x2="85.81" y2="20.044" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="25.111" x2="85.81" y2="24.661" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="29.729" x2="85.81" y2="29.278" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="34.345" x2="85.81" y2="33.895" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="79.954" y1="38.962" x2="85.81" y2="38.512" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.5" x1="106.642" y1="41.102" x2="106.642" y2="31.868" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.25" x1="81.756" y1="44.03" x2="81.756" y2="34.795" />
+	<polyline fill="none" stroke="#4C4C4C" stroke-width="0.5" points="72.409,39.413 81.756,41.665 106.642,38.85 97.971,37.047  " />
+	<polyline fill="none" stroke="#4C4C4C" stroke-width="0.5" points="72.409,35.922 81.756,38.287 106.642,35.359 97.971,33.669  " />
+	<polyline fill="none" stroke="#4C4C4C" stroke-width="0.5" points="72.409,32.431 81.756,34.795 106.642,31.868 97.971,30.179  " />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M91.499,10.069c12.519-1.029,20.513-2.593,20.513-4.345   c0-3.112-25.008-5.624-55.855-5.624C25.308,0.1,0.3,2.612,0.3,5.724c0,3.1,25.008,5.612,55.856,5.612   c6.75,0,13.223-0.12,19.213-0.341" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M91.153,16.042c12.485-1.012,20.458-2.547,20.458-4.268   c0-3.057-24.94-5.523-55.705-5.523c-30.766,0-55.706,2.467-55.706,5.523c0,3.045,24.94,5.512,55.706,5.512   c6.732,0,13.187-0.119,19.162-0.336" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M91.116,13.042c12.508-1.012,20.495-2.547,20.495-4.268   c0-3.057-24.985-5.523-55.805-5.523C24.985,3.25,0,5.717,0,8.774c0,3.045,24.985,5.512,55.807,5.512   c6.744,0,13.211-0.119,19.196-0.336" />
+</g>
+</svg>

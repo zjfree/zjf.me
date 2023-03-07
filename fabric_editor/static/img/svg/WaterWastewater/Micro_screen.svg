@@ -1,0 +1,52 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="84px" height="112px" viewBox="0 0 84.232 112.5" enable-background="new 0 0 84.232 112.5" xml:space="preserve">
+<g id="Group_Frame">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="56.25" x2="84.2327" y2="56.25">
+		<stop offset="0.01" style="stop-color:#4C6659" />
+		<stop offset="0.5" style="stop-color:#CBE5D8" />
+		<stop offset="1" style="stop-color:#4C6659" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0,0.001v112.498h84.232V0.001H0" />
+</g>
+<g id="Group_Mesh">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="9.2336" y1="58.6709" x2="74.7737" y2="58.6709">
+		<stop offset="0" style="stop-color:#197F4B" />
+		<stop offset="0.5" style="stop-color:#004C19" />
+		<stop offset="1" style="stop-color:#197F4B" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M9.234,14.19l0.226,88.962h65.314V14.19H9.234z" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,46.847L42.116,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,56.306L51.351,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,65.541L60.81,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,75l61.035-60.81" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,84.234l65.54-65.54" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,93.693l65.54-65.54" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,103.152l65.54-65.765" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M18.694,103.152l56.08-56.305" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M28.153,103.152l46.621-46.846" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M37.387,103.152l37.387-37.611" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M46.846,103.152L74.774,75" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M55.63,103.152l19.144-19.369" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M65.539,103.152l9.234-9.459" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,18.694l-4.505-4.504" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,28.154L60.81,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,37.388L51.351,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,46.847L42.116,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,56.306L32.657,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,65.541L23.423,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,75l-60.81-60.81" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,84.234l-65.54-65.54" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,93.693l-65.54-65.54" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M74.774,103.152L9.234,37.388" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M65.539,103.152L9.234,46.847" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M56.08,103.152L9.234,56.306" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M46.846,103.152L9.234,65.541" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M37.387,103.152L9.234,75" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M28.603,103.152L9.234,83.783" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M18.694,103.152l-9.46-9.459" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M74.774,14.19H9.234v88.962" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M9.234,103.152h65.54V14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,18.694l4.73-4.504" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,28.154L23.423,14.19" />
+	<path fill="none" stroke="#669999" stroke-width="0.25" d="M9.234,37.388L32.657,14.19" />
+</g>
+</svg>

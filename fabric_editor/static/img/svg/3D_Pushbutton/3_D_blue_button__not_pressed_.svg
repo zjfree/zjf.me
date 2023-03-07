@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="113px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Blue_Button_base" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.25" r="56.25" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.82" style="stop-color:#DEDEDE" />
+		<stop offset="1" style="stop-color:#575757" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" cx="56.25" cy="56.25" r="56.25" />
+</g>
+<g id="Group_Button_Side" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<ellipse fill="#003399" cx="55.25" cy="55.236" rx="43.369" ry="43.963" />
+</g>
+<g id="Group_Blue_Button_base1" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	
+		<radialGradient id="SVGID_2_" cx="46.9473" cy="47.9688" r="43.8887" gradientTransform="matrix(0.9797 2.117892e-005 9.976346e-005 0.9786 0.7516 0.8869)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.7" style="stop-color:#0000FF" />
+		<stop offset="0.74" style="stop-color:#000096" />
+		<stop offset="0.78" style="stop-color:#0000FF" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M47.312,4.875c23.729,0.31,42.714,19.791,42.403,43.512   C89.406,72.109,69.92,91.089,46.191,90.779C22.46,90.469,3.475,70.988,3.785,47.267C4.094,23.545,23.58,4.566,47.312,4.875z" />
+</g>
+</svg>

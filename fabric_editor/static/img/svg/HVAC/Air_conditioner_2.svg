@@ -1,0 +1,95 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="68px" viewBox="0 0 112.5 67.903" enable-background="new 0 0 112.5 67.903" xml:space="preserve">
+<g id="Group_Air_Conditioner">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M4.281,7.883v54.502h93.917V7.883H4.281z" />
+	<path fill="#999999" d="M4.281,7.883v54.502l2.478-2.477V10.36l88.96,0.113l2.479-2.59H4.281z" />
+	<path fill="#E5E5E5" d="M98.535,62.385V7.883l-2.479,2.703v49.66H6.758l-2.478,2.14H98.535z" />
+</g>
+<g id="Group_Vent">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M5.52,9.234v51.913h23.423V9.234H5.52z" />
+</g>
+<g id="Group_Mesh">
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M25.226,9.234v51.913" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M17.344,9.234v51.913" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M9.236,9.234v51.913" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,11.711h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,19.144h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,15.427h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,22.859h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,30.292h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,26.576h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,33.783h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,41.215h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,37.499h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,44.931h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,52.364h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,48.647h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,59.795h23.423" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,56.079h23.423" />
+</g>
+<g id="Group_Control_Box">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="58.0254" y1="54.4136" x2="24.6324" y2="14.6174">
+		<stop offset="0" style="stop-color:#CCCCCC" />
+		<stop offset="0.35" style="stop-color:#CCCCCC" />
+		<stop offset="0.45" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#E5E5E5" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M32.658,7.883H50v53.264H32.658V7.883z" />
+</g>
+<g id="Group_Switch_Box">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M36.375,52.475V38.85h9.91v13.625H36.375z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M36.375,52.475h9.91V38.85" />
+	<path fill="#404040" d="M42.568,47.521h1.239v1.239h-1.239V47.521z" />
+	<path fill="#404040" d="M42.568,42.567h1.239v1.238h-1.239V42.567z" />
+</g>
+<g id="Group_Air_Blower">
+	<path fill="#7F7F7F" d="M51.239,15.427v9.797h44.48v-9.797H51.239z" />
+	<path fill="#D9D9D9" d="M88.287,22.859l1.238,2.365h4.955l1.238-2.365H88.287z" />
+	<path fill="#D9D9D9" d="M88.287,20.27l1.238,2.478h4.955l1.238-2.478H88.287z" />
+	<path fill="#D9D9D9" d="M88.287,17.905l1.238,2.365h4.955l1.238-2.365H88.287z" />
+	<path fill="#D9D9D9" d="M88.287,15.427l1.238,2.365h4.955l1.238-2.365H88.287z" />
+	<path fill="#D9D9D9" d="M80.855,15.427l1.238,2.365h4.955l1.352-2.365H80.855z" />
+	<path fill="#D9D9D9" d="M80.855,17.905l1.238,2.365h4.955l1.352-2.365H80.855z" />
+	<path fill="#D9D9D9" d="M80.855,20.27l1.238,2.478h4.955L88.4,20.27H80.855z" />
+	<path fill="#D9D9D9" d="M80.855,22.859l1.238,2.365h4.955l1.352-2.365H80.855z" />
+	<path fill="#D9D9D9" d="M73.423,22.859l1.239,2.365h4.954l1.239-2.365H73.423z" />
+	<path fill="#D9D9D9" d="M73.423,20.27l1.239,2.478h4.954l1.239-2.478H73.423z" />
+	<path fill="#D9D9D9" d="M73.423,17.905l1.239,2.365h4.954l1.239-2.365H73.423z" />
+	<path fill="#D9D9D9" d="M73.423,15.427l1.239,2.365h4.954l1.239-2.365H73.423z" />
+	<path fill="#D9D9D9" d="M66.104,15.427l1.238,2.365h4.842l1.352-2.365H66.104z" />
+	<path fill="#D9D9D9" d="M66.104,17.905l1.238,2.365h4.842l1.352-2.365H66.104z" />
+	<path fill="#D9D9D9" d="M66.104,20.27l1.238,2.478h4.842l1.352-2.478H66.104z" />
+	<path fill="#D9D9D9" d="M66.104,22.859l1.238,2.365h4.842l1.352-2.365H66.104z" />
+	<path fill="#D9D9D9" d="M58.671,22.859l1.239,2.365h4.842l1.352-2.365H58.671z" />
+	<path fill="#D9D9D9" d="M58.671,20.27l1.239,2.478h4.842l1.352-2.478H58.671z" />
+	<path fill="#D9D9D9" d="M58.671,17.905l1.239,2.365h4.842l1.352-2.365H58.671z" />
+	<path fill="#D9D9D9" d="M58.671,15.427l1.239,2.365h4.842l1.352-2.365H58.671z" />
+	<path fill="#D9D9D9" d="M51.239,15.427l1.239,2.365h4.955l1.238-2.365H51.239z" />
+	<path fill="#D9D9D9" d="M51.239,17.905l1.239,2.365h4.955l1.238-2.365H51.239z" />
+	<path fill="#D9D9D9" d="M51.239,20.27l1.239,2.478h4.955l1.238-2.478H51.239z" />
+	<path fill="#D9D9D9" d="M51.239,22.859l1.239,2.365h4.955l1.238-2.365H51.239z" />
+</g>
+<g id="Group_Bottom_Support">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M101.913,62.385l9.909-4.955v4.955l-9.909,4.955V62.385z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M100.674,62.385l9.91-4.955" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.565,67.34v-4.955h101.348v4.955H0.565z" />
+</g>
+<g id="Group_Frame">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M100.674,7.883l9.91-4.842v54.39h1.238l-9.909,4.955h-1.239V7.883z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M101.913,5.518l9.909-4.955v2.478l-9.909,4.842V5.518z" />
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.25" d="M10.475,0.563h101.348l-9.909,4.955H0.565L10.475,0.563z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M98.197,62.385V7.883h2.477v54.502H98.197z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M1.804,62.385V7.883h2.477v54.502H1.804z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M0.565,7.883V5.518h101.348v2.365H0.565z" />
+</g>
+<g id="Group_Vent2">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M45.045,62.385v4.955" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M54.955,62.385v4.955" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M40.091,62.385v-3.716l1.238-1.239l1.239,1.239v3.716H40.091z" />
+	<path fill="#4C4C4C" d="M17.907,66.102l-1.352-1.239l1.352-1.239h14.751l1.239,1.239l-1.239,1.239H17.907z" />
+	<path fill="#4C4C4C" d="M11.713,66.102l-1.239-1.239l1.239-1.239l1.238,1.239L11.713,66.102z" />
+	<path fill="#4C4C4C" d="M6.758,66.102L5.52,64.863l1.239-1.239l1.239,1.239L6.758,66.102z" />
+	<path fill="#4C4C4C" d="M72.297,66.102l-1.238-1.239l1.238-1.239h14.864l1.239,1.239l-1.239,1.239H72.297z" />
+	<path fill="#4C4C4C" d="M66.104,66.102l-1.238-1.239l1.238-1.239l1.238,1.239L66.104,66.102z" />
+	<path fill="#4C4C4C" d="M61.148,66.102l-1.238-1.239l1.238-1.239l1.238,1.239L61.148,66.102z" />
+</g>
+</svg>

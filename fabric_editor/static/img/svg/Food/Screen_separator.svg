@@ -1,0 +1,57 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="77px" viewBox="0 0 112.5 76.543" enable-background="new 0 0 112.5 76.543" xml:space="preserve">
+<g id="Group_Screen_Separator">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="26" y1="65.793" x2="85.5" y2="65.793">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="55.75" cy="65.793" rx="29.75" ry="10.75" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="28.2939" y1="50.3301" x2="83" y2="50.3301">
+		<stop offset="0.01" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<rect x="28.294" y="38.771" fill="url(#SVGID_2_)" width="54.706" height="23.116" />
+</g>
+<g id="Group_Lever">
+	<path fill="#72727F" stroke="#4C4C4C" stroke-width="0.25" d="M29.647,55.575h-2.48v-6.087h-3.833l-1.127,1.127v7.439l1.127,1.354   h6.313V55.575z" />
+</g>
+<g id="Group_Top_Layer" display="none">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="15.8945" y1="25.9277" x2="95.2529" y2="25.9277">
+		<stop offset="0.01" style="stop-color:#65657F" />
+		<stop offset="0.5" style="stop-color:#B2B2CC" />
+		<stop offset="1" style="stop-color:#65657F" />
+	</linearGradient>
+	<path display="inline" fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M95.253,7.329v25.25l-2.706,3.607   l-5.185,2.931l-7.44,2.705l-9.018,1.804l-10.146,0.901H50.388l-10.145-0.901l-9.018-1.804l-7.214-2.705L18.6,36.186l-2.705-3.607   l0.225-25.25H95.253" />
+</g>
+<g id="Group_Twister_Handle">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="16" y1="19.2715" x2="95.375" y2="19.2715">
+		<stop offset="0.01" style="stop-color:#65657F" />
+		<stop offset="0.5" style="stop-color:#B2B2CC" />
+		<stop offset="1" style="stop-color:#65657F" />
+	</linearGradient>
+	<rect x="16" y="7.146" fill="url(#SVGID_4_)" width="79.375" height="24.25" />
+	<ellipse fill="#BFBFCC" stroke="#4C4C4C" stroke-width="0.25" cx="55.574" cy="7.329" rx="39.679" ry="7.327" />
+	<path fill="#A5A5B2" d="M70.904,13.917l-10.146,0.451H50.388l-10.145-0.451l-4.509-0.676l4.509-0.902L50.388,12h10.371   l10.146,0.338l4.509,0.902L70.904,13.917z" />
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="16.0195" y1="31.1465" x2="95.3779" y2="31.1465">
+		<stop offset="0.01" style="stop-color:#65657F" />
+		<stop offset="0.5" style="stop-color:#B2B2CC" />
+		<stop offset="1" style="stop-color:#65657F" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_5_)" cx="55.699" cy="31.146" rx="39.679" ry="13.375" />
+	<path fill="#72727F" d="M95.253,19.728l-2.706,1.579l-5.185,1.803l-7.44,1.353l-9.018,0.901l-10.146,0.451H50.388l-9.92-0.451   l-9.243-0.901l-7.214-1.353L18.6,21.307l-2.705-1.579l0.225,2.255l2.48,1.803l5.411,1.804l7.214,1.353l9.243,0.902l9.92,0.451   h10.371l10.146-0.451l9.018-0.902l7.44-1.353l5.185-1.804l2.706-1.803V19.728z" />
+</g>
+<g id="Group_Lever2">
+	<path fill="#A5A5B2" stroke="#4C4C4C" stroke-width="0.25" d="M92.773,29.648h18.486l1.24-1.353v-3.607l-19.727,1.127V29.648z" />
+	<path fill="#BFBFCC" stroke="#4C4C4C" stroke-width="0.25" d="M92.773,25.815h18.6l1.127-1.127l-2.367-1.353l-14.88-3.607v2.48   L92.773,25.815z" />
+	<path fill="#A5A5B2" stroke="#4C4C4C" stroke-width="0.25" d="M35.734,23.335L2.367,22.208L0,20.855v-4.96l35.734,2.48V23.335z" />
+	<path fill="#BFBFCC" stroke="#4C4C4C" stroke-width="0.25" d="M35.734,18.375L2.367,17.248L0,15.896l1.127-1.127l17.247-1.353   l6.313,2.48L35.734,18.375z" />
+</g>
+ 
+<g id="Group_Labels">
+	<path fill="#D8D8E5" d="M43.174,19.728h3.833v3.607h-3.833V19.728z" />
+	<path fill="#D8D8E5" d="M34.607,33.255h3.607v3.833h-3.607V33.255z" />
+	<path fill="#D8D8E5" d="M38.214,55.575l7.44,1.353h7.44v11.047h-7.44l-7.44-1.127V55.575z" />
+	<path fill="#B2B2BF" d="M51.966,66.848v-3.833h-4.96v-2.479l-2.48-1.127l-2.48,1.127v2.479l-2.48-1.127v3.606l6.087,1.354H51.966z" />
+</g>
+</svg>

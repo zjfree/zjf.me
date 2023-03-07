@@ -1,0 +1,69 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="93px" height="112px" viewBox="0 0 92.908 112.5" enable-background="new 0 0 92.908 112.5" xml:space="preserve">
+<g id="Group_SteamBoilerBody">
+	<path fill="#B2B2B2" d="M37.706,25.113h53.85v78.829h-53.85V25.113z" />
+	<path fill="#CCCCCC" d="M39.304,103.941h52.283l1.32,2.928H39.304V103.941z" />
+</g>
+<g id="Group_HotWaterBoilerBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.0012" y1="53.4346" x2="39.304" y2="53.4346">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.5" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#D9D9D9" />
+		<stop offset="0.71" style="stop-color:#A8A8A8" />
+		<stop offset="0.92" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.001,0h39.303v106.869H0.001V0z" />
+	<path fill="none" d="M0.001,0h39.303v106.869H0.001V0" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M0.001,13.852h39.303" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M39.304,92.68H0.001" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M5.52,92.68V13.852" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M33.673,13.852V92.68" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M19.709,92.68V13.852" />
+	<path fill="#7F7F7F" d="M17.006,55.518l0.676-2.027h1.352l0.676,2.027l-0.676,0.676l-0.676,5.63l-0.676-5.63L17.006,55.518z" />
+	<path fill="#B2B2B2" d="M2.817,2.703h8.334v8.446H2.817V2.703z" />
+	<path fill="#B2B2B2" d="M14.078,2.703h11.261v8.446H14.078V2.703z" />
+	<path fill="#B2B2B2" d="M28.268,2.703h8.333v8.446h-8.333V2.703z" />
+	<path fill="#B2B2B2" d="M2.817,95.607h8.334v8.334H2.817V95.607z" />
+	<path fill="#B2B2B2" d="M14.078,95.607h11.261v8.334H14.078V95.607z" />
+	<path fill="#B2B2B2" d="M28.268,95.607h8.333v8.334h-8.333V95.607z" />
+</g>
+<g id="Group_HotWaterBoilerControlPanel">
+	<path fill="#FF4C4C" d="M22.411,35.022h8.559v-4.279h-8.559V35.022z" />
+	<path fill="#E5E5E5" d="M23.989,36.374h5.63v1.576h-5.63V36.374z" />
+</g>
+<g id="Group_BoilerBase">
+	<path fill="#999999" d="M0.001,112.5h92.906v-5.631H0.001V112.5z" />
+</g>
+<g id="Group_Manometer">
+	<circle cx="83.054" cy="30.771" r="4.165" />
+	<circle fill="#E5E5E5" cx="83.053" cy="30.771" r="3.716" />
+</g>
+<g id="Group_PressureGauge">
+	<circle cx="73.199" cy="30.771" r="4.167" />
+	<circle fill="#E5E5E5" cx="73.199" cy="30.771" r="3.716" />
+</g>
+<g id="Group_SteamBoilerControlPanel">
+	<path fill="#E5E5E5" d="M77.366,40.653h8.559v12.612h-8.559V40.653z" />
+	<path fill="#E5CB98" d="M77.366,40.653h8.559v-4.279h-8.559V40.653z" />
+</g>
+<g id="Group_ControlCircuitJunctionBox">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M46.736,36.374v19.82" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M51.24,36.374v19.82" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M55.745,36.374v19.82" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M60.249,36.374v19.82" />
+	<path fill="#666666" d="M42.232,28.041h22.522v8.333H42.232V28.041z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.5" d="M42.232,36.374v-8.333h22.522" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M41.986,36.374h22.769v-8.593" />
+</g>
+<g id="Group_AccessDoor">
+	<path fill="#CCCCCC" d="M42.232,56.194h42.117v50.675H42.232V56.194z" />
+	<path fill="none" stroke="#E5E5E5" stroke-width="0.5" d="M42.216,106.869V56.194h42.363" />
+	<path fill="none" stroke="#E5E5E5" stroke-width="0.5" d="M44.934,105.518v-40.99h36.712" />
+	<path fill="none" stroke="#999999" stroke-width="0.5" d="M44.642,105.518h37.004V64.281" />
+	<path fill="none" stroke="#999999" stroke-width="0.5" d="M42.232,107.52h42.117V55.906" />
+	<path fill="#999999" d="M50.565,58.896h25.45v1.576h-25.45V58.896z" />
+</g>
+<g id="Group_Thermostat">
+	<path fill="#333333" d="M23.989,29.392h5.63v-8.333h-5.63V29.392z" />
+</g>
+</svg>

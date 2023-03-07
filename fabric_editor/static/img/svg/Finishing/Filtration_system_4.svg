@@ -1,0 +1,63 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="112px" viewBox="0 0 35.813 112.5" enable-background="new 0 0 35.813 112.5" xml:space="preserve">
+<g id="Group_Platform">
+	<path fill="#666666" d="M2.365,112.5h30.969v-8.445H2.365V112.5z" />
+	<path fill="#4C4C4C" d="M5.969,95.721h23.762l3.604,8.334H2.365L5.969,95.721z" />
+</g>
+<g id="Group_Outlet">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.3855" y1="108.2012" x2="14.2663" y2="107.3406">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.5" style="stop-color:#808080" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="11.825" cy="107.771" r="2.478" />
+	<radialGradient id="SVGID_2_" cx="10.9246" cy="109.2344" r="2.7029" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CCCCCC" />
+		<stop offset="0.41" style="stop-color:#999999" />
+		<stop offset="0.61" style="stop-color:#666666" />
+		<stop offset="1" style="stop-color:#333333" />
+	</radialGradient>
+	<circle fill="url(#SVGID_2_)" stroke="#999999" stroke-width="0.25" cx="10.924" cy="109.234" r="2.703" />
+</g>
+<g id="Group_Filter_System">
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-326.9084" y1="55.4072" x2="-326.9084" y2="78.9409" gradientTransform="matrix(0 -1 1 0 -49.386 -229.0652)">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.5" style="stop-color:#808080" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M17.64,92.232c5.228,0,9.742,1.277,11.914,3.13c0,1.653,0,3.308,0,4.964   c-2.172,1.86-6.687,3.127-11.914,3.127c-5,0-9.359-1.163-11.619-2.894c0-1.729,0-3.701,0-5.429   C8.281,93.403,12.64,92.232,17.64,92.232z" />
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-289.095" y1="55.4014" x2="-289.095" y2="78.9487" gradientTransform="matrix(0 -1 1 0 -49.386 -229.0652)">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.5" style="stop-color:#808080" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<rect x="6.015" y="23.186" fill="url(#SVGID_4_)" width="23.547" height="73.688" />
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="0.0012" y1="18.4688" x2="35.8118" y2="18.4688">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.5" style="stop-color:#808080" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M5.969,23.198l-2.477-1.126l2.477-3.604H0.001v-4.729h35.811v4.729h-6.081l2.478,3.604l-2.478,1.126   " />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.969,18.468h23.762" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.969,23.198h23.762" />
+</g>
+<g id="Group_Label">
+	<path fill="#404040" d="M11.938,29.054h11.938v19.144H11.938V29.054z" />
+	<path fill="#CCCCCC" d="M13.064,44.595h9.685v2.478h-9.685V44.595z" />
+	<path fill="#4D4D4D" d="M13.064,30.405h9.685l-9.685,13.063V30.405z" />
+</g>
+<g id="Group_Lid_Join">
+	<path fill="#333333" d="M4.843,13.739v-3.604H2.365l-2.364-2.59h14.414l-2.478,2.59H9.573v3.604H4.843z" />
+	<path fill="#333333" d="M26.353,13.739v-3.604h-2.478l-2.253-2.59h14.189l-2.478,2.59h-2.252v3.604H26.353z" />
+	<path fill="#333333" d="M11.938,13.739l1.126-2.478h9.685l1.127,2.478H11.938z" />
+</g>
+<g id="Group_Filter_Lid">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.3367" d="M20.956,6.722l-0.67,4.539" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.2965" d="M16.034,11.261l-0.802-4.403" />
+	<path fill="#CCCCCC" d="M16.667,6.419h2.478v4.842h-2.478V6.419z" />
+	<circle fill="#CCCCCC" cx="17.906" cy="4.054" r="3.041" />
+	<circle fill="#E5E5E5" cx="17.906" cy="3.378" r="2.365" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.2888" d="M15.115,6.858c-0.762-0.726-1.234-1.739-1.234-2.86   C13.881,1.79,15.715,0,17.977,0c2.263,0,4.097,1.79,4.097,3.998c0,1.053-0.417,2.01-1.098,2.724" />
+</g>
+</svg>

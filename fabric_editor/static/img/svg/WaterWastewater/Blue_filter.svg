@@ -1,0 +1,32 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="112px" viewBox="0 0 30.183 112.5" enable-background="new 0 0 30.183 112.5" xml:space="preserve">
+<g id="Group_Filter">
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M1.24,4.504h3.491V0H1.24L0.227,1.014L0.001,2.252v1.239L1.24,4.504z   " />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M1.24,112.5h3.491v-4.617H1.24l-1.013,1.014l-0.226,1.238v1.239   L1.24,112.5z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M28.943,4.504h-3.491V0h3.491l1.014,1.014l0.225,1.239l-0.225,1.239   L28.943,4.504z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M28.943,112.5h-3.491v-4.617h3.491l1.014,1.014l0.225,1.238   l-0.225,1.239L28.943,112.5z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.2939" y1="56.1934" x2="24.8882" y2="56.1934">
+		<stop offset="0" style="stop-color:#0000AD" />
+		<stop offset="0.4" style="stop-color:#CCCCFF" />
+		<stop offset="1" style="stop-color:#0000AD" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M5.294,4.504h19.594v103.378H5.294V4.504" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.731" y1="110.1914" x2="25.4517" y2="110.1914">
+		<stop offset="0" style="stop-color:#0000AD" />
+		<stop offset="0.4" style="stop-color:#CCCCFF" />
+		<stop offset="1" style="stop-color:#0000AD" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.731,112.5h20.721v-4.617H4.731V112.5" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="4.731" y1="2.252" x2="25.4517" y2="2.252">
+		<stop offset="0" style="stop-color:#0000AD" />
+		<stop offset="0.4" style="stop-color:#CCCCFF" />
+		<stop offset="1" style="stop-color:#0000AD" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M4.731,4.504h20.721V0H4.731V4.504" />
+</g>
+<g id="Group_Bolt">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M2.704,0.676l0.789,0.563l0.45,0.676l-0.45,1.126L2.704,3.266   L1.69,3.041L1.465,1.915L1.69,1.239L2.704,0.676z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M2.704,108.671l0.789,0.45l0.45,0.789l-0.45,1.014l-0.789,0.225   l-1.013-0.225l-0.226-1.014l0.226-0.789L2.704,108.671z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M27.478,0.676l-1.014,0.563l-0.337,0.676l0.337,1.126l1.014,0.225   l0.676-0.225l0.563-1.126l-0.563-0.676L27.478,0.676z" />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M27.478,108.671l-1.014,0.45l-0.337,0.789l0.337,1.014l1.014,0.225   l0.676-0.225l0.563-1.014l-0.563-0.789L27.478,108.671z" />
+</g>
+</svg>

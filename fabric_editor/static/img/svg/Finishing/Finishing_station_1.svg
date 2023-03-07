@@ -1,0 +1,52 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="112px" viewBox="0 0 74.664 112.5" enable-background="new 0 0 74.664 112.5" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M73.312,103.266l-1.802,1.689V61.824l1.802-1.802V103.266z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M17.568,103.266l-1.689,1.689V61.824l1.689-1.802V103.266z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M66.668,104.955h4.842V61.824h-4.842V104.955z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M10.924,104.955h4.955V61.824h-4.955V104.955z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M8.897,110.698L7.096,112.5V69.482l1.802-1.803V110.698z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.2509" d="M65.203,110.686l-1.914,1.814V69.167l1.914-1.815V110.686z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M2.253,112.5h4.843V69.482H2.253V112.5z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M58.56,112.5h4.729V69.482H58.56V112.5z" />
+</g>
+<g id="Group_Station">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="45.9512" y1="76.5703" x2="19.477" y2="3.8331">
+		<stop offset="0" style="stop-color:#8ABDBD" />
+		<stop offset="0.39" style="stop-color:#8ABDBD" />
+		<stop offset="0.52" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#99CCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,10.923h65.428v58.559H0.001V10.923z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,10.923h65.202l9.122-9.234H9.123L0.001,10.923z" />
+</g>
+<g id="Group_Side">
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M74.663,1.689l-9.46,9.234v58.559l9.46-9.122V1.689z" />
+</g>
+<g id="Group_Top_Inlet">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M13.74,3.266h52.928l-5.631,5.856H7.884L13.74,3.266z" />
+</g>
+<g id="Group_Window">
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M7.884,8.446h6.419v2.478H7.884V8.446z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M22.411,0l-8.108,8.446v2.478l8.108-8.221V0z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M7.884,8.446h6.419L22.749,0H16.33L7.884,8.446z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M52.591,8.446h6.419v2.478h-6.419V8.446z" />
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M67.23,0L59.01,8.446v2.478l8.221-8.221V0z" />
+	<path fill="#8ABDBD" stroke="#4C4C4C" stroke-width="0.25" d="M52.591,8.446h6.419L67.456,0h-6.419L52.591,8.446z" />
+</g>
+<g id="Group_Control">
+	<radialGradient id="SVGID_2_" cx="12.4443" cy="21.5088" r="2.62" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#333333" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M14.979,21.396l-0.676-1.802l-1.802-0.789l-1.802,0.789   l-0.789,1.802l0.789,2.14l1.802,0.676l1.802-0.676L14.979,21.396z" />
+	<radialGradient id="SVGID_3_" cx="12.4443" cy="30.4053" r="2.5624" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#333333" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M14.979,30.405l-0.676-1.802l-1.802-0.788l-1.802,0.788   l-0.789,1.802l0.789,1.802l1.802,0.789l1.802-0.789L14.979,30.405z" />
+	<path fill="#FF0000" d="M14.528,21.396l-0.45-1.239l-1.577-0.563l-1.352,0.563l-0.788,1.239l0.788,1.577l1.352,0.563l1.577-0.563   L14.528,21.396z" />
+	<path fill="#00FF00" d="M14.528,30.405l-0.45-1.351l-1.577-0.676l-1.352,0.676l-0.788,1.351l0.788,1.577l1.352,0.451l1.577-0.451   L14.528,30.405z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M4.505,36.712V15.991h15.878" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M4.505,36.712h15.878V15.991" />
+</g>
+</svg>

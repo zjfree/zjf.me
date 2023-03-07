@@ -1,0 +1,50 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="103px" height="112px" viewBox="0 0 103.039 112.5" enable-background="new 0 0 103.039 112.5" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#4D4D4D" d="M0,112.499h79.954l23.085-13.175v-1.915l-23.085,13.176H0V112.499z" />
+</g>
+<g id="Group_Chiller">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="67.2822" y1="117.9014" x2="12.6724" y2="23.3143">
+		<stop offset="0" style="stop-color:#E5E5CC" />
+		<stop offset="0.35" style="stop-color:#E7E7D0" />
+		<stop offset="0.6" style="stop-color:#F7F7F0" />
+		<stop offset="1" style="stop-color:#F7F7F0" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,110.585V30.631h79.954v79.954H0z" />
+	<path fill="#FCFCFA" stroke="#4C4C4C" stroke-width="0.25" d="M8.108,7.433l14.978-7.432h79.954L88.063,7.433H8.108z" />
+	<path fill="#E5E5CC" stroke="#4C4C4C" stroke-width="0.25" d="M86.823,8.672l-5.63,21.283l-1.239,0.676v79.954l23.085-13.176V0.001   L88.063,7.433v0.676L86.823,8.672z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,110.585V30.631h79.954v79.954H0" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M88.063,8.109v97.409" />
+	<path fill="none" stroke="#7F7F66" stroke-width="0.25" d="M95.607,3.717v98.084" />
+	<path fill="#F7F7F0" stroke="#4C4C4C" stroke-width="0.25" d="M1.239,29.955l5.63-21.283l1.239-0.563V7.433h79.955v0.676   l-1.239,0.563l-5.63,21.283l-1.239,0.676H0L1.239,29.955z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.869,8.672h79.954" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M8.108,8.109h79.955" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M1.239,29.955h79.955" />
+</g>
+<g id="Group_Brown_Stripe">
+	<path fill="#990000" d="M0,70.607V60.586h79.954v10.021H0z" />
+</g>
+<g id="Group_Red_Stripe">
+	<path fill="#FF0000" d="M0,80.518v-9.91h79.954v9.91H0z" />
+</g>
+<g id="Group_Yellow_Stripe">
+	<path fill="#FFCC00" d="M0,90.54V80.518h79.954V90.54H0z" />
+</g>
+<g id="Group_Yellow_Label">
+	<path fill="#FFFFB2" d="M81.756,30.631v4.955l4.392-2.478v-4.955L81.756,30.631z" />
+</g>
+<g id="Group_Vent">
+	<path fill="#4D4D4D" d="M26.126,95.607h27.589v2.478H26.126V95.607z" />
+	<path fill="#4D4D4D" d="M32.432,100.563h14.977v1.238H32.432V100.563z" />
+</g>
+<g id="Group_Oval_Display">
+	<ellipse fill="#4D4D4D" cx="39.864" cy="44.031" rx="19.933" ry="5.293" />
+</g>
+<g id="Group_Display">
+	<path fill="#4D4D4D" d="M27.477,27.478L31.869,12.5h25l-4.393,14.978H27.477z" />
+	<path fill="#F2F2F2" d="M30.63,24.888l2.815-9.91H53.49l-2.928,9.91H30.63z" />
+	<path fill="#595959" d="M32.432,23.874l2.252-7.882h9.797l-2.252,7.882H32.432z" />
+</g>
+<g id="Group_Pink_Display">
+	<path fill="#FF7F7F" d="M44.481,20.608l1.239-4.392h5.405l-1.239,4.392H44.481z" />
+</g>
+</svg>

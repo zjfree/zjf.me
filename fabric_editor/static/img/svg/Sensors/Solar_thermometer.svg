@@ -1,0 +1,92 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="112px" viewBox="0 0 21.061 112.5" enable-background="new 0 0 21.061 112.5" xml:space="preserve">
+<g id="Group_Thermometer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="7.7708" y1="53.7168" x2="13.4016" y2="53.7168">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M7.771,44.933h5.631V62.5H7.771V44.933" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="7.095" y1="65.8789" x2="14.0764" y2="65.8789">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M7.095,62.725h6.981v6.308H7.095V62.725" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="8.2209" y1="90.6533" x2="12.9504" y2="90.6533">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.1" d="M8.221,68.807h4.729V112.5H8.221V68.807" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="6.4202" y1="60.9238" x2="14.7463" y2="60.9238">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.1" d="M6.42,59.797h8.326v2.253H6.42V59.797z" />
+</g>
+<g id="Group_Solar_Reader">
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="7.095" y1="53.2656" x2="14.0764" y2="53.2656">
+		<stop offset="0.01" style="stop-color:#404040" />
+		<stop offset="0.51" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#404040" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M7.095,47.41h6.981v11.711H7.095V47.41z" />
+	<radialGradient id="SVGID_6_" cx="10.4729" cy="54.3916" r="4.0537" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#B3B3B3" />
+		<stop offset="0.5" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#404040" />
+	</radialGradient>
+	<circle fill="url(#SVGID_6_)" stroke="#4C4C4C" stroke-width="0.25" cx="10.473" cy="54.392" r="4.054" />
+</g>
+<g id="Group_Body">
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M7.095,44.482h6.981v0.451H7.095V44.482z" />
+	<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="0.0012" y1="22.2412" x2="21.0598" y2="22.2412">
+		<stop offset="0.01" style="stop-color:#404040" />
+		<stop offset="0.51" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#404040" />
+	</linearGradient>
+	<path fill="url(#SVGID_7_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,0H21.06v44.482H0.001V0z" />
+	<path fill="#A6A6A6" stroke="#4C4C4C" stroke-width="0.25" d="M1.239,22.635h18.694v2.478H1.239V22.635z" />
+</g>
+<g id="Group_Thermo_Flask">
+	<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="15.6536" y1="11.5996" x2="19.9329" y2="11.5996">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_8_)" stroke="#4C4C4C" stroke-width="0.25" d="M15.654,1.014h4.279v21.171h-4.279V1.014z" />
+	<linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="1.2385" y1="11.5996" x2="5.5178" y2="11.5996">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_9_)" stroke="#4C4C4C" stroke-width="0.25" d="M1.239,1.014h4.279v21.171H1.239V1.014z" />
+	<linearGradient id="SVGID_10_" gradientUnits="userSpaceOnUse" x1="5.969" y1="11.5996" x2="10.2483" y2="11.5996">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_10_)" stroke="#4C4C4C" stroke-width="0.25" d="M5.969,1.014h4.279v21.171H5.969V1.014z" />
+	<linearGradient id="SVGID_11_" gradientUnits="userSpaceOnUse" x1="10.925" y1="11.5996" x2="14.9788" y2="11.5996">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#B3B3B3" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_11_)" stroke="#4C4C4C" stroke-width="0.25" d="M10.925,1.014h4.054v21.171h-4.054V1.014z" />
+</g>
+<g id="Group_Thermo_Indicator">
+	<path fill="#99CCCC" stroke="#99CCCC" stroke-width="0.25" d="M6.42,29.842h8.333v3.378H6.42V29.842z" />
+	<path fill="none" stroke="#99CCCC" stroke-width="0.25" d="M6.42,33.896h8.333" />
+</g>
+<g id="Group_Supporters">
+	<path fill="#E5E5E5" d="M5.294,21.059h0.45v1.126h-0.45V21.059z" />
+	<path fill="#E5E5E5" d="M10.023,21.059h0.45v1.126h-0.45V21.059z" />
+	<path fill="#E5E5E5" d="M15.204,21.059h0.675v1.126h-0.675V21.059z" />
+	<path fill="#E5E5E5" d="M1.239,21.059H1.69v1.126H1.239V21.059z" />
+	<path fill="#E5E5E5" d="M5.294,1.014h0.45V2.14h-0.45V1.014z" />
+	<path fill="#E5E5E5" d="M10.023,1.014h0.45V2.14h-0.45V1.014z" />
+	<path fill="#E5E5E5" d="M15.204,1.014h0.675V2.14h-0.675V1.014z" />
+	<path fill="#E5E5E5" d="M1.239,1.014H1.69V2.14H1.239V1.014z" />
+</g>
+</svg>

@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="101px" viewBox="0 0 112.5 101.225" enable-background="new 0 0 112.5 101.225" xml:space="preserve">
+<g id="Group_Bend_Duct">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="51.7412" y1="89.8398" x2="51.7412" y2="4.882813e-004">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.39" style="stop-color:#C6C6C6" />
+		<stop offset="1" style="stop-color:#D1D1D1" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" d="M103.48,89.84V37.987L65.719,0L0.001,65.718l10.258,10.37   V89.84H103.48z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.5" d="M103.48,37.987L10.259,76.088" />
+</g>
+<g id="Group_Clamp">
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M8.005,83.979v17.246H5.074V83.979H8.005z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.5" d="M109.568,83.979v17.246h-2.932V83.979H109.568z" />
+</g>
+<g id="Group_Rod">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="57.377" y1="95.5889" x2="57.377" y2="89.8398">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.44" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#D1D1D1" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.5" d="M2.256,89.84v5.749h110.242V89.84H2.256z" />
+</g>
+</svg>

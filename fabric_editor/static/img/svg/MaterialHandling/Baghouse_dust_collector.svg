@@ -1,0 +1,50 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="112px" viewBox="0 0 28.043 112.5" enable-background="new 0 0 28.043 112.5" xml:space="preserve">
+<g id="Group_Baghouse">
+	<path fill="#0000CC" d="M0.002,0h28.041v65.541H0.002V0z" />
+	<path fill="#0000B2" d="M2.254,6.982H25.79v56.194H2.254V6.982z" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M21.06,63.176V6.982" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M2.254,63.176V6.982H25.79" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M9.349,16.329V9.347h9.234" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M9.349,25.676v-6.982h9.234" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M9.349,35.135v-7.095h9.234" />
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M9.349,63.176V37.5h9.234" />
+	<path fill="#D9D9D9" d="M10.475,20.496h7.094v2.252h-7.094V20.496z" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M2.254,63.176H25.79V6.982" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M18.583,9.234v7.095H9.461" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M18.583,18.694v6.982H9.461" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M18.583,28.041v6.982H9.461" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M18.583,37.5v25.676" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M6.984,63.176V6.982" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.002,0h28.041v65.541H0.002V0" />
+</g>
+<g id="Group_Lid">
+	<path fill="none" stroke="#00007F" stroke-width="0.25" d="M2.254,3.491V0" />
+	<path fill="#0000B2" d="M2.254,0v3.491H25.79V0H2.254z" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M0.002,3.491h28.041" />
+	<path fill="none" stroke="#0000FF" stroke-width="0.25" d="M25.79,3.491V0" />
+</g>
+<g id="Group_Filters">
+	<path fill="#996600" d="M4.619,3.491H6.42V1.126H4.619V3.491z" />
+	<path fill="#996600" d="M8.898,3.491H10.7V1.126H8.898V3.491z" />
+	<path fill="#996600" d="M13.065,3.491h1.802V1.126h-1.802V3.491z" />
+	<path fill="#996600" d="M17.344,3.491h1.802V1.126h-1.802V3.491z" />
+	<path fill="#996600" d="M21.51,3.491h1.915V1.126H21.51V3.491z" />
+</g>
+<g id="Group_Collector">
+	<path fill="#000099" stroke="#4C4C4C" stroke-width="0.25" d="M0.002,65.541l11.711,18.806h4.617l11.712-18.806H0.002z" />
+</g>
+<g id="Group_Stand">
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M2.705,87.275h22.635v1.013H2.705V87.275z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M1.691,66.779h1.014v42.793H1.691V66.779z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M25.339,66.779h1.014v42.793h-1.014V66.779z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M9.912,87.275l-7.207-6.194v-1.464l8.784,7.658H9.912z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M18.132,87.275l7.207-6.194v-1.464l-8.784,7.658H18.132z" />
+	<path fill="#0000CC" stroke="#4C4C4C" stroke-width="0.25" d="M26.917,75l-5.856-9.459h5.856V75z" />
+	<path fill="#0000CC" stroke="#4C4C4C" stroke-width="0.25" d="M1.128,75l5.856-9.459H1.128V75z" />
+	<path fill="#0000B2" stroke="#4C4C4C" stroke-width="0.25" d="M1.128,88.964h25.789v1.239H1.128V88.964z" />
+	<path fill="#0000B2" stroke="#4C4C4C" stroke-width="0.25" d="M0.002,65.541h1.126V112.5H0.002V65.541z" />
+	<path fill="#0000B2" stroke="#4C4C4C" stroke-width="0.25" d="M26.917,65.541h1.126V112.5h-1.126V65.541z" />
+	<path fill="#0000A6" stroke="#4C4C4C" stroke-width="0.25" d="M9.349,88.964l-8.221-6.981V80.18l9.91,8.784H9.349z" />
+	<path fill="#0000A6" stroke="#4C4C4C" stroke-width="0.25" d="M18.696,88.964l8.221-6.981V80.18l-10.023,8.784H18.696z" />
+</g>
+</svg>

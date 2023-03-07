@@ -1,0 +1,25 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="99px" viewBox="0 0 112.5 99.223" enable-background="new 0 0 112.5 99.223" xml:space="preserve">
+<g id="Group_Pump_Support">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M73.125,67.724l-2.7,2.476l-3.149,2.024l-3.149,1.8l-3.375,1.575   l-3.375,1.125l-3.6,0.899l-3.6,0.45l-3.825,0.226l-3.825-0.226l-3.6-0.45l-3.825-1.125l-3.375-1.125l-3.375-1.574l-3.15-1.801   l-2.925-2.25l-2.7-2.249L6.526,92.698l72.899,6.523l6.524-6.523L73.125,67.724z" />
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="12.4875" x2="79.4248" y2="12.4875" gradientTransform="matrix(1 0 0 -1 0 99.2231)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M66.6,74.474l-2.699,2.25l-3.149,2.024l-3.149,1.8   l-3.375,1.575l-3.375,1.125l-3.6,0.899l-3.825,0.45l-3.6,0.226L36,84.599l-3.825-0.45l-3.6-0.899l-3.6-1.351L21.6,80.548l-3.15-1.8   l-2.925-2.25l-2.7-2.25L0.001,99.223h79.424L66.6,74.474z" />
+</g>
+<g id="Group_Pump_Rear">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M112.499-0.003l-70.2,0.227c0,0-35.775,5.271-35.775,38.923   S40.153,78.524,46.35,78.296c0,0,31.899,0.354,38.813-31.928c0,0,1.793-6.123,0.408-12.512c-1.385-6.389-1.648-7.31-1.648-7.31   h28.576V-0.003" />
+	<polyline fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" points="112.499,26.546 105.975,33.074 101.365,24.275  " />
+</g>
+<g id="Group_Pump_Front">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="52.9878" y1="85.1243" x2="52.9878" y2="6.5261">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.81" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M105.975,6.526l-70.2,0.228c0,0-35.775,5.291-35.775,39.068   s33.629,39.524,39.825,39.296c0,0,31.899,0.355,38.813-32.047c0,0,1.793-6.147,0.408-12.56c-1.385-6.412-1.648-7.337-1.648-7.337   h28.576V6.526" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M105.976,6.525L112.5,0" />
+</g>
+</svg>

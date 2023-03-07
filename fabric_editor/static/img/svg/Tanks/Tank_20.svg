@@ -1,0 +1,31 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="92px" height="112px" viewBox="0 0 91.994 112.5" enable-background="new 0 0 91.994 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="43.3652" x2="91.9944" y2="43.3652">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.45" style="stop-color:#ECECEC" />
+	<stop offset="0.55" style="stop-color:#D9D9D9" />
+	<stop offset="0.76" style="stop-color:#A8A8A8" />
+	<stop offset="0.77" style="stop-color:#A6A6A6" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<rect x="0" y="7.482" fill="url(#SVGID_1_)" width="91.994" height="71.766" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-0.0027" y1="51.8154" x2="91.9973" y2="51.8154">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.45" style="stop-color:#ECECEC" />
+	<stop offset="0.55" style="stop-color:#D9D9D9" />
+	<stop offset="0.76" style="stop-color:#A8A8A8" />
+	<stop offset="0.77" style="stop-color:#A6A6A6" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<polygon fill="url(#SVGID_2_)" points="-0.003,7.48 -0.003,79.25 -0.003,79.8 -0.003,80.36 45.997,96.15 91.997,80.36 91.997,79.25   91.997,7.48 " />
+<radialGradient id="SVGID_3_" cx="45.9973" cy="95.874" r="34.5843" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#ECECEC" />
+	<stop offset="0.14" style="stop-color:#DDDDDD" />
+	<stop offset="0.4" style="stop-color:#B8B8B8" />
+	<stop offset="0.75" style="stop-color:#7C7C7C" />
+	<stop offset="1" style="stop-color:#4D4D4D" />
+</radialGradient>
+<path fill="url(#SVGID_3_)" d="M91.994,80.357v-1.109c0,0-10.859,7.76-41.287,7.76c-2.355,0-7.065,0-9.421,0  C15.997,87.008,0,79.248,0,79.248v1.109c0,0,3.622,32.143,45.997,32.143C89.551,112.5,91.994,80.357,91.994,80.357z" />
+<ellipse fill="#7F7F7F" cx="45.997" cy="7.482" rx="45.997" ry="7.481" />
+</g>
+</svg>

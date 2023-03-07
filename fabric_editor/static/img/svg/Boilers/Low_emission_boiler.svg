@@ -1,0 +1,57 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="112px" viewBox="0 0 79.617 112.5" enable-background="new 0 0 79.617 112.5" xml:space="preserve">
+<g id="Group_BoilerBody">
+	<path fill="#333333" d="M77.371,21.059h2.246V112.5h-2.246V21.059z" />
+	<path fill="#427542" d="M2.252,0h75.113v112.5H2.252V0z" />
+	<path fill="none" d="M2.252,0h75.113v112.5H2.252V0" />
+	<path fill="none" stroke="#669966" stroke-width="0.75" d="M38.626,6.869v32.883H5.856" />
+	<path fill="none" stroke="#336633" stroke-width="0.75" d="M39.142,6.869H5.856v33.214" />
+	<path fill="none" stroke="#003300" stroke-width="0.25" d="M2.252,3.604H77.14" />
+</g>
+<g id="Group_3">
+	<polygon points="37.275,4.617 29.167,4.617 29.167,7.996 31.419,7.996 31.419,45.608 35.023,45.608 35.023,7.996 37.275,7.996  " />
+</g>
+<g id="Group_2">
+	<radialGradient id="SVGID_1_" cx="53.8284" cy="23.4233" r="14.0769" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" cx="53.829" cy="23.423" r="14.077" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#999999" d="M60.924,74.887h9.233v14.189h-9.233V74.887z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M60.924,89.076h9.233V74.887" />
+	<path fill="#333333" d="M64.978,74.887h-1.126v-8.107h1.126V74.887z" />
+	<path fill="#333333" d="M67.906,74.887h-1.352v-8.107h1.352V74.887z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M65.428,89.076c0,9.841,13.063,20.946,13.063,20.946" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.5" d="M60.924,89.359V74.887h9.51" />
+</g>
+<g id="Group_FuelOilHeatingandFilteringSystems">
+	<path fill="#CCCCCC" d="M32.771,93.807h-9.46l2.365,16.216h4.617L32.771,93.807z" />
+	<path fill="#CCCCCC" d="M30.293,107.771h42.342v2.252H30.293V107.771z" />
+	<path fill="#999999" d="M51.464,80.969l3.604-3.604l3.379,3.378l-3.604,3.604L51.464,80.969z" />
+	<path fill="#CCCCCC" d="M53.716,79.617h2.478v28.153h-2.478V79.617z" />
+	<path fill="#999999" d="M30.293,105.518h4.729v6.982h-4.729V105.518z" />
+	<path fill="#999999" d="M39.752,105.518h4.73v6.982h-4.73V105.518z" />
+	<path fill="#999999" d="M48.987,105.518h4.729v6.982h-4.729V105.518z" />
+	<path fill="#999999" d="M58.447,105.518h4.729v6.982h-4.729V105.518z" />
+	<path fill="#999999" d="M67.906,105.518h4.729v6.982h-4.729V105.518z" />
+</g>
+<g id="Group_AccessLadder">
+	<path fill="#333333" d="M74.888,6.869v7.095h-5.856V7.996h-1.126v5.968H53.716V6.869H52.59v36.487H28.154V19.707H26.69V62.05h1.464   V50.338H52.59v16.441h1.126h21.172V112.5h1.126V6.869H74.888z M52.59,49.212H28.154v-4.73H52.59V49.212z M74.888,65.428H53.716   V44.482h21.172V65.428z M74.888,43.356h-5.856V37.5h-1.126v5.856H53.716V32.771h21.172V43.356z M74.888,31.419H53.716V15.203   h21.172V31.419z" />
+</g>
+<g id="Group_1">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M53.716,103.041c0,0-19.819-0.689-19.819-5.856" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M53.716,101.914c0,0-13.964-0.104-13.964-3.716" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M21.224,58.421c3.866,0.548,3.803-7.227,5.466-33.984" />
+	<path fill="#598C59" d="M45.969,71.806l0.007-0.013L19.849,57.557c-1.77-0.804-3.729-1.264-5.8-1.264   C6.29,56.293,0,62.583,0,70.342c0,5.403,3.055,10.087,7.528,12.438l-0.002,0.004l25.92,14.159l0.005-0.01   c1.897,0.955,4.032,1.505,6.301,1.505c7.759,0,14.049-6.29,14.049-14.048C53.801,78.866,50.606,74.101,45.969,71.806z" />
+	<circle fill="#669966" cx="13.964" cy="70.271" r="11.712" />
+	<circle fill="#73A673" cx="13.964" cy="70.271" r="9.685" />
+	<circle fill="#7FB27F" cx="13.852" cy="70.27" r="5.856" />
+	<circle fill="#4C7F4C" cx="39.752" cy="84.347" r="9.46" />
+	<circle fill="#333333" cx="39.752" cy="84.347" r="7.883" />
+	<circle fill="#CCCCCC" cx="39.752" cy="84.347" r="6.982" />
+</g>
+</svg>

@@ -1,0 +1,55 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66px" height="112px" viewBox="0 0 65.541 112.5" enable-background="new 0 0 65.541 112.5" xml:space="preserve">
+<g id="Group_Centrifugal_Scalper">
+	<path fill="#C0C0C0" stroke="#4C4C4C" stroke-width="0.25" d="M58.447,46.734l0.226,33.559l-8.334,3.378V112.5H6.87V46.734" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.2543" d="M6.968,49.178c-0.185-1.203-0.281-2.435-0.281-3.688   c0-13.82,11.667-25.023,26.061-25.023c14.393,0,26.061,11.203,26.061,25.023c0,1.082-0.071,2.148-0.21,3.194" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.7434" y1="11.7681" x2="59.7981" y2="11.7681">
+		<stop offset="0" style="stop-color:#A6A6A6" />
+		<stop offset="0.5" style="stop-color:#C0C0C0" />
+		<stop offset="1" style="stop-color:#A6A6A6" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M21.735,23.536L5.743,0h54.055L43.807,23.536" />
+	
+		<radialGradient id="SVGID_2_" cx="32.7302" cy="45.7334" r="25.112" gradientTransform="matrix(1.0141 0 0 1.0138 -0.468 -0.9669)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.59" style="stop-color:#CACACA" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" cx="32.724" cy="45.398" rx="25.984" ry="24.926" />
+</g>
+<g id="Group_Tri_Wing">
+	<radialGradient id="SVGID_3_" cx="32.7708" cy="46.8467" r="2.2522" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.76" style="stop-color:#CACACA" />
+		<stop offset="1" style="stop-color:#999999" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M30.743,47.973l-0.225-1.802l1.126-1.351l1.689-0.225   l1.464,1.013l0.225,1.802l-1.126,1.464l-1.689,0.225L30.743,47.973" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.645,44.707l-5.855-10.022" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.532,48.874l-5.856,10.135" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.136,46.847h11.711" />
+</g>
+<g id="Group_Centroid">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M30.406,30.405h4.73" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M22.523,33.784l4.055-2.365" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M17.343,40.653l2.364-4.054" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M16.329,49.099v-4.617" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M19.707,57.095l-2.364-4.167" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M26.577,62.162l-4.055-2.252" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M35.136,63.288h-4.73" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M43.019,59.91l-4.167,2.365" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M48.086,53.041l-2.252,4.054" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M49.212,44.482v4.73" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M45.834,36.599l2.364,4.054" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.5" d="M38.964,31.419l4.055,2.365" />
+</g>
+<g id="Group_Lines">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M39.19,29.842l5.163-7.224" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M59.685,0h5.856" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M57.321,112.5h-6.982" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M50.338,83.671V46.847" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M23.424,61.486L44.483,112.5H37.5" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M32.771,112.5h-6.981l12.837-14.752" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M26.352,29.842l-5.39-7.336" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,0h5.856" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.983,112.5H0" />
+</g>
+</svg>

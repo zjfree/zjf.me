@@ -1,0 +1,39 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66px" height="112px" viewBox="0 0 65.649 112.5" enable-background="new 0 0 65.649 112.5" xml:space="preserve">
+<g id="Group_Can_Top">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="6.625" x2="65.6489" y2="6.625">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="32.824" cy="6.625" rx="32.824" ry="6.625" />
+</g>
+<g id="Group_Can_Bottom">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="105.875" x2="65.6489" y2="105.875">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" cx="32.824" cy="105.875" rx="32.824" ry="6.625" />
+</g>
+<g id="Group_Can_sub">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0" y1="55.9072" x2="65.6489" y2="55.9072">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<rect y="7.25" fill="url(#SVGID_3_)" width="65.649" height="97.314" />
+</g>
+<g id="Group_Ridges">
+	<path fill="none" stroke="#808080" d="M0.328,32.625C0.328,28.966,14.877,26,32.824,26c17.948,0,32.498,2.966,32.498,6.625" />
+	<path fill="none" stroke="#808080" d="M65.322,80.375c0,3.659-14.55,6.625-32.498,6.625c-17.947,0-32.496-2.966-32.496-6.625" />
+	<path fill="none" stroke="#808080" d="M0.371,36.923c0-2.693,14.549-3.875,32.497-3.875c17.948,0,32.498,2.182,32.498,4.875" />
+	<path fill="none" stroke="#808080" d="M65.322,74.625c0,2.693-14.55,4.875-32.498,4.875c-17.947,0-32.496-2.182-32.496-4.875" />
+	<path fill="none" stroke="#808080" d="M65.322,66.5c0,2.9-14.55,5.25-32.498,5.25c-17.947,0-32.496-2.35-32.496-5.25" />
+	<path fill="none" stroke="#808080" d="M0.328,45.5c0-2.9,14.549-5.25,32.496-5.25c17.948,0,32.498,2.35,32.498,5.25" />
+	<path fill="none" stroke="#808080" d="M65.322,60.922c0,1.891-14.55,3.423-32.498,3.423c-17.947,0-32.496-1.532-32.496-3.423" />
+	<path fill="none" stroke="#808080" d="M0.328,50.922c0-1.89,14.549-3.422,32.496-3.422c17.948,0,32.498,1.532,32.498,3.422" />
+	<line fill="none" stroke="#808080" stroke-width="0.75" x1="65.322" y1="55.75" x2="1.392" y2="56.25" />
+	<path fill="none" stroke="#4D4D4D" stroke-width="0.5" d="M65.649,103.875c0,3.659-14.55,6.625-32.498,6.625   c-17.947,0-32.496-2.966-32.496-6.625" />
+	<path fill="none" stroke="#4D4D4D" stroke-width="0.5" d="M0.655,8.625C0.655,4.966,15.204,2,33.151,2   c17.948,0,32.498,2.966,32.498,6.625" />
+</g>
+</svg>

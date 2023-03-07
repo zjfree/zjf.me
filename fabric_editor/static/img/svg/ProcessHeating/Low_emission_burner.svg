@@ -1,0 +1,38 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="96px" viewBox="0 0 112.5 96.379" enable-background="new 0 0 112.5 96.379" xml:space="preserve">
+<g id="Group_Control">
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M84.432,53.093l6.086,5.186l-8.115,7.891l-6.088-4.96L84.432,53.093z   " />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.1" d="M32.127,32.126l60.42-8.116l-4.058,28.182L40.243,96.379   L32.127,32.126z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M52.192,64.14l36.297-28.181v-3.833L52.192,60.082v-3.833l36.297-28.181   " />
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M79.246,61.209l6.764,1.804l-1.805,6.764l-6.763-1.804L79.246,61.209   z" />
+</g>
+<g id="Group_Burner">
+	<radialGradient id="SVGID_1_" cx="32.3706" cy="64.1174" r="32.3162" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#3366CC" />
+		<stop offset="0.64" style="stop-color:#2F62C4" />
+		<stop offset="1" style="stop-color:#003367" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" cx="32.371" cy="64.117" rx="32.371" ry="32.261" />
+	<radialGradient id="SVGID_2_" cx="88.375" cy="24.0657" r="24.095" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#3366CC" />
+		<stop offset="0.76" style="stop-color:#2F62C4" />
+		<stop offset="1" style="stop-color:#003367" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" cx="88.375" cy="24.066" rx="24.125" ry="24.065" />
+	<circle fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="32.127" cy="64.253" r="20.065" />
+</g>
+<g id="Group_Supply">
+	<path fill="#CCCCCC" d="M73.835,51.064l5.636,5.637l-8.566,8.567l-5.637-5.637L73.835,51.064z" />
+	<path fill="#333333" d="M56.25,32.126h8.116v11.949H56.25V32.126z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M65.268,59.631l5.637,5.637l8.566-8.567" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M56.25,44.075h8.116V32.126" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M65.268,59.631l8.567-8.567l5.636,5.637" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M56.25,44.075V32.126h8.116" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.4" d="M74.285,65.268l-0.225,1.803l-0.338,1.691l-0.451,1.578l-0.451,1.353   l-0.563,1.127l-0.677,0.789l-0.676,0.563l-0.676,0.226l-0.678-0.112l-0.789-0.563l-0.676-1.015l-0.676-1.466l-0.677-1.916   l-0.563-2.479l-0.451-3.156l-0.451-3.607" />
+</g>
+<g id="Group_Display">
+	<circle fill="#CCCCCC" cx="88.489" cy="24.01" r="15.105" />
+	<path fill="#333333" d="M89.842,17.022l-1.353-1.354l-1.353,1.354l1.353,1.353L89.842,17.022z" />
+	<path fill="#FFFFFF" d="M82.402,22.883h12.174v2.029H82.402V22.883z" />
+	<path fill="#7F99CC" d="M82.402,19.952h12.174v2.029H82.402V19.952z" />
+</g>
+</svg>

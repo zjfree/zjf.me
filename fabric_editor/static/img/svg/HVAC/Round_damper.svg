@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Frame">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.4023" r="56.3262" gradientUnits="userSpaceOnUse">
+		<stop offset="0.81" style="stop-color:#CBE5E5" />
+		<stop offset="0.92" style="stop-color:#E5FFFF" />
+		<stop offset="1" style="stop-color:#CBE5E5" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" cx="56.25" cy="56.402" rx="56.25" ry="56.402" />
+	<ellipse fill="#FFFFFF" stroke="#4C4C4C" stroke-width="0.1" cx="56.417" cy="56.112" rx="46.667" ry="53.972" />
+</g>
+<g id="Group_Round_Damper">
+	<path fill="#99CCCC" stroke="#4C4C4C" stroke-width="0.0999" d="M103.097,55.096c0,19.146-21.045,34.673-47.007,34.673   c-25.961,0-47.007-15.527-47.007-34.673" />
+	<path fill="#CCFFFF" stroke="#4C4C4C" stroke-width="0.1" d="M9.083,53.918c0-16.845,21.008-30.501,46.922-30.501   c25.914,0,46.922,13.656,46.922,30.501c0,16.842-21.008,30.499-46.922,30.499C30.091,84.417,9.083,70.761,9.083,53.918z" />
+</g>
+<g id="Group_Axial">
+	<path fill="#99CCCC" d="M9.459,49.212h93.468v4.504H9.459V49.212z" />
+	<path fill="#CCFFFF" d="M9.459,47.41h93.468v1.802H9.459V47.41z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M9.459,47.41h93.468v6.306H9.459V47.41" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M9.91,49.212h92.004" />
+</g>
+</svg>

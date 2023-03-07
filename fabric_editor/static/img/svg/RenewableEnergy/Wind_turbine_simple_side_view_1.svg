@@ -1,0 +1,23 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="114px" viewBox="0 0 16.545 113.998" enable-background="new 0 0 16.545 113.998" xml:space="preserve">
+<g id="Group_Pole">
+	<path fill="#7F7F7F" stroke="#999999" stroke-width="0.25" d="M7.645,113.311h4.45v0.685h-4.45V113.311z" />
+	<path fill="#C1D4D2" stroke="#999999" stroke-width="0.25" d="M12.095,113.311L11.183,40.51H8.672l-1.027,72.801H12.095z" />
+	<ellipse fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" cx="9.814" cy="109.887" rx="0.912" ry="2.282" />
+</g>
+<g id="Group_Blades">
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M4.678,38.799l0.457-15.29L6.39,0.002H5.934l-1.94,22.251   L3.309,32.295L2.51,38.799H4.678z" />
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M4.565,40.738l-0.457,5.478l-0.799,2.168l-0.57,1.826l-0.913,2.624   l-1.369,7.646L0,60.708V59.68l1.483-9.471l1.026-9.472l0.343-0.798l0.57-0.343h0.343l0.456,0.229l0.343,0.685V40.738z" />
+	<path fill="#92A1A0" d="M4.068,40.453l-0.31,5.488l-0.741,2.188L2.496,49.97l-0.843,2.648L0.49,60.297l-0.45,0.241l0.2-1.033   l1.461-9.399l0.809-3.903l0.102-0.46l0.206-0.805l0.204-0.918l0.313-1.15l0.314-1.035l0.207-0.805L4.068,40.453L4.068,40.453z" />
+</g>
+<g id="Group_Center">
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M3.537,39.597l-0.114,1.483l-0.57-0.114h-0.57l-0.457-0.229   L1.484,40.51l-0.343-0.229l-0.228-0.229l-0.229-0.228v-0.343v-0.229l0.229-0.342l0.228-0.229l0.343-0.228l0.456-0.114l0.457-0.114   l0.57-0.114h0.57V39.597z" />
+</g>
+<g id="Group_Neck">
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M5.591,41.424L2.51,41.195H2.397H2.282l0,0l-0.114-0.114l0,0   l-0.114-0.114v-0.114v-0.114l0.229-2.396v-0.114v-0.114l0,0L2.397,38l0,0l0.113-0.114l0,0h0.229l3.081,0.229L5.591,41.424z" />
+</g>
+<g id="Group_Motor">
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M14.606,36.745h0.456l-0.113,2.282l-0.571-0.114L14.606,36.745z" />
+	<path fill="#C1D4D2" stroke="#7F7F7F" stroke-width="0.25" d="M5.477,37.544l7.417,0.342l3.651,0.571l-1.026,3.993L5.364,41.88   L5.477,37.544z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M5.364,41.195l10.27,0.456" />
+</g>
+</svg>

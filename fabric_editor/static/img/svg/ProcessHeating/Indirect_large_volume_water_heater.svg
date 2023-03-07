@@ -1,0 +1,40 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88px" height="112px" viewBox="0 0 87.725 112.5" enable-background="new 0 0 87.725 112.5" xml:space="preserve">
+<g id="Group_Water_Heater">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="77.1367" y1="116.3613" x2="10.5879" y2="1.0954">
+		<stop offset="0" style="stop-color:#BDBDBD" />
+		<stop offset="0.4" style="stop-color:#BDBDBD" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.1" d="M0,7.208h87.725v103.041H0V7.208z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M0,9.234h87.725" />
+</g>
+<g id="Group_Label">
+	<path fill="#B2B2B2" d="M6.419,39.978h11.036v11.036H6.419V39.978z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M6.419,51.014V39.978h11.036" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.419,51.014h11.036V39.978" />
+	<path fill="#E5E5E5" d="M23.986,51.014h11.036v4.279H23.986V51.014z" />
+	<path fill="#4C4C4C" d="M21.734,11.487H32.77v15.203H21.734V11.487z" />
+	<circle fill="#4C4C4C" cx="29.504" cy="60.811" r="3.266" />
+	<path fill="#4C4C4C" d="M6.419,83.896h4.504v6.531H6.419V83.896z" />
+</g>
+<g id="Group_Mesh">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M52.59,22.41h13.288v-1.126H52.59v-1.126h13.288v-1.126H52.59v-1.126   h13.288v-0.901H52.59v-1.014h13.288v-1.239H52.59v-1.014h13.288V12.5H52.59v-1.013h13.288" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M30.518,68.581H12.95v1.126h17.568v1.126H12.95v1.126h17.568v0.901   H12.95v1.126h17.568v1.126H12.95v1.126h17.568v1.127H12.95v1.125h17.568v1.127H12.95v1.126h17.568v0.901H12.95v1.125h17.568v1.127   H12.95v1.126h17.568v1.126H12.95v1.126h17.568V88.4H12.95v1.127h17.568v0.9H12.95v1.126h17.568v1.126H12.95v1.127h17.568v1.125   H12.95v1.127h17.568v1.126H12.95v1.126h17.568v0.9H12.95v1.127h17.568v1.126H12.95v1.126h17.568v1.126H12.95" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M57.095,103.716h17.566v-1.126H57.095v-1.126h17.566v-1.126H57.095   v-1.127h17.566v-0.9H57.095v-1.126h17.566v-1.126H57.095v-1.127h17.566v-1.125H57.095V92.68h17.566v-1.126H57.095v-1.126h17.566   v-0.9H57.095V88.4h17.566v-1.126H57.095v-1.126h17.566v-1.126H57.095v-1.126h17.566V82.77H57.095v-1.125h17.566v-0.901H57.095   v-1.126h17.566V78.49H57.095v-1.125h17.566v-1.127H57.095v-1.126h17.566v-1.126H57.095V72.86h17.566v-0.901H57.095v-1.126h17.566   v-1.126H57.095v-1.126h17.566v-1.126H57.095v-1.127h17.566v-1.125H57.095v-1.127h17.566v-0.9H57.095v-1.127h17.566v-1.125H57.095   v-1.127h17.566v-1.126H57.095v-1.126h17.566v-1.126H57.095v-1.126h17.566v-1.126H57.095v-0.901h17.566" />
+</g>
+<g id="Group_Stand">
+	<path fill="#333333" d="M0,110.248h87.725v0.676H0V110.248z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M8.671,110.248h8.784v2.252H8.671V110.248z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M70.157,110.248h8.783v2.252h-8.783V110.248z" />
+</g>
+<g id="Group_Pole">
+	<path fill="#4C4C4C" d="M19.482,4.167h1.351v3.041h-1.351V4.167z" />
+</g>
+<g id="Group_Cross_Orange">
+	<path fill="#CC9933" stroke="#4C4C4C" stroke-width="0.1" d="M20.833,4.167V2.928h1.352V1.239h-1.352V0h-1.351v1.239h-1.577v1.689   h1.577v1.239H20.833z" />
+	<path fill="#FFCC00" d="M18.356,2.478V1.689h1.351v0.788H18.356z" />
+	<path fill="#FFCC00" d="M19.707,0.451h0.789v3.491h-0.789V0.451z" />
+	<path fill="#FFCC00" d="M20.496,2.478V1.689h1.464v0.788H20.496z" />
+</g>
+</svg>

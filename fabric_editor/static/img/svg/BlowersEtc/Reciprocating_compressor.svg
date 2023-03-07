@@ -1,0 +1,63 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_2">
+	<path stroke="#4C4C4C" stroke-width="0.25" d="M90.203,9.347V4.729l-1.127-3.604L87.951,0h-1.127l-1.352,1.126L84.346,4.73v4.617   l1.127-5.405l1.352-2.815l0.451-0.563l0.676,0.563l1.125,2.815l0.676,5.405H90.203z" />
+</g>
+<g id="Group_Tank">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="18.8052" y1="55.0117" x2="93.8066" y2="55.0117">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M70.607,109.009l-9.459,1.015h-9.911l-9.459-1.015l-8.559-1.914l-6.982-3.04l-4.955-3.492   l-2.478-4.054V13.401l2.478-3.829l4.955-3.604l6.982-2.815l8.559-2.027L51.239,0h9.91l9.459,1.126l8.56,2.027l6.981,2.815   l4.955,3.604l2.703,3.829v83.108l-2.703,4.054l-4.955,3.492l-6.981,3.04L70.607,109.009z" />
+</g>
+<g id="Group_Reader">
+	<path fill="#CCCCCC" d="M35.022,73.311h28.153v18.693H35.022V73.311z" />
+</g>
+<g id="Group_1">
+	<path fill="#FFB27F" d="M35.022,73.311h28.153v-2.928H35.022V73.311z" />
+</g>
+<g id="Group_Label2">
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M35.022,92.004V70.383h28.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M63.176,70.383v21.621H35.022" />
+	<path d="M42.229,72.41h13.964v-1.352H42.229V72.41z" />
+	<path fill="#B2B2B2" d="M37.5,75.113h23.424V86.6H37.5V75.113z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.022,88.4h28.153" />
+</g>
+<g id="Group_Label1">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M36.374,50.563h25.675v8.558H36.374V50.563z" />
+	<path fill="#FFFFFF" d="M37.5,51.915h23.424v6.082H37.5V51.915z" />
+</g>
+<g id="Group_Projection">
+	<path fill="#B27F19" d="M12.387,92.004h6.194v2.253h-6.194V92.004z" />
+	<path fill="#FFCC66" d="M12.387,92.68h6.194v0.901h-6.194V92.68z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="41.5542" y1="26.4639" x2="41.5542" y2="14.5269">
+		<stop offset="0.01" style="stop-color:#7F4C00" />
+		<stop offset="0.51" style="stop-color:#CC9933" />
+		<stop offset="1" style="stop-color:#7F4C00" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M43.356,26.464h-8.333V14.527h8.333l2.027,0.901l1.802,1.802l0.901,2.027v2.478l-0.901,2.027   l-1.802,1.802L43.356,26.464z" />
+	<circle fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" cx="36.374" cy="20.496" r="5.856" />
+	<circle cx="36.374" cy="20.383" r="1.126" />
+</g>
+<g id="Group_Port">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="11.937" y1="74.8857" x2="11.937" y2="46.7344">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M5.293,46.734h13.288v28.152H5.293V46.734" />
+</g>
+<g id="Group_Supporting_Pipe">
+	<path fill="#7F7F7F" d="M98.424,101.802l0.563-1.014h12.839l0.676,1.014H98.424z" />
+	<path fill="#7F7F7F" d="M0,101.802l0.563-1.014h12.838l0.563,1.014H0z" />
+	<path fill="#333333" d="M112.5,111.824l-0.676,0.676H98.986l-0.563-0.676v-10.022H112.5V111.824z" />
+	<path fill="#333333" d="M13.964,111.824l-0.563,0.676H0.563L0,111.824v-10.022h13.964V111.824z" />
+	<path d="M14.077,103.041h84.347v7.207H14.077V103.041z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="56.2495" y1="110.248" x2="56.2495" y2="103.2656">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M15.878,103.266h80.743v6.982H15.878V103.266" />
+</g>
+</svg>

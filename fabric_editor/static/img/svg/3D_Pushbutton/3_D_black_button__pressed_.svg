@@ -1,0 +1,15 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="113px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Black_Button_Pressed_front" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.25" r="56.25" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.82" style="stop-color:#DEDEDE" />
+		<stop offset="1" style="stop-color:#575757" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" cx="56.25" cy="56.25" r="56.25" />
+</g>
+<g id="Group_Black_Button_Pressed_Base" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	
+		<ellipse transform="matrix(-1 -0.0031 0.0031 -1 113.1301 113.9634)" fill="#4C4C4C" stroke="#4C4C4C" cx="56.654" cy="56.893" rx="42.54" ry="42.656" />
+	<circle fill="none" stroke="#C9C9C9" cx="56.25" cy="57.25" r="32.896" />
+</g>
+</svg>

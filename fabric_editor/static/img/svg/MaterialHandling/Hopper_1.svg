@@ -1,0 +1,33 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="84px" height="112px" viewBox="0 0 83.527 112.5" enable-background="new 0 0 83.527 112.5" xml:space="preserve">
+<g id="Group_Rear_Stand">
+	<path fill="#003333" stroke="#4C4C4C" stroke-width="0.25" d="M9.243,112.498V3.383h3.607v109.115H9.243z" />
+	<path fill="#003333" stroke="#4C4C4C" stroke-width="0.25" d="M74.284,112.498V3.383h-3.607v109.115H74.284z" />
+</g>
+<g id="Group_Hopper">
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,1.129V24.35l27.842,88.148h27.842L83.527,24.35V1.129H0z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="41.7642" y1="111.9346" x2="41.7642" y2="24.3501">
+		<stop offset="0" style="stop-color:#194C4C" />
+		<stop offset="0.21" style="stop-color:#356868" />
+		<stop offset="1" style="stop-color:#669999" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M1.127,24.35l26.715,87.585h27.842L82.4,24.35H1.127z" />
+</g>
+<g id="Group_StandRear">
+	<path fill="#194C4C" d="M5.749,112.498V0.001H4.622v112.497H5.749z" />
+	<path fill="#194C4C" d="M77.666,112.498V0.001h1.24v112.497H77.666z" />
+</g>
+<g id="Group_Cross_Support">
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.622,21.982h74.285v4.622H4.622V21.982z" />
+	<path fill="#194C4C" d="M4.622,27.844h74.285v-1.24H4.622V27.844z" />
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.622,48.698h74.285v4.622H4.622V48.698z" />
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.622,75.412h74.285v4.622H4.622V75.412z" />
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M4.622,102.128h74.285v4.622H4.622V102.128z" />
+	<path fill="#194C4C" d="M4.622,54.446h74.285v-1.127H4.622V54.446z" />
+	<path fill="#194C4C" d="M4.622,81.274h74.285v-1.24H4.622V81.274z" />
+	<path fill="#194C4C" d="M4.622,107.989h74.285v-1.239H4.622V107.989z" />
+</g>
+<g id="Group_Support">
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,112.498V0.001h4.622v112.497H0z" />
+	<path fill="#7FB2B2" stroke="#4C4C4C" stroke-width="0.25" d="M83.527,112.498V0.001h-4.621v112.497H83.527z" />
+</g>
+</svg>

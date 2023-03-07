@@ -1,0 +1,29 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66px" height="112px" viewBox="0 0 65.648 112.5" enable-background="new 0 0 65.648 112.5" xml:space="preserve">
+<g id="Group_Pump_Body">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.4758" y1="56.3066" x2="63.1721" y2="56.3066" gradientTransform="matrix(1 0 0 -1 0 112.5)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M63.172,91.664l-0.676,3.941l-1.238,2.928l-1.803,2.703   l-2.364,2.478l-2.815,2.14l-3.378,1.914l-3.716,1.576l-3.94,1.238l-4.393,0.9l-4.504,0.338h-1.577h-1.464l-4.617-0.338l-4.278-0.9   l-4.055-1.238l-3.716-1.576l-3.266-1.914l-2.929-2.14l-2.364-2.478l-1.803-2.703l-1.237-2.928l-0.563-2.929v-1.014V8.111   l2.478-4.955l5.066-2.59h45.493l5.067,2.59l2.59,4.955v83.553" />
+</g>
+<g id="Group_Fins">
+	<path fill="#666666" d="M62.497,10.701h2.478v80.963h-2.478V10.701z" />
+	<path fill="#666666" d="M0.563,10.701h2.479v80.963H0.563V10.701z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M34.12,10.701h2.478v80.963H34.12V10.701z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M29.052,10.701h2.478v80.963h-2.478V10.701z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M44.141,10.701h2.591v80.963h-2.591V10.701z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M39.187,10.701h2.479v80.963h-2.479V10.701z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M18.918,10.701h2.477v80.963h-2.477V10.701z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M23.985,10.701h2.478v80.963h-2.478V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M57.429,10.701h2.479v80.963h-2.479V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M53.713,10.701h2.477v80.963h-2.477V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M49.209,10.701h2.59v80.963h-2.59V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M5.63,10.701h2.478v80.963H5.63V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M9.459,10.701h2.478v80.963H9.459V10.701z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M13.851,10.701h2.479v80.963h-2.479V10.701z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M60.583,10.701h2.59v80.963h-2.59V10.701z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M2.478,10.701h2.478v80.963H2.478V10.701z" />
+</g>
+</svg>

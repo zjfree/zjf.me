@@ -1,0 +1,891 @@
+
+@font-face {
+    font-family: number;
+    src: url(../font/Digital-7Mono.TTF);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+}
+body{
+    overflow: hidden;
+}
+
+#divMainLeft{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width: max(15%, 300px);
+    background-color: #eff;
+    overflow:auto;
+    box-shadow: inset -1px 0 1px gray;
+}
+#divMainRight{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width: max(15%, 300px);
+    background-color: #eff;
+    overflow:auto;
+    box-shadow: inset 1px 0 1px gray;
+}
+#divMainTop{
+    position:absolute;
+    top:0;
+    left: max(15%, 300px);
+    right:max(15%, 300px);
+    height: 40px;
+    background-color: #eff;
+    box-shadow: inset 0px -1px 1px gray;
+}
+#divMainBottom{
+    position:absolute;
+    bottom:0;
+    left: max(15%, 300px);
+    right:max(15%, 300px);
+    height: 20px;
+    background-color: #eff;
+    font-size:12px;
+    border-top: solid 1px gray;
+}
+#divMainEditor{
+    position:absolute;
+    top:40px;
+    left: max(15%, 300px);
+    right:max(15%, 300px);
+    bottom:21px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+    overflow:auto;
+    background-color: #eee;
+}
+
+#divMainLeft>.title{
+    text-align: center;
+    margin:0;
+    padding:5px;
+    border-bottom: solid 1px gray;
+}
+#divMainLeft>.block{
+    padding:10px;
+    border-bottom: solid 1px gray;
+}
+
+#divEditBtn{
+    font-size:16px;padding:8px 10px;
+}
+#divEditBtn button{
+    cursor: pointer;
+}
+#divEditBtn button:hover{
+    color:blue;
+}
+
+#divTabNav
+{
+    height: 28px;
+    padding-top:10px;
+    border-bottom: solid 2px gray;
+    font-size:14px;
+    background-color: #eee;
+    box-shadow: inset -1px 0 1px gray;
+}
+#divTabNav b, #divTabNav span{
+    font-weight: normal;
+    display: inline-block;
+    padding:0px 10px;
+    line-height: 28px;
+    height: 28px;
+    border:solid 2px rgba(0, 0, 0, 0);
+    border-bottom: none;
+}
+#divTabNav b{
+    color:blue;
+    font-weight: bold;
+    padding:0px 5px;
+}
+#divTabNav span{
+    cursor: pointer;
+}
+#divTabNav span.active{
+    background-color: #eff;
+    border:solid 2px gray;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    background-color: #eff;
+}
+
+.iconfont{
+    font-size: 16px;
+}
+
+#divTabContent{
+    position:absolute;
+    top:40px;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:auto;
+}
+
+#divBtnList{
+    padding:10px;
+    line-height: 2;
+}
+#divBtnList button{
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 45%;
+    height: 3em;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#divBtnList button:hover{
+    color:blue;
+}
+#divSvgList{
+    padding:10px;
+}
+#divSvgItem img{
+    max-width: 70px;
+    max-height: 70px;
+    margin-top:10px;
+    margin-right:10px;
+    cursor: pointer;
+}
+#divSvgItem img:hover{
+    background-color: #0f0;
+}
+
+#divPathList{
+    padding:10px;
+}
+#divSvgPathList{
+    margin-top: 10px;
+}
+#divPathList svg{
+    width: 64px;
+    height: 64px;
+    margin-top:10px;
+    margin-right:10px;
+    cursor: pointer;
+}
+#divPathList svg:hover{
+    background-color: #0f0;
+}
+
+.canvas-container{
+    margin:0 auto;
+}
+
+#myCanvas{
+    display: block;
+    background-color: #fff;
+    outline: solid 2px #000;
+}
+
+.hr{
+    height:10px;
+}
+
+.status-info{
+    font-size: 12px;
+    line-height: 1;
+    padding:5px 10px;
+}
+
+#divMainRight>.block{
+    padding:10px;
+    border-bottom: solid 1px gray;
+    line-height: 2;
+}
+
+#divMainRight>#divAttrList{
+    line-height: 1.8;
+    font-size:12px;
+}
+
+#divAttrList h3{
+    background-color: #666;
+    color:#fff;
+    margin:0;
+    padding:0 10px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    box-shadow: inset 0 0 5px #000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#divAttrList .attr-group{
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding-bottom: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border:solid 1px #666;
+}
+
+#divAttrList table{
+    margin-right:10px;
+    width: 95%;
+}
+#divAttrList table th{
+    font-weight: normal;
+    width: 5em;
+    text-align: right;
+    padding:0;
+    vertical-align: text-top;
+}
+#divAttrList table td{
+    text-align: left;
+    padding:0;
+}
+#divAttrList table input,
+#divAttrList table select,
+#divAttrList table textarea
+{
+    width:100%;
+    text-align: center;
+    display: block;
+    padding: 0;
+    margin:0;
+}
+#divAttrList table textarea{
+    resize: vertical;
+    text-align: left;
+    height: 4em;
+}
+#divAttrList table input[type=checkbox]{
+    width:auto;
+    display: inline;
+}
+
+.btn-attr{
+    font-size:12px;
+    padding:0px 1px;
+}
+
+#attr_zfill{
+    color:#fff;
+    text-shadow: 0 0 2px #000;
+}
+
+.color-msg{
+    border: 0;
+    outline: solid 1px #999;
+    border-left: solid 1em #000;
+    box-sizing: border-box;
+    line-height: 1em;
+}
+
+.h3-btn{
+    float:right;
+    cursor: pointer;
+    color:#999;
+}
+.h3-btn:hover{
+    color:#0F0;
+}
+
+.attr-type, #divBindAttr, #divEventAttr{
+    display: none;
+}
+
+.hhide{
+    visibility: hidden;
+}
+
+.tbFilter{
+    width: 100%;
+}
+#divAttrList .divImageFilter{
+    padding:0 10px;
+}
+
+#divAttrList .divImageFilter select{
+    width: auto;
+    display: inline-block;
+}
+#divAttrList .divImageFilter p{
+    margin:0;
+    padding:0 10px;
+    margin-left:1em;
+}
+#divAttrList .divImageFilter input[type=range]{
+    display: block;
+    width: 100%;
+    margin:5px;
+}
+
+
+/* 弹出框 */
+
+dialog{
+    border: 0;
+	outline:solid 5px rgba(0,0,0,0.3);
+	box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+	background-color: #fff;
+	min-width: 400px;
+	max-width: 100%;
+	max-height: 100vh;
+	padding:0;
+	overflow-y: auto;
+	resize: both;
+	position: fixed;
+}
+dialog .dialog-close{
+	font-size: 2rem;
+	font-weight: bold;
+	position:absolute;
+	top:-4px;
+	right:5px;
+	color:#666;
+	line-height: 1;
+	cursor: pointer;
+    user-select: none;
+}
+dialog .dialog-close:hover{
+	color:#000;
+    text-decoration: none;
+    box-shadow: 0 0 5px #fff;
+}
+dialog::backdrop{
+	background: rgba(0,0,50,0.3);
+	box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+}
+dialog>iframe{
+	width: 100%;
+	height: 100%;
+	display: block;
+    color:transparent;
+}
+
+dialog>h3{
+	margin: 0; 
+	padding:5px 10px; 
+	border-bottom:solid 1px gray;
+	background-color: #eee;
+}
+dialog>div{
+	margin:10px;
+}
+
+dialog .msgBtn {
+    text-align: center;
+}
+dialog .msgBtn button {
+    padding:5px 0;
+}
+
+/* 颜色选择弹出框 */
+#divColorBase span{
+    display: inline-block;
+    font-size:12px;
+    text-align: center;
+    width: 2.8em;
+    padding: 3px 0;
+    color: rgba(255,255,255,0);
+    box-shadow: inset 0 0 2px #999;
+    cursor: pointer;
+}
+#divColorBase span:hover{
+    color: #fff;
+    box-shadow: inset 0 0 2px #000;
+    text-shadow: 0 0 2px #000;
+}
+
+#divColorHue{
+    float: left;
+    width: 200px;
+}
+
+#myCanvas2{
+    cursor:crosshair;
+}
+.hue {
+    height: 20px;
+    width: 200px;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+
+#rangeH1 {
+    width: 200px;
+}
+
+#divColorValue{
+    margin-left:10px;
+}
+#divColorValue label{
+    font-family: 'Courier New', Courier, monospace;
+    font-size:14px;
+    display: inline-block;
+    width: 3.5em;
+}
+#divColorValue input[type=range]{
+    width: 200px;
+    position: relative;
+    top:3px;
+}
+#divColorValue .color{
+    width: 200px;
+    display:inline-block;
+    border:solid 1px gray;
+    height: 2em;
+    font-size:14px;
+    color: #fff;
+    text-shadow: 0 0 3px #000;
+    text-align: center;
+    line-height: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#divColorValue hr{
+    margin:5px 0;
+    height:1px;
+    background-color: #000;
+    border: none;
+    display: block;
+}
+
+#tbColorMsg, #tbColorMsg2{
+    width: 100%;
+    margin-top:10px;
+    border-collapse: collapse;
+}
+#tbColorMsg2{
+    margin-bottom:10px;
+}
+#tbColorMsg td, #tbColorMsg2 td{
+    padding:0;
+    border:none;
+    vertical-align: top;
+}
+#spanCurColor{
+    cursor: pointer;
+}
+
+#divGradientType{
+    text-align: center;
+}
+
+#divGradientLinear, #divGradientRadial{
+    margin:10px 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2;
+}
+#divGradientLinear input, #divGradientRadial input{
+    width: 40px;
+    text-align: center;
+}
+#divGradientShow{
+    background: linear-gradient(to right, #fff 0%, #000 100%);
+    height: 30px;
+    box-shadow: 0 0 1px #000;
+    margin:0 5px;
+    cursor: pointer;
+}
+#divGradientRectList{
+    position:relative;
+    height: 30px;
+    margin-top: 5px;
+}
+#divGradientRectList div{
+    position:absolute;
+    width: 10px;
+    height: 10px;
+    top:0;
+    border: solid 1px #000;
+    cursor: pointer;
+    user-select: none;
+}
+#divGradientRectList div::after{
+    content: '';
+    position:absolute;
+    top:-10px;
+    left:0;
+
+    width: 0;
+    height: 0;
+    border-width: 0 5px 10px 5px;
+    border-style: solid;
+    border-color: transparent transparent #999;
+}
+#divGradientBase{
+    text-align: center;
+}
+#divGradientBase span{
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    border:solid 1px gray;
+    cursor: pointer;
+}
+#divGradientBase span:hover{
+    border:solid 1px #000;
+    box-shadow: 0 3px 10px #999;
+}
+#divGradientDemo{
+    width: 200px;
+    height: 120px;
+    border:solid 1px gray;
+}
+
+#divHuePoint{
+    position:absolute;
+    width: 3px;
+    height: 3px;
+    border:solid 1px #000;
+    background-color: #fff;
+    border-radius: 50%;
+    top:0;
+    left:0;
+    pointer-events: none;
+}
+
+#txtColorVal{
+    text-align: center;
+    width: 95%;
+}
+
+/* 弹出数字输入框 */
+
+#msgNumInput{
+    min-width: 300px;
+}
+#divNumInput{
+    width:300px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 5px;
+}
+#msgNumInput #numInput, #msgNumInput #numInputRange{
+    display: inline-block;
+    width: 300px;
+}
+#msgNumInput #numInput{
+    padding: 0;
+    border: 0;
+    font-size: 2em;
+    text-align: center;
+    line-height: 1.5;
+    outline: solid 2px #666;
+    margin-bottom:10px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #ddd;
+}
+#spanNumError{
+    color:red;
+    position:absolute;
+    top:2px;
+    left:5px;
+    display: none;
+}
+#divNumKey{
+    text-align: center;
+}
+#divNumKey span{
+    display: inline-block;
+    background-repeat:no-repeat;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom:5px;
+    overflow: hidden;
+    cursor: pointer;
+    color:#000;
+    user-select: none;
+}
+#divNumKey span:hover{
+    color:#00F;
+}
+#msgNumInput .key1{
+    background: url(/static/img/key1.svg);
+    background-size:110px 55px;
+    width: 110px;
+    height: 55px;
+    line-height: 55px;
+}
+#msgNumInput .key2{
+    background: url(/static/img/key2.svg);
+    background-size:55px 55px;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 1.8em;
+}
+#divNumLog{
+    text-align: center;
+    margin-top: 5px;
+}
+#divNumLog span{
+    display: inline-block;
+    cursor: pointer;
+    border:solid 1px #999;
+    padding:2px 5px;
+    border-radius: 5px;
+    background-color: #ffe;
+    margin-right:5px;
+}
+#divNumLog span:hover{
+    background-color: #eff;
+    border:solid 1px #000;
+}
+
+#divFanList{
+    width: 450px;
+}
+
+#divFanList img{
+    border:solid 2px #ddd;
+    width:100px;
+    cursor: pointer;
+}
+#divFanList img:hover{
+    border:solid 2px #666;
+}
+
+#divBindAttr input, #divEventAttr input{
+    background-color: #eee;
+    border:solid 1px #666;
+    cursor: pointer;
+}
+
+/* 计时器弹出框 */
+
+#txtTimerSpan{
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding:10px 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#divTimerVal{
+    text-align: center;
+    font-size:12px;
+}
+#divTimerVal span{
+    cursor: pointer;
+    display: inline-block;
+    border: solid 1px gray;
+    background-color: #eff;
+    padding:3px;
+    margin-bottom:5px;
+    user-select: none;
+    width: 4em;
+}
+#divTimerVal .timer-val span{
+    width: auto;
+}
+#divTimerVal span:hover{
+    border: solid 1px #333;
+    background-color: #fee;
+}
+
+/* 数据绑定弹出框 */
+
+.divBindSource{
+    position:absolute;
+    bottom:0;
+    left:0;
+    border:solid 1px gray;
+    width: 300px;
+    height: 570px;
+    border-top:solid 2px gray;
+    display: none;
+    overflow-y: auto;
+}
+#divBindSource_sys{
+    display: block;
+}
+.divBindSource .item{
+    border-top:solid 1px #ddd;
+    padding:2px 10px;
+    cursor: pointer;
+    font-size:12px;
+    line-height: 1.3;
+    position: relative;
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+.divBindSource .item:first-child{
+    margin-top:10px;
+}
+.divBindSource .item:last-child{
+    border-bottom:solid 1px #ddd;
+}
+.divBindSource .item:hover{
+    background-color: #eff;
+}
+.divBindSource .item.active, .divBindSource .item.active:hover{
+    background-color: #ffa;
+}
+.divBindSource .item b{
+    font-weight: normal;
+}
+.divBindSource .item span{
+    color:#66f;
+    position: absolute;
+    top:2px;
+    right:5px;
+}
+.divBindSource .item i{
+    color:gray;
+    font-style: normal;
+}
+.divBindSource .group{
+    margin-top:10px;
+    background-color: #f6f6f6;
+}
+.divBindSource .group .title{
+    background: linear-gradient(to bottom, #999 0%,#000 100%);
+    color:#fff;
+    font-size: 12px;
+    padding:5px 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#divBindTab{
+    height: 29px;
+    position:absolute;
+    top:0;
+    left:0;
+    width: 300px;
+    z-index: 2;
+}
+#divBindTab span{
+    display:inline-block;
+    width: 20%;
+    font-size: 14px;
+    line-height: 28px;
+    height: 28px;
+    text-align: center;
+    border-top: solid 1px transparent;
+    border-left: solid 1px transparent;
+    border-right: solid 1px transparent;
+    cursor: pointer;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#divBindTab span.active{
+    border-top: solid 1px gray;
+    border-left: solid 1px gray;
+    border-right: solid 1px gray;
+    background-color: #fff;
+}
+
+.divBindContent{
+    display: none;
+    position:absolute;
+    top:0;
+    right:0;
+    height: 598px;
+    width: 480px;
+    border:solid 1px gray;
+    overflow-y: auto;
+}
+
+.bind-content{
+    font-size: 14px;
+    padding:10px;
+    line-height: 2;
+}
+.bind-content hr{
+    border:none;
+    height: 0;
+    margin: 5px 0;
+    background-color: #ccc;
+    border-top:solid 1px #ccc;
+}
+.bind-content span{
+    color:blueviolet;
+}
+
+.input-block{
+    display: block; 
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.tbInput {
+    color:#333;
+    border-collapse: collapse;
+    border: solid 1px #666;
+    width: 100%;
+    font-size: 12px;
+    margin:10px 0;
+}
+.tbInput th {
+    border: solid 1px #666;
+    background-color: #dedede;
+    text-align: center;
+    font-weight: normal;
+}
+.tbInput td {
+    border: solid 1px #666;
+    background-color: #fff;
+    text-align:center;
+    padding:2px 0;
+}
+
+.tbInput input{
+    width: 120px;
+    text-align: center;
+}
+
+#divBindContent_string input[type=number]{
+    width: 50px;
+}
+#divBindContent_number input[type=number]{
+    width: 50px;
+}
+
+.ul-list{
+    margin:0 10px; line-height:1.5; padding-left:20px;
+}
+.ul-list code{
+    font-family: Consolas, verdana,arial,sans-serif,'Courier New', Courier, monospace, '微软雅黑';
+    color:blue;
+    background-color: #eee;
+    font-size: 0.9em;
+    padding:2px 5px;
+    border-radius: 3px;
+}
+
+/* 事件弹出框 */
+#divEventInput{
+    font-size:14px;
+    line-height: 2;
+}
+#divEventInput label{
+    display:inline-block;
+    width: 5em;
+    text-align: right;
+}
+#divEventInput input{
+    width: 300px;
+}
+#divEventInput select{
+    width: 200px;
+}

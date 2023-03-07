@@ -1,0 +1,37 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95px" height="112px" viewBox="0 0 94.932 112.5" enable-background="new 0 0 94.932 112.5" xml:space="preserve">
+<g id="Group_Stand">
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M11.374,30.631h5.067v73.311h-5.067V30.631z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M11.374,30.631h5.067l1.802-1.689h-5.067L11.374,30.631z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M18.243,28.941l-1.802,1.689v73.311l1.802-1.689V28.941z" />
+	<path fill="#003399" stroke="#4C4C4C" stroke-width="0.25" d="M87.725,88.964v-5.293h-75v5.293H87.725z" />
+	<path fill="#0000E0" stroke="#4C4C4C" stroke-width="0.25" d="M0,39.189h4.955l1.688-1.464H1.689L0,39.189z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M6.644,37.725l-1.688,1.464V112.5l1.688-1.803V37.725z" />
+	<path fill="#0000E0" stroke="#4C4C4C" stroke-width="0.25" d="M81.418,102.252l-1.688,1.689H4.392l2.027-1.689H81.418z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M88.175,30.631h4.955v73.311h-4.955V30.631z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M88.175,30.631h4.955l1.802-1.689h-4.955L88.175,30.631z" />
+	<path fill="#0000AD" stroke="#4C4C4C" stroke-width="0.25" d="M94.932,28.941l-1.802,1.689v73.311l1.802-1.689V28.941z" />
+</g>
+<g id="Group_Bin">
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M2.928,8.221h80.518v59.234H2.928V8.221z" />
+	<path fill="#0000BF" stroke="#4C4C4C" stroke-width="0.25" d="M91.666,0l-8.221,8.221v59.234l8.221-7.996V0z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M2.928,8.221h80.518L91.666,0H11.149L2.928,8.221z" />
+</g>
+<g id="Group_Feeder">
+	<path fill="#003399" stroke="#4C4C4C" stroke-width="0.25" d="M47.973,82.432l35.473-14.977H2.928L47.973,82.432z" />
+</g>
+<g id="Group_Support">
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M0,39.189h4.955V112.5H0V39.189z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M80.18,108.896v-4.955H4.392v4.955H80.18z" />
+	<path fill="#0000FF" stroke="#4C4C4C" stroke-width="0.25" d="M79.954,39.189h5.181V112.5h-5.181V39.189z" />
+	<path fill="#00007F" stroke="#4C4C4C" stroke-width="0.25" d="M86.937,37.725l-1.802,1.464V112.5l1.802-1.803V37.725z" />
+</g>
+<g id="Group_Top_Inlet">
+	<path fill="#000066" stroke="#4C4C4C" stroke-width="0.25" d="M47.747,1.464L64.189,2.14l6.757,2.027l-6.757,1.802L47.747,6.645   L31.419,5.969l-6.757-1.802l6.757-2.027L47.747,1.464z" />
+</g>
+<g id="Group_Label_Back">
+	<path fill="#003399" stroke="#4C4C4C" stroke-width="0.25" d="M25.225,18.919h36.036v16.779H25.225V18.919z" />
+</g>
+<g id="Group_Label">
+	<path fill="#999999" d="M28.49,21.959h27.478v2.703H28.49V21.959z" />
+</g>
+</svg>

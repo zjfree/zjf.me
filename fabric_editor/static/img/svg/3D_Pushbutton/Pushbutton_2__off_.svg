@@ -1,0 +1,18 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="113px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Mounting_Bannet" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.5" r="56.25" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.62" style="stop-color:#999999" />
+		<stop offset="1" style="stop-color:#1F1F1F" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.5" cx="56.25" cy="56.5" r="56.25" />
+</g>
+<g id="Group_Push_Button2_Off" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#4D4D4D" stroke="#000000" stroke-width="0.25" d="M19.089,56.25c0,20.523,16.638,37.162,37.161,37.162   c20.524,0,37.162-16.639,37.162-37.162c0-20.524-16.638-37.162-37.162-37.162C35.727,19.088,19.089,35.726,19.089,56.25" />
+	<radialGradient id="SVGID_2_" cx="45.8965" cy="49.7061" r="23.3466" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D1D1D1" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_2_)" cx="45.896" cy="49.706" rx="22.823" ry="23.86" />
+</g>
+</svg>

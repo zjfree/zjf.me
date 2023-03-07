@@ -1,0 +1,61 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="111px" height="112px" viewBox="0 0 111.377 112.5" enable-background="new 0 0 111.377 112.5" xml:space="preserve">
+<g id="Group_Green_Base">
+	<path fill="#339966" stroke="#4C4C4C" stroke-width="0.25" d="M104.401,0l2.699,0.45l3.149,2.7l0.675,1.125l0.45,2.925v98.325   l-0.45,2.699l-2.699,3.149l-1.125,0.675l-2.699,0.45H6.976l-4.05-1.125l-2.475-3.149l-0.45-2.699V7.2l0.45-2.925l2.475-3.15   L6.976,0H104.401z" />
+</g>
+<g id="Group_Display">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="3.6011" y1="74.0254" x2="108.002" y2="74.0254">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M101.476,39.15l2.476,0.45l2.25,1.35l1.351,2.25l0.45,2.475   v56.7l-0.45,2.475l-1.351,2.025l-2.25,1.575l-2.476,0.45h-91.35l-2.475-0.45l-2.025-1.575l-1.575-2.025l-0.45-2.475v-56.7   l0.45-2.475l1.575-2.25l2.025-1.35l2.475-0.45H101.476z" />
+	<path fill="#999999" d="M6.976,77.4h98.325v28.125H6.976V77.4z" />
+</g>
+<g id="Group_Button_Holder">
+	<path fill="#999999" d="M27.901,42.3h77.4v33.3h-77.4V42.3z" />
+</g>
+<g id="Group_Display1">
+	<path fill="#009933" stroke="#4C4C4C" stroke-width="0.25" d="M36.676,49.275h44.101v15.75H36.676V49.275z" />
+	<path fill="#006633" d="M80.776,49.275v-3.15H36.676v6.3h44.101V49.275L80.776,49.275z" />
+</g>
+<g id="Group_Red_Button">
+	<line fill="none" stroke="#4C4C4C" x1="93.887" y1="49.917" x2="93.991" y2="57.417" />
+	<line fill="none" stroke="#4C4C4C" x1="84.151" y1="57.082" x2="94.188" y2="56.916" />
+	<path fill="#FF0000" d="M83.651,49.275h10.125v7.2H83.651V49.275z" />
+</g>
+<g id="Group_Blue_Button">
+	<path fill="#4D4D4D" d="M84.401,60.275h10.537v7.475H84.401V60.275z" />
+	<path fill="#00FFFF" d="M84.304,59.512h9.82v7.202h-9.82V59.512z" />
+</g>
+<g id="Group_Analyser">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="3.376" y1="24.9751" x2="108.001" y2="24.9751">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M101.251,14.625l3.824,1.125l2.476,2.925l0.45,2.475v7.425   l-0.45,2.7l-2.476,2.925l-3.824,1.125H9.901l-3.6-1.125l-2.475-2.925l-0.45-2.7V21.15l0.45-2.475l1.575-2.25l2.025-1.35l2.475-0.45   H101.251z" />
+	<path fill="#999999" d="M6.976,17.55h98.325v14.175H6.976V17.55z" />
+</g>
+<g id="Group_White_Buttons">
+	<path fill="#4C4C4C" d="M84.651,81.275h12.875v9.023H84.651V81.275z" />
+	<path fill="#FFFFFF" d="M84.151,80.775h12.375v8.773H84.151V80.775z" />
+	<path fill="#4C4C4C" d="M84.966,93.775h12.746v9.023H84.966V93.775z" />
+	<path fill="#FFFFFF" d="M84.151,93.15h12.375v8.773H84.151V93.15z" />
+	<path fill="#4C4C4C" d="M67.151,81.525h12.875v9.023H67.151V81.525z" />
+	<path fill="#4C4C4C" d="M31.901,94.147h12.875v8.779H31.901V94.147z" />
+	<path fill="#4C4C4C" d="M14.401,81.275h12.875v9.273H14.401V81.275z" />
+	<path fill="#4C4C4C" d="M67.151,94.025h12.875v9.023H67.151V94.025z" />
+	<path fill="#4C4C4C" d="M49.716,81.186h12.746v9.203H49.716V81.186z" />
+	<path fill="#4C4C4C" d="M14.651,93.894h12.625v9.037H14.651V93.894z" />
+	<path fill="#4C4C4C" d="M31.901,81.775h12.875v8.773H31.901V81.775z" />
+	<path fill="#4C4C4C" d="M49.651,93.775h12.875v9.023H49.651V93.775z" />
+	<path fill="#FFFFFF" d="M13.951,80.775h12.375v8.773H13.951V80.775z" />
+	<path fill="#FFFFFF" d="M31.501,80.775h12.375v8.773H31.501V80.775z" />
+	<path fill="#FFFFFF" d="M49.051,80.775h12.375v8.773H49.051V80.775z" />
+	<path fill="#FFFFFF" d="M66.601,80.775h12.375v8.773H66.601V80.775z" />
+	<path fill="#FFFFFF" d="M13.951,93.15h12.375v8.773H13.951V93.15z" />
+	<path fill="#FFFFFF" d="M31.501,93.15h12.375v8.773H31.501V93.15z" />
+	<path fill="#FFFFFF" d="M49.051,93.15h12.375v8.773H49.051V93.15z" />
+	<path fill="#FFFFFF" d="M66.601,93.15h12.375v8.773H66.601V93.15z" />
+</g>
+</svg>

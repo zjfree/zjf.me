@@ -1,0 +1,106 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="112px" viewBox="0 0 28.043 112.5" enable-background="new 0 0 28.043 112.5" xml:space="preserve">
+<g id="Group_Doom">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="6.9839" y1="6.792" x2="21.0601" y2="6.792">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.102" cx="14.022" cy="6.792" rx="7.038" ry="6.792" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="6.9839" y1="10.4346" x2="21.0601" y2="10.4346">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<rect x="6.984" y="6.792" fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.102" width="14.076" height="7.284" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.984,6.982H21.06" />
+</g>
+<g id="Group_Stand">
+	<path fill="#4C4C4C" d="M3.493,105.405H2.479v5.856h1.014V105.405z" />
+	<path fill="#4C4C4C" d="M25.79,105.405h-1.125v5.856h1.125V105.405z" />
+</g>
+<g id="Group_Label">
+	<path fill="#F2F2F2" d="M18.583,8.333H9.349v5.743h9.234V8.333z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M9.349,14.077V8.333h9.234" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M18.583,8.333v5.743" />
+</g>
+<g id="Group_Heating_Coil">
+	<path fill="#CCCCCC" d="M25.79,98.536H2.479V16.329H25.79V98.536z" />
+</g>
+<g id="Group_Side_Layer">
+	<path fill="#E5E5E5" d="M0.002,18.581h2.477V112.5H0.002V18.581z" />
+	<path fill="#F2F2F2" d="M0.002,107.658h2.477v4.842H0.002V107.658z" />
+	<path fill="#F2F2F2" d="M0.002,98.536h2.477v4.505H0.002V98.536z" />
+	<path fill="#F2F2F2" d="M0.002,89.076h2.477v4.73H0.002V89.076z" />
+	<path fill="#F2F2F2" d="M0.002,79.617h2.477v4.729H0.002V79.617z" />
+	<path fill="#F2F2F2" d="M0.002,70.383h2.477v4.504H0.002V70.383z" />
+	<path fill="#F2F2F2" d="M0.002,60.924h2.477v4.729H0.002V60.924z" />
+	<path fill="#F2F2F2" d="M0.002,51.464h2.477v4.73H0.002V51.464z" />
+	<path fill="#F2F2F2" d="M0.002,42.229h2.477v4.505H0.002V42.229z" />
+	<path fill="#F2F2F2" d="M0.002,32.771h2.477V37.5H0.002V32.771z" />
+	<path fill="#F2F2F2" d="M0.002,23.311h2.477v4.73H0.002V23.311z" />
+	<path fill="#F2F2F2" stroke="#7F7F7F" stroke-width="0.25" d="M25.79,98.536H2.479v6.869H25.79V98.536z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M0.002,18.581h2.477V112.5H0.002V18.581" />
+	<path fill="#E5E5E5" d="M25.79,18.581h2.253V112.5H25.79V18.581z" />
+	<path fill="#F2F2F2" d="M25.79,107.658h2.253v4.842H25.79V107.658z" />
+	<path fill="#F2F2F2" d="M25.79,98.536h2.253v4.505H25.79V98.536z" />
+	<path fill="#F2F2F2" d="M25.79,89.076h2.253v4.73H25.79V89.076z" />
+	<path fill="#F2F2F2" d="M25.79,79.617h2.253v4.729H25.79V79.617z" />
+	<path fill="#F2F2F2" d="M25.79,70.383h2.253v4.504H25.79V70.383z" />
+	<path fill="#F2F2F2" d="M25.79,60.924h2.253v4.729H25.79V60.924z" />
+	<path fill="#F2F2F2" d="M25.79,51.464h2.253v4.73H25.79V51.464z" />
+	<path fill="#F2F2F2" d="M25.79,42.229h2.253v4.505H25.79V42.229z" />
+	<path fill="#F2F2F2" d="M25.79,32.771h2.253V37.5H25.79V32.771z" />
+	<path fill="#F2F2F2" d="M25.79,23.311h2.253v4.73H25.79V23.311z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.1" d="M25.79,18.581h2.253V112.5H25.79V18.581" />
+</g>
+<g id="Group_Top_Layer">
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.1" d="M9.349,16.329H0.002v2.252h9.347V16.329z" />
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.1" d="M28.042,16.329h-9.46v2.252h9.46V16.329z" />
+	<path fill="#F2F2F2" stroke="#4C4C4C" stroke-width="0.1" d="M23.313,14.077H4.731v2.252h18.582V14.077z" />
+</g>
+<g id="Group_Mesh">
+	<path fill="#666666" d="M3.493,94.933h2.252v2.252H3.493V94.933z" />
+	<path fill="#666666" d="M8.335,90.203h2.14v2.477h-2.14V90.203z" />
+	<path fill="#666666" d="M12.727,94.933h2.478v2.252h-2.478V94.933z" />
+	<path fill="#666666" d="M17.457,90.203h2.478v2.477h-2.478V90.203z" />
+	<path fill="#666666" d="M22.186,94.933h2.252v2.252h-2.252V94.933z" />
+	<path fill="#666666" d="M3.493,85.473h2.252v2.478H3.493V85.473z" />
+	<path fill="#666666" d="M8.335,80.969h2.14v2.252h-2.14V80.969z" />
+	<path fill="#666666" d="M12.727,85.473h2.478v2.478h-2.478V85.473z" />
+	<path fill="#666666" d="M17.457,80.969h2.478v2.252h-2.478V80.969z" />
+	<path fill="#666666" d="M22.186,85.473h2.252v2.478h-2.252V85.473z" />
+	<path fill="#666666" d="M3.493,76.238h2.252v2.253H3.493V76.238z" />
+	<path fill="#666666" d="M8.335,71.509h2.14v2.253h-2.14V71.509z" />
+	<path fill="#666666" d="M12.727,76.238h2.478v2.253h-2.478V76.238z" />
+	<path fill="#666666" d="M17.457,71.509h2.478v2.253h-2.478V71.509z" />
+	<path fill="#666666" d="M22.186,76.238h2.252v2.253h-2.252V76.238z" />
+	<path fill="#666666" d="M3.493,66.779h2.252v2.252H3.493V66.779z" />
+	<path fill="#666666" d="M8.335,62.05h2.14v2.478h-2.14V62.05z" />
+	<path fill="#666666" d="M12.727,66.779h2.478v2.252h-2.478V66.779z" />
+	<path fill="#666666" d="M17.457,62.05h2.478v2.478h-2.478V62.05z" />
+	<path fill="#666666" d="M22.186,66.779h2.252v2.252h-2.252V66.779z" />
+	<path fill="#666666" d="M3.493,57.32h2.252v2.477H3.493V57.32z" />
+	<path fill="#666666" d="M8.335,52.815h2.14v2.252h-2.14V52.815z" />
+	<path fill="#666666" d="M12.727,57.32h2.478v2.477h-2.478V57.32z" />
+	<path fill="#666666" d="M17.457,52.815h2.478v2.252h-2.478V52.815z" />
+	<path fill="#666666" d="M22.186,57.32h2.252v2.477h-2.252V57.32z" />
+	<path fill="#666666" d="M3.493,48.085h2.252v2.252H3.493V48.085z" />
+	<path fill="#666666" d="M8.335,43.356h2.14v2.252h-2.14V43.356z" />
+	<path fill="#666666" d="M12.727,48.085h2.478v2.252h-2.478V48.085z" />
+	<path fill="#666666" d="M17.457,43.356h2.478v2.252h-2.478V43.356z" />
+	<path fill="#666666" d="M22.186,48.085h2.252v2.252h-2.252V48.085z" />
+	<path fill="#666666" d="M3.493,38.626h2.252v2.252H3.493V38.626z" />
+	<path fill="#666666" d="M8.335,33.896h2.14v2.478h-2.14V33.896z" />
+	<path fill="#666666" d="M12.727,38.626h2.478v2.252h-2.478V38.626z" />
+	<path fill="#666666" d="M17.457,33.896h2.478v2.478h-2.478V33.896z" />
+	<path fill="#666666" d="M22.186,38.626h2.252v2.252h-2.252V38.626z" />
+	<path fill="#666666" d="M3.493,29.167h2.252v2.478H3.493V29.167z" />
+	<path fill="#666666" d="M8.335,24.662h2.14v2.252h-2.14V24.662z" />
+	<path fill="#666666" d="M12.727,29.167h2.478v2.478h-2.478V29.167z" />
+	<path fill="#666666" d="M17.457,24.662h2.478v2.252h-2.478V24.662z" />
+	<path fill="#666666" d="M22.186,29.167h2.252v2.478h-2.252V29.167z" />
+	<path fill="#666666" d="M3.493,19.933h2.252v2.252H3.493V19.933z" />
+	<path fill="#666666" d="M12.727,19.933h2.478v2.252h-2.478V19.933z" />
+	<path fill="#666666" d="M22.186,19.933h2.252v2.252h-2.252V19.933z" />
+</g>
+</svg>

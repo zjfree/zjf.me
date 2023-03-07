@@ -1,0 +1,22 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="112px" viewBox="0 0 70.156 112.5" enable-background="new 0 0 70.156 112.5" xml:space="preserve">
+<g id="Group_Outer_Layer">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="56.25" x2="70.1565" y2="56.25">
+		<stop offset="0.01" style="stop-color:#262626" />
+		<stop offset="0.5" style="stop-color:#8C8C8C" />
+		<stop offset="1" style="stop-color:#262626" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0,0h70.156v112.499H0V0z" />
+</g>
+<g id="Group_Middle_Layer">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="56.1938" x2="70.1565" y2="56.1938">
+		<stop offset="0.01" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M0,4.73h70.156v102.927H0V4.73z" />
+</g>
+<g id="Group_Label">
+	<path fill="#FFFFFF" d="M29.616,28.041v-9.459h10.586v9.459H29.616z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M29.616,28.041h10.586" />
+</g>
+</svg>

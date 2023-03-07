@@ -1,0 +1,32 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="14px" viewBox="0 0 112.5 13.961" enable-background="new 0 0 112.5 13.961" xml:space="preserve">
+<g id="Group_Roller">
+	<path fill="#4C4C4C" d="M12.397,0h100.09v13.961H12.397V0z" />
+	<path fill="#999999" d="M12.397,6.417h100.09v1.125H12.397V6.417z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="6.2051" y1="3.9302" x2="6.2051" y2="10.2033">
+		<stop offset="0" style="stop-color:#666666" />
+		<stop offset="0.5" style="stop-color:#E5E5E5" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.013,3.94h12.385v6.079H0.013V3.94z" />
+	<path fill="#666666" d="M8.907,3.94h1.126v6.079H8.907V3.94z" />
+	<path fill="#666666" d="M5.755,3.94H6.43v6.079H5.755V3.94z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.013,3.94h12.385v6.079H0.013V3.94" />
+</g>
+<g id="Group_PaperEdges" display="none">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="61.7676" y1="0.0298" x2="61.7676" y2="13.9989">
+		<stop offset="0" style="stop-color:#4C4C4C" />
+		<stop offset="0.5" style="stop-color:#999999" />
+		<stop offset="1" style="stop-color:#4C4C4C" />
+	</linearGradient>
+	<path display="inline" fill="url(#SVGID_2_)" d="M12.172,0.338h99.189v12.947H12.172V0.338z" />
+</g>
+<g id="Group_Paper">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="61.8789" y1="0" x2="61.8789" y2="14.0578">
+		<stop offset="0" style="stop-color:#16284C" />
+		<stop offset="0.5" style="stop-color:#637599" />
+		<stop offset="1" style="stop-color:#16284C" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M13.523,0h96.712v13.961H13.523V0z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.397,0h98.964v13.961H12.397V0" />
+</g>
+</svg>

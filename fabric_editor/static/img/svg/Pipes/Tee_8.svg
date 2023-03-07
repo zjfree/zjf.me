@@ -1,0 +1,22 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Tee_V">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-0.75" y1="57" x2="55.5" y2="57" gradientTransform="matrix(-1 0 0 1 111 0)">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.18" style="stop-color:#959595" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M55.5,0.75v112.5h56.25V0.75H55.5z" />
+</g>
+<g id="Group_Tee_H">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="69.5625" y1="85.125" x2="69.5625" y2="28.8755" gradientTransform="matrix(-1 0 0 1 111 0)">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.16" style="stop-color:#909091" />
+		<stop offset="0.49" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#646566" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M-0.75,85.125H55.5c0,0,28.125-0.825,28.125-28.125c0-28.125-28.125-28.125-28.125-28.125H-0.75" />
+</g>
+</svg>

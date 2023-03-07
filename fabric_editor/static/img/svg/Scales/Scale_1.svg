@@ -1,0 +1,23 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="37px" viewBox="0 0 112.5 36.75" enable-background="new 0 0 112.5 36.75" xml:space="preserve">
+<g id="Group_Bottom_Support">
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M91.308,31.564h7.891l-7.891,5.185V31.564z" />
+	<path fill="#666666" stroke="#4C4C4C" stroke-width="0.25" d="M17.585,31.564h7.891l-7.891,5.185V31.564z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M84.318,31.564v5.185h6.989v-5.185H84.318z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M10.596,31.564v5.185h6.989v-5.185H10.596z" />
+</g>
+<g id="Group_Scale_Box">
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,31.564l3.607-13.979h94.914l3.383,13.979h0.225H0z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M98.521,17.585l10.371-6.989l3.607,13.978l-10.596,6.99   L98.521,17.585z" />
+	<path fill="#B2B2B2" stroke="#4C4C4C" stroke-width="0.25" d="M0,20.966L3.607,6.989h94.914l3.383,13.977h0.225H0z" />
+	<path fill="#999999" stroke="#4C4C4C" stroke-width="0.25" d="M98.521,6.989L108.893,0l3.607,13.978l-10.596,6.988L98.521,6.989z" />
+</g>
+<g id="Group_Top_Layer">
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M3.607,6.989L13.978,0h94.915L98.521,6.989H3.607z" />
+</g>
+<g id="Group_Display">
+	<path fill="#333333" stroke="#4C4C4C" stroke-width="0.25" d="M50.05,22.771h12.399v6.988H50.05V22.771z" />
+	<path fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" d="M56.363,27.73h5.636v1.578h-5.636V27.73z" />
+	<circle fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" cx="50.952" cy="26.378" r="0.902" />
+	<circle fill="#E5E5E5" stroke="#4C4C4C" stroke-width="0.25" cx="61.548" cy="26.378" r="0.902" />
+</g>
+</svg>

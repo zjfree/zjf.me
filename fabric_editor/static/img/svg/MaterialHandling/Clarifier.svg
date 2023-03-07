@@ -1,0 +1,58 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="110px" viewBox="0 0 112.5 110.246" enable-background="new 0 0 112.5 110.246" xml:space="preserve">
+<g id="Group_Stand_Rear">
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M98.297,104.046v2.367H87.023v-2.367H98.297z" />
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M16.458,104.046v2.367H5.073v-2.367H16.458z" />
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M15.331,14.204v89.842H6.2V23.222L15.331,14.204z" />
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M88.15,73.385v4.51H51.741v-4.51H88.15z" />
+	<path fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" d="M97.17,18.713v85.333h-9.02V27.844L97.17,18.713z" />
+</g>
+<g id="Group_Top_Layer">
+	<path fill="#A6BAD9" stroke="#4C4C4C" stroke-width="0.25" d="M60.759,1.578v33.029h-50.05V1.578H60.759z" />
+</g>
+<g id="Group_Clarifier_sub">
+	<path fill="#BFD3F2" stroke="#4C4C4C" stroke-width="0.25" d="M110.922,0.451v13.753H60.759V0.451H110.922z" />
+	<path fill="#BFD3F2" stroke="#4C4C4C" stroke-width="0.25" d="M51.741,64.254l50.05-50.05H60.759l-50.05,50.05V89.28h41.032V64.254   z" />
+</g>
+<g id="Group_Shadow">
+	<path fill="#8CA0BF" d="M60.857,14.204c-0.166,0.217-0.354,0.419-0.561,0.604c-0.306,0.492-0.697,0.931-1.181,1.28   c-0.204,0.252-0.433,0.485-0.688,0.693c-0.218,0.297-0.473,0.566-0.762,0.805h41.688l2.438-3.381L60.857,14.204L60.857,14.204z" />
+	<path fill="#8CA0BF" d="M65.268,50.615l-3.381,3.382h-40.92l3.382-3.382H65.268z" />
+	<path fill="#8CA0BF" d="M40.355,85.784v1.239H22.094v-1.239H40.355z" />
+	<path fill="#7387A6" d="M60.759,3.946V6.2h-50.05V3.946H60.759z" />
+	<path fill="#8CA0BF" d="M110.809,2.819l0.113,2.142H60.759V2.819H110.809z" />
+</g>
+<g id="Group_Platform">
+	<path fill="#BFD3F2" stroke="#4C4C4C" stroke-width="0.25" d="M72.145,46.106l-4.51,4.509H22.094l4.622-4.509H72.145z" />
+	<path fill="#BFD3F2" stroke="#4C4C4C" stroke-width="0.25" d="M60.759,1.578v2.367H9.582V1.578H60.759z" />
+	<path fill="#BFD3F2" stroke="#4C4C4C" stroke-width="0.25" d="M112.049,0.451v2.367H59.632V0.451H112.049z" />
+</g>
+<g id="Group_Bolts">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.355,67.636v18.263H22.094V67.636H40.355" />
+	<path fill="#263A59" d="M32.352,75.639v2.256h-2.367v-2.256H32.352z" />
+	<path fill="#263A59" d="M38.552,79.021h1.24v1.127h-1.24V79.021z" />
+	<path fill="#263A59" d="M38.552,73.385h1.24v1.127h-1.24V73.385z" />
+	<path fill="#263A59" d="M38.552,68.199h1.24v1.127h-1.24V68.199z" />
+	<path fill="#263A59" d="M33.479,68.199h1.127v1.127h-1.127V68.199z" />
+	<path fill="#263A59" d="M27.843,68.199h1.127v1.127h-1.127V68.199z" />
+	<path fill="#263A59" d="M22.658,68.199h1.127v1.127h-1.127V68.199z" />
+	<path fill="#263A59" d="M22.658,73.385h1.127v1.127h-1.127V73.385z" />
+	<path fill="#263A59" d="M22.658,79.021h1.127v1.127h-1.127V79.021z" />
+	<path fill="#263A59" d="M22.658,84.094h1.127v1.239h-1.127V84.094z" />
+	<path fill="#263A59" d="M27.843,84.094h1.127v1.239h-1.127V84.094z" />
+	<path fill="#263A59" d="M33.479,84.094h1.127v1.239h-1.127V84.094z" />
+	<path fill="#263A59" d="M38.552,84.094h1.24v1.239h-1.24V84.094z" />
+	<path fill="none" stroke="#263A59" stroke-width="0.25" d="M24.349,83.531V69.891h13.64" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M38.101,69.891v13.641h-13.64" />
+</g>
+<g id="Group_Collector">
+	<path fill="#8CA0BF" stroke="#4C4C4C" stroke-width="0.25" d="M51.741,89.28l-11.386,13.64H22.094L10.709,89.28H51.741z" />
+</g>
+<g id="Group_Tuner">
+		<circle fill="#596D8C" stroke="#4C4C4C" stroke-width="0.25" cx="31.225" cy="102.919" r="5.073" />	
+		<radialGradient id="SVGID_1_" cx="31.2246" cy="7.3271" r="3.3821" gradientTransform="matrix(1 0 0 -1 0 110.2461)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#6F7085" />
+		<stop offset="0.39" style="stop-color:#595E76" />
+		<stop offset="1" style="stop-color:#0D2140" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" cx="31.225" cy="102.919" r="3.382" />
+</g>
+</svg>

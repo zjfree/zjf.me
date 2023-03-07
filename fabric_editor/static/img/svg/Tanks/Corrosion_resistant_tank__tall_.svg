@@ -1,0 +1,31 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="69px" height="112px" viewBox="0 0 68.8 112.5" enable-background="new 0 0 68.8 112.5" xml:space="preserve">
+<g id="Group_TankBody">
+<path fill="#D6D4D4" d="M0,13.854L2.026,3.043h64.524l2.252,10.811H0z" />
+<radialGradient id="SVGID_1_" cx="46.1328" cy="7.1528" r="34.962" gradientTransform="matrix(0.7065 0 0 2.2898 1.8179 -9.5794)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#ECECEC" />
+	<stop offset="0.34" style="stop-color:#B8B8B8" />
+	<stop offset="1" style="stop-color:#4D4D4D" />
+</radialGradient>
+<path fill="url(#SVGID_1_)" d="M68.821,9.858c0-5.39-15.406-9.76-34.41-9.76C15.406,0.099,0,4.468,0,9.858V13.5h68.821V9.858z" />
+<path fill="#D6D4D4" d="M41.327,10.7l-0.676-4.279H27.813l-0.45,4.279H0v3.153h68.803V10.7H41.327z" />
+<path fill="#BAB7B6" d="M28.939,5.295h10.586v1.126H28.939V5.295z" />
+<path fill="#54504F" stroke="#54504F" stroke-width="0.25" d="M27.813,5.295l0.451-4.955H40.2l0.451,4.955H27.813z" />
+<path fill="#6E6A69" d="M32.093,0.34l0.226-0.338h3.828l0.226,0.338H32.093z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="59.46" x2="68.8027" y2="59.46">
+	<stop offset="0" style="stop-color:#383838" />
+	<stop offset="0.18" style="stop-color:#7C7C7C" />
+	<stop offset="0.33" style="stop-color:#B0B0B0" />
+	<stop offset="0.44" style="stop-color:#CFCFCF" />
+	<stop offset="0.5" style="stop-color:#DBDBDB" />
+	<stop offset="0.56" style="stop-color:#D1D1D1" />
+	<stop offset="0.66" style="stop-color:#B6B6B6" />
+	<stop offset="0.79" style="stop-color:#8A8A8A" />
+	<stop offset="0.95" style="stop-color:#4E4E4E" />
+	<stop offset="1" style="stop-color:#383838" />
+</linearGradient>
+<polygon fill="url(#SVGID_2_)" points="41.327,10.7 40.651,6.421 27.813,6.421 27.363,10.7 0,10.7 0,13.854 0,112.498   12.837,112.498 12.837,107.543 27.813,107.543 27.813,112.498 40.651,112.498 40.651,107.543 55.74,107.543 55.74,112.498   68.803,112.498 68.803,13.854 68.803,10.7 " />
+<path fill="#54504F" d="M12.837,107.543h10.698v2.252H12.837V107.543z" />
+<path fill="#54504F" d="M44.93,107.543H55.74v2.252H44.93V107.543z" />
+<path fill="#888483" d="M28.265,7.547h4.954v0.901h-4.954V7.547z" />
+</g>
+</svg>

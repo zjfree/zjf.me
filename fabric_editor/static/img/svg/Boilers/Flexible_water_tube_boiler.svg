@@ -1,0 +1,66 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="77px" viewBox="0 0 112.5 77.364" enable-background="new 0 0 112.5 77.364" xml:space="preserve">
+<g id="Group_SafetyValve">
+	<path fill="#191919" d="M39.978,0h4.73v0.563h-4.73V0z" />
+	<path fill="#191919" d="M73.311,0h4.955v0.563h-4.955V0z" />
+	<path fill="none" d="M1.464,0.563h82.207v71.846H1.464V0.563" />
+</g>
+<g id="Group_Fan">
+	<path fill="#324C7F" d="M83.445,10.473h3.829V4.054h-3.829V10.473z" />
+</g>
+<g id="Group_Door">
+	<path fill="#92A3BE" d="M80.75,12.049h12.154v16.441H80.75V12.049z" />
+	<path fill="none" d="M83.445,12.049h9.459v16.441h-9.459V12.049" />
+</g>
+<g id="Group_FuelBurner">
+	<path fill="#324C7F" d="M83.221,51.239h16.216l0.901-3.154l3.152-0.9V35.022l-6.531-3.378H92.68l-2.928,2.478h-6.531V51.239z" />
+	<path fill="#FFE5B2" d="M90.428,55.743l11.486-11.486l-1.127-1.127L89.076,54.617L90.428,55.743z" />
+	<path fill="#92A3BE" d="M94.932,30.067h5.406l4.054,2.478v13.739h-9.46V30.067z" />
+	<path fill="#191919" d="M98.986,37.049l-0.451-0.676l0.451-0.676h0.9l0.451,0.676l-0.451,0.676H98.986z" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#E5E5E5" d="M92.904,64.301v-2.478l-1.576-1.577" />
+	<polyline fill="#E5E5E5" points="92.904,64.301 90.202,64.975 91.448,60.367  " />
+	<path fill="#A6BAD9" d="M83.671,52.815h7.207l0.676,6.531h-8.333L83.671,52.815z" />
+	<path fill="#92A3BE" d="M91.554,59.346l-0.676,6.531h-7.207l-0.45-6.531H91.554z" />
+	<path fill="none" d="M83.671,52.815h7.207l0.676,6.531l-0.676,6.531h-7.207l-0.45-6.531L83.671,52.815" />
+	<path fill="#FFB27F" d="M84.347,53.491h5.855v1.352h-5.855V53.491z" />
+	<path fill="#E5E5E5" d="M84.347,57.995h5.855v-3.152h-5.855V57.995z" />
+</g>
+<g id="Group_TBD">
+	<path fill="#92A3BE" d="M84.797,69.256h16.217v-3.379H84.797V69.256z" />
+	<path fill="#92A3BE" d="M89.752,67.68l-0.225,3.152h-3.604l-0.45-3.152H89.752z" />
+	<path fill="#92A3BE" d="M94.481,67.68l-0.226,3.152h-3.604l-0.45-3.152H94.481z" />
+	<path fill="#92A3BE" d="M99.437,67.68l-0.226,3.152h-3.604l-0.45-3.152H99.437z" />
+	<path fill="#A6BAD9" d="M95.607,64.301h3.604l0.226,3.379h-4.279L95.607,64.301z" />
+	<path fill="#A6BAD9" d="M90.652,64.301h3.604l0.226,3.379h-4.279L90.652,64.301z" />
+	<path fill="#A6BAD9" d="M85.923,64.301h3.604l0.225,3.379h-4.279L85.923,64.301z" />
+	<path fill="none" d="M85.923,64.301h3.604l0.225,3.379l-0.225,3.152h-3.604l-0.45-3.152L85.923,64.301" />
+	<path fill="none" d="M90.652,64.301h3.604l0.226,3.379l-0.226,3.152h-3.604l-0.45-3.152L90.652,64.301" />
+	<path fill="none" d="M95.607,64.301h3.604l0.226,3.379l-0.226,3.152h-3.604l-0.45-3.152L95.607,64.301" />
+</g>
+<g id="Group_BoilerBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1.4644" y1="37.3726" x2="83.6709" y2="37.3726">
+		<stop offset="0" style="stop-color:#365E85" />
+		<stop offset="0" style="stop-color:#396087" />
+		<stop offset="0.07" style="stop-color:#5A7CA0" />
+		<stop offset="0.13" style="stop-color:#7693B5" />
+		<stop offset="0.2" style="stop-color:#8BA4C5" />
+		<stop offset="0.28" style="stop-color:#9AB0D0" />
+		<stop offset="0.37" style="stop-color:#A3B8D7" />
+		<stop offset="0.51" style="stop-color:#A6BAD9" />
+		<stop offset="0.64" style="stop-color:#A3B8D7" />
+		<stop offset="0.72" style="stop-color:#9AB0D0" />
+		<stop offset="0.8" style="stop-color:#8BA3C4" />
+		<stop offset="0.87" style="stop-color:#7591B4" />
+		<stop offset="0.94" style="stop-color:#597B9F" />
+		<stop offset="1" style="stop-color:#375E85" />
+		<stop offset="1" style="stop-color:#365E85" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M1.464,0.563h82.207v73.619H1.464V0.563z" />
+</g>
+<g id="Group_BoilerBase">
+	<path fill="#324C7F" d="M1.464,76.463h109.458V73.31H1.464V76.463z" />
+	<path fill="#A6BAD9" d="M0,72.409h112.5v0.901H0V72.409z" />
+	<path fill="#A6BAD9" d="M0,76.463h112.5v0.9H0V76.463z" />
+</g>
+</svg>

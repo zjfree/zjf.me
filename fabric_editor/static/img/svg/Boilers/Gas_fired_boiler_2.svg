@@ -1,0 +1,45 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="72px" viewBox="0 0 112.5 71.582" enable-background="new 0 0 112.5 71.582" xml:space="preserve">
+<g id="Group_SafetyValve">
+	<path fill="#4D4D4D" d="M38.665,6.854V4.622h1.127V3.495H33.93v1.127h1.127v2.231H38.665z" />
+</g>
+<g id="Group_Burner">
+	<path fill="#336666" d="M90.293,38.665h15.33v20.065h-15.33V38.665z" />
+</g>
+<g id="Group_FuelBurner">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="89.9736" y1="43.4006" x2="89.9736" y2="35.2849">
+		<stop offset="0" style="stop-color:#194C4C" />
+		<stop offset="0.454" style="stop-color:#99CCCC" />
+		<stop offset="0.5464" style="stop-color:#86B9B9" />
+		<stop offset="0.7328" style="stop-color:#568989" />
+		<stop offset="0.7669" style="stop-color:#4C7F7F" />
+		<stop offset="1" style="stop-color:#194C4C" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M96.154,35.284v8.116H83.793v-8.116H96.154z" />
+	<path fill="none" d="M0,5.863h84.432v60.984H0V5.863" />
+	<path fill="none" d="M84.432,43.401h18.712v13.978H84.432V43.401" />
+	<path fill="none" d="M96.154,35.284v8.116H84.432v-8.116H96.154" />
+</g>
+<g id="Group_1">
+	<path fill="#4C4C4C" d="M90.293,12.385V0.001h-15.33v6.915h1.127V1.128h13.076v11.257H90.293z" />
+	<path fill="#191919" d="M83.281,18.76l4.531,4.575h3.607V12.964h1.127v-1.353h-5.861v1.353h1.127v4.509l-4.531-4.525V18.76z" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M100.889,43.401c0,0-1.471-3.399-5.861-3.607H84.432" />
+	<path fill="#99CCCC" d="M84.432,43.401h18.712v13.978H84.432V43.401z" />
+	<path fill="#333333" d="M96.154,45.655h5.862v10.597h-5.862V45.655z" />
+	<path fill="#FFB27F" d="M97.282,47.007h3.606v1.128h-3.606V47.007z" />
+	<path fill="#FFB27F" d="M89.166,45.655h5.861v3.607h-5.861V45.655z" />
+</g>
+<g id="Group_BoilerBody">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="36.9182" x2="84.4316" y2="36.9182">
+		<stop offset="0" style="stop-color:#E6E6E6" />
+		<stop offset="1" style="stop-color:#B2B2B2" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#B2B2B2" stroke-width="0.5" stroke-miterlimit="10" d="M0,5.863h84.432v62.111H0V5.863z" />
+</g>
+<g id="Group_BaseBody">
+	<path fill="#999999" d="M1.127,67.974h110.246v2.48H1.127V67.974z" />
+	<path fill="#CCCCCC" d="M0,67.974h112.5v-1.127H0V67.974z" />
+	<path fill="#CCCCCC" d="M0,71.581h112.5v-1.127H0V71.581z" />
+</g>
+</svg>

@@ -1,0 +1,1854 @@
+<!-- fabric编辑器 zjfree 2022-10-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>fabric编辑器</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+    <link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./static/icon_font/iconfont.css">
+	<link href="./static/css/fabric_editor.css" rel="stylesheet">
+	<style>
+		/* css style */
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://lib.baomitu.com/color-js/1.0/color.min.js"></script>
+	<!--
+	<script src="https://lib.baomitu.com/fabric.js/5.2.4/fabric.min.js"></script>
+	<script src="https://lib.baomitu.com/fabric.js/5.2.4/fabric.js"></script>
+	-->
+	<script src="./static/js/fabric.js"></script>
+	<script src="./static/js/Feditor.js"></script>
+	<script src="./static/js/FeditorComponent.js"></script>
+	<script src="./static/js/ZPoint.js"></script>
+	<script src="./static/js/svg.js"></script>
+</head>
+
+<body>
+
+	<!-- 杂项 -->
+	<audio id="audioPlay" src="./static/wav/6894.wav"></audio>
+
+	<!-- 编辑器区域 -->
+	<div id="divMainEditor">
+		<canvas id="myCanvas">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+
+	<!-- 左侧导航 -->
+	<div id="divMainLeft">
+		<div id="divTabNav">
+			<b><i class="fa fa-star"></i> ENH组态</b>
+			<span class="active" data-id="divBtnList">基础</span>
+			<span data-id="divSvgList">SVG</span>
+			<span data-id="divPathList">Path</span>
+		</div>
+		<div id="divTabContent">
+			<div id="divBtnList" class="block">
+				<button onclick="Feditor.addRect();">方块<br>Rect</button>
+				<button onclick="Feditor.addCircle();">圆形<br>Circle</button>
+				<button onclick="Feditor.addTriangle();">三角<br>Triangle</button>
+				<button onclick="Feditor.addEllipse();">椭圆<br>Ellipse</button>
+				<button onclick="Feditor.addLine();">线条<br>Line</button>
+				<button onclick="Feditor.addPolygon();">多边形<br>Polygon</button>
+				<button onclick="Feditor.addPolyline(20);">多边线<br>Polyline</button>
+				<button onclick="Feditor.addRing(0, 300, 400, 200, 10, 60);">圆环<br>Ring</button>
+				<button onclick="Feditor.addText();">文字<br>Text</button>
+				<button onclick="Feditor.addPath();">路径<br>Path</button>
+				<button onclick="Feditor.addTextbox();">文本框<br>Textbox</button>
+				<button onclick="Feditor.addImage();">图片<br>Image</button>
+				<button onclick="Feditor.addImageSvg();">SVG图片<br>ImageSvg</button>
+				<button onclick="Feditor.addButton();">按钮<br>Button</button>
+				<button onclick="Feditor.addPipe();">管道<br>Pipe</button>
+				<button onclick="Feditor.addTextRect();">文本块<br>TextRect</button>
+				<button onclick="Feditor.addRectRule();">刻度尺<br>RectRule</button>
+				<button onclick="Feditor.addRealMonitor();">实时折线<br>RealMonitor</button>
+				<button onclick="Feditor.addRain();">落下<br>Rain</button>
+				<button onclick="Feditor.addProgress();">进度<br>Progress</button>
+				<button onclick="Feditor.addGauge();">仪表盘<br>Gauge</button>
+				<button onclick="Feditor.addSwitch();">开关<br>Switch</button>
+				<button onclick="Feditor.addSwitchY();">竖开关<br>SwitchY</button>
+				<button onclick="Feditor.addLight();">指示灯<br>Light</button>
+				<button onclick="Feditor.addNumInput();">数字输入<br>NumInput</button>
+				<button onclick="Feditor.addTable();">表格<br>Table</button>
+				<button onclick="Feditor.addLiquid();">液体表面<br>Liquid</button>
+				<button onclick="$('#msgFan')[0].showModal();">图片旋转<br>ImgRotate</button>
+				<button onclick="Feditor.addFontIcon();">字体图标<br>FontIcon</button>
+				<button onclick="Feditor.addTimer();">计时器<br>Timer</button>
+			</div>
+			<div id="divSvgList" style="display:none;">
+				<select id="selSvgList"></select>
+				<div id="divSvgItem"></div>
+			</div>
+			<div id="divPathList" style="display:none;">
+				<a href="./tool/svg_path_editor.html" target="_blank">Svg Path 编辑器</a>
+				<div id="divSvgPathList"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 顶部工具栏 -->
+	<div id="divMainTop">
+		<div id="divEditBtn">
+			<button onclick="Feditor.copy();"><i class="fa fa-copy"></i> 复制</button>
+			<button onclick="Feditor.delete();"><i class="fa fa-trash"></i> 删除</button>
+			&emsp;
+			<button onclick="Feditor.toGroup();" title="组合"><i class="iconfont icon-fenzu"></i></button>
+			<button onclick="Feditor.splitGroup();" title="拆分"><i class="iconfont icon-jiezu"></i></button>
+			&nbsp;
+			<button onclick="Feditor.bringToFront();" title="置顶"><i class="iconfont icon-yizhidingceng"></i></button>
+			<button onclick="Feditor.bringForward();" title="上层"><i class="fa fa-level-up"></i></button>
+			<button onclick="Feditor.sendToBack();" title="置低"><i class="iconfont icon-yizhidiceng"></i></button>
+			<button onclick="Feditor.sendBackwards();" title="下层"><i class="fa fa-level-down"></i></button>
+			&nbsp;
+			<button onclick="Feditor.align('left');" title="左对齐"><i class="iconfont icon-juzuoduiqi"></i></button>
+			<button onclick="Feditor.align('right');" title="右对齐"><i class="iconfont icon-juyouduiqi"></i></button>
+			<button onclick="Feditor.align('top');" title="上对齐"><i class="iconfont icon-jushangduiqi"></i></button>
+			<button onclick="Feditor.align('bottom');" title="下对齐"><i class="iconfont icon-juxiaduiqi"></i></button>
+			<button onclick="Feditor.align('vcenter');" title="竖直居中"><i class="iconfont icon-zuoyoujuzhongduiqi"></i></button>
+			<button onclick="Feditor.align('hcenter');" title="水平居中"><i class="iconfont icon-shangxiajuzhongduiqi"></i></button>
+			&nbsp;
+			<button onclick="Feditor.align('mvcenter');" title="竖直中心"><i class="iconfont icon-shangxiafanzhuan"></i></button>
+			<button onclick="Feditor.align('mhcenter');" title="水平中心"><i class="iconfont icon-zuoyoufanzhuan"></i></button>
+			&nbsp;
+			<button onclick="Feditor.align('mhavg');" title="水平等距"><i class="iconfont icon-shuipingdengjianju"></i></button>
+			<button onclick="Feditor.align('mvavg');" title="竖直等距"><i class="iconfont icon-chuizhidengjianju"></i></button>
+			&emsp;
+			<button onclick="Feditor.deleteAll();"><i class="fa fa-trash"></i> 清空</button>
+			<button onclick="Feditor.reload();"><i class="fa fa-download"></i> 加载</button>
+			<button onclick="Feditor.save();"><i class="fa fa-save"></i> 保存</button>
+			<button onclick="Feditor.canvas.isDrawingMode = !Feditor.canvas.isDrawingMode;"><i class="fa fa-pencil"></i> 绘制</button>
+			
+		</div>
+	</div>
+
+	<!-- 底部任务栏 -->
+	<div id="divMainBottom">
+		<div class="status-info">
+			<span id="spanStatusInfo">就绪</span> &nbsp;
+			<span id="spanStatusPoint"></span> &nbsp;
+		</div>
+	</div>
+
+	<!-- 右侧属性框 -->
+	<div id="divMainRight">
+		<div id="divAttrList" class="block">
+
+			<div class="attr-group">
+				<h3>基础属性 <span class="h3-btn" onclick="Feditor.attrReset();">Reset</span></h3>
+				<table>
+					<tr>
+						<th>距左:</th>
+						<td><input class="attr" id="attr_left" type="number" value="0" /></td>
+						<th>距顶:</th>
+						<td><input class="attr" id="attr_top" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>宽度:</th>
+						<td><input class="attr" id="attr_width" type="number" value="0" /></td>
+						<th>高度:</th>
+						<td><input class="attr" id="attr_height" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>X缩放:</th>
+						<td><input class="attr" id="attr_scaleX" type="number" value="0" data-fix="2" /></td>
+						<th>Y缩放:</th>
+						<td><input class="attr" id="attr_scaleY" type="number" value="0" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>X翻转:</th>
+						<td><input class="attr" id="attr_flipX" type="checkbox" value="1" /></td>
+						<th>Y翻转:</th>
+						<td><input class="attr" id="attr_flipY" type="checkbox" value="1" /></td>
+					</tr>
+					<tr>
+						<th>X倾斜:</th>
+						<td><input class="attr" id="attr_skewX" type="number" value="0" data-fix="2" /></td>
+						<th>Y倾斜:</th>
+						<td><input class="attr" id="attr_skewY" type="number" value="0" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>X对齐:</th>
+						<td>
+							<select class="attr" id="attr_originX">
+								<option value="left">left</option>
+								<option value="center">center</option>
+								<option value="right">right</option>
+							</select>
+						</td>
+						<th>Y对齐:</th>
+						<td>
+							<select class="attr" id="attr_originY">
+								<option value="top">top</option>
+								<option value="center">center</option>
+								<option value="bottom">bottom</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>旋转角度:</th>
+						<td><input class="attr" id="attr_angle" type="number" value="0" max="360" min="0" /></td>
+						<th>锁定元素:</th>
+						<td><input class="attr" id="attr_lock" type="checkbox" value="0" /></td>
+					</tr>
+					<tr>
+						<th>角度设置:</th>
+						<td colspan="3">
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="0">0°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="90">90°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="180">180°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="270">270°</button>
+							<br>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="45">45°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="135">135°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="225">225°</button>
+							<button style="width: 3em;" class="btn-attr" data-id="attr_angle" data-val="315">315°</button>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<div class="attr-group">
+				<h3>样式属性</h3>
+				<table>
+					<tr>
+						<th>填充颜色:</th>
+						<td><input class="attr" id="attr_zfill" type="text" value="" /></td>
+						<th>不透明度:</th>
+						<td><input class="attr" id="attr_opacity" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>边框颜色:</th>
+						<td><input class="attr color-msg" id="attr_stroke" type="text" value="" /></td>
+						<th>边框宽度:</th>
+						<td><input class="attr" id="attr_strokeWidth" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>物体阴影:</th>
+						<td colspan="3"><input class="attr" id="attr_shadow" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>阴影设置:</th>
+						<td colspan="3">
+							<button class="btn-attr" data-id="attr_shadow" data-val="0px 0px 10px #000" style="width: 4em; line-height: 3em; margin:10px 5px; box-shadow: 0px 0px 10px #000;">阴影1</button>
+							<button class="btn-attr" data-id="attr_shadow" data-val="0px 5px 10px rgba(0,0,0,0.5)" style="width: 4em; line-height: 3em; margin:10px 5px; box-shadow: 0px 5px 10px rgba(0,0,0,0.5);">阴影2</button>
+							<button class="btn-attr" data-id="attr_shadow" data-val="5px 5px 10px rgba(0,0,0,0.5)" style="width: 4em; line-height: 3em; margin:10px 5px; box-shadow: 5px 5px 10px rgba(0,0,0,0.5);">阴影3</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group">
+				<h3>画板属性</h3>
+				<table>
+					<tr>
+						<th>宽度:</th>
+						<td><input class="attrPage" id="attrPage_width" type="number" value="0" /></td>
+						<th>高度:</th>
+						<td><input class="attrPage" id="attrPage_height" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>背景色:</th>
+						<td><input class="attrPage color-msg" id="attrPage_backgroundColor" type="text" value="" /></td>
+						<th>放大系数:</th>
+						<td><input class="attrPage" id="attrPage_zoom" type="number" value="1" step="0.01" /></td>
+					</tr>
+					<tr>
+						<th>名称:</th>
+						<td><input class="attrPage" id="attrPage_name" type="text" value="" /></td>
+						<th>类型:</th>
+						<td>
+							<select class="attrPage" id="attrPage_type">
+								<option value="main">主窗体</option>
+								<option value="content">内容页</option>
+								<option value="msgbox">弹出框</option>
+								<option value="fixbox">悬浮框</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>距左X:</th>
+						<td><input class="attrPage" id="attrPage_x" type="number" value="0" /></td>
+						<th>距顶Y:</th>
+						<td><input class="attrPage" id="attrPage_y" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group attr-type attr-type-text">
+				<h3>文字属性</h3>
+				<table>
+					<tr>
+						<th>文字内容:</th>
+						<td colspan="3"><textarea class="attr" id="attr_text"></textarea></td>
+					</tr>
+					<tr>
+						<th>字背景色:</th>
+						<td><input class="attr color-msg" id="attr_textBackgroundColor" type="text" value="" /></td>
+						<th>文字大小:</th>
+						<td><input class="attr" id="attr_fontSize" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>样式:</th>
+						<td>
+							<select class="attr" id="attr_fontStyle">
+								<option value="normal">normal</option>
+								<option value="italic">italic</option>
+								<option value="oblique">oblique</option>
+							</select>
+						</td>
+						<th>行高:</th>
+						<td><input class="attr" id="attr_lineHeight" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>字体:</th>
+						<td colspan="3"><input class="attr" id="attr_fontFamily" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>粗体:</th>
+						<td>
+							<select class="attr" id="attr_fontWeight">
+								<option value="normal">normal</option>
+								<option value="bold">bold</option>
+								<option value="bolder">bolder</option>
+								<option value="lighter">lighter</option>
+							</select>
+						</td>
+						<th>对齐:</th>
+						<td>
+							<select class="attr" id="attr_textAlign">
+								<option value="left">left</option>
+								<option value="center">center</option>
+								<option value="right">right</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>划线:</th>
+						<td colspan="3">
+							&nbsp;
+							<label><input class="attr" id="attr_underline" type="checkbox" value="1" /> 下划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_linethrough" type="checkbox" value="1" /> 中划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_overline" type="checkbox" value="1" /> 上划线</label>
+						</td>
+					</tr>
+					<tr>
+						<th>字间距:</th>
+						<td colspan="3"><input class="attr" id="attr_charSpacing" type="number" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group attr-type attr-type-textbox">
+				<h3>文字属性</h3>
+				<table>
+					<tr>
+						<th>文字内容:</th>
+						<td colspan="3"><textarea class="attr" id="attr_text"></textarea></td>
+					</tr>
+					<tr>
+						<th>字背景色:</th>
+						<td><input class="attr color-msg" id="attr_textBackgroundColor" type="text" value="" /></td>
+						<th>文字大小:</th>
+						<td><input class="attr" id="attr_fontSize" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>样式:</th>
+						<td>
+							<select class="attr" id="attr_fontStyle">
+								<option value="normal">normal</option>
+								<option value="italic">italic</option>
+								<option value="oblique">oblique</option>
+							</select>
+						</td>
+						<th>行高:</th>
+						<td><input class="attr" id="attr_lineHeight" type="number" value="1" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>字体:</th>
+						<td colspan="3"><input class="attr" id="attr_fontFamily" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>粗体:</th>
+						<td>
+							<select class="attr" id="attr_fontWeight">
+								<option value="normal">normal</option>
+								<option value="bold">bold</option>
+								<option value="bolder">bolder</option>
+								<option value="lighter">lighter</option>
+							</select>
+						</td>
+						<th>对齐:</th>
+						<td>
+							<select class="attr" id="attr_textAlign">
+								<option value="left">left</option>
+								<option value="center">center</option>
+								<option value="right">right</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>划线:</th>
+						<td colspan="3">
+							&nbsp;
+							<label><input class="attr" id="attr_underline" type="checkbox" value="1" /> 下划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_linethrough" type="checkbox" value="1" /> 中划线</label>
+							&nbsp;
+							<label><input class="attr" id="attr_overline" type="checkbox" value="1" /> 上划线</label>
+						</td>
+					</tr>
+					<tr>
+						<th>字间距:</th>
+						<td colspan="3"><input class="attr" id="attr_charSpacing" type="number" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div class="attr-group attr-type attr-type-rect">
+				<h3>Rect 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-circle">
+				<h3>Circle 属性</h3>
+				<table>
+					<tr>
+						<th>半径:</th>
+						<td><input class="attr" id="attr_radius" type="number" value="0" /></td>
+						<th></th>
+						<td><input class="hhide" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-ellipse">
+				<h3>Ellipse 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-line">
+				<h3>Line 属性</h3>
+				<table>
+					<tr>
+						<th>X1:</th>
+						<td><input class="attr" id="attr_x1" type="number" value="0" /></td>
+						<th>Y1:</th>
+						<td><input class="attr" id="attr_y1" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>X2:</th>
+						<td><input class="attr" id="attr_x2" type="number" value="0" /></td>
+						<th>Y2:</th>
+						<td><input class="attr" id="attr_y2" type="number" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-TextRect">
+				<h3>TextRect 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>文字内容:</th>
+						<td><input class="attr" id="attr_text" type="text" value="" /></td>
+						<th>文字颜色:</th>
+						<td><input class="attr color-msg" id="attr_textFill" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>字体:</th>
+						<td colspan="3"><input class="attr" id="attr_fontFamily" type="text" value="" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Pipe">
+				<h3>Pipe 属性</h3>
+				<table>
+					<tr>
+						<th>管道颜色:</th>
+						<td><input class="attr color-msg" id="attr_pipeBackColor" type="text" value="" /></td>
+						<th>流体颜色:</th>
+						<td><input class="attr color-msg" id="attr_pipeColor" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>管道直径:</th>
+						<td><input class="attr" id="attr_pipeWidth" type="number" value="" /></td>
+						<th>流体透明:</th>
+						<td><input class="attr" id="attr_pipeOpacity" type="number" value="1" data-fix="2" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-temp_pipe_point">
+				<h3>PipePoint 控制</h3>
+				<table>
+					<tr>
+						<th>操作:</th>
+						<td colspan="3">
+							<button onclick="Feditor.delPipePoint();">删除</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-RectRule">
+				<h3>RectRule 属性</h3>
+				<table>
+					<tr>
+						<th>最小值:</th>
+						<td><input class="attr" id="attr_min" type="number" value="0" data-fix="2" /></td>
+						<th>最大值:</th>
+						<td><input class="attr" id="attr_max" type="number" value="100" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>当前值:</th>
+						<td><input class="attr" id="attr_val" type="number" value="25" data-fix="2" /></td>
+						<th>刻度间隔:</th>
+						<td><input class="attr" id="attr_step" type="number" value="5" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>指针颜色:</th>
+						<td colspan="3"><input class="attr color-msg" id="attr_handColor" type="text" value="#00F" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-RealMonitor">
+				<h3>RealMonitor 属性</h3>
+				<table>
+					<tr>
+						<th>最小值:</th>
+						<td><input class="attr" id="attr_min" type="number" value="0" data-fix="2" /></td>
+						<th>最大值:</th>
+						<td><input class="attr" id="attr_max" type="number" value="100" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>颜色:</th>
+						<td colspan="3"><input class="attr color-msg" id="attr_color" type="text" value="#00F" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Rain">
+				<h3>Rain 属性</h3>
+				<table>
+					<tr>
+						<th>物体颜色:</th>
+						<td><input class="attr color-msg" id="attr_color" type="text" value="#00F" /></td>
+						<th>下落类型:</th>
+						<td>
+							<select class="attr" id="attr_ballType">
+								<option value="circle">circle</option>
+								<option value="rect">rect</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>物体大小:</th>
+						<td colspan="3"><input class="attr" id="attr_ballSize" type="range" min="1" max="300" value="100" /></td>
+					</tr>
+					<tr>
+						<th>下落速度:</th>
+						<td colspan="3"><input class="attr" id="attr_speed" type="range" step="0.1" min="0.1" max="20" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Progress">
+				<h3>Progress 属性</h3>
+				<table>
+					<tr>
+						<th>当前值:</th>
+						<td><input class="attr" id="attr_val" type="number" value="25" /></td>
+						<th>最大值:</th>
+						<td><input class="attr" id="attr_max" type="number" min="1" value="100" /></td>
+					</tr>
+					<tr>
+						<th>颜色:</th>
+						<td><input class="attr color-msg" id="attr_color" type="text" value="#00F" /></td>
+						<th>分割数量:</th>
+						<td><input class="attr" id="attr_split" type="number" min="1" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Gauge">
+				<h3>Gauge 属性</h3>
+				<table>
+					<tr>
+						<th>最小值:</th>
+						<td><input class="attr" id="attr_min" type="number" value="0" /></td>
+						<th>最大值:</th>
+						<td><input class="attr" id="attr_max" type="number" value="100" /></td>
+					</tr>
+					<tr>
+						<th>当前值:</th>
+						<td><input class="attr" id="attr_val" type="number" value="25" /></td>
+						<th>圆弧前景:</th>
+						<td><input class="attr color-msg" id="attr_color" type="text" /></td>
+					</tr>
+					<tr>
+						<th>圆弧背景:</th>
+						<td><input class="attr color-msg" id="attr_back_color" type="text" /></td>
+						<th>指针颜色:</th>
+						<td><input class="attr color-msg" id="attr_pointer_color" type="text" /></td>
+					</tr>
+					<tr>
+						<th>指针长度:</th>
+						<td><input class="attr" id="attr_pointer_len" type="number" step="0.01" data-fix="2" /></td>
+						<th>圆弧宽度:</th>
+						<td><input class="attr" id="attr_line_size" type="number" step="0.01" data-fix="2" /></td>
+					</tr>
+					<tr>
+						<th>LED分割:</th>
+						<td><input class="attr" id="attr_led" type="number" /></td>
+						<th>刻度分割:</th>
+						<td><input class="attr" id="attr_split_count" type="number" /></td>
+					</tr>
+					<tr>
+						<th>刻度颜色:</th>
+						<td><input class="attr color-msg" id="attr_split_color" type="text" /></td>
+						<th>单位:</th>
+						<td><input class="attr" id="attr_unit" type="text" /></td>
+					</tr>
+					<tr>
+						<th>名称:</th>
+						<td><input class="attr" id="attr_show_name" type="text" /></td>
+						<th>指针类型:</th>
+						<td>
+							<select class="attr" id="attr_pointer_type">
+								<option value="1">类型1</option>
+								<option value="2">类型2</option>
+								<option value="3">类型3</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>范围原色:</th>
+						<td colspan="3"><input class="attr" id="attr_range_list" type="text" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Switch">
+				<h3>Switch 属性</h3>
+				<table>
+					<tr>
+						<th>是否启用:</th>
+						<td>
+							<select class="attr" id="attr_enabled">
+								<option value="0">禁用</option>
+								<option value="1">启用</option>
+							</select>
+						</td>
+						<th>开关:</th>
+						<td>
+							<select class="attr" id="attr_val">
+								<option value="0">关</option>
+								<option value="1">开</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-SwitchY">
+				<h3>SwitchY 属性</h3>
+				<table>
+					<tr>
+						<th>是否启用:</th>
+						<td>
+							<select class="attr" id="attr_enabled">
+								<option value="0">禁用</option>
+								<option value="1">启用</option>
+							</select>
+						</td>
+						<th>开关:</th>
+						<td>
+							<select class="attr" id="attr_val">
+								<option value="0">关</option>
+								<option value="1">开</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Button">
+				<h3>Button 属性</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>文字内容:</th>
+						<td><input class="attr" id="attr_text" type="text" value="" /></td>
+						<th>文字颜色:</th>
+						<td><input class="attr color-msg" id="attr_textFill" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>是否启用:</th>
+						<td>
+							<select class="attr" id="attr_enabled">
+								<option value="0">禁用</option>
+								<option value="1">启用</option>
+							</select>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Light">
+				<h3>Light 属性</h3>
+				<table>
+					<tr>
+						<th>是否启用:</th>
+						<td>
+							<select class="attr" id="attr_enabled">
+								<option value="0">禁用</option>
+								<option value="1">启用</option>
+							</select>
+						</td>
+						<th>开关:</th>
+						<td>
+							<select class="attr" id="attr_val">
+								<option value="0">关</option>
+								<option value="1">开</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>半径:</th>
+						<td><input class="attr" id="attr_radius" type="number" value="0" /></td>
+						<th></th>
+						<td><input class="hhide" /></td>
+					</tr>
+					<tr>
+						<th>颜色:</th>
+						<td colspan="3"><input class="attr" id="attr_color" type="range" min="0" max="360" value="0" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-NumInput">
+				<h3>NumInput 属性</h3>
+				<table>
+					<tr>
+						<th>默认值:</th>
+						<td><input class="attr" id="attr_val" type="text" value="0" data-fix="3" /></td>
+						<th>文字颜色:</th>
+						<td><input class="attr color-msg" id="attr_textFill" type="text" value="" /></td>
+					</tr>
+					<tr>
+						<th>输入提示:</th>
+						<td colspan="3"><input class="attr" id="attr_inputInfo" type="text" /></td>
+					</tr>
+					<tr>
+						<th>最小值:</th>
+						<td><input class="attr" id="attr_numMin" type="text" value="0" data-fix="3" /></td>
+						<th>最大值:</th>
+						<td><input class="attr" id="attr_numMax" type="text" value="10000" data-fix="3" /></td>
+					</tr>
+					<tr>
+						<th>数值间隔:</th>
+						<td><input class="attr" id="attr_numStep" type="text" value="1" data-fix="3" /></td>
+						<th>提交比例:</th>
+						<td><input class="attr" id="attr_numRatio" type="text" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Table">
+				<h3>Table 属性</h3>
+				<table>
+					<tr>
+						<th>行数:</th>
+						<td><input class="attr" id="attr_rowCount" type="number" min="1" value="6" /></td>
+						<th>列数:</th>
+						<td><input class="attr" id="attr_colCount" type="number" min="1" value="4" /></td>
+					</tr>
+					<tr>
+						<th>列宽度:</th>
+						<td colspan="3"><input class="attr" id="attr_colSize" type="text" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Liquid">
+				<h3>Liquid 流体表面</h3>
+				<table>
+					<tr>
+						<th>RX:</th>
+						<td><input class="attr" id="attr_rx" type="number" value="0" /></td>
+						<th>RY:</th>
+						<td><input class="attr" id="attr_ry" type="number" value="0" /></td>
+					</tr>
+					<tr>
+						<th>大小:</th>
+						<td><input class="attr" id="attr_ballSize" type="number" /></td>
+						<th>数量:</th>
+						<td><input class="attr" id="attr_ballCount" type="number" /></td>
+					</tr>
+					<tr>
+						<th>颜色:</th>
+						<td><input class="attr color-msg" id="attr_color" type="text" /></td>
+						<th>播放:</th>
+						<td><input class="attr" id="attr_isPlay" type="checkbox" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-ImgRotate">
+				<h3>ImgRotate 图片旋转</h3>
+				<table>
+					<tr>
+						<th>速度:</th>
+						<td><input class="attr" id="attr_speed" type="number" /></td>
+						<th>播放:</th>
+						<td><input class="attr" id="attr_isPlay" type="checkbox" value="1" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="attr-group attr-type attr-type-FontIcon">
+				<h3>FontIcon 属性</h3>
+				<table>
+					<tr>
+						<th>图标:</th>
+						<td>
+							<input class="attr" id="attr_icon" type="text" value="" />
+						</td>
+						<th><a href="tool/icon_fa.html" target="_blank">查看图标</a></th>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="attr-group attr-type attr-type-Timer">
+				<h3>Timer 属性</h3>
+				<table>
+					<tr>
+						<th>是否启用:</th>
+						<td>
+							<select class="attr" id="attr_enabled">
+								<option value="0">禁用</option>
+								<option value="1">启用</option>
+							</select>
+						</td>
+						<th></th>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			
+			<!-- 数据绑定设置 -->
+			<div id="divBindAttr" class="attr-group">
+				<h3>属性绑定</h3>
+				<table></table>
+			</div>
+
+			<!-- 事件绑定设置 -->
+			<div id="divEventAttr" class="attr-group">
+				<h3>事件绑定</h3>
+				<table></table>
+			</div>
+
+			<!--图片滤镜 BEGIN-->
+			<div class="attr-group attr-type attr-type-image">
+				<h3>Image 滤镜</h3>
+				<div class="divImageFilter">
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Grayscale">
+							Grayscale 灰度
+						</label>
+						&nbsp;
+						<select name="mode">
+							<option value="average">average</option>
+							<option value="lightness">lightness</option>
+							<option value="luminosity">luminosity</option>
+						</select>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Invert">
+							Invert 反色
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Sepia">
+							Sepia 深褐色
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_BlackWhite">
+							Black/White 黑白
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Brownie">
+							Brownie 巧克力色
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Vintage">
+							Vintage 老照片
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Kodachrome">
+							Kodachrome 胶卷
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Technicolor">
+							Technicolor 科技色
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Polaroid">
+							Polaroid 宝丽来
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_RemoveColor">
+							Remove 颜色移除
+						</label>
+						<p>
+							<input type="color" name="color" value="#00f900">
+						</p>
+						<p>
+							<input type="range" name="distance" value="0.02" min="0" max="1" step="0.01">
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Brightness">
+							Brightness 亮度
+						</label>
+						<p>
+							<input type="range" name="brightness" value="0.1" min="-1" max="1" step="0.003921" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Gamma">
+							Gamma 伽马修正
+						</label>
+						<p>
+							<input type="range" name="Gamma_red" value="1" min="0.2" max="2.2" step="0.003921" >
+							<input type="range" name="Gamma_green" value="1" min="0.2" max="2.2" step="0.003921" >
+							<input type="range" name="Gamma_blue" value="1" min="0.2" max="2.2" step="0.003921" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Contrast">
+							Contrast 对比度
+						</label>
+						<p>
+							<input type="range" name="contrast" value="0" min="-1" max="1" step="0.003921" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Saturation">
+							Saturation 饱和度
+						</label>
+						<p>
+							<input type="range" name="saturation" value="0" min="-1" max="1" step="0.003921" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Vibrance">
+							Vibrance 自然饱和度
+						</label>
+						<p>
+							<input type="range" name="vibrance" value="0" min="-1" max="1" step="0.003921" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_HueRotation">
+							Hue 色相
+						</label>
+						<p>
+							<input type="range" name="rotation" value="0" min="-2" max="2" step="0.002" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Noise">
+							Noise 噪音
+						</label>
+						<p>
+							<input type="range" name="noise" value="100" min="0" max="1000" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Pixelate">
+							Pixelate 马赛克
+						</label>
+						<p>
+							<input type="range" name="blocksize" value="4" min="2" max="100" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Blur">
+							Blur 模糊
+						</label>
+						<p>
+							<input type="range" name="blur" value="0.1" min="0" max="1" step="0.01" >
+						</p>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_Convolute">
+							Emboss 浮雕
+						</label>
+					</div>
+					<div>
+						<label>
+							<input type="checkbox" id="filter_BlendColor">
+							Blend Color 混合颜色
+						</label>
+						<p>
+							<select name="mode">
+								<option selected value="add">Add</option>
+								<option value="diff">Diff</option>
+								<option value="subtract">Subtract</option>
+								<option value="multiply">Multiply</option>
+								<option value="screen">Screen</option>
+								<option value="lighten">Lighten</option>
+								<option value="darken">Darken</option>
+								<option value="overlay">Overlay</option>
+								<option value="exclusion">Exclusion</option>
+								<option value="tint">Tint</option>
+							</select>
+							&nbsp;
+							<input type="color" name="color" value="#00f900">
+						</p>
+						<p>
+							<input type="range" name="alpha" min="0" max="1" value="1" step="0.01" >
+						</p>
+					</div>
+				</div>
+			</div>
+			<!--图片滤镜 END-->
+
+		</div>
+	</div>
+
+	<!--颜色选择弹出框-->
+	<dialog id="msgColor">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">颜色选择</h3>
+		<div>
+			<div id="divColorBase">
+				<span style="background: conic-gradient(#999 0.25turn, #000 0.25turn 0.5turn, #999 0.5turn 0.75turn, #000 0.75turn) top left / 50% 50% repeat;">透明</span><span 
+				style="background-color: #FFF;">FFF</span><span
+				style="background-color: #F00;">F00</span><span
+				style="background-color: #F66;">F66</span><span
+				style="background-color: #0F0;">0F0</span><span
+				style="background-color: #6F6;">6F6</span><span
+				style="background-color: #00F;">00F</span><span
+				style="background-color: #66F;">66F</span><span
+				style="background-color: #FF0;">FF0</span><span
+				style="background-color: #FF6;">FF6</span><span
+				style="background-color: #0FF;">0FF</span><span
+				style="background-color: #6FF;">6FF</span><span
+				style="background-color: #F0F;">F0F</span><span
+				style="background-color: #F6F;">F6F</span>
+				<br>
+				<span style="background-color: #666;">666</span><span
+				style="background-color: #CCC;">CCC</span><span
+				style="background-color: #C00;">C00</span><span
+				style="background-color: #C66;">C66</span><span
+				style="background-color: #0C0;">0C0</span><span
+				style="background-color: #6C6;">6C6</span><span
+				style="background-color: #00C;">00C</span><span
+				style="background-color: #66C;">66C</span><span
+				style="background-color: #CC0;">CC0</span><span
+				style="background-color: #CC6;">CC6</span><span
+				style="background-color: #0CC;">0CC</span><span
+				style="background-color: #6CC;">6CC</span><span
+				style="background-color: #C0C;">C0C</span><span
+				style="background-color: #C6C;">C6C</span>
+				<br>
+				<span style="background-color: #000;">000</span><span
+				style="background-color: #999;">999</span><span
+				style="background-color: #900;">900</span><span
+				style="background-color: #966;">966</span><span
+				style="background-color: #090;">090</span><span
+				style="background-color: #696;">696</span><span
+				style="background-color: #009;">009</span><span
+				style="background-color: #669;">669</span><span
+				style="background-color: #990;">990</span><span
+				style="background-color: #996;">996</span><span
+				style="background-color: #099;">099</span><span
+				style="background-color: #699;">699</span><span
+				style="background-color: #909;">909</span><span
+				style="background-color: #969;">969</span>
+			</div>
+			<table id="tbColorMsg">
+				<tr>
+					<td>
+						<div id="divColorHue">
+							<div style="position:relative;">
+							<canvas id="myCanvas2" style="width:200px; height:200px;">
+							</canvas>
+							<div id="divHuePoint"></div>
+							</div>
+							<div class="op">
+								<div class="hue"></div>
+								<input id="rangeH1" type="range" min="0" max="360" value="100" />
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="divColorValue">
+							<label>当前:</label>
+							<span id="spanCurColor" class="color">&nbsp;</span><br>
+							<label>选择:</label>
+							<span id="spanSelColor" class="color">&nbsp;</span>
+							<div style="height: 12px;"></div>
+							<label>R:<span id="spanCR">0</span></label>
+							<input id="colorR" type="range" min="0" max="255" value="100" /><br>
+							<label>G:<span id="spanCG">0</span></label>
+							<input id="colorG" type="range" min="0" max="255" value="100" /><br>
+							<label>B:<span id="spanCB">0</span></label>
+							<input id="colorB" type="range" min="0" max="255" value="100" />
+							<hr>
+							<label>H:<span id="spanCH">0</span></label>
+							<input id="colorH" type="range" min="0" max="360" value="100" /><br>
+							<label>S:<span id="spanCS">0</span></label>
+							<input id="colorS" type="range" min="0" max="100" value="100" /><br>
+							<label>L:<span id="spanCL">0</span></label>
+							<input id="colorL" type="range" min="0" max="100" value="50" /><br>
+							<hr>
+							<label>A:<span id="spanCA">0</span></label>
+							<input id="colorA" type="range" min="0" max="1" value="1" step="0.01" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="divColorExt">
+			<hr>
+			<table id="tbColorMsg2">
+				<tr>
+					<td>
+						<div id="divGradientType">
+							<select id="selGradientType">
+								<option value="color" selected>纯色</option>
+								<option value="linear">线性渐变</option>
+								<option value="radial">径向渐变</option>
+							</select>
+							<button onclick="Feditor.gradientFilp();">翻转</button>
+						</div>
+						<div id="divGradientLinear">
+							X0：<input id="linearX0" type="number" step="0.01" value="0" />&nbsp;
+							Y0：<input id="linearY0" type="number" step="0.01" value="0" />
+							<br>
+							X1：<input id="linearX1" type="number" step="0.01" value="0" />&nbsp;
+							Y1：<input id="linearY1" type="number" step="0.01" value="1" />
+						</div>
+						<div id="divGradientRadial" style="display:none;">
+							X0：<input id="radialX0" type="number" step="0.01" value="0.5" />&nbsp;
+							Y0：<input id="radialY0" type="number" step="0.01" value="0.5" />
+							<br>
+							X1：<input id="radialX1" type="number" step="0.01" value="0.5" />&nbsp;
+							Y1：<input id="radialY1" type="number" step="0.01" value="0.5" />
+							<br>
+							R0：<input id="radialR0" type="number" step="0.01" value="0" />&nbsp;
+							R1：<input id="radialR1" type="number" step="0.01" value="1" />
+						</div>
+					</td>
+					<td>
+						<div id="divGradientDemo"></div>
+					</td>
+				</tr>
+			</table>
+			<div>
+				<div id="divGradientShow"></div>
+				<div id="divGradientRectList">
+					<div class="base" data-color="#fff" style="background-color: #fff; left:0;"></div>
+					<div class="base" data-color="#000" style="background-color: #000; right:0;"></div>
+				</div>
+			</div>
+			<div id="divGradientBase">
+				<span data-c1="#fff" data-c2="#000" style="background:linear-gradient(to right, #fff 0%, #000 100%)"></span>
+				<span data-c1="#99F" data-c2="#00F" style="background:linear-gradient(to right, #99F 0%, #00F 100%)"></span>
+				<span data-c1="#0F0" data-c2="#090" style="background:linear-gradient(to right, #0F0 0%, #090 100%)"></span>
+				<span data-c1="#FF0" data-c2="#990" style="background:linear-gradient(to right, #FF0 0%, #990 100%)"></span>
+				<span data-c1="#F00" data-c2="#900" style="background:linear-gradient(to right, #F00 0%, #900 100%)"></span>
+				<span data-c1="#F00" data-c2="#00F" style="background:linear-gradient(to right, #F00 0%, #00F 100%)"></span>
+				<span data-c1="#0F0" data-c2="#00F" style="background:linear-gradient(to right, #0F0 0%, #00F 100%)"></span>
+				<span data-c1="#0F0" data-c2="#FF0" style="background:linear-gradient(to right, #0F0 0%, #FF0 100%)"></span>
+				<br>
+				<span data-c1="#67F9D4" data-c2="#FF9554" style="background:linear-gradient(to right, #67F9D4 0%, #FF9554 100%)"></span>
+				<span data-c1="#BC95C6" data-c2="#7DC4CC" style="background:linear-gradient(to right, #BC95C6 0%, #7DC4CC 100%)"></span>
+				<span data-c1="#B2B9BE" data-c2="#2F4052" style="background:linear-gradient(to right, #B2B9BE 0%, #2F4052 100%)"></span>
+				<span data-c1="#EE9CA7" data-c2="#FFDDE1" style="background:linear-gradient(to right, #EE9CA7 0%, #FFDDE1 100%)"></span>
+				<span data-c1="#C4E0E5" data-c2="#4CA1AF" style="background:linear-gradient(to right, #C4E0E5 0%, #4CA1AF 100%)"></span>
+				<span data-c1="#9600FF" data-c2="#E1E1E1" style="background:linear-gradient(to right, #9600FF 0%, #E1E1E1 100%)"></span>
+				<span data-c1="#0DCDA1" data-c2="#C2FCD4" style="background:linear-gradient(to right, #0DCDA1 0%, #C2FCD4 100%)"></span>
+				<span data-c1="#FFF886" data-c2="#F072B6" style="background:linear-gradient(to right, #FFF886 0%, #F072B6 100%)"></span>
+			</div>
+		</div>
+		<div style="text-align:center;">
+			<input id="txtColorVal" type="text" />
+		</div>
+		<hr>
+		<div class="msgBtn">
+			<button onclick="Feditor.saveColor();">&emsp; 确  定 &emsp;</button>
+			&emsp;
+			<button class="close">&emsp; 取  消 &emsp;</button>
+		</div>
+	</dialog>
+
+	<!--数字输入弹出框-->
+	<dialog id="msgNumInput">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">数字输入</h3>
+		<div id="divNumInput">
+			<input id="numInput" type="text" value="123" /><br>
+			<input id="numInputRange" type="range" />
+			<span id="spanNumError">Error</span>
+		</div>
+		<div id="divNumLog"></div>
+		<div id="divNumKey">
+			<span class="key2">7</span>
+			<span class="key2">8</span>
+			<span class="key2">9</span>
+			<span class="key1">清空</span>
+			<br>
+			<span class="key2">4</span>
+			<span class="key2">5</span>
+			<span class="key2">6</span>
+			<span class="key1">重置</span>
+			<br>
+			<span class="key2">1</span>
+			<span class="key2">2</span>
+			<span class="key2">3</span>
+			<span class="key1">最小</span>
+			<br>
+			<span class="key2">0</span>
+			<span class="key2">.</span>
+			<span class="key2" style="font-size: 1.5em;">+/-</span>
+			<span class="key1">最大</span>
+		</div>
+		<hr>
+		<div class="msgBtn">
+			<button onclick="Feditor.saveNumInput();">&emsp; 确  定 &emsp;</button>
+			&emsp;
+			<button class="close">&emsp; 取  消 &emsp;</button>
+		</div>
+	</dialog>
+	
+	<!--扇叶选择弹出框-->
+	<dialog id="msgFan">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">扇叶选择</h3>
+		<div id="divFanList">
+			<img src="./static/img/fan/fan01.png" />
+			<img src="./static/img/fan/fan02.png" />
+			<img src="./static/img/fan/fan03.png" />
+			<img src="./static/img/fan/fan04.png" />
+			<img src="./static/img/fan/fan05.png" />
+			<img src="./static/img/fan/fan06.png" />
+			<img src="./static/img/fan/fan07.png" />
+			<img src="./static/img/fan/fan08.png" />
+			<img src="./static/img/fan/fan09.png" />
+			<img src="./static/img/fan/fan10.png" />
+		</div>
+	</dialog>
+	
+	<!--数据绑定弹出框-->
+	<div id="divTbInputTemp" style="display: none;">
+		<table class="tbInput">
+			<thead>
+				<tr>
+					<th>条件</th>
+					<th>对比值</th>
+					<th>最终值</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr style="display: none;">
+					<td>
+						<select class="selCompare">
+							<option value="eq">相等 =</option>
+							<option value="ne">不相等 !=</option>
+							<option value="gt">大于 &gt;</option>
+							<option value="ge">大于等于 &gt;=</option>
+							<option value="lt">小于 &lt;</option>
+							<option value="le">小于等于 &lt;=</option>
+							<option value="in">包含</option>
+							<option value="nin">不包含</option>
+							<option value="between">区间</option>
+							<option value="nbetween">非区间</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" class="txtCompare" />
+					</td>
+					<td>
+						<input type="text" class="txtBindResValue" />
+					</td>
+					<td>
+						<button onclick="$(this).parent().parent().remove();">删除</button>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>
+						否则
+					</td>
+					<td>
+					</td>
+					<td>
+						<input type="text" class="txtBindElseValue" />
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<dialog id="msgBind">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">数据绑定</h3>
+		<div style="width: 800px; height: 600px; position: relative;">
+			<!--
+			数据类型：bool、string、number、color、am、zfill
+
+			bool:	设置条件
+			string:	标签替换
+			number:	比例系数 y=ax+b、单位、格式化 0.##
+			color:	标签替换、设置条件、RGB颜色
+			am:		动画字符串，旋转 rotate、闪动 blink、流动 flow、宽度 mWidth、高度 mHeight、位置 move
+			zfill:	填充颜色、渐变色
+
+			绑定对象类型：sys、plc、base、calc
+			系统类型sys：
+				sys.user 		当前用户信息（ID、账号、用户名、用户类型、登录时间、权限列表）
+				sys.now.str 	当前时间（字符串 2022-11-22 33:44:55）
+				sys.now.vals	当前时间对象（year、month、day、week、hour、minute、second）
+				sys.now.day		当前日期（字符串 2022-11-22）
+				sys.now.time	当前时间（字符串 33:44:55）
+				sys.now.week	当前星期（字符串 星期三）
+				sys.now.ms		累计毫秒值（int）
+				sys.now.timestamp 时间戳
+			
+			基础base：
+				bool_true
+				bool_false
+				string_empty
+				number_zero
+				number_val	固定值
+				number_rand	随机值
+				color_fff
+				color_000
+				color_f00
+				color_0f0
+				color_00f
+			
+			计算calc：
+			-->
+
+			<div id="divBindTab">
+				<span class="active" data-tag="sys">系统</span>
+				<span data-tag="plc">PLC</span>
+				<span data-tag="base">基础</span>
+				<span data-tag="calc">计算</span>
+			</div>
+			<div id="divBindSource_sys" class="divBindSource"></div>
+			<div id="divBindSource_plc" class="divBindSource"></div>
+			<div id="divBindSource_base" class="divBindSource"></div>
+			<div id="divBindSource_calc" class="divBindSource"></div>
+
+			<div class="divBindContent" id="divBindContent_bool">
+				<div class="bind-content">
+					<div>
+						类型：<span class="spanBindType"></span>
+						&emsp;
+						键值：<span class="spanBindKey"></span>
+						&emsp;
+						属性：<span class="spanBindName"></span>
+						<hr>
+						当前绑定：<span class="spanBindValue"></span><br>
+						当前取值：<span class="spanBindRawValue"></span>
+						&emsp;
+						最终值：<span class="spanBindLastValue"></span>
+						<button class="btnBindTest">计算</button>
+						<hr>
+						<label>
+							<input class="chkToNum" type="checkbox" />
+							转换为数字
+						</label>
+						<hr>
+						条件设置：
+						&nbsp;
+						<button onclick="Feditor.tbInputAdd(this);">添加条件</button>
+						<div class="div_tbInput"></div>
+
+						原始值预处理：
+						<input type="text" class="input-block txtBindPre" />
+					</div>
+				</div>
+			</div>
+			<div class="divBindContent" id="divBindContent_string">
+				<div class="bind-content">
+					<div>
+						类型：<span class="spanBindType"></span>
+						&emsp;
+						键值：<span class="spanBindKey"></span>
+						&emsp;
+						属性：<span class="spanBindName"></span>
+						<hr>
+						当前绑定：<span class="spanBindValue"></span><br>
+						当前取值：<span class="spanBindRawValue"></span>
+						&emsp;
+						最终值：<span class="spanBindLastValue"></span>
+						<button class="btnBindTest">计算</button>
+						<hr>
+						<label>
+							<input class="chkToNum" type="checkbox" />
+							转换为数字
+						</label>
+						<br>
+						前&emsp;缀：<input type="text" class="txtBindPre" />
+						后&emsp;缀：<input type="text" class="txtBindSuf" /><br>
+						格式化：<input type="text" class="txtBindFormat" />
+						转&emsp;换：<input type="number" value="1" class="numBindA" />A*x + <input type="number" value="0" class="numBindB" />B
+						<hr>
+						条件设置：
+						&nbsp;
+						<button onclick="Feditor.tbInputAdd(this);">添加条件</button>
+						<div class="div_tbInput"></div>
+						
+						原始值预处理：
+						<input type="text" class="input-block txtBindPre" />
+					</div>
+				</div>
+			</div>
+			<div class="divBindContent" id="divBindContent_number">
+				<div class="bind-content">
+					<div>
+						类型：<span class="spanBindType"></span>
+						&emsp;
+						键值：<span class="spanBindKey"></span>
+						&emsp;
+						属性：<span class="spanBindName"></span>
+						<hr>
+						当前绑定：<span class="spanBindValue"></span><br>
+						当前取值：<span class="spanBindRawValue"></span>
+						&emsp;
+						最终值：<span class="spanBindLastValue"></span>
+						<button class="btnBindTest">计算</button>
+						<hr>
+						<label>
+							<input class="chkToNum" type="checkbox" checked />
+							转换为数字
+						</label>
+						<br>
+						数据转换：<input type="number" value="1" class="numBindA" />A*x + <input type="number" value="0" class="numBindB" />B
+						<br>
+						保留小数：<input type="number" value="0" class="numBindDec" /> 位
+						<hr>
+						条件设置：
+						&nbsp;
+						<button onclick="Feditor.tbInputAdd(this);">添加条件</button>
+						<div class="div_tbInput"></div>
+						
+						原始值预处理：
+						<input type="text" class="input-block txtBindPre" />
+					</div>
+				</div>
+			</div>
+			<div class="divBindContent" id="divBindContent_am">
+				<div class="bind-content">
+					<div>
+						类型：<span class="spanBindType"></span>
+						&emsp;
+						键值：<span class="spanBindKey"></span>
+						&emsp;
+						属性：<span class="spanBindName"></span>
+						<hr>
+						当前绑定：<span class="spanBindValue"></span><br>
+						当前取值：<span class="spanBindRawValue"></span>
+						&emsp;
+						最终值：<span class="spanBindLastValue"></span>
+						<button class="btnBindTest">计算</button>
+						<hr>
+						<label>
+							<input class="chkToNum" type="checkbox" />
+							转换为数字
+						</label>
+						<hr>
+						条件设置：
+						&nbsp;
+						<button onclick="Feditor.tbInputAdd(this);">添加条件</button>
+						<div class="div_tbInput"></div>
+
+						<div>
+							动画示例：<br>
+							<ul class="ul-list">
+								<li>管道液体流动 <code>flow,1</code></li>
+								<li>旋转 <code>rotate,1</code></li>
+								<li>闪烁 <code>blink,1,2</code></li>
+								<li>高度 <code>mHeight,100</code></li>
+								<li>宽度 <code>mWidth,100</code></li>
+								<li>移动 <code>move,100,100</code></li>
+							</ul>
+						</div>
+
+						<hr>
+						
+						原始值预处理：
+						<input type="text" class="input-block txtBindPre" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="msgBtn">
+			<button onclick="Feditor.attrBindSave();">&emsp; 确 定 &emsp;</button>
+			&emsp;
+			<button class="close">&emsp; 取  消 &emsp;</button>
+		</div>
+	</dialog>
+
+	<!--事件绑定-->
+	<dialog id="msgEvent">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">事件绑定</h3>
+		<div id="divEventInput">
+			<!--
+			按钮：点击<br>
+			开关：开、关<br>
+
+			所需权限：验证当前用户权限，多个值是否在用户权限列表中都存在，不存在弹出权限限制提示
+			操作确认提示：如果为空则不提示
+			事件类型：sys、plc、api
+
+			★ sys函数
+				sys.logout		退出登录
+				sys.pageSwitch	页面切换
+				sys.pageAlert	弹出页面
+				sys.pageClose	关闭当前页
+				sys.urlOpen		打开新的URL页
+				sys.urlAlert	弹出URL页
+				sys.msgClose	关闭弹出框
+				sys.uiAttr		界面组件属性设置
+				sys.uiAlert		弹出提示框
+				sys.playSound	播放声音
+				sys.alarm		系统警告
+
+			★ plc函数
+				plc.setValue	设置PLC值
+				plc.setList		设置多个PLC值
+				plc.setAdd		自身增加
+			
+			★ api函数
+				api.ajax		ajax调用
+			-->
+
+			<div>
+				<label>操作类型：</label>
+				<select id="selEventType">
+					<option value="null">无</option>
+					<option value="plc.setValue">写入PLC</option>
+					<option value="sys.pageSwitch">页面切换</option>
+				</select>
+			</div>
+			<div>
+				<label>操作权限：</label>
+				<input type="text" data-key="power" />
+			</div>
+			<div>
+				<label>操作确认：</label>
+				<input type="text" data-key="confirm" />
+			</div>
+			<div class="event_input ei_plc_setValue">
+				<label>PLC键值：</label>
+				<input type="text" data-key="plcKey" />
+			</div>
+			<div>
+				<label>设置值：</label>
+				<input type="text" data-key="val" />
+			</div>
+		</div>
+		<hr>
+		<div class="msgBtn">
+			<button onclick="Feditor.attrEventSave();">&emsp; 确 定 &emsp;</button>
+			&emsp;
+			<button class="close">&emsp; 取  消 &emsp;</button>
+		</div>
+	</dialog>
+
+	<!--自动执行-->
+	<dialog id="msgTask">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">任务设置</h3>
+		<div>
+			定时执行
+			倒计时执行
+			多条件触发执行（可延迟执行）
+		</div>
+	</dialog>
+
+	<!--计时器弹出框-->
+	<dialog id="msgTimer">
+		<a class="dialog-close">&times;</a>
+		<h3 class="msgTitle">计时器设置</h3>
+		<div style="max-width:400px;">
+			<input id="txtTimerSpan" type="text" value="00:00:00" />
+		</div>
+		<div id="divTimerVal">
+			<div class="timer-val">
+			<span data-val="00:01:00">1分钟</span>
+			<span data-val="00:05:00">5分钟</span>
+			<span data-val="00:10:00">10分钟</span>
+			<span data-val="00:15:00">15分钟</span>
+			<span data-val="00:30:00">30分钟</span>
+			<span data-val="01:00:00">1小时</span>
+			<span data-val="01:30:00">1.5小时</span>
+			<span data-val="02:00:00">2小时</span>
+		</div>
+			<span data-val="00:00:00">归零</span>
+			归零后不计时
+			<br>
+			<span data-val="+60">+1分钟</span>
+			<span data-val="+300">+5分钟</span>
+			<span data-val="+600">+10分钟</span>
+			<span data-val="+1800">+30分钟</span>
+			<span data-val="+3600">+1小时</span>
+			<br>
+			<span data-val="-60">-1分钟</span>
+			<span data-val="-300">-5分钟</span>
+			<span data-val="-600">-10分钟</span>
+			<span data-val="-1800">-30分钟</span>
+			<span data-val="-3600">-1小时</span>
+		</div>
+		<div id="divTimerRun">
+			开始于 <b>2023-01-01 11:22:33</b><br>
+			将在 <b>2023-01-01 11:22:33</b> 结束<br>
+			剩余时长 <b>11:11:22</b>
+		</div>
+		<hr>
+		<div class="msgBtn">
+			<button id="btnTimerStart" onclick="Feditor.timerStart();">&emsp; 开始计时 &emsp;</button>
+			<button id="btnTimerStop" onclick="Feditor.timerStop();">&emsp; 停止计时 &emsp;</button>
+			&emsp;
+			<button class="close">&emsp; 取  消 &emsp;</button>
+		</div>
+	</dialog>
+	
+
+	<script>
+
+		var FeditorData = {
+			elIndex: 1,
+			page: {
+				width: 1000,
+				height: 600,
+				zoom: 1,
+				name: '',
+				type: 'main',
+				x: 0,
+				y: 0,
+			},
+			list: [],
+		};
+
+		$(function () {
+			// 切换选项卡
+			$('#divTabNav span').click(function(){
+				$('#divTabNav span').removeClass('active');
+				$(this).addClass('active');
+				$('#divTabContent>div').hide();
+				$('#' + $(this).data('id')).show();
+			});
+
+			// 初始化
+			Feditor.init($('#myCanvas'));
+			Feditor.reload();
+
+			// 状态栏
+			window.setInterval(function () {
+				let str = '共' + Feditor.canvas._objects.length + '个元素；';
+				let obj = Feditor.canvas.getActiveObject();
+				if (obj != null) {
+					if (obj.type == 'activeSelection') {
+						str += '选中' + obj.size() + '个;'
+					}
+					else {
+						str += '选中:' + obj.type + ';';
+					}
+				}
+				$('#spanStatusInfo').html(str);
+			}, 500);
+
+			loadSvgList();
+			loadPathList();
+
+			// 扇叶选择
+			$('#divFanList img').click(function(){
+				Feditor.addImgRotate(this.src);
+				Feditor.dialogClose();
+			});
+		});
+
+		function loadSvgList()
+		{
+			for (let k in svgList)
+			{
+				$('#selSvgList').append('<option value="' + k + '">' + svgList[k].memo + ' ' + svgList[k].name + '</option>');
+			}
+			$('#selSvgList').val('0');
+			$('#selSvgList').change(loadSvgItem);
+			loadSvgItem();
+		}
+
+		function loadSvgItem()
+		{
+			let i = $('#selSvgList').val();
+			$('#divSvgItem').html('');
+			for (let r of svgList[i].list)
+			{
+				let url = './static/img/svg/' + svgList[i].name + '/' + r;
+				$('#divSvgItem').append('<img src="' + url + '" title="' + r + '"  draggable="false" />');
+			}
+
+			$('#divSvgItem img').click(function(e){
+				if (e.ctrlKey){
+					Feditor.addImageSvg($(this).attr('src'));
+				} else {
+					Feditor.addImage($(this).attr('src'), 1);
+				}
+			});
+		}
+
+		function loadPathList()
+		{
+			let list = [
+				'M16 28 L28 28 L28 60 L36 60 L36 28 L48 28 L32 4 Z',
+				'M22 32 L30 24 L30 60 L34 60 L34 24 L42 32 L32 4 Z',
+				'M16 32 L32 38 L20 64 L48 32 L32 26 L44 0 Z',
+				'M28 58 Q32 62 36 58 L36 54 C50 50 50 54 54 54 Q48 48 48 38 Q48 18 34 10 L34 6 Q32 4 30 6 L30 10 Q16 18 16 38 Q16 48 10 54 C15 54 16 50 28 54 Z',
+				'M10 36 L26 50 L56 18 L50 12 L26 38 L16 28 Z',
+				'M16 10 L12 16 L28 32 L10 50 L18 54 L32 36 L46 54 L54 50 L36 32 L52 16 L48 10 L32 26 Z',
+				'M10 24 L24 34 L18 54 L32 42 L46 54 L40 34 L54 24 L38 24 L32 6 L26 24 Z',
+				'M26 38 L38 38 L38 6 L26 6 Z M38 46 L26 46 L26 56 L38 56 Z',
+				'M18 8 L18 16 L40 32 L18 48 L18 56 L50 32 Z',
+				'M22 10 L18 16 L40 32 L18 48 L22 54 L50 32 Z',
+				'M0 48 L64 48 L64 16 L56 32 L48 16 L40 32 L32 16 L24 32 L16 16 L8 32 L0 16 Z',
+				'M0 32 L8 48 L16 32 L24 48 L32 32 L40 48 L48 32 L56 48 L64 32 L64 16 L56 32 L48 16 L40 32 L32 16 L24 32 L16 16 L8 32 L0 16 Z',
+				'M0 24 L0 40 Q8 32 16 40 Q24 32 32 40 Q40 32 48 40 Q56 32 64 40 L64 24 Q56 16 48 24 Q40 16 32 24 Q24 16 16 24 Q8 16 0 24 Z',
+				'M0 24 L0 40 Q8 48 16 40 Q24 48 32 40 Q40 48 48 40 Q56 48 64 40 L64 24 Q56 16 48 24 Q40 16 32 24 Q24 16 16 24 Q8 16 0 24 Z',
+				' M4,28 L16,28 L16,24 L26,32 L16,40 L16,36 L4,36 Z M0,44 L32,44 L28,38 L32,32 L28,26 L30,20 L0,20 Z M34,20 L32,26 L36,32 L32,38 L36,44 L64,44 L64,32 L64,20 Z M60,32 L50,40 L50,36 L40,36 L40,28 L50,28 L50,24 Z',
+				'M0 44 L32 44 L28 38 L32 32 L28 26 L30 20 L0 20 Z M34 20 L32 26 L36 32 L32 38 L36 44 L64 44 L64 20 Z',
+				'M0 48 L32 48 L32 44 L22 44 L22 26 L34 26 L34 32 L30 30 L26 30 L26 40 L50 40 L50 44 L32 44 L32 48 L64 48 L64 16 L32 16 L32 20 L42 20 L42 38 L30 38 L30 32 L34 34 L38 34 L38 24 L14 24 L14 20 L32 20 L32 16 L0 16 Z',
+				'M0 48 L32 48 L32 44 L22 44 L22 28 L32 28 L28 34 L32 38 L50 38 L50 44 L32 44 L32 48 L64 48 L64 16 L32 16 L32 20 L42 20 L42 36 L32 36 L36 30 L32 26 L14 26 L14 20 L32 20 L32 16 L0 16 Z',
+				'M8 44 Q32 62 56 44 L32 12 Z',
+				'M24 40 L24 64 L40 64 L40 40 L64 40 L64 24 L40 24 L40 0 L24 0 L24 24 L0 24 L0 40 Z',
+				'M0 40 Q8 48 16 40 Q24 32 32 40 Q40 48 48 40 Q56 32 64 40 L64 24 Q56 16 48 24 Q40 32 32 24 Q24 16 16 24 Q8 32 0 24 Z',
+				'M0 32 Q32 32 32 64 L64 64 Q64 32 48 16 Q32 0 0 0 Z',
+				'M0 32 Q32 32 32 64 Q32 32 64 32 Q32 32 32 0 Q32 32 0 32 Z',
+				'M8 56 L32 0 L56 56 L0 32 L56 8 L32 64 L8 8 L64 32 Z',
+				'M24 64 L46 64 L34 56 L34 8 L46 0 L24 0 Z',
+				'M0 64 L64 64 L64 56 L16 56 L8 48 L8 16 L16 8 L64 8 L64 0 L0 0 Z',
+				'M26 60 Q32 64 38 60 L36 28 Q52 20 44 6 L38 6 L38 14 L36 18 L28 18 L26 14 L26 6 L20 6 Q12 20 28 28 Z',
+				'M34 36 L38 30 L32 24 L24 26 L18 34 L22 44 L36 48 L46 40 L50 26 L40 14 L22 12 L10 22 L6 34 L10 48 L22 58 L44 58 L56 48 L60 32 L56 16 L40 4 L20 2 L8 14 L24 8 L34 8 L46 12 L52 20 L54 30 L48 46 L38 52 L24 52 L14 42 L16 26 L24 20 L34 20 L42 28 L38 38 L32 42 L26 38 L26 32 L32 30 Z',
+				'M24 46 L26 46 L26 56 L30 56 L30 46 L34 46 L34 56 L38 56 L38 46 L40 46 L38 32 L42 40 L44 40 L40 28 L34 24 C40 20 40 10 32 10 C24 10 22 20 30 24 L24 28 L20 40 L22 40 L26 32 Z',
+				'M6 64 L32 48 L58 64 L32 0 Z',
+				'M16 48 L48 48 L64 16 L0 16 Z',
+				'M0 48 L64 48 C64 0 0 0 0 48 Z',
+				'M0 48 L64 48 C48 0 16 0 0 48 Z',
+				'M16 24 L16 8 L48 8 L48 24 L64 56 L0 56 Z',
+				'M16 20 L16 4 L48 4 L48 20 L64 44 L64 60 L0 60 L0 44 Z',
+				'M0 48 C0 4 64 6 64 48 L48 48 C48 26 16 28 16 48 Z',
+				'M0 64 L16 64 L16 56 L24 56 L24 48 L32 48 L32 40 L40 40 L40 32 L48 32 L48 24 L56 24 L56 16 L64 16 L64 0 L56 0 L56 8 L48 8 L48 16 L40 16 L40 24 L32 24 L32 32 L24 32 L24 40 L16 40 L16 48 L8 48 L8 56 L0 56 Z',
+				'M0 64 L64 64 L64 0 L56 0 L56 8 L48 8 L48 16 L40 16 L40 24 L32 24 L32 32 L24 32 L24 40 L16 40 L16 48 L8 48 L8 56 L0 56 Z',
+				'M64 48 Q64 16 40 16 L40 8 L24 8 L24 16 Q0 16 0 48 L0 58 L64 58 Z',
+				'M64 32 Q56 16 32 16 Q8 16 0 32 L0 58 L64 58 Z',
+				'M20 64 Q44 48 28 32 Q12 16 28 0 Q0 16 16 32 Q32 48 16 64 Z M40 64 Q64 48 48 32 Q32 16 48 0 Q20 16 36 32 Q52 48 36 64 Z',
+				'M0 24 L0 36 Q4 36 8 32 Q16 40 24 32 Q32 40 40 32 Q48 40 56 32 Q60 36 64 36 L64 24 Q56 16 48 24 Q40 16 32 24 Q24 16 16 24 Q8 16 0 24 Z',
+				'M32 64 C0 40 0 0 32 0 C64 0 64 40 32 64 Z',
+				'M0 64 L64 64 L64 0 L42 0 L42 8 L56 8 L56 56 L8 56 L8 8 L22 8 L22 0 L0 0 Z',
+				'M8 56 Q32 24 56 56 L32 8 Z',
+				'M0 20 C0 20 6 18 6 32 C6 48 2 48 2 32 C2 16 14 16 14 32 C14 48 10 48 10 32 C10 16 22 16 22 32 C22 48 18 48 18 32 C18 16 30 16 30 32 C30 48 26 48 26 32 C26 16 38 16 38 32 C38 48 34 48 34 32 C34 16 46 16 46 32 C46 48 42 48 42 32 C42 16 54 16 54 32 C54 48 50 48 50 32 C50 16 62 16 62 32 C62 48 58 48 58 32 C58 20 64 20 64 20',
+				'M0 64 L32 48 L64 64 L48 32 L64 0 L32 16 L0 0 L16 32 Z',
+				'M16 48 Q32 64 48 48 L48 16 Q32 0 16 16 Z',
+				'M16 48 C16 64 48 64 48 48 L48 16 C48 0 16 0 16 16 Z',
+				'M16 48 L32 64 L48 48 L48 16 L32 0 L16 16 Z',
+				'M16 48 L32 64 L48 48 L40 32 L48 16 L32 0 L16 16 L24 32 Z',
+				'M0 48 L8 48 L16 56 L48 56 L56 48 L64 48 L64 16 L56 16 L48 8 L16 8 L8 16 L0 16 Z',
+				'M0 48 L8 48 L16 42 L48 42 L56 48 L64 48 L64 16 L56 16 L48 22 L16 22 L8 16 L0 16 Z',
+				'M0 30 L16 30 L16 32 Q32 32 32 48 L34 48 L34 64 L62 64 L62 48 L64 48 Q64 0 16 0 L16 2 L0 2 Z',
+				'M56 16 C56 24 8 24 8 16 L8 48 C8 56 56 56 56 48 L56 16 C56 8 8 8 8 16 C8 24 56 24 56 16 Z',
+				'M8 20 L40 20 L8 20 L8 52 L40 52 L56 44 L56 12 L40 20 L40 52 L40 20 L56 12 L24 12 Z',
+			];
+
+			let svgBase = `
+			<svg
+				xmlns='http://www.w3.org/2000/svg'
+				viewBox='0 0 64 64'
+				width='64' height='64'
+				fill='currentcolor'
+				stroke="#fff" stroke-width="1">
+				<path d='{path}' />
+			  </svg>
+			`;
+
+			for (let r of list)
+			{
+				let el = $(svgBase.replace('{path}', r));
+				el.data('path', r);
+				$('#divSvgPathList').append(el);
+
+				el.click(function(e){
+					if (e.ctrlKey){
+						window.open('./tool/svg_path_editor.html?d=' + $(this).data('path'));
+						return;
+					}
+					Feditor.addPath($(this).data('path'));
+				});
+			}
+		}
+
+	</script>
+
+</body>
+
+</html>

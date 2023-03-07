@@ -1,0 +1,25 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113px" height="113px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Switch_Bannet" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<circle fill="#333333" cx="48.085" cy="48.085" r="47.635" />
+	
+		<radialGradient id="SVGID_1_" cx="31.8735" cy="30.4619" r="24.324" gradientTransform="matrix(1.185 0 0 1.1953 -1.4011 -1.2298)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.19" style="stop-color:#A0A0A0" />
+		<stop offset="0.56" style="stop-color:#727272" />
+		<stop offset="1" style="stop-color:#333333" />
+	</radialGradient>
+	<ellipse fill="url(#SVGID_1_)" cx="36.369" cy="35.182" rx="28.824" ry="29.074" />
+</g>
+<g id="Group_Handle" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-5.8892" y1="169.7656" x2="26.8109" y2="170.0308" gradientTransform="matrix(0.5101 -0.5101 0.6067 0.6067 -38.1836 -27.3282)">
+		<stop offset="0" style="stop-color:#505050" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#505050" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" stroke="#000000" stroke-width="0.25" points="112.465,96.432 96.249,112.647 27.996,44.395    44.212,28.178  " />
+</g>
+<g id="Group_Arrow" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path d="M48.085,55.518l7.433-7.433l-16.779-9.347L48.085,55.518z" />
+</g>
+</svg>

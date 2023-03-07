@@ -1,0 +1,13 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31px" height="112px" viewBox="0 0 31.082 112.5" enable-background="new 0 0 31.082 112.5" xml:space="preserve">
+<g id="Group_Handle" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-0.8088" y1="56.1177" x2="31.8913" y2="56.3828">
+		<stop offset="0" style="stop-color:#505050" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#505050" />
+	</linearGradient>
+	<rect x="-0.354" fill="url(#SVGID_1_)" stroke="#000000" stroke-width="0.25" width="31.79" height="112.5" />
+</g>
+<g id="Group_Arrow" transform="matrix(0.9999999,-3.019916E-07,3.019916E-07,0.9999999,0,0)">
+	<path fill="#1A1A1A" d="M15.478,5.849l5.659,7.779l-2.924-0.021l0.127,14.299l-4.986,0.079l-0.486-14.421l-2.922-0.021   L15.478,5.849z" />
+</g>
+</svg>

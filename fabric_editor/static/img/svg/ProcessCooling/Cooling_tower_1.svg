@@ -1,0 +1,32 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94px" height="112px" viewBox="0 0 93.787 112.5" enable-background="new 0 0 93.787 112.5" xml:space="preserve">
+<g id="Group_Cooling_Tower">
+	<path fill="none" stroke="#CCB299" stroke-width="0.25" d="M93.787,109.399L72.841,37.309V27.81l2.367-23.408H18.959l2.367,23.408   v9.499L0.38,109.787" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="18.7124" y1="4.7695" x2="74.9619" y2="4.7695">
+		<stop offset="0" style="stop-color:#D6C2AD" />
+		<stop offset="0.5" style="stop-color:#F0E8E1" />
+		<stop offset="1" style="stop-color:#D6C2AD" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_1_)" stroke="#CCB299" stroke-width="0.25" cx="46.837" cy="4.77" rx="28.125" ry="4.73" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="109.8477" x2="93.7871" y2="109.8477">
+		<stop offset="0" style="stop-color:#D6C2AD" />
+		<stop offset="0.28" style="stop-color:#DBC9B7" />
+		<stop offset="0.5" style="stop-color:#F0E8E1" />
+		<stop offset="0.73" style="stop-color:#D9C6B2" />
+		<stop offset="1" style="stop-color:#D6C2AD" />
+	</linearGradient>
+	<ellipse fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.2" cx="46.894" cy="109.85" rx="46.894" ry="2.375" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="0.3794" y1="57.0938" x2="93.7871" y2="57.0938">
+		<stop offset="0" style="stop-color:#D6C2AD" />
+		<stop offset="0.28" style="stop-color:#DBC9B7" />
+		<stop offset="0.5" style="stop-color:#F0E8E1" />
+		<stop offset="0.73" style="stop-color:#D9C6B2" />
+		<stop offset="1" style="stop-color:#D6C2AD" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M93.787,109.399L72.841,37.309V27.81l2.367-23.408H18.959l2.367,23.408v9.499L0.379,109.787" />
+</g>
+<g id="Group_Lines">
+	<path fill="none" stroke="#CCB299" stroke-width="0.5" d="M73.271,111.936L60.984,37.538v-9.469l1.69-26.941" />
+	<path fill="none" stroke="#CCB299" stroke-width="0.5" d="M46.894,0v112.5" />
+	<path fill="none" stroke="#CCB299" stroke-width="0.5" d="M20.516,111.936L32.69,37.538v-9.469L31,1.127" />
+</g>
+</svg>

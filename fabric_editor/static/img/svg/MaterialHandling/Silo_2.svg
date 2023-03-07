@@ -1,0 +1,47 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="112px" viewBox="0 0 59.688 112.5" enable-background="new 0 0 59.688 112.5" xml:space="preserve">
+<g id="Group_Silo">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.3391" y1="44.0879" x2="59.2356" y2="44.0879">
+		<stop offset="0.1" style="stop-color:#B2B2AA" />
+		<stop offset="0.5" style="stop-color:#E5E5E2" />
+		<stop offset="0.9" style="stop-color:#B2B2AA" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M5.52,4.729v41.554l-5.181,6.87v6.419l5.181,0.112v-5.18l17.342,33.333l13.739-0.113l17.455-33.22   v5.18h5.18v-6.531l-5.18-6.87V4.729h-4.392V0.338H36.713v4.392H24.551l-1.689-1.802h-3.49l-1.689,1.802H15.88l-1.689-1.802h-3.491   L9.011,4.729H5.52z" />
+</g>
+<g id="Group_Outer_Rings">
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M54.056,59.685l5.18-5.18" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M54.056,54.504l5.18,5.18" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.339,59.685l5.181-5.18" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.339,54.504l5.181,5.18" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M59.236,53.153h-5.18v-6.87L59.236,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M53.38,53.153h-4.167v-6.982L53.38,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M47.525,53.153h-3.153v-6.982L47.525,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M41.556,53.153h-2.027v-6.982L41.556,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.699,53.153h-1.013v-6.982L35.699,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M29.844,53.153v-6.982V53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M23.989,53.153h1.013v-6.982L23.989,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M18.02,53.153h2.14v-6.982L18.02,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.164,53.153h3.152v-6.982L12.164,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M6.308,53.153h4.054v-6.982L6.308,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.339,53.153H5.52v-6.87L0.339,53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.339,53.153h58.896v1.351H0.339V53.153" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.52,44.933h48.536v1.351H5.52V44.933" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M36.713,4.617h13.401" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.813,2.815h15.202" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.813,3.716h15.202" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M9.011,4.729h6.869" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.682,4.729h6.869" />
+</g>
+<g id="Group_Outlet">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="21.1731" y1="99.9434" x2="38.4026" y2="99.9434">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#E5E5E2" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M22.862,112.05v-4.392h1.689v-4.279h-0.788l-0.901-1.352l0.901-1.239h0.788v-6.081h-1.689   l-0.9-4.279h-0.788v-2.59h17.229v2.59h-0.788l-0.901,4.279h-1.688v6.081h0.788l0.9,1.239l-0.9,1.352h-0.788v4.279h1.688v4.392   H22.862" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M21.961,90.428h15.653" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.551,94.707h10.474" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.551,100.788h10.474" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.551,103.379h10.474" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.551,107.658h10.474" />
+</g>
+</svg>

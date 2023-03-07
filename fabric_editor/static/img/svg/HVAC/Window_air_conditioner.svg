@@ -1,0 +1,39 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="68px" viewBox="0 0 112.5 67.903" enable-background="new 0 0 112.5 67.903" xml:space="preserve">
+<g id="Group_Control_Box">
+	<path fill="#E5E5E5" d="M82.094,49.209h25.675v13.965H82.094V49.209z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M107.769,48.985v14.189H82.094" />
+	<path fill="none" stroke="#999999" stroke-width="0.25" d="M107.769,48.985H82.094v14.189" />
+</g>
+<g id="Group_Vent">
+	<path fill="#333333" d="M82.094,4.617h25.675v39.864H82.094V4.617z" />
+	<path fill="#CCCCCC" d="M89.076,4.617h2.252v39.864h-2.252V4.617z" />
+	<path fill="#CCCCCC" d="M98.31,4.617h2.478v39.864H98.31V4.617z" />
+	<path fill="#CCCCCC" d="M82.094,11.599V9.121h25.675v2.478H82.094z" />
+	<path fill="#CCCCCC" d="M82.094,18.581v-2.252h25.675v2.252H82.094z" />
+	<path fill="#CCCCCC" d="M82.094,25.563V23.31h25.675v2.252H82.094z" />
+	<path fill="#CCCCCC" d="M82.094,32.769v-2.477h25.675v2.477H82.094z" />
+	<path fill="#CCCCCC" d="M82.094,39.75v-2.477h25.675v2.477H82.094z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M77.364,66.102v-64.3" />
+</g>
+<g id="Group_Label">
+	<path fill="#CCCCCC" d="M4.619,63.174h9.234v2.252H4.619V63.174z" />
+</g>
+<g id="Group_Ridges">
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M72.635,3.941H4.619v1.126h68.016v1.352H4.619v1.238h68.016v1.014H4.619   v1.126h68.016v1.352H4.619v1.126h68.016V13.4H4.619v1.352h68.016v1.126H4.619v1.126h68.016v1.126H4.619v1.352h68.016v1.126H4.619   v1.126h68.016v1.126H4.619v1.352h68.016v1.126H4.619v1.126h68.016v1.126H4.619v1.351h68.016v1.126H4.619v1.126h68.016v1.126H4.619   v1.351h68.016v1.125H4.619v1.127h68.016v1.126H4.619v1.351h68.016v1.127H4.619v1.126h68.016v1.126H4.619v1.352h68.016v1.126H4.619   v1.126h68.016v1.126H4.619v1.352h68.016v1.126H4.619v1.126h68.016v1.352H4.619v1.126h68.016v1.126H4.619v1.126h68.016v1.352H4.619   v1.126h68.016v1.126H4.619v1.352h68.016v1.126H4.619" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M1.128,1.126H111.26v65.652H1.128V1.126" />
+</g>
+<g id="Group_Tuner">
+	<radialGradient id="SVGID_1_" cx="90.0283" cy="56.1196" r="3.2143" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<polygon fill="url(#SVGID_1_)" points="88.25,53.202 91.666,53.121 93.444,56.039 91.807,59.038 88.391,59.119 86.612,56.201  " />
+	<radialGradient id="SVGID_2_" cx="99.7783" cy="55.8696" r="3.2143" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<polygon fill="url(#SVGID_2_)" points="98,52.952 101.416,52.871 103.194,55.789 101.557,58.788 98.141,58.869 96.362,55.951  " />
+</g>
+</svg>

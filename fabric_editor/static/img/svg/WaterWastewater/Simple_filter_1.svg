@@ -1,0 +1,119 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67px" height="112px" viewBox="0 0 66.506 112.5" enable-background="new 0 0 66.506 112.5" xml:space="preserve">
+<g id="Group_FilterSupport">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="7.552" y1="93.3359" x2="15.4426" y2="93.3359">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.21" style="stop-color:#AAAAAA" />
+		<stop offset="0.4" style="stop-color:#D5D5D5" />
+		<stop offset="0.5" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.99" style="stop-color:#767676" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M7.552,76.652v33.366h7.891V76.652H7.552z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="51.176" y1="93.3359" x2="58.8411" y2="93.3359">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.21" style="stop-color:#AAAAAA" />
+		<stop offset="0.4" style="stop-color:#D5D5D5" />
+		<stop offset="0.5" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.99" style="stop-color:#767676" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M51.176,76.652v33.366h7.665V76.652H51.176z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="5.0725" y1="111.2578" x2="17.8098" y2="111.2578">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.21" style="stop-color:#AAAAAA" />
+		<stop offset="0.4" style="stop-color:#D5D5D5" />
+		<stop offset="0.5" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.99" style="stop-color:#767676" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M5.073,112.498v-2.479H17.81v2.479H5.073z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="48.5833" y1="111.2578" x2="61.3215" y2="111.2578">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.21" style="stop-color:#AAAAAA" />
+		<stop offset="0.4" style="stop-color:#D5D5D5" />
+		<stop offset="0.5" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.99" style="stop-color:#767676" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M48.583,112.498v-2.479h12.738v2.479H48.583z" />
+</g>
+<g id="Group_Filter">
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="2.441406e-004" y1="40.5" x2="67.0061" y2="40.5">
+		<stop offset="0" style="stop-color:#737373" />
+		<stop offset="0.21" style="stop-color:#AAAAAA" />
+		<stop offset="0.4" style="stop-color:#D5D5D5" />
+		<stop offset="0.5" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#C6C6C6" />
+		<stop offset="0.99" style="stop-color:#767676" />
+		<stop offset="1" style="stop-color:#737373" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" stroke="#4C4C4C" stroke-width="0.2763" d="M0,14.027C0,6.142,5.517-0.25,12.323-0.25h42.361   c6.805,0,12.322,6.392,12.322,14.277v52.945c0,7.884-5.518,14.277-12.322,14.277H12.323C5.517,81.25,0,74.856,0,66.973V14.027z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M7.665,48.585L0,63.915" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M58.841,48.585l7.665,15.33" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.923,48.585L7.552,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M48.583,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M28.068,48.585L17.81,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.325,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.325,48.585L28.068,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M28.068,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M48.583,48.585L38.325,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M17.81,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M58.841,48.585L48.583,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M7.552,48.585l10.371,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,53.657l-7.665,15.331" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.738,48.585L2.48,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M53.656,48.585l10.257,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M22.995,48.585L12.738,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M43.399,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M33.253,48.585L22.995,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M33.141,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M43.511,48.585L33.253,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M22.995,48.585l10.146,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M53.656,48.585L43.511,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M12.738,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M63.913,48.585L53.656,68.988" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.48,48.585l10.258,20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,63.915l-2.593,5.073" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M63.913,48.585l2.593,5.072" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,53.657l7.665,15.331" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.48,68.988L0,63.915" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M15.33,68.988l20.402-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.073,68.988l20.516-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,68.988L46.104,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M61.322,68.988L40.918,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M56.248,68.988L35.846,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M51.176,68.988L30.66,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M45.99,68.988L25.588,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.918,68.988L20.403,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.733,68.988L15.33,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M30.66,68.988L10.258,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.475,68.988L5.073,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M20.403,68.988L0,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M15.33,68.988L0,38.327" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,58.843l-15.33-30.773" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,58.843l15.33-30.773" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,38.327l-5.072-10.258" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,38.327l5.072-10.258" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M40.918,68.988l20.403-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M30.66,68.988l20.516-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M20.403,68.988l20.516-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.145,68.988L30.66,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,68.988l20.402-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M66.506,48.585L56.248,28.069" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,48.585l10.145-20.516" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M56.248,68.988l10.258-20.403" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M61.322,68.988l5.185-10.146" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M10.145,68.988L0,48.585" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M5.073,68.988L0,58.843" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M2.48,48.585L0,53.657" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,11.161h66.506" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M51.176,68.988l15.33-30.661" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M45.99,68.988l20.516-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M35.733,68.988l20.516-40.919" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.588,68.988L45.99,28.069" />
+</g>
+</svg>

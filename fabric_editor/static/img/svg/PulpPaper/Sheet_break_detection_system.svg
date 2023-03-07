@@ -1,0 +1,40 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="39px" viewBox="0 0 112.5 39.074" enable-background="new 0 0 112.5 39.074" xml:space="preserve">
+<g id="Group_Detector">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="90.4258" y1="35.0205" x2="112.4971" y2="35.0205">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M90.426,30.967l9.009,8.107h4.054l9.009-8.107H90.426z" />
+</g>
+<g id="Group_DetectorConnector">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="89.4121" y1="2.0269" x2="89.4121" y2="23.928">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M66.328,23.985V2.027h46.169L90.426,24.038L66.328,23.985z" />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="85.9463" y1="-10.0229" x2="85.9463" y2="11.8772" gradientTransform="matrix(0 -1 -1 0 102.4434 102.4434)">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M90.456,24.038l22.011-22.011v28.94H90.509L90.456,24.038z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M90.426,23.985H66.328V2.027h46.169v28.94H90.426V23.985" />
+</g>
+<g id="Group_Supporter">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="33.1655" y1="-0.0654" x2="33.1655" y2="26.0248">
+		<stop offset="0" style="stop-color:#7F7F7F" />
+		<stop offset="0.5" style="stop-color:#FFFFFF" />
+		<stop offset="1" style="stop-color:#7F7F7F" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#4C4C4C" stroke-width="0.25" d="M66.328,26.012H0.003V0h66.325V26.012z" />
+</g>
+<g id="Group_Screw1">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M55.968,15.877l-1.801-1.576v-2.703l1.801-1.577h2.477l1.803,1.577   v2.703l-1.803,1.576H55.968z" />
+</g>
+<g id="Group_Screw2">
+	<path fill="#CCCCCC" stroke="#4C4C4C" stroke-width="0.25" d="M101.012,32.093l-0.451-0.676v-0.675l0.451-0.676h0.9l0.45,0.676   v0.675l-0.45,0.676H101.012z" />
+</g>
+</svg>

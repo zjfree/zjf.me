@@ -1,0 +1,43 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="80px" viewBox="0 0 112.5 79.84" enable-background="new 0 0 112.5 79.84" xml:space="preserve">
+<g id="Group_Pipe">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="9.765625e-004" y1="47.0142" x2="112.499" y2="47.0142">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.18" style="stop-color:#959595" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.001,79.84V14.189h112.498V79.84H0.001z" />
+</g>
+<g id="Group_Cut_End">
+	<path fill="#B2B2B2" d="M112.499,14.189l-4.843,18.581l-2.252-4.729l-4.617,23.648L89.076,37.499L74.887,51.688l-6.981,23.424   L53.941,53.94l-4.729-21.17L37.5,46.958l-7.207-6.982L18.582,53.94L11.6,32.77v-6.982L4.618,32.77L0.001,14.189h9.347l6.982-9.459   l9.459,7.207L35.023,0l9.459,9.347l13.963-6.982l7.207,16.441l6.982-16.441l6.982,9.572L91.328,0l6.869,7.095l7.207-2.365   L112.499,14.189z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="2.1406" y1="36.4292" x2="107.6563" y2="36.4292">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.01" style="stop-color:#2F2F2F" />
+		<stop offset="0.11" style="stop-color:#1A1A1A" />
+		<stop offset="0.23" style="stop-color:#0B0B0B" />
+		<stop offset="0.36" style="stop-color:#030303" />
+		<stop offset="0.56" style="stop-color:#000000" />
+		<stop offset="0.73" style="stop-color:#020202" />
+		<stop offset="0.83" style="stop-color:#0B0B0B" />
+		<stop offset="0.91" style="stop-color:#191919" />
+		<stop offset="0.98" style="stop-color:#2C2C2C" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M107.656,14.189l-2.252,13.851l-2.365-4.504l-4.842,23.423L86.599,32.77L72.635,44.481   l-6.982,23.648L56.194,53.94l-6.982-28.152L35.023,42.229l-6.982-6.982l-9.459,11.711l-4.73-14.189V21.058L4.618,28.04   L2.141,16.441l7.207,2.365L16.33,7.095l6.982,9.346l9.459-11.711l9.234,9.459l14.189-7.094l9.458,18.693l6.982-16.441l4.729,7.094   L89.076,4.729l4.729,7.207l9.233-4.842L107.656,14.189z" />
+	<polyline fill="#7F7F7F" points="49.212,25.788 49.212,32.77 53.941,53.94 67.905,75.112 65.652,68.129 56.25,54.024    49.212,25.788  " />
+	<polygon fill="#7F7F7F" points="0.001,14.189 4.618,32.77 4.618,28.04  " />
+	<polygon fill="#7F7F7F" points="23.312,16.441 25.789,11.937 35.023,0 32.771,4.729  " />
+	<polygon fill="#878787" points="4.618,32.77 11.6,25.788 13.549,21.287 4.618,28.04  " />
+	<polyline fill="#A1A1A1" points="104.873,27.028 107.656,14.189 112.499,14.189 107.656,32.77 104.873,27.656  " />
+	<polygon fill="#7D7D7D" points="88.364,38.211 100.787,51.688 98.197,46.958 86.599,32.77  " />
+	<polygon fill="#969696" points="11.6,32.77 13.852,32.77 13.549,21.287 11.6,25.788  " />
+	<polygon fill="#A8A8A8" points="74.887,51.688 72.635,44.481 65.652,68.129 67.905,75.112  " />
+	<path fill="#7D7D7D" d="M74.887,51.688" />
+	<polygon fill="#B2B2B2" points="72.635,44.481 74.887,51.688 88.364,38.211 86.599,32.77  " />
+	<polygon fill="#919191" points="58.445,2.365 65.652,18.806 65.652,25.788 56.194,7.095  " />
+	<polygon fill="#AAAAAA" points="72.635,2.365 72.635,9.347 65.652,25.788 65.652,18.806  " />
+	<polygon fill="#A3A3A3" points="89.076,4.729 91.328,0 98.197,7.095 93.806,11.937  " />
+	<polygon fill="#909090" points="16.33,4.729 16.33,7.095 23.312,16.441 25.789,11.937  " />
+	<polygon fill="#A09E9C" points="28.041,35.247 30.293,39.977 37.5,46.958 35.023,42.229  " />
+</g>
+</svg>

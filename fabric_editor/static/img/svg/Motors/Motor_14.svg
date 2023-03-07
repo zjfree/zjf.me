@@ -1,0 +1,59 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="79px" viewBox="0 0 112.5 79.006" enable-background="new 0 0 112.5 79.006" xml:space="preserve">
+<g id="Group_Base">
+	<path d="M27.224,77.003V66.788h58.185v10.215H27.224z" />
+</g>
+<g id="Group_Shaft">
+	<path d="M102.979,18.685h7.52v33.363h-7.52V18.685z" />
+</g>
+<g id="Group_MotorBody">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="92.7793" y1="62.4561" x2="92.7793" y2="8.2754">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M93.816,8.275l10.41,6.272v41.637l-10.41,6.271l-12.483-27.09L93.816,8.275z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="48.4873" y1="68.7295" x2="48.4873" y2="2.0034">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.45" style="stop-color:#ECECEC" />
+		<stop offset="0.55" style="stop-color:#D9D9D9" />
+		<stop offset="0.76" style="stop-color:#A8A8A8" />
+		<stop offset="0.77" style="stop-color:#A6A6A6" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M93.816,68.729H18.683c0,0-15.641-24.99-15.525-34.432C3.268,25.34,18.683,2.003,18.683,2.003   h75.133V68.729" />
+	<path fill="#B2B2B2" d="M31.228,77.003V43.64h29.226v33.363H31.228z" />
+	
+		<radialGradient id="SVGID_3_" cx="10.3428" cy="35.3662" r="24.3174" gradientTransform="matrix(1 0 0 1.4 0 -14.1465)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#ECECEC" />
+		<stop offset="0.14" style="stop-color:#DDDDDD" />
+		<stop offset="0.4" style="stop-color:#B8B8B8" />
+		<stop offset="0.75" style="stop-color:#7C7C7C" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</radialGradient>
+	<path fill="url(#SVGID_3_)" d="M18.683,68.729L2.002,64.592V6.14l16.681-4.137" />
+	<path d="M33.229,72.866h2.135v2.135h-2.135V72.866z" />
+	<path d="M56.183,72.866h2.135v2.135h-2.135V72.866z" />
+	<path d="M56.183,45.774h2.135v2.136h-2.135V45.774z" />
+	<path d="M33.229,45.774h2.135v2.136h-2.135V45.774z" />
+</g>
+<g id="Group_WiringBox">
+	<polygon fill="#A5A5A5" points="36.789,72.95 35.365,72.95 35.365,47.91 36.789,49.438  " />
+	<polygon fill="#C6C6C6" points="36.846,49.438 35.305,47.91 55.977,47.91 57.189,49.521  " />
+	<rect x="36.789" y="49.438" fill="#D3D3D3" width="20.462" height="23.428" />
+</g>
+<g id="Group_HeatSinkBackground">
+	<path fill="#4C4C4C" d="M27.091,2.003h62.456v35.498H27.091V2.003z" />
+</g>
+<g id="Group_HeatSink">
+	<path fill="#CCCCCC" d="M27.091,26.958h64.591v2.135H27.091V26.958z" />
+	<path fill="#CCCCCC" d="M27.091,33.23h64.591v2.135H27.091V33.23z" />
+	<path fill="#B2B2B2" d="M27.091,14.547h64.591v2.135H27.091V14.547z" />
+	<path fill="#B2B2B2" d="M27.091,20.819h64.591v2.135H27.091V20.819z" />
+	<path fill="#999999" d="M27.091,10.277h64.591v2.135H27.091V10.277z" />
+	<path fill="#999999" d="M27.091,6.14h64.591v2.135H27.091V6.14z" />
+	<path fill="#999999" d="M27.091,2.003h64.591v2.135H27.091V2.003z" />
+</g>
+</svg>

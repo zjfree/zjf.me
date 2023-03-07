@@ -1,0 +1,41 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="79px" viewBox="0 0 112.5 78.94" enable-background="new 0 0 112.5 78.94" xml:space="preserve">
+<g id="Group_2">
+	<path fill="#CDCCCC" d="M0,22.635L3.491,5.293h105.405l3.604,17.342H0z" />
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.2705" y1="8.5059" x2="97.6816" y2="8.5059" gradientTransform="matrix(1.1549 0 0 1.1916 -0.3127 -0.3691)">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.52" style="stop-color:#CCCCCC" />
+		<stop offset="0.6" style="stop-color:#B9B9B9" />
+		<stop offset="0.76" style="stop-color:#888888" />
+		<stop offset="0.99" style="stop-color:#3A3A3A" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M112.5,16.232c0-6.822-25.183-14.768-56.25-14.768C25.184,1.464,0,8.076,0,16.232v1.835h112.5   V16.232z" />
+</g>
+<g id="Group_TankBody">
+	<path fill="#CDCCCC" d="M47.522,8.559h17.343v1.802H47.522V8.559z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="4.882813e-004" y1="44.6504" x2="112.5" y2="44.6504">
+		<stop offset="0" style="stop-color:#383838" />
+		<stop offset="0.05" style="stop-color:#525252" />
+		<stop offset="0.17" style="stop-color:#898989" />
+		<stop offset="0.28" style="stop-color:#B3B3B3" />
+		<stop offset="0.37" style="stop-color:#D2D2D2" />
+		<stop offset="0.46" style="stop-color:#E5E5E5" />
+		<stop offset="0.52" style="stop-color:#ECECEC" />
+		<stop offset="0.57" style="stop-color:#E6E6E6" />
+		<stop offset="0.65" style="stop-color:#D7D7D7" />
+		<stop offset="0.73" style="stop-color:#BDBDBD" />
+		<stop offset="0.82" style="stop-color:#999999" />
+		<stop offset="0.91" style="stop-color:#6B6B6B" />
+		<stop offset="1" style="stop-color:#383838" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="67.68,17.567 66.666,10.36 45.721,10.36 44.708,17.567 0,17.567 0,22.635 0,78.941    20.833,78.941 20.833,70.945 45.721,70.945 45.721,78.941 66.666,78.941 66.666,70.945 91.216,70.945 91.216,78.941 112.5,78.941    112.5,22.635 112.5,17.567  " />
+	<path fill="#808080" d="M46.509,12.162h7.883v1.802h-7.883V12.162z" />
+</g>
+<g id="Group_1">
+	<path fill="#4D4D4D" d="M20.833,70.945h17.68v3.604h-17.68V70.945z" />
+	<path fill="#4D4D4D" d="M73.873,70.945h17.343v3.604H73.873V70.945z" />
+	<path fill="#4D4D4D" d="M45.721,8.559l0.789-7.883h19.37l0.787,7.883H45.721z" />
+	<path fill="#676767" d="M52.59,0.676L52.928,0h6.531l0.338,0.676H52.59z" />
+</g>
+</svg>

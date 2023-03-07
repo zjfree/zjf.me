@@ -1,0 +1,45 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75px" height="113px" viewBox="0 0 75.29 112.502" enable-background="new 0 0 75.29 112.502" xml:space="preserve">
+<g id="Group_Volute_Chamber">
+	<path fill="#505050" d="M2.15,63.085c0,0-0.24,17.551,18.897,28.941c19.139,11.393,35.625-0.736,35.625-0.736   s17.531-9.068,17.617-32.387S51.149,25.34,45.354,24.753c-5.793-0.587-10.09-1.301-19.127,1.349c-9.039,2.65,0-18,0-18L2.151,8.1   L2.15,63.085L2.15,63.085z" />
+</g>
+<g id="Group_Port2">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-546.9688" y1="177.2744" x2="-546.9688" y2="201.3486" gradientTransform="matrix(0 -1 -1 0 203.4995 -513.2095)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M2.15,60.751h0.401c0.353-8.674,4.352-14.732,9.934-21.203c4.22-4.889,11.262,2.217,7.072,7.072   c-3.797,4.401-6.695,8.274-7.004,14.131h13.672V6.769L2.15,6.767V60.751z" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-517.2559" y1="655.7754" x2="-517.2559" y2="625.625" gradientTransform="matrix(0 -1 1 0 -626.6245 -513.2056)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M-1,8.1V0l30.15,0.002v8.1L-1,8.1" />
+</g>
+<g id="Group_PumpBody">
+	
+		<radialGradient id="SVGID_3_" cx="-573.5083" cy="664.7754" r="34.199" gradientTransform="matrix(0 -1 1 0 -626.6245 -513.2056)" gradientUnits="userSpaceOnUse">
+		<stop offset="0.76" style="stop-color:#B2B2B2" />
+		<stop offset="1" style="stop-color:#505050" />
+	</radialGradient>
+	<circle fill="url(#SVGID_3_)" cx="38.151" cy="60.302" r="34.198" />
+</g>
+<g id="Group_Port1">
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-129.7939" y1="264.874" x2="-121.6357" y2="264.874" gradientTransform="matrix(2.9515 0 0 -2.8098 409.3061 821.9169)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M26.221,106.585c0.004-21.271,0.047-49.12,0.047-49.12s2.256-9.201,11.895-9.201   c9.645,0,12.138,9.201,12.138,9.201v49.62" />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-621.6563" y1="680.0752" x2="-621.6563" y2="649.9229" gradientTransform="matrix(0 -1 1 0 -626.6245 -513.2056)">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M23.298,112.501v-8.1h30.152v8.1H23.298" />
+</g>
+</svg>

@@ -1,0 +1,48 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="108px" viewBox="0 0 112.5 107.992" enable-background="new 0 0 112.5 107.992" xml:space="preserve">
+<g id="Group_Hammermill">
+	<radialGradient id="SVGID_1_" cx="56.25" cy="56.3694" r="53.9861" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.59" style="stop-color:#CACACA" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.4918" d="M26.039,107.992C10.383,98.049,0,80.606,0,60.746   c0-30.928,25.184-56,56.25-56c31.066,0,56.25,25.072,56.25,56c0,19.858-10.382,37.303-26.037,47.245" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M25.001,14.639l9.121,9.798L17.005,44.031" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M94.143,44.031L78.266,24.437l9.121-9.798" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M14.641,65.99V58.67" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M15.091,55.067l1.914-6.982" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M16.893,76.688l-1.802-7.095" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M21.96,86.371l-3.604-6.418" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M29.393,94.367L24.1,89.187" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.514,100.223l-6.306-3.716" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M48.874,103.489l-6.982-1.914" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M59.797,103.939h-7.319" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M70.495,101.574l-7.095,1.914" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M80.18,96.507l-6.419,3.716" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M88.175,89.187l-5.181,5.181" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M94.031,79.953l-3.717,6.418" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M97.297,69.593l-1.915,7.095" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M97.746,58.67v7.319" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M95.382,48.084l1.915,7.095" />
+</g>
+<g id="Group_Feeder">
+	
+		<radialGradient id="SVGID_2_" cx="56.1934" cy="7.1506" r="31.4636" gradientTransform="matrix(1 0 0 1.25 0 -1.7877)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.19" style="stop-color:#C5C5C5" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<path fill="url(#SVGID_2_)" d="M24.888,14.301L12.276,0h87.835L87.387,14.301" />
+</g>
+<g id="Group_Centre">
+	<radialGradient id="SVGID_3_" cx="56.0811" cy="62.2737" r="14.6392" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#D6D6D6" />
+		<stop offset="0.59" style="stop-color:#CACACA" />
+		<stop offset="1" style="stop-color:#C0C0C0" />
+	</radialGradient>
+	<circle fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" cx="56.081" cy="62.273" r="14.639" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M56.194,77.025V95.38" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M56.194,47.634V29.279" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M41.442,62.386H23.086" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M70.833,62.386h18.355" />
+</g>
+</svg>

@@ -1,0 +1,34 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94px" height="112px" viewBox="0 0 93.809 112.5" enable-background="new 0 0 93.809 112.5" xml:space="preserve">
+<g id="Group_Rear_Support">
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M30.519,81.869l4.505,21.059h23.648l4.505-21.059l11.712-16.216   L63.177,0H30.519L18.583,65.653L30.519,81.869z" />
+</g>
+<g id="Group_Rear_Stand">
+	<path fill="#669999" stroke="#4C4C4C" stroke-width="0.25" d="M4.731,112.5h13.852V81.869h56.306V112.5h14.189V81.869l-2.252-6.982   v-9.233H6.871v9.233l-2.14,6.982V112.5z" />
+</g>
+<g id="Group_Truck_sub">
+	<radialGradient id="SVGID_1_" cx="46.8481" cy="37.3877" r="37.3875" gradientUnits="userSpaceOnUse">
+		<stop offset="0.5" style="stop-color:#B2E5E5" />
+		<stop offset="1" style="stop-color:#669999" />
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" cx="46.848" cy="37.388" r="37.388" />
+</g>
+<g id="Group_Stand">
+	<path fill="#99CCCC" stroke="#4C4C4C" stroke-width="0.25" d="M0.001,74.887h93.806v6.982h-6.981v11.938h-7.208V81.869H14.078   v11.938H6.871V81.869H0.001V74.887z" />
+	<path fill="#99CCCC" stroke="#4C4C4C" stroke-width="0.25" d="M4.731,93.807h84.347v4.504h-4.73V112.5h-2.252V98.311H11.601V112.5   h-2.14V98.311h-4.73V93.807z" />
+</g>
+<g id="Group_Ladder">
+	<path fill="#FFCC00" d="M74.889,0h1.576v74.887h-1.576V0z" />
+	<path fill="#FFCC00" d="M82.771,0h1.576v74.887h-1.576V0z" />
+	<path fill="#FFCC00" d="M76.465,11.261h6.307v1.464h-6.307V11.261z" />
+	<path fill="#FFCC00" d="M76.465,23.986h6.307v1.577h-6.307V23.986z" />
+	<path fill="#FFCC00" d="M76.465,36.599h6.307v1.577h-6.307V36.599z" />
+	<path fill="#FFCC00" d="M76.465,49.437h6.307v1.577h-6.307V49.437z" />
+	<path fill="#FFCC00" d="M76.465,62.275h6.307v1.576h-6.307V62.275z" />
+	<path fill="#FFCC00" d="M76.465,4.729h6.307v1.464h-6.307V4.729z" />
+	<path fill="#FFCC00" d="M76.465,17.455h6.307v1.689h-6.307V17.455z" />
+	<path fill="#FFCC00" d="M76.465,30.293h6.307v1.576h-6.307V30.293z" />
+	<path fill="#FFCC00" d="M76.465,43.131h6.307v1.576h-6.307V43.131z" />
+	<path fill="#FFCC00" d="M76.465,55.743h6.307v1.802h-6.307V55.743z" />
+	<path fill="#FFCC00" d="M76.465,68.581h6.307v1.577h-6.307V68.581z" />
+</g>
+</svg>

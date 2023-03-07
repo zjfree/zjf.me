@@ -1,0 +1,69 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25px" height="112px" viewBox="0 0 25.333 111.833" enable-background="new 0 0 25.333 111.833" xml:space="preserve">
+<g id="Group_Segmented_Pipe">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-675.8965" y1="335.9429" x2="-693.3996" y2="353.446" gradientTransform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -715.1876 -184.4644)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.5" style="stop-color:#99CCCC" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M24.992,112.154L25.037-0.189L0.284-0.321v112.344L24.992,112.154z" />
+</g>
+<g id="Group_Rings">
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-662.0078" y1="642.8286" x2="-661.8959" y2="667.5393" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="0.363,92.253 0.363,93.118 25.074,93.132 25.075,92.296  " />
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-680.3818" y1="642.8062" x2="-680.2698" y2="667.5598" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_3_)" points="0.257,110.642 0.263,111.492 24.998,111.473 25.011,110.656  " />
+	
+		<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-642.9941" y1="642.6567" x2="-642.8823" y2="667.3684" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_4_)" points="0.278,73.239 0.277,74.102 24.986,74.118 24.989,73.28  " />
+	
+		<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-625.043" y1="642.5864" x2="-624.9312" y2="667.2971" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_5_)" points="0.287,55.286 0.287,56.15 24.997,56.167 24.999,55.329  " />
+	
+		<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="-607.187" y1="642.4888" x2="-607.0749" y2="667.2405" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_6_)" points="0.269,37.445 0.273,38.296 25.009,38.277 25.021,37.461  " />
+	
+		<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="-569.7002" y1="642.3364" x2="-569.5883" y2="667.0471" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_7_)" points="0.289,-0.056 0.287,0.806 24.996,0.822 24.998,-0.016  " />
+	
+		<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="-588.2949" y1="642.4019" x2="-588.1828" y2="667.1575" gradientTransform="matrix(0.0045 -1 1 0.0045 -639.4872 -572.2073)">
+		<stop offset="0" style="stop-color:#336666" />
+		<stop offset="0.53" style="stop-color:#C9E8E6" />
+		<stop offset="1" style="stop-color:#336666" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_8_)" points="0.267,18.554 0.273,19.404 25.009,19.389 25.023,18.573  " />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.027" y1="93.612" x2="0.288" y2="93.633" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.028" y1="111.662" x2="0.291" y2="111.683" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.024" y1="74.487" x2="0.291" y2="74.509" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.038" y1="38.545" x2="0.298" y2="38.564" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.039" y1="56.593" x2="0.302" y2="56.616" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.038" y1="1.191" x2="0.3" y2="1.211" />
+	<line fill="none" stroke="#4C4C4C" stroke-width="0.4" x1="25.035" y1="19.419" x2="0.3" y2="19.442" />
+</g>
+</svg>

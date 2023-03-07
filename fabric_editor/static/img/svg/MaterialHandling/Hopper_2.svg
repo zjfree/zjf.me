@@ -1,0 +1,36 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="112px" viewBox="0 0 100.117 112.5" enable-background="new 0 0 100.117 112.5" xml:space="preserve">
+<g id="Group_Hopper">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.0015" y1="30.5742" x2="100.0015" y2="30.5742">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#EBEBEB" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M83.335,61.148l16.666-38.964V0h-100v22.185l16.533,38.65" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="16.5342" y1="85.9922" x2="83.3354" y2="85.9922">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#EBEBEB" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M16.534,60.835l0.134,0.313v11.036l19.482,38.964h27.816l19.369-38.964V61.148" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M13.853,0v22.185l12.05,38.964v11.036l14.076,38.964h20.046   l14.076-38.964V61.148L86.15,22.185V0H13.853" />
+</g>
+<g id="Group_Outlet">
+	<ellipse fill="#999999" stroke="#4C4C4C" stroke-width="0.25" cx="50.001" cy="111.148" rx="13.852" ry="1.352" />
+	<ellipse fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" cx="50.001" cy="111.148" rx="11.036" ry="1.014" />
+</g>
+<g id="Group_Cross_Layer">
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M16.668,72.185h66.667" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M0.001,22.185h100" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="11.0376" y1="61.0918" x2="88.9663" y2="61.0918">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M11.038,60.36h77.929v1.464H11.038V60.36z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M11.038,60.36h77.929v1.464H11.038V60.36" />
+</g>
+<g id="Group_Triangle">
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M13.853,47.185L8.335,33.333L0.001,44.482L13.853,47.185z" />
+	<path fill="#7F7F7F" stroke="#4C4C4C" stroke-width="0.25" d="M86.15,47.185l5.519-13.851l8.446,11.148L86.15,47.185z" />
+</g>
+</svg>

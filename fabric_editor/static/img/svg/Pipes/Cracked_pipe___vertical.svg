@@ -1,0 +1,35 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112px" height="112px" viewBox="0 0 112.5 112.5" enable-background="new 0 0 112.5 112.5" xml:space="preserve">
+<g id="Group_Vertical_Pipe">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="56.2632" y1="4.882813e-004" x2="56.2632" y2="112.5005" gradientTransform="matrix(0 -1 1 0 -0.1113 112.3887)">
+		<stop offset="0.01" style="stop-color:#646566" />
+		<stop offset="0.18" style="stop-color:#959595" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#666666" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M-0.111,112.388V-0.138h112.5v112.525H-0.111z" />
+</g>
+<g id="Group_Crack">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="16.9487" y1="54.4551" x2="112.3887" y2="54.4551">
+		<stop offset="0" style="stop-color:#333333" />
+		<stop offset="0.01" style="stop-color:#2F2F2F" />
+		<stop offset="0.11" style="stop-color:#1A1A1A" />
+		<stop offset="0.23" style="stop-color:#0B0B0B" />
+		<stop offset="0.36" style="stop-color:#030303" />
+		<stop offset="0.56" style="stop-color:#000000" />
+		<stop offset="0.73" style="stop-color:#020202" />
+		<stop offset="0.83" style="stop-color:#0B0B0B" />
+		<stop offset="0.91" style="stop-color:#191919" />
+		<stop offset="0.98" style="stop-color:#2C2C2C" />
+		<stop offset="1" style="stop-color:#333333" />
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="33.799,7.08 50.188,17.75 50.699,40.48 62.568,56.08 84.099,62.15 91.639,45.91    95.559,27.71 112.389,32.29 112.389,32.29 96.028,29.038 93.528,46.82 89.068,55.21 93.619,56.624 112.389,46.25 112.389,46.25    84.099,64.35 68.799,59.93 56.599,66.33 46.639,87.145 58.269,101.83 58.269,101.83 45.099,89.15 35.739,95.311 23.668,89.811    23.668,89.811 36.009,93.2 44.929,87.471 60.129,55.49 49.729,41.13 38.759,35 29.329,68.58 21.067,57.06 16.949,59.25    16.949,59.25 20.999,55.75 29.193,66.248 38.259,33.5 49.129,39.6 48.829,18.58 33.799,9.08 20.999,16.92 20.999,16.92  " />
+	<polygon fill="#666666" points="23.852,89.75 36.322,94.894 45.682,88.733 36.423,96.533  " />
+	<polygon fill="#666666" points="70.066,60.297 68.799,59.93 56.599,66.33 46.639,87.145 47.223,87.882 56.889,67.25  " />
+	<polygon fill="#666666" points="84.099,64.35 86.039,64.35 112.389,46.25 112.389,46.25  " />
+	<polygon fill="#666666" points="16.949,59.25 21.067,57.06 29.329,68.58 29.329,69.95 21.02,58.55  " />
+	<polyline fill="#666666" points="89.068,55.21 90.249,55.577 94.722,47.083 96.806,29.666 112.389,32.666 96.028,29.038    93.528,46.82  " />
+	<polygon fill="#666666" points="21.02,17.067 33.351,10.633 48.829,18.58 33.951,8.875  " />
+	<polygon fill="#666666" points="62.568,56.08 50.699,40.48 50.188,17.75 51.463,18.688 52.039,40.15  " />
+</g>
+</svg>

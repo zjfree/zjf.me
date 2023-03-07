@@ -1,0 +1,54 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31px" height="112px" viewBox="0 0 31.227 112.5" enable-background="new 0 0 31.227 112.5" xml:space="preserve">
+<g id="Group_ProcessorBody">
+	<path fill="#AD845B" d="M28.971,0h1.128v6.876h-1.128V0z" />
+	<path fill="#AD845B" d="M4.51,0h1.24v6.876H4.51V0z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="3.3823" y1="56.8135" x2="31.2256" y2="56.8135">
+		<stop offset="0" style="stop-color:#AD845B" />
+		<stop offset="0.51" style="stop-color:#DFCCBB" />
+		<stop offset="1" style="stop-color:#AD845B" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M3.382,107.879h4.622V5.749H3.382V1.127h27.843v4.622h-4.622v102.13h4.622v4.621H3.382V107.879" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M3.382,3.382h27.843" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M31.226,110.246H3.382" />
+	<path fill="#AD845B" d="M28.971,106.751h1.128v1.128h-1.128V106.751z" />
+	<path fill="#AD845B" d="M4.51,106.751h1.24v1.128H4.51V106.751z" />
+	<path fill="#AD845B" d="M25.477,106.751h1.127v1.128h-1.127V106.751z" />
+	<path fill="#AD845B" d="M21.982,106.751h1.127v1.128h-1.127V106.751z" />
+	<path fill="#AD845B" d="M18.488,106.751h1.127v1.128h-1.127V106.751z" />
+	<path fill="#AD845B" d="M14.993,106.751h1.24v1.128h-1.24V106.751z" />
+	<path fill="#AD845B" d="M11.499,106.751h1.24v1.128h-1.24V106.751z" />
+	<path fill="#AD845B" d="M8.004,106.751h1.24v1.128h-1.24V106.751z" />
+	<path fill="#AD845B" d="M8.004,0h1.24v1.127h-1.24V0z" />
+	<path fill="#AD845B" d="M11.499,0h1.24v1.127h-1.24V0z" />
+	<path fill="#AD845B" d="M14.993,0h1.24v1.127h-1.24V0z" />
+	<path fill="#AD845B" d="M18.488,0h1.127v1.127h-1.127V0z" />
+	<path fill="#AD845B" d="M21.982,0h1.127v1.127h-1.127V0z" />
+	<path fill="#AD845B" d="M25.477,0h1.127v1.127h-1.127V0z" />
+	<path fill="#AD845B" d="M8.004,5.749h1.24v1.127h-1.24V5.749z" />
+	<path fill="#AD845B" d="M11.499,5.749h1.24v1.127h-1.24V5.749z" />
+	<path fill="#AD845B" d="M14.993,5.749h1.24v1.127h-1.24V5.749z" />
+	<path fill="#AD845B" d="M18.488,5.749h1.127v1.127h-1.127V5.749z" />
+	<path fill="#AD845B" d="M21.982,5.749h1.127v1.127h-1.127V5.749z" />
+	<path fill="#AD845B" d="M25.477,5.749h1.127v1.127h-1.127V5.749z" />
+</g>
+<g id="Group_ControlPanel">
+	<path fill="#C2A385" d="M11.499,56.813l-2.254-1.127v-4.622l1.127-0.676v-6.989l1.127-0.451V56.813z" />
+	<path fill="#B28C65" d="M11.499,56.813L6.877,56.25L4.51,55.123l4.734,0.564L11.499,56.813z" />
+	<path fill="#E0D1C1" d="M4.51,55.123v-4.734l4.734,0.676v4.622L4.51,55.123z" />
+	<path fill="#E0D1C1" d="M5.75,49.825v-6.425h4.622v6.989L5.75,49.825z" />
+	<path fill="#EBE1D7" d="M11.499,42.948l-1.127,0.451H5.75l1.127-0.451H11.499z" />
+	<path fill="#EBE1D7" d="M10.372,50.388l-1.127,0.676L4.51,50.388l1.24-0.563L10.372,50.388z" />
+</g>
+<g id="Group_TBD">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="7.689" y1="73.6094" x2="7.689" y2="63.2383">
+		<stop offset="0" style="stop-color:#AD845B" />
+		<stop offset="0.51" style="stop-color:#DFCCBB" />
+		<stop offset="1" style="stop-color:#AD845B" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M10.174,63.238h-6.52v10.371h6.52c0.856,0,1.55-2.321,1.55-5.186S11.03,63.238,10.174,63.238z" />
+	<path fill="#C2A385" d="M6.087,68.424c0-3.702-0.697-6.724-1.578-6.965v-0.023H2.706v13.978h1.804V75.39   C5.391,75.148,6.087,72.127,6.087,68.424z" />
+	<path fill="#4D4D4D" d="M4.93,68.432c0-3.702-0.697-6.747-1.578-6.988l0,0H2.458v13.978h0.895l0,0   C4.233,75.18,4.93,72.135,4.93,68.432z" />
+	<path fill="#C2A385" d="M4.698,68.432c0-3.702-0.697-6.724-1.578-6.965v-0.023H1.691v13.978H3.12v-0.023   C4.001,75.156,4.698,72.135,4.698,68.432z" />
+	<ellipse fill="#E0D1C1" cx="1.691" cy="68.432" rx="1.691" ry="6.989" />
+</g>
+</svg>

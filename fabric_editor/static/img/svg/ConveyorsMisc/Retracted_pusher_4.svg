@@ -1,0 +1,39 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46px" height="113px" viewBox="0 0 45.5 113.167" enable-background="new 0 0 45.5 113.167" xml:space="preserve">
+<g id="Group_Pusher_Body">
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="157.2607" y1="212.0601" x2="134.9162" y2="150.6689" gradientTransform="matrix(0 1 -1 0 204.1147 -89.9487)">
+		<stop offset="0" style="stop-color:#596D8C" />
+		<stop offset="0.28" style="stop-color:#5D7190" />
+		<stop offset="0.5" style="stop-color:#6F83A2" />
+		<stop offset="1" style="stop-color:#7387A6" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M0.285,22.355h44.931v67.568H0.284L0.285,22.355L0.285,22.355z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M45.216,22.355H0.284" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0.285,22.355h44.931v67.568H0.284L0.285,22.355" />
+	<path fill="none" stroke="#BFD3F2" stroke-width="0.25" d="M0.285,22.355h44.931v67.568" />
+</g>
+<g id="Group_Handle">
+	<path fill="#263A59" stroke="#4C4C4C" stroke-width="0.25" d="M0.285,22.355h44.931v-22.41H0.284L0.285,22.355L0.285,22.355z" />
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="115.6924" y1="197.6724" x2="88.4185" y2="165.1686" gradientTransform="matrix(0 1 -1 0 204.1147 -89.9487)">
+		<stop offset="0" style="stop-color:#CCCCCC" />
+		<stop offset="0.5" style="stop-color:#F0F0F0" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M43.302,20.553V3.661H2.086v16.892H43.302z" />
+	<path fill="none" stroke="#7387A6" stroke-width="0.25" d="M0.285-0.055h44.931v22.41" />
+	<path fill="none" stroke="#4C4C4C" d="M43.1,3.999H1.842v16.684H43.1V3.999" />
+	<path fill="none" stroke="#FFFFFF" d="M2.008,20.599V3.915h41.258" />
+</g>
+<g id="Group_Yellow_Stripe">
+	<path fill="#FFFF00" stroke="#4C4C4C" stroke-width="0.25" d="M0.285,89.925h44.931v22.521H0.284L0.285,89.925L0.285,89.925z" />
+</g>
+<g id="Group_Black_Stripe">
+	<path fill="#333333" d="M45.216,89.925H33.842l11.374,11.259V89.925z" />
+	<path fill="#333333" d="M34.068,101.184L22.807,89.923H11.434l11.373,11.261H34.068L34.068,101.184z" />
+	<path fill="#333333" d="M11.545,101.184L0.285,89.923v11.261H11.545L11.545,101.184z" />
+	<path fill="#333333" d="M45.216,101.071H33.842l11.374,11.375V101.071z" />
+	<path fill="#333333" d="M34.068,112.446l-11.262-11.375H11.434l11.373,11.375H34.068z" />
+	<path fill="#333333" d="M11.545,112.446L0.284,101.071v11.375H11.545z" />
+</g>
+</svg>

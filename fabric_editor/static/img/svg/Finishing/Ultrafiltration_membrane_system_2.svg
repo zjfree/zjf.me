@@ -1,0 +1,116 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44px" height="112px" viewBox="0 0 44.027 112.5" enable-background="new 0 0 44.027 112.5" xml:space="preserve">
+<g id="Group_Ultrafiltration_Membrane_System">
+	<path d="M39.073,9.576h2.478v92.56h-2.478V9.576z" />
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="40.425" y1="61.1484" x2="44.0276" y2="61.1484">
+		<stop offset="0" style="stop-color:#595959" />
+		<stop offset="0.5" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M44.028,19.485v83.327h-3.603V19.485H44.028z" />
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="40.0002" y1="112.1592" x2="6.3924" y2="19.8225">
+		<stop offset="0" style="stop-color:#D9D9D9" />
+		<stop offset="0.44" style="stop-color:#D9D9D9" />
+		<stop offset="0.64" style="stop-color:#EBEBEB" />
+		<stop offset="1" style="stop-color:#EBEBEB" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M7.32,19.485h31.754v93.011H7.32V19.485z" />
+</g>
+<g id="Group_Inlet">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="25.1106" y1="17.0078" x2="25.1106" y2="14.5303">
+		<stop offset="0" style="stop-color:#262626" />
+		<stop offset="0.5" style="stop-color:#7A7A7A" />
+		<stop offset="1" style="stop-color:#262626" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M9.796,14.53h30.629v2.478H9.796V14.53z" />
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="40.425" y1="13.4043" x2="44.0276" y2="13.4043">
+		<stop offset="0" style="stop-color:#1A1A1A" />
+		<stop offset="0.5" style="stop-color:#666666" />
+		<stop offset="1" style="stop-color:#1A1A1A" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M40.425,7.324h3.603v12.161h-3.603V7.324z" />
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="14.7512" y1="9.7446" x2="26.9124" y2="9.7446">
+		<stop offset="0" style="stop-color:#262626" />
+		<stop offset="0.5" style="stop-color:#7A7A7A" />
+		<stop offset="1" style="stop-color:#262626" />
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M14.751,0.004h12.161v19.48H14.751V0.004z" />
+	<path fill="#4C4C4C" stroke="#4C4C4C" stroke-width="0.25" d="M9.796,51.239h4.955v4.955H9.796V51.239z" />
+	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="42.1135" y1="110.0176" x2="42.1135" y2="102.5859">
+		<stop offset="0" style="stop-color:#000000" />
+		<stop offset="0.4" style="stop-color:#666666" />
+		<stop offset="0.62" style="stop-color:#5A5A5A" />
+		<stop offset="1" style="stop-color:#000000" />
+	</linearGradient>
+	<path fill="url(#SVGID_6_)" d="M40.875,102.586h2.478v7.432h-2.478V102.586" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M14.751,4.847h12.161" />
+</g>
+<g id="Group_Holders">
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M10.922,17.008H13.4v2.477h-2.478V17.008z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M28.714,17.008h2.478v2.477h-2.478V17.008z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M39.073,87.947h2.478v2.479h-2.478V87.947z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M39.073,61.148h2.478V63.4h-2.478V61.148z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M39.073,36.601h2.478v2.478h-2.478V36.601z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M21.957,44.033h2.478v-4.955h-2.478V44.033z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M21.957,31.646h3.604v7.432h-3.604V31.646z" />
+	<path fill="#4C6699" stroke="#4C4C4C" stroke-width="0.25" d="M20.156,17.008h2.477v2.477h-2.477V17.008z" />
+</g>
+<g id="Group_Control_Unit">
+	<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="16.1707" y1="48.3901" x2="5.7851" y2="19.8561">
+		<stop offset="0" style="stop-color:#B2B2B2" />
+		<stop offset="0.35" style="stop-color:#B2B2B2" />
+		<stop offset="0.64" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#CCCCCC" />
+	</linearGradient>
+	<path fill="url(#SVGID_7_)" d="M0,21.962h21.957v24.322H0V21.962z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M0,21.962h21.957v24.322H0V21.962" />
+	<path fill="#E5E5E5" d="M2.365,34.124h17.116v9.909H2.365V34.124z" />
+	<path fill="#E5E5E5" d="M14.751,24.439h4.729v4.729h-4.729V24.439z" />
+</g>
+<g id="Group_Control_Buttons">
+	<path fill="#7F0000" d="M7.32,24.439h2.477v2.252H7.32V24.439z" />
+	<path fill="#003300" d="M2.365,24.439h2.478v2.252H2.365V24.439z" />
+	<path fill="#003300" d="M12.274,29.169h2.478v2.477h-2.478V29.169z" />
+	<path fill="#FF0000" d="M7.32,29.169h2.477v2.477H7.32V29.169z" />
+	<path fill="#003300" d="M2.365,29.169h2.478v2.477H2.365V29.169z" />
+</g>
+<g id="Group_Strip">
+	<path fill="#998C73" stroke="#4C4C4C" stroke-width="0.25" d="M10.922,46.51H13.4v7.207h-2.478V46.51z" />
+	<path fill="#BFB299" stroke="#4C4C4C" stroke-width="0.25" d="M21.957,44.033h1.352v4.729h-1.352V44.033z" />
+</g>
+<g id="Group_Valve">
+	<radialGradient id="SVGID_8_" cx="17.679" cy="10.9268" r="1.8018" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.7" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<circle fill="url(#SVGID_8_)" cx="17.679" cy="10.927" r="1.802" />
+	<radialGradient id="SVGID_9_" cx="29.3889" cy="53.7168" r="2.4773" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#E0E0E0" />
+		<stop offset="0.7" style="stop-color:#E0E0E0" />
+		<stop offset="1" style="stop-color:#595959" />
+	</radialGradient>
+	<circle fill="url(#SVGID_9_)" cx="29.39" cy="53.717" r="2.477" />
+</g>
+<g id="Group_Inner_Cut">
+	<path fill="#CCCCCC" d="M12.274,110.018l3.604-3.603V69.706l-3.604-1.351V110.018z" />
+	<path fill="#CCCCCC" d="M34.344,110.018l-3.604-3.603V69.706l3.604-1.351V110.018z" />
+	<path fill="#999999" d="M34.344,68.355l-3.828,1.351H15.877l-3.604-1.351H34.344z" />
+	<path fill="#F2F2F2" d="M12.274,110.018l3.604-3.603h14.639l3.828,3.603H12.274z" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M12.274,110.018V68.355h22.07" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M34.344,68.355v41.662h-22.07" />
+</g>
+<g id="Group_Burrette">
+	<path fill="#665940" stroke="#4C4C4C" stroke-width="0.25" d="M19.481,69.03h7.432v3.153h-7.432V69.03z" />
+	<path fill="#333333" d="M21.957,69.03h2.478v14.188h-2.478V69.03z" />
+</g>
+<g id="Group_Container">
+	<linearGradient id="SVGID_10_" gradientUnits="userSpaceOnUse" x1="16.553" y1="97.7441" x2="30.0647" y2="97.7441">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.5" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_10_)" stroke="#4C4C4C" stroke-width="0.1" d="M17.229,87.947H29.39v1.352h0.675v3.604H29.39v14.639H17.229   V92.902h-0.676v-3.604h0.676V87.947z" />
+	<path fill="none" stroke="#FFFFFF" stroke-width="0.25" d="M17.229,89.299H29.39" />
+	<path fill="none" stroke="#B2B2B2" stroke-width="0.25" d="M17.229,92.902H29.39" />
+</g>
+</svg>

@@ -1,0 +1,84 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"[]><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="112px" viewBox="0 0 69.551 112.5" enable-background="new 0 0 69.551 112.5" xml:space="preserve">
+<g id="Group_Holder">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.4512" y1="60.5898" x2="69.1016" y2="60.5898">
+		<stop offset="0.01" style="stop-color:#C2C2C2" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#C2C2C2" />
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#4C4C4C" stroke-width="0.25" d="M0.451,9.131h68.65v102.918H0.451V9.131z" />
+	<path fill="#BFBFBF" d="M34.72,94.915l30.096-8.567v25.701H34.72V94.915z" />
+	<path fill="#E5E5E5" stroke="#B2B2B2" stroke-width="0.25" d="M4.735,86.348l29.985,8.567l30.096-8.567H4.735z" />
+</g>
+<g id="Group_Sensor_Point">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="26.1519" y1="6.9893" x2="43.3984" y2="6.9893">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" stroke="#4C4C4C" stroke-width="0.25" d="M26.152,4.847h17.247v4.284H26.152V4.847z" />
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="30.436" y1="2.7051" x2="39.1162" y2="2.7051">
+		<stop offset="0.01" style="stop-color:#4D4D4D" />
+		<stop offset="0.51" style="stop-color:#F5F5F5" />
+		<stop offset="1" style="stop-color:#4D4D4D" />
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" stroke="#4C4C4C" stroke-width="0.25" d="M30.436,0.563h8.68v4.284h-8.68V0.563" />
+</g>
+<g id="Group_Meter_Box">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="4.7349" y1="49.8809" x2="64.8164" y2="49.8809">
+		<stop offset="0" style="stop-color:#999999" />
+		<stop offset="0.15" style="stop-color:#CCCCCC" />
+		<stop offset="0.83" style="stop-color:#CCCCCC" />
+		<stop offset="1" style="stop-color:#999999" />
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" stroke="#999999" stroke-width="0.25" d="M4.735,13.414h60.082v72.934H4.735V13.414z" />
+</g>
+<g id="Group_Indicators">
+	<path d="M53.545,66.621l-0.451,0.9l-5.637-3.269l0.564-0.901L53.545,66.621z" />
+	<path d="M56.25,55.799v1.016h-6.426v-1.016H56.25z" />
+	<path d="M53.094,45.09l0.563,0.902l-5.636,3.269l-0.451-0.902L53.094,45.09z" />
+	<path d="M45.09,37.538l0.902,0.451l-3.27,5.524l-0.902-0.451L45.09,37.538z" />
+	<path d="M34.269,34.832h1.015v6.425h-1.015V34.832z" />
+	<path d="M23.672,37.988l0.789-0.563l3.269,5.636l-0.902,0.451L23.672,37.988z" />
+	<path d="M16.007,45.992l0.451-0.902l5.636,3.156l-0.563,0.902L16.007,45.992z" />
+	<path d="M13.302,56.813v-1.126h6.425v1.126H13.302z" />
+	<path d="M16.458,67.41l-0.563-0.902l5.636-3.156l0.451,0.902L16.458,67.41z" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M49.262,60.195l4.17,1.127" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M49.262,52.417l4.17-1.127" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M45.428,45.654l3.045-3.043" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M38.665,41.821l1.128-4.171" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M30.887,41.821L29.76,37.65" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M24.124,45.654l-2.931-3.043" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M20.291,52.417L16.12,51.29" />
+	<path fill="none" stroke="#4C4C4C" stroke-width="0.25" d="M20.291,60.195L16.12,61.21" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M48.584,62.111l2.029,0.677" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M49.6,58.279l2.142,0.225" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M49.6,54.446l2.142-0.451" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M48.584,50.614l2.029-0.902" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M46.668,47.232l1.691-1.465" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M43.85,44.414l1.354-1.804" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M40.582,42.498l0.789-2.029" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M36.749,41.483l0.226-2.254" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M32.803,41.483l-0.338-2.254" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M29.083,42.498l-0.902-2.029" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M25.702,44.414l-1.353-1.804" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M22.883,47.119l-1.691-1.353" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M20.967,50.501l-2.029-0.789" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M19.953,54.333l-2.254-0.338" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M19.953,58.279l-2.254,0.225" />
+	<path fill="none" stroke="#7F7F7F" stroke-width="0.25" d="M20.854,61.999l-1.917,0.789" />
+	<path fill="#D9D9D9" d="M34.72,56.25l-9.018,9.131L24.8,64.479l-0.676-1.014l-0.676-1.128l-0.564-1.127l-0.451-1.24l-0.338-1.127   l-0.113-1.239l-0.112-0.678V56.25l0.112-1.24l0.226-1.353l0.226-1.127l0.451-1.24l0.564-1.127l0.676-1.127l0.676-0.902l0.902-0.902   l0.902-0.902l1.015-0.676l1.014-0.676l1.127-0.563L31,43.963l1.127-0.226l1.353-0.225l1.24-0.113l1.353,0.113l1.239,0.113   l1.239,0.338l1.128,0.451l1.127,0.563l1.127,0.676l1.016,0.676l0.9,0.902L34.72,56.25z" />
+</g>
+<g id="Group_Layer_5">
+	<path fill="#336666" stroke="#4C4C4C" stroke-width="0.25" d="M17.585,75.525h8.567v4.283h-8.567V75.525z" />
+</g>
+<g id="Group_Layer_6">
+	<path fill="#660000" stroke="#4C4C4C" stroke-width="0.25" d="M42.836,75.525h9.131v4.283h-9.131V75.525z" />
+</g>
+<g id="Group_Layer_7">
+	<circle fill="none" stroke="#4C4C4C" stroke-width="0.25" cx="34.72" cy="56.25" r="12.851" />
+	<circle fill="#E5E5E5" stroke="#7F7F7F" stroke-width="0.25" cx="34.72" cy="56.25" r="9.582" />
+</g>
+<g id="Group_Layer_8">
+	<path fill="#FF0000" d="M34.381,58.393l0.902-1.917l-15.557-5.749L34.381,58.393z" />
+</g>
+</svg>
