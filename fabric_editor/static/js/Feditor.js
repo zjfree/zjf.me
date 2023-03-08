@@ -3021,6 +3021,7 @@ var Feditor = {
             return;
         }
         
+		$('#divEventAttr').hide();
         $('#divEventAttr').data('zid', obj._zid);
         $('#divEventAttr table').html('');
 
