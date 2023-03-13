@@ -1,6 +1,6 @@
 <?php
 
-$dir = 'D:\WORK_GIT\EnhScada\WEB\public\static\img\svg';
+$dir = '.\svg';
 $list = [];
 
 foreach(glob($dir . '\*') as $d)

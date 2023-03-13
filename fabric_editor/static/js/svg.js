@@ -3345,5 +3345,28 @@ var svgList =
             "Wire_spool_2.svg",
             "Wooden_spool.svg"
         ]
-    }
+    },
+    {
+        "name": "Fan",
+        "memo": "风扇",
+        "d": ".\\svg\\Fan",
+        "list": [
+            "Fan0.svg",
+            "Fan1.svg",
+            "Fan11.svg",
+            "Fan12.svg",
+            "Fan13.svg",
+            "Fan15.svg",
+            "Fan17.svg",
+            "Fan18.svg",
+            "Fan2.svg",
+            "Fan20.svg",
+            "Fan21.svg",
+            "Fan4.svg",
+            "Fan5.svg",
+            "Fan7.svg",
+            "Fan8.svg",
+            "Fan9.svg"
+        ]
+    },
 ];
