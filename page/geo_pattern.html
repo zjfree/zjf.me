@@ -1,0 +1,48 @@
+<!-- GeoPattern随机背景图 zjfree 2023-03-13 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GeoPattern随机背景图</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html, body{
+	margin:0; padding:0; width:100%; height:100%;
+	overflow:hidden;
+	color:#FFF;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://lib.baomitu.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div style="margin:10px;">
+<h1>GeoPattern随机背景图</h1>
+
+参考资料：<br>
+<a href="https://github.com/btmills/geopattern" target="_blank">https://github.com/btmills/geopattern</a>
+<br>
+<a href="http://btmills.github.io/geopattern/" target="_blank">http://btmills.github.io/geopattern/</a>
+</div>
+
+<script>
+$(function(){
+    var option = {
+        //color:'#060',     // 前景色
+        //baseColor:'#006', // 背景色
+        //generator:'plusSigns', // 样式
+    };
+    var pattern = GeoPattern.generate('GitHub' + Math.random(), option);
+    $('body').css('background-image', pattern.toDataUrl());
+});
+</script>
+
+</body>
+</html>
