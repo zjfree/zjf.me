@@ -1,161 +1,184 @@
 <!-- JS滚动 zjfree 2020-03-10 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JS滚动</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS滚动</title>
 
-<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
-<style>
-/* css style */
-#div1{
-    line-height: 60px;
-    border:solid 1px gray;
-    font-size:48px;
-}
-#div2{
-    line-height: 20px;
-    border:solid 1px gray;
-    margin-top:10px;
-}
-#div3{
-    line-height: 20px;
-    border:solid 1px gray;
-    margin-top:10px;
-}
-</style>
+    <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+    <style>
+        /* css style */
+        #div1 {
+            line-height: 60px;
+            border: solid 1px gray;
+            font-size: 48px;
+            height: 60px;
+        }
 
-<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+        #div2 {
+            line-height: 20px;
+            border: solid 1px gray;
+            margin-top: 10px;
+            height: 20px;
+        }
+
+        #div3 {
+            line-height: 20px;
+            border: solid 1px gray;
+            margin-top: 10px;
+            height: 20px;
+        }
+
+        #div4 {
+            line-height: 30px;
+            border: solid 1px gray;
+            font-size: 24px;
+            margin-top: 10px;
+            height: 120px;
+        }
+    </style>
+
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
-<!-- 内容 -->
-<h1 style="text-align: center;">
-    JS无缝上下滚动
-</h1>
+    <!-- 内容 -->
+    <h1 style="text-align: center;">
+        JS无缝上下滚动
+    </h1>
 
-<div style="width:800px; margin:10px auto;">
+    <div style="width:800px; margin:10px auto;">
 
-<div id="div1">
-测试01<br>
-测试02<br>
-测试03<br>
-测试04<br>
-测试05<br>
-测试06<br>
-测试07<br>
-</div>
+        <div id="div1">
+            测试01<br>
+            测试02<br>
+            测试03<br>
+            测试04<br>
+            测试05<br>
+            测试06<br>
+            测试07<br>
+        </div>
 
-<div id="div2">
-测试01<br>
-测试02<br>
-测试03<br>
-测试04<br>
-测试05<br>
-测试06<br>
-测试07<br>
-</div>
+        <div id="div2">
+            测试01<br>
+            测试02<br>
+            测试03<br>
+            测试04<br>
+            测试05<br>
+            测试06<br>
+            测试07<br>
+        </div>
 
-<div id="div3">
-测试01<br>
-测试02<br>
-测试03<br>
-测试04<br>
-测试05<br>
-测试06<br>
-测试07<br>
-</div>
+        <div id="div3">
+            测试01<br>
+            测试02<br>
+            测试03<br>
+            测试04<br>
+            测试05<br>
+            测试06<br>
+            测试07<br>
+        </div>
 
-</div>
+        <div id="div4">
+            测试01<br>
+            测试02<br>
+            测试03<br>
+            测试04<br>
+            测试05<br>
+            测试06<br>
+            测试07<br>
+        </div>
 
-<script>
+    </div>
 
-var ZGun = {
-    el:null,
-    option:{
-        height:20,          // 高度
-        start_delay:2000,   // 开始延迟
-        speed:30,           // 速度
-        sleep:1000,         // 停顿
-    },
-    top:0,
-    sleep:0,
-    timer:null,
-    isHover:false,
+    <script>
 
-    init:function(o, op){
-        this.el = o;
-        if (op)
-        {
-            this.option = $.extend(this.option, op);
-        }
-        this.option.sleep = Math.round(this.option.sleep / this.option.speed);
+        var ZGun = {
+            el: null,
+            option: {
+                height: 20,          // 高度
+                start_delay: 2000,   // 开始延迟
+                speed: 30,           // 速度
+                sleep: 1000,         // 停顿
+            },
+            top: 0,
+            sleep: 0,
+            timer: null,
+            isHover: false,
 
-        let html = o.html();
+            init: function (o, op) {
+                this.el = o;
+                if (op) {
+                    this.option = $.extend(this.option, op);
+                }
+                this.option.sleep = Math.round(this.option.sleep / this.option.speed);
 
-        o.html('<div class="z-gun-content">' + html + html + '</div>');
-        o.css('height', this.option.height + 'px');
-        o.css('overflow-y', 'hidden');
-        let _this = this;
-        window.setTimeout(function(){
-            _this.start();
-        }, this.option.start_delay);
+                let html = o.html();
 
-        o.hover(function(){
-            _this.isHover = true;
-        }, function(){
-            _this.isHover = false;
+                o.html('<div class="z-gun-content">' + html + html + '</div>');
+                //o.css('height', this.option.height + 'px');
+                o.css('overflow-y', 'hidden');
+                let _this = this;
+                window.setTimeout(function () {
+                    _this.start();
+                }, this.option.start_delay);
+
+                o.hover(function () {
+                    _this.isHover = true;
+                }, function () {
+                    _this.isHover = false;
+                });
+            },
+            start: function () {
+                if (this.timer) {
+                    window.clearInterval(this.timer);
+                }
+
+                let _this = this;
+                this.timer = window.setInterval(function () {
+                    _this.run();
+                }, this.option.speed)
+            },
+            run: function () {
+                if (this.isHover) return;
+
+                let psTop = this.el.scrollTop();
+                if (this.sleep > 0) {
+                    this.sleep--;
+                    return;
+                }
+
+                psTop += 1;
+                this.el.scrollTop(psTop);
+                if (Math.floor(psTop) % this.option.height == 0) {
+                    this.sleep = this.option.sleep;
+                    return;
+                }
+                let max_height = this.el.find('.z-gun-content').height() - this.el.height();
+                if (psTop > max_height) {
+                    this.sleep = 0;
+                    this.el.scrollTop(max_height / 2 - this.option.height / 2);
+                }
+            },
+        };
+
+        $(function () {
+            // JS
+            let ZGun1 = $.extend(true, {}, ZGun);
+            ZGun1.init($('#div2'));
+
+            let ZGun2 = $.extend(true, {}, ZGun);
+            ZGun2.init($('#div3'), { sleep: 0 });
+
+            let ZGun3 = $.extend(true, {}, ZGun);
+            ZGun3.init($('#div1'), { height: 60, speed: 10, sleep: 2000 });
+
+            ZGun.init($('#div4'), { height: 30, speed: 10, sleep: 2000 });
         });
-    },
-    start:function(){
-        if (this.timer)
-        {
-            window.clearInterval(this.timer);
-        }
-
-        let _this = this;
-        this.timer = window.setInterval(function(){
-            _this.run();
-        }, this.option.speed)
-    },
-    run:function(){
-        if (this.isHover) return;
-
-        let psTop = this.el.scrollTop();
-        if (this.sleep > 0)
-        {
-            this.sleep--;
-            return;
-        }
-
-        psTop += 1;
-        this.el.scrollTop(psTop);
-        if (Math.floor(psTop) % this.option.height == 0)
-        {
-            this.sleep = this.option.sleep;
-            return;
-        }
-        let max_height = this.el.find('.z-gun-content').height() - this.el.height();
-        if (psTop > max_height)
-        {
-            this.sleep = 0;
-            this.el.scrollTop(max_height / 2 - this.option.height / 2);
-        }
-    },
-};
-
-$(function(){
-	// JS
-    let ZGun1 = $.extend(true, {}, ZGun);
-	ZGun1.init($('#div2'));
-    
-    let ZGun2 = $.extend(true, {}, ZGun);
-	ZGun2.init($('#div3'), {sleep:0});
-
-	ZGun.init($('#div1'), {height:60, speed:10, sleep:2000});
-});
-</script>
+    </script>
 
 </body>
