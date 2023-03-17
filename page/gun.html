@@ -33,13 +33,19 @@
             height: 20px;
         }
 
-        #div4 {
+        #div4, #div5 {
             line-height: 30px;
             border: solid 1px gray;
             font-size: 24px;
             margin-top: 10px;
             height: 120px;
         }
+		
+		#div5 p{
+			margin:10px 0 0 0;
+			padding:0 10px;
+		}
+		#div5 p:nth-child(even){color:#090;}
     </style>
 
     <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -93,6 +99,15 @@
             测试07<br>
         </div>
 
+        <div id="div5">
+            <p>测试01</p>
+            <p>测试02</p>
+            <p>测试03</p>
+            <p>测试04</p>
+            <p>测试05</p>
+            <p>测试06</p>
+            <p>测试07</p>
+        </div>
     </div>
 
     <script>
@@ -116,6 +131,13 @@
                     this.option = $.extend(this.option, op);
                 }
                 this.option.sleep = Math.round(this.option.sleep / this.option.speed);
+				if (this.option.height == 0)
+				{
+					let el = o.children().eq(0);
+					this.option.height = el.outerHeight(true);
+					this.option.height = Math.round(this.option.height);
+					console.log(this.option.height);
+				}
 
                 let html = o.html();
 
@@ -178,6 +200,10 @@
             ZGun3.init($('#div1'), { height: 60, speed: 10, sleep: 2000 });
 
             ZGun.init($('#div4'), { height: 30, speed: 10, sleep: 2000 });
+			
+            let ZGun4 = $.extend(true, {}, ZGun);
+            ZGun3.init($('#div5'), { height: 0, speed: 10, sleep: 2000 });
+
         });
     </script>
 
