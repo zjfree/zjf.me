@@ -53,7 +53,11 @@
 			font-size: 2em;
 			margin:10px 0;
 		}
-		button{
+		#divInput button{
+			padding:0 20px;
+			line-height: 2;
+		}
+		#divRun button{
 			padding:0 20px;
 			line-height: 2;
 		}
@@ -68,6 +72,7 @@
 	<hr>
 	<div id="divInput" class="step">
 		<button onclick="start();">开始听写</button>
+		&emsp;
 		<button onclick="$('#divInput textarea').val('');">清空</button>
 		<textarea placeholder="听写内容"></textarea>
 	</div>
