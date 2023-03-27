@@ -53,6 +53,10 @@
 			font-size: 2em;
 			margin:10px 0;
 		}
+		button{
+			padding:0 20px;
+			line-height: 2;
+		}
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -173,7 +177,7 @@
 		function playWordAudio(w) {
 			w = w || '中国人民';
 			//const voiceFileUrl = `https://fanyi.baidu.com/gettts?lan=zh&text=${w}&spd=4&source=web`;
-			const voiceFileUrl = `https://tts.baidu.com/text2audio?tex=${w}&cuid=baike&lan=ZH&ctp=1&pdt=301&vol=9&rate=32&per=0`;
+			const voiceFileUrl = `https://tts.baidu.com/text2audio?tex=${w}&cuid=baike&lan=ZH&ctp=2&pdt=301&vol=9&spd=2`;
 			//const voiceFileUrl = `https://dict.youdao.com/dictvoice?audio=${w}&le=zh`;
 			
 			const audio = document.getElementById("voice-file");
