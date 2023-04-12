@@ -1,0 +1,1113 @@
+<!-- Table完整结构 zjfree 2023-04-12 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table完整结构</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+table{
+	margin:10px 0;
+}
+
+code, pre{
+	display:block;
+	margin:10px 0;
+	background-color: #fafafa;
+	color:#900;
+	padding:5px 10px;
+	font-size:12px;
+	border:solid 1px #aaa;
+	max-width: 500px;
+	border-radius: 5px;
+}
+
+#tbMain{
+	width: 100%;
+}
+
+.tb1, .tb1 *{
+	border:solid 1px gray;
+}
+
+.tb2{
+	border-collapse: collapse;
+	border:solid 2px gray;
+}
+.tb2 th, .tb2 td{
+	border:solid 1px gray;
+	padding:5px 10px;
+}
+.tb2 thead{
+	background-color: #eff;
+}
+
+.col1{
+	background-color: #faf;
+	width: 100px;
+}
+.col2{
+	background-color: #ffa;
+	width: 200px;
+}
+.col3{
+	border:solid 3px blue;
+}
+
+.tbHover tbody tr:hover{
+	box-shadow: inset 0 0 5px gray;
+	background-color:aquamarine;
+}
+
+.tbColor tbody tr:nth-child(even) td {
+  background-color: #fef;
+}
+
+.tbColor tbody tr:nth-child(odd) td {
+  background-color:#ffe;
+}
+
+.tbFix th,
+.tbFix td {
+  border: 1px solid;
+}
+
+.tbFix {
+  width: 500px;
+  height: 240px;
+  display: block;
+  overflow-x: auto;
+  border-spacing: 0;
+  border: 2px solid;
+  resize: both;
+  overscroll-behavior-y:contain;
+}
+
+.tbFix tbody {
+  white-space: nowrap;
+}
+
+.tbFix th,
+.tbFix td {
+  padding: 5px 10px;
+  border-top-width: 0;
+  border-left-width: 0;
+}
+
+.tbFix th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  vertical-align: bottom;
+}
+
+.tbSort thead th{
+	cursor: pointer;
+}
+.tbSort thead th.sortDown::after{
+	content: '↓';
+}
+.tbSort thead th.sortUp::after{
+	content: '↑';
+}
+
+.tb3{
+	border-collapse: collapse;
+	border:solid 2px gray;
+}
+.tb3 th, .tb3 td{
+	border:solid 0.5px gray;
+	padding:5px 10px;
+	text-align: center;
+}
+.tb3 tfoot td{
+	text-align: left;
+}
+.tb3 thead th{
+	background-color: #009;
+	font-weight: normal;
+	color:#fff;
+}
+.tb3 tbody tr:nth-child(even) td {
+  background-color: #eee;
+}
+.tb3 tbody tr:hover{
+	outline: solid 2px #900;
+}
+.tb3 tbody tr:hover td{
+	border-top: solid 0.5px #900;
+	border-bottom: solid 0.5px #900;
+}
+
+.tbAttr{
+	border-collapse: collapse;
+	border:solid 2px gray;
+}
+.tbAttr th, .tbAttr td{
+	border:solid 0.5px gray;
+	padding:5px 10px;
+	text-align: center;
+	color:#000;
+	font-size: 14px;
+}
+.tbAttr th{
+	font-weight: normal;
+	background-color: #eee;
+	text-align: right;
+	padding-left: 2em;
+	padding-right: 0;
+}
+.tbAttr th::after{
+	content: '：';
+}
+.tbAttr td{
+	text-align: left;
+	padding-right: 2em;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>Table完整结构</h1>
+<hr>
+<table>
+	<caption>基本表格</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>结尾11</td>
+			<td>结尾12</td>
+		</tr>
+	</tfoot>
+</table>
+
+<pre>
+&lt;table&gt;
+	&lt;caption&gt;基本表格&lt;/caption&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;列1&lt;/th&gt;
+			&lt;th&gt;列2&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;数据11&lt;/td&gt;
+			&lt;td&gt;数据12&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+	&lt;tfoot&gt;
+		&lt;tr&gt;
+			&lt;td&gt;结尾11&lt;/td&gt;
+			&lt;td&gt;结尾12&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tfoot&gt;
+&lt;/table&gt;
+</pre>
+
+<code>
+	默认th为粗体，没有边框<br>
+	th 上下左右居中<br>
+	td 上下居中，居左
+</code>
+
+<hr>
+
+<table class="tb1">
+	<caption>带边框表格</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>结尾11</td>
+			<td>结尾12</td>
+		</tr>
+	</tfoot>
+</table>
+
+<code>
+	table、td、th添加边框，默认为中空的
+</code>
+
+<hr>
+
+<table class="tb2">
+	<caption>带边框表格</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+			<td>数据13</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据23</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据33</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>结尾11</td>
+			<td>结尾12</td>
+			<td>结尾13</td>
+		</tr>
+	</tfoot>
+</table>
+
+<code>
+	border-collapse: collapse;
+</code>
+
+<hr>
+
+<table class="tb2">
+	<caption>列合并 colspan</caption>
+	<thead>
+		<tr>
+			<th>列5</th>
+			<th colspan="3">列6</th>
+		</tr>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td colspan="2">数据12</td>
+			<td>数据14</td>
+		</tr>
+		<tr>
+			<td colspan="2">数据21</td>
+			<td>数据23</td>
+			<td>数据24</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据33</td>
+			<td>数据34</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="100%">结尾11</td>
+		</tr>
+	</tfoot>
+</table>
+
+<code>
+	colspan="2"<br>
+	colspan="100%" 后面全部合并
+</code>
+
+<hr>
+
+<table class="tb2">
+	<caption>行合并 rowspan</caption>
+	<thead>
+		<tr>
+			<th rowspan="2">列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+		</tr>
+		<tr>
+			<th>列6</th>
+			<th>列7</th>
+			<th>列8</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+			<td>数据13</td>
+			<td rowspan="100%">数据14</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td rowspan="2">数据22</td>
+			<td>数据23</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据33</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42</td>
+			<td>数据43</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td colspan="2" rowspan="2">数据52</td>
+		</tr>
+		<tr>
+			<td>数据61</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="100%">结尾11</td>
+		</tr>
+	</tfoot>
+</table>
+
+<code>
+	rowspan="2"<br>
+	rowspan="100%" 后面全部合并<br>
+	rowspan于colspan可组合使用
+</code>
+
+<hr>
+
+<table class="tb2 tbHover">
+	<caption>列样式控制 colgroup</caption>
+	<colgroup span="2">
+		<col class="col1">
+		<col class="col2">
+	</colgroup>
+	<colgroup class="col3"></colgroup>
+	<colgroup style="background-color:cadetblue;" span="100%"></colgroup>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+			<th>列5</th>
+			<th>列6</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+			<td>数据13</td>
+			<td>数据14</td>
+			<td>数据15</td>
+			<td>数据16</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据23</td>
+			<td>数据24</td>
+			<td>数据25</td>
+			<td>数据26</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据35</td>
+			<td>数据36</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+			<td>数据46</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据55</td>
+			<td>数据56</td>
+		</tr>
+		<tr>
+			<td>数据61</td>
+			<td style="background-color: #900;">数据62</td>
+			<td>数据63</td>
+			<td>数据64数据64数据64数据64</td>
+			<td>数据65</td>
+			<td>数据66</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td>结尾11</td>
+			<td>结尾12</td>
+			<td>结尾13</td>
+			<td>结尾14</td>
+			<td>结尾15</td>
+			<td>结尾16</td>
+		</tr>
+	</tfoot>
+</table>
+
+<code>
+	宽度(width)<br>
+	背景颜色(background-color)<br>
+	边框(border)
+</code>
+
+<hr>
+
+<table class="tb2 tbColor">
+	<caption>隔行变色</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+			<th>列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+			<td>数据13</td>
+			<td>数据14</td>
+			<td>数据15</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据23</td>
+			<td>数据24</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据55</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+table tbody tr:nth-child(even) td {
+	background-color: #fef;
+}
+
+table tbody tr:nth-child(odd) td {
+	background-color: #ffe;
+}
+</pre>
+
+<hr>
+
+<h3>固定表头</h3>
+
+<table class="tbFix">
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+			<th>列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据12</td>
+			<td>数据13</td>
+			<td>数据14</td>
+			<td>数据15</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据23</td>
+			<td>数据24</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据55</td>
+		</tr>
+	</tbody>
+</table>
+
+<code>
+	.tbFix th {position: sticky; top: 0;}
+</code>
+
+<hr>
+
+<table class="tb2 tbSort">
+	<caption>点击列头排序</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+			<th>列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据23</td>
+			<td>数据12</td>
+			<td>数据43</td>
+			<td>数据13</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据15</td>
+			<td>数据24</td>
+			<td>数据44</td>
+			<td>数据34</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据43</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据45</td>
+			<td>数据33</td>
+			<td>数据44</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据42数据42</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据55</td>
+			<td>数据44</td>
+			<td>数据45</td>
+			<td>数据45</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr>
+
+<div id="divColHide"></div>
+<table class="tb2 tbColHide" data-show-el="divColHide">
+	<caption>列隐藏</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th class="colHide">列3</th>
+			<th class="colHide">列4</th>
+			<th class="colHide">列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据23</td>
+			<td class="brate" data-rate="33.6">数据12</td>
+			<td>数据43</td>
+			<td>数据13</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td class="brate" data-rate="45">数据33</td>
+			<td>数据34</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td class="brate" data-rate="80">数据41</td>
+			<td>数据42数据42</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td class="brate" data-rate="12">数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据15</td>
+			<td>数据24</td>
+			<td class="brate" data-rate="90">数据44</td>
+			<td>数据34</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td class="brate" data-rate="20">数据43</td>
+			<td>数据43</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td class="brate" data-rate="40">数据45</td>
+			<td>数据33</td>
+			<td>数据44</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据52</td>
+			<td class="brate" data-rate="20">数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据42数据42</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据55</td>
+			<td class="brate" data-rate="10">数据44</td>
+			<td>数据45</td>
+			<td>数据45</td>
+		</tr>
+	</tbody>
+</table>
+
+<hr>
+
+<table class="tb3">
+	<caption>标准表格样式</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>*列2</th>
+			<th>列3*</th>
+			<th>列4*</th>
+			<th>*列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据23</td>
+			<td>数据12</td>
+			<td>数据43</td>
+			<td>数据13</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据15</td>
+			<td>数据24</td>
+			<td>数据44</td>
+			<td>数据34</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据43</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据45</td>
+			<td>数据33</td>
+			<td>数据44</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据42数据42</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据55</td>
+			<td>数据44</td>
+			<td>数据45</td>
+			<td>数据45</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="100%">
+				共 100 条
+			</td>
+		</tr>
+	</tfoot>
+</table>
+
+<pre>
+.tb3{
+	border-collapse: collapse;
+	border:solid 2px gray;
+}
+.tb3 th, .tb3 td{
+	border:solid 0.5px gray;
+	padding:5px 10px;
+	text-align: center;
+}
+.tb3 tfoot td{
+	text-align: left;
+}
+.tb3 thead th{
+	background-color: #009;
+	font-weight: normal;
+	color:#fff;
+}
+.tb3 tbody tr:nth-child(even) td {
+	background-color: #eee;
+}
+.tb3 tbody tr:hover{
+	outline: solid 2px #900;
+}
+.tb3 tbody tr:hover td{
+	border-top: solid 0.5px #900;
+	border-bottom: solid 0.5px #900;
+}
+</pre>
+
+<hr>
+
+<table class="tbAttr">
+	<caption>表格属性展示</caption>
+	<tr>
+		<th>用户ID</th>
+		<td>7896</td>
+		<th>编号</th>
+		<td>895623</td>
+	</tr>
+	<tr>
+		<th>姓名</th>
+		<td>张三</td>
+		<th>年龄</th>
+		<td>18岁</td>
+	</tr>
+	<tr>
+		<th>性别</th>
+		<td>男</td>
+		<th>身高</th>
+		<td>188cm</td>
+	</tr>
+	<tr>
+		<th>注册时间</th>
+		<td>2023-04-11 11:22:33</td>
+		<th>登录时间</th>
+		<td>2023-04-14 11:22:33</td>
+	</tr>
+	<tr>
+		<th>身份证</th>
+		<td colspan="3">6102154212541254122</td>
+	</tr>
+	<tr>
+		<th>备注信息</th>
+		<td colspan="3">无</td>
+	</tr>
+</table>
+
+<pre>
+.tbAttr{
+	border-collapse: collapse;
+	border:solid 2px gray;
+}
+.tbAttr th, .tbAttr td{
+	border:solid 0.5px gray;
+	padding:5px 10px;
+	text-align: center;
+	color:#000;
+	font-size: 14px;
+}
+.tbAttr th{
+	font-weight: normal;
+	background-color: #eee;
+	text-align: right;
+	padding-left: 2em;
+	padding-right: 0;
+}
+.tbAttr th::after{
+	content: '：';
+}
+.tbAttr td{
+	text-align: left;
+	padding-right: 2em;
+}
+</pre>
+
+<script>
+$(function(){
+	// JS
+	bindTableSort();
+	bindTableColHide();
+	bindBRate();
+	bindTableAlign();
+});
+
+function bindBRate()
+{
+	$('.brate').each(function(){
+		let val = $(this).data('rate');
+		if (!val) return;
+		let str = `linear-gradient(to right, rgba(200,200,255,0.7) 0%, rgba(200,200,255,0.7) ${val}%, transparent ${val}%, transparent 100%)`;
+		$(this).css('background', str);
+	});
+}
+
+function bindTableAlign()
+{
+	$('.tb3').each(function(){
+		let tb = $(this);
+		$(this).find('thead th').each(function(){
+			let str = $(this).text();
+			let i = $(this).index();
+			if (str.startsWith('*')){
+				$(this).css('text-align', 'left');
+				tb.find('tbody tr td:nth-child('+(i+1)+')').css('text-align', 'left');
+			}else if (str.endsWith('*')){
+				$(this).css('text-align', 'right');
+				tb.find('tbody tr td:nth-child('+(i+1)+')').css('text-align', 'right');
+			}else{
+				return;
+			}
+			$(this).html($(this).html().replaceAll('*', ''));
+		});
+	});
+}
+
+function bindTableSort()
+{
+	$('.tbSort').each(function(){
+		const tBody = this.tBodies[0];
+		const rows = Array.from(tBody.rows);
+		
+		$(this).find('thead th').each(function(){
+			const th = this;
+			const cellIndex = th.cellIndex;
+			$(this).click(function(){
+				rows.sort((tr1, tr2) => {
+					const tr1Text = tr1.cells[cellIndex].textContent;
+					const tr2Text = tr2.cells[cellIndex].textContent;
+					return tr1Text.localeCompare(tr2Text);
+				});
+
+				if ($(this).hasClass('sortDown')){
+					rows.reverse();
+					$(this).parent().find('th').removeClass('sortUp');
+					$(this).parent().find('th').removeClass('sortDown');
+					$(this).addClass('sortUp');
+				}else{
+					$(this).parent().find('th').removeClass('sortUp');
+					$(this).parent().find('th').removeClass('sortDown');
+					$(this).addClass('sortDown');
+				}
+				tBody.append(...rows);
+			});
+		});
+	});
+}
+
+function bindTableColHide()
+{
+	$('.tbColHide').each(function(){
+		let colList = [];
+		let tb = $(this);
+		$(this).find('thead th.colHide').each(function(){
+			let i = $(this).index();
+			let c = 'colh' + i;
+			$(this).addClass(c);
+			tb.find('tbody tr td:nth-child('+(i+1)+')').addClass(c);
+			colList.push([c,$(this).text()]);
+		});
+		
+		let showEl = $('#' + tb.data('show-el'));
+		if (showEl && colList.length > 0)
+		{
+			for (let k in colList){
+				let r = colList[k];
+				showEl.append(`<label><input type="checkbox" value="${r[0]}" checked /> ${r[1]}</label> `);
+			}
+			showEl.find('input[type=checkbox]').change(function(){
+				if (this.checked){
+					$('.'+$(this).val()).show();
+				}else{
+					$('.'+$(this).val()).hide();
+				}
+			});
+		}
+	});
+	
+}
+
+</script>
+
+</body>
+</html>
