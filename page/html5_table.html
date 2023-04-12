@@ -174,6 +174,10 @@ code, pre{
 	padding-right: 2em;
 }
 
+.tbDrag .trDrag{
+	background-color: #aff;
+}
+
 </style>
 
 <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -1003,6 +1007,86 @@ table tbody tr:nth-child(odd) td {
 }
 </pre>
 
+<hr>
+
+<table class="tb2 tbDrag">
+	<caption>拖动排序</caption>
+	<thead>
+		<tr>
+			<th>列1</th>
+			<th>列2</th>
+			<th>列3</th>
+			<th>列4</th>
+			<th>列5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>数据11</td>
+			<td>数据23</td>
+			<td>数据12</td>
+			<td>数据43</td>
+			<td>数据13</td>
+		</tr>
+		<tr>
+			<td>数据21</td>
+			<td>数据22</td>
+			<td>数据33</td>
+			<td>数据34</td>
+			<td>数据25</td>
+		</tr>
+		<tr>
+			<td>数据31</td>
+			<td>数据32</td>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据35</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据44</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据15</td>
+			<td>数据24</td>
+			<td>数据44</td>
+			<td>数据34</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据43</td>
+			<td>数据43</td>
+			<td>数据45</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据42数据42</td>
+			<td>数据45</td>
+			<td>数据33</td>
+			<td>数据44</td>
+		</tr>
+		<tr>
+			<td>数据41</td>
+			<td>数据52</td>
+			<td>数据53数据53数据53</td>
+			<td>数据54</td>
+			<td>数据42数据42</td>
+		</tr>
+		<tr>
+			<td>数据51</td>
+			<td>数据55</td>
+			<td>数据44</td>
+			<td>数据45</td>
+			<td>数据45</td>
+		</tr>
+	</tbody>
+</table>
+
 <script>
 $(function(){
 	// JS
@@ -1010,6 +1094,7 @@ $(function(){
 	bindTableColHide();
 	bindBRate();
 	bindTableAlign();
+	bindTableDrag();
 });
 
 function bindBRate()
@@ -1105,6 +1190,29 @@ function bindTableColHide()
 		}
 	});
 	
+}
+
+var dragEl = null;
+function bindTableDrag()
+{
+	$('.tbDrag').each(function(){
+		$(this).find('tbody tr').attr('draggable', true);
+		$(this).find('tbody tr').bind('dragstart', function(){
+			$('.tbDrag tr').removeClass('trDrag');
+			$(this).addClass('trDrag');
+			dragEl = $(this);
+		}).bind('dragend', function(e){
+			e.preventDefault();
+			$(this).removeClass('trDrag');
+			dragEl = null;
+		}).bind('dragover', function(e){
+			e.preventDefault();
+			if (!dragEl) return;
+			$(this).before(dragEl);
+		}).bind('drag', function(e){
+			e.preventDefault();
+		});
+	});
 }
 
 </script>
