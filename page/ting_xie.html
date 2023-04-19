@@ -61,6 +61,19 @@
 			padding:0 20px;
 			line-height: 2;
 		}
+
+		#divText{
+			margin-top:20px;
+			font-size:24px;
+			color:blue;
+		}
+
+		#divShowList{
+			margin:20px;
+			padding:10px;
+			background-color: #eee;
+			line-height: 1.5;
+		}
 	</style>
 
 	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
@@ -88,10 +101,14 @@
 		<hr>
 		<button onclick="if (runIndex>1){runIndex--; goWord();}">上一个</button>
 		&nbsp;
-		<button onclick="goStep('divInput');">取&emsp;消</button>
+		<button onclick="cancelTest();">取&emsp;消</button>
+		&nbsp;
+		<button onclick="showText();">看汉字</button>
+		<div id="divText"></div>
 	</div>
 	<div id="divResult" class="step">
 		听写完成 用时：<span id="spanTime"></span>
+		<div id="divShowList"></div>
 		<hr>
 		<button onclick="goStep('divInput');">确定</button>
 	</div>
@@ -105,6 +122,7 @@
 		var timeTimer = null;
 		var dtStart = null;
 		var runIndex = 0;
+		var showList = [];
 
 		$(function () {
 			// JS
@@ -149,6 +167,7 @@
 			$('#divRun progress').prop('max', wordList.length);
 			dtStart = new Date();
 			runIndex = 1;
+			showList = [];
 
 			goStep('divRun');
 
@@ -169,14 +188,37 @@
 			{
 				goStep('divResult');
 				$('#spanTime').html($('#divTime').html());
+				$('#divShowList').html('');
+				$('#divShowList').hide();
+				if (showList.length > 0)
+				{
+					$.unique(showList.sort());
+					$('#divShowList').html(showList.join(', '));
+					$('#divShowList').show();
+				}
+
 				playWordAudio('听写完成');
 				return;
 			}
 
+			$('#divText').html('');
 			$('#divProgress').html(runIndex + ' / ' + wordList.length);
 			$('#divRun progress').val(runIndex);
 
 			playWordAudio(wordList[runIndex-1]);
+		}
+
+		function cancelTest()
+		{
+			playWordAudio('取消听写');
+			goStep('divInput');
+		}
+
+		function showText()
+		{
+			playWordAudio('查看汉字');
+			showList.push(wordList[runIndex-1]);
+			$('#divText').html(wordList[runIndex-1]);
 		}
 
 		function playWordAudio(w) {
