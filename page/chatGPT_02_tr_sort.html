@@ -1,0 +1,105 @@
+<!--
+以下代码使用chatGPT自动生成
+提示语：
+使用html技术生成一个表格内tr可拖动排序的功能
+写出完整的html代码
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>可拖动排序表格</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr.dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>列名1</th>
+        <th>列名2</th>
+        <th>列名3</th>
+      </tr>
+    </thead>
+    <tbody id="dragRows">
+      <tr draggable="true">
+        <td>行1列1</td>
+        <td>行1列2</td>
+        <td>行1列3</td>
+      </tr>
+      <tr draggable="true">
+        <td>行2列1</td>
+        <td>行2列2</td>
+        <td>行2列3</td>
+      </tr>
+      <tr draggable="true">
+        <td>行3列1</td>
+        <td>行3列2</td>
+        <td>行3列3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const dragRows = document.getElementById('dragRows');
+    let draggingEle;
+
+    // 拖动开始
+    dragRows.addEventListener('dragstart', function(e) {
+      draggingEle = e.target;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', draggingEle.outerHTML);
+      draggingEle.classList.add('dragging');
+    });
+
+    // 拖动结束
+    dragRows.addEventListener('dragend', function(e) {
+      draggingEle.classList.remove('dragging');
+      draggingEle = null;
+    });
+
+    // 拖动过程
+    dragRows.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(dragRows, e.clientY);
+      if (afterElement == null) {
+        dragRows.appendChild(draggingEle);
+      } else {
+        dragRows.insertBefore(draggingEle, afterElement);
+      }
+    });
+
+    // 获取拖动后的位置
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('tr:not(.dragging)')];
+      return draggableElements.reduce(function(closest, child) {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+  </script>
+</body>
+</html>
