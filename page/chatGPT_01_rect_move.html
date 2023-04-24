@@ -1,0 +1,111 @@
+<!--
+以下代码使用chatGPT自动生成
+提示语：
+使用Html技术随机创建多个随机颜色的方块，并允许鼠标点击后拖动
+方块不要超出可视区域，拖动时也不要超出可视区域
+mouseup绑定在document上
+检测方块拖动时不要重叠
+重叠后重新随机设置碰撞方块位置
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>随机方块拖动</title>
+  <style>
+    .square {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const numSquares = 10; // 生成方块的个数
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown'];
+    let draggingSquare = null; // 记录被拖拽的方块
+    let squares = []; // 记录所有方块的数组
+
+    // 生成随机位置和颜色的方块
+    for (let i = 0; i < numSquares; i++) {
+      const x = Math.floor(Math.random() * (window.innerWidth - 50)); // x坐标不超出可视窗口范围
+      const y = Math.floor(Math.random() * (window.innerHeight - 50)); // y坐标不超出可视窗口范围
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      const square = document.createElement('div');
+      square.className = 'square';
+      square.style.backgroundColor = color;
+      square.style.left = x + 'px';
+      square.style.top = y + 'px';
+      document.body.appendChild(square);
+
+      squares.push(square); // 将该方块添加到squares数组中
+
+      // 鼠标按下方块时记录拖动状态，同时在document上绑定mousemove和mouseup事件处理程序
+      square.addEventListener('mousedown', function (event) {
+        draggingSquare = square;
+        const offsetX = event.clientX - square.offsetLeft;
+        const offsetY = event.clientY - square.offsetTop;
+
+        // 隐藏鼠标默认事件，防止选中文本或其他元素
+        event.preventDefault();
+
+        // 鼠标移动时更新方块位置，并且检测方块碰撞
+        document.addEventListener('mousemove', mousemoveHandler);
+        document.addEventListener('mouseup', mouseupHandler);
+
+        function mousemoveHandler(event) {
+          const x = event.clientX - offsetX;
+          const y = event.clientY - offsetY;
+
+          // 确保方块不会超出可视窗口范围
+          const maxX = window.innerWidth - square.offsetWidth;
+          const maxY = window.innerHeight - square.offsetHeight;
+          square.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+          square.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+
+          // 检测方块碰撞
+          for (let i = 0; i < squares.length; i++) {
+            if (squares[i] !== draggingSquare) { // 排除正在拖拽的方块
+              if (isOverlap(square, squares[i])) {
+                // 如果方块重叠，就移动该方块，直到不再重叠
+                moveApart(squares[i]);
+              }
+            }
+          }
+        }
+
+        function mouseupHandler() {
+          draggingSquare = null;
+          document.removeEventListener('mousemove', mousemoveHandler);
+          document.removeEventListener('mouseup', mouseupHandler);
+        }
+      });
+    }
+
+    // 检测两个方块是否重叠
+    function isOverlap(square1, square2) {
+      const rect1 = square1.getBoundingClientRect();
+      const rect2 = square2.getBoundingClientRect();
+      return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+    }
+
+    // 移动两个方块，使它们不重叠
+    function moveApart(square) {
+      const rect = square.getBoundingClientRect();
+
+      // 将square2移动到一个随机位置
+      const x = Math.floor(Math.random() * (window.innerWidth - rect.width));
+      const y = Math.floor(Math.random() * (window.innerHeight - rect.height));
+      square.style.left = x + 'px';
+      square.style.top = y + 'px';
+    }
+  </script>
+</body>
+
+</html>
