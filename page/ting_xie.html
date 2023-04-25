@@ -35,6 +35,7 @@
 			height: 500px;
 			display:block;
 			margin: 10px auto;
+			padding: 10px;
 		}
 
 		#divRun .big{
@@ -94,11 +95,11 @@
 		<div id="divTime">11:00</div>
 		<progress></progress>
 		<p style="margin:20px 0;">
-		<button onclick="runIndex++; goWord();" class="big">下一个</button>
+		<button id="btnNext" class="big">下一个</button>
 		&nbsp;
 		<button onclick="playWordAudio(wordList[runIndex-1]);" class="big">朗&emsp;读</button>
 		</p>
-		<hr>
+		<hr style="margin-top: 4em; margin-bottom: 1em;">
 		<button onclick="if (runIndex>1){runIndex--; goWord();}">上一个</button>
 		&nbsp;
 		<button onclick="cancelTest();">取&emsp;消</button>
@@ -127,6 +128,15 @@
 		$(function () {
 			// JS
 			$('#divInput textarea').val(window.localStorage.getItem('tingxie')||'');
+			$('#btnNext').click(function(){
+				runIndex++;
+				goWord();
+				$(this).prop('disabled', true);
+				let _this = $(this);
+				window.setTimeout(function(){
+					_this.prop('disabled', false);
+				}, 2000);
+			});
 		});
 
 		function goStep(el)
