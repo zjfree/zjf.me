@@ -1,0 +1,345 @@
+<!--
+以下代码使用chatGPT自动生成
+提示语：
+CREATE TABLE IF NOT EXISTS `tbl_work_bill` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(100) DEFAULT '' NOT NULL COMMENT '编号',
+  `name` varchar(100) DEFAULT '' NOT NULL COMMENT '名称',
+  `work_day` datetime DEFAULT NULL COMMENT '生产日期',
+  `lab_produce_id` int(10) unsigned DEFAULT 0 NOT NULL COMMENT '产品',
+  `work_device_id` int(10) unsigned DEFAULT 0 NOT NULL COMMENT '生产设备',
+  `need_weight` int(11) DEFAULT 0 COMMENT '需求产量',
+  `fact_weight` int(11) DEFAULT 0 COMMENT '实际产量',
+  `memo` varchar(255) DEFAULT NULL COMMENT '备注',
+  `bill_status` enum('未生产', '生产中', '生产完成', '作废') DEFAULT '未生产' NOT NULL COMMENT '计划单状态',
+  `work_begin_time` datetime DEFAULT NULL COMMENT '开始生产时间',
+  `work_end_time` datetime DEFAULT NULL COMMENT '结束生产时间',
+  `work_json` varchar(2048) DEFAULT NULL COMMENT '生产数据',
+  `produce_json` varchar(2048) DEFAULT NULL COMMENT '产品配方',
+  `uid` int(11) DEFAULT 0 COMMENT '当前用户',
+  `weigh` int(11) DEFAULT 0 COMMENT '权重',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `delete_time` datetime DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 COMMENT='生产计划单';
+使用HTML技术生成这个表的CURD操作。需要在一个页面内完成
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>生产计划单管理</title>
+	<style type="text/css">
+		table {
+			border-collapse: collapse;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		table, th, td {
+			border: 1px solid black;
+		}
+		input {
+			margin-right: 10px;
+		}
+		button {
+			margin-right: 10px;
+		}
+		#user-modal {
+			display: none;
+			position: fixed;
+			z-index: 998;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgb(0,0,0);
+			background-color: rgba(0,0,0,0.4);
+		}
+		#user-modal-content {
+			background-color: white;
+			margin: 15% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+			height: 80%;
+			max-width: 600px;
+		}
+		.close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		#user-modal-header {
+			padding: 2px 16px;
+			background-color: #5cb85c;
+			color: white;
+		}
+		#user-modal-body {
+			padding: 16px;
+		}
+		#user-modal-footer {
+			padding: 2px 16px;
+			background-color: #5cb85c;
+			color: white;
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<h1>生产计划单管理系统</h1>
+	<button onclick="showAddUserModal()">添加新计划单</button>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>编号</th>
+				<th>名称</th>
+				<th>生产日期</th>
+				<th>产品ID</th>
+				<th>生产设备ID</th>
+				<th>需求产量</th>
+				<th>实际产量</th>
+				<th>备注</th>
+				<th>计划单状态</th>
+				<th>开始生产时间</th>
+				<th>结束生产时间</th>
+				<th>生产数据</th>
+				<th>产品配方</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="user-table-body">
+		</tbody>
+	</table>
+	<div id="user-modal">
+		<div id="user-modal-content">
+			<span class="close" onclick="hideUserModal()">&times;</span>
+			<div id="user-modal-header">
+				<h2 id="user-modal-title">添加新计划单</h2>
+			</div>
+			<div id="user-modal-body">
+				<div>
+					<label for="code">编号：</label>
+					<input type="text" id="code" name="code">
+				</div>
+				<div>
+					<label for="name">名称：</label>
+					<input type="text" id="name" name="name">
+				</div>
+				<div>
+					<label for="workDay">生产日期：</label>
+					<input type="datetime-local" id="workDay" name="workDay">
+				</div>
+				<div>
+					<label for="labProduceId">产品ID：</label>
+					<input type="number" id="labProduceId" name="labProduceId" min="0" value="0">
+				</div>
+				<div>
+					<label for="workDeviceId">生产设备ID：</label>
+					<input type="number" id="workDeviceId" name="workDeviceId" min="0" value="0">
+				</div>
+				<div>
+					<label for="needWeight">需求产量：</label>
+					<input type="number" id="needWeight" name="needWeight" min="0" value="0">
+				</div>
+				<div>
+					<label for="factWeight">实际产量：</label>
+					<input type="number" id="factWeight" name="factWeight" min="0" value="0">
+				</div>
+				<div>
+					<label for="memo">备注：</label>
+					<input type="text" id="memo" name="memo">
+				</div>
+				<div>
+					<label for="billStatus">计划单状态：</label>
+					<select id="billStatus" name="billStatus">
+						<option value="未生产">未生产</option>
+						<option value="生产中">生产中</option>
+						<option value="生产完成">生产完成</option>
+						<option value="作废">作废</option>
+					</select>
+				</div>
+				<div>
+					<label for="workBeginTime">开始生产时间：</label>
+					<input type="datetime-local" id="workBeginTime" name="workBeginTime">
+				</div>
+				<div>
+					<label for="workEndTime">结束生产时间：</label>
+					<input type="datetime-local" id="workEndTime" name="workEndTime">
+				</div>
+				<div>
+					<label for="workJson">生产数据：</label>
+					<input type="text" id="workJson" name="workJson">
+				</div>
+				<div>
+					<label for="produceJson">产品配方：</label>
+					<input type="text" id="produceJson" name="produceJson">
+				</div>
+				<input type="hidden" id="id" name="id">
+			</div>
+			<div id="user-modal-footer">
+				<button onclick="addUser()">保存</button>
+				<button onclick="updateUser()">更新</button>
+				<button onclick="hideUserModal()">取消</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let users = [];
+
+		// 显示添加计划单对话框
+		function showAddUserModal() {
+			document.getElementById('user-modal-title').innerHTML = '添加新计划单';
+			document.getElementById('id').value = '';
+			document.getElementById('code').value = '';
+			document.getElementById('name').value = '';
+			document.getElementById('workDay').value = '';
+			document.getElementById('labProduceId').value = '0';
+			document.getElementById('workDeviceId').value = '0';
+			document.getElementById('needWeight').value = '0';
+			document.getElementById('factWeight').value = '0';
+			document.getElementById('memo').value = '';
+			document.getElementById('billStatus').value = '未生产';
+			document.getElementById('workBeginTime').value = '';
+			document.getElementById('workEndTime').value = '';
+			document.getElementById('workJson').value = '';
+			document.getElementById('produceJson').value = '';
+			document.getElementById('user-modal').style.display = 'block';
+		}
+
+		// 隐藏计划单对话框
+		function hideUserModal() {
+			document.getElementById('user-modal').style.display = 'none';
+		}
+
+		// 添加计划单
+		function addUser() {
+			let user = {
+				id: users.length + 1,
+				code: document.getElementById('code').value,
+				name: document.getElementById('name').value,
+				workDay: document.getElementById('workDay').value,
+				labProduceId: parseInt(document.getElementById('labProduceId').value),
+				workDeviceId: parseInt(document.getElementById('workDeviceId').value),
+				needWeight: parseInt(document.getElementById('needWeight').value),
+				factWeight: parseInt(document.getElementById('factWeight').value),
+				memo: document.getElementById('memo').value,
+				billStatus: document.getElementById('billStatus').value,
+				workBeginTime: document.getElementById('workBeginTime').value,
+				workEndTime: document.getElementById('workEndTime').value,
+				workJson: document.getElementById('workJson').value,
+				produceJson: document.getElementById('produceJson').value
+			};
+			users.push(user);
+			renderUserTable();
+			hideUserModal();
+		}
+
+		// 显示修改计划单对话框
+		function showUpdateUserModal(id) {
+			let user = users.find(user => user.id === id);
+			if (user) {
+				document.getElementById('user-modal-title').innerHTML = '修改计划单信息';
+				document.getElementById('id').value = user.id;
+				document.getElementById('code').value = user.code;
+				document.getElementById('name').value = user.name;
+				document.getElementById('workDay').value = user.workDay;
+				document.getElementById('labProduceId').value = user.labProduceId;
+				document.getElementById('workDeviceId').value = user.workDeviceId;
+				document.getElementById('needWeight').value = user.needWeight;
+				document.getElementById('factWeight').value = user.factWeight;
+				document.getElementById('memo').value = user.memo;
+				document.getElementById('billStatus').value = user.billStatus;
+				document.getElementById('workBeginTime').value = user.workBeginTime;
+				document.getElementById('workEndTime').value = user.workEndTime;
+				document.getElementById('workJson').value = user.workJson;
+				document.getElementById('produceJson').value = user.produceJson;
+				document.getElementById('user-modal').style.display = 'block';
+			}
+		}
+
+		// 更新计划单
+		function updateUser() {
+			let id = parseInt(document.getElementById('id').value);
+			let index = users.findIndex(user => user.id === id);
+			if (index >= 0) {
+				let user = {
+					id: id,
+					code: document.getElementById('code').value,
+					name: document.getElementById('name').value,
+					workDay: document.getElementById('workDay').value,
+					labProduceId: parseInt(document.getElementById('labProduceId').value),
+					workDeviceId: parseInt(document.getElementById('workDeviceId').value),
+					needWeight: parseInt(document.getElementById('needWeight').value),
+					factWeight: parseInt(document.getElementById('factWeight').value),
+					memo: document.getElementById('memo').value,
+					billStatus: document.getElementById('billStatus').value,
+					workBeginTime: document.getElementById('workBeginTime').value,
+					workEndTime: document.getElementById('workEndTime').value,
+					workJson: document.getElementById('workJson').value,
+					produceJson: document.getElementById('produceJson').value
+				};
+				users[index] = user;
+				renderUserTable();
+				hideUserModal();
+			}
+		}
+
+		// 删除计划单
+		function deleteUser(id) {
+			let index = users.findIndex(user => user.id === id);
+			if (index >= 0) {
+				users.splice(index, 1);
+				renderUserTable();
+			}
+		}
+
+		// 渲染计划单表格
+		function renderUserTable() {
+			let tbody = document.getElementById('user-table-body');
+			tbody.innerHTML="";
+			for (let i = 0; i < users.length; i++) {
+				let tr = document.createElement('tr');
+				let user = users[i];
+				tr.innerHTML = `
+					<td>${user.id}</td>
+					<td>${user.code}</td>
+					<td>${user.name}</td>
+					<td>${user.workDay}</td>
+					<td>${user.labProduceId}</td>
+					<td>${user.workDeviceId}</td>
+					<td>${user.needWeight}</td>
+					<td>${user.factWeight}</td>
+					<td>${user.memo}</td>
+					<td>${user.billStatus}</td>
+					<td>${user.workBeginTime}</td>
+					<td>${user.workEndTime}</td>
+					<td>${user.workJson}</td>
+					<td>${user.produceJson}</td>
+					<td>
+						<button onclick="showUpdateUserModal(${user.id})">修改</button>
+						<button onclick="deleteUser(${user.id})">删除</button>
+					</td>
+				`;
+				tbody.appendChild(tr);
+			}
+		}
+
+		// 初始化数据
+		function init() {
+			users = [
+				{ id: 1, code: '2019042501', name: '计划单1', workDay: '2019-04-25T00:00:00', labProduceId: 1, workDeviceId: 1, needWeight: 100, factWeight: 80, memo: null, billStatus: '生产完成', workBeginTime: '2019-04-25T08:00:00', workEndTime: '2019-04-25T12:00:00', workJson: null, produceJson: '{"A":50,"B":30,"C":20}' },
+				{ id: 2, code: '2019042502', name: '计划单2', workDay: '2019-04-25T00:00:00', labProduceId: 1, workDeviceId: 2, needWeight: 200, factWeight: 150, memo: null, billStatus: '生产完成', workBeginTime: '2019-04-25T13:00:00', workEndTime: '2019-04-25T18:00:00', workJson: null, produceJson: '{"A":80,"B":50,"C":70}' },
+			];
+			renderUserTable();
+		}
+
+		init();
+	</script>
+</body>
+</html>
+	
