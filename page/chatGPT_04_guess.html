@@ -1,0 +1,60 @@
+<!--
+以下代码使用chatGPT自动生成
+提示语：
+使用HTML实现一个猜数字大小的游戏
+加上次数限制
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>猜数字大小游戏</title>
+  </head>
+  <body>
+    <h1>猜数字大小游戏</h1>
+    <p>猜测 1 到 100 之间的数字，你有5次机会。</p>
+    <input type="number" id="guess" placeholder="输入数字">
+    <button onclick="checkGuess()">提交</button>
+    <p id="result"></p>
+
+    <script>
+      // 生成随机数
+      const answer = Math.floor(Math.random() * 100) + 1;
+      // 初始化猜测次数
+      let guesses = 0;
+      // 最大猜测次数
+      const maxGuesses = 5;
+
+      function checkGuess() {
+        // 获取用户输入
+        const guess = document.getElementById("guess").value;
+        // 猜测次数加一
+        guesses++;
+
+        // 判断大小关系
+        if (guess == answer) {
+          document.getElementById("result").innerHTML = "恭喜你，猜对了！";
+        } else if (guess > answer) {
+          document.getElementById("result").innerHTML = "你猜的数字太大了！";
+          checkGuesses();
+        } else {
+          document.getElementById("result").innerHTML = "你猜的数字太小了！";
+          checkGuesses();
+        }
+      }
+      
+      function checkGuesses() {
+        // 判断猜测次数是否到达上限
+        if (guesses >= maxGuesses) {
+          document.getElementById("result").innerHTML = "很遗憾，你已经用完了所有机会。答案是" + answer + "。";
+          // 禁止继续猜测
+          document.getElementById("guess").setAttribute("disabled", "");
+        } else {
+          // 显示剩余次数
+          const remainingGuesses = maxGuesses - guesses;
+          document.getElementById("result").innerHTML += "，你还有" + remainingGuesses + "次机会。";
+        }
+      }
+    </script>
+  </body>
+</html>
