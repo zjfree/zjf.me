@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>屏幕保护</title>
+<style>
+/* css style */
+html,body{
+	margin:0;
+	padding:0;
+	background:#000;
+	color:#ddd;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+span{
+	position:absolute;
+	animation: am 5s infinite;
+	font-weight: bold;
+}
+#spanTime{
+	font-family:'Courier New', Courier, monospace;
+}
+@keyframes am {
+	0% {
+		opacity: 1;
+		filter:hue-rotate(0deg);
+		transform: rotateZ(0deg);
+	}
+	25% {
+		transform: rotateZ(5deg);
+	}
+	50%{
+		opacity: 0.7;
+	}
+	75% {
+		transform: rotateZ(-5deg);
+	}
+	100% {
+		opacity: 1;
+		filter:hue-rotate(360deg);
+		transform: rotateZ(0deg);
+	}
+}
+</style>
+</head>
+<body>
+<span id="spanTime">0000-00-00 11:11:11</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<span>屏幕保护程序</span>
+<script>
+	function rand(min, max)
+	{
+		let v = min + Math.random() * (max - min);
+		return Math.round(v);
+	}
+	function formatDate(d){
+		d = d || new Date();
+
+		let f = (v) => ('0' + v).substr(-2);
+		return d.getFullYear() + '-'
+			+ f(d.getMonth() + 1) + '-'
+			+ f(d.getDate()) + ' '
+			+ f(d.getHours()) + ':'
+			+ f(d.getMinutes()) + ':'
+			+ f(d.getSeconds());
+	}
+	function play()
+	{
+		document.getElementById('spanTime').innerHTML = formatDate();
+ 		document.querySelectorAll('span').forEach(function(r){
+			r.x += r._x;
+			r.y += r._y;
+
+			if (r.x < 0)
+			{
+				r.x = 0;
+				r._x = 0.1 + 2 * Math.random();
+				r.style.color = 'hsl(' + rand(0, 360) + ',100%,50%)';
+			}
+			if (r.y < 0)
+			{
+				r.y = 0;
+				r._y = 0.1 + 2 * Math.random();
+				r.style.color = 'hsl(' + rand(0, 360) + ',100%,50%)';
+			}
+			if (r.x > document.body.clientWidth - r.w)
+			{
+				r.x = document.body.clientWidth - r.w;
+				r._x = -2 * Math.random() - 0.1;
+				r.style.color = 'hsl(' + rand(0, 360) + ',100%,50%)';
+			}
+			if (r.y > document.body.clientHeight - r.h)
+			{
+				r.y = document.body.clientHeight - r.h;
+				r._y = -2 * Math.random() - 0.1;
+				r.style.color = 'hsl(' + rand(0, 360) + ',100%,50%)';
+			}
+
+			r.style.left = r.x + 'px';
+			r.style.top = r.y + 'px';
+		});
+
+		window.requestAnimationFrame(play);
+	}
+
+	window.onload = function(){
+ 		document.querySelectorAll('span').forEach(function(r){
+			r.style.fontSize = rand(20, 50) + 'px';
+			r.w = r.clientWidth;
+			r.h = r.clientHeight;
+			r.x = rand(0, document.body.clientWidth - r.w);
+			r.y = rand(0, document.body.clientHeight - r.h);
+			r.style.left = r.x + 'px';
+			r.style.top =  r.y + 'px';
+			r.style.color = 'hsl(' + rand(0, 360) + ',100%,50%)';
+			r.style['animation-delay'] = rand(0, 10) + 's';
+			r.style['animation-duration'] = rand(2, 5) + 's';
+			
+			r._x = -2 + 4 * Math.random();
+			r._y = -2 + 4 * Math.random();
+		});
+
+		play();
+ 	}
+</script>
+</body>
+</html>
