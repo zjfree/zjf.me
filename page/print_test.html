@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>打印测试</title>
+
+<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://lib.baomitu.com/qrcode/1.5.1/qrcode.min.js"></script>
+<style>
+/* css style */
+html,body{
+    width: 100%;
+    margin:0;
+    padding:0;
+    text-align: center;
+    font-size:14px;
+}
+hr{
+    height: 0;
+    border-top:solid 1px #000;
+}
+
+#divPrintControl{
+    text-align: center;
+    padding:10px 0;
+    font-size: 16px;
+}
+#divPrintControl input[type=number]{
+    width:50px;
+    text-align: center;
+}
+
+#divMain{
+    border: solid 1px #000;
+    width: 210mm;
+    height: 297mm;
+    margin:0 auto;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+#divSize{
+    margin:20px;
+    font-size:16px;
+}
+#divSize span{
+    display: inline-block;
+    margin:5px 10px;
+    border:solid 1px #000;
+    text-align: center;
+    cursor: pointer;
+}
+
+#divWCm{
+    position:absolute;
+    bottom:5px;
+    left:0;
+    height: 0.5cm;
+    border-bottom: solid 3px #000;
+    width: 150%;
+    overflow: hidden;
+}
+#divWCm span{
+    float: left;
+    width: 1cm;
+    height: 0.5cm;
+    border-left:solid 1px #000;
+    margin-left: -1px;
+    font-size:12px;
+    text-align: left;
+}
+#divHCm{
+    position:absolute;
+    top:0;
+    right:5px;
+    width: 0.5cm;
+    border-right: solid 3px #000;
+    height: 150%;
+    overflow: hidden;
+}
+#divHCm div{
+    height: 1cm;
+    width: 0.5cm;
+    border-top:solid 1px #000;
+    margin-top: -1px;
+    font-size:12px;
+}
+
+@media print{
+    #divPrintControl{
+        display: none;
+    }
+    #divMain{
+        margin-bottom: 0;
+    }
+}
+
+</style>
+
+</head>
+<body>
+<div id="divPrintControl">
+    宽度：<input type="number" value="210" /> mm
+    &emsp;
+    高度：<input type="number" value="297" /> mm
+    &emsp;
+    字号：<input type="number" value="14" /> px
+    &emsp;
+    二维码：<input id="numBarcodeSize" type="number" value="100" /> px
+    &emsp;
+    <label>
+        <input id="chkRule" type="checkbox" checked /> 标尺
+    </label>
+    <button onclick="window.print();">打印</button>
+</div>
+<div id="divMain">
+    <h3>单据打印测试</h3>
+    <hr>
+    <div id="divSize">
+        <span style="width:1cm; height:1cm;">1*1</span>
+        <span style="width:2cm; height:2cm;">2*2</span>
+        <span style="width:3cm; height:3cm;">3*3</span>
+        <span style="width:4cm; height:4cm;">4*4</span>
+        <span style="width:5cm; height:5cm;">5*5</span>
+        <span style="width:10cm; height:2cm;">10*2</span>
+        <span style="width:3cm; height:3cm; border-radius: 50%;">3*3</span>
+        <br>
+        <img id="imgQRcode" />
+        <br>
+        1234567890
+    </div>
+    <div>
+        中文测试啊中文测试啊中文测试啊中文测试啊中文测试啊中文测试啊<br>
+        abcdefghijklmnopqrstuvwxyz<br>
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        0123456789<br>
+    </div>
+    <div id="divWCm"></div>
+    <div id="divHCm"></div>
+</div>
+<script>
+    $(function() {
+        $('#divPrintControl input[type=number]').bind('input', function(){
+            let w = $('#divPrintControl input').eq(0).val();
+            let h = $('#divPrintControl input').eq(1).val();
+            let px = $('#divPrintControl input').eq(2).val();
+            $('#divMain').css({
+                width:w + 'mm',
+                height:h + 'mm',
+            });
+            $('body').css({
+                'font-size':px + 'px',
+            });
+            createQRcode();
+        });
+
+        $('#divSize span').click(function(){
+            $(this).remove();
+        });
+
+        for (let i=0; i<50; i++)
+        {
+            $('#divWCm').append('<span>' + i + '</span>');
+            $('#divHCm').append('<div>' + i + '</div>');
+        }
+
+        $('#chkRule').change(function(){
+            $('#divWCm').toggle();
+            $('#divHCm').toggle();
+        });
+
+        createQRcode();
+    });
+        
+    function createQRcode()
+    {
+        let w = $('#numBarcodeSize').val();
+        QRCode.toDataURL('1234567890', { errorCorrectionLevel: 'H', margin:1, width:w }, function (err, url) {
+            $('#imgQRcode').attr('src', url);
+        });
+    }
+</script>
+</body>
+</html>
