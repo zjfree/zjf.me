@@ -1,0 +1,176 @@
+<!-- 随机生成小草 zjfree 2023-05-23 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>随机生成小草</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 14px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#myCanvas{
+			position: absolute;
+			top:0;
+			left:0;
+		}
+
+		#divTool label{
+			display: block;
+			margin-bottom:10px;
+		}
+		#divTool input[type=range]{
+			display: inline-block;
+			width: 300px;
+			position: relative;
+			top:3px;
+		}
+		#divTool input[type=range]::after{
+			content: attr(data-val);
+			color:#0f0;
+			position:absolute;
+			left:calc(100% + 5px);
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+		<label>花&ensp;瓣：<input type="range" id="b1" min="3" max="10" value="5" data-val="5" /></label>
+		<label>宽&ensp;度：<input type="range" id="x1" min="1" max="10" value="5" step="0.1" data-val="5" /></label>
+		<label>高&ensp;度：<input type="range" id="y1" min="1" max="20" value="5" step="0.1" data-val="5" /></label>
+		<label>偏移1：<input type="range" id="x2" min="1" max="10" value="4" step="0.1" data-val="4" /></label>
+		<label>偏移2：<input type="range" id="x3" min="1" max="10" value="5" step="0.1" data-val="5" /></label>
+		<button id="btnDraw">绘制小草</button>
+	</div>
+
+	<script>
+		var draw = null;
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			draw = new ZDraw($('#myCanvas'));
+			draw.toCenter();
+
+			$('#btnDraw').click(function(){
+				drawGrass();
+			});
+
+			$('#divTool input[type=range]').bind('input', function(){
+				$(this).attr('data-val', this.value);
+				drawGrass();
+			});
+
+			drawGrass();
+		});
+
+		function drawGrass()
+		{
+			let inputB1 = parseFloat($('#b1').val());
+			let inputX1 = parseFloat($('#x1').val());
+			let inputX2 = parseFloat($('#x2').val());
+			let inputX3 = parseFloat($('#x3').val());
+			let inputy1 = parseFloat($('#y1').val());
+
+			draw.clear();
+			let ctx = draw.ctx;
+			let s = Math.round(draw.width / 100);
+			let y = -Math.round(draw.height / 20);
+			for (let x=s*-40; x<=s*40; x+=s*10)
+			{
+				let x1 = x+ZTool.rand(-1.5*s,1.5*s);
+				let y1 = ZTool.rand(s*inputy1,s*(inputy1+2));
+
+				ctx.strokeStyle = '#060';
+				ctx.lineWidth = s/5;
+				ctx.beginPath();
+				ctx.moveTo(x, y);
+				ctx.quadraticCurveTo(x,s*inputX3,x1, y1);
+				ctx.stroke();
+
+				let degAdd = ZTool.rand(0, 100);
+				let p = new ZPoint(x1, y1);
+				for (let i=0; i<360; i+=360/inputB1)
+				{
+					let deg = (degAdd + i) % 360;
+					draw.drawCircle(p.goDeg(deg, s/2), s/3, '#f66');
+				}
+				draw.drawCircle(p, s/4, '#ff0');
+				for (let i=0; i<360; i+=360/inputB1)
+				{
+					let deg = (degAdd + i + 360/inputB1/2) % 360;
+					draw.drawLine(p.goDeg(deg, s/6), p.goDeg(deg, s/2), '#fff', 1);
+					deg = (degAdd + i) % 360;
+					draw.drawLine(p.goDeg(deg, s/6), p.goDeg(deg, s/2.5), '#fff', 1);
+				}
+
+				ctx.strokeStyle = '#000';
+				ctx.lineWidth = 1;
+
+				for (let i=0; i<10; i++)
+				{
+					x1 = x+ZTool.rand(-s*inputX1,s*inputX1);
+					y1 = ZTool.rand(10,s*inputy1);
+					ctx.fillStyle = 'rgb(0,' + ZTool.rand(150,255) + ',0)';
+					ctx.beginPath();
+					ctx.moveTo(x, y);
+					ctx.quadraticCurveTo(x,s*inputX2,x1, y1);
+					ctx.quadraticCurveTo(x,s*inputX3,x+ZTool.rand(-5,5),y);
+					ctx.closePath();
+					ctx.stroke();
+					ctx.fill();
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>
