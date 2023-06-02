@@ -1,0 +1,585 @@
+<!-- 道路迷宫 zjfree 2023-06-02 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>道路迷宫生成</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		body {
+			overflow: hidden;
+			color: #fff;
+			background: #000;
+			background: linear-gradient(to bottom, #444 0%, #000 100%);
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		#divTool {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 14px;
+		}
+
+		#divInfo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		#myCanvas{
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../static/js/zdraw.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<canvas id="myCanvas">
+		Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+	<div id="divInfo"></div>
+
+	<div id="divTool">
+		<select id="selType">
+			<option value="" selected>无道路</option>
+			<option value="直路-横">直路-横 ─</option>
+			<option value="直路-竖">直路-竖 │</option>
+			<option value="拐弯-下左">拐弯-下左 ┐</option>
+			<option value="拐弯-下右">拐弯-下右 ┌</option>
+			<option value="拐弯-上左">拐弯-上左 ┘</option>
+			<option value="拐弯-上右">拐弯-上右 └</option>
+			<option value="十字路">十字路 ┼</option>
+			<option value="丁字-上">丁字-上 ┴</option>
+			<option value="丁字-下">丁字-下 ┬</option>
+			<option value="丁字-左">丁字-左 ┤</option>
+			<option value="丁字-右">丁字-右 ├</option>
+		</select>
+		<button id="btnClear">清空迷宫</button>
+	</div>
+	
+	<script>
+		var draw = null;
+		$(function () {
+			// JS
+			$('#myCanvas').css('width', $(window).width() + 'px');
+			$('#myCanvas').css('height', $(window).height() + 'px');
+
+			draw = new ZDraw($('#myCanvas'));
+			draw.toCenter();
+			draw.mouseDown(function(p){
+				let x = p.x - startX;
+				x = Math.floor(x / rectSize);
+				let y = p.y - startY;
+				y = Math.floor(y / rectSize);
+
+				if (x < 0 || x >= RC || y < 0 || y >= RC)
+				{
+					return;
+				}
+
+				rectList[x][y] = $('#selType').val();
+				drawMaze();
+			});
+
+			$('#btnClear').click(function(){
+				gridInit();
+				drawMaze();
+			});
+
+			gridInit();
+			drawMaze();
+		});
+
+		var CFG = {
+			gridColor:'rgb(255,255,255,0.2)',
+			roadColor:'#666',
+			middleColor:'#fff',
+			sideColor:'#fff',
+		};
+
+		var startX = 0;
+		var startY = 0;
+		var rectSize = 0;
+		var RC = 10;	// 网格数量
+		var rectList = [];
+		function drawGrid()
+		{
+			draw.ctx.setLineDash([]);
+			rectSize = Math.round(Math.min(draw.width, draw.height) * 0.9 / RC);
+			startX = -RC/2 * rectSize;
+			startY = -RC/2 * rectSize;
+
+			for (let x=-RC/2; x <= RC/2; x++)
+			{
+				let x1 = x * rectSize;
+				let y1 = -RC/2 * rectSize;
+				let y2 = RC/2 * rectSize;
+				draw.drawLine({x:x1, y:y1}, {x:x1, y:y2}, CFG.gridColor);
+			}
+			
+			for (let y=RC/-2; y <= RC/2; y++)
+			{
+				let y1 = y * rectSize;
+				let x1 = -RC/2 * rectSize;
+				let x2 = RC/2 * rectSize;
+				draw.drawLine({x:x1, y:y1}, {x:x2, y:y1}, CFG.gridColor);
+			}
+		}
+
+		function drawRect(x, y, type)
+		{
+			let sx = startX + x * rectSize;
+			let sy = startY + y * rectSize;
+			let roadHalfSize = rectSize / 2 * 0.5;
+
+			let cp = new ZPoint(sx + rectSize/2, sy + rectSize/2);
+
+			draw.ctx.beginPath();
+			switch (type)
+			{
+				case '直路-横':
+					drawZhiHeng(cp, roadHalfSize);
+					break;
+				case '直路-竖':
+					drawZhiShu(cp, roadHalfSize);
+					break;
+				case '拐弯-下左':
+				case '拐弯-左下':
+					drawWanXiaZuo(cp, roadHalfSize);
+					break;
+				case '拐弯-下右':
+				case '拐弯-右下':
+					drawWanXiaYou(cp, roadHalfSize);
+					break;
+				case '拐弯-上左':
+				case '拐弯-左上':
+					drawWanShangZuo(cp, roadHalfSize);
+					break;
+				case '拐弯-上右':
+				case '拐弯-右上':
+					drawWanShangYou(cp, roadHalfSize);
+					break;
+				case '十字路':
+					drawShiZi(cp, roadHalfSize);
+					break;
+				case '丁字-上':
+					drawTShang(cp, roadHalfSize);
+					break;
+				case '丁字-下':
+					drawTXia(cp, roadHalfSize);
+					break;
+				case '丁字-左':
+					drawTZuo(cp, roadHalfSize);
+					break;
+				case '丁字-右':
+					drawTYou(cp, roadHalfSize);
+					break;
+			}
+		}
+
+		function gridInit()
+		{
+			rectList = [];
+			for (let x=0; x<RC; x++)
+			{
+				let list = [];
+				for (let y=0; y<RC; y++)
+				{
+					list.push(0);
+				}
+				rectList.push(list);
+			}
+		}
+
+		function drawMaze()
+		{
+			draw.clear();
+
+			drawGrid();
+
+			for (let x=0; x<RC; x++)
+			{
+				for (let y=0; y<RC; y++)
+				{
+					drawRect(x,y,rectList[x][y]);
+				}
+			}
+		}
+
+		function getDash()
+		{
+			return [rectSize*0.15,rectSize*0.1];
+		}
+		
+		function drawZhiHeng(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(180, rectSize/2);
+			let p2 = cp.goDeg(0, rectSize/2);
+			let p3 = p1.goDeg(90, roadHalfSize);
+			let p4 = p2.goDeg(90, roadHalfSize);
+			let p5 = p1.goDeg(-90, roadHalfSize);
+			let p6 = p2.goDeg(-90, roadHalfSize);
+
+			draw.lineWidth = 1;
+			draw.ctx.rect(p5.x,p5.y,rectSize,roadHalfSize*2);
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(p1, p2, CFG.middleColor);
+			draw.ctx.setLineDash([]);
+			draw.drawLine(p3, p4, CFG.sideColor, 2);
+			draw.drawLine(p5, p6, CFG.sideColor, 2);
+		}
+
+		function drawZhiShu(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(-90, rectSize/2);
+			let p2 = cp.goDeg(90, rectSize/2);
+			let p3 = p1.goDeg(0, roadHalfSize);
+			let p4 = p2.goDeg(0, roadHalfSize);
+			let p5 = p1.goDeg(180, roadHalfSize);
+			let p6 = p2.goDeg(180, roadHalfSize);
+
+			draw.lineWidth = 1;
+			draw.ctx.rect(p5.x,p5.y,roadHalfSize*2,rectSize);
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(p1, p2, CFG.middleColor);
+			draw.ctx.setLineDash([]);
+			draw.drawLine(p3, p4, CFG.sideColor, 2);
+			draw.drawLine(p5, p6, CFG.sideColor, 2);
+		}
+
+		function strokeCurve(p1, p2, g1)
+		{
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p1.x, p1.y);
+			draw.ctx.quadraticCurveTo(g1.x, g1.y, p2.x, p2.y);
+			draw.ctx.stroke();
+		}
+
+		function drawWan(p1, p2, g1, p3, p4, g2, p5, p6, g3)
+		{
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p3.x, p3.y);
+			draw.ctx.quadraticCurveTo(g2.x, g2.y, p4.x, p4.y);
+			draw.ctx.lineTo(p6.x, p6.y);
+			draw.ctx.quadraticCurveTo(g3.x, g3.y, p5.x, p5.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+
+			draw.ctx.lineWidth = 1;
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.middleColor;
+			strokeCurve(p1, p2, g1);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			strokeCurve(p3, p4, g2);
+			strokeCurve(p5, p6, g3);
+		}
+
+		function drawWanXiaZuo(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(-90, rectSize/2);
+			let p2 = cp.goDeg(180, rectSize/2);
+			let g1 = new ZPoint(p1.x, p2.y);
+
+			let p3 = p1.goDeg(0, roadHalfSize);
+			let p4 = p2.goDeg(90, roadHalfSize);
+			let g2 = new ZPoint(p3.x, p4.y);
+
+			let p5 = p1.goDeg(180, roadHalfSize);
+			let p6 = p2.goDeg(-90, roadHalfSize);
+			let g3 = new ZPoint(p5.x, p6.y);
+			
+			drawWan(p1, p2, g1, p3, p4, g2, p5, p6, g3);
+		}
+		
+		function drawWanXiaYou(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(-90, rectSize/2);
+			let p2 = cp.goDeg(0, rectSize/2);
+			let g1 = new ZPoint(p1.x, p2.y);
+
+			let p3 = p1.goDeg(0, roadHalfSize);
+			let p4 = p2.goDeg(-90, roadHalfSize);
+			let g2 = new ZPoint(p3.x, p4.y);
+
+			let p5 = p1.goDeg(180, roadHalfSize);
+			let p6 = p2.goDeg(90, roadHalfSize);
+			let g3 = new ZPoint(p5.x, p6.y);
+			
+			drawWan(p1, p2, g1, p3, p4, g2, p5, p6, g3);
+		}
+
+		function drawWanShangZuo(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(90, rectSize/2);
+			let p2 = cp.goDeg(180, rectSize/2);
+			let g1 = new ZPoint(p1.x, p2.y);
+
+			let p3 = p1.goDeg(0, roadHalfSize);
+			let p4 = p2.goDeg(-90, roadHalfSize);
+			let g2 = new ZPoint(p3.x, p4.y);
+
+			let p5 = p1.goDeg(180, roadHalfSize);
+			let p6 = p2.goDeg(90, roadHalfSize);
+			let g3 = new ZPoint(p5.x, p6.y);
+			
+			drawWan(p1, p2, g1, p3, p4, g2, p5, p6, g3);
+		}
+		
+		function drawWanShangYou(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(90, rectSize/2);
+			let p2 = cp.goDeg(0, rectSize/2);
+			let g1 = new ZPoint(p1.x, p2.y);
+
+			let p3 = p1.goDeg(0, roadHalfSize);
+			let p4 = p2.goDeg(90, roadHalfSize);
+			let g2 = new ZPoint(p3.x, p4.y);
+
+			let p5 = p1.goDeg(180, roadHalfSize);
+			let p6 = p2.goDeg(-90, roadHalfSize);
+			let g3 = new ZPoint(p5.x, p6.y);
+			
+			drawWan(p1, p2, g1, p3, p4, g2, p5, p6, g3);
+		}
+		
+		function drawShiZi(cp, roadHalfSize)
+		{
+			let c1 = cp.goDeg(-90, rectSize/2);
+			let c2 = cp.goDeg(90, rectSize/2);
+			
+			let c3 = cp.goDeg(0, rectSize/2);
+			let c4 = cp.goDeg(180, rectSize/2);
+			
+			let p1 = c1.goDeg(0, roadHalfSize);
+			let p2 = c3.goDeg(-90, roadHalfSize);
+			let g1 = new ZPoint(p1.x, p2.y);
+
+			let p3 = c3.goDeg(90, roadHalfSize);
+			let p4 = c2.goDeg(0, roadHalfSize);
+			let g2 = new ZPoint(p4.x, p3.y);
+
+			let p5 = c2.goDeg(180, roadHalfSize);
+			let p6 = c4.goDeg(90, roadHalfSize);
+			let g3 = new ZPoint(p5.x, p6.y);
+			
+			let p7 = c4.goDeg(-90, roadHalfSize);
+			let p8 = c1.goDeg(180, roadHalfSize);
+			let g4 = new ZPoint(p8.x, p7.y);
+
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p1.x, p1.y);
+			draw.ctx.quadraticCurveTo(g1.x, g1.y, p2.x, p2.y);
+			draw.ctx.lineTo(p3.x, p3.y);
+			draw.ctx.quadraticCurveTo(g2.x, g2.y, p4.x, p4.y);
+			draw.ctx.lineTo(p5.x, p5.y);
+			draw.ctx.quadraticCurveTo(g3.x, g3.y, p6.x, p6.y);
+			draw.ctx.lineTo(p7.x, p7.y);
+			draw.ctx.quadraticCurveTo(g4.x, g4.y, p8.x, p8.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			
+			draw.ctx.beginPath();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(c1, c2, CFG.middleColor);
+			draw.drawLine(c3, c4, CFG.middleColor);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			strokeCurve(p1, p2, g1);
+			strokeCurve(p3, p4, g2);
+			strokeCurve(p5, p6, g3);
+			strokeCurve(p7, p8, g4);
+		}
+		
+		function drawTShang(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(90, rectSize/2);
+			let p2 = p1.goDeg(0, roadHalfSize);
+			let p3 = cp.goDeg(0, rectSize/2).goDeg(90, roadHalfSize);
+			let p4 = p3.goDeg(-90, roadHalfSize*2);
+			let p5 = p4.goDeg(180, rectSize);
+			let p6 = p5.goDeg(90, roadHalfSize*2);
+			let p7 = p1.goDeg(180, roadHalfSize);
+			
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p2.x, p2.y);
+			draw.ctx.quadraticCurveTo(p2.x, p3.y, p3.x, p3.y);
+			draw.ctx.lineTo(p4.x, p4.y);
+			draw.ctx.lineTo(p5.x, p5.y);
+			draw.ctx.lineTo(p6.x, p6.y);
+			draw.ctx.quadraticCurveTo(p7.x, p6.y, p7.x, p7.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			
+			draw.ctx.beginPath();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(cp.goDeg(0, rectSize/2), cp.goDeg(180, rectSize/2), CFG.middleColor);
+			draw.drawLine(cp, p1, CFG.middleColor);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			
+			strokeCurve(p2, p3, {x:p2.x, y:p3.y});
+			strokeCurve(p6, p7, {x:p7.x, y:p6.y});
+			draw.drawLine(p4,p5,CFG.sideColor,2);
+		}
+
+		function drawTXia(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(-90, rectSize/2);
+			let p2 = p1.goDeg(0, roadHalfSize);
+			let p3 = cp.goDeg(0, rectSize/2).goDeg(-90, roadHalfSize);
+			let p4 = p3.goDeg(90, roadHalfSize*2);
+			let p5 = p4.goDeg(180, rectSize);
+			let p6 = p5.goDeg(-90, roadHalfSize*2);
+			let p7 = p1.goDeg(180, roadHalfSize);
+			
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p2.x, p2.y);
+			draw.ctx.quadraticCurveTo(p2.x, p3.y, p3.x, p3.y);
+			draw.ctx.lineTo(p4.x, p4.y);
+			draw.ctx.lineTo(p5.x, p5.y);
+			draw.ctx.lineTo(p6.x, p6.y);
+			draw.ctx.quadraticCurveTo(p7.x, p6.y, p7.x, p7.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			
+			draw.ctx.beginPath();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(cp.goDeg(0, rectSize/2), cp.goDeg(180, rectSize/2), CFG.middleColor);
+			draw.drawLine(cp, p1, CFG.middleColor);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			
+			strokeCurve(p2, p3, {x:p2.x, y:p3.y});
+			strokeCurve(p6, p7, {x:p7.x, y:p6.y});
+			draw.drawLine(p4,p5,CFG.sideColor,2);
+		}
+		
+		function drawTZuo(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(180, rectSize/2);
+			let p2 = p1.goDeg(90, roadHalfSize);
+			let p3 = cp.goDeg(90, rectSize/2).goDeg(180, roadHalfSize);
+			let p4 = p3.goDeg(0, roadHalfSize*2);
+			let p5 = p4.goDeg(-90, rectSize);
+			let p6 = p5.goDeg(180, roadHalfSize*2);
+			let p7 = p1.goDeg(-90, roadHalfSize);
+			
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p2.x, p2.y);
+			draw.ctx.quadraticCurveTo(p3.x, p2.y, p3.x, p3.y);
+			draw.ctx.lineTo(p4.x, p4.y);
+			draw.ctx.lineTo(p5.x, p5.y);
+			draw.ctx.lineTo(p6.x, p6.y);
+			draw.ctx.quadraticCurveTo(p6.x, p7.y, p7.x, p7.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			
+			draw.ctx.beginPath();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(cp.goDeg(-90, rectSize/2), cp.goDeg(90, rectSize/2), CFG.middleColor);
+			draw.drawLine(cp, p1, CFG.middleColor);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			
+			strokeCurve(p2, p3, {x:p3.x, y:p2.y});
+			strokeCurve(p6, p7, {x:p6.x, y:p7.y});
+			draw.drawLine(p4,p5,CFG.sideColor,2);
+		}
+		
+		function drawTYou(cp, roadHalfSize)
+		{
+			let p1 = cp.goDeg(0, rectSize/2);
+			let p2 = p1.goDeg(-90, roadHalfSize);
+			let p3 = cp.goDeg(-90, rectSize/2).goDeg(0, roadHalfSize);
+			let p4 = p3.goDeg(180, roadHalfSize*2);
+			let p5 = p4.goDeg(90, rectSize);
+			let p6 = p5.goDeg(0, roadHalfSize*2);
+			let p7 = p1.goDeg(90, roadHalfSize);
+			
+			draw.ctx.beginPath();
+			draw.ctx.moveTo(p2.x, p2.y);
+			draw.ctx.quadraticCurveTo(p3.x, p2.y, p3.x, p3.y);
+			draw.ctx.lineTo(p4.x, p4.y);
+			draw.ctx.lineTo(p5.x, p5.y);
+			draw.ctx.lineTo(p6.x, p6.y);
+			draw.ctx.quadraticCurveTo(p6.x, p7.y, p7.x, p7.y);
+			draw.ctx.closePath();
+			draw.ctx.fillStyle = CFG.roadColor;
+			draw.ctx.fill();
+			
+			draw.ctx.beginPath();
+			draw.ctx.setLineDash(getDash());
+			draw.ctx.lineDashOffset=0;
+			draw.drawLine(cp.goDeg(-90, rectSize/2), cp.goDeg(90, rectSize/2), CFG.middleColor);
+			draw.drawLine(cp, p1, CFG.middleColor);
+			
+			draw.ctx.lineWidth = 2;
+			draw.ctx.setLineDash([]);
+			draw.ctx.lineDashOffset=0;
+			draw.ctx.strokeStyle = CFG.sideColor;
+			
+			strokeCurve(p2, p3, {x:p3.x, y:p2.y});
+			strokeCurve(p6, p7, {x:p6.x, y:p7.y});
+			draw.drawLine(p4,p5,CFG.sideColor,2);
+		}
+	</script>
+
+</body>
+</html>
