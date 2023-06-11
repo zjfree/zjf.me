@@ -1,0 +1,234 @@
+<!-- 2位数算术测试 zjfree 2023-06-08 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2位数算术测试</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html{
+	padding:0;
+	margin:0;
+	background-color: #666;
+	height: 100%;
+}
+body{
+	padding:0;
+	margin:0 auto;
+	font-size:14px;
+	max-width: 200mm;
+	height: 290mm;
+	background-color: #fff;
+	position: relative;
+}
+h1{
+	padding: 10px;
+	margin: 0;
+	font-size:24px;
+	text-align: center;
+}
+#divDay{
+	position:absolute;
+	top:15px;
+	right:20px;
+}
+#div1{
+	margin:10px 30px;
+	font-size: 22px;
+	line-height: 1.8;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#div1 span{
+	display: inline-block;
+	width: 25%;
+}
+#div1 b{
+	display: inline-block;
+	width: 1em;
+	font-weight: normal;
+	text-align: center;
+}
+#divTool{
+	text-align: center;
+}
+@media print {
+	#divTool{
+		display: none;
+	}
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="divTool">
+	<label><input id="chkJia" type="checkbox" checked /> 加法</label>
+	<label><input id="chkJian" type="checkbox" checked /> 减法</label>
+	<label><input id="chkCheng" type="checkbox" /> 乘法</label>
+	<label><input id="chkChu" type="checkbox" /> 除法</label>
+	&emsp;
+	<button onclick="resetBuild();">生成</button>
+	<button onclick="window.print();">打印</button>
+	&emsp;
+	<label>
+		<input id="chkAnser" type="checkbox"> 答案
+	</label>
+</div>
+<h1>2位数算术计算测试 <span>2023-06-11</span></h1>
+<hr>
+<div id="div1"></div>
+
+<script>
+$(function(){
+	// JS
+	$('h1 span').html(getDay());
+	$('#chkAnser').change(function(){
+		build(this.checked);
+	});
+	let str = localStorage.getItem('list');
+	if (str)
+	{
+		CalcList = JSON.parse(str);
+	}
+	else
+	{
+		buildList();
+	}
+	build();
+});
+
+var CalcList = [];
+function buildList()
+{
+	let opList = [];
+	if ($('#chkJia')[0].checked) opList.push('＋');
+	if ($('#chkJian')[0].checked) opList.push('－');
+	if ($('#chkCheng')[0].checked) opList.push('×');
+	if ($('#chkChu')[0].checked) opList.push('÷');
+	if (opList.length == 0)
+	{
+		return;
+	}
+
+	CalcList = [];
+	let strList = {};
+	let count = 0;
+	while (true)
+	{
+		let item = {
+			op: getOp(opList),
+			v1: 0,
+			v2: 0,
+			val: 0,
+			val2: 0,
+		}
+		switch (item.op)
+		{
+			case '＋':
+				item.v1 = rand(10, 99);
+				item.v2 = rand(10, 99);
+				item.val = item.v1 + item.v2;
+				break;
+			case '－':
+				item.v1 = rand(20, 99);
+				item.v2 = rand(10, item.v1-1);
+				item.val = item.v1 - item.v2;
+				break;
+			case '×':
+				item.v1 = rand(10, 99);
+				item.v2 = rand(10, 99);
+				item.val = item.v2 * item.v1;
+				break;
+			case '÷':
+				item.v1 = rand(50, 99);
+				item.v2 = rand(10, 30);
+				item.val = Math.floor(item.v1 / item.v2);
+				item.val2 = item.v1 % item.v2;
+				break;
+		}
+
+		let str = item.v1 + ',' + item.v2 + ',' + item.val;
+		if (strList[str])
+		{
+			continue;
+		}
+		strList[str] = true;
+
+		count++;
+		CalcList.push(item);
+		if (count >= 100)
+		{
+			break;
+		}
+	}
+
+	localStorage.setItem('list', JSON.stringify(CalcList));
+}
+function build(bo=false)
+{
+	$('#div1').html('');
+	for (let k in CalcList)
+	{
+		let item = CalcList[k];
+
+		if (bo)
+		{
+			if (item.val2 != 0)
+			{
+				let str = `<span>${item.v1}<b>${item.op}</b>${item.v2}=${item.val}..${item.val2}</span>`;
+				$('#div1').append(str);
+			}
+			else
+			{
+				let str = `<span>${item.v1}<b>${item.op}</b>${item.v2}=${item.val}</span>`;
+				$('#div1').append(str);
+			}
+		}
+		else
+		{
+			let str = `<span>${item.v1}<b>${item.op}</b>${item.v2}=</span>`;
+			$('#div1').append(str);
+		}
+	}
+}
+function resetBuild()
+{
+	buildList();
+	build();
+}
+
+function getOp(opList)
+{
+	if (opList.length == 1)
+	{
+		return opList[0];
+	}
+
+	return opList[rand(0, opList.length-1)];
+}
+
+function rand(min, max)
+{
+	max++;
+	let v = min + Math.floor((max-min) * Math.random());
+
+	return v;
+}
+function getDay(d){
+    d = d || new Date();
+
+    let f = (v) => ('0' + v).substr(-2);
+    return d.getFullYear() + '-'
+        + f(d.getMonth() + 1) + '-'
+        + f(d.getDate());
+}
+</script>
+
+</body>
+</html>
