@@ -1,0 +1,106 @@
+<!-- 内容拉伸测试 zjfree 2023-06-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>内容拉伸测试</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body, html{
+	padding:0;
+	margin:0;
+	width: 100%;
+	height:100%;
+	background-color: #000;
+	overflow: hidden;
+}
+
+h1{
+	margin: 0;
+}
+
+#divMain{
+	position:absolute;
+	width: 4000px;
+	height: 1000px;
+	background-color: #fff;
+	left: 50%;
+	top:50%;
+	margin-left:-2000px;
+	margin-top:-500px;
+	text-align: center;
+	font-size:50px;
+	line-height: 2;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="divMain">
+	<h1>内容拉伸测试</h1>
+	<button onclick="alert(123);">点击测试</button>
+	<br>
+	填充模式：
+	<select id="selType">
+		<option value="rate">等比</option>
+		<option value="fill" selected>拉伸</option>
+	</select>
+
+	<div style="background-color: blue; border-radius: 50%; width: 200px; height: 200px; margin: 10px auto;"></div>
+	<div style="background-color: blue; width: 200px; height: 200px; margin: 10px auto;"></div>
+</div>
+
+<script>
+$(function(){
+	// JS
+	$('#selType').change(resize);
+	$(window).resize(resize);
+	resize();
+});
+
+function resize()
+{
+	let w = $('body').width();
+	let h = $('body').height();
+
+	let w1 = $('#divMain').width();
+	let h1 = $('#divMain').height();
+
+	switch ($('#selType').val())
+	{
+		case 'rate':
+			let rw = w / h;
+			let rh = w1 / h1;
+			let rate = 1;
+			if (rw > rh)
+			{
+				rate = h / h1;
+			}
+			else
+			{
+				rate = w / w1;
+			}
+			$('#divMain').css({
+				transform:'scale(' + rate + ')',
+			});
+			break;
+		case 'fill':
+			let wrate = w / w1;
+			let hrate = h / h1;
+			$('#divMain').css({
+				transform:'scale(' + wrate + ',' + hrate + ')',
+			});
+			break;
+	}
+}
+</script>
+
+</body>
+</html>
