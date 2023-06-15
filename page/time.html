@@ -1,0 +1,103 @@
+<!-- 当前时间 zjfree 2023-06-15 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>当前时间</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#div1, #div2{
+	font-weight:bold;
+	font-family: Consolas, verdana,arial,sans-serif,'Courier New', Courier, monospace, '微软雅黑';
+}
+#btnTimer{
+	font-size:30px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>当前时间</h1>
+<div id="div1"></div>
+<hr>
+<button id="btnTimer">计时开始</button>
+<div id="div2"></div>
+
+<script>
+	var isRun = false;
+	var beginTime = 0;
+$(function(){
+	// JS
+	let size = Math.round($('body').width() / 8);
+	size = Math.min(size, 100);
+	$('#div1,#div2').css('font-size', size+'px');
+	play();
+
+	$('#btnTimer').click(function(){
+		isRun = !isRun;
+		if (isRun)
+		{
+			beginTime = performance.now();
+		}
+		$('#btnTimer').html(isRun?'计时停止':'计时开始');
+	});
+});
+
+function ff(v)
+{
+	return ('0' + v).substr(-2);
+}
+
+function play()
+{
+	if (isRun)
+	{
+		let v = performance.now() - beginTime;
+		v = v/1000;
+		let strTime = '' + Math.floor(v / 60);
+		v = v%60;
+		strTime += ':' + ff(Math.floor(v)) + '.';
+		v = v - Math.floor(v);
+		strTime += (''+v).substr(2,3);
+		$('#div2').html(strTime);
+	}
+
+	let str = formatDate() + '<br>' + fps();
+	$('#div1').html(str);
+	window.requestAnimationFrame(play);
+}
+
+function formatDate(d){
+    d = d || new Date();
+
+	let f1 = (v) => ('00' + v).substr(-3);
+    return ff(d.getHours()) + ':'
+        + ff(d.getMinutes()) + ':'
+        + ff(d.getSeconds()) + '.'
+        + f1(d.getMilliseconds());
+}
+
+var fpsList = [];
+function fps()
+{
+	let now = performance.now(); // 使用performance.now()能获取更高的精度
+    while (fpsList.length > 0 && fpsList[0] <= now - 1000) {
+		fpsList.shift(); // 去掉1秒外的时间
+    }
+    fpsList.push(now);
+	return 'FPS:' + this.fpsList.length;
+}
+</script>
+
+</body>
+</html>
