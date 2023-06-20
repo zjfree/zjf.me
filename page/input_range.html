@@ -1,0 +1,136 @@
+<!-- 滑块美化 zjfree 2023-06-20 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>滑块美化</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+input {
+	width: 500px;
+	margin: 10px 0;
+}
+
+.r1 {
+	-webkit-appearance: none;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	background: #eee;
+	text-align: center;
+	font: inherit;
+	border-radius: 99px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,.5) inset;
+}
+
+.r1::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background: #f8b;
+	height: 13px;
+	width: 13px;
+	border-radius: 50%;
+	box-shadow: -1px -1px 5px rgba(0,0,0,.5) inset,
+		-1px -1px 4px 3px #f08 inset,
+		1px 1px 3px rgba(0,0,0,.3),
+		-199px 0 0 198px rgba(255, 0, 136, .2);
+}
+
+.r2 {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    outline: 0;
+    background-color: transparent;
+}
+/* 轨道 */
+.r2::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #999;
+}
+/* 容器 */
+.r2::-webkit-slider-container {
+    height: 20px;
+    overflow: hidden;
+}
+/* 滑块 */
+.r2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f44336;
+    border: 1px solid transparent;
+    margin-top: -8px;
+    border-image: linear-gradient(#f44336,#f44336) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
+}
+
+.r3 {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    outline: 0;
+    background-color: transparent;
+}
+/* 轨道 */
+.r3::-webkit-slider-runnable-track {
+    height: 10px;
+    background: #999;
+}
+/* 容器 */
+.r3::-webkit-slider-container {
+    height: 20px;
+    overflow: hidden;
+}
+/* 滑块 */
+.r3::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 5px;
+    height: 20px;
+    background-color: #000;
+    border: 1px solid transparent;
+    margin-top: -5px;
+    border-image: linear-gradient(#00f,#44f) 0 fill / 5 5 5 0 / 0px 0px 0 2000px;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>滑块美化</h1>
+
+默认样式<br>
+<input type="range" value="25" max="100" />
+<br>
+
+自定义1<br>
+<input class="r1" type="range" value="25" max="100" />
+<br>
+
+自定义2<br>
+<input class="r2" type="range" value="25" max="100" />
+<br>
+
+自定义3<br>
+<input class="r3" type="range" value="25" max="100" />
+<br>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
