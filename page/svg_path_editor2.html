@@ -70,9 +70,6 @@ body{
 #svgMain{
 	position:absolute;
 }
-#svgMain .draw{
-	cursor: move;
-}
 #svgMain .cur1,#svgMain .cur2{
 	pointer-events: none;
 }
@@ -103,6 +100,9 @@ body{
 	cursor: pointer;
 	pointer-events: all;
 	user-select: none;
+	width: 20px;
+	height: 20px;
+	transform: translate(-10px, -10px);
 }
 #divDrawPoint div:hover{
 	background-color: rgba(0,200,0,0.9);
@@ -121,6 +121,9 @@ body{
 	cursor: pointer;
 	pointer-events: all;
 	user-select: none;
+	width: 10px;
+	height: 10px;
+	transform: translate(-5px, -5px);
 }
 #divDrawCtrl div:hover{
 	background-color: rgba(255,0,0,0.9);
@@ -223,7 +226,7 @@ body{
 <div id="divPostion"></div>
 
 <div id="divMainLeft">
-	<h3>SVG Path编辑器</h3>
+	<h3>SVG Path向量编辑器</h3>
 	<div id="divDemo">
 		<svg id="svgDemo"
 		xmlns='http://www.w3.org/2000/svg'
@@ -239,10 +242,8 @@ body{
 		&nbsp;
 		<button onclick="ZPath.downSvg();">下载</button>
 		&nbsp;
-		<select id="selSize">
-			<option selected value="32">尺寸：32&times;32</option>
-			<option value="64">尺寸：64&times;64</option>
-		</select>
+		等分：
+		<input id="numDegSplit" type="number" value="6" min="2" max="20" />
 	</div>
 	<div id="divDemoList"></div>
 </div>
@@ -252,8 +253,8 @@ body{
 		<thead>
 			<tr>
 				<th>类型</th>
-				<th>X</th>
-				<th>Y</th>
+				<th>角度</th>
+				<th>距离</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -273,7 +274,7 @@ var ZPath = {
 	fpsList:[],
 	strInfo:'',
 
-	gridCount:32,
+	gridCount:64,
 	gridSize:0,
 	PS:0,
 
@@ -290,12 +291,6 @@ var ZPath = {
 
 	init:function(el)
 	{
-		let gridCount = localStorage.getItem('gridCount');
-		if (gridCount){
-			this.gridCount = parseInt(gridCount);
-		}
-		$('#selSize').val(this.gridCount);
-
 		let w = $(window).width();
 		let h = $(window).height() - 30;
 		let size = Math.min(w - 600, h);
@@ -326,14 +321,12 @@ var ZPath = {
 			}else if (pid == 'divDrawCtrl'){
 				ZPath.curCtrlEl = el;
 				ZPath.moveType = 'divDrawCtrl';
-			}else if (el.nodeName = 'path' && el.hasClass('draw')){
-				ZPath.moveStart(e);
 			}else if (el.nodeName = 'path' && el.hasClass('line')){
 				ZPath.moveType = 'divDrawPoint';
 				ZPath.addLinePoint(e, el.data('index'));
 			}else{
 				eventSkip = false;
-				ZPath.curPoint = ZPath.getPoint2(e);
+				ZPath.curPoint = ZPath.getPoint(e);
 				ZPath.draw();
 			}
 
@@ -346,8 +339,8 @@ var ZPath = {
 		$(document).mousemove(function(e){
 			e.gridX = e.clientX - $('#divDraw').data('x');
 			e.gridY = e.clientY - $('#divDraw').data('y');
-			let p = ZPath.getPoint2(e);
-			let strInfo = 'P: ' + p.deg + ',' + p.dist;
+			let p = ZPath.getPoint(e);
+			let strInfo = 'P: ' + p.x + ',' + p.y;
 			if (ZPath.curEl){
 				strInfo += ' ' + ZPath.curEl.data('type');
 			}
@@ -362,7 +355,7 @@ var ZPath = {
 		});
 
 		$('#divDemoList').on('click', 'svg', function(){
-			ZPath.parsePath($(this).find('path').attr('d'));
+			ZPath.parsePath($(this).data('path'));
 		});
 
 		$('#divMainTop').blur(function(){
@@ -377,9 +370,9 @@ var ZPath = {
 				ZPath.parsePath($(this).html());
 			}
 		});
-		$('#selSize').change(function(){
-			localStorage.setItem('gridCount', $(this).val());
-			location.reload();
+		$('#numDegSplit').change(function(){
+			ZPath.degSplit = parseInt($(this).val());
+			ZPath.draw();
 		});
 
 		this.gridSize = size;
@@ -418,14 +411,14 @@ var ZPath = {
 		let w = this.width/2;
 		let size = w/30;
 
-		this.ctx.strokeStyle = '#FFF';
+		this.ctx.strokeStyle = '#AAA';
 		this.ctx.lineWidth = 2;
 		this.ctx.beginPath();
 		this.ctx.arc(w, w, w-1,0,2*Math.PI);
 		this.ctx.stroke();
 
 		this.ctx.lineWidth = 1;
-		this.ctx.strokeStyle = 'rgba(255,255,255, 0.5)';
+		this.ctx.strokeStyle = 'rgba(255,255,255, 0.2)';
 		this.ctx.beginPath();
 		for (let i=0; i<360; i+=3){
 			let len = size;
@@ -459,7 +452,7 @@ var ZPath = {
 		}
 
 		this.ctx.lineWidth = 2;
-		this.ctx.strokeStyle = 'rgba(255,255,255, 0.5)';
+		this.ctx.strokeStyle = 'rgba(255,255,255, 0.2)';
 		this.ctx.beginPath();
 		for (let i=0; i<360; i+=360/this.degSplit){
 			this.ctx.moveTo(w, w);
@@ -488,61 +481,69 @@ var ZPath = {
 			this.ctx.strokeStyle = 'rgba(0,255,255, 0.5)';
 			this.ctx.lineWidth = 2;
 			this.ctx.beginPath();
-			this.ctx.arc(w, w, this.curPoint.dist * size,0,2*Math.PI);
+			this.ctx.arc(w, w, this.curPoint.y * size,0,2*Math.PI);
 			this.ctx.stroke();
 			
-			let du2 = this.curPoint.deg * Math.PI / 180;
+			let du2 = this.curPoint.x * Math.PI / 180;
+			let x1 = w + Math.cos(du2) * -w;
+			let y1 = w + Math.sin(du2) * -w;
 			let x2 = w + Math.cos(du2) * w;
 			let y2 = w + Math.sin(du2) * w;
 			this.ctx.beginPath();
-			this.ctx.moveTo(w, w);
+			this.ctx.moveTo(x1, y1);
 			this.ctx.lineTo(x2, y2);
 			this.ctx.stroke();
 		}
 	},
 
 	drawPath:function(){
-		let rate = 64 / this.gridCount;
-		let path = '';
+		let degPath = '';
+		let svgPath = '';
 		$('#divDrawPoint div').each(function(index){
-			let x = $(this).data('x') * rate;
-			let y = $(this).data('y') * rate;
+			let svgx = $(this).data('svgx');
+			let svgy = $(this).data('svgy');
+			let x = $(this).data('x');
+			let y = $(this).data('y');
 			let t = $(this).data('type');
 
 			if (index != 0 && t == 'M'){
-				path += ' Z';
+				svgPath += ' Z';
+				degPath += ' Z';
 			}
 
-			path += ' ' + t;
+			svgPath += ' ' + t;
+			degPath += ' ' + t;
 			switch (t){
-				case 'H':
-					path += x + ' ';
-					break;
-				case 'V':
-					path += y + ' ';
-					break;
 				case 'Q':
 				case 'S':
-					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
-					path += `${x},${y}`;
+					svgPath += $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',';
+					svgPath += `${svgx},${svgy}`;
+					degPath += $(this).data('x1') + ',' + $(this).data('y1') + ',';
+					degPath += `${x},${y}`;
 					break;
 				case 'C':
-					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
-					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
-					path += `${x},${y}`;
+					svgPath += $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',';
+					svgPath += $(this).data('svgx2') + ',' + $(this).data('svgy2') + ',';
+					svgPath += `${svgx},${svgy}`;
+					degPath += $(this).data('x1') + ',' + $(this).data('y1') + ',';
+					degPath += $(this).data('x2') + ',' + $(this).data('y2') + ',';
+					degPath += `${x},${y}`;
 					break;
 				default:
-					path += `${x},${y}`;
+					svgPath += `${svgx},${svgy}`;
+					degPath += `${x},${y}`;
 					break;
 			}
 		});
-		path += ' Z';
+		svgPath += ' Z';
+		degPath += ' Z';
 
-		$('#divMainTop').html(path);
-		$('#divMainTop').data('path', path);
+		$('#divMainTop').html(degPath);
+		$('#divMainTop').data('path', degPath);
 
-		$('#svgMain .draw').attr('d', path);
-		$('#svgDemo path').attr('d', path);
+		$('#svgMain .draw').attr('d', svgPath);
+		$('#svgDemo path').attr('d', svgPath);
+		$('#svgDemo').data('path', degPath);
 
 		this.drawCurPath();
 		this.drawLinePath();
@@ -554,7 +555,6 @@ var ZPath = {
 	drawLinePath:function(){
 		$('#svgMain .line').remove();
 		
-		let rate = 64 / this.gridCount;
 		let m = '';
 		let first = '';
 		let lastIndex = 0;
@@ -562,8 +562,8 @@ var ZPath = {
 			let type = $(this).data('type');
 
 			let xy = '';
-			xy += $(this).data('x') * rate + ',';
-			xy += $(this).data('y') * rate + ' ';
+			xy += $(this).data('svgx') + ',';
+			xy += $(this).data('svgy') + ' ';
 
 			if (type == 'M'){
 				if (first != ''){
@@ -579,51 +579,25 @@ var ZPath = {
 			let preXY = '';
 			if (index > 0){
 				pre = $('#divDrawPoint div').eq(index-1);
-				preXY += pre.data('x') * rate + ',';
-				preXY += pre.data('y') * rate + ' ';
+				preXY += pre.data('svgx') + ',';
+				preXY += pre.data('svgy') + ' ';
 			}
 
 			let path = m;
 			switch (type){
-				case 'H':
-					path += type + $(this).data('x') * rate;
-					break;
-				case 'V':
-					path += type + $(this).data('y') * rate;
-					break;
 				case 'Q':
-					path += 'Q' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
-					path += 'Q' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + preXY;
+					path += 'Q' + $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',' + xy;
+					path += 'Q' + $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',' + preXY;
 					break;
 				case 'C':
 					path += 'C';
-					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
-					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
+					path += $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',';
+					path += $(this).data('svgx2') + ',' + $(this).data('svgy2') + ',';
 					path += xy;
 					path += 'C';
-					path += $(this).data('x2') * rate + ',' + $(this).data('y2') * rate + ',';
-					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
+					path += $(this).data('svgx2') + ',' + $(this).data('svgy2') + ',';
+					path += $(this).data('svgx1') + ',' + $(this).data('svgy1') + ',';
 					path += preXY;
-					break;
-				case 'S':
-					let sp = ZPath.getSControlPoint(pre);
-					if (!sp){
-						sp = {x:pre.data('x'), y:pre.data('y')};
-					}
-					path += 'C' + sp.x * rate + ',' + sp.y * rate + ',';
-					path += $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',' + xy;
-					path += 'C' + $(this).data('x1') * rate + ',' + $(this).data('y1') * rate + ',';
-					path += sp.x * rate + ',' + sp.y * rate + ',';
-					path += preXY;
-					break;
-				case 'T':
-					let tp = ZPath.getTControlPoint(pre);
-					if (pre && tp){
-						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + xy;
-						path += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + preXY;
-					}else{
-						path += 'T' + xy;
-					}
 					break;
 				default:
 					path += type + xy;
@@ -651,52 +625,27 @@ var ZPath = {
 	},
 
 	drawCurPath:function(){
-		let rate = 64 / this.gridCount;
 		let path1 = '';
 		if (this.curEl){
 			let el = this.curEl;
 			let pre = el.prev();
 			if (pre.length > 0){
-				let x = el.data('x') * rate;
-				let y = el.data('y') * rate;
+				let x = el.data('svgx');
+				let y = el.data('svgy');
 				let type = el.data('type');
-				path1 += 'M' + pre.data('x') * rate + ',' + pre.data('y') * rate + ' ';
+				path1 += 'M' + pre.data('svgx') + ',' + pre.data('svgy') + ' ';
 				switch (el.data('type')){
 					case 'L':
 							path1 += `L${x},${y}`;
 						break;
-					case 'H':
-							path1 += 'H' + x;
-						break;
-					case 'V':
-							path1 += 'V' + y;
-						break;
 					case 'Q':
-							path1 += 'Q' + el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
+							path1 += 'Q' + el.data('svgx1') + ',' + el.data('svgy1') + `,${x},${y}`;
 						break;
 					case 'C':
 							path1 += 'C';
-							path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + ',';
-							path1 += el.data('x2') * rate + ',' + el.data('y2') * rate + ',';
+							path1 += el.data('svgx1') + ',' + el.data('svgy1') + ',';
+							path1 += el.data('svgx2') + ',' + el.data('svgy2') + ',';
 							path1 += `${x},${y}`;
-						break;
-					case 'S':
-							let sp = this.getSControlPoint(pre);
-							if (sp){
-								path1 += 'C';
-								path1 += sp.x * rate + ',' + sp.y * rate + ',';
-								path1 += el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
-							}else{
-								path1 += 'S' + el.data('x1') * rate + ',' + el.data('y1') * rate + `,${x},${y}`;
-							}
-						break;
-					case 'T':
-							let tp = this.getTControlPoint(pre);
-							if (tp){
-								path1 += 'Q' + tp.x * rate + ',' + tp.y * rate + ',' + `${x},${y}`;
-							}else{
-								path1 += `T${x},${y}`;
-							}
 						break;
 					default:
 							path1 += `${type}${x},${y}`;
@@ -715,12 +664,6 @@ var ZPath = {
 			let qx1 = pre.data('x') * 2 - pre.data('x1');
 			let qy1 = pre.data('y') * 2 - pre.data('y1');
 			return {x:qx1, y:qy1};
-		}else if(type == 'T'){
-			let p = this.getTControlPoint(pre.prev());
-			if (!p) return null;
-			let x1 = pre.data('x') * 2 - p.x;
-			let y1 = pre.data('y') * 2 - p.y;
-			return {x:x1, y:y1};
 		}
 		
 		return null;
@@ -733,10 +676,6 @@ var ZPath = {
 			let sx2 = pre.data('x') * 2 - pre.data('x2');
 			let sy2 = pre.data('y') * 2 - pre.data('y2');
 			return {x:sx2, y:sy2};
-		}else if(type == 'S'){
-			let sx1 = pre.data('x') * 2 - pre.data('x1');
-			let sy1 = pre.data('y') * 2 - pre.data('y1');
-			return {x:sx1, y:sy1};
 		}
 		
 		return null;
@@ -755,6 +694,21 @@ var ZPath = {
 		return true;
 	},
 
+	getXY: function(p)
+	{
+		let size = 32/30;
+		let x = 32, y = 32;
+
+		let du1 = p.x * Math.PI / 180;
+		let x1 = x + Math.cos(du1) * p.y * size;
+		let y1 = y + Math.sin(du1) * p.y * size;
+
+		x1 = x1.toFixed(2);
+		y1 = y1.toFixed(2);
+
+		return {x:x1, y:y1};
+	},
+
 	addPoint:function(p, addEl, t, ext){
 		if (!t){
 			t = $('#divDrawPoint div').length == 0 ? 'M' : 'L';
@@ -767,24 +721,38 @@ var ZPath = {
 			$('#divDrawPoint').append(el);
 		}
 
+		let svgP = this.getXY(p);
+
 		this.pointId++;
 		el.data('x', p.x);
 		el.data('y', p.y);
 		el.data('type', t);
 		el.attr('id', 'p_' + this.pointId);
 		el.attr('nodeType', t);
+		el.data('svgx', svgP.x);
+		el.data('svgy', svgP.y);
 
 		if (ext){
+			if ('x1' in ext)
+			{
+				let svgP1 = this.getXY({x:ext.x1, y:ext.y1});
+				ext.svgx1 = svgP1.x;
+				ext.svgy1 = svgP1.y;
+			}
+			if ('x2' in ext)
+			{
+				let svgP2 = this.getXY({x:ext.x2, y:ext.y2});
+				ext.svgx2 = svgP2.x;
+				ext.svgy2 = svgP2.y;
+			}
 			for (let k in ext){
 				el.data(k, ext[k]);
 			}
 		}
 
 		el.css({
-			width: this.PS + 'px',
-			height: this.PS + 'px',
-			left:(p.x * this.PS - this.PS/2) + 'px',
-			top:(p.y * this.PS - this.PS/2) + 'px',
+			left:(svgP.x * this.PS) + 'px',
+			top:(svgP.y * this.PS) + 'px',
 		});
 
 		this.isChange = true;
@@ -797,13 +765,6 @@ var ZPath = {
 		this.drawPath();
 	},
 
-	moveStart:function(e){
-		this.moveStartPoint = this.getPoint(e);
-		this.moveStartPoint.moveX = 0;
-		this.moveStartPoint.moveY = 0;
-		this.moveType = 'pathLine';
-	},
-	
 	movePoint:function(e){
 		if (this.moveType == '') return;
 		let p = this.getPoint(e);
@@ -813,37 +774,19 @@ var ZPath = {
 		}
 		$('#divPostion').html(strInfo);
 
-		if (this.moveType == 'pathLine'){
-			this.moveStartPoint.moveX = p.x - this.moveStartPoint.x;
-			this.moveStartPoint.moveY = p.y - this.moveStartPoint.y;
-			let moveX = (p.x - this.moveStartPoint.x) * this.PS;
-			let moveY = (p.y - this.moveStartPoint.y) * this.PS;
-			$('#svgMain, #divDrawPoint, #divDrawCtrl').css('transform', `translate(${moveX}px, ${moveY}px)`);
-			return;
-		}
-
+		p = this.getPoint(e);
 		if (this.moveType == 'divDrawPoint'){
 			if (this.curEl == null) return;
 
 			let t = this.curEl.data('type');
-			if (t != 'H'){
-				this.curEl.data('y', p.y);
-				this.curEl.css({
-					top:(p.y * this.PS - this.PS/2) + 'px',
-				});
-			}
-			if (t != 'V'){
-				this.curEl.data('x', p.x);
-				this.curEl.css({
-					left:(p.x * this.PS - this.PS/2) + 'px',
-				});
-			}
-
-			let next = this.curEl.next();
-			if (next){
-				this.setNextV(next, p);
-				this.setNextH(next, p);
-			}
+			this.curEl.data('x', p.x);
+			this.curEl.data('y', p.y);
+			this.curEl.data('svgx', p.svgx);
+			this.curEl.data('svgy', p.svgy);
+			this.curEl.css({
+				left:(p.svgx * this.PS) + 'px',
+				top:(p.svgy * this.PS) + 'px',
+			});
 
 			this.draw();
 			this.drawPath();
@@ -857,9 +800,11 @@ var ZPath = {
 
 			this.curCtrlEl.data('x', p.x);
 			this.curCtrlEl.data('y', p.y);
+			this.curCtrlEl.data('svgx', p.svgx);
+			this.curCtrlEl.data('svgy', p.svgy);
 			this.curCtrlEl.css({
-				top:(p.y * this.PS - this.PS/4) + 'px',
-				left:(p.x * this.PS - this.PS/4) + 'px',
+				top:(p.svgy * this.PS) + 'px',
+				left:(p.svgx * this.PS) + 'px',
 			});
 
 			let ctrlType = this.curCtrlEl.data('type');
@@ -867,10 +812,14 @@ var ZPath = {
 				case 'p1':
 					this.curEl.data('x1', p.x);
 					this.curEl.data('y1', p.y);
+					this.curEl.data('svgx1', p.svgx);
+					this.curEl.data('svgy1', p.svgy);
 					break;
 				case 'p2':
 					this.curEl.data('x2', p.x);
 					this.curEl.data('y2', p.y);
+					this.curEl.data('svgx2', p.svgx);
+					this.curEl.data('svgy2', p.svgy);
 					break;
 			}
 
@@ -881,81 +830,7 @@ var ZPath = {
 		}
 	},
 
-	setNextV:function(next, p){
-		if (next.data('type') != 'V') return;
-		next.data('x', p.x);
-		next.css({
-			left:(p.x * this.PS - this.PS/2) + 'px',
-		});
-		next = next.next();
-		if (!next) return;
-		this.setNextV(next, p);
-	},
-	
-	setNextH:function(next, p){
-		if (next.data('type') != 'H') return;
-		next.data('y', p.y);
-		next.css({
-			top:(p.y * this.PS - this.PS/2) + 'px',
-		});
-		next = next.next();
-		if (!next) return;
-		this.setNextH(next, p);
-	},
-
 	upPoint:function(){
-		if (this.moveType == 'pathLine'){
-			let p = this.moveStartPoint;
-			if (p.moveX != 0 || p.moveY != 0)
-			{
-				$('#svgMain, #divDrawPoint, #divDrawCtrl').css('transform', `translate(0px, 0px)`);
-				$('#divDrawPoint div').each(function(){
-					let x = $(this).data('x') + p.moveX;
-					let y = $(this).data('y') + p.moveY;
-					$(this).data('x', x);
-					$(this).data('y', y);
-					$(this).css({
-						left:(x * ZPath.PS - ZPath.PS/2) + 'px',
-						top:(y * ZPath.PS - ZPath.PS/2) + 'px',
-					});
-					let type = $(this).data('type');
-					switch (type){
-						case 'Q':
-						case 'S':
-							let qx1 = $(this).data('x1') + p.moveX;
-							let qy1 = $(this).data('y1') + p.moveY;
-							$(this).data('x1', qx1);
-							$(this).data('y1', qy1);
-							break;
-						case 'C':
-							let cx1 = $(this).data('x1') + p.moveX;
-							let cy1 = $(this).data('y1') + p.moveY;
-							$(this).data('x1', cx1);
-							$(this).data('y1', cy1);
-							let cx2 = $(this).data('x2') + p.moveX;
-							let cy2 = $(this).data('y2') + p.moveY;
-							$(this).data('x2', cx2);
-							$(this).data('y2', cy2);
-							break;
-					}
-				});
-				
-				$('#divDrawCtrl div').each(function(){
-					let x = $(this).data('x') + p.moveX;
-					let y = $(this).data('y') + p.moveY;
-					$(this).data('x', x);
-					$(this).data('y', y);
-					$(this).css({
-						left:(x * ZPath.PS - ZPath.PS/4) + 'px',
-						top:(y * ZPath.PS - ZPath.PS/4) + 'px',
-					});
-				});
-				this.draw();
-				this.drawPath();
-				this.isChange = true;
-			}
-		}
-		
 		this.moveType = '';
 		this.curCtrlEl = null;
 
@@ -977,6 +852,7 @@ var ZPath = {
 		window.localStorage.setItem('svg_path', $('#divMainTop').html());
 		let el = $('#svgDemo').clone();
 		el.attr('id', '');
+		el.data('path', $('#svgDemo').data('path'));
 		$('#divDemoList').prepend(el);
 		if ($('#divDemoList svg').length > 32){
 			$('#divDemoList svg').last().remove();
@@ -984,34 +860,6 @@ var ZPath = {
 	},
 
 	getPoint:function(e){
-		let x = Math.round(e.gridX / this.PS);
-		let y = Math.round(e.gridY / this.PS);
-
-		if (this.moveType != 'divDrawCtrl'){
-			x = Math.max(0, x);
-			x = Math.min(x, this.gridCount);
-			y = Math.max(0, y);
-			y = Math.min(y, this.gridCount);
-		}
-
-		let res = {
-			rawX:e.gridX,
-			rawY:e.gridY,
-			x:x, 
-			y:y, 
-			el:null,
-		};
-
-		$('#divDrawPoint div').each(function(){
-			if ($(this).data('x') == res.x && $(this).data('y') == res.y){
-				res.el = $(this);
-			}
-		});
-
-		return res;
-	},
-
-	getPoint2:function(e){
 		let w = $('#divDraw').width()/2;
 		let x = Math.round(e.gridX - w);
 		let y = Math.round(e.gridY - w);
@@ -1023,7 +871,6 @@ var ZPath = {
 
 		if (dist < 5){
 			deg = Math.round((deg-6) / 12) * 12 + 6;
-			console.log(deg);
 		}else if (dist < 10){
 			deg = Math.round(deg / 6) * 6;
 		}else{
@@ -1033,18 +880,30 @@ var ZPath = {
         while (deg < 0) deg += 360;
 		if (deg == -0) deg = 0;
 
+		let x1 = deg;
+		let y1 = dist;
+
+		let svgP = this.getXY({x:x1, y:y1});
+
 		let res = {
 			rawX:e.gridX,
 			rawY:e.gridY,
-			deg:deg, 
-			dist:dist, 
+			x:x1, 
+			y:y1, 
 			el:null,
+			svgx:svgP.x,
+			svgy:svgP.y,
 		};
 
-		console.log(deg, dist);
+		if (this.moveType != 'divDrawCtrl'){
+			x1 = Math.max(0, x1);
+			x1 = Math.min(x1, 360);
+			y1 = Math.max(0, y1);
+			y1 = Math.min(y1, 30);
+		}
 
 		$('#divDrawPoint div').each(function(){
-			if ($(this).data('deg') == res.deg && $(this).data('dist') == res.dist){
+			if ($(this).data('x') == res.x1 && $(this).data('y') == res.y1){
 				res.el = $(this);
 			}
 		});
@@ -1065,7 +924,7 @@ var ZPath = {
 		let path = this.urlParam('d') || localStorage.getItem('svg_path');
 		if (!path || !this.parsePath(path))
 		{
-			this.parsePath('M32,16 L16,48 L48,48');
+			this.parsePath('M30,20 L150,20 L270,20');
 		}
 		this.saveDemo();
 	},
@@ -1098,12 +957,8 @@ var ZPath = {
 				str += '<td><select>';
 				str += '<option value="M">M 移动</option>';
 				str += '<option value="L">L 连线</option>';
-				str += '<option value="H">H 水平移动</option>';
-				str += '<option value="V">V 竖直移动</option>';
 				str += '<option value="C">C 三次曲线</option>';
-				str += '<option value="S">S 三次平滑</option>';
 				str += '<option value="Q">Q 二次曲线</option>';
-				str += '<option value="T">T 二次平滑</option>';
 				str += '</select></td>';
 			}
 			str += '<td>' + $(this).data('x') + '</td>';
@@ -1151,7 +1006,7 @@ var ZPath = {
 			let index = $(this).parent().parent().data('index');
 			let o = $('#divDrawPoint div').eq(index);
 			let rate = ZPath.gridCount / 32;
-			ZPath.addPoint({x:16 * rate, y:16 * rate}, o);
+			ZPath.addPoint({x:16, y:16}, o);
 			ZPath.updatePath(true);
 		});
 		$('#tbList select').change(function(){
@@ -1166,24 +1021,32 @@ var ZPath = {
 		o.attr('nodeType', type);
 		let p1 = {x:o.data('x'), y:o.data('y')};
 		let pre = o.prev();
-		let p = {x:pre.data('x'), y:pre.data('y')};
+		let p2 = {x:pre.data('x'), y:pre.data('y')};
+
+		let p = {
+			x: Math.round((p1.x+p2.x)/2),
+			y: Math.round((p1.y+p2.y)/2),
+		};
+
+		let svgP = ZPath.getXY(p);
+
 		switch (type){
-			case 'H':
-				this.setNextH(o, p);
-				break;
-			case 'V':
-				this.setNextV(o, p);
-				break;
 			case 'Q':
 			case 'S':
-				o.data('x1', Math.round((p.x+p1.x)/2));
-				o.data('y1', Math.round((p.y+p1.y)/2));
+				o.data('x1', p.x);
+				o.data('y1', p.y);
+				o.data('svgx1', svgP.x);
+				o.data('svgy1', svgP.y);
 				break;
 			case 'C':
-				o.data('x1', Math.round((p.x+p1.x)/2));
-				o.data('y1', Math.round((p.y+p1.y)/2));
-				o.data('x2', Math.round((p.x+p1.x)/2));
-				o.data('y2', Math.round((p.y+p1.y)/2));
+				o.data('x1', p.x);
+				o.data('y1', p.y);
+				o.data('svgx1', svgP.x);
+				o.data('svgy1', svgP.y);
+				o.data('x2', p.x);
+				o.data('y2', p.y);
+				o.data('svgx2', svgP.x);
+				o.data('svgy2', svgP.y);
 				break;
 		}
 		ZPath.setActive(o);
@@ -1214,28 +1077,6 @@ var ZPath = {
 					y:o.data('y2'),
 				}, 'p2');
 				break;
-			case 'T':
-				let tp = this.getTControlPoint(o.prev());
-				if (tp){
-					this.addCtrlPoint({
-						x:tp.x,
-						y:tp.y,
-					}, 'p1', 'other');
-				}
-				break;
-			case 'S':
-				this.addCtrlPoint({
-					x:o.data('x1'),
-					y:o.data('y1'),
-				}, 'p1');
-				let sp = this.getSControlPoint(o.prev());
-				if (sp){
-					this.addCtrlPoint({
-						x:sp.x,
-						y:sp.y,
-					}, 'p2', 'other');
-				}
-				break;
 		}
 	},
 
@@ -1243,18 +1084,19 @@ var ZPath = {
 		let el = $('<div></div>');
 		$('#divDrawCtrl').append(el);
 
+		let svgP = this.getXY(p);
 		el.data('x', p.x);
 		el.data('y', p.y);
+		el.data('svgx', svgP.x);
+		el.data('svgy', svgP.y);
 		el.data('type', t);
 		if (cls){
 			el.addClass(cls);
 		}
 
 		el.css({
-			width: this.PS*0.5 + 'px',
-			height: this.PS*0.5 + 'px',
-			left:(p.x * this.PS - this.PS*0.25) + 'px',
-			top:(p.y * this.PS - this.PS*0.25) + 'px',
+			left:(svgP.x * this.PS) + 'px',
+			top:(svgP.y * this.PS) + 'px',
 		});
 	},
 
@@ -1296,31 +1138,16 @@ var ZPath = {
 				};
 				this.addCtrlLine(cp2, curP);
 				break;
-			case 'T':
-				let tp = this.getTControlPoint(o.prev());
-				if (tp){
-					this.addCtrlLine(tp, preP);
-					this.addCtrlLine(tp, curP);
-				}
-				break;
-			case 'S':
-				let sp1 = {
-					x:o.data('x1'),
-					y:o.data('y1'),
-				};
-				this.addCtrlLine(sp1, curP);
-				let sp = this.getSControlPoint(o.prev());
-				if (sp){
-					this.addCtrlLine(sp, preP);
-				}
-				break;
 		}
 	},
 
 	addCtrlLine:function(p1, p2){
-		let rate = 64 / this.gridCount;
-		let path = 'M' + p1.x * rate + ',' + p1.y * rate + ' ';
-		path += 'L' + p2.x * rate + ',' + p2.y * rate;
+
+		let svgp1 = this.getXY(p1);
+		let svgp2 = this.getXY(p2);
+
+		let path = 'M' + svgp1.x + ',' + svgp1.y + ' ';
+		path += 'L' + svgp2.x + ',' + svgp2.y;
 		let line = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		$(line).attr('d', path);
 		$(line).attr('fill', 'transparent');
@@ -1334,7 +1161,7 @@ var ZPath = {
 
 	parsePath:function(path){
 		path = $.trim(path).toUpperCase();
-		let tag = 'MLHVCSQTZ';
+		let tag = 'MLCQZ';
 		let list = [];
 		let cur = '';
 		let type = '';
@@ -1357,12 +1184,6 @@ var ZPath = {
 		let last = null;
 		for (let k in list){
 			if (!list[k]) continue;
-			if (list[k].type == 'H' && last){
-				list[k].y = last.y;
-			}
-			if (list[k].type == 'V' && last){
-				list[k].x = last.x;
-			}
 			last = list[k];
 			newList.push(list[k]);
 		}
@@ -1389,46 +1210,29 @@ var ZPath = {
 	},
 
 	parsePathNode:function(type, str){
-		let rate = 64 / this.gridCount;
 		let arr = $.trim(str).replace(' ', ',').split(',');
 		let res = {type:type, ext:null};
 		switch (type)
 		{
 			case 'M':
 			case 'L':
-			case 'T':
 				if (arr.length < 2) return null;
-				res.x = parseFloat(arr[0]) / rate;
-				res.y = parseFloat(arr[1]) / rate;
+				res.x = parseFloat(arr[0]);
+				res.y = parseFloat(arr[1]);
 				if (isNaN(res.x + res.y)){
-					return null;
-				}
-				break;
-			case 'H':
-				res.x = parseFloat(arr[0]) / rate;
-				res.y = 0;
-				if (isNaN(res.x)){
-					return null;
-				}
-				break;
-			case 'V':
-				res.x = 0;
-				res.y = parseFloat(arr[0]) / rate;
-				if (isNaN(res.y)){
 					return null;
 				}
 				break;
 			case 'Q':
-			case 'S':
 				if (arr.length < 4) return null;
-				res.x = parseFloat(arr[2]) / rate;
-				res.y = parseFloat(arr[3]) / rate;
+				res.x = parseFloat(arr[2]);
+				res.y = parseFloat(arr[3]);
 				if (isNaN(res.x + res.y)){
 					return null;
 				}
 				res.ext = {
-					x1:parseFloat(arr[0]) / rate,
-					y1:parseFloat(arr[1]) / rate,
+					x1:parseFloat(arr[0]),
+					y1:parseFloat(arr[1]),
 				};
 				if (isNaN(res.ext.x1 + res.ext.y1)){
 					return null;
@@ -1436,16 +1240,16 @@ var ZPath = {
 				break;
 			case 'C':
 				if (arr.length < 6) return null;
-				res.x = parseFloat(arr[4]) / rate;
-				res.y = parseFloat(arr[5]) / rate;
+				res.x = parseFloat(arr[4]);
+				res.y = parseFloat(arr[5]);
 				if (isNaN(res.x + res.y)){
 					return null;
 				}
 				res.ext = {
-					x1:parseFloat(arr[0]) / rate,
-					y1:parseFloat(arr[1]) / rate,
-					x2:parseFloat(arr[2]) / rate,
-					y2:parseFloat(arr[3]) / rate,
+					x1:parseFloat(arr[0]),
+					y1:parseFloat(arr[1]),
+					x2:parseFloat(arr[2]),
+					y2:parseFloat(arr[3]),
 				};
 				if (isNaN(res.ext.x1 + res.ext.y1 + res.ext.x2 + res.ext.y2)){
 					return null;
@@ -1473,7 +1277,7 @@ var ZPath = {
 	},
 
 	clearPath:function(){
-		this.parsePath('M32,16 L16,48 L48,48');
+		this.parsePath('M30,20 L150,20 L270,20');
 		this.saveDemo();
 	},
 };
