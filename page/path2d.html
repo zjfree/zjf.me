@@ -1,0 +1,89 @@
+<!-- Path2D zjfree 2023-06-29 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Path2D canvas绘制svg path</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#svgDemo, #canvas1, #canvas2{
+	width: 300px;
+	height: 300px;
+}
+#txtPath{
+	width: 90%;
+	margin:10px 0;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>Path2D canvas绘制svg path</h1>
+<div>
+	SVG path: <br>
+	<input id="txtPath" type="text" value="M20,12 L8,32 L20,52 L44,52 L56,32 L44,12 Z M24,20 L22,28 Q32,16,22,36 Q32,18,32,32 L24,44 L16,32 Z" />
+	<br>
+	<button onclick="draw();">绘制</button>
+	&emsp;
+	<a href="svg_path_editor.html" target="_blank">SVG path 编辑器</a>
+</div>
+<hr>
+SVG:<br>
+<svg id="svgDemo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="#006" stroke="#FFF" stroke-width="0.5">
+	<path d=""></path>
+</svg>
+<hr>
+canvas:<br>
+<canvas id="canvas1" width="64" height="64"></canvas>
+<hr>
+canvas 缩放:<br>
+<canvas id="canvas2" width="300" height="300"></canvas>
+
+
+<script>
+$(function(){
+	// JS
+	draw();
+});
+
+function draw()
+{
+	// SVG
+	let path = $('#txtPath').val();
+	$('#svgDemo path').attr('d', path);
+
+	// canvas1
+	let canvas1 = document.getElementById('canvas1');
+	let ctx1 = canvas1.getContext('2d');
+
+	let p1 = new Path2D(path);
+	ctx1.fill(p1);
+	
+	// canvas2
+	let canvas2 = document.getElementById('canvas2');
+	let ctx2 = canvas2.getContext('2d');
+
+	let m = new DOMMatrix();
+	// m.a = 4.68; m.b = 0;
+	// m.c = 0; m.d = 4.68;
+	// m.e = 0; m.f = 0;
+	m.scaleSelf(4.68, 4.68);
+
+	let p2 = new Path2D();
+	p2.addPath(p1, m);
+	ctx2.fill(p2);
+}
+</script>
+
+</body>
+</html>
