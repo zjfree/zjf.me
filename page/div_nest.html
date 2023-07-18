@@ -1,0 +1,157 @@
+<!-- 循环嵌套DIV zjfree 2023-07-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>循环嵌套DIV</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+:root {
+	--bcolor: rgba(255,0,0,0.05);
+}
+body{
+	padding:0 10px;
+}
+.main{
+	height: 300px;
+	width: 600px;
+	overflow: hidden;
+	margin: 20px auto;
+	border:solid 1px gray;
+	transition: all 1s;
+}
+.main div{
+	transition: all 1s;
+	background-color: var(--bcolor);
+	box-shadow: inset 0 0 5px #fff;
+}
+.center, .center *{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+#divMain1 div{
+	margin-top:75px;
+	height: 150px;
+	transform: rotateZ(10deg);
+	filter: hue-rotate(30deg);
+}
+#divMain1:hover div{
+	background-color: rgba(0,255,0,0.05);
+}
+#divMain2 div{
+	height: 90%;
+	border-bottom: solid 1px rgba(255,255,255,0.3);
+	box-shadow: none;
+}
+#divMain2:hover div{
+	height: 80%;
+}
+#divMain3 div{
+	height: 90%;
+	width: 90%;
+}
+#divMain3:hover div{
+	background-color: rgba(0,255,0,0.05);
+	box-shadow: none;
+}
+#divMain4 div{
+	height: 90%;
+	width: 90%;
+	border-radius: 50%;
+}
+#divMain4:hover div{
+	border-radius: 5%;
+}
+#divMain5 div{
+	height: 90%;
+	width: 90%;
+	transform: rotateZ(10deg);
+}
+#divMain5:hover div{
+	transform: rotateZ(-10deg);
+}
+#divMain6 div{
+	height: 100%;
+	width: 100%;
+	transform:scale(0.95);
+}
+#divMain6:hover div{
+	transform:scale(0.98) rotateZ(5deg);
+}
+#divMain7 div{
+	height: 90%;
+	width: 90%;
+	border-radius: 50%;
+}
+#divMain7:hover div{
+	filter: hue-rotate(5deg);
+	height: 99%;
+	width: 80%;
+}
+#divMain8 div{
+	height: 90%;
+	width: 90%;
+}
+#divMain8:hover div{
+	transform: rotateZ(-10deg) scale(1.1, 1);
+}
+#divMain9 div{
+	height: 90%;
+	width: 90%;
+	filter: hue-rotate(10deg);
+}
+#divMain9:hover div{
+	transform:translate(0, 2%);
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>循环嵌套DIV</h1>
+<div style="position: sticky; top:10px;">
+	<button onclick="randColor();">随机颜色</button>
+</div>
+<div id="divMain1" class="main"></div>
+<div id="divMain2" class="main"></div>
+<div id="divMain3" class="main center"></div>
+<div id="divMain4" class="main center"></div>
+<div id="divMain5" class="main center"></div>
+<div id="divMain6" class="main center"></div>
+<div id="divMain7" class="main center"></div>
+<div id="divMain8" class="main center"></div>
+<div id="divMain9" class="main center"></div>
+
+<script>
+$(function(){
+	// JS
+	$('.main').each(function(){
+		let el = $(this);
+		for (let i=0; i<36; i++)
+		{
+			let newEl = $('<div></div>');
+			el.append(newEl);
+			el = newEl;
+		}
+	});
+
+	window.setInterval(randColor, 10000);
+});
+
+function randColor()
+{
+	let v = Math.round(Math.random() * 360);
+	document.documentElement.style.setProperty('--bcolor', 'hsla(' +v+ ',100%,50%,0.05)');
+}
+</script>
+
+</body>
+</html>
