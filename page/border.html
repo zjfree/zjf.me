@@ -1,0 +1,192 @@
+<!-- CSS边框 zjfree 2023-07-27 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS边框</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+:root{
+	--img:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABOCAYAAACOqiAdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwMi8yMi8xM9mZDVkAAAAfdEVYdFNvZnR3YXJlAE1hY3JvbWVkaWEgRmlyZXdvcmtzIDi1aNJ4AAACl0lEQVR4nO2bbW7CQAxEDeo9gZMlR4GTuT/QVpRkk13bM1mQR6r6Cz3NUz8I1oj2ZppUr9fulw2KMYOkGyLy/AK2ImFcoHZxrxBgKxLGDWoTtwYBtCJhQkD74rYgga1ImDDQtrgWSEArEiYUVBfXA3G0ImHCQeviLBBDKxIGAlqK80A6WpEwMJCEQxpakTBQkEAgG61IGDhIYJAVGAlDAQkU8gIjYbDSXkBnOZ2EERKGB1JV1Xmm/A6RMBSQQGErf7VJGDhIYLCN9wkkDBQkEFjDO1MSBgZaivPCOp6FSBgIaF2cFWZ4+iZhwkF1cb0wx+c9JEwoaFtcKyzgE0YSJgy0L24PFviZNgkTAmoTV4MBrigkjBvULu4dBrzbkTAuUJ+4AiNcikkYM+ikqtrzbDvPIo+HyDSBHp7JMffpsUy7sJPi6dMsjnZhJ8Xbp0kc7cJOSkSfXXG0CzspUX02xdEu7KRE9qmKo13YSYnusyqOdmEnBdFnIY52YScF1UeiISPJQ/YRBGQEeeg+goIcKY/RR2gX9i+Q9trnTLuwk0Lro0q8sJPC6CNI2JH/HNB9BAUb4e0Iso8gYCNIK0H1WYjzwkaSVoLosyrOChtRWkl0n6q4XtjI0koi+2yKa4V9grSSqD674vZgnyStJKJPk7ga7BOllXj7NIt7h32ytBJPn5+ex7PL5fn9fv+Og7Snz7kbprNMcut9WXfmWeSGx9j7dP185ib/L+3icpP/L23icpO/yL643OSvZltcbvKrqYvLTX5u8nOTb5GXm3yDvNzkG+TlJt8gLzf5hk65yR8cpKq5yTeABArLTX5UGyomN/kOTG7yHZjc5DswucnPTf4xmNzkHw1qE1eD5SbfAMtNvgGWm3z9BYVXGYp5QqaLAAAAAElFTkSuQmCC);
+}
+
+body{
+	padding:0 10px;
+}
+
+.divBorder div{
+	float: left;
+	width: 300px;
+	height: 150px;
+	line-height: 150px;
+	text-align: center;
+	font-size:50px;
+	background-color: #eff;
+	margin-bottom:10px;
+	margin-right:10px;
+	border-radius: 20px;
+	transition: all 0.5s;
+}
+
+#b1{
+	border:solid 10px hsl(0, 100%, 50%);
+	animation: fnColor 3s infinite;
+}
+#b2{
+	border:solid 10px red;
+	animation: fnHue 10s infinite;
+}
+#b3{
+	border:solid 10px transparent;
+	border-image: linear-gradient(#ddd,#000) 30 30;
+}
+#b4{
+	border:solid 10px red;
+	border-image: conic-gradient(red, orange, yellow, green, teal, blue, purple, red) 30 30;
+	clip-path: inset(0 round 10px);
+}
+#b5{
+	border:dotted 10px red;
+}
+#b6{
+	border:double 10px red;
+}
+#b7{
+	border:dashed 10px red;
+}
+#b8{
+	border:solid 10px red;
+	border-radius: 30px;
+}
+#b9{
+	border:solid 10px red;
+	border-radius: 50%;
+}
+#b10{
+	border:solid 10px red;
+	border-radius: 25%;
+}
+#b11{
+	border:solid 10px red;
+	border-radius: 25% 50%;
+}
+#b12{
+	border:solid 10px red;
+	border-radius: 25% / 50%;
+}
+#b11:hover, #b12:hover{
+	border-radius: 0;
+}
+#b13{
+	outline:solid 10px red;
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:20px;
+	margin-bottom:20px;
+	background-color: #aff;
+}
+#b14{
+	outline:dashed 5px red;
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:20px;
+	margin-bottom:20px;
+	outline-offset: 5px;
+	background-color: #aff;
+}
+#b15{
+	margin-top:10px;
+	margin-left:10px;
+	margin-right:20px;
+	margin-bottom:20px;
+	background-color: #aff;
+	box-shadow: 0 0 0 3px red, 0 0 0 6px #0f0, 0 0 0 10px blue, inset 0 0 5px 5px #ff0;
+}
+#b16{
+	border:solid 10px red;
+	border-image: radial-gradient(red, orange, yellow, green, teal, blue, purple, red) 30 30;
+	clip-path: inset(0 round 10px);
+}
+#b17{
+	border:solid 10px transparent;
+	border-image:var(--img) 30 30;
+}
+#b18{
+	border:solid 10px transparent;
+	border-image:var(--img) 30 30 round;
+}
+#b19{
+	border:solid 10px transparent;
+	border-image: repeating-conic-gradient(deeppink 0 10deg, yellowgreen 0 20deg) 30 30;
+}
+
+@keyframes fnColor
+{
+	0% {
+		border-color:hsl(0, 100%, 50%);
+	}
+	25% {
+		border-color:hsl(90, 100%, 50%);
+	}
+	50% {
+		border-color:hsl(180, 100%, 50%);
+	}
+	75% {
+		border-color:hsl(270, 100%, 50%);
+	}
+	100% {
+		border-color:hsl(360, 100%, 50%);
+	}
+}
+@keyframes fnHue
+{
+	0% {
+		filter: hue-rotate(0);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>动态边框</h1>
+<div class="divBorder">
+	<div id="b1">变色 Color</div>
+	<div id="b2">变色 Hue</div>
+	<div id="b3">渐变色1</div>
+	<div id="b4">渐变色2</div>
+	<div id="b5">dotted</div>
+	<div id="b6">double</div>
+	<div id="b7">dashed</div>
+	<div id="b8">圆角 30px</div>
+	<div id="b9">圆角 50%</div>
+	<div id="b10">圆角 25%</div>
+	<div id="b11">25% 50%</div>
+	<div id="b12">25%/50%</div>
+	<div id="b13">outline</div>
+	<div id="b14">outline</div>
+	<div id="b15">shadow</div>
+	<div id="b16">渐变色3</div>
+	<div id="b17">image</div>
+	<div id="b18">image</div>
+	<div id="b19">渐变色4</div>
+</div>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
