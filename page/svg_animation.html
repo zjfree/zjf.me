@@ -1,0 +1,714 @@
+<!-- SVG动画 zjfree 2023-07-31 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SVG动画</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+
+		svg {
+			background-color: #eee;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>SVG动画</h1>
+	<div>
+		参考：<br>
+		<a target="_blank" href="https://www.jianshu.com/p/cd678b9f1c4f">https://www.jianshu.com/p/cd678b9f1c4f</a><br>
+		<a target="_blank"
+			href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/SVG_animation_with_SMIL">https://developer.mozilla.org/zh-CN/docs/Web/SVG/SVG_animation_with_SMIL</a>
+	</div>
+
+	<svg width="150px" height="150px">
+		<polygon
+			points="6,66 6,18 12,12 18,12 24,6 27,6 30,9 36,9 39,6 84,6 81,9 75,9 73.2,7 40.8,7 37.8,10.2 24,10.2 12,21 12,24 9,27 9,51 7.8,54 7.8,63"
+			fill="#4fd2dd">
+			<animate attributeName="fill" values="#4fd2dd;#235fa7;#4fd2dd" dur="0.5s" begin="0s"
+				repeatCount="indefinite">
+			</animate>
+		</polygon>
+		<polygon points="27,4.8 38.4,4.8 35.4,7.8 30,7.8" fill="#235fa7">
+			<animate attributeName="fill" values="#235fa7;#4fd2dd;#235fa7" dur="0.5s" begin="0s"
+				repeatCount="indefinite">
+			</animate>
+		</polygon>
+		<polygon points="9,54 9,63 7,66 7,75 7.8,78 7.8,110 8.4,110 8.4,66 9.6,66 9.6,54" fill="#4fd2dd">
+			<animate attributeName="fill" values="#4fd2dd;#235fa7;transparent" dur="1s" begin="0s"
+				repeatCount="indefinite">
+			</animate>
+		</polygon>
+	</svg>
+
+	<svg width="360" height="125" class="dv-svg-container">
+		<defs>
+			<linearGradient id="border-box-9-gradient-1581911182971" x1="11.616%" y1="0%" x2="88.384%" y2="100%">
+				<animate attributeName="x1" values="0%;100%;0%" dur="10s" begin="0s" repeatCount="indefinite">
+				</animate>
+				<animate attributeName="x2" values="100%;0%;100%" dur="10s" begin="0s" repeatCount="indefinite">
+				</animate>
+				<stop offset="0%" stop-color="#11eefd">
+					<animate attributeName="stop-color" values="#11eefd;#0078d2;#11eefd" dur="10s" begin="0s"
+						repeatCount="indefinite"></animate>
+				</stop>
+				<stop offset="100%" stop-color="#0078d2">
+					<animate attributeName="stop-color" values="#0078d2;#11eefd;#0078d2" dur="10s" begin="0s"
+						repeatCount="indefinite"></animate>
+				</stop>
+			</linearGradient>
+			<mask id="border-box-9-mask-1581911182971">
+				<polyline stroke="#fff" stroke-width="3" fill="transparent" points="8, 50 8, 3, 151, 3">
+				</polyline>
+				<polyline fill="#fff" points="8, 18.75 8, 3, 43, 3  36, 8 14, 8 14, 11.75"></polyline>
+				<polyline stroke="#fff" stroke-width="3" fill="transparent" points="180, 3 357, 3, 357, 31.25">
+				</polyline>
+				<polyline fill="#fff" points="187, 3 208, 3 201, 9 194, 9">
+				</polyline>
+				<polyline fill="#fff" points="324, 3 357, 3 357, 12.5  351, 5.5 351, 9 331, 9"></polyline>
+				<polyline stroke="#fff" stroke-width="3" fill="transparent" points="8, 62.5 8, 122 115, 122">
+				</polyline>
+				<polyline fill="#fff" points="  8, 68.75 8, 87.5  2, 80.5 2, 75.75"></polyline>
+				<polyline stroke="#fff" stroke-width="3" fill="transparent" points="126, 122 357, 122 357, 43.75">
+				</polyline>
+				<polyline fill="#fff" points="  331.2, 122 357, 122 357, 100  351, 107 351, 116 338.2, 116"></polyline>
+			</mask>
+		</defs>
+		<rect x="0" y="0" width="360" height="125" fill="url(#border-box-9-gradient-1581911182971)"
+			mask="url(#border-box-9-mask-1581911182971)"></rect>
+	</svg>
+
+	<svg width="360px" height="10px">
+		<rect x="0" y="5" width="137.168" height="1" fill="#3faacb">
+			<animate attributeName="width" from="0" to="360" dur="6s" calcMode="spline" keyTimes="0;1"
+				keySplines=".42,0,.58,1" repeatCount="indefinite"></animate>
+		</rect>
+		<rect x="137.168" y="5" width="1" height="1" fill="#fff">
+			<animate attributeName="x" from="0" to="360" dur="6s" calcMode="spline" keyTimes="0;1"
+				keySplines="0.42,0,0.58,1" repeatCount="indefinite"></animate>
+		</rect>
+	</svg>
+
+	<svg width="200px" height="200px" viewBox="-100 -100 200 200">
+		<g>
+			<rect x="-30" y="-30" width="60" height="60" fill="red">
+				<animateTransform attributeName="transform" begin="zoom.end" dur="4s" type="rotate" from="0 0 0"
+					to="360 0 0" repeatCount="indefinite" />
+				<set attributeName="fill" to="blue" begin="3s" />
+			</rect>
+			<animateTransform id="zoom" attributeName="transform" begin="0s" dur="1s" type="scale" values="1;2"
+				fill="freeze" />
+		</g>
+	</svg>
+
+	<svg width="200px" height="200px" viewBox="-100 -100 200 200">
+		<rect x="-30" y="-30" width="60" height="60" fill="red">
+			<animateTransform attributeName="transform" begin="0s" dur="1s" type="rotate" from="0 0 0" to="90 0 0"
+				repeatCount="indefinite" />
+			<animate attributeName="opacity" begin="0s" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+			<animate attributeName="fill" begin="0s" values="red;blue;red" dur="3s" repeatCount="indefinite" />
+		</rect>
+	</svg>
+
+	<!-- 点击动画 -->
+	<svg width="200px" height="200px" viewBox="-100 -100 200 200">
+		<rect x="-100" y="-15" rx="5" ry="5" width="30" height="30" fill="red">
+			<animate attributeName="x" to="70" begin="txt.click" dur="2s" />
+		</rect>
+		<text id="txt" x="-100" y="-80" fill="#cd0000" font-size="20" style="cursor: pointer;">点击</text>
+	</svg>
+
+	<!-- 路径动画 -->
+	<svg width="200px" height="200px" viewBox="-400 -400 800 800">
+		<rect x="-25" y="-25" width="50" height="50" fill="rgba(0,255,255,.6)">
+			<animateMotion dur="3s" rotate="auto" fill="freeze">
+				<mpath xlink:href="#path1" />
+			</animateMotion>
+		</rect>
+		<path id="path1" d="M 0 0 L 100 100 A 200 200 0 1 0 0 -100" fill="none" stroke="gray"></path>
+	</svg>
+
+	<svg width="200px" height="200px" viewBox="-400 -400 800 800">
+		<circle cx="0" cy="0" r="5" fill="red"></circle>
+		<circle cx="0" cy="-100" r="5" fill="yellow"></circle>
+		<rect x="-25" y="-25" rx="5" ry="5" width="50" height="50" fill="red">
+			<animateMotion id="clockwise" path="M 0 0 L 100 100 A 200 200 0 1 0 0 -100" dur="3s" rotate="auto"
+				begin="0; counterclockwise.end + 1s" fill="freeze"></animateMotion>
+			<animateMotion id="counterclockwise" path="M 0 -100 A 200 200 0 1 1 100 100 L 0 0" dur="3s"
+				begin="clockwise.end + 1s" rotate="auto" fill="freeze"></animateMotion>
+			<animate id="toYellow" attributeType="XML" attributeName="fill" begin="0; toRed.end + 1s" from="red"
+				to="yellow" dur="3s" fill="freeze"></animate>
+			<animate id="toRed" attributeType="XML" attributeName="fill" begin="toYellow.end + 1s" from="yellow"
+				to="red" dur="3s" fill="freeze"></animate>
+		</rect>
+		<path id="motion-path" d="M 0 0 L 100 100 A 200 200 0 1 0 0 -100" fill="none" stroke="gray"></path>
+	</svg>
+
+	<!-- 累加动画 -->
+	<svg width="200" height="200">
+		<g>
+			<rect x="90" y="90" width="20" height="20">
+				<animateTransform attributeName="transform" type="scale" from="1" to="4" dur="5s" additive="sum"
+					fill="freeze" />
+			</rect>
+			<rect x="90" y="90" width="20" height="20" fill="red" />
+			<animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="5s"
+				fill="freeze" additive="sum" />
+		</g>
+	</svg>
+
+	<!-- 中心点 -->
+	<svg width="200" height="200">
+		<g style="transform-origin: center;">
+			<rect x="80" y="80" width="40" height="40">
+			</rect>
+			<rect x="90" y="90" width="20" height="20" fill="red" style="transform-origin: center;">
+				<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s"
+					repeatCount="indefinite" />
+			</rect>
+			<animateTransform attributeName="transform" type="scale" from="1 1" to="4 1" dur="5s" fill="freeze" />
+		</g>
+	</svg>
+
+	<!-- 蚂蚁线 -->
+	<svg width="200px" height="200px">
+		<rect x="2" y="2" rx="10" ry="10" width="196" height="196" stroke="url(#bColor)" stroke-opacity="0.5"
+			stroke-width="4" stroke-dasharray="20,10" fill="none">
+			<animate attributeName="stroke-dashoffset" begin="0s" values="0;30" dur="1s" repeatCount="indefinite" />
+		</rect>
+		<linearGradient id="bColor" x1="11.616%" y1="0%" x2="88.384%" y2="100%">
+			<animate attributeName="x1" values="0%;100%;0%" dur="10s" begin="0s" repeatCount="indefinite" />
+			<animate attributeName="x2" values="100%;0%;100%" dur="10s" begin="0s" repeatCount="indefinite" />
+			<stop offset="0%" stop-color="#f00">
+				<animate attributeName="stop-color" values="#f00;#00f;#f00" dur="10s" begin="0s"
+					repeatCount="indefinite" />
+			</stop>
+			<stop offset="100%" stop-color="#00f">
+				<animate attributeName="stop-color" values="#00f;#f00;#00f" dur="10s" begin="0s"
+					repeatCount="indefinite" />
+			</stop>
+		</linearGradient>
+	</svg>
+
+	<!-- 动态方块 -->
+	<svg width="320" height="110">
+		<linearGradient id="c11" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" stop-color="#00f" />
+			<stop offset="100%" stop-color="#06f" />
+		</linearGradient>
+		<g fill="url(#c11)">
+			<rect y="0  " x="0" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;1;1" dur="2s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="0" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="3s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="0" width="20" height="20"><animate attributeName="opacity" begin="0s" values="0;0;1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="0" width="20" height="20"><animate attributeName="opacity" begin="5s" values="1;0;0;1" dur="2s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="30" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;1;1" dur="2.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="30" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="1.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="30" width="20" height="20"><animate attributeName="opacity" begin="5s" values="1;0;0;1" dur="2.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="30" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;1;1" dur="5.4s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="60" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="2.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="60" width="20" height="20"><animate attributeName="opacity" begin="9s" values="0;0;1;0" dur="7.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="60" width="20" height="20"><animate attributeName="opacity" begin="8s" values="1;0;1;1" dur="1.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="60" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;0;1" dur="5.4s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="90" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="2.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="90" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;1;1" dur="3.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="90" width="20" height="20"><animate attributeName="opacity" begin="5s" values="0;0;1;0" dur="7.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="90" width="20" height="20"><animate attributeName="opacity" begin="1s" values="1;0;0;1" dur="1.4s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="120" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;1;1" dur="9.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="120" width="20" height="20"><animate attributeName="opacity" begin="9s" values="1;0;1;1" dur="1.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="120" width="20" height="20"><animate attributeName="opacity" begin="1s" values="1;0;1;0" dur="5.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="120" width="20" height="20"><animate attributeName="opacity" begin="0s" values="0;0;1;0" dur="1.4s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="150" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;1;1" dur="6.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="150" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="1.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="150" width="20" height="20"><animate attributeName="opacity" begin="6s" values="1;0;1;1" dur="7.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="150" width="20" height="20"><animate attributeName="opacity" begin="4s" values="1;0;1;1" dur="5.4s" repeatCount="indefinite" /></rect>
+	
+			<rect y="0  " x="180" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;1;1" dur="9.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="180" width="20" height="20"><animate attributeName="opacity" begin="7s" values="0;0;1;1" dur="2.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="180" width="20" height="20"><animate attributeName="opacity" begin="1s" values="1;0;1;1" dur="3.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="180" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="1.4s" repeatCount="indefinite" /></rect>
+			
+			<rect y="0  " x="210" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;1;1" dur="7.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="210" width="20" height="20"><animate attributeName="opacity" begin="2s" values="0;0;1;0" dur="2.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="210" width="20" height="20"><animate attributeName="opacity" begin="9s" values="1;0;1;1" dur="5.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="210" width="20" height="20"><animate attributeName="opacity" begin="0s" values="1;0;1;1" dur="9.4s" repeatCount="indefinite" /></rect>
+			
+			<rect y="0  " x="240" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;1;1" dur="3.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="240" width="20" height="20"><animate attributeName="opacity" begin="0s" values="0;0;1;0" dur="1.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="240" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;0;1" dur="5.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="240" width="20" height="20"><animate attributeName="opacity" begin="6s" values="1;0;1;1" dur="7.4s" repeatCount="indefinite" /></rect>
+			
+			<rect y="0  " x="270" width="20" height="20"><animate attributeName="opacity" begin="2s" values="1;0;0;1" dur="2.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="270" width="20" height="20"><animate attributeName="opacity" begin="7s" values="0;0;1;0" dur="9.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="270" width="20" height="20"><animate attributeName="opacity" begin="3s" values="1;0;0;1" dur="3.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="270" width="20" height="20"><animate attributeName="opacity" begin="6s" values="1;0;1;1" dur="1.4s" repeatCount="indefinite" /></rect>
+			
+			<rect y="0  " x="300" width="20" height="20"><animate attributeName="opacity" begin="6s" values="1;1;0;1" dur="2.1s" repeatCount="indefinite" /></rect>
+			<rect y="30 " x="300" width="20" height="20"><animate attributeName="opacity" begin="1s" values="0;0;1;0" dur="5.2s" repeatCount="indefinite" /></rect>
+			<rect y="60 " x="300" width="20" height="20"><animate attributeName="opacity" begin="7s" values="1;0;0;1" dur="7.3s" repeatCount="indefinite" /></rect>
+			<rect y="90 " x="300" width="20" height="20"><animate attributeName="opacity" begin="9s" values="1;0;1;1" dur="2.4s" repeatCount="indefinite" /></rect>
+		</g>
+	</svg>
+
+	<!-- 动态柱状图 -->
+	<svg width="300" height="200">
+		<defs>
+			<linearGradient id="c12" x1="0%" y1="0%" x2="0%" y2="100%">
+				<stop offset="0%" stop-color="#00f" />
+				<stop offset="100%" stop-color="#06f" />
+			</linearGradient>
+		</defs>
+
+		<g id="g1" transform="scale(1, -1) translate(0, -200)" fill="url(#c12)">
+			<rect x="01%" width="8%" height="10%"><animate attributeName="height" begin="0s" values="10%;0%;10%" dur="1.1s" repeatCount="indefinite" /></rect>
+			<rect x="11%" width="8%" height="50%"><animate attributeName="height" begin="2s" values="50%;0%;50%" dur="2.2s" repeatCount="indefinite" /></rect>
+			<rect x="21%" width="8%" height="30%"><animate attributeName="height" begin="7s" values="30%;0%;30%" dur="3.3s" repeatCount="indefinite" /></rect>
+			<rect x="31%" width="8%" height="59%"><animate attributeName="height" begin="0s" values="59%;0%;59%" dur="7.4s" repeatCount="indefinite" /></rect>
+			<rect x="41%" width="8%" height="95%"><animate attributeName="height" begin="1s" values="95%;0%;95%" dur="8.5s" repeatCount="indefinite" /></rect>
+			<rect x="51%" width="8%" height="85%"><animate attributeName="height" begin="0s" values="85%;0%;85%" dur="2.6s" repeatCount="indefinite" /></rect>
+			<rect x="61%" width="8%" height="66%"><animate attributeName="height" begin="5s" values="66%;0%;66%" dur="3.7s" repeatCount="indefinite" /></rect>
+			<rect x="71%" width="8%" height="32%"><animate attributeName="height" begin="0s" values="32%;0%;32%" dur="5.8s" repeatCount="indefinite" /></rect>
+			<rect x="81%" width="8%" height="22%"><animate attributeName="height" begin="3s" values="22%;0%;22%" dur="1.9s" repeatCount="indefinite" /></rect>
+			<rect x="91%" width="8%" height="28%"><animate attributeName="height" begin="0s" values="28%;0%;28%" dur="3.7s" repeatCount="indefinite" /></rect>
+		</g>
+	</svg>
+	
+	<!-- 动态移动 -->
+	<svg width="200" height="200">
+		<defs>
+			<linearGradient id="c12" x1="0%" y1="0%" x2="0%" y2="100%">
+				<stop offset="0%" stop-color="#00f" />
+				<stop offset="100%" stop-color="#06f" />
+			</linearGradient>
+		</defs>
+
+		<g id="g1" transform="scale(1, -1) translate(0, -200)" fill="url(#c12)">
+			<rect x="01%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="5.1s" repeatCount="indefinite" /></rect>
+			<rect x="11%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="2.2s" repeatCount="indefinite" /></rect>
+			<rect x="21%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="3.3s" repeatCount="indefinite" /></rect>
+			<rect x="31%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="7.4s" repeatCount="indefinite" /></rect>
+			<rect x="41%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="8.5s" repeatCount="indefinite" /></rect>
+			<rect x="51%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="2.6s" repeatCount="indefinite" /></rect>
+			<rect x="61%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="3.7s" repeatCount="indefinite" /></rect>
+			<rect x="71%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="5.8s" repeatCount="indefinite" /></rect>
+			<rect x="81%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="9.9s" repeatCount="indefinite" /></rect>
+			<rect x="91%" width="8%" height="8%"><animate attributeName="y" begin="0" values="0%;92%;0%" dur="3.7s" repeatCount="indefinite" /></rect>
+		</g>
+	</svg>
+	
+	<!-- 雷达扫描 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<defs>
+			<linearGradient id="c13" x1="0%" y1="0%" x2="100%" y2="100%">
+				<stop offset="0%" stop-color="rgba(0,0,0,0.6)" />
+				<stop offset="100%" stop-color="rgba(0,0,0,0.9)" />
+			</linearGradient>
+			<mask id="mk1">
+				<circle cx="0" cy="0" r="47%" fill="#fff"></circle>
+			</mask>
+		</defs>
+
+		<g stroke="rgba(0,0,0,0.2)" stroke-width="1" fill="none">
+			<circle cx="0" cy="0" r="48%" fill="url(#c13)"></circle>
+			<circle cx="0" cy="0" r="38%"></circle>
+			<circle cx="0" cy="0" r="28%"></circle>
+			<circle cx="0" cy="0" r="18%"></circle>
+			<circle cx="0" cy="0" r="8%" ></circle>
+			<path d="M -96 0 L 96 0"></path>
+			<path d="M 0 -96 L 0 96"></path>
+			<path d="M -96 0 L 96 0" transform="rotate(45)"></path>
+			<path d="M -96 0 L 96 0" transform="rotate(-45)"></path>
+		</g>
+
+		<circle cx="0" cy="20%" r="3%" fill="#fff" opacity="0" transform="rotate(0)">  <animate attributeName="opacity" begin="0" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="10%" r="3%" fill="#fff" opacity="0" transform="rotate(180)"><animate attributeName="opacity" begin="2.5" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="30%" r="3%" fill="#fff" opacity="0" transform="rotate(72)"> <animate attributeName="opacity" begin="1" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="40%" r="3%" fill="#fff" opacity="0" transform="rotate(216)"><animate attributeName="opacity" begin="3" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="25%" r="3%" fill="#fff" opacity="0" transform="rotate(288)"><animate attributeName="opacity" begin="4" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="35%" r="3%" fill="#fff" opacity="0" transform="rotate(90)"> <animate attributeName="opacity" begin="1.25" values="1;0;0" dur="5s" repeatCount="indefinite" /></circle>
+
+		<g fill="#0f0" mask="url(#mk1)">
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="1"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.8" transform="rotate(-5)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.7" transform="rotate(-10)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.6" transform="rotate(-15)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.5" transform="rotate(-20)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.4" transform="rotate(-25)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.3" transform="rotate(-30)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.2" transform="rotate(-35)"></path>
+			<path d="M 0 0 L -4.2 96 L 4.2 96 Z" opacity="0.1" transform="rotate(-40)"></path>
+			<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s" repeatCount="indefinite" />
+		</g>
+		<circle cx="0" cy="0" r="2%" fill="#0f0"></circle>
+	</svg>
+	
+	<!-- 动态跳动圆弧 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<defs>
+			<radialgradient id="c14" r="90%">
+				<stop offset="0%" stop-color="#66f"></stop>
+				<stop offset="100%" stop-color="#00f"></stop>
+			</radialgradient>
+			<radialgradient id="c15" r="90%">
+				<stop offset="0%" stop-color="#6f6"></stop>
+				<stop offset="100%" stop-color="#0f0"></stop>
+			</radialgradient>
+			<mask id="mk2">
+				<rect x="-100" y="-100" width="100%" height="100%" fill="#fff"></rect>
+				<circle cx="0" cy="0" r="10%" fill="#000"></circle>
+			</mask>
+		</defs>
+
+		<g mask="url(#mk2)" fill="url(#c14)" stroke="#fff" stroke-width="2">
+			<path fill="url(#c14)" data-arc="0,30,70">   <animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="2.1s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="30,60,75">  <animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="1.2s" repeatCount="indefinite" /></path>
+			<path fill="url(#c14)" data-arc="60,90,63">  <animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="4.3s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="90,120,84"> <animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="1.4s" repeatCount="indefinite" /></path>
+			<path fill="url(#c14)" data-arc="120,150,90"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="2.5s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="150,180,77"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="3.6s" repeatCount="indefinite" /></path>
+			<path fill="url(#c14)" data-arc="180,210,61"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="5.7s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="210,240,79"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="4.8s" repeatCount="indefinite" /></path>
+			<path fill="url(#c14)" data-arc="240,270,88"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="1.9s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="270,300,92"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="2.1s" repeatCount="indefinite" /></path>
+			<path fill="url(#c14)" data-arc="300,330,53"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="3.2s" repeatCount="indefinite" /></path>
+			<path fill="url(#c15)" data-arc="330,360,68"><animateTransform attributeName="transform" type="scale" values="1;0.5;1" dur="2.3s" repeatCount="indefinite" /></path>
+			<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+		</g>
+	</svg>
+
+	<!-- 旋转圆弧 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<path data-arc="0,45,95,99"    fill="hsl(100,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="5s" repeatCount="indefinite" /></path>
+		<path data-arc="20,75,90,94"   fill="hsl(120,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="10s" repeatCount="indefinite" /></path>
+		<path data-arc="90,125,85,89"  fill="hsl(140,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="5s" repeatCount="indefinite" /></path>
+		<path data-arc="25,185,80,84"  fill="hsl(160,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="7s" repeatCount="indefinite" /></path>
+		<path data-arc="110,177,75,79" fill="hsl(180,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="10s" repeatCount="indefinite" /></path>
+		<path data-arc="189,300,70,74" fill="hsl(220,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="3s" repeatCount="indefinite" /></path>
+		<path data-arc="15,72,65,69"   fill="hsl(240,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="6s" repeatCount="indefinite" /></path>
+		<path data-arc="33,278,60,64"  fill="hsl(260,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="1s" repeatCount="indefinite" /></path>
+		<path data-arc="210,320,55,59" fill="hsl(280,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="6s" repeatCount="indefinite" /></path>
+		<path data-arc="250,360,50,54" fill="hsl(200,100%,50%)"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="1s" repeatCount="indefinite" /></path>
+	</svg>
+
+	<!-- 点旋转 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<g stroke="#FFF" stroke-width="1" fill="none">
+			<circle cx="0" cy="0" r="45%"></circle>
+			<circle cx="0" cy="0" r="40%"></circle>
+			<circle cx="0" cy="0" r="35%"></circle>
+			<circle cx="0" cy="0" r="30%"></circle>
+		</g>
+		<g fill="#0f0">
+			<circle cx="0" cy="45%"  r="3%"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="4.6s" repeatCount="indefinite" /></circle>
+			<circle cx="40%" cy="0"  r="3%"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="3.3s" repeatCount="indefinite" /></circle>
+			<circle cx="0" cy="-35%" r="3%"><animateTransform attributeName="transform" type="rotate" values="360;0" dur="2.4s" repeatCount="indefinite" /></circle>
+			<circle cx="-30%" cy="0" r="3%"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="7.1s" repeatCount="indefinite" /></circle>
+		</g>
+	</svg>
+
+	<!-- 圆弧 -->
+	<style>
+		.path-hover path{
+			transition: all 0.5s;
+		}
+		.path-hover path:hover{
+			transform: scale(1.1);
+		}
+	</style>
+	<svg id="svgArc1" class="path-hover" width="200" height="200" viewBox="-100 -100 200 200"></svg>
+	<svg id="svgArc2" class="path-hover" width="200" height="200" viewBox="-100 -100 200 200"></svg>
+	
+	<!-- 圆水波动画 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<circle cx="0" cy="0" r="50%" fill="#030"><animate attributeName="fill" begin="2.0" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="45%" fill="#030"><animate attributeName="fill" begin="1.8" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="40%" fill="#030"><animate attributeName="fill" begin="1.6" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="35%" fill="#030"><animate attributeName="fill" begin="1.4" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="30%" fill="#030"><animate attributeName="fill" begin="1.2" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="25%" fill="#030"><animate attributeName="fill" begin="1.0" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="20%" fill="#030"><animate attributeName="fill" begin="0.8" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="15%" fill="#030"><animate attributeName="fill" begin="0.6" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="10%" fill="#030"><animate attributeName="fill" begin="0.4" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+		<circle cx="0" cy="0" r="5%"  fill="#030"><animate attributeName="fill" begin="0.2" values="#0f0;#030;#030" dur="2s" repeatCount="indefinite" /></circle>
+	</svg>
+
+	<!-- 圆扩散动画 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<g stroke="#00f" stroke-width="4%" fill="none">
+			<circle cx="0" cy="0" r="48%" opacity="0">
+				<animate attributeName="opacity" begin="0" values="1;0" dur="2s" repeatCount="indefinite" />
+				<animateTransform attributeName="transform" begin="0" type="scale" values="0.1;1" dur="2s" repeatCount="indefinite" />
+			</circle>
+			<circle cx="0" cy="0" r="48%" opacity="0">
+				<animate attributeName="opacity" begin="0.5" values="1;0" dur="2s" repeatCount="indefinite" />
+				<animateTransform attributeName="transform" begin="0.5" type="scale" values="0.1;1" dur="2s" repeatCount="indefinite" />
+			</circle>
+			<circle cx="0" cy="0" r="48%" opacity="0">
+				<animate attributeName="opacity" begin="1" values="1;0" dur="2s" repeatCount="indefinite" />
+				<animateTransform attributeName="transform" begin="1" type="scale" values="0.1;1" dur="2s" repeatCount="indefinite" />
+			</circle>
+			<circle cx="0" cy="0" r="48%" opacity="0">
+				<animate attributeName="opacity" begin="1.5" values="1;0" dur="2s" repeatCount="indefinite" />
+				<animateTransform attributeName="transform" begin="1.5" type="scale" values="0.1;1" dur="2s" repeatCount="indefinite" />
+			</circle>
+		</g>
+	</svg>
+
+	<!-- 幻影动画 -->
+	<svg width="200" height="20">
+		<g fill="#00f">
+			<rect x="0"   y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.1" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="10%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.2" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="20%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.3" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="30%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.4" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="40%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.5" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="50%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.6" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="60%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.7" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="70%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.8" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="80%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="0.9" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+			<rect x="90%" y="0" width="9%" height="100%" opacity="0"><animate attributeName="opacity" begin="1.0" values="1;0" dur="1s" repeatCount="indefinite" /></rect>
+		</g>
+	</svg>
+	
+	<!-- 进度条 -->
+	<svg width="200" height="20">
+		<defs>
+			<linearGradient id="c16" x1="0%" y1="0%" x2="100%" y2="0%">
+				<stop offset="0%" stop-color="#00f" />
+				<stop offset="100%" stop-color="#009" />
+			</linearGradient>
+			<mask id="mk3">
+				<rect x="0" y="0" width="100%" height="100%" fill="#fff"></rect>
+				<rect x="10%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="20%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="30%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="40%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="50%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="60%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="70%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="80%" y="10%" width="1" height="80%" fill="#000"></rect>
+				<rect x="90%" y="10%" width="1" height="80%" fill="#000"></rect>
+			</mask>
+		</defs>
+		<rect x="0" y="0" width="0%" height="100%" fill="url(#c16)" mask="url(#mk3)"><animate attributeName="width" from="0" to="100%" dur="60s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0 .75 .25 1" /></rect>
+	</svg>
+	
+	<!-- 旋转圆弧Loading -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<g fill="#00f" stroke="#fff" stroke-width="2">
+			<path data-arc="  0, 30,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.1" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc=" 30, 60,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.2" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc=" 60, 90,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.3" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc=" 90,120,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.4" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="120,150,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.5" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="150,180,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.6" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="180,210,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.7" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="210,240,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.8" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="240,270,50,80" opacity="0.2"><animate attributeName="opacity" begin="0.9" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="270,300,50,80" opacity="0.2"><animate attributeName="opacity" begin="1.0" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="300,330,50,80" opacity="0.2"><animate attributeName="opacity" begin="1.1" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+			<path data-arc="330,360,50,80" opacity="0.2"><animate attributeName="opacity" begin="1.2" values="1;0.2;0.2" dur="1.2s" repeatCount="indefinite" /></path>
+		</g>
+	</svg>
+
+	<!-- 六边形 -->
+	<svg width="180" height="207.84" viewBox="-90 -103.92 180 207.84">
+		<defs>
+			<path id="RR6" d="M-10 -17.32 L10 -17.32 L20 0 L10 17.32 L-10 17.32 L-20 0 Z" />
+			<g id="RR6S" stroke="#000" stroke-width="1">
+				<use xlink:href="#RR6" transform="translate(-120,0)"></use>
+				<use xlink:href="#RR6" transform="translate(-60,0)"></use>
+				<use xlink:href="#RR6" transform="translate(0,0)"></use>
+				<use xlink:href="#RR6" transform="translate(60,0)"></use>
+				<use xlink:href="#RR6" transform="translate(120,0)"></use>
+			</g>
+			<linearGradient id="cR1">
+				<stop offset="0%" stop-color="#aff" />
+				<stop offset="100%" stop-color="#eff" />
+			</linearGradient>
+			<linearGradient id="cR2">
+				<stop offset="0%" stop-color="#faf" />
+				<stop offset="100%" stop-color="#fef" />
+			</linearGradient>
+			<linearGradient id="cR3">
+				<stop offset="0%" stop-color="#ffa" />
+				<stop offset="100%" stop-color="#ffe" />
+			</linearGradient>
+		</defs>
+
+		<use xlink:href="#RR6S" fill="url(#cR3)" transform="translate(0,-103.92)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR1)" transform="translate(30,-86.6)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR2)" transform="translate(0,-69.28)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR3)" transform="translate(30,-51.96)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR1)" transform="translate(0,-34.64)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR2)" transform="translate(30,-17.32)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR3)" transform="translate(0,0)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR1)" transform="translate(30,17.32)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR2)" transform="translate(0,34.64)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR3)" transform="translate(30,51.96)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR1)" transform="translate(0,69.28)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR2)" transform="translate(30,86.6)"></use>
+		<use xlink:href="#RR6S" fill="url(#cR3)" transform="translate(0,103.92)"></use>
+	</svg>
+	
+	<!-- 边框动画 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<path id="path2" d="M -100 -100 L 100 -100 L 100 100 L -100 100 Z" fill="none" stroke="#000" stroke-width="3"></path>
+		<rect x="0" y="0" width="1.5" height="1.5" fill="#fff">
+			<animateMotion dur="20s" rotate="auto" repeatCount="indefinite">
+				<mpath xlink:href="#path2" />
+			</animateMotion>
+		</rect>
+	</svg>
+	
+	<!-- 路径动画 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<path id="path3" d="M0,0 Q30,30 35,30 T60,60 T70,60 T70,30 T70,0 T10,0 T-40,-40 T-20,-20 T0,0 Z" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"></path>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="1.0"><animateMotion begin="0.0" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.9"><animateMotion begin="0.1" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.8"><animateMotion begin="0.2" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.7"><animateMotion begin="0.3" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.6"><animateMotion begin="0.4" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.5"><animateMotion begin="0.5" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.4"><animateMotion begin="0.6" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.3"><animateMotion begin="0.7" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.2"><animateMotion begin="0.8" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<rect x="-2" y="-2" width="4" height="4" fill="#0f0" opacity="0.1"><animateMotion begin="0.9" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion></rect>
+		<image xlink:href="https://i.52112.com/icon/256/20160419/18173/299023.png" x="-10" y="-17" height="20" width="20">
+			<animateMotion begin="2" dur="15s" rotate="auto" repeatCount="indefinite"><mpath xlink:href="#path3" /></animateMotion>
+		</image>
+	</svg>
+
+	<script>
+		$(function () {
+			// JS
+			let svgArc1 = $('#svgArc1')[0];
+			addArcPath1(svgArc1, 90, 0, 45, 'blue');
+			addArcPath1(svgArc1, 90, 45, 128, 'red');
+			addArcPath1(svgArc1, 90, 128, 265, 'green');
+			addArcPath1(svgArc1, 90, 265, 360, 'gray');
+			
+			let svgArc2 = $('#svgArc2')[0];
+			addArcPath2(svgArc2, 30, 90, 0, 45, 'blue');
+			addArcPath2(svgArc2, 30, 85, 45, 128, 'red');
+			addArcPath2(svgArc2, 30, 76, 128, 360, 'green');
+
+			// 动态计算圆弧
+			$('path[data-arc]').each(function(){
+				let arc = $(this).data('arc');
+				let vals = arc.split(',');
+				let d = '';
+				if (vals.length == 3){
+					d = arcPath1(vals[2], vals[0], vals[1]);
+				}else if (vals.length == 4){
+					d = arcPath2(vals[2], vals[3], vals[0], vals[1]);
+				}
+				if (d){
+					this.setAttribute('d', d);
+				}
+			});
+		});
+
+		var Arc = {
+			// 中心点
+			centerX:0,
+			centerY:0,
+			center:function(x, y){
+				this.centerX = x;
+				this.centerY = y;
+			},
+
+			//角度转弧度
+			d2a:function(ang){
+				return ang * Math.PI / 180;
+			},
+			
+			//根据角度求坐标
+			point:function(r, ang) {
+				return {
+					x: this.centerX + r * Math.sin(d2a(ang)),
+					y: this.centerY - r * Math.cos(d2a(ang))
+				}
+			},
+			
+			// 获取圆弧路径
+			arcPath1:function(r, deg1, deg2)
+			{
+				//画扇形的三个步骤                   
+				let arr = [];
+				//第一步
+				let { x: x1, y: y1 } = point(r, deg1);
+				arr.push(`M 0 0 L ${x1} ${y1}`);//画第一条线
+				//第二步
+				let { x: x2, y: y2 } = point(r, deg2);
+				arr.push(`A ${r} ${r} 0 ${deg2 - deg1 > 180 ? 1 : 0} 1 ${x2} ${y2}`);//画弧
+				//第三步
+				arr.push('Z');//闭合
+
+				return arr.join(' ');
+			},
+			
+		function addArcPath1(oSvg, r, deg1, deg2, color){
+			
+			let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			oPath.setAttribute('fill', color);
+
+			let p = arcPath1(r, deg1, deg2);
+
+			oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
+			oSvg.appendChild(oPath);//添加到svg中
+		}
+		
+		function arcPath2(r1, r2, deg1, deg2)
+		{
+			//画扇形的三个步骤
+			let arr = [];
+			//第一步
+			let { x: x1, y: y1 } = point(r2, deg1);
+			arr.push(`M ${x1} ${y1}`);//画第一条线
+			//第二步
+			let { x: x2, y: y2 } = point(r2, deg2);
+			arr.push(`A ${r2} ${r2} 0 ${deg2 - deg1 > 180 ? 1 : 0} 1 ${x2} ${y2}`);//画弧
+			//第三步
+			let { x: x3, y: y3 } = point(r1, deg2);
+			let { x: x4, y: y4 } = point(r1, deg1);
+			arr.push(`L ${x3} ${y3} A ${r1} ${r1} 0 ${deg2 - deg1 > 180 ? 1 : 0} 0 ${x4} ${y4}`);//画弧
+			//第四步
+			arr.push('Z');//闭合
+
+			return arr.join(' ');
+		}
+		function addArcPath2(oSvg, r1, r2, deg1, deg2, color){
+			
+			let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			oPath.setAttribute('fill', color);
+
+			let p = arcPath2(r1, r2, deg1, deg2);
+
+			oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
+			oSvg.appendChild(oPath);//添加到svg中
+		}
+		};
+		
+	</script>
+
+</body>
+
+</html>
