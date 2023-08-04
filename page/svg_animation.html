@@ -596,6 +596,14 @@
 		</image>
 	</svg>
 
+	<!-- 轮廓动画 -->
+	<svg width="200" height="200" viewBox="-100 -100 200 200">
+		<path id="path2" d="M -100 -100 L 100 -100 Q 100 100 0 0 L -100 100 Z" fill="none" stroke="#000" stroke-width="3">
+			<animate id="am1" attributeName="d" begin="0;am2.end" to="M -50 -50 L 50 -50 Q 30 30 -50 -50 L -50 50 Z" dur="1s" fill="freeze" />
+			<animate id="am2" attributeName="d" begin="am1.end" to="M -100 -100 L 100 -100 Q 100 100 0 0 L -100 100 Z" dur="1s" />
+		</path>
+	</svg>
+
 	<script>
 		$(function () {
 			// JS
