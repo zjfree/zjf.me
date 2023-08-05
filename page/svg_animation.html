@@ -608,15 +608,15 @@
 		$(function () {
 			// JS
 			let svgArc1 = $('#svgArc1')[0];
-			addArcPath1(svgArc1, 90, 0, 45, 'blue');
-			addArcPath1(svgArc1, 90, 45, 128, 'red');
-			addArcPath1(svgArc1, 90, 128, 265, 'green');
-			addArcPath1(svgArc1, 90, 265, 360, 'gray');
+			Arc.addArcPath1(svgArc1, 90, 0, 45, 'blue');
+			Arc.addArcPath1(svgArc1, 90, 45, 128, 'red');
+			Arc.addArcPath1(svgArc1, 90, 128, 265, 'green');
+			Arc.addArcPath1(svgArc1, 90, 265, 360, 'gray');
 			
 			let svgArc2 = $('#svgArc2')[0];
-			addArcPath2(svgArc2, 30, 90, 0, 45, 'blue');
-			addArcPath2(svgArc2, 30, 85, 45, 128, 'red');
-			addArcPath2(svgArc2, 30, 76, 128, 360, 'green');
+			Arc.addArcPath2(svgArc2, 30, 90, 0, 45, 'blue');
+			Arc.addArcPath2(svgArc2, 30, 85, 45, 128, 'red');
+			Arc.addArcPath2(svgArc2, 30, 76, 128, 360, 'green');
 
 			// 动态计算圆弧
 			$('path[data-arc]').each(function(){
@@ -624,9 +624,9 @@
 				let vals = arc.split(',');
 				let d = '';
 				if (vals.length == 3){
-					d = arcPath1(vals[2], vals[0], vals[1]);
+					d = Arc.arcPath1(vals[2], vals[0], vals[1]);
 				}else if (vals.length == 4){
-					d = arcPath2(vals[2], vals[3], vals[0], vals[1]);
+					d = Arc.arcPath2(vals[2], vals[3], vals[0], vals[1]);
 				}
 				if (d){
 					this.setAttribute('d', d);
@@ -651,8 +651,8 @@
 			//根据角度求坐标
 			point:function(r, ang) {
 				return {
-					x: this.centerX + r * Math.sin(d2a(ang)),
-					y: this.centerY - r * Math.cos(d2a(ang))
+					x: this.centerX + r * Math.sin(this.d2a(ang)),
+					y: this.centerY - r * Math.cos(this.d2a(ang))
 				}
 			},
 			
@@ -662,10 +662,10 @@
 				//画扇形的三个步骤                   
 				let arr = [];
 				//第一步
-				let { x: x1, y: y1 } = point(r, deg1);
-				arr.push(`M 0 0 L ${x1} ${y1}`);//画第一条线
+				let { x: x1, y: y1 } = this.point(r, deg1);
+				arr.push(`M ${this.centerX} ${this.centerY} L ${x1} ${y1}`);//画第一条线
 				//第二步
-				let { x: x2, y: y2 } = point(r, deg2);
+				let { x: x2, y: y2 } = this.point(r, deg2);
 				arr.push(`A ${r} ${r} 0 ${deg2 - deg1 > 180 ? 1 : 0} 1 ${x2} ${y2}`);//画弧
 				//第三步
 				arr.push('Z');//闭合
@@ -673,46 +673,47 @@
 				return arr.join(' ');
 			},
 			
-		function addArcPath1(oSvg, r, deg1, deg2, color){
+			addArcPath1:function(oSvg, r, deg1, deg2, color){
+				
+				let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				oPath.setAttribute('fill', color);
+
+				let p = this.arcPath1(r, deg1, deg2);
+
+				oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
+				oSvg.appendChild(oPath);//添加到svg中
+			},
 			
-			let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-			oPath.setAttribute('fill', color);
+			arcPath2:function(r1, r2, deg1, deg2)
+			{
+				//画扇形的三个步骤
+				let arr = [];
+				//第一步
+				let { x: x1, y: y1 } = this.point(r2, deg1);
+				arr.push(`M ${x1} ${y1}`);//画第一条线
+				//第二步
+				let { x: x2, y: y2 } = this.point(r2, deg2);
+				arr.push(`A ${r2} ${r2} 0 ${deg2 - deg1 > 180 ? 1 : 0} 1 ${x2} ${y2}`);//画弧
+				//第三步
+				let { x: x3, y: y3 } = this.point(r1, deg2);
+				let { x: x4, y: y4 } = this.point(r1, deg1);
+				arr.push(`L ${x3} ${y3} A ${r1} ${r1} 0 ${deg2 - deg1 > 180 ? 1 : 0} 0 ${x4} ${y4}`);//画弧
+				//第四步
+				arr.push('Z');//闭合
 
-			let p = arcPath1(r, deg1, deg2);
+				return arr.join(' ');
+			},
 
-			oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
-			oSvg.appendChild(oPath);//添加到svg中
-		}
-		
-		function arcPath2(r1, r2, deg1, deg2)
-		{
-			//画扇形的三个步骤
-			let arr = [];
-			//第一步
-			let { x: x1, y: y1 } = point(r2, deg1);
-			arr.push(`M ${x1} ${y1}`);//画第一条线
-			//第二步
-			let { x: x2, y: y2 } = point(r2, deg2);
-			arr.push(`A ${r2} ${r2} 0 ${deg2 - deg1 > 180 ? 1 : 0} 1 ${x2} ${y2}`);//画弧
-			//第三步
-			let { x: x3, y: y3 } = point(r1, deg2);
-			let { x: x4, y: y4 } = point(r1, deg1);
-			arr.push(`L ${x3} ${y3} A ${r1} ${r1} 0 ${deg2 - deg1 > 180 ? 1 : 0} 0 ${x4} ${y4}`);//画弧
-			//第四步
-			arr.push('Z');//闭合
+			addArcPath2:function(oSvg, r1, r2, deg1, deg2, color){
+				
+				let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				oPath.setAttribute('fill', color);
 
-			return arr.join(' ');
-		}
-		function addArcPath2(oSvg, r1, r2, deg1, deg2, color){
-			
-			let oPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-			oPath.setAttribute('fill', color);
+				let p = this.arcPath2(r1, r2, deg1, deg2);
 
-			let p = arcPath2(r1, r2, deg1, deg2);
-
-			oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
-			oSvg.appendChild(oPath);//添加到svg中
-		}
+				oPath.setAttribute('d', p);//拼接字符串，执行绘画命令
+				oSvg.appendChild(oPath);//添加到svg中
+			}
 		};
 		
 	</script>
