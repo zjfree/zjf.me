@@ -1,0 +1,239 @@
+<!-- 五子棋 zjfree 2023-09-05 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五子棋</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#tbList{
+	width: 70vmin;
+	height: 70vmin;
+	margin: 0 auto;
+	border-collapse: collapse;
+	border:solid 1px #000;
+	outline: solid 2px #000;
+	outline-offset: 3px;
+}
+#tbList td{
+	border:solid 1px #000;
+	line-height: 0;
+	background-color: #eee;
+}
+.zi{
+	position:absolute;
+	opacity: 0;
+}
+.zi>div{
+	border-radius: 50%;
+	background-color: #eee;
+	width: 80%;
+	height: 80%;
+	margin-top:10%;
+	margin-left:10%;
+	border:solid 1px gray;
+}
+.zi[data-status=idle]:hover{
+	opacity: 0.5;
+}
+.zi[data-status=black],.zi[data-status=white]{
+	opacity: 1;
+}
+.zi[data-status=black]>div{
+	border:solid 1px #000;
+	background-color: #000;
+}
+.zi[data-status=white]>div{
+	border:solid 1px #000;
+	background-color: #fff;
+}
+
+h1{
+	text-align: center;
+}
+h1 small{
+	color: #ddd;
+}
+h1 small.active{
+	color: #00f;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1><small id="player_white">白棋</small> . 五子棋 . <small id="player_black">黑棋</small></h1>
+
+<table id="tbList"></table>
+
+<script>
+$(function(){
+	// JS
+	Chess.init();
+});
+
+var Chess = {
+	size:10,
+	rectSize:0,
+	curPlayer:'black',
+	init:function(){
+		// 棋盘
+		this.rectSize = ($('#tbList').width()) / this.size;
+		let html = '';
+		for (let x=0; x<this.size; x++)
+		{
+			let tr = '<tr>';
+			for (let y=0; y<this.size; y++)
+			{
+				tr += '<td></td>';
+			}
+			tr += '</tr>';
+			html += tr;
+		}
+		$('#tbList').html(html);
+		document.documentElement.style.setProperty('--size', this.size);
+
+		// 棋子
+		$('.zi').remove();
+		let baseX = $('#tbList').offset().left;
+		let baseY = $('#tbList').offset().top;
+		for (let x=0; x<this.size+1; x++)
+		{
+			for (let y=0; y<this.size+1; y++)
+			{
+				let zi = $('<div data-status="idle"><div></div></div>');
+				zi.addClass('zi');
+				zi.css({
+					width:this.rectSize+'px',
+					height:this.rectSize+'px',
+					left:(baseX+x*this.rectSize-0.5*this.rectSize)+'px',
+					top:(baseY+y*this.rectSize-0.5*this.rectSize)+'px',
+				});
+				$('body').append(zi);
+				zi.attr('id', `el_${x}_${y}`);
+			}
+		}
+		$('.zi').click(function(){
+			let status = $(this).data('status');
+			if (status != 'idle') return;
+
+			if (Chess.curPlayer == 'black')
+			{
+				$(this).attr('data-status', 'black');
+				$(this).data('status', 'black');
+				Chess.setPlayer('white');
+			}
+			else
+			{
+				$(this).attr('data-status', 'white');
+				$(this).data('status', 'white');
+				Chess.setPlayer('black');
+			}
+			Chess.checkSuccess();
+		});
+
+		// 黑旗优先
+		this.setPlayer('black');
+	},
+	setPlayer:function(status){
+		this.curPlayer = status;
+		$('h1 small').removeClass('active');
+		$('#player_' + status).addClass('active');
+	},
+	checkSuccess:function(){
+		let el = '';
+		for (let x=0; x<this.size+1; x++)
+		{
+			for (let y=0; y<this.size+1; y++)
+			{
+				if (this.checkZi(x, y))
+				{
+					el = `el_${x}_${y}`;
+					break;
+				}
+			}
+		}
+		if (el != ''){
+			let status = $('#'+el).data('status');
+			if (status == 'black'){
+				alert('黑方胜利');
+			}else{
+				alert('白方胜利');
+			}
+
+			window.location.reload();
+		}
+	},
+	checkZi:function(x, y){
+		let el = $(`#el_${x}_${y}`);
+		let status = el.data('status');
+		if (status == 'idle'){
+			return false;
+		}
+
+		let count = 0;
+		let x1=0;
+		let y1=0;
+
+		// 横判断
+		for (let x1=x; x1<x+5; x1++){
+			let el = $(`#el_${x1}_${y}`);
+			if (el.length == 0) break;
+			if (el.data('status') != status) break;
+			count++;
+		}
+		if (count == 5) return true;
+
+		// 竖判断
+		count = 0;
+		for (let y1=y; y1<y+5; y1++){
+			let el = $(`#el_${x}_${y1}`);
+			if (el.length == 0) break;
+			if (el.data('status') != status) break;
+			count++;
+		}
+		if (count == 5) return true;
+
+		// 左斜判断
+		count = 0;
+		x1 = x;
+		y1 = y;
+		for (let i=0; i<5; i++){
+			let el = $(`#el_${x1}_${y1}`);
+			if (el.length == 0) break;
+			if (el.data('status') != status) break;
+			count++;
+			x1--;
+			y1++;
+		}
+		if (count == 5) return true;
+
+		// 右斜判断
+		count = 0;
+		x1 = x;
+		y1 = y;
+		for (let i=0; i<5; i++){
+			let el = $(`#el_${x1}_${y1}`);
+			if (el.length == 0) break;
+			if (el.data('status') != status) break;
+			count++;
+			x1++;
+			y1++;
+		}
+		if (count == 5) return true;
+	},
+};
+
+</script>
+
+</body>
+</html>
