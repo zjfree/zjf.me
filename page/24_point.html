@@ -38,6 +38,10 @@ body{
 <button onclick="buildNum();">生成</button>
 &nbsp;
 <button onclick="$('#divResult').show()">显示答案</button>
+<br><br>
+<input id="txtNums" type="text" pattern="输入4个数字" />
+<button onclick="calcNum();">计算</button>
+
 <div id="divNum"></div>
 <div id="divResult"></div>
 
@@ -76,6 +80,7 @@ function randNum()
 	return 1 + Math.floor(Math.random() * 10);
 }
 
+// 计算2个数的值
 function calc(a, b)
 {
 	let list = [];
@@ -89,9 +94,50 @@ function calc(a, b)
 	return list;
 }
 
+// 计算手工输入结果
+function calcNum()
+{
+	let str = $('#txtNums').val().trim().replace('，', ',');
+	let arr = str.split(',');
+	if (arr.length != 4)
+	{
+		alert('必须4个数字');
+		return;
+	}
+
+	let numList = [];
+	for (let r of arr)
+	{
+		let v = parseInt(r);
+		if (v<1||v>10){
+			alert('数字必须在1~10之间');
+			return;
+		}
+		numList.push({
+			val:v,
+			str:v,
+		});
+	}
+
+	let calcList = getCalcList(numList);
+	if (calcList.length == 0)
+	{
+		$('#divResult').html('无结果').show();
+	}
+	else
+	{
+		let result = '';
+		for (let r of calcList)
+		{
+			result += r.str.substring(1, r.str.length-1) + '<br>';
+		}
+		$('#divResult').html(result);
+	}
+}
+
+// 随机生成4个数
 function build()
 {
-	let calcList = [];
 	let nums = [];
 	for (let i=0; i<4; i++)
 	{
@@ -102,10 +148,19 @@ function build()
 		});
 	}
 
+	let calcList = getCalcList(nums);
+
+	return [nums, calcList];
+}
+
+// 计算结果
+function getCalcList(nums)
+{
 	console.log(nums);
 	let allList = getNumsList(nums);
 	console.log(allList);
 
+	let calcList = [];
 	for (let all of allList)
 	{
 		calcList = calcList.concat(calc1(all[0], all[1], all[2], all[3]));	// (a+b)+(c+d)
@@ -125,7 +180,7 @@ function build()
 		}
 	}
 
-	return [nums, calcList];
+	return calcList;
 }
 
 // 去重
