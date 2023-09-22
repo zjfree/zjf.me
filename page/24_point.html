@@ -24,6 +24,8 @@ body{
 }
 #divResult{
 	color:blue;
+	font-size:30px;
+	line-height: 1.5;
 }
 </style>
 
@@ -61,7 +63,7 @@ function buildNum()
 		let result = '';
 		for (let r of calcList)
 		{
-			result += r.str + '<br>';
+			result += r.str.substring(1, r.str.length-1) + '<br>';
 		}
 		$('#divResult').html(result);
 		break;
