@@ -1,0 +1,235 @@
+<!-- 24点计算 zjfree 2023-09-21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24点计算</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+	text-align: center;
+}
+#divNum, #divResult{
+	font-size:36px;
+	margin-top:10px;
+	border-top: solid 1px gray;
+	font-weight: bold;
+	padding:10px 0;
+}
+#divResult{
+	color:blue;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>24点算法</h1>
+
+<button onclick="buildNum();">生成</button>
+&nbsp;
+<button onclick="$('#divResult').show()">显示答案</button>
+<div id="divNum"></div>
+<div id="divResult"></div>
+
+<script>
+$(function(){
+	// JS
+	buildNum();
+});
+
+function buildNum()
+{
+	while (true)
+	{
+		let res = build();
+		let nums = res[0];
+		let calcList = res[1];
+		if (calcList.length == 0)
+		{
+			continue;
+		}
+		$('#divNum').html(nums[0].val + ', ' + nums[1].val + ', ' + nums[2].val + ', ' + nums[3].val);
+		$('#divResult').hide();
+		let result = '';
+		for (let r of calcList)
+		{
+			result += r.str + '<br>';
+		}
+		$('#divResult').html(result);
+		break;
+	}
+}
+
+// 随机生成 1~10 之间的数字
+function randNum()
+{
+	return 1 + Math.floor(Math.random() * 10);
+}
+
+function calc(a, b)
+{
+	let list = [];
+	list.push({op:'+', a:a, b:b, val:a.val+b.val, str:`(${a.str}+${b.str})`});
+	list.push({op:'-', a:a, b:b, val:a.val-b.val, str:`(${a.str}-${b.str})`});
+	if (a!=b) list.push({op:'-', a:b, b:a, val:b.val-a.val, str:`(${b.str}-${a.str})`});
+	list.push({op:'*', a:a, b:b, val:a.val*b.val, str:`(${a.str}*${b.str})`});
+	if (b!=0) list.push({op:'/', a:a, b:b, val:a.val/b.val, str:`(${a.str}/${b.str})`});
+	if (a!=0 && a!=b) list.push({op:'/', a:b, b:a, val:b.val/a.val, str:`(${b.str}/${a.str})`});
+
+	return list;
+}
+
+function build()
+{
+	let calcList = [];
+	let nums = [];
+	for (let i=0; i<4; i++)
+	{
+		let v = randNum();
+		nums.push({
+			val:v,
+			str:v,
+		});
+	}
+
+	console.log(nums);
+	let allList = getNumsList(nums);
+	console.log(allList);
+
+	for (let all of allList)
+	{
+		calcList = calcList.concat(calc1(all[0], all[1], all[2], all[3]));	// (a+b)+(c+d)
+		calcList = calcList.concat(calc2(all[0], all[1], all[2], all[3]));	// ((a+b)+c)+d
+		calcList = calcList.concat(calc3(all[0], all[1], all[2], all[3]));	// a+(b+c)+d
+	}
+
+	if (calcList.length > 0)
+	{
+		if (calcList.length > 1)
+		{
+			calcList = distinct(calcList);
+		}
+		for (let r of calcList)
+		{
+			console.log(r.str);
+		}
+	}
+
+	return [nums, calcList];
+}
+
+// 去重
+function distinct(list) {
+	let result = [list[0]];// 用于承接没有重复的数据，初始时将原始数组的第一个值赋给它。
+	for (let i = 1; i < list.length; i++) {
+		// 判断结果数组中是否存在一样的值，若果没有的话则将数据存入结果数组中。
+		if (!(result.some(val => list[i].str === val.str))) {
+			result.push(list[i]);
+		}
+	}
+	return result;
+}
+
+function getNumsList(nums)
+{
+	let list = [];
+	if (nums.length == 2)
+	{
+		return [
+			[nums[0], nums[1]],
+			[nums[1], nums[0]],
+		];
+	}
+
+	for (let i=0; i<nums.length; i++)
+	{
+		let list1 = [];
+		for (let j=0; j<nums.length; j++)
+		{
+			if (j!=i){
+				list1.push(nums[j]);
+			}
+		}
+		let list2 = getNumsList(list1);
+		for (let k=0; k<list2.length; k++)
+		{
+			list2[k].splice(i,0,nums[i]);
+			list.push(list2[k]);
+		}
+	}
+
+	return list;
+}
+
+// (a+b)+(c+d)
+function calc1(t1,t2,t3,t4)
+{
+	let list = [];
+	let v1 = calc(t1, t2);
+	let v2 = calc(t3, t4);
+
+	for (let v1v of v1){
+		for (let v2v of v2){
+			let vv = calc(v1v, v2v);
+			for (let v of vv){
+				if (v.val == 24){
+					list.push(v);
+				}
+			}
+		}
+	}
+
+	return list;
+}
+
+// ((a+b)+c)+d
+function calc2(t1,t2,t3,t4)
+{
+	let list = [];
+	let v1 = calc(t1, t2);
+
+	for (let v1v of v1){
+		let v2 = calc(v1v, t3);
+		for (let v2v of v2){
+			let vv = calc(v2v, t4);
+			for (let v of vv){
+				if (v.val == 24){
+					list.push(v);
+				}
+			}
+		}
+	}
+	return list;
+}
+
+// a+(b+c)+d
+function calc3(t1,t2,t3,t4)
+{
+	let list = [];
+	let v1 = calc(t2, t3);
+
+	for (let v1v of v1){
+		let v2 = calc(v1v, t1);
+		for (let v2v of v2){
+			let vv = calc(v2v, t4);
+			for (let v of vv){
+				if (v.val == 24){
+					list.push(v);
+				}
+			}
+		}
+	}
+	return list;
+}
+</script>
+
+</body>
+</html>
