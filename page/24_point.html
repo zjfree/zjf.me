@@ -97,8 +97,8 @@ function calc(a, b)
 // 计算手工输入结果
 function calcNum()
 {
-	let str = $('#txtNums').val().trim().replace('，', ',');
-	let arr = str.split(',');
+	let str = $('#txtNums').val().trim().replaceAll('，', ',').replaceAll(',', '.');
+	let arr = str.split('.');
 	if (arr.length != 4)
 	{
 		alert('必须4个数字');
