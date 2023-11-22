@@ -1,0 +1,146 @@
+<!-- 串口读取 zjfree 2023-11-22 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>串口读取</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>串口读取</h1>
+
+波特率：<input id="numBaud" type="number" value="1200" style="width: 100px;" />
+<button onclick="portOpen();">打开串口</button>
+<button onclick="portClose();">关闭串口</button>
+<button onclick="portList();">串口列表</button>
+&emsp;
+<input id="txtSend" type="text" placeholder="发送内容" />
+<button onclick="portSend();">发送</button>
+&emsp;
+<button onclick="clearLog();">清空显示</button>
+
+<hr>
+<div id="divInfo"></div>
+
+<script>
+
+function showInfo(str, color='#000')
+{
+	$('#divInfo').prepend('<p style="color:' + color + ';">' + str + '</p>');
+}
+
+var port = null;
+var isOpen = false;
+var reader = null;
+var writer = null;
+
+// 打开串口读取
+async function portOpen()
+{
+	// 提示用户选择一个串口
+	port = await navigator.serial.requestPort();
+
+	// 等待串口打开
+	await port.open({ baudRate: parseInt($('#numBaud').val()) });
+	isOpen = true;
+	showInfo('打开串口');
+
+	reader = port.readable.getReader();
+	writer = port.writable.getWriter();
+	while (port.readable && isOpen) {
+		while (true) {
+			try {
+				let { value, done } = await reader.read();
+				if (done) {
+					reader.releaseLock();
+					writer.releaseLock();
+					port.close();
+					showInfo('串口关闭');
+					break;
+				}
+				if (value) {
+					//showInfo(value, '#00f');
+					showInfo(Uint8ArrayToString(value), '#00f');
+				}
+			} catch (error) {
+				// 错误处理
+				showInfo(error, '#f00');
+			}
+		}
+	}
+}
+
+// 关闭串口
+async function portClose()
+{
+	if (!isOpen) return;
+
+	reader.cancel();
+	isOpen = false;
+}
+
+// 串口列表
+async function portList()
+{
+	const ports = await navigator.serial.getPorts();
+	for (let r of ports)
+	{
+		console.log(r.getInfo());
+	}
+}
+
+function Uint8ArrayToString(fileData){
+  var dataString = "";
+  for (var i = 0; i < fileData.length; i++) {
+    dataString += String.fromCharCode(fileData[i]);
+  }
+ 
+  return dataString
+}
+
+// 发送数据
+async function portSend()
+{
+	let str = $('#txtSend').val();
+	if (str == '') return;
+
+	let data = new Uint8Array(str.split("").map((s) => s.charCodeAt(0)));
+	await writer.write(data);
+
+	showInfo("SEND: " + str, '#0f0');
+}
+
+// 清空显示
+function clearLog()
+{
+	$('#divInfo').html('');
+}
+
+$(function(){
+	// JS
+	if ('serial' in navigator)
+	{
+		showInfo('支持串口读取');
+	}
+	else
+	{
+		showInfo('不支持串口读取', 'red');
+	}
+});
+</script>
+
+</body>
+</html>
