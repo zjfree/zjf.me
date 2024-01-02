@@ -1,0 +1,80 @@
+<!-- Windows符号字体 zjfree 2024-01-02 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows符号字体</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#tbList{
+	border-collapse: collapse;
+	border:solid 2px gray;
+	font-size:20px;
+}
+#tbList th,#tbList td{
+	text-align: center;
+	border:solid 1px gray;
+	padding:5px 10px;
+	vertical-align: middle;
+}
+.ft{
+	font-weight: bold;
+	color:blue;
+	font-size:36px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>Windows 符号字体</h1>
+
+<table id="tbList">
+	<thead>
+		<tr>
+			<th>序号</th>
+			<th>字符</th>
+			<th>代码</th>
+			<th>Webdings</th>
+			<th>Wingdings</th>
+			<th>Wingdings 2</th>
+			<th>Wingdings 3</th>
+			<th>Symbol</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+
+<script>
+$(function(){
+	// JS
+	let html = '';
+	for (let i=33; i<256; i++)
+	{
+		html += '<tr>';
+		html += '<td>' + i + '</td>';
+		html += '<td>&#' + i + ';</td>';
+		html += '<td>&# ' + i + ';</td>';
+		html += '<td class="ft" style="font-family:\'Webdings\';">' + String.fromCharCode(i) + '</td>';
+		html += '<td class="ft" style="font-family:\'Wingdings\';">' + String.fromCharCode(i) + '</td>';
+		html += '<td class="ft" style="font-family:\'Wingdings 2\';">' + String.fromCharCode(i) + '</td>';
+		html += '<td class="ft" style="font-family:\'Wingdings 3\';">' + String.fromCharCode(i) + '</td>';
+		html += '<td class="ft" style="font-family:\'Symbol\';">' + String.fromCharCode(i) + '</td>';
+		html += '</tr>';
+	}
+
+	$('#tbList tbody').html(html);
+});
+</script>
+
+</body>
+</html>
