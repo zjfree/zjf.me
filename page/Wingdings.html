@@ -38,8 +38,13 @@ body{
 <!-- 内容 -->
 <h1>Windows 符号字体</h1>
 
+<div style="position:fixed; right:10px; bottom:10px; padding:10px; background: #eee;" >
+	字体大小：
+	<input id="rangeFontSize" type="range" min="20" max="100" value="36" />
+</div>
+
 <table id="tbList">
-	<thead>
+	<thead style="position:sticky; top:30px;">
 		<tr>
 			<th>序号</th>
 			<th>字符</th>
@@ -73,6 +78,10 @@ $(function(){
 	}
 
 	$('#tbList tbody').html(html);
+
+	$('#rangeFontSize').bind('input', function(){
+		$('.ft').css('font-size', $(this).val() + 'px');
+	});
 });
 </script>
 
