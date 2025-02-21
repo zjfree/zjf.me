@@ -114,6 +114,14 @@
 		亮度 L: <input id="rangeL" type="range" min="0" max="100" value="50" /><br>
 	</div>
 
+	<h3>OKLCH颜色</h3>
+	<div id="divColor9" class="color"></div>
+	<div class="op">
+		明度 L: <input id="rangeOKL" type="range" min="0" max="100" value="100" /><br>
+		色度 C: <input id="rangeOKC" type="range" min="0" max="0.5" step="0.001" value="0.2" /><br>
+		色相 H: <input id="rangeOKH" type="range" min="0" max="360" value="50" /><br>
+	</div>
+
 	<h3>简单颜色</h3>
 	<div>
 		<span class="clr">#000</span>
@@ -182,6 +190,14 @@
 			c += $('#rangeL').val() + '%)';
 			$('#divColor2').html(c);
 			$('#divColor2').css('background', c);
+		}
+		function colorOklch() {
+			let c = 'oklch(';
+			c += $('#rangeOKL').val() + '% ';
+			c += $('#rangeOKC').val() + ' ';
+			c += $('#rangeOKH').val() + ')';
+			$('#divColor9').html(c);
+			$('#divColor9').css('background', c);
 		}
 
 		function showColor1() {
@@ -287,6 +303,8 @@
 			colorRgb();
 			$('#rangeH, #rangeS, #rangeL').bind('input', colorHsl);
 			colorHsl();
+			$('#rangeOKL, #rangeOKC, #rangeOKH').bind('input', colorOklch);
+			colorOklch();
 
 			// 安全色
 			let safe = ['0', '3', '6', '9', 'C', 'F'];
