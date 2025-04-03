@@ -36,6 +36,15 @@ h1{
 #tbList div{
 	background-color: #fff;
 	box-shadow: inset 0 0 5px #eee;
+}      
+* {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+#divPlayButton button{
+	padding:5px 10px;
 }
 </style>
 
@@ -51,10 +60,10 @@ h1{
 	<div style="text-align: center; margin:10px; margin-top:20px;">
 		<button id="btnPlay" onclick="game.play()">开始</button>
 		<div id="divPlayButton" style="display: none; font-size:2em;">
-			<button id="btnLeft">&lt;</button>
+			<button id="btnLeft">&lt;</button> &nbsp;
 			<button id="btnRight">&gt;</button>
 			&emsp;
-			<button id="btnDown">⇊</button>
+			<button id="btnDown">⇊</button> &nbsp;
 			<button id="btnRotate">↻</button>
 		</div>
 		<div style="margin-top:10px;">
