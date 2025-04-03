@@ -334,7 +334,7 @@ var game = {
 		window.clearInterval(this.autoSpeedTimer);
 		this.autoSpeedTimer = window.setInterval(()=>{
 			if (game.autoDownSpeed > 100){
-				game.autoDownSpeed -= 10;
+				game.autoDownSpeed -= 5;
 				$('#bSpeed').text(game.autoDownSpeed);
 				game.autoDown();
 			}else{
