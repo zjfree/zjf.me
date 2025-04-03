@@ -1,0 +1,579 @@
+<!-- 俄罗斯方块 zjfree 2025-04-03 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>俄罗斯方块</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0;
+	margin:0;
+}
+#divMain{
+	max-width: 500px;
+	margin:0 auto;
+	padding:0 10px;
+}
+h1{
+	text-align:center;	
+}
+#tbList{
+	border: solid 1px #fff;
+	outline: solid 3px #000;
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+#tbList td{
+	border: solid 1px #fff;
+}
+#tbList div{
+	background-color: #fff;
+	box-shadow: inset 0 0 5px #eee;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div id="divMain">
+	<h1>俄罗斯方块</h1>
+
+	<table id="tbList"></table>
+
+	<div style="text-align: center; margin:10px; margin-top:20px;">
+		<button id="btnPlay" onclick="game.play()">开始</button>
+		<div id="divPlayButton" style="display: none; font-size:2em;">
+			<button id="btnLeft">&lt;</button>
+			<button id="btnRight">&gt;</button>
+			&emsp;
+			<button id="btnDown">⇊</button>
+			<button id="btnRotate">↻</button>
+		</div>
+		<div style="margin-top:10px;">
+			<span>得分：<b id="bScore">0</b></span> &emsp;
+			<span>速度：<b id="bSpeed">500</b></span>
+		</div>
+	</div>
+</div>
+
+<script>
+var game = {
+	// 配置
+	config:{
+		w:20,
+		h:25,
+	},
+
+	isPlay: false, // 是否开始
+
+	curShape:null, // 当前形状
+
+	autoDownTimer:null, // 自动下落
+
+	autoDownSpeed:500, // 自动下落速度
+
+	curScore:0, // 当前分数
+
+	level:8, // 等级
+
+	// 初始化
+	init:function(){
+		let tb = $('#tbList').width();
+		let tbHtml = '';
+		for (let y=0; y<this.config.h; y++){
+			tbHtml += '<tr>';
+			for (let x=0; x<this.config.w; x++){
+				tbHtml += '<td><div class="empty z_' + x + '_' + y + '"></div></td>';
+			}
+			tbHtml += '</tr>';
+		}
+		$('#tbList').append(tbHtml);
+		let size = $('#tbList td').eq(0).innerWidth()-1;
+		$('#tbList td').css({'height':size});
+		$('#tbList div').css({'height':size});
+	},
+
+	// 预先设置的形状
+	shapeList:[
+		[
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[1,1,1,1,1],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[1,1,1,1,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,0,1,0,0],
+			[0,1,1,1,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,0,0],
+			[0,0,1,1,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,0,0],
+			[0,0,1,0,0],
+			[0,0,1,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,0,1,1,0],
+			[0,0,1,0,0],
+			[0,0,1,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,0,1,0,0],
+			[0,0,1,1,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,0,0],
+			[0,1,1,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,0,0],
+			[0,0,1,0,0],
+			[0,0,1,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,1,0],
+			[0,0,1,0,0],
+			[0,1,1,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,0,1,0],
+			[0,1,1,1,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,0,1,0],
+			[0,1,1,1,0],
+			[0,0,0,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,0,1,0,0],
+			[0,1,1,1,0],
+			[0,0,1,0,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,1,0],
+			[0,1,0,1,0],
+			[0,1,1,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,0,0,0],
+			[0,1,0,0,0],
+			[0,1,1,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,0,0,0],
+			[0,1,1,1,0],
+			[0,0,0,1,0],
+			[0,0,0,0,0],
+		],
+		[
+			[0,0,0,0,0],
+			[0,1,1,1,0],
+			[0,0,1,0,0],
+			[0,0,1,0,0],
+			[0,0,0,0,0],
+		],
+	],
+
+	// 开始
+	play: function(){
+		if (this.isPlay){
+			return;	
+		}
+
+		$('#btnPlay').hide();
+		$('#divPlayButton').show();
+
+		$('#tbList div').css({'background-color':'#fff'});
+		$('#tbList div').addClass('empty');
+		this.curScore = 0;
+		this.level = 8;
+		$('#bScore').text(0);
+		this.autoDownSpeed = 500;
+		$('#bSpeed').text(this.autoDownSpeed);
+		this.isPlay = true;
+		this.createRandomShape();
+		this.drawShape();
+		this.autoDown();
+		this.autoSpeed();
+	},
+
+	// 结束
+	stop: function(){
+		if (!this.isPlay){
+			return;
+		}
+		
+		$('#btnPlay').show();
+		$('#divPlayButton').hide();
+
+		window.clearInterval(this.autoSpeedTimer);
+		window.clearInterval(this.autoDownTimer);
+		this.isPlay = false;
+		alert('游戏结束，分数：' + this.curScore);
+	},
+
+	// 随机形状
+	createRandomShape:function(){
+		let level = Math.min(this.level, this.shapeList.length);
+		let index = Math.floor(Math.random()*level);
+		this.curShape = {
+			shape:this.shapeList[index],
+			x: this.config.w/2 - 2,
+			y: -4,
+			color:'hsl(' + this.randomNum(100,360) + ',50%,50%)',
+		};
+		this.curShape.xx = this.curShape.x;
+		this.curShape.yy = this.curShape.y;
+	},
+
+	// 随机数字
+	randomNum:function(min,max){
+		return Math.floor(Math.random()*(max-min+1)) + min;	
+	},
+
+	// 绘制形状
+	drawShape:function(){
+		if (!this.isPlay){
+			return;
+		}
+		if (!this.curShape){
+			return;	
+		}
+		if (!this.checkEdge()){
+			return;
+		}
+		this.curShape.x = this.curShape.xx;
+		this.curShape.y = this.curShape.yy;
+		$('#tbList div.empty').css({'background-color':'#fff'});
+		for (let y=0; y<this.curShape.shape.length; y++){
+			for (let x=0; x<this.curShape.shape[y].length; x++){
+				if (this.curShape.shape[y][x] == 0){
+					continue;	
+				}
+				let xx = this.curShape.x+x;
+				let yy = this.curShape.y+y;
+				let el = $('.z_' + xx + '_' + yy);
+				if (el.length == 0){
+					continue;
+				}
+				el.css({'background-color':this.curShape.color});
+			}
+		}
+	},
+
+	// 自动下落
+	autoDown:function(){
+		window.clearInterval(this.autoDownTimer);
+		this.autoDownTimer = window.setInterval(()=>{
+			game.curShape.yy++;
+			game.drawShape();
+		}, this.autoDownSpeed);
+	},
+
+	// 自动加速
+	autoSpeed:function(){
+		window.clearInterval(this.autoSpeedTimer);
+		this.autoSpeedTimer = window.setInterval(()=>{
+			if (game.autoDownSpeed > 100){
+				game.autoDownSpeed -= 10;
+				$('#bSpeed').text(game.autoDownSpeed);
+				game.autoDown();
+			}else{
+				game.level++;
+			}
+		}, 10000);
+	},
+
+	// 判断边缘和是否落地
+	checkEdge:function(){
+		if (this.curShape.xx == this.curShape.x && this.curShape.yy == this.curShape.y){
+			return true;
+		}
+		let bo = true;
+		outerLoop: for (let y=0; y<this.curShape.shape.length; y++){
+			for (let x=0; x<this.curShape.shape[y].length; x++){
+				if (this.curShape.shape[y][x] == 0){
+					continue;	
+				}
+				let xx = this.curShape.xx+x;
+				let yy = this.curShape.yy+y;
+				if (xx < 0 || xx >= this.config.w){
+					bo = false;
+					break outerLoop;
+				}
+				if (yy >= this.config.h){
+					this.fixShape();
+					return false;
+				}
+				let el = $('.z_' + xx + '_' + yy);
+				if (el.length == 0){
+					continue;
+				}
+				if (!el.hasClass('empty')){
+					if (this.curShape.yy > this.curShape.y){
+						this.fixShape();
+						return false;
+					}
+					bo = false;
+					break outerLoop;
+				}
+			}
+		}
+
+		if (!bo){
+			this.curShape.xx = this.curShape.x;
+			this.curShape.yy = this.curShape.y;
+		}
+
+		return bo;
+	},
+
+	// 固定位置，并生成新的形状
+	fixShape:function(){
+
+		// 绘制已经落地的形状
+		for (let y=0; y<this.curShape.shape.length; y++){
+			for (let x=0; x<this.curShape.shape[y].length; x++){
+				if (this.curShape.shape[y][x] == 0){
+					continue;	
+				}
+				let xx = this.curShape.x+x;
+				let yy = this.curShape.y+y;
+				let el = $('.z_' + xx + '_' + yy);
+				el.removeClass('empty');
+				el.css({'background-color':this.curShape.color});
+			}
+		}
+
+		// 判断是否有满行
+		for (let y=0; y<this.config.h; y++){
+			let isFull = true;
+			for (let x=0; x<this.config.w; x++){
+				let el = $('.z_' + x + '_' + y);
+				if (el.hasClass('empty')){
+					isFull = false;
+					break;
+				}
+			}
+			if (isFull){
+				console.log('消除一行', y);
+				// 消除一行
+				this.curScore += this.config.w;
+				$('#bScore').text(this.curScore);
+				for (let x=0; x<this.config.w; x++){
+					let el = $('.z_' + x + '_' + y);
+					el.removeClass('empty');
+				}
+				// 上面的行往下移动
+				for (let yy=y; yy>0; yy--){
+					for (let x=0; x<this.config.w; x++){
+						let el = $('.z_' + x + '_' + yy);
+						let el2 = $('.z_' + x + '_' + (yy-1));
+
+						if (el2.hasClass('empty')){
+							el.addClass('empty');
+							el.css({'background-color':'#fff'});
+						}else{
+							el.removeClass('empty');	
+							el.css({'background-color':el2.css('background-color')});
+						}
+						el2.addClass('empty');
+						el2.css({'background-color':'#fff'});
+					}		
+				}
+			}
+		}
+
+		// 判断是否游戏结束
+		if (this.curShape.y < 0){
+			this.stop();
+			return;
+		}
+
+		this.createRandomShape();
+	},
+
+	// 旋转
+	rotateShape:function(){
+		let shape = this.curShape.shape;
+		let shape2 = [];
+		for (let y=0; y<shape.length; y++){
+			shape2[y] = [];
+			for (let x=0; x<shape[y].length; x++){
+				shape2[y][x] = shape[shape[y].length-1-x][y];
+			}
+		}
+
+		// 判断是否超出边界
+		if (!this.checkRotateEdge(shape2)){
+			return;
+		}
+
+		this.curShape.shape = shape2;
+		this.drawShape();
+	},
+
+	// 判断旋转是否超出边界
+	checkRotateEdge:function(shape){
+		for (let y=0; y<shape.length; y++){
+			for (let x=0; x<shape[y].length; x++){
+				if (shape[y][x] == 0){
+					continue;
+				}
+				let xx = this.curShape.x+x;
+				let yy = this.curShape.y+y;
+				if (xx < 0 || xx >= this.config.w){
+					return false;
+				}
+				if (yy >= this.config.h){
+					return false;
+				}
+				let el = $('.z_' + xx + '_' + yy);
+				if (el.length == 0){
+					continue;
+				}
+				if (!el.hasClass('empty')){
+					return false;	
+				}
+			}	
+		}
+
+		return true;	
+	}
+};
+
+
+var btnTimer = null;
+$(function(){
+	// JS
+	game.init();
+	game.play();
+
+	// 键盘
+	$(document).keydown(function(e){
+		// 阻止键盘默认事件
+		e.preventDefault();
+		e.stopPropagation();
+		switch(e.keyCode){
+			case 37: // 左
+				game.curShape.xx--;
+				break;
+			case 39: // 右
+				game.curShape.xx++;
+				break;
+			case 40: // 下
+				game.curShape.yy++;
+				break;
+			case 38: // 旋转
+				game.rotateShape();
+				break;
+		}
+		game.drawShape();
+	});
+
+	$('#btnLeft').click(function(){
+		game.curShape.xx--;
+		game.drawShape();
+	});
+
+	$('#btnRight').click(function(){
+		game.curShape.xx++;
+		game.drawShape();
+	});
+
+	$('#btnDown').click(function(){
+		game.curShape.yy++;
+		game.drawShape();
+	});
+
+	$('#btnRotate').click(function(){
+		game.rotateShape();
+	});
+
+	// 当左右下持续按下时，持续执行，兼容手机触摸按下
+	$('#btnLeft').on('mousedown touchstart', function(e){
+		window.clearInterval(btnTimer);
+		btnTimer = window.setInterval(()=>{
+			game.curShape.xx--;
+			game.drawShape();
+		}, 100);
+	}).on('mouseup mouseout touchend', function(e){
+		window.clearInterval(btnTimer);
+	});
+
+	$('#btnRight').on('mousedown touchstart', function(e){
+		window.clearInterval(btnTimer);
+		btnTimer = window.setInterval(()=>{
+			game.curShape.xx++;
+			game.drawShape();
+		}, 100);	
+	}).on('mouseup mouseout touchend', function(e){
+		window.clearInterval(btnTimer);
+	});
+
+	$('#btnDown').on('mousedown touchstart', function(e){
+		window.clearInterval(btnTimer);
+		btnTimer = window.setInterval(()=>{
+			game.curShape.yy++;
+			game.drawShape();
+		}, 100);
+	}).on('mouseup mouseout touchend', function(e){
+		window.clearInterval(btnTimer);	
+	});
+});
+
+
+</script>
+
+</body>
+</html>
