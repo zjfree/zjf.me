@@ -1,0 +1,138 @@
+<!-- 随机数测试01 zjfree 2025-07-16 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>随机数测试01</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#tbList{
+	border-collapse: collapse;
+	border: solid 2px gray;
+	margin-top: 10px;
+}
+#tbList th,#tbList td{
+	text-align: center;
+	border: solid 1px gray;
+	padding: 5px 10px;
+}
+#tbList th{
+	background-color: #eee;
+}
+#tbList td{
+	font-family: 'Courier New', Courier, monospace;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>随机数测试01</h1>
+
+<div>
+	每次随机产生0或1，生成多少次后，可以生成连续的001、100、110等，谁先产生的概率高？
+</div>
+
+<div style="margin-top: 10px;">
+	<button onclick="calc();">计算</button>
+	计算次数：
+	<input id="txtCount" type="number" value="1000" min="10" />
+	次
+</div>
+
+<table id="tbList">
+	<thead>
+		<tr>
+			<th>产生值</th>
+			<th>位置</th>
+			<th>平均位置</th>
+			<th>最近10组值</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+
+<script>
+var list = [];
+
+for (let x=0; x<2; x++){
+	for (let y=0; y<2; y++){
+		for (let z=0; z<2; z++){
+			list.push(''+x+y+z);
+		}
+	}
+}
+
+$(function(){
+	// JS
+	let html = '';
+	for (let x=0; x<list.length; x++){
+		let item = list[x];
+		html += '<tr>';
+		html += '<td>'+item+'</td>';
+		html += '<td></td>';
+		html += '<td></td>';
+		html += '<td></td>';
+		html += '</tr>';
+	}
+	$('#tbList tbody').html(html);
+});
+
+function calc()
+{
+	let count = $('#txtCount').val();
+	
+	let resArr = [];
+	for (let i=0; i<list.length; i++){
+		resArr.push({
+			name:list[i],
+			curPos:0,
+			avgPos:0,
+			sumPos:0,
+			posList:[],
+		});
+	}
+
+	for (let i=0; i<resArr.length; i++){
+		for (let c=0; c<count; c++){
+			let str = '';
+			let pos = 0;
+			while(true)
+			{
+				pos++;
+				let r = Math.floor(Math.random()*2);
+				str += r;
+				if (str.length < 3){
+					continue;
+				}
+				if (str.substring(str.length-3) == resArr[i].name){
+					resArr[i].curPos = pos;
+					resArr[i].sumPos += pos;
+					resArr[i].posList.push(pos);
+					break;
+				}
+			}
+		}
+
+		resArr[i].avgPos = resArr[i].sumPos / count;
+
+		let tr = $('#tbList tbody tr').eq(i);
+		tr.find('td').eq(1).html(resArr[i].curPos);
+		tr.find('td').eq(2).html(resArr[i].avgPos);
+		tr.find('td').eq(3).html(resArr[i].posList.slice(-10).join(','));
+	}
+}
+</script>
+
+</body>
+</html>
