@@ -1,0 +1,89 @@
+<!-- 行内编辑 zjfree 2025-08-06 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>行内编辑</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+	/* css style */
+	body{
+		padding:0 10px;
+	}
+
+	h1{
+		text-align: center;
+	}
+
+    #divEditor{
+        width: 500px;
+        min-height: 300px;
+        resize: both;
+        border: 1px solid #000;
+        line-height: 1.5;
+        text-align: left;
+		margin:10px auto;
+		padding:10px;
+    }
+    #divEditor span{
+        display: inline;
+        padding: 0 1em;
+        border-bottom: 1px solid #000;
+        color:blue;
+    }
+    #divEditor span:focus{
+        color:darkred;
+    }
+	#divEditor .wline{
+		display: inline-block;
+		min-width: 100px;
+	}
+	#divEditor .brline{
+		display:block;
+        padding: 0 1em;
+        border-bottom: none;
+		background-image: 
+			repeating-linear-gradient(
+				to bottom,
+				transparent,
+				transparent calc(1.5em - 1px),  /* 空白高度 = 行高 - 1px线条 */
+				#000 calc(1.5em - 1px),      /* 横线位置 */
+				#000 calc(1.5em)       /* 横线粗细1px */
+			);
+	}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+	<h1>行内编辑测试</h1>
+    <div id="divEditor" edit>
+	姓名：<span>张三</span>，性别：<span>男</span>，年龄：<span>32</span> 岁<br>
+	学校：<span>中国科学院材料研究所</span> 学历：<span>博士</span>。<br>
+	职业经历：<span class="wline"></span>。<br>
+	人生目标：<span class="wline"></span>。<br>
+	兴趣爱好：<span class="wline"></span>。<br>
+	未来规划：<span class="wline"></span>。<br>
+	其他补充内容：<span class="brline">多行编辑内容展示</span>。<br>
+    </div>
+    <script>
+        $(function(){
+            $('#divEditor span').prop('contenteditable', 'plaintext-only');
+			$('#divEditor span').keydown(function(e){
+				if(e.keyCode == 13 && !$(this).hasClass('brline')){
+					e.preventDefault();
+					e.stopPropagation();
+					$(this).blur();
+				}
+			});
+
+        });
+    </script>
+</body>
+</html>
