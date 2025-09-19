@@ -1,0 +1,153 @@
+<!-- CSS SIN应用 zjfree 2025-09-19 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS SIN应用（借助Trae生成）</title>
+        <style>
+            #divMain{
+                width: 500px;
+                height: 500px;
+                margin:20px auto;
+                background-color: #eee;
+                position: relative;
+            }
+            #divMain a{
+                position: absolute;
+                top: calc(50% + sin(var(--i) * 60deg) * 100px);
+                left: calc(50% + cos(var(--i) * 60deg) * 100px);
+                transform: translate(-50%,-50%);
+                display: block;
+                /* 精确的正六边形宽高比：2:√3 ≈ 1.1547 */
+                width: 115px; /* 精确计算的宽度 */
+                height: 100px; /* 高度 */
+                line-height: 100px;
+                text-align: center;
+                background-color: #fff;
+                /* 精确的正六边形clip-path坐标 */
+                clip-path: polygon(50% 0%, 86.6% 25%, 86.6% 75%, 50% 100%, 13.4% 75%, 13.4% 25%);
+                transition: all 0.3s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            
+            /* 中心连接样式 */
+            #divMain .center-link {
+                top: 50%;
+                left: 50%;
+                background-color: #3498db;
+                color: white;
+                z-index: 10;
+            }
+            
+            #divMain a:hover{
+                top: calc(50% + sin(var(--i) * 60deg) * 120px);
+                left: calc(50% + cos(var(--i) * 60deg) * 120px);
+                transform: translate(-50%,-50%) scale(1.05);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+            
+            /* 中心连接悬停样式 */
+            #divMain .center-link:hover {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%) scale(1.1);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            }
+            .controls {
+                text-align: center;
+                margin: 20px;
+            }
+            button {
+                padding: 10px 20px;
+                margin: 5px;
+                cursor: pointer;
+            }
+        </style>
+    </header>
+    <body>
+    <div class="controls">
+        <button id="shuffleBtn">随机排列</button>
+        <button id="resetBtn">重置布局</button>
+        <button id="rotateBtn">旋转效果</button>
+    </div>
+    <div id="divMain">
+        <a href="" class="center-link">中心</a>
+        <a href="">a1</a>
+        <a href="">a2</a>
+        <a href="">a3</a>
+        <a href="">a4</a>
+        <a href="">a5</a>
+        <a href="">a6</a>
+    </div>
+    
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('#divMain a');
+            let rotationInterval;
+            
+            // 初始化设置CSS变量--i的值
+            function initializeLinks() {
+                links.forEach((link, index) => {
+                    // 排除中心连接，只设置普通连接的CSS变量--i
+                    if (!link.classList.contains('center-link')) {
+                        // 使用JavaScript设置CSS变量--i的值
+                        link.style.setProperty('--i', index);
+                    }
+                });
+            }
+            
+            // 随机设置CSS变量--i的值
+            function shuffleLinks() {
+                // 只对非中心连接创建随机序列
+                const regularLinks = Array.from(links).filter(link => !link.classList.contains('center-link'));
+                const randomValues = Array.from({length: regularLinks.length}, (_, i) => i);
+                for (let i = randomValues.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [randomValues[i], randomValues[j]] = [randomValues[j], randomValues[i]];
+                }
+                
+                // 应用随机值
+                regularLinks.forEach((link, index) => {
+                    link.style.setProperty('--i', randomValues[index]);
+                });
+            }
+            
+            // 旋转效果 - 动态改变CSS变量值
+            function startRotation() {
+                if (rotationInterval) {
+                    clearInterval(rotationInterval);
+                    rotationInterval = null;
+                    document.getElementById('rotateBtn').textContent = '旋转效果';
+                    initializeLinks(); // 重置到初始状态
+                    return;
+                }
+                
+                document.getElementById('rotateBtn').textContent = '停止旋转';
+                let rotationValue = 0;
+                const nonCenterLinks = Array.from(links).filter(link => !link.classList.contains('center-link'));
+                
+                rotationInterval = setInterval(() => {
+                    rotationValue += 1;
+                    // 只对非中心连接应用旋转效果
+                    nonCenterLinks.forEach((link, index) => {
+                        // 动态设置CSS变量，创建旋转效果
+                        link.style.setProperty('--i', (index + rotationValue) % nonCenterLinks.length);
+                    });
+                }, 1000);
+            }
+            
+            // 事件监听器
+            document.getElementById('shuffleBtn').addEventListener('click', shuffleLinks);
+            document.getElementById('resetBtn').addEventListener('click', initializeLinks);
+            document.getElementById('rotateBtn').addEventListener('click', startRotation);
+            
+            // 初始化
+            initializeLinks();
+        });
+    </script>
+    </body>
+</html>
