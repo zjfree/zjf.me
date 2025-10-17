@@ -152,11 +152,13 @@ function generateCalendar() {
 		}
 
 		if (weekCount < 6) {
-			html += '<tr>';
-			for (let i = 0; i < 7; i++) {
-				html += '<td class="disabled">&emsp;</td>';
+			for (let x=0; x<(6-weekCount); x++){
+				html += '<tr>';
+				for (let i = 0; i < 7; i++) {
+					html += '<td class="disabled">&emsp;</td>';
+				}
+				html += '</tr>';
 			}
-			html += '</tr>';
 		}
 
 		html += '</tbody>';
