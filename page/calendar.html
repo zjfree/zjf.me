@@ -1,0 +1,176 @@
+<!-- 日历生成 zjfree 2025-10-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日历生成</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+
+:root{
+	--color-border: #ccc;
+}
+body{
+	padding:0 10px;
+}
+
+#divMain{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	max-width: 1200px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+#divMain table{
+	border: solid 2px var(--color-border);
+	border-collapse: collapse;
+	width: 15em;
+	box-sizing: border-box;
+}
+#divMain table th, #divMain table td{
+	border: solid 1px var(--color-border);
+	padding: 5px 0;
+	text-align: center;
+}
+#divMain table th{
+	color:#666;
+}
+#divMain table th.month{
+	font-size: 1.2em;
+	color:#000;
+}
+#divMain table td.disabled{
+	color: #aaa;
+}
+#divMain table td.today{
+	color: #00f;
+}
+#divMain table td.normal{
+	background-color: #eff;
+}
+
+#divMain table {
+	min-width: calc(25% - 10px);
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1 style="text-align: center; margin-bottom:10px;">日历生成</h1>
+
+<div style="text-align: center; margin-bottom:10px;">
+	<label>请输入年份：</label>
+	<input type="number" id="txtYear" value="2025" min="1000" max="9999">
+	<button id="btnGenerate">生成</button>
+</div>
+
+<div id="divMain"></div>
+
+<script>
+$(function(){
+	// JS
+	$("#txtYear").val(new Date().getFullYear());
+	$("#btnGenerate").click(function(){
+		generateCalendar();
+	});
+
+	generateCalendar();
+});
+
+// 生成日历
+function generateCalendar() {
+	var year = $("#txtYear").val();
+    var html = '';
+    for (var month = 0; month < 12; month++) {
+		html += '<table>';
+		html += '<thead>';
+		html += '<tr><th class="month" colspan="100%">' + (month + 1) + '月</th></tr>';
+		html += '<tr><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr>';
+		html += '</thead>';
+		html += '<tbody>';
+
+		// 计算该月有多少天
+		var daysInMonth = new Date(year, month + 1, 0).getDate();
+		// 计算该月1日是周几
+		var firstDay = new Date(year, month, 1).getDay() - 1;
+		if (firstDay < 0) {
+			firstDay = 6;
+		}
+		let dtBegin = new Date(year, month, 1);
+		dtBegin.setDate(dtBegin.getDate() - firstDay);
+
+		
+		let lastDay = new Date(year, month + 1, 0).getDay() - 1;
+		if (lastDay < 0) {
+			lastDay = 6;
+		}
+		let dtEnd = new Date(year, month + 1, 0);
+		dtEnd.setDate(dtEnd.getDate() + (6 - lastDay));
+
+		let dtMonthFirst = new Date(year, month, 1);
+		let dtMonthLast = new Date(year, month, daysInMonth);
+		let today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		let dt = dtBegin;
+		let week = 0;
+		let weekCount = 0;
+
+		// 生成该月的日期
+		while (dt <= dtEnd) {
+			if (week == 0) {
+				html += '<tr>';
+				weekCount++;
+			}
+
+			let classList = [];
+			if (dt < dtMonthFirst || dt > dtMonthLast) {
+				classList.push("disabled");
+			} else {
+				classList.push("normal");
+			}
+			if (dt.toString() == today.toString()) {
+				classList.push("today");
+			}
+			html += '<td class="' + classList.join(" ") + '">' + dt.getDate() + '</td>';
+
+			week++;
+			if (week == 7) {
+				week = 0;
+				html += '</tr>';
+			}
+			dt.setDate(dt.getDate() + 1);
+		}
+
+		if (weekCount < 6) {
+			html += '<tr>';
+			for (let i = 0; i < 7; i++) {
+				html += '<td class="disabled">&emsp;</td>';
+			}
+			html += '</tr>';
+		}
+
+		html += '</tbody>';
+		html += '</table>';
+	console.log(html);
+    }
+
+	
+	$("#divMain").html(html);
+}
+
+
+
+</script>
+
+</body>
+</html>
