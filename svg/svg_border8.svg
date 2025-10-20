@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 150 100">
+    <polygon points="5,15 15,5 135,5 145,15 145,85 135,95 15,95 5,85" stroke="black" stroke-width="1" fill="none"/>
+    
+    <polygon points="5,10 5,5 10,5" fill="#000"  stroke="black" stroke-width="1"/>
+    <polygon points="145,10 145,5 140,5" fill="#000"  stroke="black" stroke-width="1"/>
+    <polygon points="145,90 145,95 140,95" fill="#000"  stroke="black" stroke-width="1"/>
+    <polygon points="5,90 5,95 10,95" fill="#000"  stroke="black" stroke-width="1"/>
+</svg>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 150 100">
+    <polygon points="5,5 135,5 145,15 145,95 5,95" stroke="black" stroke-width="1" fill="none"/>
+    
+    <polygon points="130,10 135,10 140,15 135,15" fill="#000"  stroke="#000" stroke-width="1"/>
+    <polygon points="130,10 135,10 140,15 135,15" fill="#000"  stroke="#000" stroke-width="1" transform="translate(-10, 0)"/>
+    <polygon points="130,10 135,10 140,15 135,15" fill="#000"  stroke="#000" stroke-width="1" transform="translate(-20, 0)"/>
+</svg>

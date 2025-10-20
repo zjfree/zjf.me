@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 150 100">
+    <polygon points="5,15 15,5 135,5 145,15 145,85 135,95 15,95 5,85" stroke="black" stroke-width="1" fill="none"/>
+    <polyline points="125,5 135,5 145,15 145,55 " stroke="black" stroke-width="3" fill="none" transform="translate(-4, 4)"/>
+    <polygon points="55,5 60,0 75,0 90,0 95,5 90,10 75,10 60,10" stroke="black" stroke-width="0" fill="black"/>
+    <polyline points="60,10 55,5 60,0" stroke="black" stroke-width="1" fill="none" transform="translate(-4, 0)"/>
+    <polyline points=" 90,0 95,5 90,10" stroke="black" stroke-width="1" fill="none" transform="translate(4, 0)"/>
+    <circle cx="75" cy="5" r="3" stroke-width="0" fill="#fff"/>
+    <circle cx="65" cy="5" r="3" stroke-width="0" fill="#fff"/>
+    <circle cx="85" cy="5" r="3" stroke-width="0" fill="#fff"/>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 150 100">
+
+    <defs>
+    <linearGradient id="lg1" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0,225,215, 1)" />
+      <stop offset="50%" stop-color="rgba(0,225,215, 0)" />
+      <stop offset="100%" stop-color="rgba(0,225,215, 1)" />
+    </linearGradient>
+    <linearGradient id="lg2" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="rgba(0,225,215, 1)" />
+      <stop offset="50%" stop-color="rgba(0,225,215, 0)" />
+      <stop offset="100%" stop-color="rgba(0,225,215, 1)" />
+    </linearGradient>
+        <filter id="glow" x="-50%" y="-100%" width="200%" height="300%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+    </defs>
+    <line x1="5" y1="5" x2="5.001" y2="95" stroke="url(#lg1)" stroke-width="1" fill="none"/>
+    <line x1="145" y1="5" x2="145.001" y2="95" stroke="url(#lg1)" stroke-width="1" fill="none"/>
+    <line x1="5" y1="5" x2="145" y2="5.001" stroke="url(#lg2)" stroke-width="1" fill="none"/>
+    <line x1="5" y1="95" x2="145" y2="95.001" stroke="url(#lg2)" stroke-width="1" fill="none"/>
+    <polyline points="5,15 5,5 15,5" stroke="#0ff" stroke-width="3" fill="none" filter="url(#glow)"/>
+    <polyline points="145,15 145,5 135,5" stroke="#0ff" stroke-width="3" fill="none" filter="url(#glow)"/>
+    <polyline points="5,85 5,95 15,95" stroke="#0ff" stroke-width="3" fill="none" filter="url(#glow)"/>
+    <polyline points="145,85 145,95 135,95" stroke="#0ff" stroke-width="3" fill="none" filter="url(#glow)"/>
+</svg>

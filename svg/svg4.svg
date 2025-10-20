@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 140 140">
+<g transform="translate(20, 20)">
+    <g transform="translate(50, 0)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="0s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(85.4,14.6)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="0.5s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(100,50)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="1s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="1s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(85.4,85.4)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="1.5s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="1.5s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(50,100)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="2s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="2s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(14.6,85.4)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="2.5s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="2.5s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(0,50)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="3.0s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="3.0s" repeatCount="indefinite" additive="sum"/>
+    </g>
+    <g transform="translate(14.6,14.6)">
+        <circle cx="0" cy="0" r="15" fill="#000" opacity="0.5">
+            <animate attributeName="opacity" values="0.5;1;0.5" dur="4s" begin="3.5s" repeatCount="indefinite" />
+        </circle>
+        <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="4s" begin="3.5s" repeatCount="indefinite" additive="sum"/>
+    </g>
+</g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100">
+    <polygon points="10,50 30,10 490,10 510,50 490,90 30,90" fill="none" stroke="#000" stroke-width="1" />
+    <polyline points="30,90 10,50 30,10" stroke="#000" stroke-width="5" fill="none" transform="scale(0.9)" style="transform-origin: 0% 50%;"  />
+    <polyline points="30,90 10,50 30,10" stroke="#000" stroke-width="3" fill="none" transform="translate(15,0) scale(0.8)" style="transform-origin: 0% 50%;"  />
+    <polyline points="30,90 10,50 30,10" stroke="#000" stroke-width="3" fill="none" transform="translate(25,0) scale(0.8)" style="transform-origin: 0% 50%;"  />
+    <polyline points="30,90 10,50 30,10" stroke="#000" stroke-width="3" fill="none" transform="translate(35,0) scale(0.8)" style="transform-origin: 0% 50%;"  />
+    
+    <polyline points="490,10 510,50 490,90" stroke="#000" stroke-width="5" fill="none" transform="scale(0.9)" style="transform-origin: 100% 50%;"  />
+    <polyline points="490,10 510,50 490,90" stroke="#000" stroke-width="3" fill="none" transform="translate(-15,0) scale(0.8)" style="transform-origin: 100% 50%;"  />
+    <polyline points="490,10 510,50 490,90" stroke="#000" stroke-width="3" fill="none" transform="translate(-25,0) scale(0.8)" style="transform-origin: 100% 50%;"  />
+    <polyline points="490,10 510,50 490,90" stroke="#000" stroke-width="3" fill="none" transform="translate(-35,0) scale(0.8)" style="transform-origin: 100% 50%;"  />
+</svg>

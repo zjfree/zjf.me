@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="130" viewBox="0 0 100 130">
+ <defs>
+    <radialGradient id="tankHeader" cx="50%" cy="50%" r="50%" fx="50%" fy="30%">
+      <stop offset="0%" stop-color="#fff" />
+      <stop offset="100%" stop-color="#aaa" />
+    </radialGradient>
+    <linearGradient id="tankBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#aaa" />
+      <stop offset="30%" stop-color="#fff" />
+      <stop offset="100%" stop-color="#aaa" />
+    </linearGradient>
+    <linearGradient id="tankBodyLevel" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#009" />
+      <stop offset="30%" stop-color="#669" />
+      <stop offset="100%" stop-color="#009" />
+    </linearGradient>
+    <linearGradient id="tankFooter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#990" />
+      <stop offset="30%" stop-color="#ff0" />
+      <stop offset="100%" stop-color="#990" />
+    </linearGradient>
+    <mask id="levelMask">
+        <rect x="0" y="0" width="100%" height="100%" fill="black" />
+        <ellipse cx="50" cy="115" rx="43" ry="9" fill="white" />
+        <ellipse cx="50" cy="25" rx="43" ry="9" fill="white" />
+        <rect x="7" y="25" width="86" height="90" fill="white" />
+    </mask>
+    <g id="level">
+        <ellipse cx="50" cy="115" rx="43" ry="9" fill="url(#tankBodyLevel)" />
+        <rect x="7" y="25" width="86" height="90" fill="url(#tankBodyLevel)" />
+        <ellipse cx="50" cy="25" rx="43" ry="9" fill="#009" />
+        <ellipse cx="50" cy="25" rx="43" ry="9" fill="none" stroke="#000" stroke-width="0.3" />
+    </g>
+</defs>
+<!--底座-->
+<ellipse cx="50" cy="120" rx="44" ry="10" fill="url(#tankFooter)" stroke="#333" stroke-width="0.3" />
+<rect x="6" y="115" width="10" height="5" fill="#990" />
+<rect x="84" y="115" width="10" height="5" fill="#990" />
+<ellipse cx="50" cy="115" rx="44" ry="10" fill="#990" stroke="#333" stroke-width="0.3" />
+<line x1="6" y1="115" x2="6" y2="120" stroke="#333" stroke-width="0.3" />
+<line x1="94" y1="115" x2="94" y2="120" stroke="#333" stroke-width="0.3" />
+<!--罐体-->
+<ellipse cx="50" cy="115" rx="43" ry="9" fill="url(#tankBody)" />
+<ellipse cx="50" cy="115" rx="43" ry="9" fill="none" stroke="#333" stroke-width="0.3" />
+<ellipse cx="50" cy="25" rx="43" ry="9" fill="url(#tankBody)" />
+<rect x="7" y="25" width="86" height="90" fill="url(#tankBody)" />
+
+<!--液位-->
+<g mask="url(#levelMask)">
+<use href="#level" y="30" />
+</g>
+
+<!--罐顶-->
+<ellipse cx="50" cy="25" rx="43" ry="9" fill="url(#tankHeader)" stroke="#333" stroke-width="0.3" />
+<ellipse cx="50" cy="29" rx="43" ry="9" fill="none" stroke="#333" opacity="0.5" stroke-width="0.3" style="transform-origin: 50% 0%;" transform="scale(0.8)" />
+<ellipse cx="50" cy="35" rx="43" ry="9" fill="none" stroke="#333" opacity="0.5" stroke-width="0.3" style="transform-origin: 50% 0%;" transform="scale(0.6)" />
+<ellipse cx="50" cy="50" rx="43" ry="9" fill="none" stroke="#333" opacity="0.5" stroke-width="0.3" style="transform-origin: 50% 0%;" transform="scale(0.4)" />
+<line x1="7" y1="25" x2="7" y2="115" stroke="#333" stroke-width="0.3" />
+<line x1="93" y1="25" x2="93" y2="115" stroke="#333" stroke-width="0.3" />
+
+<line x1="7" y1="20" x2="7" y2="25" stroke="#dd0" stroke-width="1" />
+<line x1="93" y1="20" x2="93" y2="25" stroke="#dd0" stroke-width="1" />
+<line x1="50" y1="34" x2="50" y2="29" stroke="#dd0" stroke-width="1" />
+<line x1="50" y1="16" x2="50" y2="11" stroke="#dd0" stroke-width="1" />
+<line x1="28" y1="17" x2="28" y2="12" stroke="#dd0" stroke-width="1" />
+<line x1="72" y1="17" x2="72" y2="12" stroke="#dd0" stroke-width="1" />
+<line x1="28" y1="33" x2="28" y2="28" stroke="#dd0" stroke-width="1" />
+<line x1="72" y1="33" x2="72" y2="28" stroke="#dd0" stroke-width="1" />
+<ellipse cx="50" cy="20" rx="43" ry="9" fill="none" stroke="#bb0" stroke-width="1.5" />
+
+</svg>

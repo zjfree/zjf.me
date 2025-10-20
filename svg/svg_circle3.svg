@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+    <path d="M10,50 A40,40 0 0,1 13.75,33.1"        fill="none" stroke="#000" stroke-width="10" />
+    <path d="M14.36,31.84 A40,40 0 0,1 25.37,18.48" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M26.49,17.64 A40,40 0 0,1 42.37,10.73" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M43.74,10.49 A40,40 0 0,1 61.03,11.55" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M62.36,11.96 A40,40 0 0,1 77.28,20.75" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M78.28,21.72 A40,40 0 0,1 87.59,36.32" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M88.04,37.64 A40,40 0 0,1 89.7,54.87"  fill="none" stroke="#000" stroke-width="10" />
+    <path d="M89.51,56.26 A40,40 0 0,1 83.16,72.37" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M82.36,73.51 A40,40 0 0,1 69.39,84.98" fill="none" stroke="#000" stroke-width="10" />
+    <path d="M68.16,85.64 A40,40 0 0,1 51.4,89.98"  fill="none" stroke="#000" stroke-width="10" />
+    
+    <path d="M15,50 L3,50 A47,47 0 1,1 51.64,96.97 L51.4,84.98" fill="none" stroke="#999" stroke-width="0.5" />
+    
+</svg>

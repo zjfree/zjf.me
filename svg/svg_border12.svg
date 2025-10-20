@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 150 100">
+
+    <defs>
+    <linearGradient id="bg" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="rgba(0,40,50, 1)" />
+      <stop offset="100%" stop-color="rgba(0,40,50, 0)" />
+    </linearGradient>
+    <linearGradient id="bg2" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" stop-color="rgba(0,0,0, 1)" />
+      <stop offset="100%" stop-color="rgba(0,0,0, 0)" />
+    </linearGradient>
+      <filter id="glow" x="-50%" y="-100%" width="200%" height="300%">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
+          <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+          </feMerge>
+      </filter>
+    </defs>
+
+  <polygon points="5,15 75,15 80,5 145,5 145,90 140,95 5,95" fill="url(#bg)" stroke="#000" stroke-width="0"/>
+  <polygon points="70,15 75,15 79,7 74,7" fill="#0ff" stroke-width="0" stroke="#999" />
+  <polyline points="5,15 75,15 80,5 145,5 145,90 140,95 5,95" fill="url(#bg)" stroke="url(#bg2)" stroke-width="0.5"/>
+  <polygon points="145,5 148,5 148,15 145,20" fill="#0ff" stroke-width="0.5" stroke="#000" filter="url(#glow)" />
+  <polygon points="145,85 145,90 140,95 123,95 125,93 137,93" fill="#0ff" stroke-width="0.5" stroke="#000" filter="url(#glow)" />
+
+  <circle  cx="145" cy="70" r="1.5" stroke-width="0.5" stroke="#000"  fill="#0ff" filter="url(#glow)" />
+  <circle  cx="145" cy="75" r="1.5" stroke-width="0.5" stroke="#000"  fill="#0ff" filter="url(#glow)" />
+  <circle  cx="145" cy="80" r="1.5" stroke-width="0.5" stroke="#000"  fill="#0ff" filter="url(#glow)" />
+</svg>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="100" viewBox="0 0 50 100" stroke="#333">
+  <path d="M25,90 L25,50 L10,70 L25,50 L40,70 L25,50" stroke-linecap="round" stroke-linejoin="round" fill="transparent" stroke-width="6">
+  <animateTransform attributeName="transform" type="translate" from="0 0" to="0 -40" dur="1s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1" dur="1s" repeatCount="indefinite"/>
+  </path>
+</svg>

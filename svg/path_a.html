@@ -1,0 +1,162 @@
+<!-- SVG PATH A圆弧生成工具 zjfree 2025-10-20 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG PATH A圆弧生成工具</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+input[type="number"]{
+	width: 50px;
+	text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* 移除默认边距，避免布局偏移 */
+}
+#divSvg svg{
+	border:solid 1px #00f;
+	zoom: 2;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>SVG PATH A圆弧生成工具</h1>
+
+<div>
+	宽度：<input type="number" id="width" value="100" /> &nbsp;
+	高度：<input type="number" id="height" value="100" /><br>
+	半径：<input type="number" id="radius" value="40" /> &nbsp;
+	<input type="checkbox" id="largeArcFlag" /> 大角度
+	<input type="checkbox" id="clockwiseFlag" checked /> 顺时针<br>
+	起始角度：<input type="number" id="startAngle" value="0" /> &nbsp;
+	终止角度：<input type="number" id="endAngle" value="90" /><br>
+	中心点：<input type="number" id="centerX" value="50" /> &times;
+	<input type="number" id="centerY" value="50" />
+
+	<button id="btnDraw">生成</button>
+</div>
+
+<div id="divPath" style="margin:10px 0;"></div>
+<div id="divSvg"></div>
+
+<div style="margin-top: 10px;">
+	整体偏移计算工具：<br>
+	起点：<input type="number" id="startX" value="50" /> &times; <input type="number" id="startY" value="50" /> <button id="btnSetStart">设置</button><br>
+	终点：<input type="number" id="endX" value="50" /> &times; <input type="number" id="endY" value="50" /> <button id="btnSetEnd">设置</button>
+</div>
+
+
+<script>
+$(function(){
+	// JS
+	$("#btnDraw").click(function(){
+		drawArc();
+	});
+	$('#largeArcFlag, #clockwiseFlag').change(function(){
+		drawArc();
+	});
+	$("#btnSetStart").click(function(){
+		setStart();
+	});
+	$("#btnSetEnd").click(function(){
+		setEnd();
+	});
+	drawArc();
+});
+
+function round(num, precision){
+	console.log(num);
+	return Math.round(num * 100) / 100;
+}
+
+var startX, startY, endX, endY;
+
+function drawArc(){
+	// 读取参数
+	var width = parseFloat($("#width").val());
+	var height = parseFloat($("#height").val());
+	var radius = parseFloat($("#radius").val());
+	var startAngle = parseFloat($("#startAngle").val());
+	var endAngle = parseFloat($("#endAngle").val());
+	var centerX = parseFloat($("#centerX").val());
+	var centerY = parseFloat($("#centerY").val());
+	var largeArcFlag = $("#largeArcFlag").is(":checked");
+	var clockwiseFlag = $("#clockwiseFlag").is(":checked");
+	// 计算参数
+	if (startAngle == endAngle){
+		startAngle = -90;
+		endAngle = -90;
+	}
+	startX = round(centerX + radius * Math.cos(startAngle * Math.PI / 180), 2);
+	startY = round(centerY + radius * Math.sin(startAngle * Math.PI / 180), 2);
+	endX = round(centerX + radius * Math.cos(endAngle * Math.PI / 180), 2);
+	endY = round(centerY + radius * Math.sin(endAngle * Math.PI / 180), 2);
+	if (startX == endX){
+		endX -= 0.01;
+	}
+
+	$('#startX').val(startX);
+	$('#startY').val(startY);
+	$('#endX').val(endX);
+	$('#endY').val(endY);
+
+	// 生成路径
+	var path = "M" + startX + "," + startY + " A" + radius + "," + radius + " 0 " + (largeArcFlag ? "1" : "0") + "," + (clockwiseFlag ? "1" : "0") + " " + endX + "," + endY;
+	// 显示路径
+	$("#divPath").text(path);
+	// 生成SVG
+	var svg = "<svg width=\"" + width + "\" height=\"" + height + "\" viewBox=\"0 0 " + width + " " + height + "\" xmlns=\"http://www.w3.org/2000/svg\">" +
+		"<circle cx=\"" + centerX + "\" cy=\"" + centerY + "\" r=\"" + radius + "\" stroke=\"#eee\" stroke-width=\"1\" fill=\"none\" />" +
+		"<path d=\"" + path + "\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />" +
+		"</svg>";
+	// 显示SVG
+	$("#divSvg").html(svg);
+}
+
+function setStart(){
+	let x = parseFloat($("#startX").val());
+	let y = parseFloat($("#startY").val());
+	let x2 = endX + (x - startX);
+	let y2 = endY + (y - startY);
+	
+	var radius = parseFloat($("#radius").val());
+	var largeArcFlag = $("#largeArcFlag").is(":checked");
+	var clockwiseFlag = $("#clockwiseFlag").is(":checked");
+	
+	// 生成路径
+	var path = "M" + x + "," + y + " A" + radius + "," + radius + " 0 " + (largeArcFlag ? "1" : "0") + "," + (clockwiseFlag ? "1" : "0") + " " + x2 + "," + y2;
+	// 显示路径
+	$("#divPath").text(path);
+}
+function setEnd(){
+	let x = parseFloat($("#endX").val());
+	let y = parseFloat($("#endY").val());
+	let x2 = startX + (x - endX);
+	let y2 = startY + (y - endY);
+	
+	var radius = parseFloat($("#radius").val());
+	var largeArcFlag = $("#largeArcFlag").is(":checked");
+	var clockwiseFlag = $("#clockwiseFlag").is(":checked");
+	
+	// 生成路径
+	var path = "M" + x2 + "," + y2 + " A" + radius + "," + radius + " 0 " + (largeArcFlag ? "1" : "0") + "," + (clockwiseFlag ? "1" : "0") + " " + endX + "," + endY;
+	// 显示路径
+	$("#divPath").text(path);
+}
+</script>
+
+</body>
+</html>
