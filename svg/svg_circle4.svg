@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+<defs>
+    <symbol id="g1" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <circle cx="50" cy="50" r="40" style="transform-origin: 50% 50%;" fill="none" stroke="#000">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s" repeatCount="indefinite"/>
+        </circle>
+    </symbol>
+    <symbol id="g2" width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <circle cx="50" cy="50" r="40" style="transform-origin: 50% 50%;" fill="none" stroke="#000">
+            <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="4s" repeatCount="indefinite"/>
+        </circle>
+    </symbol>
+</defs>
+<use href="#g1" x="20" y="45" width="60" height="12.5" stroke-width="20" stroke-dasharray="22,9" />
+<use href="#g1" x="25" y="50" width="50" height="12.5" stroke-width="20" stroke-dasharray="22,9" />
+<use href="#g2" x="0" y="50" width="100" height="25" stroke-width="20" stroke-dasharray="22,9" />
+<use href="#g2" x="0" y="40" width="100" height="25" stroke-width="10" stroke-dasharray="22,9" />
+<use href="#g2" x="0" y="30" width="100" height="25" stroke-width="10" stroke-dasharray="22,9" />
+<use href="#g2" x="0" y="20" width="100" height="25" stroke-width="10" stroke-dasharray="22,9" />
+<use href="#g2" x="0" y="10" width="100" height="25" stroke-width="10" stroke-dasharray="10,9" />
+</svg>

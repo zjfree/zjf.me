@@ -152,7 +152,7 @@ function setEnd(){
 	var clockwiseFlag = $("#clockwiseFlag").is(":checked");
 	
 	// 生成路径
-	var path = "M" + x2 + "," + y2 + " A" + radius + "," + radius + " 0 " + (largeArcFlag ? "1" : "0") + "," + (clockwiseFlag ? "1" : "0") + " " + endX + "," + endY;
+	var path = "M" + x2 + "," + y2 + " A" + radius + "," + radius + " 0 " + (largeArcFlag ? "1" : "0") + "," + (clockwiseFlag ? "1" : "0") + " " + x + "," + y;
 	// 显示路径
 	$("#divPath").text(path);
 }
