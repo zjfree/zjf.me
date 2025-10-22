@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
+<defs>
+    <symbol id="c_1" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M25,20 Q20,50 25,90"/>
+    </symbol>
+    <symbol id="c_2" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M10,30 Q80,0 10,80 L50,80"/>
+    </symbol>
+    <symbol id="c_3" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M10,30 Q80,20 20,50 Q80,60 10,80"/>
+    </symbol>
+    <symbol id="c_4" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M25,20 Q30,50 25,90 M10,20 Q-10,90 40,50"/>
+    </symbol>
+    <symbol id="c_5" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M45,20 Q25,30 10,20 M20,10 Q20,50 15,50 C60,40 50,100 10,80"/>
+    </symbol>
+    <symbol id="c_6" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M45,30 C0,0 0,100 25,90 S60,40 5,60"/>
+    </symbol>
+    <symbol id="c_7" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M5,20 Q45,30 45,20  Q25,50 25,90"/>
+    </symbol>
+    <symbol id="c_8" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M25,40 C60,0 -10,0 25,50  S-20,100 30,40"/>
+    </symbol>
+    <symbol id="c_9" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M45,30 C0,0 0,80 43,35  Q35,60 25,95"/>
+    </symbol>
+    <symbol id="c_0" viewBox="0 0 50 100" preserveAspectRatio="none">
+        <path d="M25,20 C0,20 0,90 25,80 S50,20 25,20"/>
+    </symbol>
+</defs>
+    <use href="#c_1" x="0"  y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_2" x="10" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_3" x="20" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_4" x="30" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_5" x="40" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_6" x="50" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_7" x="60" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_8" x="70" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_9" x="80" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+    <use href="#c_0" x="90" y="0" width="10" height="20" stroke-width="5" stroke="#000" fill="none" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="20,5" />
+</svg>
