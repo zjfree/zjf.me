@@ -153,6 +153,47 @@ body{
 	fill:transparent;
 	animation: move 0.5s infinite linear;
 }
+#b21{
+	position: relative;
+	border-radius: 0;
+	border:solid 10px #000;
+}
+#b21::before,
+#b21::after {
+	content: "";
+	border: 4px solid;
+	border-image: linear-gradient(45deg, gold, deeppink) 1;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	right: -5px;
+	bottom: -5px;
+	animation: clippath 3s infinite;
+}
+
+#b21::before {
+	animation: clippath 3s infinite -1.5s linear;
+}
+
+@keyframes clippath {
+	0%, 100% {
+		clip-path: inset(0 0 96% 0);
+		filter: hue-rotate(0deg);
+	}
+
+	25% {
+		clip-path: inset(0 96% 0 0);
+	}
+
+	50% {
+		clip-path: inset(96% 0 0 0);
+		filter: hue-rotate(360deg);
+	}
+
+	75% {
+		clip-path: inset(0 0 0 96%);
+	}
+}
 
 @keyframes move {
 	0% {
@@ -234,6 +275,7 @@ body{
 			<rect class="rect2" x="5" y="5" width="310" height="160" rx="10"/>
 		</svg>
 	</div>
+	<div id="b21">颜色旋转</div>
 </div>
 
 <script>
