@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
+<defs>
+    <symbol id="c_1" viewBox="0 0 50 80">
+        <path d="M 25,5 V 75"  />
+    </symbol>
+    <symbol id="c_2" viewBox="0 0 50 80">
+        <path d="M 5,15 15,5 H 35 L 45,15 V 40 L 5,65 v 10 h 40"  />
+    </symbol>
+    <symbol id="c_3" viewBox="0 0 50 80">
+        <path d="M 5,15 15,5 h 20 l 10,10 v 20 l -15,5 15,5 V 65 L 35,75 H 15 L 5,65"  />
+    </symbol>
+    <symbol id="c_4" viewBox="0 0 50 80">
+        <path d="M 35,5 5,50 h 40 M 35,5 V 75"  />
+    </symbol>
+    <symbol id="c_5" viewBox="0 0 50 80">
+        <path d="M 45,5 H 5 V 35 H 35 L 45,45 V 65 L 35,75 H 15 L 5,65"  />
+    </symbol>
+    <symbol id="c_6" viewBox="0 0 50 80">
+        <path d="M 5,40 H 35 L 45,50 V 65 L 35,75 H 15 L 5,65 V 15 L 15,5 h 20 l 10,10"  />
+    </symbol>
+    <symbol id="c_7" viewBox="0 0 50 80">
+        <path d="M 5,10 10,5 H 45 V 15 L 15,75"  />
+    </symbol>
+    <symbol id="c_8" viewBox="0 0 50 80">
+        <path d="M 5,30 V 15 L 15,5 H 35 L 45,15 V 30 L 5,45 V 65 L 15,75 H 35 L 45,65 V 45 Z"  />
+    </symbol>
+    <symbol id="c_9" viewBox="0 0 50 80">
+        <path d="M 45,35 35,45 H 15 L 5,35 5,15 15,5 h 20 l 10,10 0,20 0,30 -10,10 H 15 L 5,65"  />
+    </symbol>
+    <symbol id="c_0" viewBox="0 0 50 80">
+        <path d="M 5,15 15,5 H 35 L 45,15 V 65 L 35,75 H 15 L 5,65 Z"  />
+    </symbol>
+    <symbol id="c_dot" viewBox="0 0 50 80">
+        <path d="M25,74.9 A0.1,0.1 0 1,1 24.99,74.9" />
+    </symbol>
+    <symbol id="c_minus" viewBox="0 0 50 80">
+        <path d="M 5,40 H 45"  />
+    </symbol>
+    <symbol id="c_plus" viewBox="0 0 50 80">
+        <path d="M 5,40 H 45 M 25,20 V 60"  />
+    </symbol>
+</defs>
+    <use href="#c_1"     x="10"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_2"     x="20"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_3"     x="30"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_4"     x="40"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_5"     x="50"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_6"     x="60"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_7"     x="70"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_8"     x="80"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_9"     x="90"  y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_0"     x="100" y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_dot"   x="110" y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_minus" x="120" y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <use href="#c_plus"  x="130" y="10" width="10" height="20" stroke-width="8" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
