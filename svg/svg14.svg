@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" viewBox="0 0 100 50">
+    <path d="M5,25 C40,-50 60,100 95,25"  stroke="#000" stroke-width="1" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <animate attributeName="d" values="
+        M5,25 C40,-50 60,100 95,25;
+        M5,25 C40,100 60,-50 95,25;
+        M5,25 C40,-50 60,100 95,25;
+        " dur="5s" repeatCount="indefinite" />
+    </path>
+    <line x1="5" y1="25" x2="95" y2="25" stroke="#000" stroke-width="1" stroke-dasharray="5,3" fill="none" stroke-linejoin="round" stroke-linecap="round" />
+</svg>
