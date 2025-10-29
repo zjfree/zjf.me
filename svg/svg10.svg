@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="20" viewBox="0 0 200 20">
+    <circle cx="100" cy="10" r="4" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></circle>
+    <circle cx="100" cy="10" r="2" stroke="none" stroke-width="0" fill="#fff" opacity="0.8"></circle>
+    <path d="M106.58,12.39 A7,7 0 0,1 93.42,12.39" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></path>
+    <path d="M93.42,7.61 A7,7 0 0,1 106.58,7.61" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></path>
+    <circle cx="10" cy="10" r="4" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></circle>
+    <path d="M10,3 A7,7 0 0,0 9.99,17" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></path>
+    <line x1="14" y1="10" x2="96" y2="10" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></line>
+    <line x1="104" y1="10" x2="188" y2="10" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></line>
+    <circle cx="190" cy="10" r="2" stroke="none" stroke-width="0" fill="#fff" opacity="0.8"></circle>
+    <path d="M186.72,7.71 A4,4 0 1,1 186.71,12.29" stroke="#fff" stroke-width="1" fill="none" opacity="0.8"></path>
+</svg>
