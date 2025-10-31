@@ -1,0 +1,169 @@
+<!-- FormDialog测试 zjfree 2025-10-31 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FormDialog测试</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+.tb{
+	border-collapse: collapse;
+	border: 2px solid #000;
+	margin-top: 10px;
+}
+.tb th, .tb td{
+	border: 1px solid #000;
+	padding: 5px 10px;
+	text-align: center;
+}
+.tb th{
+	background-color: #ddd;
+	font-weight: normal;
+}
+.tb button{
+	font-size: 0.8em;
+}
+.tb tbody tr:hover{
+	background-color: #cff;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>FormDialog测试</h1>
+
+<button id="btnAdd">添加</button>
+
+<table class="tb">
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>性别</th>
+			<th>学历</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>张三</td>
+			<td>20</td>
+			<td>男</td>
+			<td>本科</td>
+			<td>
+				<button>编辑</button>
+				<button>复制</button>
+				<button>删除</button>
+			</td>
+		</tr>
+		<tr>
+			<td>李四</td>
+			<td>21</td>
+			<td>女</td>
+			<td>大专</td>
+			<td>
+				<button>编辑</button>
+				<button>复制</button>
+				<button>删除</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<dialog id="form-dialog">
+	<form id="form" method="dialog" style="line-height: 2;">
+		<label>姓名：</label><input type="text" name="name" required><br>
+		<label>年龄：</label><input type="number" name="age" required value="18" min="0" max="200"> 岁<br>
+		<label>性别：</label>
+			<label><input type="radio" name="gender" value="男" checked> 男</label>
+			&emsp;
+			<label><input type="radio" name="gender" value="女"> 女</label><br>
+		<label>学历：</label><select name="education">
+				<option value="无">无</option>
+				<option value="小学">小学</option>
+				<option value="高中">高中</option>
+				<option value="大专" selected>大专</option>
+				<option value="本科">本科</option>
+				<option value="硕士">硕士</option>
+				<option value="博士">博士</option>
+			</select><br>
+		<hr>
+		<div style="text-align: center;">
+			<button type="submit">提交</button>
+			&emsp;
+			<button type="button" onclick="$('#form-dialog')[0].close()">取消</button>
+		</div>
+	</form>
+</dialog>
+
+<script>
+var tdIndex = -1;
+$(function(){
+	$('#form-dialog').on('submit', function(e){
+		//e.preventDefault();
+		var formData = $('#form').serializeArray();
+		if (tdIndex == -1){
+			// 添加
+			$('.tb tbody').append('<tr>' +
+				'<td>' + formData[0].value + '</td>' +
+				'<td>' + formData[1].value + '</td>' +
+				'<td>' + formData[2].value + '</td>' +
+				'<td>' + formData[3].value + '</td>' +
+				'<td>' +
+					'<button>编辑</button> ' +
+					'<button>复制</button> ' +
+					'<button>删除</button>' +
+				'</td>' +
+			'</tr>');
+		}else{
+			// 编辑
+			$('.tb tbody tr:eq(' + tdIndex + ') td').eq(0).html(formData[0].value);
+			$('.tb tbody tr:eq(' + tdIndex + ') td').eq(1).html(formData[1].value);
+			$('.tb tbody tr:eq(' + tdIndex + ') td').eq(2).html(formData[2].value);
+			$('.tb tbody tr:eq(' + tdIndex + ') td').eq(3).html(formData[3].value);
+		}
+	});
+
+	// 点击添加按钮打开弹窗
+	$('#btnAdd').click(function(){
+		tdIndex = -1;
+		$('#form input[name="name"]').val('');
+		$('#form input[name="age"]').val(18);
+		$('#form input[name="gender"]').filter('[value="男"]').prop('checked', true);
+		$('#form select[name="education"]').val('大专');
+		$('#form-dialog')[0].showModal();
+	});
+
+	$('.tb').on('click', 'button', function(){
+		let tr = $(this).closest('tr');
+		if($(this).text() == '编辑' || $(this).text() == '复制'){
+			// 编辑
+			$('#form input[name="name"]').val(tr.find('td:eq(0)').text());
+			$('#form input[name="age"]').val(tr.find('td:eq(1)').text());
+			$('#form input[name="gender"]').filter('[value="' + tr.find('td:eq(2)').text() + '"]').prop('checked', true);
+			$('#form select[name="education"]').val(tr.find('td:eq(3)').text());
+			tdIndex = $(this).text() == '复制' ? -1 : tr.index();
+			$('#form-dialog')[0].showModal();
+		}else{
+			// 删除
+			if(confirm('确定删除吗？')){
+				tr.remove();
+			}
+		}
+	});
+});
+</script>
+
+</body>
+</html>
