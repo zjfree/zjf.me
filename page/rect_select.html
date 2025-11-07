@@ -1,0 +1,153 @@
+<!-- 批量选择矩形区域 zjfree 2025-11-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>批量选择矩形区域</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+body.no-select{
+	user-select: none;
+}
+#divMain{
+	user-select: none;
+}
+#divMain div{
+	width: 100px;
+	height: 100px;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	float: left;
+	margin: 5px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 24px;
+	cursor: pointer;
+}
+#divMain div.selected{
+	background-color: #2196f3;
+	color: #fff;
+}
+#divRectSelect{
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.1);
+	border: 1px dashed #9ff;
+	pointer-events: none;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>批量选择矩形区域</h1>
+<div>Ctrl 反选 Shift 加选</div>
+<div id="divMain"></div>
+
+<script>
+$(function(){
+	// JS
+	
+	for(let i=0;i<100;i++){
+		if (Math.random() < 0.1){
+			$('#divMain').append(`<div style="width:212px">${i+1}</div>`);
+		}else{
+			$('#divMain').append(`<div>${i+1}</div>`);
+		}
+	}
+
+	$('#divMain').on('click','div',function(){
+		$(this).toggleClass('selected');
+	});
+	
+	$(document).on('mousedown', function(e){
+		$('#divRectSelect').remove();
+		let startX = e.pageX;
+		let startY = e.pageY;
+		$('body').append(`<div id="divRectSelect" style="left:${startX}px;top:${startY}px;width:0px;height:0px;"></div>`);
+		$('#divRectSelect').data('startX', startX);
+		$('#divRectSelect').data('startY', startY);
+		$('body').addClass('no-select');
+
+		$('#divMain div').each(function(){
+			$(this).data('selected', $(this).hasClass('selected'));
+		});
+	});
+	$(document).on('mousemove', function(e){
+		if (!$('#divRectSelect').length) return;
+		let endX = e.pageX;
+		let endY = e.pageY;
+		let startX = $('#divRectSelect').data('startX');
+		let startY = $('#divRectSelect').data('startY');
+
+		// 移动距离小于10忽略
+		let dist = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+		if (dist < 10) return;
+
+		let x = Math.min(startX, endX);
+		let y = Math.min(startY, endY);
+		let width = Math.abs(endX - startX);
+		let height = Math.abs(endY - startY);
+
+		$('#divRectSelect').css({
+			left: x + 'px',
+			top: y + 'px',
+			width: width + 'px',
+			height: height + 'px'
+		});
+
+		// 计算选中区域
+		$('#divMain div').each(function(){
+			let divX = $(this).offset().left;
+			let divY = $(this).offset().top;
+			let divW = $(this).outerWidth();
+			let divH = $(this).outerHeight();
+
+			let isSelected = false;
+			if (x + width  > divX &&
+				divX + divW > x &&
+				y + height > divY &&
+				divY + divH > y
+			){
+				isSelected = true;
+			}
+
+			if (e.shiftKey){
+				if (isSelected){
+					$(this).addClass('selected');
+				}
+			}else if (e.ctrlKey){
+				if (isSelected){
+					if ($(this).data('selected')){
+						$(this).removeClass('selected');
+					}else{
+						$(this).addClass('selected');
+					}
+				}
+			}else{
+				if (isSelected){
+					$(this).addClass('selected');
+				}else{
+					$(this).removeClass('selected');
+				}
+			}
+		});
+	});
+	$(document).on('mouseup', function(e){
+		if (!$('#divRectSelect').length) return;
+		$('#divRectSelect').remove();
+		$('body').removeClass('no-select');
+	});
+});
+</script>
+
+</body>
+</html>

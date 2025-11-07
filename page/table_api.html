@@ -1,0 +1,205 @@
+<!-- 表格API zjfree 2025-11-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>表格API</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+
+		#table1 {
+			width: 100%;
+			border-collapse: collapse;
+			border: 2px solid #ccc;
+			margin-top: 10px;
+		}
+
+		#table1 th,
+		#table1 td {
+			border: 1px solid #ccc;
+			padding: 5px;
+		}
+
+		#table1 thead tr,
+		#table1 tfoot tr {
+			background-color: #f2f2f2;
+		}
+
+		#table1 tbody tr td:last-child {
+			cursor: move;
+		}
+
+		/* 拖动中的行样式 */
+		#table1 tr.dragging td {
+			opacity: 0.6;
+			box-shadow: inset 0 0 100px rgba(200, 255, 255, 0.8);
+		}
+
+		/* 上半部分提示 */
+		#table1 tr.drag-over-top {
+			border-top: 2px solid #2196f3;
+		}
+
+		/* 下半部分提示 */
+		#table1 tr.drag-over-bottom {
+			border-bottom: 2px solid #2196f3;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>表格API</h1>
+
+	<button id="btnAdd">添加行</button>
+
+	<table id="table1">
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr draggable="true">
+				<td contenteditable="plaintext-only">张三</td>
+				<td contenteditable="plaintext-only">25</td>
+				<td contenteditable="plaintext-only">男</td>
+				<td><button>删除</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="100%">表格底部信息</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<script>
+		var tb = $('#table1')[0];
+
+		var dragEvent = {
+			dragstart: function () {
+				$(this).closest('table').data('draggedRow', $(this));
+				// 延迟添加样式避免闪烁
+				let _this = $(this);
+				setTimeout(() => {
+					_this.addClass('dragging');
+				}, 0);
+			},
+
+			dragend: function () {
+				// 清理样式
+				$(this).closest('table').data('draggedRow').removeClass('dragging');
+				// 移除所有提示样式
+				$(this).closest('tbody').find('tr').removeClass('drag-over-top drag-over-bottom');
+				// 重置状态
+				$(this).closest('table').data('draggedRow', null);
+				$(this).closest('tbody').data('targetRow', null);
+				$(this).closest('table').data('insertBefore', false);
+			},
+
+			dragover: function (e) {
+				e.preventDefault();
+				let $draggedRow = $(this).closest('table').data('draggedRow');
+				if ($(this).is($draggedRow)) return;
+
+				const $target = $(this);
+				const rect = this.getBoundingClientRect();
+				const rowHeight = rect.height;
+				const mouseYInRow = e.clientY - rect.top;
+
+				// 记录当前目标行和插入方向
+				$(this).closest('tbody').data('targetRow', $target);
+
+				let insertBefore = mouseYInRow < rowHeight / 2;
+				$(this).closest('table').data('insertBefore', insertBefore);
+
+				// 清除所有行的提示样式
+				$(this).closest('tbody').find('tr').removeClass('drag-over-top drag-over-bottom');
+				// 为当前目标行添加对应提示样式
+				if (insertBefore) {
+					$target.addClass('drag-over-top');
+				} else {
+					$target.addClass('drag-over-bottom');
+				}
+			},
+
+			dragenter: function (e) {
+				e.preventDefault();
+				// 仅记录状态，不调整位置
+			},
+
+			dragleave: function () {
+				// 离开时清除当前行的提示样式（但保留其他行的，直到有新的目标行）
+				$(this).removeClass('drag-over-top drag-over-bottom');
+			},
+
+			drop: function (e) {
+				e.preventDefault();
+				// 清除所有提示样式
+				$(this).closest('tbody').find('tr').removeClass('drag-over-top drag-over-bottom');
+
+				// 确保有有效目标行且不是自己
+				let $targetRow = $(this).closest('tbody').data('targetRow');
+				let insertBefore = $(this).closest('table').data('insertBefore');
+				let $draggedRow = $(this).closest('table').data('draggedRow');
+
+				if ($targetRow && !$targetRow.is($draggedRow)) {
+					// 释放后才执行位置调整
+					if (insertBefore) {
+						$draggedRow.insertBefore($targetRow);
+					} else {
+						$draggedRow.insertAfter($targetRow);
+					}
+				}
+			}
+		};
+
+		$(function () {
+
+			// 点击删除按钮
+			$('#table1').on('click', 'button', function () {
+				$(this).closest('tr').remove();
+			});
+
+			// 点击添加行按钮
+			$('#btnAdd').on('click', function () {
+				let tr = tb.tBodies[0].insertRow();
+				tr.insertCell().innerHTML = '新姓名';
+				tr.insertCell().innerHTML = '新年龄';
+				tr.insertCell().innerHTML = '新性别';
+				tr.insertCell().innerHTML = '<button>删除</button>';
+				$(tr).find('td:not(:last-child)').attr('contenteditable', 'plaintext-only');
+				$(tr).attr('draggable', 'true');
+				$(tr).on(dragEvent);
+			});
+
+			const $tbody = $('#table1 tbody');
+			let $draggedRow = null;
+			let $targetRow = null; // 记录当前悬停的目标行
+			let insertBefore = false; // 记录最终插入方向（true: 插入到目标行前，false: 插入到目标行后）
+
+			// 初始化所有行的拖动事件
+			$('#table1 tbody').find('tr[draggable="true"]').on(dragEvent);
+		});
+	</script>
+
+</body>
+
+</html>
