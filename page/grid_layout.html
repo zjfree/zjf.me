@@ -1,0 +1,306 @@
+<!-- 网格布局 zjfree 2025-12-26 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网格布局定义</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html,body{
+	padding:0;
+	margin:0;
+	min-height: 100%;
+}
+.tool{
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	border:solid 2px #999;
+	background-color: #fff;
+	z-index: 100;
+}
+.tool:hover{
+	border:solid 2px #99f;
+}
+.tool h3{
+	margin:0;
+	padding:5px 10px;
+	font-size: 14px;
+	font-weight: normal;
+	background: linear-gradient(to bottom, #fff 0%,#999 100%);
+	border-bottom:solid 1px #999;
+	cursor:move;
+	user-select: none;
+}
+.tool.dragging h3{
+	background: linear-gradient(to bottom, #fff 0%,#99f 100%);
+}
+.tool .content{
+	padding:10px;
+	line-height: 2;
+	font-size: 12px;
+}
+.tool input[type="number"]{
+	width: 60px;
+	text-align: center;
+}
+#divGrid{
+	position: absolute;
+	border:solid 1px #999;
+	background-color: #eff;
+	user-select: none;
+}
+#divGrid table{
+	border-collapse: collapse;
+	height: 100%;
+	width: 100%;
+}
+#divGrid td{
+	border:solid 1px rgba(0,0,0,0.05);
+}
+#divGrid>div{
+	pointer-events: none;
+	border:solid 1px #99f;
+	background-color: rgba(153,255,255,0.5);
+	display: flex;              /* 开启弹性布局 */
+	align-items: center;        /* 垂直方向居中（上下） */
+	justify-content: center; 
+	font-size: 20px;
+	font-weight: bold;
+	color:rgba(0,0,0,0.5);
+}
+#divGrid>div.active{
+	background-color: rgba(255,255,150,0.5);
+}
+#divGrid>div.red{
+	background-color: rgba(255,150,150,0.5);
+}
+#divCode .content{
+	font-family: "Courier New", Courier, monospace;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<div class="tool">
+	<h3>网格配置</h3>
+	<div id="divConfig" class="content">
+		尺寸：<input id="numWidth" type="number" value="1000" /> * <input id="numHeight" type="number" value="800" /><br>
+		网格：<input id="numGridWidth" type="number" value="10" /> * <input id="numGridHeight" type="number" value="10" /><br>
+		边距：<input id="numMargin" type="number" value="5" /> px<br>
+		<button id="btnClear">清空</button>
+		<button id="btnCode">代码</button>
+	</div>
+</div>
+
+<div id="divCode" class="tool" style="top:200px; display: none;">
+	<h3>网格代码</h3>
+	<div class="content"></div>
+</div>
+
+<div id="divGrid">
+	<table></table>
+</div>
+
+<script>
+
+var beginX = 0;
+var beginY = 0;
+var gridList = [];
+var curGrid = null;
+
+$(function(){
+	// 拖动.tool
+	$(".tool h3").on("mousedown",function(e){
+		var $tool = $(this).parent();
+		$tool.addClass("dragging");
+		var offset = $tool.offset();
+		var x = e.clientX - offset.left;
+		var y = e.clientY - offset.top;
+		$(document).on("mousemove",function(e){
+			$tool.css({
+				left:e.clientX - x,
+				top:e.clientY - y
+			});
+		});
+		$(document).on("mouseup",function(){
+			$(this).off("mousemove");
+			$tool.removeClass("dragging");
+		});
+	});
+
+	$('#divGrid table').on("mousedown",function(e){
+		let td = $(e.target);
+		if(td.is("td"))
+		{
+			beginX = td.data("x");
+			beginY = td.data("y");
+		}
+		$(document).on("mousemove",function(e){
+			let td = $(e.target);
+			if(td.is("td"))
+			{
+				let x = td.data("x");
+				let y = td.data("y");
+				curGrid = {
+					x1:beginX,
+					y1:beginY,
+					x2:x,
+					y2:y,
+				};
+				if (curGrid.x2 < curGrid.x1)
+				{
+					let t = curGrid.x1;
+					curGrid.x1 = curGrid.x2;
+					curGrid.x2 = t;
+				}
+				if (curGrid.y2 < curGrid.y1)
+				{
+					let t = curGrid.y1;
+					curGrid.y1 = curGrid.y2;
+					curGrid.y2 = t;
+				}
+
+				showGrid();
+			}
+		});
+		$(document).on("mouseup",function(){
+			$(this).off("mousemove");
+			if (curGrid != null){
+
+				// 剔除与当前网格相交的网格
+				let list = [];
+				for (let r of gridList)
+				{
+					let isNotIntersect = true;
+					if (curGrid != null){
+						isNotIntersect = r.x2 <= curGrid.x1-1 ||
+						r.x1 >= curGrid.x2+1 ||
+						r.y2 <= curGrid.y1-1 ||
+						r.y1 >= curGrid.y2+1;
+					}
+					if (isNotIntersect){
+						list.push(r);
+					}
+				}
+				gridList = list;
+
+				gridList.push(curGrid);
+				curGrid = null;
+				showGrid();
+			}
+		});
+	});
+
+	$("#divConfig").on("change","input",function(){
+		showTable();
+		showGrid();
+	});
+	
+	$("#btnClear").on("click",function(){
+		gridList = [];
+		showGrid();
+	});
+	
+	$("#btnCode").on("click",function(){
+		$('#divCode').toggle();
+	});
+	
+	showTable();
+});
+
+function showTable()
+{
+	let grid = $('#divGrid');
+	let w = $('#numWidth').val();
+	let h = $('#numHeight').val();
+	let left = Math.max($(window).width() / 2 - w / 2, 0);
+	let top = Math.max($(window).height() / 2 - h / 2, 0);
+	
+	grid.css({
+		width: w + 'px',
+		height:h + 'px',
+		left:left + 'px',
+		top:top + 'px',
+	});
+
+	let gw = $('#numGridWidth').val();
+	let gh = $('#numGridHeight').val();
+	let html = '';
+	for(let i=0;i<gh;i++)
+	{
+		html += '<tr>';
+		for(let j=0;j<gw;j++)
+		{
+			html += '<td id="td_'+i+'_'+j+'" data-x="'+i+'" data-y="'+j+'"></td>';
+		}
+		html += '</tr>';
+	}
+	grid.find('table').html(html);
+}
+
+function showGrid()
+{
+	$('#divGrid div').remove();
+
+	let code = '';
+	let index = 1;
+	for (let r of gridList)
+	{
+  		let isNotIntersect = true;
+		if (curGrid != null){
+			isNotIntersect = r.x2 <= curGrid.x1-1 ||   // 矩形1在矩形2左侧
+			r.x1 >= curGrid.x2+1 ||   // 矩形1在矩形2右侧
+			r.y2 <= curGrid.y1-1 ||   // 矩形1在矩形2上方
+			r.y1 >= curGrid.y2+1;     // 矩形1在矩形2下方
+		}
+
+		let div = null;
+		if (isNotIntersect){
+			div = getGridDiv(r, '');
+		}else{
+			div = getGridDiv(r, 'red');
+		}
+		div.text(index++);
+		$('#divGrid').append(div);
+
+		code += '&lt;div style="top:' + Math.round(div.position().top) + 'px;left:' + Math.round(div.position().left) + 'px;width:' + Math.round(div.width()) + 'px;height:' + Math.round(div.height()) + 'px;"&gt;' + index + '&lt;/div&gt;<br>';
+	}
+
+	$('#divCode .content').html(code);
+	
+	if (curGrid != null){
+		let div = getGridDiv(curGrid, 'active');
+		$('#divGrid').append(div);
+	}
+}
+
+function getGridDiv(grid, elClass)
+{
+	let td1 = $('#td_'+grid.x1+'_'+grid.y1);
+	let td2 = $('#td_'+grid.x2+'_'+grid.y2);
+	let div = $('<div class="'+elClass+'"></div>');
+
+	let margin = parseInt($('#numMargin').val());
+
+	div.css({
+		position:'absolute',
+		left:td1.position().left + margin + 'px',
+		top:td1.position().top + margin + 'px',
+		width:(td2.position().left - td1.position().left + td2.width() + 2 - margin * 2) + 'px',
+		height:(td2.position().top - td1.position().top + td2.height() + 2 - margin * 2) + 'px',
+	});
+	
+	return div;
+}
+</script>
+
+</body>
+</html>
