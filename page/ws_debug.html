@@ -1,0 +1,206 @@
+<!-- WebSocket调试工具 zjfree 2026-01-05 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebSocket调试工具</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+#divLog{
+	border:1px solid #ccc;
+	padding:5px;
+}
+#divLog>div{
+	font-size: 12px;
+	margin-top:5px;
+	padding:5px;
+	border:solid 1px #ccc;
+}
+#divLog>div:first-child{
+	margin-top:0;
+}
+#divLog .time{
+	color:#666;
+}
+
+#divLog>.info{
+	background-color: #f0f0f0;
+}
+#divLog>.error{
+	background-color: #fcc;
+	color:red;
+}
+#divLog>.receive{
+	background-color: #cfc;
+	color:#060;
+}
+#divLog>.send{
+	background-color: #ccf;
+	color:#00f;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>WebSocket调试工具</h1>
+<div>
+	服务器地址：<input type="text" id="txtUrl" placeholder="请输入WebSocket地址" value="ws://localhost:8080" />
+	<button type="button" id="btnConnect">连接</button>
+	&nbsp;
+	<label>
+		<input type="checkbox" id="chkAuto" /> 自动重连
+	</label>
+</div>
+
+<div style="margin:10px 0;">
+	<input type="text" id="txtMsg" placeholder="请输入消息" style="width:300px;" />
+	<button type="button" id="btnSend">发送</button>
+	<button type="button" id="btnClear">清空</button>
+	&nbsp; 累计接收：<span id="spanReceiveCount">0</span>
+</div>
+
+<div id="divLog">
+</div>
+
+<script>
+	// WebSocket对象
+	var ws = null;
+	var receiveCount = 0;
+
+	$(function(){
+		// JS
+		$('#btnClear').click(function(){
+			$('#divLog').html('');
+		});
+
+		$('#btnConnect').click(function(){
+			if (ws && ws.readyState === WebSocket.OPEN) {
+				$('#chkAuto').prop('checked', false);
+				ws.close();
+				$(this).text('连接');
+			} else {
+				connect();
+			}
+		});
+		$('#btnSend').click(function(){
+			sendMessage();
+		});
+
+		// 输入框回车发送消息
+		$('#txtMsg').keydown(function(e){
+			if (e.key === 'Enter') {
+				sendMessage();
+			}
+		});
+		
+        // 页面关闭时关闭连接
+        window.onbeforeunload = function() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
+        };
+		
+		showInfo('WebSocket调试工具就绪');
+	});
+
+	// 添加日志
+	function showInfo(msg, type='info'){
+		if ($('#divLog>div').length > 10000){
+			$('#divLog').html('');
+		}
+		msg = escapeHtml(msg);
+		let time = (new Date()).toLocaleString();
+		msg = '<span class="time">' + time + '</span> ' + msg;
+		$('#divLog').prepend('<div class="'+type+'">'+msg+'</div>');
+	}
+
+	// 连接WebSocket服务器
+	function connect() {
+
+		let url = $('#txtUrl').val().trim();
+		showInfo('连接['+url+']...');
+
+		try {
+			ws = new WebSocket(url);
+			
+			// 连接打开
+			ws.onopen = function() {
+				receiveCount = 0;
+				$('#spanReceiveCount').text(receiveCount);
+				showInfo('WebSocket连接已建立');
+				$('#btnConnect').text('断开');
+			};
+			
+			// 接收消息
+			ws.onmessage = function(event) {
+				receiveCount++;
+				$('#spanReceiveCount').text(receiveCount);
+				showInfo(event.data, 'receive');
+			};
+			
+			// 连接关闭
+			ws.onclose = function() {
+				showInfo('WebSocket连接已关闭', 'error');
+
+				// 尝试重新连接
+				if ($('#chkAuto').is(':checked')) {
+					showInfo('5秒后尝试重新连接');
+					setTimeout(connect, 5000);
+				}
+			};
+			
+			// 连接错误
+			ws.onerror = function(error) {
+				showInfo('WebSocket错误:', 'error');
+			};
+			
+		} catch (e) {
+			showInfo('连接WebSocket服务器失败:', e.message);
+			if ($('#chkAuto').is(':checked')) {
+				showInfo('5秒后尝试重新连接');
+				setTimeout(connect, 5000);
+			}
+		}
+	}
+
+	// 转义HTML特殊字符
+	function escapeHtml(text) {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	}
+	
+	// 发送消息
+	function sendMessage() {
+		const message = $('#txtMsg').val().trim();
+		if (!message) {
+			$('#txtMsg').focus();
+			return;
+		}
+		if (!ws || ws.readyState !== WebSocket.OPEN) {
+			showInfo('WebSocket连接未建立', 'error');
+			return;
+		}
+
+		showInfo(message, 'send');
+
+		try {
+			ws.send(message);
+		} catch (e) {
+			showInfo('发送消息失败:', e.message, 'error');
+		}
+	}
+</script>
+
+</body>
+</html>

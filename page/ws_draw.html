@@ -1,0 +1,305 @@
+<!-- WebSocket协作画板 zjfree 2026-01-05 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebSocket协作画板</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html, body{
+	padding:0;
+	margin:0;
+	overflow: hidden;
+	height: 100%;
+}
+
+#divControl{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 16px;
+	z-index: 10;
+}
+
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<canvas id="canvasDraw" width="100%" height="100%"></canvas>
+
+<div id="divControl">
+	<input type="text" id="txtUrl" placeholder="请输入WebSocket地址" value="ws://localhost:8080" />
+	<button type="button" id="btnConnect">连接</button>
+	<br>
+	<input type="color" id="txtColor" value="#000000" />
+	<input type="range" id="txtSize" min="1" max="20" value="5">
+	<button type="button" id="btnClear">清空</button>
+</div>
+
+<script>
+	// WebSocket对象
+	var ws = null;
+	var isConnected = false;
+	
+	var canvas = null;
+	var ctx = null;
+
+	// 绘制相关变量
+	var isDrawing = false;
+	var lastX = 0;
+	var lastY = 0;
+	var currentColor = '#000000';
+	var currentSize = 5;
+	
+
+	// 添加日志
+	function showInfo(msg, type='info'){
+		console.log(`[${type}] ${msg}`);
+	}
+
+	// 连接WebSocket服务器
+	function connect() {
+
+		let url = $('#txtUrl').val().trim();
+		showInfo('连接['+url+']...');
+
+		try {
+			ws = new WebSocket(url);
+			
+			// 连接打开
+			ws.onopen = function() {
+				isConnected = true;
+				showInfo('WebSocket连接已建立');
+				$('#txtUrl').css('background-color', '#9f9');
+				$('#btnConnect').text('断开');
+			};
+			
+			// 接收消息
+			ws.onmessage = function(event) {
+				showInfo(event.data, 'receive');
+			
+				try {
+					const data = JSON.parse(event.data);
+					handleWebSocketMessage(data);
+				} catch (error) {
+					showInfo('解析消息失败:' + error.message, 'error');
+				}
+			};
+			
+			// 连接关闭
+			ws.onclose = function() {
+				isConnected = false;
+				showInfo('WebSocket连接已关闭', 'error');
+				$('#txtUrl').css('background-color', '#f99');
+				$('#btnConnect').text('连接');
+			};
+			
+			// 连接错误
+			ws.onerror = function(error) {
+				showInfo('WebSocket错误:', 'error');
+			};
+			
+		} catch (e) {
+			showInfo('连接WebSocket服务器失败:', e.message);
+			$('#txtUrl').css('background-color', '#f99');
+		}
+	}
+	
+	// 发送消息
+	function sendMessage() {
+		const message = $('#txtMsg').val().trim();
+		if (!message) {
+			$('#txtMsg').focus();
+			return;
+		}
+		if (!ws || ws.readyState !== WebSocket.OPEN) {
+			showInfo('WebSocket连接未建立', 'error');
+			return;
+		}
+
+		showInfo(message, 'send');
+
+		try {
+			ws.send(message);
+		} catch (e) {
+			showInfo('发送消息失败:', e.message, 'error');
+		}
+	}
+
+	// 处理WebSocket消息
+	function handleWebSocketMessage(data)
+	{
+		switch (data.type) {
+			case 'draw':
+				drawFromData(data);
+				break;
+			case 'clear':
+				clearCanvas();
+				break;
+			case 'heartbeat':
+				// 心跳消息，无需处理
+				break;
+			default:
+				console.log('未知消息类型:', data.type);
+		}
+	}
+
+	// 初始化画布
+	function initCanvas() 
+	{
+		$('#canvasDraw').attr('width', $(window).width());
+		$('#canvasDraw').attr('height', $(window).height());
+		canvas = document.getElementById('canvasDraw');
+		ctx = canvas.getContext('2d');
+
+		// 设置画布样式
+		ctx.lineCap = 'round';
+		ctx.lineJoin = 'round';
+		ctx.lineWidth = currentSize;
+		ctx.strokeStyle = currentColor;
+		
+		// 绑定鼠标事件
+		canvas.addEventListener('mousedown', startDrawing);
+		canvas.addEventListener('mousemove', draw);
+		canvas.addEventListener('mouseup', stopDrawing);
+		canvas.addEventListener('mouseout', stopDrawing);
+
+		// 支持触摸事件
+		canvas.addEventListener('touchstart', startDrawing);
+		canvas.addEventListener('touchmove', draw);
+		canvas.addEventListener('touchend', stopDrawing);
+		canvas.addEventListener('touchcancel', stopDrawing);
+	}
+
+	// 开始绘制
+	function startDrawing(e)
+	{
+		isDrawing = true;
+		[lastX, lastY] = [e.offsetX, e.offsetY];
+	}
+	
+	// 绘制函数
+	function draw(e) {
+		if (!isDrawing) return;
+		
+		const currentX = e.offsetX;
+		const currentY = e.offsetY;
+		
+		// 在本地绘制
+		ctx.beginPath();
+		ctx.moveTo(lastX, lastY);
+		ctx.lineTo(currentX, currentY);
+		ctx.stroke();
+
+		console.log(lastX, lastY, currentX, currentY);
+		
+		// 发送绘制数据到服务器
+		if (isConnected && ws.readyState === WebSocket.OPEN) {
+			const drawData = {
+				type: 'draw',
+				color: currentColor,
+				size: currentSize,
+				fromX: lastX - canvas.width / 2,
+				fromY: lastY - canvas.height / 2,
+				toX: currentX - canvas.width / 2,
+				toY: currentY - canvas.height / 2
+			};
+			ws.send(JSON.stringify(drawData));
+		}
+		
+		[lastX, lastY] = [currentX, currentY];
+	}
+
+	// 根据接收到的数据绘制
+	function drawFromData(data) 
+	{
+		ctx.save();
+		ctx.strokeStyle = data.color;
+		ctx.lineWidth = data.size;
+		ctx.lineCap = 'round';
+		ctx.lineJoin = 'round';
+		
+		ctx.beginPath();
+		ctx.moveTo(data.fromX + canvas.width / 2, data.fromY + canvas.height / 2);
+		ctx.lineTo(data.toX + canvas.width / 2, data.toY + canvas.height / 2);
+		ctx.stroke();
+		
+		ctx.restore();
+	}
+	
+	// 停止绘制
+	function stopDrawing() {
+		isDrawing = false;
+	}
+	
+	// 清除画布
+	function clearCanvas() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
+	
+	// 绑定控制事件
+	function bindControls()
+	{
+		// 颜色选择器
+		$('#txtColor').change((e) => {
+			currentColor = e.target.value;
+			ctx.strokeStyle = currentColor;
+		});
+		
+		// 画笔大小选择器
+		$('#txtSize').change((e) => {
+			currentSize = e.target.value;
+			ctx.lineWidth = currentSize;
+		});
+		
+		// 清除按钮
+		$('#btnClear').click(() => {
+			clearCanvas();
+			
+			// 发送清除命令到服务器
+			if (isConnected && ws.readyState === WebSocket.OPEN) {
+				const clearData = {
+					type: 'clear'
+				};
+				ws.send(JSON.stringify(clearData));
+			}
+		});
+		
+		$('#btnConnect').click(function(){
+			if (ws && ws.readyState === WebSocket.OPEN) {
+				$('#chkAuto').prop('checked', false);
+				ws.close();
+				$(this).text('连接');
+			} else {
+				connect();
+			}
+		});
+
+        // 页面关闭时关闭连接
+        window.onbeforeunload = function() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
+        };
+	}
+	
+	$(function(){
+		// JS
+		initCanvas();
+		bindControls();
+		
+		showInfo('WebSocket调试工具就绪');
+	});
+
+        
+</script>
+
+</body>
+</html>
