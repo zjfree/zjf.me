@@ -182,15 +182,19 @@ html, body{
 	function startDrawing(e)
 	{
 		isDrawing = true;
-		[lastX, lastY] = [e.offsetX, e.offsetY];
+		if (e.touches){
+			[lastX, lastY] = [Math.round(e.touches[0].clientX), Math.round(e.touches[0].clientY)];
+		}else{
+			[lastX, lastY] = [e.offsetX, e.offsetY];
+		}
 	}
 	
 	// 绘制函数
 	function draw(e) {
 		if (!isDrawing) return;
 		
-		const currentX = e.offsetX;
-		const currentY = e.offsetY;
+		const currentX = e.touches ? Math.round(e.touches[0].clientX) : e.offsetX;
+		const currentY = e.touches ? Math.round(e.touches[0].clientY) : e.offsetY;
 		
 		// 在本地绘制
 		ctx.beginPath();
@@ -198,7 +202,7 @@ html, body{
 		ctx.lineTo(currentX, currentY);
 		ctx.stroke();
 
-		console.log(lastX, lastY, currentX, currentY);
+		//console.log(lastX, lastY, currentX, currentY);
 		
 		// 发送绘制数据到服务器
 		if (isConnected && ws.readyState === WebSocket.OPEN) {
