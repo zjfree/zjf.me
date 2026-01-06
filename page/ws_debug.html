@@ -54,7 +54,7 @@ body{
 <!-- 内容 -->
 <h1>WebSocket调试工具</h1>
 <div>
-	服务器地址：<input type="text" id="txtUrl" placeholder="请输入WebSocket地址" value="ws://localhost:8080" />
+	服务器地址：<input type="text" id="txtUrl" placeholder="请输入WebSocket地址" value="ws://localhost:8080" style="width:230px;" />
 	<button type="button" id="btnConnect">连接</button>
 	&nbsp;
 	<label>
@@ -63,7 +63,7 @@ body{
 </div>
 
 <div style="margin:10px 0;">
-	<input type="text" id="txtMsg" placeholder="请输入消息" style="width:300px;" />
+	<input type="text" id="txtMsg" placeholder="请输入消息" style="width:350px;" />
 	<button type="button" id="btnSend">发送</button>
 	<button type="button" id="btnClear">清空</button>
 	&nbsp; 累计接收：<span id="spanReceiveCount">0</span>
@@ -76,6 +76,7 @@ body{
 	// WebSocket对象
 	var ws = null;
 	var receiveCount = 0;
+	var reconnTimer = null;
 
 	$(function(){
 		// JS
@@ -126,6 +127,12 @@ body{
 
 	// 连接WebSocket服务器
 	function connect() {
+		
+		// 清除之前的重连定时器
+		if (reconnTimer) {
+			clearTimeout(reconnTimer);
+			reconnTimer = null;
+		}
 
 		let url = $('#txtUrl').val().trim();
 		showInfo('连接['+url+']...');
@@ -149,26 +156,41 @@ body{
 			};
 			
 			// 连接关闭
-			ws.onclose = function() {
-				showInfo('WebSocket连接已关闭', 'error');
+			ws.onclose = function(event) {
+				let closeMsg = `WebSocket连接已关闭，状态码: ${event.code}`;
+				
+				// 状态码对应具体错误场景
+				const codeMap = {
+					1006: '连接超时/服务器不可达/端口未开放（net::ERR_CONNECTION_TIMED_OUT）',
+					1007: '数据格式错误（非 UTF-8 数据）',
+					1011: '服务器内部错误',
+					1000: '正常关闭',
+					1001: '端点离开（如页面关闭）'
+				};
+
+				if (codeMap[event.code]) {
+					closeMsg += ` → ${codeMap[event.code]}`;
+				}
+
+				showInfo(closeMsg, 'error');
 
 				// 尝试重新连接
 				if ($('#chkAuto').is(':checked')) {
 					showInfo('5秒后尝试重新连接');
-					setTimeout(connect, 5000);
+					reconnTimer = setTimeout(connect, 5000);
 				}
 			};
 			
 			// 连接错误
 			ws.onerror = function(error) {
-				showInfo('WebSocket错误:', 'error');
+				showInfo('WebSocket发出错误', 'error');
 			};
 			
 		} catch (e) {
 			showInfo('连接WebSocket服务器失败:', e.message);
 			if ($('#chkAuto').is(':checked')) {
 				showInfo('5秒后尝试重新连接');
-				setTimeout(connect, 5000);
+				reconnTimer = setTimeout(connect, 5000);
 			}
 		}
 	}
