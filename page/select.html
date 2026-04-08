@@ -6,11 +6,11 @@
 
   <style>
     /* 用户自定义颜色 */
-    my-option.red {
+    z-dropdown-option.red {
       color: #e74c3c;
       font-weight: bold;
     }
-    my-option.green {
+    z-dropdown-option.green {
       color: #27ae60;
     }
 
@@ -41,17 +41,17 @@
 </div>
 
 <form id="myForm">
-  <my-dropdown name="language" value="js" placeholder="请选择语言">
-    <my-option value="html" class="red">HTML5（第一个）</my-option>
-    <my-option value="css" class="green">CSS3</my-option>
-    <my-option value="js">JavaScript</my-option>
-    <my-option value="vue">Vue.js</my-option>
-    <my-option value="python">Python</my-option>
-    <my-option value="java">Java</my-option>
-    <my-option value="java_long">Java-Java-Java-Java-Java-Java-Java-Java-Java超长测试</my-option>
-    <my-option value="csharp">C#</my-option>
-    <my-option value="php">PHP</my-option>
-  </my-dropdown>
+  <z-dropdown name="language" value="js" placeholder="请选择语言">
+    <z-dropdown-option value="html" class="red">HTML5（第一个）</z-dropdown-option>
+    <z-dropdown-option value="css" class="green">CSS3</z-dropdown-option>
+    <z-dropdown-option value="js">JavaScript</z-dropdown-option>
+    <z-dropdown-option value="vue">Vue.js</z-dropdown-option>
+    <z-dropdown-option value="python">Python</z-dropdown-option>
+    <z-dropdown-option value="java">Java</z-dropdown-option>
+    <z-dropdown-option value="java_long">Java-Java-Java-Java-Java-Java-Java-Java-Java超长测试</z-dropdown-option>
+    <z-dropdown-option value="csharp">C#</z-dropdown-option>
+    <z-dropdown-option value="php">PHP</z-dropdown-option>
+  </z-dropdown>
 
   <br><br>
   <button type="submit">提交</button>
@@ -60,16 +60,16 @@
 <h3>选中结果：<span id="result" style="color:red"></span></h3>
 
 <script>
-// ==================== my-option ====================
-class MyOption extends HTMLElement {
+// ==================== z-dropdown-option ====================
+class ZDropdownOption extends HTMLElement {
   static get observedAttributes() { return ['value']; }
   constructor() { super(); }
   get value() { return this.getAttribute('value'); }
   get label() { return this.textContent.trim(); }
 }
 
-// ==================== my-dropdown ====================
-class MyDropdown extends HTMLElement {
+// ==================== z-dropdown ====================
+class ZDropdown extends HTMLElement {
   static formAssociated = true;
   static get observedAttributes() { return ['value']; }
 
@@ -113,18 +113,18 @@ class MyDropdown extends HTMLElement {
   }
 
   cacheAllOptions() {
-    this.allOptions = Array.from(this.querySelectorAll('my-option'));
+    this.allOptions = Array.from(this.querySelectorAll('z-dropdown-option'));
   }
 
   updateLabel() {
     const el = this.shadowRoot.querySelector('.label');
-    const opt = this.querySelector(`my-option[value="${this.value}"]`);
+    const opt = this.querySelector(`z-dropdown-option[value="${this.value}"]`);
     if (el) el.textContent = opt ? opt.label : this.getAttribute('placeholder');
   }
 
   syncActive() {
     this.allOptions.forEach(o => o.classList.remove('active'));
-    const opt = this.querySelector(`my-option[value="${this.value}"]`);
+    const opt = this.querySelector(`z-dropdown-option[value="${this.value}"]`);
     if (opt) opt.classList.add('active');
   }
 
@@ -153,7 +153,7 @@ class MyDropdown extends HTMLElement {
   }
 
   confirmSelect() {
-    const active = this.querySelector('my-option.active');
+    const active = this.querySelector('z-dropdown-option.active');
     if (active) {
       this.value = active.value;
       this.shadowRoot.querySelector('.dropdown').classList.remove('open');
@@ -175,13 +175,13 @@ class MyDropdown extends HTMLElement {
       .dropdown.open .menu { display:block; }
       .label { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
-      ::slotted(my-option) {
+      ::slotted(z-dropdown-option) {
         color: #2c3e50; font-size:14px; padding:0.3em 1em; display:block; cursor:pointer; border-radius:4px;
       }
-      ::slotted(my-option:hover) {
+      ::slotted(z-dropdown-option:hover) {
         box-shadow: inset 0 0 5px #409eff;
       }
-      ::slotted(my-option.active) {
+      ::slotted(z-dropdown-option.active) {
         box-shadow: inset 0 0 20px #409eff;
       }
     </style>
@@ -226,7 +226,7 @@ class MyDropdown extends HTMLElement {
     });
 
     this.addEventListener('click', e => {
-      const opt = e.target.closest('my-option');
+      const opt = e.target.closest('z-dropdown-option');
       if (opt) {
         this.value = opt.value;
         dd.classList.remove('open');
@@ -247,14 +247,14 @@ class MyDropdown extends HTMLElement {
   }
 }
 
-customElements.define('my-option', MyOption);
-customElements.define('my-dropdown', MyDropdown);
+customElements.define('z-dropdown-option', ZDropdownOption);
+customElements.define('z-dropdown', ZDropdown);
 </script>
 
 <script>
   const form = document.getElementById('myForm');
   const result = document.getElementById('result');
-  const dropdown = document.querySelector('my-dropdown');
+  const dropdown = document.querySelector('z-dropdown');
 
   dropdown.addEventListener('change', e => {
     result.textContent = `已选中：${e.detail.label} (${e.detail.value})`;

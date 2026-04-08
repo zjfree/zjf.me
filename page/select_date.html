@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>终极日期选择组件</title>
+    <style>
+        /* 你只需要在这里写 CSS，就能控制组件所有字体！ */
+        z-date-picker {
+            font-size: 14px; /* 默认全局大小 */
+        }
+        .custom-size {
+            font-size: 12px; /* 自定义小字体 */
+        }
+        .big-size {
+            font-size: 16px; /* 自定义大字体 */
+            width:220px;
+        }
+    </style>
+</head>
+<body>
+    <h3>表单测试（完整版）</h3>
+<form id="testForm">
+    <z-date-picker name="date1" value="today" black-list="2026-04-10,2026-04-01~2026-04-05"></z-date-picker>
+    <z-date-picker name="date2" value="2026-02-09" white-list="2026-02-09,2026-04-08~2026-04-15" date-bg="2026-04-08:#faa,2026-04-10:#fff2e8,2026-04-12:#f0f9ff"></z-date-picker>
+    <z-date-picker name="date3" disabled class="custom-size"></z-date-picker>
+    <z-date-picker name="date4" readonly></z-date-picker>
+    <z-date-picker name="date5" class="big-size"></z-date-picker>
+    <br>
+    <button type="submit">提交测试</button>
+</form>
+
+<div id="log" style="margin-top:20px; padding:10px; border:1px solid #ddd; white-space: pre-wrap; font-size:14px;"></div>
+
+<script>
+class ZDatePickerComponent extends HTMLElement {
+  static formAssociated = true;
+  static get observedAttributes() {
+    return ['value', 'white-list', 'black-list', 'date-bg', 'disabled', 'readonly'];
+  }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.internals = this.attachInternals();
+    this.currentDate = new Date();
+    this.selectedDate = null;
+    this.isRendering = false;
+  }
+
+  attributeChangedCallback() {
+    if (!this.isRendering) this.render();
+  }
+
+  connectedCallback() {
+    this.render();
+    this.bindEvents();
+  }
+
+  get isDisabled() {
+    return this.hasAttribute('disabled');
+  }
+
+  get isReadonly() {
+    return this.hasAttribute('readonly');
+  }
+
+  get config() {
+    const value = this.getAttribute('value');
+    return {
+      value: value || null,
+      whiteList: this.parseRules(this.getAttribute('white-list')),
+      blackList: this.parseRules(this.getAttribute('black-list')),
+      dateBg: this.parseDateBg(this.getAttribute('date-bg')),
+    };
+  }
+
+  parseRules(str) {
+    if (!str) return [];
+    return str.split(',').map(s => s.trim()).filter(Boolean).map(rule => {
+      if (rule.includes('~')) {
+        const [s, e] = rule.split('~');
+        return { type: 'range', start: new Date(s), end: new Date(e) };
+      }
+      if (rule.startsWith('>')) {
+        return { type: 'gt', date: new Date(rule.slice(1)) };
+      }
+      if (rule.startsWith('<')) {
+        return { type: 'lt', date: new Date(rule.slice(1)) };
+      }
+      return { type: 'single', date: new Date(rule) };
+    });
+  }
+
+  parseDateBg(str) {
+    const map = new Map();
+    if (!str) return map;
+    str.split(',').forEach(item => {
+      const [date, color] = item.split(':').map(i => i.trim());
+      if (date && color) map.set(date, color);
+    });
+    return map;
+  }
+
+  isDateAvailable(dateStr) {
+    const { whiteList, blackList } = this.config;
+    const target = new Date(dateStr);
+    const isSameDay = (a, b) => a.toDateString() === b.toDateString();
+
+    for (const r of blackList) {
+      if (r.type === 'single' && isSameDay(target, r.date)) return false;
+      if (r.type === 'range' && target >= r.start && target <= r.end) return false;
+      if (r.type === 'gt' && target > r.date) return false;
+      if (r.type === 'lt' && target < r.date) return false;
+    }
+
+    if (whiteList.length > 0) {
+      for (const r of whiteList) {
+        if (r.type === 'single' && isSameDay(target, r.date)) return true;
+        if (r.type === 'range' && target >= r.start && target <= r.end) return true;
+        if (r.type === 'gt' && target > r.date) return true;
+        if (r.type === 'lt' && target < r.date) return true;
+      }
+      return false;
+    }
+    return true;
+  }
+
+  syncFormValue() {
+    const val = this.selectedDate ? this.format(this.selectedDate) : '';
+    this.internals.setFormValue(val);
+  }
+
+  render() {
+    this.isRendering = true;
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          width:10em;
+          display:inline-block;
+          font-size: inherit;
+          box-sizing: border-box;
+        }
+        .date-box{
+          position:relative;
+        }
+        .input-wrapper{
+          position:relative;
+          display:flex;
+          align-items:center;
+        }
+        .input{
+          width:100%;
+          padding:0.5em 1em;
+          font-size: 1em;
+          border:1px solid #ddd;
+          border-radius:0.3em;
+          outline:none;
+          box-sizing:border-box;
+          cursor:pointer;
+        }
+        .input:focus{border-color:#409eff;}
+        .input:disabled{background:#f5f5f5;color:#999;cursor:not-allowed;}
+        .calendar-icon{
+          position:absolute;
+          right:0.5em;
+          width:1.2em;
+          height:1.2em;
+          color:#666;
+          pointer-events:none;
+        }
+
+        .panel{
+          position:absolute;
+          top:34px;
+          left:0;
+          width:16em;
+          background:#fff;
+          border:1px solid #999;
+          border-radius:6px;
+          box-shadow:0 2px 8px rgba(0,0,0,0.08);
+          padding:8px;
+          display:none;
+          z-index:999;
+          font-size: 1em;
+        }
+        .panel.show{display:block;}
+        .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+        .header button{padding:2px 6px;background:#eee;border:1px solid #eee;border-radius:3px;cursor:pointer;font-size:1em;}
+        .week{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:0.9em;color:#888;margin-bottom:4px;background:#eee;padding:4px 0;border-bottom:solid 1px #aaa;}
+        .days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+        .day{
+          aspect-ratio:1/0.8;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-size:1em;
+          border-radius:0.3em;
+          cursor:pointer;
+        }
+        .day.available{background:#eee;color:#333;}
+        .day.adjacent{color:#333; background:#fff;}
+        .day.available:hover{
+          outline:1px solid #409eff;
+        }
+        .day.selected{
+          font-weight:bold;
+          filter: invert(1);
+        }
+        .day.disabled{color:#ccc;cursor:not-allowed;}
+        .day.today{outline:1px solid #409eff;}
+      </style>
+
+      <div class="date-box">
+        <div class="input-wrapper">
+          <input class="input" placeholder="选择日期" readonly>
+          <svg class="calendar-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/>
+          </svg>
+        </div>
+
+        <div class="panel">
+          <div class="header">
+            <button class="prev">‹</button>
+            <span class="ym"></span>
+            <button class="next">›</button>
+          </div>
+          <div class="week">
+            <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+          </div>
+          <div class="days"></div>
+        </div>
+      </div>
+    `;
+
+    const input = this.shadowRoot.querySelector('.input');
+    input.disabled = this.isDisabled;
+    
+    this.initValue();
+    this.renderCalendar();
+    this.isRendering = false;
+  }
+
+  initValue() {
+    const { value } = this.config;
+    const input = this.shadowRoot.querySelector('.input');
+    this.selectedDate = null;
+    this.currentDate = new Date();
+
+    if (value === 'today') {
+      this.selectedDate = new Date();
+    } else if (value) {
+      this.selectedDate = new Date(value);
+      this.currentDate = new Date(this.selectedDate);
+    }
+
+    input.value = this.selectedDate ? this.format(this.selectedDate) : '';
+    this.syncFormValue();
+  }
+
+  closeOtherPickers() {
+    document.querySelectorAll('z-date-picker').forEach(el => {
+      if (el !== this) {
+        const panel = el.shadowRoot?.querySelector('.panel');
+        if (panel) panel.classList.remove('show');
+      }
+    });
+  }
+
+  bindEvents() {
+    const input = this.shadowRoot.querySelector('.input');
+    const panel = this.shadowRoot.querySelector('.panel');
+    const prev = this.shadowRoot.querySelector('.prev');
+    const next = this.shadowRoot.querySelector('.next');
+
+    input.onclick = (e) => {
+      e.stopPropagation();
+      if (this.isDisabled || this.isReadonly) return;
+      this.closeOtherPickers();
+      panel.classList.toggle('show');
+    };
+
+    prev.onclick = (e) => {
+      e.stopPropagation();
+      if(!this.isDisabled && !this.isReadonly) this.switchMonth(-1);
+    };
+    next.onclick = (e) => {
+      e.stopPropagation();
+      if(!this.isDisabled && !this.isReadonly) this.switchMonth(1);
+    };
+
+    document.addEventListener('click', (e) => {
+      if (!this.shadowRoot.activeElement && !panel.contains(e.target)) {
+        panel.classList.remove('show');
+      }
+    });
+
+    panel.addEventListener('click', e => e.stopPropagation());
+  }
+
+  switchMonth(num) {
+    this.currentDate.setMonth(this.currentDate.getMonth() + num);
+    this.renderCalendar();
+  }
+
+  renderCalendar() {
+    const y = this.currentDate.getFullYear();
+    const m = this.currentDate.getMonth();
+    const daysEl = this.shadowRoot.querySelector('.days');
+    const ymEl = this.shadowRoot.querySelector('.ym');
+    daysEl.innerHTML = '';
+
+    ymEl.textContent = `${y}年${m + 1}月`;
+    const firstDay = new Date(y, m, 1);
+    const lastDay = new Date(y, m + 1, 0);
+    let firstWeekDay = firstDay.getDay() || 7;
+
+    const prevLast = new Date(y, m, 0).getDate();
+    for (let i = 1; i < firstWeekDay; i++) {
+      const d = prevLast - firstWeekDay + i + 1;
+      const dateStr = `${y}-${String(m).padStart(2,0)}-${String(d).padStart(2,0)}`;
+      daysEl.appendChild(this.createDay(d, dateStr, true));
+    }
+
+    for (let i = 1; i <= lastDay.getDate(); i++) {
+      const dateStr = `${y}-${String(m+1).padStart(2,0)}-${String(i).padStart(2,0)}`;
+      daysEl.appendChild(this.createDay(i, dateStr, false));
+    }
+
+    let remain = 42 - daysEl.children.length;
+    for (let i = 1; i <= remain; i++) {
+      const dateStr = `${y}-${String(m+2).padStart(2,0)}-${String(i).padStart(2,0)}`;
+      daysEl.appendChild(this.createDay(i, dateStr, true));
+    }
+  }
+
+  createDay(text, dateStr, isAdjacent) {
+    const el = document.createElement('div');
+    el.className = 'day';
+    el.textContent = text;
+    if (isAdjacent) el.classList.add('adjacent');
+
+    const available = this.isDateAvailable(dateStr);
+    if (available && !this.isDisabled && !this.isReadonly) {
+      el.classList.add('available');
+      el.onclick = (e) => {
+        e.stopPropagation();
+        this.select(dateStr);
+      };
+    } else {
+      el.classList.add('disabled');
+    }
+
+    const bgColor = this.config.dateBg.get(dateStr);
+    if (bgColor && available) el.style.backgroundColor = bgColor;
+
+    if (dateStr === this.format(new Date())) el.classList.add('today');
+    if (this.selectedDate && dateStr === this.format(this.selectedDate)) {
+      el.classList.add('selected');
+    }
+    return el;
+  }
+
+  select(dateStr) {
+    if (this.isDisabled || this.isReadonly) return;
+    this.selectedDate = new Date(dateStr);
+    this.shadowRoot.querySelector('.input').value = dateStr;
+    this.shadowRoot.querySelector('.panel').classList.remove('show');
+    this.syncFormValue();
+    this.dispatchEvent(new CustomEvent('change', { detail: dateStr }));
+    this.renderCalendar();
+  }
+
+  format(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+}
+
+customElements.define('z-date-picker', ZDatePickerComponent);
+
+const log = document.getElementById('log');
+function print(msg) {
+  log.textContent = msg + '\n' + log.textContent;
+}
+
+document.querySelectorAll('z-date-picker').forEach(el => {
+  el.addEventListener('change', e => {
+    print(`[change] ${el.getAttribute('name')} = ${e.detail}`);
+  });
+});
+
+document.getElementById('testForm').onsubmit = e => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  print(`[表单提交] ` + JSON.stringify(data, null, 2));
+};
+</script>
+</body>
+</html>

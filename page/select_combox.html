@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>可输入可选择下拉框</title>
+  <style>
+    z-combox-option.red {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    z-combox-option.green {
+      color: #27ae60;
+    }
+    .test-buttons { margin: 10px 0; }
+    .test-btn { padding: 6px 12px; margin-right: 8px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
+    .test-btn:hover { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+<h2>可输入可选择下拉框</h2>
+<div class="test-buttons">
+  <button class="test-btn" onclick="setJs()">设置值为：js</button>
+  <button class="test-btn" onclick="toggleDisabled()">切换禁用状态</button>
+  <button class="test-btn" onclick="toggleReadonly()">切换只读状态</button>
+</div>
+
+<form id="myForm">
+  <z-combox name="language" value="js" disabled placeholder="请选择/输入语言">
+    <z-combox-option value="html" class="red">HTML5</z-combox-option>
+    <z-combox-option value="css" class="green">CSS3</z-combox-option>
+    <z-combox-option value="js">JavaScript</z-combox-option>
+    <z-combox-option value="vue">Vue.js</z-combox-option>
+    <z-combox-option value="python">Python</z-combox-option>
+    <z-combox-option value="php">PHP</z-combox-option>
+    <z-combox-option value="java_long">Java-LONG Java-LONG Java-LONG Java-LONG Java-LONG <b>Java-LONG</b> Java-LONG Java-LONG Java-LONG </z-combox-option>
+    <z-combox-option value="java">Java</z-combox-option>
+  </z-combox>
+  
+  <z-combox name="country" value="cn" placeholder="请选择/输入国家">
+    <z-combox-option value="cn">中国</z-combox-option>
+    <z-combox-option value="us">美国</z-combox-option>
+    <z-combox-option value="jp">日本</z-combox-option>
+  </z-combox>
+  <br><br>
+  <button type="submit">提交</button>
+</form>
+
+<h3>选中结果：<span id="result" style="color:red"></span></h3>
+
+<script>
+// 选项组件
+class ZComboxOption extends HTMLElement {
+  static get observedAttributes() { return ['value']; }
+  constructor() { super(); }
+  get value() { return this.getAttribute('value'); }
+  get label() { return this.textContent.trim(); }
+}
+
+// 下拉输入框组件
+class ZCombox extends HTMLElement {
+  static formAssociated = true;
+  static get observedAttributes() { return ['value', 'disabled', 'readonly']; }
+
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.internals = this.attachInternals();
+    this.selectedValue = '';
+    this.allOptions = [];
+    this.isDisabled = false;
+    this.isReadonly = false;
+    this._initialized = false;
+  }
+
+  get value() { return this.selectedValue; }
+  set value(val) {
+    if (this.isDisabled && this._initialized) return;
+    this.selectedValue = val;
+    this.internals.setFormValue(val);
+    this.updateInputValue();
+  }
+
+  get disabled() {
+    return this.hasAttribute('disabled');
+  }
+  set disabled(val) {
+    if (val) {
+      this.setAttribute('disabled', '');
+    } else {
+      this.removeAttribute('disabled');
+    }
+    this.isDisabled = !!val;
+    this.updateStateStyle();
+    this.internals.setDisabled(this.isDisabled);
+  }
+
+  get readonly() {
+    return this.hasAttribute('readonly');
+  }
+  set readonly(val) {
+    if (val) {
+      this.setAttribute('readonly', '');
+    } else {
+      this.removeAttribute('readonly');
+    }
+    this.isReadonly = !!val;
+    this.updateStateStyle();
+  }
+
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name === 'value' && oldVal !== newVal) {
+      this.value = newVal;
+    } else if (name === 'disabled') {
+      this.isDisabled = newVal !== null;
+      this.updateStateStyle();
+      this.internals.setDisabled(this.isDisabled);
+    } else if (name === 'readonly') {
+      this.isReadonly = newVal !== null;
+      this.updateStateStyle();
+    }
+  }
+
+  connectedCallback() {
+    this.style.display = 'inline-block';
+    this.style.minWidth = '200px';
+    this.style.verticalAlign = 'middle';
+    
+    this.isDisabled = this.hasAttribute('disabled');
+    this.isReadonly = this.hasAttribute('readonly');
+    
+    this.cacheAllOptions();
+    this.render();
+    this.bindEvents();
+
+    this.value = this.getAttribute('value') || '';
+    this._initialized = true;
+    this.updateStateStyle();
+  }
+
+  cacheAllOptions() {
+    this.allOptions = Array.from(this.querySelectorAll('z-combox-option'));
+  }
+
+  updateInputValue() {
+    const inputEl = this.shadowRoot.querySelector('.combox-input');
+    if (inputEl) inputEl.value = this.value;
+  }
+
+  updateStateStyle() {
+    const comboxEl = this.shadowRoot?.querySelector('.combox');
+    const triggerEl = this.shadowRoot?.querySelector('.trigger');
+    const inputEl = this.shadowRoot?.querySelector('.combox-input');
+    const arrowEl = this.shadowRoot?.querySelector('.arrow');
+    if (!comboxEl) return;
+
+    comboxEl.classList.remove('disabled', 'readonly');
+    inputEl.disabled = false;
+    inputEl.readOnly = false;
+    triggerEl.style.pointerEvents = 'auto';
+    arrowEl.style.color = '#666';
+
+    if (this.isDisabled) {
+      comboxEl.classList.add('disabled');
+      inputEl.disabled = true;
+      triggerEl.style.pointerEvents = 'none';
+      arrowEl.style.color = '#999';
+    } else if (this.isReadonly) {
+      comboxEl.classList.add('readonly');
+      inputEl.readOnly = true;
+      triggerEl.style.pointerEvents = 'none';
+      arrowEl.style.color = '#999';
+    }
+  }
+
+  showDropdown() {
+    if (this.isDisabled || this.isReadonly) return;
+    const el = this.shadowRoot.querySelector('.combox');
+    const menu = this.shadowRoot.querySelector('.menu');
+    el.classList.add('open');
+    menu.style.display = 'block';
+  }
+
+  hideDropdown() {
+    const el = this.shadowRoot.querySelector('.combox');
+    const menu = this.shadowRoot.querySelector('.menu');
+    el.classList.remove('open');
+    menu.style.display = 'none';
+  }
+
+  render() {
+    const ph = this.getAttribute('placeholder') || '请选择/输入';
+    this.shadowRoot.innerHTML = `
+    <style>
+      :host{display:inline-block;font-family:Consolas, monospace, sans-serif;}
+      .combox{position:relative;width:100%;}
+      .trigger{display:flex;border:1px solid #ccc;border-radius:6px;background:#fff;align-items:center;}
+      .combox-input{flex:1;padding:0.5em 1em;border:none;outline:none;background:transparent; font-family:inherit;}
+      .arrow{padding:0 1em;color:#666;pointer-events:none;}
+      .combox.disabled .trigger{background:#f5f5f5;border-color:#ddd;cursor:not-allowed;}
+      .combox.readonly .trigger{background:#f9f9f9;border-color:#eee;cursor:default;}
+      .menu{
+        position:absolute;top:100%;left:0;width:100%;display:none;background:#fff;border:1px solid #bbb;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:999;max-height:260px;overflow-y:auto;margin-top:4px;
+        padding:0.5em;
+        padding-bottom:0;
+      }
+      .combox.open .menu{display:block;}
+      ::slotted(z-combox-option){
+        display:inline-block;
+        padding:0.2em 0.5em;
+        cursor:pointer;
+        border:1px solid #ccc;
+        border-radius:4px;
+        font-size:0.8em;
+        box-shadow:inset 0 0 5px rgba(0,0,0,0.2);
+        margin-bottom:5px;
+      }
+      ::slotted(z-combox-option:hover){border-color:#999;}
+    </style>
+    <div class="combox">
+      <div class="trigger">
+        <input type="text" class="combox-input" placeholder="${ph}">
+        <span class="arrow">▼</span>
+      </div>
+      <div class="menu"><slot></slot></div>
+    </div>
+    `;
+  }
+
+  closeOtherPickers() {
+    document.querySelectorAll('z-combox').forEach(el => {
+      if (el !== this && !el.disabled) {
+        const c = el.shadowRoot?.querySelector('.combox');
+        const m = el.shadowRoot?.querySelector('.menu');
+        if (c && m) {
+          c.classList.remove('open');
+          m.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  bindEvents() {
+    const trigger = this.shadowRoot.querySelector('.trigger');
+    const input = this.shadowRoot.querySelector('.combox-input');
+    const menu = this.shadowRoot.querySelector('.menu');
+
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      if (this.isDisabled || this.isReadonly) return;
+      this.shadowRoot.querySelector('.combox').classList.contains('open')
+        ? this.hideDropdown()
+        : this.showDropdown();
+      input.focus();
+      this.closeOtherPickers();
+    });
+
+    input.addEventListener('input', e => {
+      if (this.isDisabled || this.isReadonly) return;
+      const val = e.target.value.trim();
+      this.value = val;
+      this.dispatchEvent(new CustomEvent('change', { detail: { value: val, label: val } }));
+    });
+
+    menu.addEventListener('click', e => {
+      e.stopPropagation();
+      if (this.isDisabled || this.isReadonly) return;
+      const opt = e.target.closest('z-combox-option');
+      if (!opt) return;
+      this.value = opt.value;
+      this.hideDropdown();
+      this.dispatchEvent(new CustomEvent('change', { detail: { value: opt.value, label: opt.label } }));
+    });
+
+    document.addEventListener('click', () => this.hideDropdown());
+    input.addEventListener('keydown', e => {
+      if (this.isDisabled || this.isReadonly) return;
+      if (e.key === 'Enter' || e.key === 'Escape') { e.preventDefault(); this.hideDropdown(); }
+    });
+  }
+}
+
+customElements.define('z-combox-option', ZComboxOption);
+customElements.define('z-combox', ZCombox);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('myForm');
+  const result = document.getElementById('result');
+  const combox = document.querySelector('z-combox');
+
+  combox.addEventListener('change', e => {
+    result.textContent = `${e.detail.label} (${e.detail.value})`;
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('提交值：' + JSON.stringify(Object.fromEntries(new FormData(form))));
+  });
+
+  window.setJs = () => combox.value = 'js';
+  
+  window.toggleDisabled = () => {
+    combox.disabled = !combox.disabled;
+  };
+
+  window.toggleReadonly = () => {
+    combox.readonly = !combox.readonly;
+  };
+});
+</script>
+</body>
+</html>
