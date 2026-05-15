@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 567 580" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#f4f1d0" fill-rule="evenodd">
+        <path d="M94.5 145 0 0h189z"></path>
+        <path d="M283.5 145 189 0h189z"></path>
+        <path d="M472.5 145 378 0h189z"></path>
+        <path fill-opacity=".8" d="M94.5 290 0 145h189z"></path>
+        <path fill-opacity=".8" d="M283.5 290 189 145h189z"></path>
+        <path fill-opacity=".8" d="M472.5 290 378 145h189z"></path>
+        <path fill-opacity=".6" d="M94.5 435 0 290h189z"></path>
+        <path fill-opacity=".6" d="M283.5 435 189 290h189z"></path>
+        <path fill-opacity=".6" d="M472.5 435 378 290h189z"></path>
+        <path fill-opacity=".4" d="M94.5 580 0 435h189z"></path>
+        <path fill-opacity=".4" d="M283.5 580 189 435h189z"></path>
+        <path fill-opacity=".4" d="M472.5 580 378 435h189z"></path>
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 698 698" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="110" fill="#f4f1d0" style="--animation-order: 1"></circle>
+    <circle cx="349" cy="110" r="110" fill="#f4f1d0" fill-opacity=".9"></circle>
+    <circle cx="588" cy="110" r="110" fill="#f4f1d0" fill-opacity=".8"></circle>
+    <circle cx="110" cy="349" r="110" fill="#f4f1d0" fill-opacity=".7"></circle>
+    <circle cx="349" cy="349" r="110" fill="#f4f1d0" fill-opacity=".6"></circle>
+    <circle cx="588" cy="349" r="110" fill="#f4f1d0" fill-opacity=".5"></circle>
+    <circle cx="110" cy="588" r="110" fill="#f4f1d0" fill-opacity=".4"></circle>
+    <circle cx="349" cy="588" r="110" fill="#f4f1d0" fill-opacity=".3"></circle>
+    <circle cx="588" cy="588" r="110" fill="#f4f1d0" fill-opacity=".2"></circle>
+</svg>

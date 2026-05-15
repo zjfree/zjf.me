@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 698 699" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="349" cy="349.999" r="349" transform="rotate(-90 349 349.999)" fill="#000"
+        fill-opacity=".1"></circle>
+    <circle cx="349.001" cy="446.137" r="252.862" transform="rotate(-90 349.001 446.137)"
+        fill="#000" fill-opacity=".1"></circle>
+    <circle cx="349.001" cy="252.861" r="252.862" transform="rotate(-90 349.001 252.861)"
+        fill="#000" fill-opacity=".1"></circle>
+    <circle cx="349.001" cy="349.138" r="252.862" transform="rotate(-90 349.001 349.138)"
+        fill="#000" fill-opacity=".1"></circle>
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M582.477 348.776C544.519 257.07 454.163 192.553 348.738 192.553c-105.424.0-195.78 64.517-233.738 156.223C152.958 440.482 243.314 505 348.738 505 454.163 505 544.519 440.482 582.477 348.776z"
+        fill="#000" fill-opacity=".2"></path>
+    <ellipse cx="349" cy="349.5" rx="60" ry="59.5" fill="#f4f1d0"></ellipse>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 566 566" xmlns="http://www.w3.org/2000/svg">
+    <path fill-opacity=".1" fill="#000" d="M0 0h566v566H0z"></path>
+    <path fill-opacity=".1" fill="#000" d="M40 40h486v486H40z"></path>
+    <path fill-opacity=".1" fill="#000" d="M80 80h406v406H80z"></path>
+    <circle fill-opacity=".2" fill="#000" cx="168" cy="168" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="284" cy="168" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="398" cy="168" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="167.209" cy="282.437" r="47.247"></circle>
+    <circle fill="#f4f1d0" cx="283.936" cy="282.437" r="47.247"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="398" cy="282" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="168" cy="398" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="284" cy="398" r="48"></circle>
+    <circle fill-opacity=".2" fill="#000" cx="398" cy="398" r="48"></circle>
+</svg>

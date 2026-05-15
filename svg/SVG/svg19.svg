@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 565 564">
+    <path   fill-opacity=".1" fill="#000" d="M1 0h270v270H1z"></path>
+    <circle fill-opacity=".15" fill="#000" cx="100" cy="100" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="171" cy="100" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="101" cy="170" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="171" cy="170" r="100"></circle>
+    <path   fill-opacity=".1" fill="#000" d="M295 0h270v270H295z"></path>
+    <circle fill-opacity=".15" fill="#000" cx="430" cy="100" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="395" cy="170" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="465" cy="170" r="100"></circle>
+    <path   fill-opacity=".1" fill="#000" d="M1 294h270v270H1z"></path>
+    <circle fill-opacity=".15" fill="#000" cx="101" cy="394" r="100"></circle>
+    <circle fill-opacity=".15" fill="#000" cx="171" cy="464" r="100"></circle>
+    <path   fill-opacity=".1" fill="#000" d="M295 294h270v270H295z"></path>
+    <circle fill="#f4f1d0" cx="430" cy="429" r="100"></circle>
+</svg>
