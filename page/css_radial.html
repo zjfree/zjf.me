@@ -1,0 +1,164 @@
+<!-- 标准HTML模板 zjfree 2021-03-24 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>repeating-radial-gradient 背景</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+html,body{
+	padding:0;
+	margin:0;
+	height:100%;
+}
+h1{
+	text-align:center;
+	margin:0;
+	padding:10px 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(#fff 87%,#3aa 90%);
+  background-size: 50px 50px;
+}
+
+#preCode{
+	background-color:rgba(255,255,255,0.8);
+	padding:10px;
+	width:700px;
+	margin:10px auto;
+	border:#666 solid 5px;
+	border-radius: 20px;
+	font-family: 'Courier New', Courier, monospace;
+	/* 自动回车 */
+	word-break: break-word;
+	/* 自动换行 */
+	white-space: pre-wrap;
+}
+#preCode span{
+	color:#00f;
+	font-weight: bold;
+}
+#divTool{
+	margin:10px; 
+	text-align:center;
+	padding:10px;
+	margin:10px auto;
+	width:700px;
+	background-color:rgba(255,255,255,0.8);
+	border:#666 solid 5px;
+	border-radius: 20px;
+}
+#divTool label{
+	display:inline-block;
+	width:50px;
+	text-align:right;
+	margin-right:10px;
+}
+#divTool input{
+	width:430px;
+}
+#divTool input[type='color']{
+	width:40px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>repeating-radial-gradient 背景</h1>
+<hr>
+<div id="divTool">
+	<table>
+		<tr>
+			<th>尺寸：</th>
+			<td><input type="range" id="numSize" value="50" min="1" max="1000" step="1"></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td colspan="100%" style="text-align: left;">
+				<button id="btnAddColor">添加颜色</button>
+			</td>
+		</tr>
+		<tr class="tr-color">
+			<th>颜色：</th>
+			<td><input type="range" value="87" min="0" max="100" step="1"></td>
+			<td><input type="color" value="#ffffff"></td>
+			<td><button>删除</button></td>
+		</tr>
+		<tr class="tr-color">
+			<th>颜色：</th>
+			<td><input type="range" value="90" min="0" max="100" step="1"></td>
+			<td><input type="color" value="#33aaaa"></td>
+			<td><button>删除</button></td>
+		</tr>
+	</table>
+</div>
+<pre id="preCode">
+body {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(<span id="spanColor">#ffffff 87%, #33aaaa 90%</span>);
+  background-size: <span id="spanW">50</span>px <span id="spanH">50</span>px;
+}
+</pre>
+
+<script>
+$(function(){
+	// JS
+	$("#divTool input").on("input",updateCode);
+	$("#divTool button").on("click", function(){
+		if ($(this).attr('id') == 'btnAddColor'){
+			return;
+		}
+		$(this).closest("tr").remove();
+		updateCode();
+	});
+	$("#btnAddColor").on("click", function(){
+		let tr = $("<tr class='tr-color'>");
+		tr.append("<th>颜色：</th>");
+		tr.append("<td><input type='range' value='50' min='0' max='100' step='1'></td>");
+		tr.append("<td><input type='color' value='#fff'></td>");
+		tr.append("<td><button>删除</button></td>");
+		$("#divTool table").append(tr);
+		tr.find("button").on("click", function(){
+			$(this).closest("tr").remove();
+			updateCode();
+		});
+		tr.find("input").on("input", function(){
+			updateCode();
+		});
+		updateCode();
+	});
+
+	updateCode();
+});
+
+function updateCode(){
+	let size = $("#numSize").val();
+	$("#spanW").text(size);
+	$("#spanH").text(size);
+	$('body').css("background-size",size+"px "+size+"px");
+	
+	let colorList = [];
+	$(".tr-color").each(function(){
+		let d = $(this).find("input[type='range']").val();
+		let c = $(this).find("input[type='color']").val();
+		colorList.push(c+" "+d+"%");
+	});
+	$("#spanColor").text(colorList.join(","));
+	$('body').css("background-image","repeating-radial-gradient("+colorList.join(",")+")");
+}
+</script>
+
+</body>
+</html>
