@@ -80,8 +80,10 @@ body {
 		<tr>
 			<th>尺寸：</th>
 			<td><input type="range" id="numSize" value="50" min="1" max="1000" step="1"></td>
-			<td></td>
-			<td></td>
+			<td colspan="100%">
+				<button onclick="$('#numSize').val(parseInt($('#numSize').val()) + 1); updateCode()"> 加 </button>
+				<button onclick="$('#numSize').val(parseInt($('#numSize').val()) - 1); updateCode()"> 减 </button>
+			</td>
 		</tr>
 		<tr>
 			<th></th>
@@ -116,10 +118,7 @@ body {
 $(function(){
 	// JS
 	$("#divTool input").on("input",updateCode);
-	$("#divTool button").on("click", function(){
-		if ($(this).attr('id') == 'btnAddColor'){
-			return;
-		}
+	$("#divTool .tr-color button").on("click", function(){
 		$(this).closest("tr").remove();
 		updateCode();
 	});
