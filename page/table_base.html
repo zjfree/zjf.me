@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>完整表格</title>
+<style>
+.table-container {
+  width: 900px;
+  margin: 30px auto;
+  height: 450px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize:both;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+caption {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #e8f4fd;
+  outline: 1px solid #ccc;
+}
+
+tfoot {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  background: #e8f4fd;
+  outline: 1px solid #ccc;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+thead th {
+  background: #e8f4fd;
+  font-weight: 600;
+  color: #333;
+  border-top:none;
+  border-bottom:none;
+}
+tfoot th, tfoot td {
+  border-top:none;
+  border-bottom:none;
+}
+
+/* 列对齐 */
+td:nth-child(1), th:nth-child(1) { text-align: left; }
+td:nth-child(5), th:nth-child(5) { text-align: right; }
+td:nth-child(6), th:nth-child(6) { text-align: right; }
+
+/* 列背景色 */
+colgroup col:nth-child(1) { background:#f8f9ff; }
+colgroup col:nth-child(2) { background:#fffaf0; }
+colgroup col:nth-child(3) { background:#f0fff4; }
+colgroup col:nth-child(4) { background:#fff5f8; }
+colgroup col:nth-child(5) { background:#f0f7ff; }
+colgroup col:nth-child(6) { background:#fcf4ff; }
+colgroup col:nth-child(7) { background:#f8fff0; }
+
+/* hover 外边框效果 */
+tbody tr:hover {
+  outline: 2px solid #409eff;
+  outline-offset: -1px;
+}
+
+tfoot {
+  background: #f5f5f5;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center; color:#444;">员工信息管理系统</h2>
+
+<div class="table-container">
+<table>
+  <caption>员工工资明细表</caption>
+  <colgroup>
+    <col><col><col><col><col><col><col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>部门</th>
+      <th>性别</th>
+      <th>入职时间</th>
+      <th>基本工资</th>
+      <th>绩效奖金</th>
+      <th>联系方式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>张三</td><td>技术部</td><td>男</td><td>2023-01-15</td><td>8000</td><td>2000</td><td>13800138001</td></tr>
+    <tr><td>李四</td><td>产品部</td><td>女</td><td>2022-07-20</td><td>9500</td><td>2500</td><td>13800138002</td></tr>
+    <tr><td>王五</td><td>设计部</td><td>男</td><td>2023-03-10</td><td>7800</td><td>1800</td><td>13800138003</td></tr>
+    <tr><td>赵六</td><td>运营部</td><td>女</td><td>2023-05-08</td><td>6500</td><td>1500</td><td>13800138004</td></tr>
+    <tr><td>钱七</td><td>市场部</td><td>男</td><td>2022-11-25</td><td>7200</td><td>3000</td><td>13800138005</td></tr>
+    <tr><td>孙八</td><td>技术部</td><td>女</td><td>2023-02-16</td><td>9000</td><td>2200</td><td>13800138006</td></tr>
+    <tr><td>周九</td><td>人事部</td><td>男</td><td>2022-09-01</td><td>6000</td><td>1200</td><td>13800138007</td></tr>
+    <tr><td>吴十</td><td>财务部</td><td>女</td><td>2022-08-19</td><td>6800</td><td>1400</td><td>13800138008</td></tr>
+    <tr><td>郑十一</td><td>产品部</td><td>男</td><td>2023-04-05</td><td>8900</td><td>2600</td><td>13800138009</td></tr>
+    <tr><td>王十二</td><td>设计部</td><td>女</td><td>2023-01-11</td><td>7500</td><td>1900</td><td>13800138010</td></tr>
+    <tr><td>刘十三</td><td>运营部</td><td>男</td><td>2022-12-30</td><td>6300</td><td>1300</td><td>13800138011</td></tr>
+    <tr><td>陈十四</td><td>市场部</td><td>女</td><td>2022-10-17</td><td>7100</td><td>2800</td><td>13800138012</td></tr>
+    <tr><td>杨十五</td><td>技术部</td><td>男</td><td>2023-03-22</td><td>9200</td><td>2400</td><td>13800138013</td></tr>
+    <tr><td>黄十六</td><td>人事部</td><td>女</td><td>2022-07-06</td><td>5900</td><td>1100</td><td>13800138014</td></tr>
+    <tr><td>秦十七</td><td>财务部</td><td>男</td><td>2022-06-21</td><td>6700</td><td>1300</td><td>13800138015</td></tr>
+    <tr><td>朱十八</td><td>技术部</td><td>女</td><td>2023-04-18</td><td>8600</td><td>2100</td><td>13800138016</td></tr>
+    <tr><td>高十九</td><td>产品部</td><td>男</td><td>2022-09-30</td><td>9100</td><td>2700</td><td>13800138017</td></tr>
+    <tr><td>林二十</td><td>设计部</td><td>女</td><td>2023-02-01</td><td>7300</td><td>1700</td><td>13800138018</td></tr>
+    <tr><td>何二一</td><td>运营部</td><td>男</td><td>2023-01-20</td><td>6100</td><td>1400</td><td>13800138019</td></tr>
+    <tr><td>胡二二</td><td>市场部</td><td>女</td><td>2022-08-05</td><td>7400</td><td>2900</td><td>13800138020</td></tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4">合计</td>
+      <td>156400</td>
+      <td>42200</td>
+      <td>—</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+</body>
+</html>
