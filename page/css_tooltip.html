@@ -1,0 +1,112 @@
+<!-- 纯CSS tooltip zjfree 2026-06-17 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>纯CSS tooltip</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+
+*[data-tip]:hover{
+    filter: hue-rotate(20deg);
+}
+*[data-tip]:after{
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -4px);
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    display: block;
+    width: max-content;
+    max-width: 20em;
+    white-space: normal;
+    line-height: 1.5;
+}
+/* 小倒三角 */
+*[data-tip]:before{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 6px);
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+}
+*[data-tip]:hover:after,
+*[data-tip]:hover:before
+{
+    opacity: 1;
+    visibility: visible;
+}
+*[data-tip]{
+    color:blue;
+    cursor: default;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>纯CSS tooltip</h1>
+
+<div>
+　　文 / 荷塘月色<br>
+　　天空飘起了碎碎的飞雪，<span data-tip="这是寒冬腊月的感觉">雪中</span>夹杂着冷风，这是寒冬腊月的感觉。守一膛岁末多思的炉火，聆听雪落的声音，片片洁白连同着寂寂的思绪，烹煮成缕缕雪色乡愁，在宁静的午后飞扬……<br>
+　　节气到了腊月，仿佛一切都在寒冷中热闹了起来，街上商贩的叫卖声，<span data-tip="晚上还要给我们做过年穿的布鞋，祖母在灯光下纳着鞋底，等我们都睡了，她才能躺下。">熙熙攘攘</span>的人群，南来北往的车辆，还有急着赶回家过年的游子……<br>
+　　小时候，总是很执着的期盼，岁末的脚步早早到来。因为，祖母会在低小的厨房里，炸一篮孩子们垂涎已久的油饼，煮一些肉骨头，那是新年唯一的美味。如今，物质富足，那些只有过年吃的东西几乎天天可以吃到，却是怎么也品不出小时候的味道了。<br>
+　　多年过去，每当下雪，我还是喜欢坐在有雪的地方，让雪花落在身上，手掌上，朵朵洁白，飞舞着远去的记忆，那些窗柩上还没溶化的冰凌花，温润着我的目光。怀念逝去的素洁，怀念祖母的味道，怀念那些纯真无忧的岁月……<br>
+　　喜欢雪后的清晨，出去走一走，走在人少的街道或者坐在公园的一角，看看雪后的景象，感悟有雪的快乐。让思乡的情结，覆上雪的脚印，便似行在故乡的月亮河畔。<br>
+　　小时候，即便物质生活匮乏，但是我们是快乐的，每到临近过年，父亲会拉上架子车，带我们兄妹去街市上购置一些<span data-tip="这是寒冬腊月的感觉">简单的年货</span>，核桃是少不了的，锅盔是少不了的，糖更是少不了的。还要给我们扯一些布匹做过年穿的新衣服，购完年货，父亲会带我们去饭馆吃一碗很少吃到的牛肉烩面，那香味到现在还记忆犹新……<br>
+　　腊月，最忙碌的还是祖母，早早起来为一家人准备生火做饭，一双小脚一天到晚总是没有停歇过，晚上还要给我们做过年穿的布鞋，祖母在灯光下纳着鞋底，等我们都睡了，她才能躺下。<br>
+　　时光，有情又无情。聆听雪落的声音，静静的却不露声息，宁静中隐匿着多少青涩而又温暖的回忆；品味时光，清香如一杯陈年普洱，感怀中飘溢着多少难忘的思绪；那细细、淡淡、瓣瓣飞舞的雪花啊，可否带我到故乡，去寻觅那一抹久违的乡音？<br>
+　　今夜，月光洒满院落，夜，安静而冷寂，一场小雪过后，院子里结了一层<span data-tip="这是寒冬腊月的感觉">薄薄</span>的冰，早春，还是有点儿寒冷，但是再冷也阻挡不住春的脚步，雪落山川，万物在土地里酝酿。<br>
+　　仰望星空，画卷里不变的星空依然灿烂。生活却不一样，深的浅了，淡的浓了，该来的一定会来。<br>
+　　岁末，感慨颇多，静静地望着窗外，却是无语凝噎……走过，才知道什么是栉风沐雨。岁月，因为走过而美丽；生命，因为经历而丰盈。撷一朵雪花，来装点生命的春天。<br>
+　　乍暖还寒的二月，冰雪正在悄悄融化，风也变得不再那么刺骨了，窗台玻璃上的冰凌花也消失不见了，你说，春天真的来了。春暖大地，万物复苏，草木萌动，一切都是那么的明媚，那么的柔和。<br>
+　　我用温情的目光遥望故乡，那里，应该是最美的模样！
+</div>
+
+<div data-tip="这是寒冬腊月的感觉" style="width: 20em; height: 2em; background-color: #00f; color: #fff; margin: 10px;">
+    DIV测试
+</div>
+
+<button data-tip="这是寒冬腊月的感觉">按钮</button>
+<button data-tip="这是寒冬腊月的感觉">按钮</button>
+<button data-tip="这是寒冬腊月的感觉">按钮</button>
+<button data-tip="这是寒冬腊月的感觉">按钮</button>
+<button data-tip="这是寒冬腊月的感觉">按钮</button>
+
+<script>
+$(function(){
+	// JS
+	
+});
+</script>
+
+</body>
+</html>
