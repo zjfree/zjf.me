@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>当前浏览器 CSS 特性检测工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { padding: 24px; font-family: system-ui, sans-serif; background: #f5f7fa; }
+    h1 { margin-bottom: 20px; color: #1d2129; font-size: 22px; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    .category { margin-bottom: 24px; }
+    .category-title {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 12px;
+      background: #e4e9f2;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 8px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: #fff;
+      border-radius: 6px;
+      border: 1px solid #dcdfe6;
+    }
+    .name { color: #303133; }
+    .yes { color: #00b42a; font-weight: 600; }
+    .no { color: #f53f3f; font-weight: 600; }
+	#divUserAgent {margin-bottom:10px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>当前浏览器 CSS 支持列表检测</h1>
+	<div id="divUserAgent"></div>
+    <div id="app"></div>
+  </div>
+
+  <script>
+  
+  
+  const units = [
+    // 绝对单位
+    'px 像素', 'cm 厘米', 'mm 毫米', 'in 英寸', 'pt 点', 'pc 派卡',
+    // 相对字体单位
+    'em 字体大小', 'rem 根字体大小', 'ex 小写字母x高度', 'ch 0的宽度', 'ic 一个汉字宽度', 'lh 行高', 'rlh 根行高',
+    // 视口单位
+    'vw 视口宽度百分比', 'vh 视口高度百分比', 'vmin vw、vh较小值', 'vmax vw、vh较大值', 'vi 行向视口单位', 'vb 块向视口单位',
+    // 容器单位（CSS Container Queries）
+    'cqw 容器宽度百分比', 'cqh 容器高度百分比', 'cqmin cqw、cqh较小值', 'cqmax cqw、cqh较大值', 'cqi 容器行向单位', 'cqb 容器块向单位',
+    // 逻辑单位
+    'svw 最小视口宽度', 'svh 最小视口高度', 'lvw 最大视口宽度', 'lvh 最大视口高度', 'dvw 动态视口宽度', 'dvh 动态视口高度'
+  ];
+  var unitList = [];
+  for (let r of units){
+	unitList.push({
+		name:r,
+		prop:'width',
+		value:'10' + r.split(' ')[0],
+	});
+  }
+  
+    // 检测清单：基础常用 → 现代属性 → 色彩函数 → 新选择器 → 布局新特性 → 弹窗/锚点 → 动画/容器查询 → 实验API
+    const checkList = [
+      {
+        category: "基础通用CSS",
+        items: [
+          { name: "display: flex", prop: "display", value: "flex" },
+          { name: "display: grid", prop: "display", value: "grid" },
+          { name: "transform", prop: "transform", value: "translateX(10px)" },
+          { name: "transition", prop: "transition", value: "all 0.2s" },
+          { name: "border-radius", prop: "border-radius", value: "8px" },
+          { name: "box-shadow", prop: "box-shadow", value: "0 2px 4px #000" },
+          { name: "position: sticky", prop: "position", value: "sticky" },
+          { name: "opacity", prop: "opacity", value: "0.6" },
+          { name: "text-shadow", prop: "text-shadow", value: "0 1px 2px #000" },
+          { name: "--var:1", prop: "--test", value: "1" },
+          { name: "outline", prop: "outline", value: "10px" },
+          { name: "outline-offset", prop: "outline-offset", value: "10px" },
+        ]
+      },
+      {
+        category: "CSS函数",
+        items: [
+          { name: "min() 最小值", prop: "width", value: "min(10px, 100%)" },
+          { name: "max() 最大值", prop: "width", value: "max(10px, 100%)" },
+          { name: "clamp() 范围值", prop: "width", value: "clamp(10px, 5vw, 100px)" },
+          { name: "calc() 计算值", prop: "width", value: "calc(10px + 100%)" },
+          { name: "sin() 正弦值", prop: "width", value: "calc(sin(30deg)*10px)" },
+          { name: "cos() 余弦值", prop: "width", value: "calc(cos(30deg)*10px)" },
+          { name: "tan() 正切值", prop: "width", value: "calc(tan(30deg)*10px)" },
+          { name: "asin() 反正弦值", prop: "width", value: "calc(asin(0.5)*10px)" },
+          { name: "acos() 反余弦值", prop: "width", value: "calc(acos(0)*10px)" },
+          { name: "atan() 反正切值", prop: "width", value: "calc(atan(1)*10px)" },
+          { name: "atan2() 反正切值", prop: "width", value: "calc(atan2(1,1)*10px)" },
+        ]
+      },
+      {
+        category: "宽度单位",
+        items: unitList
+      },
+      {
+        category: "弹窗 & 锚点定位（新增）",
+        items: [
+          { name: "dialog 原生对话框", selector: "dialog" },
+          { name: "popover 弹出层属性", selector: "popover" },
+          { name: "position-anchor 锚点定位", prop: "position-anchor", value: "--anchor" },
+        ]
+      },
+      {
+        category: "CSS变量 & 逻辑内联属性",
+        items: [
+          { name: "CSS 自定义变量 var()", prop: "--test-var", value: "#1890ff" },
+          { name: "inline-size 逻辑宽度", prop: "inline-size", value: "200px" },
+          { name: "margin-inline", prop: "margin-inline", value: "12px" },
+          { name: "padding-block", prop: "padding-block", value: "12px" },
+          { name: "gap(flex/grid通用)", prop: "gap", value: "10px" },
+        ]
+      },
+      {
+        category: "现代色彩系统(Color4/5)",
+        items: [
+          { name: "rgba透明", prop: "color", value: "rgba(255,0,0,0.5)" },
+          { name: "hsl() 空格新语法", prop: "color", value: "hsl(0 100% 50% / 0.4)" },
+          { name: "oklch 广色域颜色", prop: "color", value: "oklch(0.5 0.2 180)" },
+          { name: "oklab 色彩空间", prop: "color", value: "oklab(0.5 0.1 -0.1)" },
+          { name: "color-mix() 混色函数", prop: "background", value: "color-mix(in srgb, red, blue)" },
+          { name: "contrast-color() 自动对比色", prop: "color", value: "contrast-color(#222)" },
+        ]
+      },
+      {
+        category: "高级CSS选择器",
+        items: [
+          { name: ":has() 父选择器", selector: ":has(.child)" },
+          { name: ":is() 多选择器分组", selector: ":is(div,p)" },
+          { name: ":where() 低权重组", selector: ":where(.box)" },
+          { name: ":not() 多参数否定", selector: ":not(.a,.b)" },
+          { name: ":nth-child(n of class)", selector: ":nth-child(2 of .item)" },
+        ]
+      },
+      {
+        category: "新版布局能力",
+        items: [
+          { name: "aspect-ratio 宽高比", prop: "aspect-ratio", value: "16/9" },
+          { name: "subgrid 子网格", prop: "grid-template-rows", value: "subgrid" },
+          { name: "container-type 容器查询", prop: "container-type", value: "inline-size" },
+        ]
+      },
+      {
+        category: "滤镜、滚动、动画新特性",
+        items: [
+          { name: "filter 滤镜", prop: "filter", value: "blur(4px)" },
+          { name: "backdrop-filter 毛玻璃", prop: "backdrop-filter", value: "blur(8px)" },
+          { name: "scroll-behavior: smooth", prop: "scroll-behavior", value: "smooth" },
+          { name: "scroll-margin", prop: "scroll-margin-top", value: "20px" },
+          { name: "animation-timeline: scroll()", prop: "animation-timeline", value: "scroll()" },
+          { name: "animation-timeline: view()", prop: "animation-timeline", value: "view()" },
+          { name: "text-wrap: balance 均衡换行", prop: "text-wrap", value: "balance" },
+        ]
+      }
+    ];
+
+    // 单个特性检测函数
+    function checkSupport(item) {
+      if (item.selector) {
+        return CSS.supports(`selector(${item.selector})`);
+      } else {
+        return CSS.supports(item.prop, item.value);
+      }
+    }
+	
+	document.getElementById('divUserAgent').innerHTML = navigator.userAgent + '<br>屏幕分辨率：' + window.screen.width + '*' + window.screen.height;
+
+    // 渲染页面
+    const app = document.getElementById("app");
+    const consoleResult = [];
+
+    checkList.forEach(group => {
+      const catBox = document.createElement("div");
+      catBox.className = "category";
+
+      const catTitle = document.createElement("div");
+      catTitle.className = "category-title";
+      catTitle.innerText = group.category;
+      catBox.appendChild(catTitle);
+
+      const listBox = document.createElement("div");
+      listBox.className = "list";
+
+      group.items.forEach(item => {
+        const support = checkSupport(item);
+        consoleResult.push({
+          分类: group.category,
+          特性: item.name,
+          支持: support
+        });
+
+        const itemDom = document.createElement("div");
+        itemDom.className = "item";
+        itemDom.innerHTML = `
+          <span class="name">${item.name}</span>
+          <span class="${support ? "yes" : "no"}">${support ? "✅ 支持" : "❌ 不支持"}</span>
+        `;
+        listBox.appendChild(itemDom);
+      });
+
+      catBox.appendChild(listBox);
+      app.appendChild(catBox);
+    });
+
+    // 控制台输出表格
+    console.log("===== 当前浏览器 CSS 特性检测结果 =====");
+    console.table(consoleResult);
+  </script>
+</body>
+</html>
