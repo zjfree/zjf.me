@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL 10万粒子性能测试</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; }
+        canvas { display: block; }
+        #info {
+            position: fixed; top: 10px; left: 10px;
+            color: #fff; font-size: 14px;
+            background: rgba(0,0,0,0.6); padding: 6px 10px;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div id="info"></div>
+    <script>
+        const COUNT = 100000;
+        let W = window.innerWidth;
+        let H = window.innerHeight;
+        const info = document.getElementById('info');
+
+        // 离屏WebGL画布
+        const glOff = document.createElement('canvas');
+        glOff.width = W;
+        glOff.height = H;
+        const gl = glOff.getContext('webgl') || glOff.getContext('experimental-webgl');
+        if (!gl) {
+            alert("浏览器不支持WebGL");
+            throw new Error("No WebGL");
+        }
+
+        // 主画布
+        const mainCanvas = document.createElement('canvas');
+        mainCanvas.width = W;
+        mainCanvas.height = H;
+        document.body.appendChild(mainCanvas);
+        const mainCtx = mainCanvas.getContext('2d');
+
+        // 背景画布
+        const bgOff = document.createElement('canvas');
+        bgOff.width = W;
+        bgOff.height = H;
+        const bgCtx = bgOff.getContext('2d');
+        bgCtx.fillStyle = '#050510';
+        bgCtx.fillRect(0, 0, W, H);
+
+        // 粒子数据
+        const pos = new Float32Array(COUNT * 2);
+        const vel = new Float32Array(COUNT * 2);
+        const rad = new Float32Array(COUNT);
+        for (let i = 0; i < COUNT; i++) {
+            const idx = i * 2;
+            pos[idx] = Math.random() * W;
+            pos[idx + 1] = Math.random() * H;
+            vel[idx] = (Math.random() - 0.5) * 2;
+            vel[idx + 1] = (Math.random() - 0.5) * 2;
+            rad[i] = Math.random() * 2 + 1;
+        }
+
+        // 着色器：使用uniform传递宽高，不再硬编码数字
+        const vsSource = `
+            attribute vec2 a_Pos;
+            uniform float u_W;
+            uniform float u_H;
+            void main() {
+                gl_PointSize = 2.0;
+                vec2 ndc = vec2(
+                    a_Pos.x / u_W * 2.0 - 1.0,
+                    -(a_Pos.y / u_H * 2.0 - 1.0)
+                );
+                gl_Position = vec4(ndc, 0.0, 1.0);
+            }
+        `;
+        const fsSource = `
+            precision mediump float;
+            void main() {
+                float dist = distance(gl_PointCoord, vec2(0.5));
+                if (dist > 0.5) discard;
+                gl_FragColor = vec4(0.3, 0.8, 1.0, 0.8);
+            }
+        `;
+
+        // 编译着色器工具函数
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+            return shader;
+        }
+        function createProgram(gl, vsSource, fsSource) {
+            const vShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+            const fShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+            if (!vShader || !fShader) return null;
+
+            const program = gl.createProgram();
+            gl.attachShader(program, vShader);
+            gl.attachShader(program, fShader);
+            gl.linkProgram(program);
+
+            // 正确参数：gl.LINK_STATUS
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                console.error("Program link error:", gl.getProgramInfoLog(program));
+                gl.deleteProgram(program);
+                return null;
+            }
+            return program;
+        }
+
+        // 创建程序
+        const program = createProgram(gl, vsSource, fsSource);
+        if (!program) throw new Error("着色器程序创建失败");
+        gl.useProgram(program);
+
+        // 获取属性/Uniform位置
+        const a_Pos = gl.getAttribLocation(program, 'a_Pos');
+        const u_W = gl.getUniformLocation(program, 'u_W');
+        const u_H = gl.getUniformLocation(program, 'u_H');
+
+        // 位置缓冲区
+        const bufPos = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufPos);
+        gl.bufferData(gl.ARRAY_BUFFER, pos, gl.DYNAMIC_DRAW);
+        gl.enableVertexAttribArray(a_Pos);
+        gl.vertexAttribPointer(a_Pos, 2, gl.FLOAT, false, 0, 0);
+
+        // 性能统计
+        let frameCnt = 0;
+        let sumCost = 0;
+        let lastFrameTime = performance.now();
+        const fpsHistory = [];
+        const MAX_HISTORY = 30;
+
+        function setStat(rawCost) {
+            frameCnt++;
+            sumCost += rawCost;
+            const avgCost = sumCost / frameCnt;
+
+            const now = performance.now();
+            const frameInterval = now - lastFrameTime;
+            lastFrameTime = now;
+            let instantFps = 1000.0 / frameInterval;
+            instantFps = Math.min(instantFps, 60);
+
+            fpsHistory.push(instantFps);
+            if (fpsHistory.length > MAX_HISTORY) fpsHistory.shift();
+            const avgFps = fpsHistory.reduce((s, v) => s + v, 0) / fpsHistory.length;
+
+            info.textContent = `总数:${COUNT} | 单帧耗时:${rawCost.toFixed(2)}ms | 平均耗时:${avgCost.toFixed(2)}ms | FPS:${Math.round(avgFps)}`;
+        }
+
+        // 主渲染循环
+        function tick() {
+            const startTime = performance.now();
+
+            // 更新粒子位置
+            for (let i = 0; i < COUNT; i++) {
+                const ii = i * 2;
+                pos[ii] += vel[ii];
+                pos[ii + 1] += vel[ii + 1];
+                const r = rad[i];
+                if (pos[ii] < r || pos[ii] > W - r) vel[ii] *= -1;
+                if (pos[ii + 1] < r || pos[ii + 1] > H - r) vel[ii + 1] *= -1;
+            }
+
+            // 更新缓冲并绘制
+            gl.bindBuffer(gl.ARRAY_BUFFER, bufPos);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, pos);
+            // 传递当前宽高给着色器
+            gl.uniform1f(u_W, W);
+            gl.uniform1f(u_H, H);
+            gl.clearColor(0.0, 0.0, 0.0, 0.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.drawArrays(gl.POINTS, 0, COUNT);
+
+            // 合成画布
+            mainCtx.drawImage(bgOff, 0, 0);
+            mainCtx.drawImage(glOff, 0, 0);
+
+            const frameCost = performance.now() - startTime;
+            setStat(frameCost);
+
+            requestAnimationFrame(tick);
+        }
+
+        tick();
+
+        // 窗口缩放适配
+        window.addEventListener('resize', () => {
+            W = window.innerWidth;
+            H = window.innerHeight;
+            glOff.width = W;
+            glOff.height = H;
+            mainCanvas.width = W;
+            mainCanvas.height = H;
+            bgOff.width = W;
+            bgOff.height = H;
+            bgCtx.fillStyle = '#050510';
+            bgCtx.fillRect(0, 0, W, H);
+        });
+    </script>
+</body>
+</html>
