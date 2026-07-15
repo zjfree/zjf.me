@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas 圆在圆形内平铺</title>
+
+    <link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        canvas {
+            margin: 0 auto;
+        }
+
+        #divTool{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+        }
+    </style>
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <canvas id="cvs"></canvas>
+
+    <div id="divTool">
+        点大小：<input type="range" id="rangeRadius" min="1" max="100" value="20" style="width: 300px;"> (<span id="spanRadius"></span>)
+    </div>
+
+    <script>
+        const canvas = document.getElementById('cvs');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+
+        // 适配窗口大小
+        function resizeCanvas() {
+            // 赋值画布实际分辨率
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawCircle();
+        }
+
+        function drawCircle() {
+                
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let centerX = canvas.width / 2;
+            let centerY = canvas.height / 2;
+
+            let step = Math.min(canvas.width, canvas.height) * 0.9 / 20;
+
+            ctx.fillStyle = 'none';
+            ctx.strokeStyle = '#bbb';
+            ctx.lineWidth = 1;
+            let radius = 0;
+            for (let i = 0; i <= 10; i++) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.stroke();
+                radius += step;
+            }
+
+            let fillRadius = $('#rangeRadius').val();
+            $('#spanRadius').text(fillRadius);
+            ctx.fillStyle = '#000';
+            ctx.lineWidth = 0;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, fillRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            let num = 0;
+            let dist = 0;
+            for (let i = 1; i <= 10; i++) {
+                num += 6;
+                dist += step;
+                let degStep = 360 / num;
+                for (let deg=0; deg<360; deg+=degStep) {
+                    let x = centerX + dist * Math.cos(deg * Math.PI / 180);
+                    let y = centerY + dist * Math.sin(deg * Math.PI / 180);
+                    ctx.beginPath();
+                    ctx.arc(x, y, fillRadius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        $(function(){
+            resizeCanvas();
+            $(window).resize(function(){
+                resizeCanvas();
+            });
+            $('#rangeRadius').on('input', function(){
+                drawCircle();
+            });
+        });
+    </script>
+</body>
+
+</html>
