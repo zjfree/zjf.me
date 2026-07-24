@@ -175,6 +175,27 @@ body{
 	animation: clippath 3s infinite -1.5s linear;
 }
 
+#b22{
+	aspect-ratio: cos(30deg);
+	border-radius: 50% / 25%;
+	corner-shape: bevel;
+	width: 150px;
+	border: 10px solid #000;
+	object-fit: cover;
+	height: auto;
+	font-size: 30px;
+}
+
+#b23{
+	aspect-ratio: cos(30deg);
+	border-radius: 50% / 25%;
+	width: 150px;
+	border: 10px solid #000;
+	object-fit: cover;
+	height: auto;
+	font-size: 30px;
+}
+
 @keyframes clippath {
 	0%, 100% {
 		clip-path: inset(0 0 96% 0);
@@ -276,6 +297,8 @@ body{
 		</svg>
 	</div>
 	<div id="b21">颜色旋转</div>
+	<div id="b22">六边形</div>
+	<div id="b23">光滑椭圆</div>
 </div>
 
 <script>
