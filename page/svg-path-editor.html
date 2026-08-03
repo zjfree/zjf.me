@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Path 编辑器（M/L）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+    background: #f5f6f8; color: #333;
+    overflow: hidden;
+  }
+  #app { display: flex; height: 100vh; }
+
+  /* ===== 左侧绘制区 ===== */
+  #canvas-wrap {
+    flex: 1; min-width: 0; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff;
+    padding: 12px;
+  }
+  #canvas {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    touch-action: none;
+    cursor: crosshair;
+    user-select: none;
+  }
+
+  /* ===== 右侧工具区 ===== */
+  #sidebar {
+    width: 320px; flex: none;
+    background: #fafbfc; border-left: 1px solid #ddd;
+    overflow-y: auto; padding: 14px 16px 24px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .panel { background: #fff; border: 1px solid #e3e5e8; border-radius: 8px; padding: 12px; }
+  .panel h3 {
+    font-size: 13px; color: #555; margin-bottom: 10px;
+    padding-bottom: 6px; border-bottom: 1px solid #eee;
+  }
+  .field { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { color: #666; }
+  .field select, .field input[type=number] {
+    width: 120px; padding: 4px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;
+  }
+  .field input[type=color] { width: 44px; height: 26px; border: 1px solid #ccc; border-radius: 4px; padding: 1px; cursor: pointer; }
+  .status-row {
+    display: flex; justify-content: space-between; font-size: 13px; color: #444;
+    font-variant-numeric: tabular-nums;
+  }
+  .status-row b { color: #1a73e8; }
+
+  /* 网格对齐提示 */
+  #align-tip {
+    display: none; align-items: center; justify-content: space-between; gap: 8px;
+    background: #fff8e1; border: 1px solid #f0d27a; border-radius: 6px;
+    padding: 8px 10px; font-size: 12px; color: #7a5b00;
+  }
+  #align-tip button {
+    flex: none; background: #f0d27a; border: none; border-radius: 4px;
+    padding: 4px 8px; font-size: 12px; cursor: pointer; color: #5c4400;
+  }
+
+  /* 操作按钮 */
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    flex: 1; min-width: 72px; padding: 7px 8px; border: 1px solid #c6ccd4;
+    background: #fff; border-radius: 6px; font-size: 13px; cursor: pointer;
+    transition: background .15s;
+  }
+  .btn:hover { background: #f0f2f5; }
+  .btn.danger { border-color: #e2b6b6; color: #c0392b; }
+  .btn.danger:hover { background: #fdf0ef; }
+  .btn.primary { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+  .btn.primary:hover { background: #1665cc; }
+  .btn.active { background: #1a73e8; border-color: #1a73e8; color: #fff; }
+  .btn:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* 节点列表（按线段分组） */
+  #node-list {
+    max-height: 220px; overflow-y: auto; border: 1px solid #e3e5e8; border-radius: 6px;
+    padding: 6px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .seg-box {
+    position: relative; border: 1px solid #dde1e6; border-radius: 6px;
+    background: #fbfcfe; padding: 8px 5px 8px; display: grid;
+    grid-template-columns: repeat(3, 1fr); column-gap: 3px; row-gap: 1px; align-items: center;
+  }
+  .seg-box.alt { background: #f0f4fa; border-color: #d3dbe6; }
+  .seg-box:hover { border-color: #b9c2cd; }
+  .seg-del {
+    position: absolute; bottom: -3px; right: -3px; width: 14px; height: 14px;
+    line-height: 13px; text-align: center; border-radius: 50%; font-size: 9px;
+    color: #fff; background: #e74c3c; cursor: pointer;
+    opacity: 0; transition: opacity .15s;
+  }
+  .seg-box:hover .seg-del { opacity: 1; }
+  .seg-del:hover { background: #c0392b; }
+  .pt {
+    position: relative; display: inline-flex; align-items: center; justify-content: center;
+    gap: 0; border: 1px solid transparent; border-radius: 3px;
+    padding: 0 1px; cursor: pointer; min-width: 0;
+  }
+  .pt:hover { background: #eef2f7; }
+  .pt.selected { background: #e8f0fe; border-color: #1a73e8; }
+  .pt input.xy {
+    width: 32px; padding: 0 2px; border: 1px solid #d9dde3; border-radius: 2px;
+    font-size: 10px; text-align: right;
+  }
+  .pt input.xy:focus { outline: none; border-color: #1a73e8; }
+  .pt-del {
+    position: absolute; top: -5px; right: -5px; width: 12px; height: 12px;
+    line-height: 11px; text-align: center; border-radius: 50%; font-size: 8px;
+    color: #fff; background: #e74c3c; cursor: pointer;
+    opacity: 0; transition: opacity .15s;
+  }
+  .pt:hover .pt-del { opacity: 1; }
+  .pt-del:hover { background: #c0392b; }
+
+  /* 源码 */
+  #export-area {
+    width: 100%; height: 120px; resize: vertical; font-family: Consolas, Monaco, monospace;
+    font-size: 11px; line-height: 1.5; border: 1px solid #d5d9de; border-radius: 6px; padding: 8px;
+    background: #fbfcfe; color: #333;
+  }
+  .hint { font-size: 11px; color: #999; margin-top: 4px; line-height: 1.5; }
+
+  /* 顶部 toast */
+  #toast {
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,.78); color: #fff; padding: 8px 18px; border-radius: 6px;
+    font-size: 13px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99;
+  }
+  #toast.show { opacity: 1; }
+
+  /* 导入 SVG 模态框 */
+  #import-modal {
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,.4);
+    display: none; align-items: center; justify-content: center; z-index: 100;
+  }
+  #import-modal.show { display: flex; }
+  .import-box {
+    background: #fff; border-radius: 10px; padding: 16px; width: 440px; max-width: 92vw;
+    box-shadow: 0 6px 24px rgba(0,0,0,.2);
+  }
+  .import-box h3 { font-size: 14px; margin-bottom: 10px; color: #444; }
+  #import-text {
+    width: 100%; height: 150px; resize: vertical; font-family: Consolas, Monaco, monospace;
+    font-size: 11px; line-height: 1.5; border: 1px solid #d5d9de; border-radius: 6px; padding: 8px;
+    box-sizing: border-box;
+  }
+  .import-actions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
+  .import-actions .btn { flex: none; min-width: 80px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <!-- 左侧绘制区 -->
+  <div id="canvas-wrap">
+    <svg id="canvas" viewBox="0 0 360 360" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <pattern id="gridPattern" patternUnits="userSpaceOnUse" width="36" height="36">
+          <path id="gridPatternPath" d="M 36 0 L 0 0 0 36" fill="none" stroke="#e4e6ea" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect id="gridRect" x="0" y="0" width="360" height="360" fill="url(#gridPattern)"/>
+      <line id="midVLine" x1="180" y1="0" x2="180" y2="360" stroke="#9db4d8" stroke-width="0.8" visibility="hidden"/>
+      <line id="midHLine" x1="0" y1="180" x2="360" y2="180" stroke="#9db4d8" stroke-width="0.8" visibility="hidden"/>
+      <rect id="gridBorder" x="0.5" y="0.5" width="359" height="359" fill="none" stroke="#c5c9cf" stroke-width="1"/>
+      <path id="mainPath" fill="none"/>
+      <g id="pointsLayer"></g>
+      <g id="previewLayer">
+        <line id="previewLine" stroke="#7a869a" stroke-width="1.5" stroke-dasharray="5 4" visibility="hidden"/>
+        <circle id="ghostPoint" r="4" fill="#1a73e8" fill-opacity="0.35" stroke="#1a73e8" stroke-opacity="0.7" stroke-width="1.2" visibility="hidden"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- 右侧工具区 -->
+  <div id="sidebar">
+    <div class="panel">
+      <h3>网格配置</h3>
+      <div class="field">
+        <label>网格等分数</label>
+        <select id="grid-select"></select>
+      </div>
+      <div class="status-row"><span>网格步长</span><b id="step-info">36</b></div>
+    </div>
+
+    <div id="align-tip">
+      <span>部分节点未对齐当前网格</span>
+      <button id="btn-snap-all">一键吸附</button>
+    </div>
+
+    <div class="panel">
+      <h3>实时状态</h3>
+      <div class="status-row"><span>鼠标坐标</span><b id="coord-info">—</b></div>
+      <div class="status-row"><span>节点总数</span><b id="node-count">0</b></div>
+    </div>
+
+    <div class="panel">
+      <h3>路径样式</h3>
+      <div class="field"><label>线条颜色</label><input type="color" id="style-color" value="#000000"></div>
+      <div class="field"><label>线条宽度</label><input type="number" id="style-width" value="2" min="1" max="60" step="1"></div>
+      <div class="field"><label>实线 / 虚线</label><input type="checkbox" id="style-dash"></div>
+      <div class="field">
+        <label>端点样式</label>
+        <select id="style-cap">
+          <option value="butt">平直 (butt)</option>
+          <option value="round">圆角 (round)</option>
+          <option value="square">方形 (square)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>转折样式</label>
+        <select id="style-join">
+          <option value="miter">尖角 (miter)</option>
+          <option value="round">圆角 (round)</option>
+          <option value="bevel">斜切 (bevel)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>节点列表（按线段分组）</h3>
+      <div id="node-list"></div>
+      <div class="hint">点击选中节点；数值可直接编辑（Enter / 失焦确认，ESC 取消）。悬浮点或线段右上角 ✕ 删除。</div>
+    </div>
+
+    <div class="panel">
+      <h3>全局操作</h3>
+      <div class="btn-row">
+        <button class="btn" id="btn-optimize">手动优化</button>
+        <button class="btn danger" id="btn-clear">一键清空</button>
+      </div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn primary" id="btn-copy">复制 SVG 源码</button>
+        <button class="btn" id="btn-import">导入 SVG</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>SVG 源码（实时）</h3>
+      <textarea id="export-area" readonly spellcheck="false"></textarea>
+      <div class="hint">360×360 · viewBox 0 0 360 360 · 坐标 0~360 整数 · 仅 M/L 指令</div>
+    </div>
+  </div>
+</div>
+
+<div id="import-modal">
+  <div class="import-box">
+    <h3>导入 SVG 继续编辑</h3>
+    <textarea id="import-text" placeholder="粘贴之前复制的 SVG 源码（仅支持 M/L 指令）…"></textarea>
+    <div class="import-actions">
+      <button class="btn" id="btn-import-cancel">取消</button>
+      <button class="btn primary" id="btn-import-ok">导入</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ==================== 状态 ====================
+  var state = {
+    points: [],          // [{type:'M'|'L', x, y}]，M 为段起点，L 跟随
+    selectedIndex: -1,   // -1 = 无选中
+    gridCount: 10,
+    styles: { color: '#000000', width: 2, dash: false, linecap: 'butt', linejoin: 'miter' },
+    mode: 'idle',          // 操作模式：'idle' 空闲 | 'drawing' 线段绘制 | 'pointMove' 点移动
+    firstDrawPoint: true,  // 绘制模式中下一次点击作为 M 起点（新段），其后点击为 L
+    dragIndex: -1,
+    hoverIndex: -1,        // 当前悬停顶点索引，-1 = 无（深蓝高亮用）
+    undoStack: [],
+    redoStack: []
+  };
+
+  // ==================== DOM ====================
+  var $ = function (id) { return document.getElementById(id); };
+  var svg = $('canvas'),
+      gridPattern = $('gridPattern'),
+      gridPatternPath = $('gridPatternPath'),
+      midVLine = $('midVLine'),
+      midHLine = $('midHLine'),
+      mainPath = $('mainPath'),
+      pointsLayer = $('pointsLayer'),
+      previewLine = $('previewLine'),
+      ghostPoint = $('ghostPoint'),
+      canvasWrap = $('canvas-wrap'),
+      gridSelect = $('grid-select'),
+      stepInfo = $('step-info'),
+      coordInfo = $('coord-info'),
+      nodeCount = $('node-count'),
+      styleColor = $('style-color'),
+      styleWidth = $('style-width'),
+      styleDash = $('style-dash'),
+      styleCap = $('style-cap'),
+      styleJoin = $('style-join'),
+      nodeList = $('node-list'),
+      alignTip = $('align-tip'),
+      btnSnapAll = $('btn-snap-all'),
+      btnOptimize = $('btn-optimize'),
+      btnClear = $('btn-clear'),
+      btnCopy = $('btn-copy'),
+      btnImport = $('btn-import'),
+      importModal = $('import-modal'),
+      importText = $('import-text'),
+      btnImportOk = $('btn-import-ok'),
+      btnImportCancel = $('btn-import-cancel'),
+      exportArea = $('export-area'),
+      toastEl = $('toast');
+
+  // 360 可整除的合法等分数
+  var GRID_DIVISORS = [6,8,9,10,12,15,18,20,24,30,36,40,45,60]; // 等分数范围：6~60（去掉 ≤5 与 >60）
+  var STORAGE_KEY = 'svg-path-editor-v1';
+  var UNDO_LIMIT = 50;
+  var lastMouse = { x: 0, y: 0 };
+  var toastTimer = null;
+
+  // ==================== 工具函数 ====================
+  function step() { return 360 / state.gridCount; }
+  function clamp(v) { return Math.max(0, Math.min(360, v)); } // 坐标范围 0~360（含边界交点 360）
+  function snap(v) { return Math.round(v / step()) * step(); }
+  function snapPoint(x, y) { return { x: clamp(snap(x)), y: clamp(snap(y)) }; }
+
+  function isCollinear(a, b, c) {
+    // 向量叉积为零即三点共线（整数坐标精确比较，兼容任意斜向）
+    return (b.x - a.x) * (c.y - a.y) === (b.y - a.y) * (c.x - a.x);
+  }
+
+  // 同段内相邻完全重合节点去重（M 不被前一段 L 误删）
+  function dedupe(pts) {
+    var out = [];
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      if (p.type === 'L' && out.length) {
+        var last = out[out.length - 1];
+        if (last.type === 'L' && last.x === p.x && last.y === p.y) continue;
+      }
+      out.push(p);
+    }
+    return out;
+  }
+
+  // 共线冗余中点剔除：按段独立遍历，仅保留拐点与首尾；孤立 M（无 L）整段清除
+  function optimize(pts) {
+    var src = pts || state.points;
+    var result = [];
+    var i = 0;
+    while (i < src.length) {
+      var seg = [src[i]];
+      i++;
+      while (i < src.length && src[i].type === 'L') { seg.push(src[i]); i++; }
+      var keep = [seg[0]];
+      for (var k = 1; k < seg.length - 1; k++) {
+        var a = keep[keep.length - 1], b = seg[k], c = seg[k + 1];
+        if (!isCollinear(a, b, c)) keep.push(b);
+      }
+      if (seg.length > 1) keep.push(seg[seg.length - 1]);
+      result = result.concat(keep); // 孤立 M 段（绘制中间态）原样保留；删除场景已由 deleteNode 保证不产生孤立段
+    }
+    var out = dedupe(result);
+    if (!pts) state.points = out; // 作用于当前路径时写回（此前返回值被调用方丢弃，优化不生效）
+    return out;
+  }
+
+  // 仅做重复节点过滤（数据合法性维护），不做共线精简——自动操作不删点，精简只由「手动优化」触发
+  function sanitize() {
+    state.points = dedupe(state.points);
+  }
+
+  // ==================== 撤销 / 重做 ====================
+  function pushUndo() {
+    state.undoStack.push(JSON.stringify(state.points));
+    if (state.undoStack.length > UNDO_LIMIT) state.undoStack.shift();
+    state.redoStack = [];
+  }
+  function undo() {
+    if (!state.undoStack.length) return;
+    state.redoStack.push(JSON.stringify(state.points));
+    state.points = JSON.parse(state.undoStack.pop());
+    state.selectedIndex = -1;
+    state.mode = 'idle';          // 撤销后退出绘制/点移动，避免残留状态与新数据失配
+    state.dragIndex = -1;
+    state.hoverIndex = -1;
+    state.firstDrawPoint = true;
+    previewLine.setAttribute('visibility', 'hidden');
+    hideGhost();
+    refreshAll();
+  }
+  function redo() {
+    if (!state.redoStack.length) return;
+    state.undoStack.push(JSON.stringify(state.points));
+    state.points = JSON.parse(state.redoStack.pop());
+    state.selectedIndex = -1;
+    state.mode = 'idle';          // 同 undo：重做后复位模式状态
+    state.dragIndex = -1;
+    state.hoverIndex = -1;
+    state.firstDrawPoint = true;
+    previewLine.setAttribute('visibility', 'hidden');
+    hideGhost();
+    refreshAll();
+  }
+
+  // ==================== 渲染 ====================
+  function pathD() {
+    return state.points.map(function (p) { return p.type + ' ' + p.x + ' ' + p.y; }).join(' ');
+  }
+  function pathAttrs() {
+    var s = state.styles;
+    return {
+      'fill': 'none',
+      'stroke': s.color,
+      'stroke-width': s.width,
+      'stroke-linecap': s.linecap,
+      'stroke-linejoin': s.linejoin,
+      'stroke-dasharray': s.dash ? (s.width * 2) + ',' + (s.width * 1.5) : 'none'
+    };
+  }
+  function renderPath() {
+    mainPath.setAttribute('d', pathD());
+    var a = pathAttrs();
+    for (var k in a) mainPath.setAttribute(k, a[k]);
+  }
+  // 顶点/跟随点半径：受网格步长与「≤10 屏幕像素」双重约束（网格密时点自动缩小）
+  function pointRadius(base) {
+    var pxCap = 10 * userPerPx(); // 10 屏幕像素换算为用户单位
+    var st = step();
+    return Math.max(1.5, Math.min(base, st * 0.4, pxCap));
+  }
+  function renderPoints() {
+    pointsLayer.innerHTML = '';
+    for (var i = 0; i < state.points.length; i++) {
+      var p = state.points[i];
+      var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', p.x);
+      c.setAttribute('cy', p.y);
+      c.setAttribute('data-index', i);
+      if (i === state.selectedIndex) {
+        c.setAttribute('r', pointRadius(5.5));
+        c.setAttribute('fill', '#1a73e8');
+        c.setAttribute('stroke', '#fff');
+        c.setAttribute('stroke-width', 1.5);
+      } else if (i === state.hoverIndex) {
+        c.setAttribute('r', pointRadius(4.5));
+        c.setAttribute('fill', '#0d47a1');
+        c.setAttribute('stroke', '#fff');
+        c.setAttribute('stroke-width', 1.5);
+      } else {
+        c.setAttribute('r', pointRadius(3.5));
+        c.setAttribute('fill', '#fff');
+        c.setAttribute('stroke', '#8a929c');
+        c.setAttribute('stroke-width', 1.5);
+      }
+      pointsLayer.appendChild(c);
+    }
+  }
+  function renderList() {
+    nodeList.innerHTML = '';
+    var frag = document.createDocumentFragment();
+    var pts = state.points;
+    var i = 0;
+    var segIdx = 0;
+    while (i < pts.length) {
+      // 收集一段：M 起点 + 其后所有 L（遇到下一个 M 结束）
+      var segStart = i;
+      var segPts = [];
+      while (i < pts.length && (segPts.length === 0 || pts[i].type !== 'M')) {
+        segPts.push(pts[i]);
+        i++;
+      }
+      var box = document.createElement('div');
+      box.className = 'seg-box' + (segIdx % 2 ? ' alt' : '');
+      // 线段右上角删除图标（删除整段）
+      (function (mIdx) {
+        var segDel = document.createElement('span');
+        segDel.className = 'seg-del';
+        segDel.textContent = '✕';
+        segDel.title = '删除整段';
+        segDel.addEventListener('click', function (e) {
+          e.stopPropagation();
+          pushUndo();
+          deleteNode(mIdx);
+          state.selectedIndex = -1;
+          state.mode = 'idle';
+          sanitize();
+          refreshAll();
+        });
+        box.appendChild(segDel);
+      })(segStart);
+      // 段内各点：一对 (x, y) 用一个 span 包裹
+      for (var k = 0; k < segPts.length; k++) {
+        (function (index, p) {
+          var pt = document.createElement('span');
+          pt.className = 'pt' + (index === state.selectedIndex ? ' selected' : '');
+          pt.title = '点 ' + (k + 1);
+
+          var ix = document.createElement('input');
+          ix.className = 'xy'; ix.value = p.x; ix.setAttribute('data-index', index); ix.setAttribute('data-axis', 'x');
+          ix.setAttribute('inputmode', 'numeric');
+          var iy = document.createElement('input');
+          iy.className = 'xy'; iy.value = p.y; iy.setAttribute('data-index', index); iy.setAttribute('data-axis', 'y');
+          iy.setAttribute('inputmode', 'numeric');
+          var ptDel = document.createElement('span');
+          ptDel.className = 'pt-del';
+          ptDel.textContent = '✕';
+          ptDel.title = '删除该点';
+
+          pt.appendChild(ix); pt.appendChild(iy); pt.appendChild(ptDel);
+
+          pt.addEventListener('click', function (e) {
+            if (e.target === ix || e.target === iy || e.target === ptDel) return;
+            state.selectedIndex = index;
+            renderAll();
+          });
+          ix.addEventListener('click', function (e) { e.stopPropagation(); });
+          iy.addEventListener('click', function (e) { e.stopPropagation(); });
+          ix.addEventListener('keydown', function (e) { coordKeydown(e, ix); });
+          iy.addEventListener('keydown', function (e) { coordKeydown(e, iy); });
+          ix.addEventListener('blur', function () { commitCoord(ix); });
+          iy.addEventListener('blur', function () { commitCoord(iy); });
+          ptDel.addEventListener('click', function (e) {
+            e.stopPropagation();
+            pushUndo();
+            deleteNode(index);
+            state.selectedIndex = -1;
+            state.mode = 'idle';
+            sanitize();
+            refreshAll();
+          });
+
+          box.appendChild(pt);
+        })(segStart + k, segPts[k]);
+      }
+      frag.appendChild(box);
+      segIdx++;
+    }
+    nodeList.appendChild(frag);
+  }
+  function renderGrid() {
+    var st = step();
+    gridPattern.setAttribute('width', st);
+    gridPattern.setAttribute('height', st);
+    gridPatternPath.setAttribute('d', 'M ' + st + ' 0 L 0 0 0 ' + st);
+    stepInfo.textContent = st;
+    // 等分数为偶数时 180 是网格交点，中心线加深显示，便于定位中心
+    var even = state.gridCount % 2 === 0;
+    midVLine.setAttribute('visibility', even ? 'visible' : 'hidden');
+    midHLine.setAttribute('visibility', even ? 'visible' : 'hidden');
+  }
+  function renderExport() {
+    exportArea.value = exportSVG();
+  }
+  function renderStatus() {
+    nodeCount.textContent = state.points.length;
+  }
+  // 以「snap 自洽」判断是否对齐网格：吸附产出的坐标（含边缘交点 360）不会误报；
+  // 只有 snap(p) !== p 的坐标（如手动输入的 100）才提示「一键吸附」
+  function checkAlignment() {
+    var mis = state.points.some(function (p) { return snap(p.x) !== p.x || snap(p.y) !== p.y; });
+    alignTip.style.display = mis ? 'flex' : 'none';
+  }
+  function refreshAll() {
+    if (state.selectedIndex >= state.points.length) state.selectedIndex = -1;
+    renderPath(); renderPoints(); renderList(); renderStatus(); renderExport();
+    checkAlignment();
+    saveState();
+  }
+
+  // ==================== 导出 ====================
+  function exportSVG() {
+    var s = state.styles;
+    var dash = s.dash ? ' stroke-dasharray="' + (s.width * 2) + ',' + (s.width * 1.5) + '"' : ' stroke-dasharray="none"';
+    var path = '<path d="' + pathD() + '" fill="none"'
+      + ' stroke="' + s.color + '"'
+      + ' stroke-width="' + s.width + '"'
+      + ' stroke-linecap="' + s.linecap + '"'
+      + ' stroke-linejoin="' + s.linejoin + '"'
+      + dash + ' />';
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360">' + path + '</svg>';
+  }
+
+  // ==================== 交互判定（顶点 > 线段 > 空白） ====================
+  function userPerPx() { return 360 / svg.getBoundingClientRect().width; }
+  function svgCoords(e) {
+    var r = svg.getBoundingClientRect();
+    return { x: (e.clientX - r.left) / r.width * 360, y: (e.clientY - r.top) / r.height * 360 };
+  }
+  function hitVertex(x, y, th) {
+    var firstL = -1;
+    for (var i = 0; i < state.points.length; i++) {
+      var p = state.points[i];
+      if (Math.abs(x - p.x) > th || Math.abs(y - p.y) > th) continue;
+      if (p.type === 'M') return i; // 优先命中实体点（M 起点）；重合点场景选中 M 而非途径点
+      if (firstL === -1) firstL = i;
+    }
+    return firstL;
+  }
+  function hitSegment(x, y, th) {
+    var pts = state.points;
+    for (var i = 0; i < pts.length - 1; i++) {
+      if (pts[i + 1].type === 'M') continue; // 段边界无线段
+      var a = pts[i], b = pts[i + 1];
+      var abx = b.x - a.x, aby = b.y - a.y;
+      var len2 = abx * abx + aby * aby;
+      if (len2 === 0) continue;
+      var t = ((x - a.x) * abx + (y - a.y) * aby) / len2;
+      if (t < 0 || t > 1) continue; // 投影落在线段外
+      var px = a.x + t * abx, py = a.y + t * aby;
+      var d = Math.sqrt((x - px) * (x - px) + (y - py) * (y - py));
+      if (d <= th) return i;
+    }
+    return -1;
+  }
+  function hitTest(x, y) {
+    var thV = 8 * userPerPx(); // 顶点命中半径（视觉像素）
+    var thS = 4 * userPerPx(); // 线段容错阈值（视觉像素）
+    var vi = hitVertex(x, y, thV);
+    if (vi >= 0) return { kind: 'vertex', index: vi };
+    var si = hitSegment(x, y, thS);
+    if (si >= 0) return { kind: 'segment', index: si };
+    return { kind: 'empty', index: -1 };
+  }
+  function updateCursor(e) {
+    if (state.dragIndex >= 0 || state.mode === 'drawing') return;
+    var pos = svgCoords(e);
+    var hit = hitTest(pos.x, pos.y);
+    svg.style.cursor = hit.kind === 'vertex' ? 'move' : (hit.kind === 'segment' ? 'pointer' : 'crosshair');
+  }
+
+  // ==================== 交互事件 ====================
+  function onMouseDown(e) {
+    if (e.button !== 0) return;
+    var pos = svgCoords(e);
+    lastMouse = pos;
+
+    if (state.mode === 'drawing') {
+      // 绘制模式：任意位置点击即追加节点（点击同一位置忽略）
+      drawClick(snapPoint(pos.x, pos.y));
+      return;
+    }
+
+    var hit = hitTest(pos.x, pos.y);
+    if (hit.kind === 'vertex') {
+      // 点击已绘制点：进入点移动模式、选中该点并立即拖拽
+      state.mode = 'pointMove';
+      state.selectedIndex = hit.index;
+      state.dragIndex = hit.index;
+      state.hoverIndex = -1;
+      hideGhost();
+      pushUndo();               // 拖拽前保存快照
+      renderAll();
+    } else if (hit.kind === 'segment') {
+      // 点击线段：在线段中间插入新点，自动选中并进入点移动模式（可即时拖拽）
+      var sp = snapPoint(pos.x, pos.y);
+      var a = state.points[hit.index], b = state.points[hit.index + 1];
+      if ((sp.x === a.x && sp.y === a.y) || (sp.x === b.x && sp.y === b.y)) return; // 与端点重合则忽略
+      state.mode = 'pointMove';
+      state.hoverIndex = -1;
+      hideGhost();
+      pushUndo();               // 插点前保存快照
+      var ni = hit.index + 1;
+      state.points.splice(ni, 0, { type: 'L', x: sp.x, y: sp.y });
+      state.selectedIndex = ni;
+      state.dragIndex = ni;     // 新增节点可即时拖拽调整
+      renderAll();
+    } else {
+      // 空白：开始线段绘制（本次绘制的第一个点即 M 起点，形成新段）
+      state.mode = 'drawing';
+      state.firstDrawPoint = true;
+      state.selectedIndex = -1;
+      state.hoverIndex = -1;
+      hideGhost();
+      drawClick(snapPoint(pos.x, pos.y));
+    }
+  }
+  function onMouseMove(e) {
+    var pos = svgCoords(e);
+    lastMouse = pos;
+    if (state.dragIndex >= 0) {
+      var sp = snapPoint(pos.x, pos.y);
+      var p = state.points[state.dragIndex];
+      p.x = sp.x; p.y = sp.y;
+      renderPath(); renderPoints(); renderList(); renderStatus();
+      return;
+    }
+    var sp2 = snapPoint(pos.x, pos.y);
+    if (state.mode === 'drawing') {
+      updatePreview();
+    } else {
+      var inside = pos.x >= 0 && pos.x <= 360 && pos.y >= 0 && pos.y <= 360;
+      if (inside) {
+        updateGhostAndHover(pos, sp2);
+      } else {
+        hideGhost();
+        if (state.hoverIndex !== -1) { state.hoverIndex = -1; renderPoints(); }
+      }
+    }
+    coordInfo.textContent = sp2.x + ', ' + sp2.y;
+    updateCursor(e);
+  }
+  function onMouseUp() {
+    // 拖拽结束：释放并优化；模式保持（绘制 / 点移动持续，直到右键或 ESC 退出到空闲）
+    if (state.dragIndex >= 0) {
+      state.dragIndex = -1;
+      sanitize();
+      refreshAll();
+    }
+  }
+  function updatePreview() {
+    var sp = snapPoint(lastMouse.x, lastMouse.y);
+    if (state.points.length === 0) {
+      // 空路径：仅显示跟随点
+      previewLine.setAttribute('visibility', 'hidden');
+    } else {
+      var last = state.points[state.points.length - 1];
+      previewLine.setAttribute('visibility', 'visible');
+      previewLine.setAttribute('x1', last.x);
+      previewLine.setAttribute('y1', last.y);
+      previewLine.setAttribute('x2', sp.x);
+      previewLine.setAttribute('y2', sp.y);
+    }
+    showGhost(sp.x, sp.y);
+    setGhostInsertStyle(false); // 绘制模式不涉及插点提示，恢复普通跟随色
+  }
+  function showGhost(x, y) {
+    ghostPoint.setAttribute('visibility', 'visible');
+    ghostPoint.setAttribute('cx', x);
+    ghostPoint.setAttribute('cy', y);
+  }
+  function hideGhost() {
+    ghostPoint.setAttribute('visibility', 'hidden');
+  }
+  // 线段悬浮时切换为醒目色，提醒即将插入点的位置；否则恢复半透明蓝
+  function setGhostInsertStyle(on) {
+    if (on) {
+      ghostPoint.setAttribute('fill', '#ff6d00');
+      ghostPoint.setAttribute('fill-opacity', '0.9');
+      ghostPoint.setAttribute('stroke', '#ff6d00');
+      ghostPoint.setAttribute('stroke-opacity', '1');
+      ghostPoint.setAttribute('r', pointRadius(4.5));
+    } else {
+      ghostPoint.setAttribute('fill', '#1a73e8');
+      ghostPoint.setAttribute('fill-opacity', '0.35');
+      ghostPoint.setAttribute('stroke', '#1a73e8');
+      ghostPoint.setAttribute('stroke-opacity', '0.7');
+      ghostPoint.setAttribute('r', pointRadius(4));
+    }
+  }
+  function updateGhostAndHover(pos, sp) {
+    var hit = hitTest(pos.x, pos.y);
+    if (hit.kind === 'vertex') {
+      // 焦点上有已绘制点：隐藏跟随点，该顶点深蓝高亮
+      hideGhost();
+      if (state.hoverIndex !== hit.index) { state.hoverIndex = hit.index; renderPoints(); }
+    } else {
+      // 焦点空白：半透明蓝跟随点；焦点在线段上：醒目色跟随点（提示插点位置）
+      if (state.hoverIndex !== -1) { state.hoverIndex = -1; renderPoints(); }
+      showGhost(sp.x, sp.y);
+      setGhostInsertStyle(hit.kind === 'segment');
+    }
+  }
+  // 绘制模式点击：本次绘制的第一个点作为 M 起点（新段），其后点击追加 L（同点忽略）
+  // 防御：若残留 firstDrawPoint=false 且路径为空（如撤销到空后仍处于绘制态），按 M 起点处理，避免取 lastP 崩溃
+  function drawClick(sp) {
+    if (state.firstDrawPoint || state.points.length === 0) {
+      state.firstDrawPoint = false;
+      pushUndo();
+      state.points.push({ type: 'M', x: sp.x, y: sp.y });
+    } else {
+      var lastP = state.points[state.points.length - 1];
+      if (!(lastP.x === sp.x && lastP.y === sp.y)) {
+        pushUndo();
+        state.points.push({ type: 'L', x: sp.x, y: sp.y });
+      }
+    }
+    sanitize();
+    refreshAll();
+    updatePreview();
+  }
+
+  // 右键 / ESC：退出绘制或点移动模式，回到空闲
+  function exitToIdle() {
+    state.mode = 'idle';
+    state.dragIndex = -1;
+    state.selectedIndex = -1;
+    state.hoverIndex = -1;
+    state.firstDrawPoint = true;
+    previewLine.setAttribute('visibility', 'hidden');
+    hideGhost();
+    refreshAll();
+  }
+
+  // ==================== 节点删除（多段规则） ====================
+  function deleteNode(index) {
+    var pts = state.points;
+    if (index < 0 || index >= pts.length) return;
+    var p = pts[index];
+    if (p.type === 'M') {
+      // 删除该 M 所属整段：该 M 至下一个 M 之前
+      var end = pts.length;
+      for (var i = index + 1; i < pts.length; i++) {
+        if (pts[i].type === 'M') { end = i; break; }
+      }
+      pts.splice(index, end - index);
+    } else {
+      // 找到所属段的 M
+      var mIdx = index - 1;
+      while (mIdx >= 0 && pts[mIdx].type !== 'M') mIdx--;
+      // 统计该段 L 数量
+      var lCount = 0, endIdx = mIdx + 1;
+      while (endIdx < pts.length && pts[endIdx].type === 'L') { lCount++; endIdx++; }
+      pts.splice(index, 1);
+      if (lCount - 1 <= 0 && mIdx >= 0) {
+        // 段内唯一 L 被删，段只剩 M：连 M 一并清除（不允许孤立 M 段）
+        var mi = mIdx;
+        if (mi < pts.length && pts[mi].type === 'M') pts.splice(mi, 1);
+      }
+    }
+  }
+  function deleteSelected() {
+    if (state.selectedIndex < 0) return;
+    pushUndo();
+    deleteNode(state.selectedIndex);
+    state.selectedIndex = -1;
+    state.mode = 'idle';      // 删除后退出点移动模式
+    state.dragIndex = -1;
+    state.hoverIndex = -1;
+    previewLine.setAttribute('visibility', 'hidden');
+    sanitize();
+    refreshAll();
+  }
+
+  // ==================== 坐标输入 ====================
+  function coordKeydown(e, input) {
+    if (e.key === 'Enter') { input.blur(); }
+    else if (e.key === 'Escape') { input.value = input.getAttribute('data-orig'); input.blur(); }
+  }
+  function commitCoord(input) {
+    var index = parseInt(input.getAttribute('data-index'), 10);
+    var axis = input.getAttribute('data-axis');
+    var v = parseFloat(input.value);
+    if (isNaN(v) || index < 0 || index >= state.points.length) { renderList(); return; }
+    var raw = clamp(Math.round(v));       // 过滤非数字/浮点/越界 → 钳位 0~360
+    var snapped = snap(raw);              // 四舍五入吸附网格
+    if (state.points[index][axis] === snapped) { renderList(); return; }
+    pushUndo();
+    state.points[index][axis] = snapped;
+    sanitize();
+    refreshAll();
+    if (raw !== snapped) toast('已吸附矫正：' + raw + ' → ' + snapped);
+    else if (parseFloat(v) !== raw) toast('已矫正为整数：' + v + ' → ' + raw);
+  }
+
+  // ==================== 工具区动作 ====================
+  function snapAll() {
+    if (!confirm('将把全部节点坐标吸附到当前网格交点（会改变节点位置），是否继续？')) return;
+    pushUndo();
+    for (var i = 0; i < state.points.length; i++) {
+      state.points[i].x = snap(state.points[i].x);
+      state.points[i].y = snap(state.points[i].y);
+    }
+    sanitize();
+    refreshAll();
+    toast('已吸附全部节点到当前网格');
+  }
+  function copySVG() {
+    var txt = exportSVG();
+    function done() { toast('SVG 源码已复制到剪贴板'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt); done(); });
+    } else { fallbackCopy(txt); done(); }
+  }
+  function fallbackCopy(txt) {
+    var ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1800);
+  }
+
+  // ==================== SVG 导入 ====================
+  function openImport() {
+    importText.value = '';
+    importModal.classList.add('show');
+    importText.focus();
+  }
+  function closeImport() {
+    importModal.classList.remove('show');
+  }
+  // 解析 d 属性为节点数组：支持大写绝对 / 小写相对坐标，取整、钳位 0~360 并去重
+  function parseD(d) {
+    var points = [];
+    var re = /([MmLl])\s*([-+]?\d*\.?\d+)\s*[, ]+\s*([-+]?\d*\.?\d+)/g;
+    var m, prevX = 0, prevY = 0;
+    while ((m = re.exec(d)) !== null) {
+      var isM = m[1] === 'M' || m[1] === 'm';
+      var isAbs = m[1] === 'M' || m[1] === 'L';
+      var x = parseFloat(m[2]), y = parseFloat(m[3]);
+      if (!isAbs) { x += prevX; y += prevY; } // 小写为相对坐标
+      points.push({ type: isM ? 'M' : 'L', x: clamp(Math.round(x)), y: clamp(Math.round(y)) });
+      prevX = x; prevY = y;
+    }
+    return dedupe(points);
+  }
+  // 从 SVG 源码提取第一个 <path> 的 d 与样式属性
+  function parseSVG(svgText) {
+    var tag = svgText.match(/<path\b[^>]*>/i);
+    if (!tag) return { error: '未找到 <path> 元素' };
+    var t = tag[0];
+    function attr(name) {
+      var m = t.match(new RegExp(name + '\\s*=\\s*"([^"]*)"', 'i'));
+      return m ? m[1] : null;
+    }
+    var d = attr('d');
+    if (!d) return { error: '<path> 缺少 d 属性' };
+    var points = parseD(d);
+    if (!points.length) return { error: '未解析到有效节点（仅支持 M/L 指令）' };
+    var color = attr('stroke');
+    var cap = attr('stroke-linecap'), join = attr('stroke-linejoin'), dash = attr('stroke-dasharray');
+    return {
+      points: points,
+      styles: {
+        color: /^#[0-9a-fA-F]{6}$/.test(color || '') ? color : '#000000',
+        width: Math.max(1, Math.min(60, parseFloat(attr('stroke-width')) || 2)),
+        linecap: ['butt', 'round', 'square'].indexOf(cap) >= 0 ? cap : 'butt',
+        linejoin: ['miter', 'round', 'bevel'].indexOf(join) >= 0 ? join : 'miter',
+        dash: dash !== null && dash !== 'none'
+      }
+    };
+  }
+  // 根据节点坐标推断原网格等分数：坐标均为 step 的整数倍 ⇒ step = 全部非零坐标的 GCD，
+  // 再取合法 step 集合中能整除它的最大值；返回 0 表示无法推断
+  function gcd(a, b) {
+    a = Math.abs(a); b = Math.abs(b);
+    while (b) { var t = b; b = a % b; a = t; }
+    return a;
+  }
+  function inferGridCount(points) {
+    if (!points || !points.length) return 0;
+    var g = 0;
+    for (var i = 0; i < points.length; i++) {
+      if (points[i].x !== 0) g = gcd(g, points[i].x);
+      if (points[i].y !== 0) g = gcd(g, points[i].y);
+    }
+    if (g === 0) return 0; // 全零坐标，任何网格都匹配，无法唯一推断
+    var steps = GRID_DIVISORS.map(function (n) { return 360 / n; });
+    var best = 0;
+    for (var k = 0; k < steps.length; k++) {
+      if (g % steps[k] === 0 && steps[k] > best) best = steps[k];
+    }
+    return best ? 360 / best : 0;
+  }
+  function applyImport() {
+    var res = parseSVG(importText.value);
+    if (res.error) { toast('导入失败：' + res.error); return; }
+    if (state.points.length && !confirm('导入将替换当前全部路径（可用 Ctrl+Z 撤销），是否继续？')) return;
+    pushUndo();
+    state.points = res.points;
+    state.styles = res.styles;
+    var inferred = inferGridCount(res.points);
+    if (inferred > 0) state.gridCount = inferred;   // 根据坐标推断原网格等分数并自动切换
+    applyControls();       // 同步网格下拉与样式控件
+    renderGrid();          // gridCount 可能变化，刷新网格
+    exitToIdle();          // 复位模式状态并刷新全部面板
+    closeImport();
+    toast('SVG 已导入：' + state.points.length + ' 个节点' + (inferred > 0 ? '，推断网格 ' + inferred + ' 等分' : '（未能推断网格等分数）'));
+  }
+
+  // ==================== 持久化 ====================
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        points: state.points, gridCount: state.gridCount, styles: state.styles
+      }));
+    } catch (e) {}
+  }
+  function loadState() {
+    var data = null;
+    try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return; }
+    if (!data) return;
+    if (Array.isArray(data.points)) {
+      state.points = data.points.filter(function (v) {
+        return v && (v.type === 'M' || v.type === 'L')
+          && Number.isInteger(v.x) && Number.isInteger(v.y)
+          && v.x >= 0 && v.x <= 360 && v.y >= 0 && v.y <= 360;
+      });
+    }
+    if (GRID_DIVISORS.indexOf(data.gridCount) >= 0) state.gridCount = data.gridCount;
+    if (data.styles && typeof data.styles === 'object') {
+      for (var k in state.styles) {
+        if (data.styles[k] !== undefined) state.styles[k] = data.styles[k];
+      }
+    }
+  }
+  function applyControls() {
+    gridSelect.value = String(state.gridCount);
+    styleColor.value = state.styles.color;
+    styleWidth.value = state.styles.width;
+    styleDash.checked = !!state.styles.dash;
+    styleCap.value = state.styles.linecap;
+    styleJoin.value = state.styles.linejoin;
+  }
+
+  // ==================== 快捷键 ====================
+  function onKeyDown(e) {
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    var inInput = tag === 'INPUT' || tag === 'TEXTAREA';
+    if (e.ctrlKey && e.key.toLowerCase() === 'z' && !e.shiftKey) { e.preventDefault(); undo(); return; }
+    if (e.ctrlKey && (e.key.toLowerCase() === 'y' || (e.shiftKey && e.key.toLowerCase() === 'z'))) { e.preventDefault(); redo(); return; }
+    if (e.key === 'Escape') {
+      if (inInput) return; // 输入框内由 input 自身处理
+      exitToIdle();
+      return;
+    }
+    if ((e.key === 'Delete' || e.key === 'Backspace') && !inInput) {
+      e.preventDefault();
+      deleteSelected();
+    }
+  }
+
+  // ==================== 画布自适应 ====================
+  function fitCanvas() {
+    var size = Math.min(canvasWrap.clientWidth - 24, canvasWrap.clientHeight - 24);
+    if (size < 100) size = 100;
+    svg.style.width = size + 'px';
+    svg.style.height = size + 'px';
+  }
+
+  // ==================== 初始化 ====================
+  function init() {
+    // 网格下拉
+    GRID_DIVISORS.forEach(function (n) {
+      var opt = document.createElement('option');
+      opt.value = String(n);
+      opt.textContent = n + ' 等分';
+      gridSelect.appendChild(opt);
+    });
+
+    loadState();
+    applyControls();
+    renderGrid();
+    refreshAll();
+    fitCanvas();
+
+    if (window.ResizeObserver) new ResizeObserver(fitCanvas).observe(canvasWrap);
+    else window.addEventListener('resize', fitCanvas);
+
+    // 画布事件
+    svg.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+    svg.addEventListener('mouseleave', function () {
+      hideGhost();
+      if (state.hoverIndex !== -1) { state.hoverIndex = -1; renderPoints(); }
+    });
+    svg.addEventListener('contextmenu', function (e) { e.preventDefault(); exitToIdle(); });
+
+    // 工具区事件
+    gridSelect.addEventListener('change', function () {
+      state.gridCount = parseInt(gridSelect.value, 10);
+      renderGrid();
+      checkAlignment();   // 不修改、不丢失已有绘制点位
+      saveState();
+    });
+    styleColor.addEventListener('input', function () { state.styles.color = styleColor.value; refreshAll(); });
+    styleWidth.addEventListener('change', function () {
+      var w = parseInt(styleWidth.value, 10);
+      if (isNaN(w)) w = 2;
+      state.styles.width = Math.max(1, Math.min(60, w));
+      styleWidth.value = state.styles.width;
+      refreshAll();
+    });
+    styleDash.addEventListener('change', function () { state.styles.dash = styleDash.checked; refreshAll(); });
+    styleCap.addEventListener('change', function () { state.styles.linecap = styleCap.value; refreshAll(); });
+    styleJoin.addEventListener('change', function () { state.styles.linejoin = styleJoin.value; refreshAll(); });
+
+    btnOptimize.addEventListener('click', function () {
+      if (!state.points.length) return;
+      pushUndo();
+      optimize();
+      if (state.points.length === 0) exitToIdle(); // 优化可能删光全部孤立 M，此时复位模式
+      else refreshAll();
+      toast('已执行手动优化');
+    });
+    btnClear.addEventListener('click', function () {
+      if (!confirm('确定清空全部路径数据？此操作可通过 Ctrl+Z 撤销。')) return;
+      pushUndo();
+      state.points = [];
+      exitToIdle();   // 复位全部模式状态：若清空时处于绘制/点移动模式，残留状态会导致清空后无法继续绘制
+    });
+    btnSnapAll.addEventListener('click', snapAll);
+    btnCopy.addEventListener('click', copySVG);
+    btnImport.addEventListener('click', openImport);
+    btnImportOk.addEventListener('click', applyImport);
+    btnImportCancel.addEventListener('click', closeImport);
+    importModal.addEventListener('click', function (e) { if (e.target === importModal) closeImport(); });
+
+    document.addEventListener('keydown', onKeyDown);
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
