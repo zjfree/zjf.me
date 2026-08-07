@@ -1,0 +1,61 @@
+<!-- quickdraw zjfree 2028-08-07 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>quickdraw 在线画板</title>
+
+  <link rel="stylesheet" href="../static/js/quickdraw/quickdraw.css" />
+  <style>
+    html, body { margin: 0; height: 100%; }
+    #board { position: fixed; inset: 0; }
+    .theme-toggle {
+      position: fixed; top: 10px; right: 10px; z-index: 50;
+      font: 500 13px system-ui; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.15); background: #fff; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="board"></div>
+  <button class="theme-toggle" id="theme">dark</button>
+  <script type="module">
+    // In your own project:  import { createQuickdraw } from '@quickdrawjs/core'
+    import { createQuickdraw } from '../static/js/quickdraw/index.js'
+
+    const board = createQuickdraw({
+      container: document.getElementById('board'),
+      theme: 'light',
+      grid: 'lines', // 'none' | 'lines' | 'dots' — also switchable in the ⋮ menu
+    })
+
+    // persistence: the whole document round-trips as JSON
+    const saved = localStorage.getItem('quickdraw-vanilla')
+    if (saved) {
+      board.editor.store.loadSnapshot(JSON.parse(saved), 'remote')
+      board.editor.fitContent()
+    }
+    let t = 0
+    board.editor.store.listen(() => {
+      clearTimeout(t)
+      t = setTimeout(() => {
+        localStorage.setItem('quickdraw-vanilla', JSON.stringify(board.editor.store.getSnapshot()))
+      }, 500)
+    })
+
+    const btn = document.getElementById('theme')
+    btn.onclick = () => {
+      board.editor.setTheme(board.editor.theme.id === 'light' ? 'dark' : 'light')
+    }
+    // the ⋮ menu can switch the theme too — keep this button's label honest
+    board.editor.on('theme', () => {
+      btn.textContent = board.editor.theme.id === 'light' ? 'dark' : 'light'
+    })
+
+    window.board = board // for poking around in devtools
+  </script>
+</body>
+</html>
