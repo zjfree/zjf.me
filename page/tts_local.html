@@ -1,0 +1,111 @@
+<!-- 浏览器本地TTS zjfree 2026-08-21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>浏览器本地TTS</title>
+
+	<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+	<style>
+		/* css style */
+		body {
+			padding: 0 10px;
+		}
+		input[type="number"] {
+			width: 100px;
+		}
+	</style>
+
+	<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!-- 内容 -->
+	<h1>浏览器本地TTS</h1>
+	<div style="line-height: 30px;">
+		文本内容：
+		<input type="text" id="ttsText" placeholder="输入要播报的文本" value="warning, 警告，重量已超重；389.11吨" style="width: 300px;">
+		<br>
+		播放语速：
+		<input type="number" id="ttsRate" value="1.3" min="0.1" max="10" step="0.1"> (0.1‑10)
+		<br>
+		播放音调：
+		<input type="number" id="ttsPitch" value="1.2" min="0.1" max="2.0" step="0.1"> (0.1‑2.0)
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;
+		<button id="ttsPlayBtn">播放</button>
+		<button id="ttsStopBtn">停止</button>
+	</div>
+	<script>
+		$(function () {
+			// JS
+
+			// 播放按钮点击事件
+			$("#ttsPlayBtn").click(() => {
+				const text = $("#ttsText").val();
+				const rate = $("#ttsRate").val();
+				const pitch = $("#ttsPitch").val();
+				ttsPlay(text, rate, pitch);
+			});
+
+			// 停止按钮点击事件
+			$("#ttsStopBtn").click(() => {
+				ttsStop();
+			});
+		});
+
+		// 全局语音对象
+		const synth = window.speechSynthesis;
+		let voices = [];
+
+		// 加载语音列表（必须等待voiceschanged事件）
+		synth.onvoiceschanged = () => {
+			voices = synth.getVoices();
+		};
+
+		/**
+		 * 浏览器TTS播报
+		 * @param {string} text 播报文本
+		 * @param {number} rate 语速 0.1‑10
+		 * @param {number} pitch 音调0‑2
+		 */
+		function ttsPlay(text, rate = 1.3, pitch = 1.2) {
+			if (!('speechSynthesis' in window)) {
+				alert("浏览器不支持TTS");
+				return;
+			}
+			// 如果正在播报，先停止旧的
+			if (synth.speaking) {
+				synth.cancel();
+			}
+
+			const utt = new SpeechSynthesisUtterance(text);
+			utt.lang = "zh‑CN";
+			utt.rate = rate;
+			utt.pitch = pitch;
+			utt.volume = 1;
+
+			// 优先选中文语音
+			const zhVoice = voices.find(v => v.lang.startsWith("zh"));
+			if (zhVoice) utt.voice = zhVoice;
+
+			utt.onstart = () => console.log("开始播报");
+			utt.onend = () => console.log("播报结束");
+			utt.onerror = (e) => console.error("TTS错误", e);
+
+			synth.speak(utt);
+		}
+
+		// 停止全部播报
+		function ttsStop() {
+			synth.cancel();
+		}
+	</script>
+
+</body>
+
+</html>
