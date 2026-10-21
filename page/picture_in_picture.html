@@ -1,0 +1,101 @@
+<!-- 网页画中画 zjfree 2026-10-21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>网页画中画</title>
+
+<link href="https://lib.baomitu.com/normalize/latest/normalize.min.css" rel="stylesheet">
+<style>
+/* css style */
+body{
+	padding:0 10px;
+}
+</style>
+
+<script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- 内容 -->
+<h1>Doc PiP 网页画中画</h1>
+
+    <div>
+        window.documentPictureInPicture
+    </div>
+    <button id="openPipBtn">打开画中画</button>
+
+    <script>
+        const btn = document.getElementById('openPipBtn');
+        let pipWin = null;
+        const pipApi = window.documentPictureInPicture;
+
+        /**
+         * 打开文档画中画，用iframe加载本站同源页面
+         * @param {string} url 本站页面地址（同源）
+         * @param {number} w
+         * @param {number} h
+         */
+        async function openSitePageInPip(url, w = 600, h = 400) {
+            if (!pipApi) {
+                alert("浏览器不支持 Document Picture-in-Picture");
+                return;
+            }
+            // 如果已经打开，直接关闭
+            if (pipApi.window) {
+                pipApi.window.close();
+                return;
+            }
+
+            try {
+                pipWin = await pipApi.requestWindow({
+                    width: w,
+                    height: h
+                });
+                const pipDoc = pipWin.document;
+
+                // PiP窗口标题
+                pipDoc.title = "画中画 - 本站页面";
+
+                // 基础样式，撑满iframe
+                pipDoc.documentElement.style.height = "100%";
+                pipDoc.documentElement.style.margin = "0";
+                pipDoc.documentElement.style.padding = "0";
+
+                pipDoc.body.style.margin = "0";
+                pipDoc.body.style.padding = "0";
+                pipDoc.body.style.overflow = "hidden";
+                pipDoc.body.style.height = "100%";
+
+                // 创建iframe加载本站同源页面
+                const iframe = document.createElement("iframe");
+                iframe.src = url;
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.border = "none";
+                // 允许iframe内页面正常交互
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media";
+
+                pipDoc.body.appendChild(iframe);
+
+                // PiP关闭清理
+                pipWin.addEventListener("pagehide", () => {
+                    pipWin = null;
+                    console.log('画中画关闭');
+                }, {once: true});
+
+            } catch (err) {
+                console.error("打开PiP失败：", err);
+            }
+        }
+
+        // 点击事件，填入你自己站点的同源url
+        btn.addEventListener("click", () => {
+            // 这里换成你网站内的页面，必须同源
+            openSitePageInPip("http://www.163.com", 650, 450);
+        });
+    </script>
+</body>
+</html>
