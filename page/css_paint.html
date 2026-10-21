@@ -1,0 +1,53 @@
+<!-- CSS-paint zjfree 2026-10-21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS-paint</title>
+  <style>
+    /* worklet 就绪前不绘制 .box（原因见页面底部脚本注释） */
+    html:not(.pw-ready) .box {
+      visibility: hidden;
+    }
+
+    .box {
+      width: 300px;
+      height: 200px;
+      padding: 12px;
+      /* 留出边框绘制区域 */
+      --color: #fef;
+      background: paint(rect);
+      background-color: #fff;
+      /* worklet 未就绪/加载失败时的兜底底色（不能与 --color 同色，否则图案叠上去看不见） */
+      resize: both;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">区域1</div>
+  <div class="box" style=" background-image: paint(circle);">区域2</div>
+
+  <script>
+    // worklet 没注册时 paint() 属于“无效背景”，不画东西；如果这时已经画过一帧，
+    // Chrome 有时不会在 addModule 完成后重绘，就一直是空白。所以先让 .box 不可见
+    // （见上方 CSS 的 .pw-ready），等就绪后放行。失败也放行，至少能看到兜底底色。
+    const ready = () => document.documentElement.classList.add('pw-ready');
+
+    if (!CSS.paintWorklet) {
+      alert("浏览器不支持 Paint Worklet");
+      ready();
+    } else {
+      CSS.paintWorklet
+        .addModule('../static/js/my-worklet.js')
+        .catch((err) => console.warn('[paint-worklet] 加载失败', err))
+        .finally(ready);
+    }
+  </script>
+</body>
+
+</html>
